@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/business.classes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/business.classes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54578/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/database.banco" />
+  <xs:import schemaLocation="http://localhost:54578/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Membro">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Pessoa">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data_batismo" type="xs:int" />
+          <xs:element minOccurs="0" name="Desligamento" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Motivo_desligamento" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Membro" nillable="true" type="tns:Membro" />
+  <xs:complexType name="Pessoa">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/database.banco" base="q1:modelocrudOfPessoa12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cargo_Lider" nillable="true" type="tns:Cargo_Lider" />
+          <xs:element minOccurs="0" name="Cargo_Lider_Treinamento" nillable="true" type="tns:Cargo_Lider_Treinamento" />
+          <xs:element minOccurs="0" name="Cargo_Supervisor" nillable="true" type="tns:Cargo_Supervisor" />
+          <xs:element minOccurs="0" name="Cargo_Supervisor_Treinamento" nillable="true" type="tns:Cargo_Supervisor_Treinamento" />
+          <xs:element minOccurs="0" name="Celula" nillable="true" type="tns:Celula" />
+          <xs:element minOccurs="0" name="Chamada" nillable="true" type="tns:Chamada" />
+          <xs:element minOccurs="0" name="Cpf" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Data_nascimento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Endereco" nillable="true" type="tns:Endereco" />
+          <xs:element minOccurs="0" name="Estado_civil" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Falescimento" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Falta" type="xs:int" />
+          <xs:element minOccurs="0" name="Historico" nillable="true" type="tns:ArrayOfHistorico" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Img" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="Ministerios" nillable="true" type="tns:ArrayOfMinisterio" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reuniao" nillable="true" type="tns:ArrayOfReuniao" />
+          <xs:element minOccurs="0" name="Rg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sexo_feminino" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Sexo_masculino" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefone" nillable="true" type="tns:Telefone" />
+          <xs:element minOccurs="0" name="celula_" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="classe" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="imgtipo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Pessoa" nillable="true" type="tns:Pessoa" />
+  <xs:complexType name="Cargo_Lider">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/database.banco" base="q2:modelocrudOfCargo_Lider12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Liderid" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cargo_Lider" nillable="true" type="tns:Cargo_Lider" />
+  <xs:complexType name="Cargo_Lider_Treinamento">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/database.banco" base="q3:modelocrudOfCargo_Lider_Treinamento12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Lidertreinamentoid" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cargo_Lider_Treinamento" nillable="true" type="tns:Cargo_Lider_Treinamento" />
+  <xs:complexType name="Cargo_Supervisor">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/database.banco" base="q4:modelocrudOfCargo_Supervisor12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Celulas" nillable="true" type="tns:ArrayOfCelula" />
+          <xs:element minOccurs="0" name="Maximo_celula" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+          <xs:element minOccurs="0" name="Supervisorid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cargo_Supervisor" nillable="true" type="tns:Cargo_Supervisor" />
+  <xs:complexType name="ArrayOfCelula">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Celula" nillable="true" type="tns:Celula" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCelula" nillable="true" type="tns:ArrayOfCelula" />
+  <xs:complexType name="Celula">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/database.banco" base="q5:modelocrudOfCelula12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cel_nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Celulaid" type="xs:int" />
+          <xs:element minOccurs="0" name="Dia_semana" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Endereco_Celula" nillable="true" type="tns:Endereco_Celula" />
+          <xs:element minOccurs="0" name="Horario" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="Lider" nillable="true" type="tns:Cargo_Lider" />
+          <xs:element minOccurs="0" name="Lider_" type="xs:int" />
+          <xs:element minOccurs="0" name="Lider_treinamento" nillable="true" type="tns:Cargo_Lider_Treinamento" />
+          <xs:element minOccurs="0" name="Lidertreinamento_" type="xs:int" />
+          <xs:element minOccurs="0" name="Maximo_pessoa" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoas" nillable="true" type="tns:ArrayOfPessoa" />
+          <xs:element minOccurs="0" name="Supervisor" nillable="true" type="tns:Cargo_Supervisor" />
+          <xs:element minOccurs="0" name="Supervisor_" type="xs:int" />
+          <xs:element minOccurs="0" name="Supervisor_treianamento" nillable="true" type="tns:Cargo_Supervisor_Treinamento" />
+          <xs:element minOccurs="0" name="Supervisortreinamento_" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Celula" nillable="true" type="tns:Celula" />
+  <xs:complexType name="Endereco_Celula">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/database.banco" base="q6:modelocrudOfEndereco_Celula12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cel_bairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cel_numero" type="xs:int" />
+          <xs:element minOccurs="0" name="Cel_rua" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Celula" nillable="true" type="tns:Celula" />
+          <xs:element minOccurs="0" name="enderecoid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Endereco_Celula" nillable="true" type="tns:Endereco_Celula" />
+  <xs:complexType name="ArrayOfPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pessoa" nillable="true" type="tns:Pessoa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPessoa" nillable="true" type="tns:ArrayOfPessoa" />
+  <xs:complexType name="Cargo_Supervisor_Treinamento">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/database.banco" base="q7:modelocrudOfCargo_Supervisor_Treinamento12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Celulas" nillable="true" type="tns:ArrayOfCelula" />
+          <xs:element minOccurs="0" name="Maximo_celula" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+          <xs:element minOccurs="0" name="Supervisortreinamentoid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cargo_Supervisor_Treinamento" nillable="true" type="tns:Cargo_Supervisor_Treinamento" />
+  <xs:complexType name="Chamada">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/database.banco" base="q8:modelocrudOfChamada12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data_inicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Numero_chamada" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+          <xs:element minOccurs="0" name="chamadaid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Chamada" nillable="true" type="tns:Chamada" />
+  <xs:complexType name="Endereco">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/database.banco" base="q9:modelocrudOfEndereco12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cep" type="xs:long" />
+          <xs:element minOccurs="0" name="Cidade" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Complemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EnderecoId" type="xs:int" />
+          <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Numero_casa" type="xs:int" />
+          <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+          <xs:element minOccurs="0" name="Rua" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Endereco" nillable="true" type="tns:Endereco" />
+  <xs:complexType name="ArrayOfHistorico">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Historico" nillable="true" type="tns:Historico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistorico" nillable="true" type="tns:ArrayOfHistorico" />
+  <xs:complexType name="Historico">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/database.banco" base="q10:modelocrudOfHistorico12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data_inicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Falta" type="xs:int" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+          <xs:element minOccurs="0" name="historicoid" type="xs:int" />
+          <xs:element minOccurs="0" name="pessoaid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Historico" nillable="true" type="tns:Historico" />
+  <xs:complexType name="ArrayOfMinisterio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ministerio" nillable="true" type="tns:Ministerio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMinisterio" nillable="true" type="tns:ArrayOfMinisterio" />
+  <xs:complexType name="Ministerio">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/database.banco" base="q11:modelocrudOfMinisterio12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Lider" nillable="true" type="tns:Cargo_Lider" />
+          <xs:element minOccurs="0" name="Maximo_pessoa" type="xs:int" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pessoas" nillable="true" type="tns:ArrayOfPessoa" />
+          <xs:element minOccurs="0" name="Proposito" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="lider_ministerio" type="xs:int" />
+          <xs:element minOccurs="0" name="ministerioid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Ministerio" nillable="true" type="tns:Ministerio" />
+  <xs:complexType name="ArrayOfReuniao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reuniao" nillable="true" type="tns:Reuniao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReuniao" nillable="true" type="tns:ArrayOfReuniao" />
+  <xs:complexType name="Reuniao">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/database.banco" base="q12:modelocrudOfReuniao12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data_reuniao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Horario_fim" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Horario_inicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Local_reuniao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pessoas" nillable="true" type="tns:ArrayOfPessoa" />
+          <xs:element minOccurs="0" name="cronologiaid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Reuniao" nillable="true" type="tns:Reuniao" />
+  <xs:complexType name="Telefone">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/database.banco" base="q13:modelocrudOfTelefone12v2bvQu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Celular" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:Pessoa" />
+          <xs:element minOccurs="0" name="Whatsapp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="telefoneid" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Telefone" nillable="true" type="tns:Telefone" />
+  <xs:complexType name="ArrayOfMembro">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Membro" nillable="true" type="tns:Membro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMembro" nillable="true" type="tns:ArrayOfMembro" />
+</xs:schema>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/database.banco" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="modelocrudOfPessoa12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Pessoa" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfPessoa12v2bvQu" nillable="true" type="tns:modelocrudOfPessoa12v2bvQu" />
+  <xs:complexType name="BDcomum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="i" type="xs:int" />
+      <xs:element minOccurs="0" name="sql" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BDcomum" nillable="true" type="tns:BDcomum" />
+  <xs:complexType name="modelocrudOfCargo_Lider12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Cargo_Lider" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfCargo_Lider12v2bvQu" nillable="true" type="tns:modelocrudOfCargo_Lider12v2bvQu" />
+  <xs:complexType name="modelocrudOfCargo_Lider_Treinamento12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Cargo_Lider_Treinamento" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfCargo_Lider_Treinamento12v2bvQu" nillable="true" type="tns:modelocrudOfCargo_Lider_Treinamento12v2bvQu" />
+  <xs:complexType name="modelocrudOfCargo_Supervisor12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Cargo_Supervisor" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfCargo_Supervisor12v2bvQu" nillable="true" type="tns:modelocrudOfCargo_Supervisor12v2bvQu" />
+  <xs:complexType name="modelocrudOfCelula12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Celula" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfCelula12v2bvQu" nillable="true" type="tns:modelocrudOfCelula12v2bvQu" />
+  <xs:complexType name="modelocrudOfEndereco_Celula12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Endereco_Celula" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfEndereco_Celula12v2bvQu" nillable="true" type="tns:modelocrudOfEndereco_Celula12v2bvQu" />
+  <xs:complexType name="modelocrudOfCargo_Supervisor_Treinamento12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Cargo_Supervisor_Treinamento" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfCargo_Supervisor_Treinamento12v2bvQu" nillable="true" type="tns:modelocrudOfCargo_Supervisor_Treinamento12v2bvQu" />
+  <xs:complexType name="modelocrudOfChamada12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Chamada" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfChamada12v2bvQu" nillable="true" type="tns:modelocrudOfChamada12v2bvQu" />
+  <xs:complexType name="modelocrudOfEndereco12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Endereco" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfEndereco12v2bvQu" nillable="true" type="tns:modelocrudOfEndereco12v2bvQu" />
+  <xs:complexType name="modelocrudOfHistorico12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Historico" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfHistorico12v2bvQu" nillable="true" type="tns:modelocrudOfHistorico12v2bvQu" />
+  <xs:complexType name="modelocrudOfMinisterio12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Ministerio" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfMinisterio12v2bvQu" nillable="true" type="tns:modelocrudOfMinisterio12v2bvQu" />
+  <xs:complexType name="modelocrudOfReuniao12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Reuniao" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfReuniao12v2bvQu" nillable="true" type="tns:modelocrudOfReuniao12v2bvQu" />
+  <xs:complexType name="modelocrudOfTelefone12v2bvQu">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="modelocrudOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/database.banco" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Telefone" Namespace="http://schemas.datacontract.org/2004/07/business.classes" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bd" nillable="true" type="tns:BDcomum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelocrudOfTelefone12v2bvQu" nillable="true" type="tns:modelocrudOfTelefone12v2bvQu" />
+</xs:schema>
