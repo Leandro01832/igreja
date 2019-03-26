@@ -1,2 +1,0 @@
-# igreja
-projeto desktop
