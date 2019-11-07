@@ -9,15 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace business.classes
-{
-
-    [Table("Lider_treinamento")]    
+{       
     public class Cargo_Lider_Treinamento : modelocrud<Cargo_Lider_Treinamento>
     {
-        [Key, ForeignKey("Pessoa")]
+        [Key, ForeignKey("Celula")]
         public int Lidertreinamentoid { get; set; }
 
-        public virtual Pessoa Pessoa { get; set; }        
+        public int? pessoa_ { get; set; }
+        [ForeignKey("pessoa_")]
+        public virtual Pessoa Pessoa { get; set; }
+
+        public virtual Celula Celula { get; set; }
 
         public Cargo_Lider_Treinamento()
         {

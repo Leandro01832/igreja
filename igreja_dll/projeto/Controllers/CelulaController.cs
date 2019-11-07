@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using business.classes;
 using repositorioEF;
-using projeto.Models;
 
 namespace projeto.Controllers
 {
@@ -16,10 +15,34 @@ namespace projeto.Controllers
     {
         private DB db = new DB();
 
+        public JsonResult GetSupervisor(int Id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var sup = db.supervisor.Include(s => s.Pessoa).FirstOrDefault(b => b.Supervisorid == Id).Pessoa;
+            if (sup != null)
+            {
+                return Json(sup.Nome);
+            }
+            return Json("");
+        }
+
+        public JsonResult GetSupervisorTreinamento(int Id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var sup = db.supervisor_treinamento.Include(s => s.Pessoa).FirstOrDefault(b => b.Supervisortreinamentoid == Id).Pessoa;
+
+            if(sup != null)
+            {
+                return Json(sup.Nome);
+            }
+
+            return Json("");
+        }
+
         // GET: Celula
         public ActionResult Index()
         {
-            var celula = db.celula.Include(c => c.Endereco_Celula).Include(c => c.Lider.Pessoa).Include(c => c.Lider_treinamento.Pessoa).Include(c => c.Supervisor.Pessoa).Include(c => c.Supervisor_treianamento.Pessoa);
+            var celula = db.celula.Include(c => c.Endereco_Celula).Include(c => c.Lider).Include(c => c.Lider_treinamento).Include(c => c.Supervisor).Include(c => c.Supervisor_treianamento);
             return View(celula.ToList());
         }
 
@@ -35,37 +58,69 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(celula);
+            return View(celula);
         }
 
         // GET: Celula/Create
         public ActionResult Create()
         {
-            ViewBag.Celulaid = new SelectList(db.endereco_celula, "enderecoid", "Cel_bairro");
-            ViewBag.Lider_ = new SelectList(db.pessoas.Where(p => p.Cargo_Lider != null && db.celula.FirstOrDefault(c => c.Lider_ == p.Id) == null), "Id", "Nome");
-            ViewBag.Lidertreinamento_ = new SelectList(db.pessoas.Where(p => p.Cargo_Lider_Treinamento != null && db.celula.FirstOrDefault(c => c.Lidertreinamento_ == p.Id) == null), "Id", "Nome");
-            ViewBag.Supervisor_ = new SelectList(db.pessoas.Where(p => p.Cargo_Supervisor != null), "Id", "Nome");
-            ViewBag.Supervisortreinamento_ = new SelectList(db.pessoas.Where(p => p.Cargo_Supervisor_Treinamento != null), "Id", "Nome");
+            ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome");
+            ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome");
+            ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid");
+            ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid");
             return View();
         }
 
         // POST: Celula/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Celulaid,Cel_nome,Dia_semana,Horario,Maximo_pessoa,Lider_,Lidertreinamento_,Supervisor_,Supervisortreinamento_,Endereco_Celula")] Celula celula)
+        public ActionResult Create([Bind(Include = "Celulaid,Nome,Dia_semana,Horario,Maximo_pessoa,Supervisor_,Supervisortreinamento_,Endereco_Celula,Lider,Lider_treinamento")] Celula celula)
         {
             if (ModelState.IsValid)
             {
+                celula.Supervisor = db.supervisor.Include(s => s.Celulas).First(s => s.Supervisorid == celula.Supervisor_);
+                if( celula.Supervisor.Celulas.Count > celula.Supervisor.Maximo_celula)
+                {
+                    ViewBag.ErroSupervisor = "Este cargo já supervisiona varias celulas";
+                    ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
+                    ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
+                    return View(celula);
+                }
+
+                celula.Supervisor_treianamento = db.supervisor_treinamento.Include(s => s.Celulas).First(s => s.Supervisortreinamentoid == celula.Supervisortreinamento_);
+                if (celula.Supervisor_treianamento.Celulas.Count > celula.Supervisor_treianamento.Maximo_celula)
+                {
+                    ViewBag.ErroSupervisorTreinamento = "Este cargo já supervisiona varias celulas";
+                    ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
+                    ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
+                    return View(celula);
+                }
+
+                celula.Lider = new Cargo_Lider();
+                celula.Lider_treinamento = new Cargo_Lider_Treinamento();
+                if (Request["pessoa_lider"].ToString() != "")
+                {
+                    celula.Lider.pessoa_ = int.Parse(Request["pessoa_lider"].ToString());
+                }
+                else { celula.Lider.pessoa_ = null; }
+                if (Request["pessoa_lider_treinamento"].ToString() != "")
+                {
+                    celula.Lider_treinamento.pessoa_ = int.Parse(Request["pessoa_lider_treinamento"].ToString());
+                }
+                else { celula.Lider_treinamento.pessoa_ = null; }
                 db.celula.Add(celula);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.Celulaid = new SelectList(db.endereco_celula, "enderecoid", "Cel_bairro", celula.Celulaid);
-            ViewBag.Lider_ = new SelectList(db.lider, "Liderid", "Liderid", celula.Lider_);
-            ViewBag.Lidertreinamento_ = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", celula.Lidertreinamento_);
+            
+            ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome", celula.Lider.pessoa_);
+            ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome", celula.Lider_treinamento.pessoa_);
             ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
             ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
             return View(celula);
@@ -83,31 +138,67 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Celulaid = new SelectList(db.endereco_celula, "enderecoid", "Cel_bairro", celula.Celulaid);
-            ViewBag.Lider_ = new SelectList(db.pessoas.Where(p => p.Cargo_Lider != null && db.celula.FirstOrDefault(c => c.Lider_ == p.Id) == null), "Id", "Nome");
-            ViewBag.Lidertreinamento_ = new SelectList(db.pessoas.Where(p => p.Cargo_Lider_Treinamento != null && db.celula.FirstOrDefault(c => c.Lidertreinamento_ == p.Id) == null), "Id", "Nome");
-            ViewBag.Supervisor_ = new SelectList(db.pessoas.Where(p => p.Cargo_Supervisor != null), "Id", "Nome");
-            ViewBag.Supervisortreinamento_ = new SelectList(db.pessoas.Where(p => p.Cargo_Supervisor_Treinamento != null), "Id", "Nome");
+
+            ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome", celula.Lider.pessoa_);
+            ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome", celula.Lider_treinamento.pessoa_);
+            ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
+            ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
             return View(celula);
         }
 
         // POST: Celula/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Celulaid,Cel_nome,Dia_semana,Horario,Maximo_pessoa,Lider_,Lidertreinamento_,Supervisor_,Supervisortreinamento_,Endereco_Celula")] Celula celula)
+        public ActionResult Edit([Bind(Include = "Celulaid,Nome,Dia_semana,Horario,Maximo_pessoa,Supervisor_,Supervisortreinamento_,Endereco_Celula,Lider,Lider_treinamento")] Celula celula)
         {
             if (ModelState.IsValid)
             {
+                celula.Supervisor = db.supervisor.Include(s => s.Celulas).First(s => s.Supervisorid == celula.Supervisor_);
+                if (celula.Supervisor.Celulas.Count > celula.Supervisor.Maximo_celula)
+                {
+                    ViewBag.ErroSupervisor = "Este cargo já supervisiona varias celulas";
+                    ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
+                    ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
+                    return View(celula);
+                }
+
+                celula.Supervisor_treianamento = db.supervisor_treinamento.Include(s => s.Celulas).First(s => s.Supervisortreinamentoid == celula.Supervisortreinamento_);
+                if (celula.Supervisor_treianamento.Celulas.Count > celula.Supervisor_treianamento.Maximo_celula)
+                {
+                    ViewBag.ErroSupervisorTreinamento = "Este cargo já supervisiona varias celulas";
+                    ViewBag.pessoa_lider = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.pessoa_lider_treinamento = new SelectList(db.pessoas, "Id", "Nome");
+                    ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
+                    ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
+                    return View(celula);
+                }
+
+
+                if (Request["pessoa_lider"].ToString() != "")
+                {
+                    celula.Lider.pessoa_ = int.Parse(Request["pessoa_lider"].ToString());
+                }
+                else { celula.Lider.pessoa_ = null; }
+                if (Request["pessoa_lider_treinamento"].ToString() != "")
+                {
+                    celula.Lider_treinamento.pessoa_ = int.Parse(Request["pessoa_lider_treinamento"].ToString());
+                }
+                else { celula.Lider_treinamento.pessoa_ = null; }
+                
+                db.Entry(celula.Lider).State = EntityState.Modified;
+                db.Entry(celula.Lider_treinamento).State = EntityState.Modified;
                 db.Entry(celula.Endereco_Celula).State = EntityState.Modified;
                 db.Entry(celula).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Celulaid = new SelectList(db.endereco_celula, "enderecoid", "Cel_bairro", celula.Celulaid);
-            ViewBag.Lider_ = new SelectList(db.lider, "Liderid", "Liderid", celula.Lider_);
-            ViewBag.Lidertreinamento_ = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", celula.Lidertreinamento_);
+
+            ViewBag.pessoa_lider = new SelectList(db.lider, "Liderid", "Nome", celula.Lider.pessoa_);
+            ViewBag.pessoa_lider_treinamento = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Nome", celula.Lider_treinamento.pessoa_);
             ViewBag.Supervisor_ = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", celula.Supervisor_);
             ViewBag.Supervisortreinamento_ = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", celula.Supervisortreinamento_);
             return View(celula);

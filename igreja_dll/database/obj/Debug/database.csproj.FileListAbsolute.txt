@@ -9,3 +9,16 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Deb
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Debug\EntityFramework.xml
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\database.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\database.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\database.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\EntityFramework.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\MySql.Data.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\EntityFramework.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\obj\Debug\database.csprojAssemblyReference.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\obj\Debug\database.csproj.CoreCompileInputs.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\obj\Debug\database.csproj.CopyComplete
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\obj\Debug\database.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\database\obj\Debug\database.pdb

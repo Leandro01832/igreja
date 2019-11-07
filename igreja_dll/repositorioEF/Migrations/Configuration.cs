@@ -9,8 +9,8 @@ namespace repositorioEF.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(repositorioEF.DB context)

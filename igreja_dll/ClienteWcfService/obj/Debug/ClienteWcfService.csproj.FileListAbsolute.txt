@@ -24,3 +24,33 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\ClienteWcfServic
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.csprojResolveAssemblyReference.cache
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\ApplicationInsights.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\ClienteWcfService.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\ClienteWcfService.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\ClienteWcfService.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\business.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\database.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.Web.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.ApplicationInsights.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\EntityFramework.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\MySql.Data.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\business.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\business.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\database.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\database.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.Web.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\Microsoft.ApplicationInsights.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\bin\EntityFramework.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.csprojAssemblyReference.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.csproj.CoreCompileInputs.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.csproj.CopyComplete
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\ClienteWcfService\obj\Debug\ClienteWcfService.pdb

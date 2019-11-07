@@ -11,20 +11,36 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Celula.Cel_nome)
+            @Html.DisplayNameFor(model => model.Celula.Nome)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Celula.Cel_nome)
-        </dd> 
+            @Html.DisplayFor(model => model.Celula.Nome)
+        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Chamada.Numero_chamada)
+            @Html.DisplayNameFor(model => model.Chamada.chamadaid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Chamada.Numero_chamada)
-        </dd>  
+            @Html.DisplayFor(model => model.Chamada.chamadaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone.Fone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone.Fone)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -83,14 +99,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Falescimento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Falescimento)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Status)
         </dt>
 
@@ -99,29 +107,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Falta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Falta)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Img)
         </dt>
 
         <dd>
-            @{
-                if (Model.Img != null)
-                {
-                    <img class="img-responsive" src="@Url.Action("Exibir", "arquivo", new {id = Model.Id })" width="350" />
-                }
-                else
-                {
-                    <img class="img-responsive" src="~/arquivos/semimagem.jpg" width="350" />
-                }
-            }
-
+            @Html.DisplayFor(model => model.Img)
         </dd>
 
         <dt>
@@ -138,6 +128,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Desligamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo_desligamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo_desligamento)
         </dd>
 
         <dt>
@@ -162,130 +160,10 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nome_igreja_transferencia)
-        </dd>         
-
-    </dl>
-</div>
-
-<div>
-    <h4>Endereço</h4>
-    <hr />
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Pais)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Pais)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Cep)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Cep)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Cidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Cidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Rua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Rua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Numero_casa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Numero_casa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Complemento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Complemento)
         </dd>
 
     </dl>
 </div>
-
-<div>
-    <h4>Telefone</h4>
-    <hr />
-    <dl class="dl-horizontal">
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone.Fone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone.Fone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone.Celular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone.Celular)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone.Whatsapp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone.Whatsapp)
-        </dd>
-
-    </dl>
-</div>
-
-<div>
-    <h4>Ministérios</h4>
-    <hr />
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ministerios)
-        </dt>
-
-        <dd>
-            @{
-                for (int i = 0; i < Model.Ministerios.Count; i++)
-                {
-                    var valor = Model.Ministerios[i].Nome;
-                    <a href="/Ministerio/Details/@Model.Ministerios[i].ministerioid">@valor</a>
-                }
-            }
-        </dd>
-
-    </dl>
-</div>
-
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

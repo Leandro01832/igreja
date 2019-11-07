@@ -61,23 +61,47 @@ namespace projeto.Controllers
                 reuniao.Pessoas = new List<Pessoa>();
 
                 if (lider != null)
-                {                    
-                    reuniao.Pessoas.AddRange(db.pessoas.Where(p => p.Cargo_Lider != null));
+                {
+                    List<Pessoa> list = new List<Pessoa>();
+                    foreach(var pes in db.lider.ToList())
+                    {
+                        if(pes.pessoa_ != null)
+                        {
+                            list.Add(pes.Pessoa);
+                        }
+                    }
+                    reuniao.Pessoas.AddRange(list);
                 }
 
                 if (lider_treinamento != null)
-                {                    
-                    reuniao.Pessoas.AddRange(db.pessoas.Where(p => p.Cargo_Lider_Treinamento != null));
+                {
+                    List<Pessoa> list = new List<Pessoa>();
+                    foreach (var pes in db.lider_treinamento.ToList())
+                    {
+                        if (pes.pessoa_ != null)
+                        {
+                            list.Add(pes.Pessoa);
+                        }
+                    }
+                      reuniao.Pessoas.AddRange(list);
                 }
 
                 if (supervisor != null)
                 {
-                    reuniao.Pessoas.AddRange(db.pessoas.Where(p => p.Cargo_Supervisor != null));
+                    List<Pessoa> list = new List<Pessoa>();
+                    foreach (var pes in db.lider.ToList())
+                    {
+                        if (pes.pessoa_ != null)
+                        {
+                            list.Add(pes.Pessoa);
+                        }
+                    }
+                    reuniao.Pessoas.AddRange(list);
                 }
 
                 if (supervisor_treinamento != null)
                 {
-                    reuniao.Pessoas.AddRange(db.pessoas.Where(p => p.Cargo_Supervisor_Treinamento != null));
+                  //  reuniao.Pessoas.AddRange(db.pessoas.Where(p => p.Cargo_Supervisor_Treinamento != null));
                 }
 
                 IEnumerable<Ministerio> ministerios = db.ministerio;

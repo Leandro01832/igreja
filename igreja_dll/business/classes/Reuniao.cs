@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace business.classes
 {
-    [Table("Reuniao")]
+    
     public class Reuniao : modelocrud<Reuniao>
     {
        
@@ -240,12 +240,10 @@ namespace business.classes
                 cl.Celula.Celulaid = int.Parse(dr["celulaid"].ToString());
                 cl.Celula.Supervisor_ = int.Parse(dr["Supervisor"].ToString());
                 cl.Celula.Supervisortreinamento_ = int.Parse(dr["Supervisortreinamento_"].ToString());
-                cl.Celula.Lider_ = int.Parse(dr["Lider_"].ToString());
-                cl.Celula.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
                 cl.Celula.Pessoas = cl.Celula.preenchercelula(cl.Celula.Celulaid);
                 cl.Celula.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
                 cl.Celula.Horario = TimeSpan.Parse(dr["Horario"].ToString());
-                cl.Celula.Cel_nome = dr["Cel_nome"].ToString();
+                cl.Celula.Nome = dr["Nome"].ToString();
 
                 
                     Historico h = new Historico();
@@ -254,11 +252,10 @@ namespace business.classes
                     cl.Historico.Add(h);
 
                     Ministerio m = new Ministerio();
-                    m.ministerioid = int.Parse(dr["ministerioid"].ToString());
+                    m.Ministerioid = int.Parse(dr["ministerioid"].ToString());
                     m.Nome = dr["Nome"].ToString();
-                    m.lider_ministerio = int.Parse(dr["Lider_ministerio"].ToString());
                     m.Proposito = dr["proposito"].ToString();
-                    m.Pessoas = m.preencherministerio(m.ministerioid);
+                    m.Pessoas = m.preencherministerio(m.Ministerioid);
                     cl.Ministerios.Add(m);
 
                     Reuniao r = new Reuniao();

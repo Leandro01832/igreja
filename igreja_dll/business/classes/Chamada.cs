@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace business.classes
 {
-    [Table("Chamada")]
+    
     public  class Chamada : modelocrud<Chamada>
     {
         

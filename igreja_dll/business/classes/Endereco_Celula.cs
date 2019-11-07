@@ -12,7 +12,7 @@ using System.Collections;
 
 namespace business.classes
 {
-   [Table("Endereco_celula")]    
+      
     public class Endereco_Celula : modelocrud<Endereco_Celula>
     {
       

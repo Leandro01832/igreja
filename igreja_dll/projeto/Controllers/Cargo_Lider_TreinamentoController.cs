@@ -8,25 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using business.classes;
 using repositorioEF;
-using Microsoft.AspNet.Identity;
 
 namespace projeto.Controllers
 {
-    [Authorize]
     public class Cargo_Lider_TreinamentoController : Controller
     {
         private DB db = new DB();
 
         // GET: Cargo_Lider_Treinamento
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            var lider_treinamento = db.lider_treinamento.Include(c => c.Pessoa);
+            var lider_treinamento = db.lider_treinamento.Include(c => c.Celula).Include(c => c.Pessoa);
             return View(lider_treinamento.ToList());
         }
 
         // GET: Cargo_Lider_Treinamento/Details/5
-        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,34 +34,33 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(cargo_Lider_Treinamento);
+            return View(cargo_Lider_Treinamento);
         }
 
         // GET: Cargo_Lider_Treinamento/Create
         public ActionResult Create()
         {
-            ViewBag.Lidertreinamentoid = new SelectList(db.pessoas, "Id", "Nome");
+            ViewBag.Lidertreinamentoid = new SelectList(db.celula, "Celulaid", "Nome");
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome");
             return View();
         }
 
         // POST: Cargo_Lider_Treinamento/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Lidertreinamentoid")] Cargo_Lider_Treinamento cargo_Lider_Treinamento)
+        public ActionResult Create([Bind(Include = "Lidertreinamentoid,pessoa_")] Cargo_Lider_Treinamento cargo_Lider_Treinamento)
         {
             if (ModelState.IsValid)
             {
-                var email = User.Identity.GetUserName();
-                var id = db.pessoas.First(e => e.Email == email).Id;
-                cargo_Lider_Treinamento.Lidertreinamentoid = id;
                 db.lider_treinamento.Add(cargo_Lider_Treinamento);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Lidertreinamentoid = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider_Treinamento.Lidertreinamentoid);
+            ViewBag.Lidertreinamentoid = new SelectList(db.celula, "Celulaid", "Nome", cargo_Lider_Treinamento.Lidertreinamentoid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider_Treinamento.pessoa_);
             return View(cargo_Lider_Treinamento);
         }
 
@@ -81,16 +76,17 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Lidertreinamentoid = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider_Treinamento.Lidertreinamentoid);
+            ViewBag.Lidertreinamentoid = new SelectList(db.celula, "Celulaid", "Nome", cargo_Lider_Treinamento.Lidertreinamentoid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider_Treinamento.pessoa_);
             return View(cargo_Lider_Treinamento);
         }
 
         // POST: Cargo_Lider_Treinamento/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Lidertreinamentoid")] Cargo_Lider_Treinamento cargo_Lider_Treinamento)
+        public ActionResult Edit([Bind(Include = "Lidertreinamentoid,pessoa_")] Cargo_Lider_Treinamento cargo_Lider_Treinamento)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +94,8 @@ namespace projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Lidertreinamentoid = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider_Treinamento.Lidertreinamentoid);
+            ViewBag.Lidertreinamentoid = new SelectList(db.celula, "Celulaid", "Nome", cargo_Lider_Treinamento.Lidertreinamentoid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider_Treinamento.pessoa_);
             return View(cargo_Lider_Treinamento);
         }
 

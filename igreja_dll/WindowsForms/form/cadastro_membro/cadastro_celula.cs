@@ -85,7 +85,7 @@ namespace WindowsForms.form.cadastro_membro
             else
             {
                 button1.Text = "salvar";
-                listBox1.Text = m.Celula.Cel_nome + " - " + m.Celula.Celulaid;
+                listBox1.Text = m.Celula.Nome + " - " + m.Celula.Celulaid;
             }
         }
 

@@ -7,44 +7,19 @@ using System.Data.SqlClient;
 
 namespace business.classes
 {
-    [Table("Supervisor")]    
+      
     public  class Cargo_Supervisor : modelocrud<Cargo_Supervisor>
     {
-        
-        
-        private List<Celula> celulas;
-        private int maximo_celula;       
-
-        public virtual List<Celula> Celulas
-        {
-            get
-            {
-                return celulas;
-            }
-
-            set
-            {
-                celulas = value;
-            }
-        }
-
-        [Display(Name = "Máximo de celulas para supervisioar")]
-        public int Maximo_celula
-        {
-            get
-            {
-                return maximo_celula;
-            }
-
-            set
-            {
-                maximo_celula = value;
-            }
-        }
-
-        [Key, ForeignKey("Pessoa")]
+        [Key]
         public int Supervisorid { get; set; }
 
+        public virtual List<Celula> Celulas { get; set; }
+
+        [Display(Name = "Máximo de celulas para supervisioar")]
+        public int Maximo_celula { get; set; }        
+
+        public int? pessoa_ { get; set; }
+        [ForeignKey("pessoa_")]
         public virtual Pessoa Pessoa { get; set; }
 
         public Cargo_Supervisor()
@@ -66,7 +41,7 @@ namespace business.classes
         {
             update_padrao = "update  Supervisor set Maximo_celula='@maximo' where Supervisorid='@id' ";
             Update = update_padrao.Replace("@id", id.ToString());
-            Update = Update.Replace("@maximo", this.maximo_celula.ToString());
+            Update = Update.Replace("@maximo", this.Maximo_celula.ToString());
             return bd.montar_sql(Update, null, null);
         }
 
@@ -106,7 +81,7 @@ namespace business.classes
             foreach (DataRow dtrow in datatable.Rows)
             {
                 var pessoa = new Celula();
-                pessoa.Cel_nome = dtrow["cel_nome"].ToString();
+                pessoa.Nome = dtrow["Nome"].ToString();
                 int i = int.Parse(dtrow["id_celula"].ToString());
                 lista.Add(pessoa);
             }

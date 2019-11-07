@@ -9,46 +9,53 @@
 <div>
     <h4>Celula</h4>
     <hr />
-    <dl class="dl-horizontal">       
-        
+    <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Lider.Pessoa.Nome)
+            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_bairro)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Lider.Pessoa.Nome)
+            @Html.DisplayFor(model => model.Endereco_Celula.Cel_bairro)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Lider_treinamento.Pessoa.Nome)
+            @Html.DisplayNameFor(model => model.Lider.Liderid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Lider_treinamento.Pessoa.Nome)
+            @Html.DisplayFor(model => model.Lider.Liderid)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Supervisor.Pessoa.Nome)
+            @Html.DisplayNameFor(model => model.Lider_treinamento.Lidertreinamentoid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Supervisor.Pessoa.Nome)
+            @Html.DisplayFor(model => model.Lider_treinamento.Lidertreinamentoid)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Supervisor_treianamento.Pessoa.Nome)
+            @Html.DisplayNameFor(model => model.Supervisor.Supervisorid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Supervisor_treianamento.Pessoa.Nome)
+            @Html.DisplayFor(model => model.Supervisor.Supervisorid)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cel_nome)
+            @Html.DisplayNameFor(model => model.Supervisor_treianamento.Supervisortreinamentoid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cel_nome)
+            @Html.DisplayFor(model => model.Supervisor_treianamento.Supervisortreinamentoid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
         </dd>
 
         <dt>
@@ -74,43 +81,6 @@
         <dd>
             @Html.DisplayFor(model => model.Maximo_pessoa)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_bairro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco_Celula.Cel_bairro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_rua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco_Celula.Cel_rua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_numero)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco_Celula.Cel_numero)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pessoas)
-        </dt>
-
-         @{  foreach (var pessoa in Model.Pessoas)
-             {
-                <dd>
-                    @Html.DisplayFor(model => pessoa.Nome)
-                </dd>
-             } 
-        }
-        
 
     </dl>
 </div>

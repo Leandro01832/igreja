@@ -27,9 +27,9 @@ namespace WindowsForms.form.info
             Pessoa p = new Pessoa();
             try
             {
-                text_nome_celula.Text = mem.Celula.Cel_nome;
-                text_lider.Text = p.recuperar(mem.Celula.Lider_).Nome;
-                text_lider_treinamento.Text = p.recuperar(mem.Celula.Lidertreinamento_).Nome;
+                text_nome_celula.Text = mem.Celula.Nome;
+              //  text_lider.Text = p.recuperar(mem.Celula.Lider_).Nome;
+              //  text_lider_treinamento.Text = p.recuperar(mem.Celula.Lidertreinamento_).Nome;
                 text_supervisor.Text = p.recuperar(mem.Celula.Supervisor_).Nome;
                 text_supervisor_treinamento.Text = p.recuperar(mem.Celula.Supervisortreinamento_).Nome;
                 text_horario.Text = p.Celula.Horario.ToString();
@@ -50,9 +50,9 @@ namespace WindowsForms.form.info
         {
             InitializeComponent();
             Pessoa p = new Pessoa();
-            text_nome_celula.Text = visi.Celula.Cel_nome;
-            text_lider.Text = p.recuperar(visi.Celula.Lider_).Nome;
-            text_lider_treinamento.Text = p.recuperar(visi.Celula.Lidertreinamento_).Nome;
+            text_nome_celula.Text = visi.Celula.Nome;
+          //  text_lider.Text = p.recuperar(visi.Celula.Lider_).Nome;
+          //  text_lider_treinamento.Text = p.recuperar(visi.Celula.Lidertreinamento_).Nome;
             text_supervisor.Text = p.recuperar(visi.Celula.Supervisor_).Nome;
             text_supervisor_treinamento.Text = p.recuperar(visi.Celula.Supervisortreinamento_).Nome;
             text_horario.Text = p.Celula.Horario.ToString();
@@ -70,9 +70,9 @@ namespace WindowsForms.form.info
         {
             InitializeComponent();
             Pessoa p = new Pessoa();
-            text_nome_celula.Text = cri.Celula.Cel_nome;
-            text_lider.Text = p.recuperar(cri.Celula.Lider_).Nome;
-            text_lider_treinamento.Text = p.recuperar(cri.Celula.Lidertreinamento_).Nome;
+            text_nome_celula.Text = cri.Celula.Nome;
+         //   text_lider.Text = p.recuperar(cri.Celula.Lider_).Nome;
+         //   text_lider_treinamento.Text = p.recuperar(cri.Celula.Lidertreinamento_).Nome;
             text_supervisor.Text = p.recuperar(cri.Celula.Supervisor_).Nome;
             text_supervisor_treinamento.Text = p.recuperar(cri.Celula.Supervisortreinamento_).Nome;
             text_horario.Text = p.Celula.Horario.ToString();
@@ -89,9 +89,9 @@ namespace WindowsForms.form.info
         public celula(Pessoa p)
         {
             InitializeComponent();
-            text_nome_celula.Text = p.Celula.Cel_nome;
-            text_lider.Text = p.recuperar(p.Celula.Lider_).Nome;
-            text_lider_treinamento.Text = p.recuperar(p.Celula.Lidertreinamento_).Nome;
+            text_nome_celula.Text = p.Celula.Nome;
+          //  text_lider.Text = p.recuperar(p.Celula.Lider_).Nome;
+          //  text_lider_treinamento.Text = p.recuperar(p.Celula.Lidertreinamento_).Nome;
             text_supervisor.Text = p.recuperar(p.Celula.Supervisor_).Nome;
             text_supervisor_treinamento.Text = p.recuperar(p.Celula.Supervisortreinamento_).Nome;
             text_horario.Text = p.Celula.Horario.ToString();

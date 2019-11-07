@@ -13,105 +13,29 @@ using System.Data.SqlClient;
 
 namespace business.classes
 {
-    [Table("Ministerio")]    
+        
     public class Ministerio : modelocrud<Ministerio>
-    {        
-        private int id;
-        private string nome;        
-        private Cargo_Lider lider;
-        private string proprosito;
-        private List<Pessoa> pessoas;
-        private int maximo_pessoa;
+    {
+        
+        
 
         [Display(Name = "Codigo")]
         [Key]
-        public int ministerioid
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
+        public int Ministerioid { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome
-        {
-            get
-            {
-                return nome;
-            }
-
-            set
-            {
-                if(value != "")
-                nome = value;
-                else
-                {
-                    MessageBox.Show("informe o nome do ministério");
-                    nome = null;
-                }
-            }
-        }
+        public string Nome { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Proposito
-        {
-            get
-            {
-                return proprosito;
-            }
-
-            set
-            {
-                if(value != "")
-                proprosito = value;
-                else
-                {
-                    MessageBox.Show("Informe o proposito do ministerio.");
-                    proprosito = null;
-                }
-            }
-        }
+        public string Proposito { get; set; }
 
         public virtual List<Pessoa> Pessoas { get; set;}
 
         [Display(Name = "Maximo de pessoas")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public int Maximo_pessoa
-        {
-            get
-            {
-                return maximo_pessoa;
-            }
+        public int Maximo_pessoa { get; set; }
 
-            set
-            {
-                maximo_pessoa = value;
-            }
-        }
-
-        [Display(Name = "lider do ministério")]
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public int lider_ministerio { get; set; }
-
-        [ForeignKey("lider_ministerio")]
-        public virtual Cargo_Lider Lider
-        {
-            get
-            {
-                return lider;
-            }
-
-            set
-            {
-                lider = value;
-            }
-        }
+        public virtual Cargo_Lider_Ministerio Cargo_Lider_Ministerio { get; set; }
 
         public Ministerio()
         {
@@ -124,9 +48,8 @@ namespace business.classes
               + " lider_ministerio='@lider', Proposito='@proposito'"
               + " where ministerioid='@id'";
 
-            Update = update_padrao.Replace("@nome", nome);
-            Update = Update.Replace("@lider", lider_ministerio.ToString());
-            Update = Update.Replace("@proposito", proprosito);
+            Update = update_padrao.Replace("@nome", Nome);
+            Update = Update.Replace("@proposito", Proposito);
             Update = Update.Replace("@id", id.ToString());
 
             return bd.montar_sql(Update, null, null);
@@ -159,8 +82,7 @@ namespace business.classes
                     dr.Read();
                     this.Nome = dr["Nome"].ToString();
                     this.Proposito = dr["Proposito"].ToString();
-                    this.ministerioid = int.Parse(dr["ministerioid"].ToString());
-                    this.lider_ministerio = int.Parse(dr["lider_ministerio"].ToString());
+                    this.Ministerioid = int.Parse(dr["ministerioid"].ToString());
                     dr.Close();
                 }
 
@@ -183,9 +105,8 @@ namespace business.classes
                 insert_padrao = "insert into Ministerio (Nome,  Proposito, Maximo_pessoa, lider_ministerio) values " +
                 " ('@nome', '@proposito', '@maximo', '@lider')";
 
-                Insert = insert_padrao.Replace("@nome", nome);
-                Insert = insert_padrao.Replace("@lider", lider_ministerio.ToString());
-                Insert = Insert.Replace("@proposito", proprosito);
+                Insert = insert_padrao.Replace("@nome", Nome);
+                Insert = Insert.Replace("@proposito", Proposito);
                 Insert = Insert.Replace("@maximo", Maximo_pessoa.ToString());
                 return bd.montar_sql(Insert, null, null);                      
         }
@@ -195,7 +116,7 @@ namespace business.classes
             select_padrao = "select * from Pessoa as P inner join MinisterioPessoa as MP" +
                 " on P.Id=MP.Pessoa_Id " +
                 "  where Ministerio_ministerioid='@id'";
-            Select = select_padrao.Replace("@id", id.ToString());
+            Select = select_padrao.Replace("@id", Ministerioid.ToString());
 
             DataTable datatable = bd.lista(Select);
 
@@ -231,12 +152,10 @@ namespace business.classes
                 pessoa.Celula.Celulaid = int.Parse(dtrow["celulaid"].ToString());
                 pessoa.Celula.Supervisor_ = int.Parse(dtrow["Supervisor"].ToString());
                 pessoa.Celula.Supervisortreinamento_ = int.Parse(dtrow["Supervisortreinamento_"].ToString());
-                pessoa.Celula.Lider_ = int.Parse(dtrow["Lider_"].ToString());
-                pessoa.Celula.Lidertreinamento_ = int.Parse(dtrow["Lidertreinamento_"].ToString());
                 pessoa.Celula.Pessoas = pessoa.Celula.preenchercelula(pessoa.Celula.Celulaid);
                 pessoa.Celula.Maximo_pessoa = int.Parse(dtrow["Maximo_pessoa"].ToString());
                 pessoa.Celula.Horario = TimeSpan.Parse(dtrow["Horario"].ToString());
-                pessoa.Celula.Cel_nome = dtrow["Cel_nome"].ToString();
+                pessoa.Celula.Nome = dtrow["Nome"].ToString();
 
                     Historico h = new Historico();
                     h.Data_inicio = Convert.ToDateTime(dtrow["Data_inicio"]);
@@ -244,11 +163,10 @@ namespace business.classes
                     pessoa.Historico.Add(h);
 
                     Ministerio m = new Ministerio();
-                    m.ministerioid = int.Parse(dtrow["ministerioid"].ToString());
+                    m.Ministerioid = int.Parse(dtrow["ministerioid"].ToString());
                     m.Nome = dtrow["Nome"].ToString();
-                    m.lider_ministerio = int.Parse(dtrow["Lider_ministerio"].ToString());
                     m.Proposito = dtrow["proposito"].ToString();
-                    m.Pessoas = m.preencherministerio(m.ministerioid);
+                    m.Pessoas = m.preencherministerio(m.Ministerioid);
                     pessoa.Ministerios.Add(m);
 
                     Reuniao r = new Reuniao();
@@ -280,9 +198,8 @@ namespace business.classes
 
                 cl.Nome = dr["Nome"].ToString();
                 cl.Proposito = dr["Proposito"].ToString();
-                cl.ministerioid = int.Parse(dr["ministerioid"].ToString());
-                cl.lider_ministerio = int.Parse(dr["lider_ministerio"].ToString());
-                cl.pessoas = cl.preencherministerio(cl.ministerioid);
+                cl.Ministerioid = int.Parse(dr["ministerioid"].ToString());             
+                cl.Pessoas = cl.preencherministerio(cl.Ministerioid);
                 lista.Add(cl);
             }
 

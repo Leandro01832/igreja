@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace business.classes
 {
-    [Table("Membro_transferencia")]    
+       
     public class Membro_Transferencia : Membro
     {     
         
@@ -230,10 +230,10 @@ namespace business.classes
                     this.Img = p.Img;
                     this.imgtipo = p.imgtipo;
                     this.Ministerios = p.Ministerios;
-                    this.Cargo_Lider = p.Cargo_Lider;
-                    this.Cargo_Lider_Treinamento = p.Cargo_Lider_Treinamento;
-                    this.Cargo_Supervisor = p.Cargo_Supervisor;
-                    this.Cargo_Supervisor_Treinamento = p.Cargo_Supervisor_Treinamento;
+                    //this.Cargo_Lider = p.Cargo_Lider;
+                    //this.Cargo_Lider_Treinamento = p.Cargo_Lider_Treinamento;
+                    //this.Cargo_Supervisor = p.Cargo_Supervisor;
+                    //this.Cargo_Supervisor_Treinamento = p.Cargo_Supervisor_Treinamento;
                     this.classe = p.classe;
                     this.Endereco = p.Endereco;
                     this.Telefone = p.Telefone;

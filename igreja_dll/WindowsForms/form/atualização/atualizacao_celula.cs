@@ -31,7 +31,7 @@ namespace igreja2.form.atualização
                 ArrayList lista = new ArrayList();
                 lista.Add(c);
                 //exibe os registros no listbox
-                listBox1.Items.Add(c.Cel_nome + " - " + c.Celulaid);
+                listBox1.Items.Add(c.Nome + " - " + c.Celulaid);
             }
         }
 
@@ -83,8 +83,8 @@ namespace igreja2.form.atualização
 
             Celula cel = new Celula();
             cel.Celulaid = int.Parse(id);
-            cel.Lider_ = int.Parse(text_lider.Text);
-            cel.Lidertreinamento_ = int.Parse(text_lider_treinamento.Text);
+           // cel.Lider_ = int.Parse(text_lider.Text);
+           // cel.Lidertreinamento_ = int.Parse(text_lider_treinamento.Text);
             cel.Dia_semana = list_dia_semana.Text;
             cel.Horario = TimeSpan.Parse(mask_horario.Text);
             cel.Endereco_Celula.Cel_bairro = text_bairro.Text;

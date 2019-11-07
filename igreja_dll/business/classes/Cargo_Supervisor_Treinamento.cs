@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace business.classes
 {
-    [Table("Supervisor_Treinamento")]    
+       
     public class Cargo_Supervisor_Treinamento : modelocrud<Cargo_Supervisor_Treinamento>
     {       
         private List<Celula> celulas;
@@ -41,9 +41,11 @@ namespace business.classes
             }
         }
 
-        [Key, ForeignKey("Pessoa")]
+        [Key]
         public int Supervisortreinamentoid { get; set; }
 
+        public int? pessoa_ { get; set; }
+        [ForeignKey("pessoa_")]
         public virtual Pessoa Pessoa { get; set; }
 
         /// <summary>
@@ -129,7 +131,7 @@ namespace business.classes
             foreach (DataRow dtrow in datatable.Rows)
             {
                 var pessoa = new Celula();
-                pessoa.Cel_nome = dtrow["cel_nome"].ToString();
+                pessoa.Nome = dtrow["Nome"].ToString();
                 int i = int.Parse(dtrow["id_celula"].ToString());
                 lista.Add(pessoa);
             }

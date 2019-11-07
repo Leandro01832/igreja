@@ -44,15 +44,15 @@ namespace WindowsForms.form.info
 
         private void supervisor_Load(object sender, EventArgs e)
         {
-            if (m.Cargo_Supervisor == null && pessoa.Cargo_Supervisor == null
-                && v.Cargo_Supervisor == null && c.Cargo_Supervisor == null)
-            {
-                label1.Text = "Esta pessoa não é um Supervisor";
-            }
-            else
-            {
-                label1.Text = "Esta pessoa é um Supervisor";
-            }
+            //if (m.Cargo_Supervisor == null && pessoa.Cargo_Supervisor == null
+            //    && v.Cargo_Supervisor == null && c.Cargo_Supervisor == null)
+            //{
+            //    label1.Text = "Esta pessoa não é um Supervisor";
+            //}
+            //else
+            //{
+            //    label1.Text = "Esta pessoa é um Supervisor";
+            //}
         }
     }
 }

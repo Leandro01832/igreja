@@ -13,3 +13,19 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Deb
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.xml
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\obj\Debug\business.csprojAssemblyReference.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\obj\Debug\business.csproj.CoreCompileInputs.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\obj\Debug\business.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\obj\Debug\business.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\business.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\business.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\business.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\database.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\MySql.Data.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\database.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\database.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\obj\Debug\business.csproj.CopyComplete

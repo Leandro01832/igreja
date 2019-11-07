@@ -11,67 +11,119 @@
 </p>
 <table class="table">
     <tr>
-
+        <th>
+            @Html.DisplayNameFor(model => model.Celula.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chamada.chamadaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone.Fone)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
-
-
+        <th>
+            @Html.DisplayNameFor(model => model.Data_nascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_civil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo_masculino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo_feminino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_batismo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desligamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo_desligamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_reconciliacao)
+        </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                <a href="#" class="btn btn-default details" data-value="@item.Id">Detalhes</a>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celula.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chamada.chamadaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone.Fone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_nascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_civil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo_masculino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo_feminino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_batismo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desligamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motivo_desligamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_reconciliacao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
 
 </table>
-
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Detalhes</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="conteudomodal"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                @*<button type="button" class="btn btn-primary">Save changes</button>*@
-            </div>
-        </div>
-    </div>
-</div>
-
-@section scripts{
-    <script type="text/javascript">
-    $(document).ready(function () {
-
-        $(".details").click(function () {
-
-            var id = $(this).data("value");
-
-            $("#conteudomodal").load("/Membro_reconciliacao/Details/" + id, function () {
-                $('#exampleModalLong').modal("show");
-
-            });
-        });
-    });
-    </script>
-
-}

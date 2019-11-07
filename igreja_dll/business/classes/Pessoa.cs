@@ -12,331 +12,74 @@ using System.Drawing.Imaging;
 
 namespace business.classes
 {
-    [Table("Pessoa")]    
+        
     public class Pessoa : modelocrud<Pessoa>  
     {
-        
-        private int      pessoa_id;
-        private string   nome;
-        private DateTime data_nascimento;
-        private string   rg;
-        private string   cpf;
-        private string   estado_civil;
-        private bool     sexo_masculino;
-        private bool     sexo_feminino;
-        private bool     falescimento;
-        private string   status;        
-        private string   email;
-        private int      falta;
-        private Celula   celula;
-        private Endereco endereco;
-        private Telefone telefone;
-        private List<Historico> historico;
-        private List<Ministerio> ministerios;       
-        private  byte[] img;
-        
-
-        
-        [Display(Name = "Codigo")]        
-        public int Id
-        {
-            get
-            {
-                return pessoa_id;
-            }
-
-            set
-            {
-                pessoa_id = value;
-            }
-        }
+        [Display(Name = "Codigo")]
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome
-        {
-            
-            get
-            {           
-                return nome;
-                
-              
-            }
-
-            set
-            {
-                if (value != "")
-                { nome = value; }
-                else
-                {
-                    MessageBox.Show("nome precisa ser preenchido corretamente!!!");
-                    nome = null;
-                }
-                
-            }
-        }
+        public string Nome { get; set; }
 
         [Display(Name = "Data de nascimento")]
-        [Required(ErrorMessage ="Este campo precisa ser preenchido")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString ="{0:dd/MM/yyyy}")]
-        public DateTime Data_nascimento
-        {
-            get
-            {
-                return data_nascimento;
-            }
+        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime Data_nascimento { get; set; }
 
-            set
-            {
-                data_nascimento = value;
-            }
-        }
 
-        
         [Display(Name = "RG")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Rg
-        {
-            get
-            {
-                return rg;
-            }
-
-            set
-            { 
-                if (value != "")
-                {
-                    rg = value;
-                }
-                else
-                {
-                    MessageBox.Show("RG precisa ser preenchido corretamente");
-                    rg = null;
-                }                
-            }
-        }
+        public string Rg { get; set; }
 
 
         [Display(Name = "CPF")]
         [StringLength(11)]
         [Index("CPF", 2, IsUnique = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Cpf
-        {
-            get
-            {                
-                return cpf ;
-            }
-
-            set
-            {
-                if (value != "")
-                    cpf = value;
-                else
-                {
-                    MessageBox.Show("CPF precisa ser preenchido corretamente");
-                    cpf = null;
-                }                                   
-            }
-        }
+        public string Cpf { get; set; }
 
         [Display(Name = "Estado Civil")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Estado_civil
-        {
-            get
-            {
-                return estado_civil;
-            }
-
-            set
-            {
-                if(value != "")
-                estado_civil = value;
-                else
-                {
-                    MessageBox.Show("Estado civil precisa ser preenchido corretamente");
-                    estado_civil = null;
-                }
-            }
-        }
+        public string Estado_civil { get; set; }
 
         [Display(Name = "Sexo masculino")]
-        public bool Sexo_masculino
-        {
-            get
-            {
-                return sexo_masculino;
-            }
-
-            set
-            {
-                sexo_masculino = value;
-            }
-        }
+        public bool Sexo_masculino { get; set; }
 
         [Display(Name = "Sexo feminino")]
-        public bool Sexo_feminino
-        {
-            get
-            {
-                return sexo_feminino;
-            }
-
-            set
-            {
-                sexo_feminino = value;
-            }
-        }
+        public bool Sexo_feminino { get; set; }
 
         [ScaffoldColumn(false)]
-        public bool Falescimento
-        {
-            get
-            {
-                return falescimento;
-            }
-
-            set
-            {
-                falescimento = value;
-            }
-        }
+        public bool Falescimento { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Status
-        {
-            get
-            {
-                return status;
-            }
+        public string Status { get; set; }
 
-            set
-            {
-                if (value != "")
-                status = value;
-                else
-                {
-                    MessageBox.Show("Estado civil precisa ser preenchido corretamente");
-                    status = null;
-                }
-            }
-        }
-
-        [Required]
+        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [ScaffoldColumn(false)]
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-
-            set
-            {                
-                email = value;
-            }
-        }
+        public string Email { get; set; }
 
         [ScaffoldColumn(false)]
-        public int Falta
-        {
-            get
-            {
-                return falta;
-            }
-
-            set
-            {
-                falta = value;
-            }
-        }
+        public int Falta { get; set; }
 
         
-        public Int32? celula_ { get; set; }
-
+        public int? celula_ { get; set; }
         [ForeignKey("celula_")]
-        public virtual Celula Celula
-        {
-            get
-            {
-                return celula;
-            }
-
-            set
-            {
-                celula = value;
-            }
-        }
+        public virtual Celula Celula { get; set; }
         
-        public virtual Endereco Endereco
-        {
-            get
-            {
-                return endereco;
-            }
-
-            set
-            {
-                endereco = value;
-            }
-        }
+        public virtual Endereco Endereco { get; set; }
         
-        public virtual Telefone Telefone
-        {
-            get
-            {
-                return telefone;
-            }
-
-            set
-            {
-                telefone = value;
-            }
-        }        
+        public virtual Telefone Telefone { get; set; }
 
         public virtual Chamada Chamada { get; set; }
        
-        public virtual List<Ministerio> Ministerios
-        {
-            get
-            {
-                return ministerios;
-            }
+        public virtual List<Ministerio> Ministerios { get; set; }
 
-            set
-            {
-                ministerios = value;
-            }
-        }
-
-        public virtual List<Historico> Historico
-        {
-            get
-            {
-                return historico;
-            }
-
-            set
-            {
-                historico = value;
-            }
-        }
+        public virtual List<Historico> Historico { get; set; }
 
         public virtual List<Reuniao> Reuniao { get; set; }
 
-        [Display(Name = "Foto do perfil")]        
-        public byte[] Img
-        {
-            get
-            {
-                return img;
-            }
-
-            set
-            {
-                img = value;
-            }
-        }
+        [Display(Name = "Foto do perfil")]
+        public byte[] Img { get; set; }
 
         [ScaffoldColumn(false)]
         public string imgtipo { get; set; }
@@ -344,17 +87,7 @@ namespace business.classes
         [ScaffoldColumn(false)]
         public string classe { get; set; }
 
-        [ScaffoldColumn(false)]
-        public virtual Cargo_Lider Cargo_Lider { get; set; }
-
-        [ScaffoldColumn(false)]
-        public virtual Cargo_Lider_Treinamento Cargo_Lider_Treinamento { get; set; }
-
-        [ScaffoldColumn(false)]
-        public virtual Cargo_Supervisor Cargo_Supervisor { get; set; }
-
-        [ScaffoldColumn(false)]
-        public virtual Cargo_Supervisor_Treinamento Cargo_Supervisor_Treinamento { get; set; }               
+                       
 
         public Pessoa()
         {
@@ -387,7 +120,7 @@ namespace business.classes
            
             Insert = insert_padrao.Replace("@nome", Nome);
             DateTime myDateTime = DateTime.Now;
-            string sqlFormattedDate = this.data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
+            string sqlFormattedDate = this.Data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
             Insert = Insert.Replace("@data_nascimento", this.Data_nascimento.ToString("yyyy-MM-dd"));
             Insert = Insert.Replace("@estado_civil", this.Estado_civil);
             Insert = Insert.Replace("@sexo_masculino", this.Sexo_masculino.ToString());
@@ -429,18 +162,18 @@ namespace business.classes
 
             bd = new BDcomum();
 
-            Update = update_padrao.Replace("@nome_pessoa", nome);
+            Update = update_padrao.Replace("@nome_pessoa", Nome);
             Update = Update.Replace("@id", id.ToString());            
-            string sqlFormattedDate = this.data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
-            Update = Update.Replace("@data_nascimento", this.data_nascimento.ToString());
-            Update = Update.Replace("@estado_civil", this.estado_civil);
-            Update = Update.Replace("@sexo_masculino", this.sexo_masculino.ToString());
-            Update = Update.Replace("@rg", this.rg);
-            Update = Update.Replace("@cpf", this.cpf);
-            Update = Update.Replace("@sexo_feminino", sexo_feminino.ToString());
-            Update = Update.Replace("@email", this.email);
-            Update = Update.Replace("@status", this.status);
-            Update = Update.Replace("@faltas", this.falta.ToString());
+            string sqlFormattedDate = this.Data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
+            Update = Update.Replace("@data_nascimento", this.Data_nascimento.ToString());
+            Update = Update.Replace("@estado_civil", this.Estado_civil);
+            Update = Update.Replace("@sexo_masculino", this.Sexo_masculino.ToString());
+            Update = Update.Replace("@rg", this.Rg);
+            Update = Update.Replace("@cpf", this.Cpf);
+            Update = Update.Replace("@sexo_feminino", Sexo_feminino.ToString());
+            Update = Update.Replace("@email", this.Email);
+            Update = Update.Replace("@status", this.Status);
+            Update = Update.Replace("@faltas", this.Falta.ToString());
             Update = Update.Replace("@falescimento", false.ToString());
 
             Update = Update.Replace("@telefone", this.Telefone.Fone);
@@ -543,26 +276,17 @@ namespace business.classes
                     this.Celula = new Celula();
                     this.Celula.Celulaid = int.Parse(dr["Celulaid"].ToString());
                     this.Celula.Supervisor_ = int.Parse(dr["Supervisor_"].ToString());
-                    this.Celula.Supervisortreinamento_ = int.Parse(dr["Supervisortreinamento_"].ToString());                    
-                    this.Celula.Lider_ = int.Parse(dr["Lider_"].ToString());
-                    this.Celula.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());                    
+                    this.Celula.Supervisortreinamento_ = int.Parse(dr["Supervisortreinamento_"].ToString());              
                     this.Celula.Pessoas = this.Celula.preenchercelula(this.Celula.Celulaid);
                     this.Celula.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
                     this.Celula.Horario = TimeSpan.Parse(dr["Horario"].ToString());
-                    this.Celula.Cel_nome = dr["Cel_nome"].ToString();
+                    this.Celula.Nome = dr["Nome"].ToString();
                     this.Celula.Dia_semana = dr["Dia_semana"].ToString();
                     this.Celula.Endereco_Celula = new Endereco_Celula();
                     this.Celula.Endereco_Celula.Cel_bairro = dr["Cel_bairro"].ToString();
                     this.Celula.Endereco_Celula.Cel_numero = int.Parse(dr["Cel_numero"].ToString());
                     this.Celula.Endereco_Celula.Cel_rua = dr["Cel_rua"].ToString();
-                    this.Cargo_Lider = new Cargo_Lider();
-                    this.Cargo_Lider.Liderid = int.Parse(dr["Liderid"].ToString());
-                    this.Cargo_Lider_Treinamento = new Cargo_Lider_Treinamento();
-                    this.Cargo_Lider_Treinamento.Lidertreinamentoid = int.Parse(dr["Lidertreinamentoid"].ToString());
-                    this.Cargo_Supervisor = new Cargo_Supervisor();
-                    this.Cargo_Supervisor.Supervisorid = int.Parse(dr["Supervisorid"].ToString());
-                    this.Cargo_Supervisor_Treinamento = new Cargo_Supervisor_Treinamento();
-                    this.Cargo_Supervisor_Treinamento.Supervisortreinamentoid = int.Parse(dr["Supervisortreinamentoid"].ToString());
+                    
 
 
                     while (dr.Read())
@@ -573,11 +297,11 @@ namespace business.classes
                         this.Historico.Add(h);
 
                         Ministerio m = new Ministerio();
-                        m.ministerioid = int.Parse(dr["ministerioid"].ToString());
+                        m.Ministerioid = int.Parse(dr["ministerioid"].ToString());
                         m.Nome = dr["Nome"].ToString();
-                        m.lider_ministerio = int.Parse(dr["Lider_ministerio"].ToString());
+                       // m.lider_ministerio = int.Parse(dr["Lider_ministerio"].ToString());
                         m.Proposito = dr["proposito"].ToString();
-                        m.Pessoas = m.preencherministerio(m.ministerioid);
+                        m.Pessoas = m.preencherministerio(m.Ministerioid);
                         this.Ministerios.Add(m);
 
                         Reuniao r = new Reuniao();
@@ -637,7 +361,7 @@ namespace business.classes
         {
             select_padrao = "select * from Pessoa as P inner join Endereco as E on E.Id=Endereco_Id inner join Telefone as T on T.Id=Telefone_Id @innerjoin";
 
-            Select = select_padrao.Replace("@id", pessoa_id.ToString());
+            Select = select_padrao.Replace("@id", Id.ToString());
             Select = Select.Replace("@innerjoin", "");
 
             SqlCommand comando = new SqlCommand(Select, bd.obterconexao());

@@ -7,13 +7,17 @@ using System.Data.SqlClient;
 namespace business.classes
 {
 
-    [Table("Lider")]    
+       
     public class Cargo_Lider : modelocrud<Cargo_Lider>
     {
-        [Key, ForeignKey("Pessoa")]
+        [Key, ForeignKey("Celula")]
         public int Liderid { get; set; }
 
-        public virtual Pessoa Pessoa { get; set; }        
+        public int? pessoa_ { get; set; }
+        [ForeignKey("pessoa_")]
+        public virtual Pessoa Pessoa { get; set; }
+
+        public virtual Celula Celula { get; set; }
 
         public Cargo_Lider()
         {
@@ -32,6 +36,7 @@ namespace business.classes
 
         public override string salvar()
         {
+
             return "";
         }
 

@@ -95,7 +95,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/database.banco" base="q5:modelocrudOfCelula12v2bvQu">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Cel_nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Celulaid" type="xs:int" />
           <xs:element minOccurs="0" name="Dia_semana" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Endereco_Celula" nillable="true" type="tns:Endereco_Celula" />

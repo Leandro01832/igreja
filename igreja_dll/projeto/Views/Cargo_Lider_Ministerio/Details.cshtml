@@ -1,0 +1,34 @@
+﻿@model business.classes.Cargo_Lider_Ministerio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cargo_Lider_Ministerio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ministerio.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ministerio.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Lider_Ministerio }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

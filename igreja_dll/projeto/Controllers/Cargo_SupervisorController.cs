@@ -8,17 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using business.classes;
 using repositorioEF;
-using Microsoft.AspNet.Identity;
 
 namespace projeto.Controllers
 {
-    [Authorize]
     public class Cargo_SupervisorController : Controller
     {
         private DB db = new DB();
 
         // GET: Cargo_Supervisor
-        [AllowAnonymous]
         public ActionResult Index()
         {
             var supervisor = db.supervisor.Include(c => c.Pessoa);
@@ -26,7 +23,6 @@ namespace projeto.Controllers
         }
 
         // GET: Cargo_Supervisor/Details/5
-        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,34 +34,31 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(cargo_Supervisor);
+            return View(cargo_Supervisor);
         }
 
         // GET: Cargo_Supervisor/Create
         public ActionResult Create()
         {
-            ViewBag.Supervisorid = new SelectList(db.pessoas, "Id", "Nome");
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome");
             return View();
         }
 
         // POST: Cargo_Supervisor/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Supervisorid,Maximo_celula")] Cargo_Supervisor cargo_Supervisor)
+        public ActionResult Create([Bind(Include = "Supervisorid,Maximo_celula,pessoa_")] Cargo_Supervisor cargo_Supervisor)
         {
             if (ModelState.IsValid)
             {
-                var email = User.Identity.GetUserName();
-                var id = db.pessoas.First(e => e.Email == email).Id;
-                cargo_Supervisor.Supervisorid = id;
                 db.supervisor.Add(cargo_Supervisor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Supervisorid = new SelectList(db.pessoas, "Id", "Nome", cargo_Supervisor.Supervisorid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Supervisor.pessoa_);
             return View(cargo_Supervisor);
         }
 
@@ -81,16 +74,16 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Supervisorid = new SelectList(db.pessoas, "Id", "Nome", cargo_Supervisor.Supervisorid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Supervisor.pessoa_);
             return View(cargo_Supervisor);
         }
 
         // POST: Cargo_Supervisor/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Supervisorid,Maximo_celula")] Cargo_Supervisor cargo_Supervisor)
+        public ActionResult Edit([Bind(Include = "Supervisorid,Maximo_celula,pessoa_")] Cargo_Supervisor cargo_Supervisor)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +91,7 @@ namespace projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Supervisorid = new SelectList(db.pessoas, "Id", "Nome", cargo_Supervisor.Supervisorid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Supervisor.pessoa_);
             return View(cargo_Supervisor);
         }
 

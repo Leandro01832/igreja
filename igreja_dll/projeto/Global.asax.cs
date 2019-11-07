@@ -18,7 +18,7 @@ namespace projeto
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<repositorioEF.DB, repositorioEF.Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DB, repositorioEF.Migrations.Configuration>());
             ApplicationDbContext db = new ApplicationDbContext();
             criaroles(db);
             criarsuperuser(db);

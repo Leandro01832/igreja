@@ -21,7 +21,7 @@ namespace projeto.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var ministerio = db.ministerio.Include(m => m.Lider.Pessoa);
+            var ministerio = db.ministerio;
             return View(ministerio.ToList());
         }
 
@@ -33,8 +33,8 @@ namespace projeto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ministerio ministerio = db.ministerio.Include(m => m.Pessoas).First(m => m.ministerioid == id);
-            ViewBag.pessoas = db.ministerio.Include(m => m.Pessoas).First(m => m.ministerioid == id).Pessoas;
+            Ministerio ministerio = db.ministerio.Include(m => m.Pessoas).First(m => m.Ministerioid == id);
+            ViewBag.pessoas = db.ministerio.Include(m => m.Pessoas).First(m => m.Ministerioid == id).Pessoas;
             if (ministerio == null)
             {
                 return HttpNotFound();
@@ -45,7 +45,6 @@ namespace projeto.Controllers
         // GET: Ministerio/Create
         public ActionResult Create()
         {
-            ViewBag.lider_ministerio = new SelectList(db.pessoas.Where(p => p.Cargo_Lider != null && db.ministerio.FirstOrDefault(c => c.lider_ministerio == p.Id) == null), "Id", "Nome");
             return View();
         }
 
@@ -54,7 +53,7 @@ namespace projeto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ministerioid,Nome,Proposito,Maximo_pessoa,lider_ministerio,Pessoas")] Ministerio ministerio)
+        public ActionResult Create([Bind(Include = "ministerioid,Nome,Proposito,Maximo_pessoa,Pessoas")] Ministerio ministerio)
         {
             if (ModelState.IsValid)
             {                
@@ -62,8 +61,7 @@ namespace projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.lider_ministerio = new SelectList(db.pessoas.Where(p => p.Cargo_Lider != null && db.celula.FirstOrDefault(c => c.Lidertreinamento_ == p.Id) == null), "Id", "Nome");
+          
             return View(ministerio);
         }
 
@@ -79,7 +77,7 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.lider_ministerio = new SelectList(db.pessoas.Where(p => p.Cargo_Lider != null && db.ministerio.FirstOrDefault(c => c.lider_ministerio == p.Id) == null), "Id", "Nome");
+          
             return View(ministerio);
         }
 
@@ -88,7 +86,7 @@ namespace projeto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ministerioid,Nome,Proposito,Maximo_pessoa,lider_ministerio")] Ministerio ministerio)
+        public ActionResult Edit([Bind(Include = "ministerioid,Nome,Proposito,Maximo_pessoa")] Ministerio ministerio)
         {
             if (ModelState.IsValid)
             {
@@ -137,15 +135,15 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.lider_ministerio = new SelectList(db.pessoas, "Id", "Nome", ministerio.lider_ministerio);
+         
             return View(ministerio);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult participar([Bind(Include = "ministerioid,Nome,Proposito,Maximo_pessoa,lider_ministerio,Pessoas")] Ministerio mini)
+        public ActionResult participar([Bind(Include = "ministerioid,Nome,Proposito,Maximo_pessoa,Pessoas")] Ministerio mini)
         {
-            var pessoas = db.ministerio.First(m => m.ministerioid == mini.ministerioid).Pessoas;
+            var pessoas = db.ministerio.First(m => m.Ministerioid == mini.Ministerioid).Pessoas;
 
             if (pessoas != null)
             {               

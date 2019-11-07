@@ -10,183 +10,48 @@ using System.Windows.Forms;
 
 namespace business.classes
 {
-    [Table("Celula")]    
+       
     public  class Celula : modelocrud<Celula>
     {
-        
-        
-        private string cel_nome;
-        private Endereco_Celula endereco;
-        private Cargo_Lider lider;
-        private Cargo_Lider_Treinamento lider_treinamento;
-        private Cargo_Supervisor supervisor;
-        private Cargo_Supervisor_Treinamento supervisor_treianamento;
-        private List<Pessoa> pessoas;
-        private string dia_semana;
-        
-        private int maximo_pessoa;
-
-
-        // [Key]
+        [Key]
         [Display(Name = "Codigo")]
         public int Celulaid { get; set; }
 
         [Display(Name = "Nome da celula")]
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]      
-        public string Cel_nome
-        {
-            get
-            {
-                return cel_nome;
-            }
-
-            set
-            {
-                if (value != "")
-                cel_nome = value;
-                else
-                {
-                    MessageBox.Show("A celula precisa de um nome.");
-                    cel_nome = null;
-                }
-                
-            }
-        }
+        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        public string Nome { get; set; }
 
         [Display(Name = "Dia da semana")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Dia_semana
-        {
-            get
-            {
-                return dia_semana;
-            }
-
-            set
-            {
-                if (value != "")
-                dia_semana = value;
-                else
-                {
-                    MessageBox.Show("Preencha o campo dia da semana para as reuniões de celula");
-                    dia_semana = null;
-                }
-            }
-        }
+        public string Dia_semana { get; set; }
 
         [Display(Name = "Horário")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-        public TimeSpan? Horario { get; set; }
-        
+        public TimeSpan? Horario { get; set; }        
 
-        public virtual List<Pessoa> Pessoas
-        {
-            get
-            {
-                return pessoas;
-            }
-
-            set
-            {
-                pessoas = value;
-            }
-        }
+        public virtual List<Pessoa> Pessoas { get; set; }
 
         [Display(Name = "Máximo de pessoas")]
-        public int Maximo_pessoa
-        {
-            get
-            {
-                return maximo_pessoa;
-            }
+        public int Maximo_pessoa { get; set; }
 
-            set
-            {
-                maximo_pessoa = value;
-            }
-        }
+        public virtual Endereco_Celula Endereco_Celula { get; set; }
+
+        public virtual Cargo_Lider Lider { get; set; }
         
-        public virtual Endereco_Celula Endereco_Celula
-        {
-            get
-            {
-                return endereco;
-            }
-
-            set
-            {
-                endereco = value;
-            }
-        }
-
-        [Display(Name = "Lider")]
-        public int Lider_ { get; set; }
-        
-        [ForeignKey("Lider_")]
-        public virtual Cargo_Lider Lider
-        {
-            get
-            {
-                return lider;
-            }
-
-            set
-            {
-                lider = value;
-            }
-        }
-
-        [Display(Name = "Lider em treinamento")]
-        public int Lidertreinamento_ { get; set; }
-
-        [ForeignKey("Lidertreinamento_")]
-        public virtual Cargo_Lider_Treinamento Lider_treinamento
-        {
-            get
-            {
-                return lider_treinamento;
-            }
-
-            set
-            {
-                lider_treinamento = value;
-            }
-        }
+        public virtual Cargo_Lider_Treinamento Lider_treinamento { get; set; }
 
         [Display(Name = "Supervisor")]
         public int Supervisor_ { get; set; }
 
         [ForeignKey("Supervisor_")]
-        public virtual Cargo_Supervisor Supervisor
-        {
-            get
-            {
-                return supervisor;
-            }
-
-            set
-            {
-                supervisor = value;
-            }
-        }
+        public virtual Cargo_Supervisor Supervisor { get; set; }
 
         [Display(Name = "Supervisor em treinamento")]
         public int Supervisortreinamento_ { get; set; }
         
         [ForeignKey("Supervisortreinamento_")]
-        public virtual Cargo_Supervisor_Treinamento Supervisor_treianamento
-        {
-            get
-            {
-                return supervisor_treianamento;
-            }
-
-            set
-            {
-                supervisor_treianamento = value;
-            }
-        }
+        public virtual Cargo_Supervisor_Treinamento Supervisor_treianamento { get; set; }
 
         public Celula()
         {
@@ -195,15 +60,15 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            update_padrao = "update Celula set Cel_nome='@nome', Lider_='@lider', Horario='@horario'," +
+            update_padrao = "update Celula set Nome='@nome', Lider_='@lider', Horario='@horario'," +
             " Lidertreinamento_='@li_treinanmento', Dia_semana='@dia_semana', Maximo_pessoa='@maximo' " +
             " Supervisor_='@supervisor', Supervisortreinamento_='@sup_treinamento' where Celulaid='@id' " +
             "update endereco_celula set cel_bairro='@bairro', cel_rua='@rua', cel_numero='@numero' " +
             " from endereco_celula inner join celula on Celulaid=enderecoid where Celulaid='@id'";
             Update = update_padrao.Replace("@id", id.ToString());
-            Update = Update.Replace("@nome", Cel_nome);
-            Update = Update.Replace("@lider", Lider_.ToString());
-            Update = Update.Replace("@li_treinamento", Lidertreinamento_.ToString());
+            Update = Update.Replace("@nome", Nome);
+           // Update = Update.Replace("@lider", Lider_.ToString());
+           // Update = Update.Replace("@li_treinamento", Lidertreinamento_.ToString());
             Update = Update.Replace("@supervisor", Supervisor_.ToString());
             Update = Update.Replace("@sup_treinamento", Supervisortreinamento_.ToString());
             Update = Update.Replace("@dia_semana", Dia_semana);
@@ -249,9 +114,9 @@ namespace business.classes
                     dr.Read();
 
                     this.Celulaid = int.Parse(Convert.ToString(dr["Celulaid"]));
-                    this.cel_nome = Convert.ToString(dr["Cel_nome"]);
-                    this.Lider_ = int.Parse(dr["Lider_"].ToString());
-                    this.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
+                    this.Nome = Convert.ToString(dr["Nome"]);
+                 //   this.Lider_ = int.Parse(dr["Lider_"].ToString());
+                  //  this.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
                     this.Supervisor_ = int.Parse(dr["Supervisor_"].ToString());
                     this.Supervisortreinamento_ = int.Parse(dr["Supervisortreianamento_"].ToString());
                     this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
@@ -260,7 +125,7 @@ namespace business.classes
                     this.Endereco_Celula.Cel_rua = Convert.ToString(dr["Cel_rua"]);
                     this.Horario = (TimeSpan)((dr["Horario"]));
                     this.Maximo_pessoa = int.Parse(Convert.ToString(dr["Maximo_pessoa"]));
-                    this.pessoas = this.preenchercelula(this.Celulaid);
+                    this.Pessoas = this.preenchercelula(this.Celulaid);
                     
 
                     dr.Close();
@@ -282,18 +147,16 @@ namespace business.classes
 
         public override string salvar()
         {
-            insert_padrao = "insert into Celula (Cel_nome, Dia_semana, Horario, Maximo_pessoa "
+            insert_padrao = "insert into Celula (Nome, Dia_semana, Horario, Maximo_pessoa "
              + "Endereco_Id, Lider_Id, Lider_treinamento_Id, Supervisor_Id, Supervisor_Treinamento_id) " +
              "values ('@nome', '@dia_semana', '@horario', '@maximo' "
              + " '@lider', '@li_treinamento', '@supervisor', '@sup_treinamento' " 
              + Endereco_Celula.salvar();
 
-                Insert = insert_padrao.Replace("@nome", Cel_nome);               
+                Insert = insert_padrao.Replace("@nome", Nome);               
                 Insert = Insert.Replace("@dia_semana", Dia_semana);
                 Insert = Insert.Replace("@horario", Horario.ToString());
                 Insert = Insert.Replace("@maximo", Maximo_pessoa.ToString());
-                Insert = Insert.Replace("@lider", Lider_.ToString());
-                Insert = Insert.Replace("@li_treinamento", Lidertreinamento_.ToString());
                 Insert = Insert.Replace("@supervisor", Supervisor_.ToString());
                 Insert = Insert.Replace("@sup_treinamento", Supervisortreinamento_.ToString());
                 Insert = insert_padrao.Replace("@bairro", this.Endereco_Celula.Cel_bairro);
@@ -366,9 +229,9 @@ namespace business.classes
             {
                 Celula cl = new Celula();
                 cl.Celulaid = int.Parse(Convert.ToString(dr["Celulaid"]));
-                cl.cel_nome = Convert.ToString(dr["Cel_nome"]);
-                cl.Lider_ = int.Parse(dr["Lider_"].ToString());
-                cl.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
+                cl.Nome = Convert.ToString(dr["Nome"]);
+              //  cl.Lider_ = int.Parse(dr["Lider_"].ToString());
+              //  cl.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
                 cl.Supervisor_ = int.Parse(dr["Supervisor_"].ToString());
                 cl.Supervisortreinamento_ = int.Parse(dr["Supervisortreianamento_"].ToString());
                 cl.Dia_semana = Convert.ToString(dr["Dia_semana"]);
@@ -377,7 +240,7 @@ namespace business.classes
                 cl.Endereco_Celula.Cel_rua = Convert.ToString(dr["Cel_rua"]);
                 cl.Horario = (TimeSpan)((dr["Horario"]));
                 cl.Maximo_pessoa = int.Parse(Convert.ToString(dr["Maximo_pessoa"]));
-                cl.pessoas = cl.preenchercelula(cl.Celulaid);
+                cl.Pessoas = cl.preenchercelula(cl.Celulaid);
                 lista.Add(cl);
             }
 

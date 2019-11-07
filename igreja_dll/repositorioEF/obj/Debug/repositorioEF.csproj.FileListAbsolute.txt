@@ -21,3 +21,22 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\ob
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.reuniao3.resources
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.historico.resources
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.historico2.resources
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\database.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\MySql.Data.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\database.pdb
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\database.dll.config
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csprojAssemblyReference.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CoreCompileInputs.cache
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CopyComplete
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.dll
+C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.pdb

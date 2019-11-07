@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace business.classes
 {
-    [Table("Historico")]
+    
    public class Historico : modelocrud<Historico>
     {
         

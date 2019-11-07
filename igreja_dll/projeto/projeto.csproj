@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -201,12 +202,14 @@
     <Compile Include="Controllers\arquivoController.cs" />
     <Compile Include="Controllers\bibliaController.cs" />
     <Compile Include="Controllers\Cargo_LiderController.cs" />
+    <Compile Include="Controllers\Cargo_Lider_MinisterioController.cs" />
     <Compile Include="Controllers\Cargo_Lider_TreinamentoController.cs" />
     <Compile Include="Controllers\Cargo_SupervisorController.cs" />
     <Compile Include="Controllers\Cargo_Supervisor_TreinamentoController.cs" />
     <Compile Include="Controllers\CelulaController.cs" />
     <Compile Include="Controllers\ChamadaController.cs" />
     <Compile Include="Controllers\CriancaController.cs" />
+    <Compile Include="Controllers\Endereco_CelulaController.cs" />
     <Compile Include="Controllers\HistoricoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -385,52 +388,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\_DetailsEndereco.cshtml" />
     <Content Include="Views\Shared\_DetailsTelefone.cshtml" />
-    <Content Include="Views\Cargo_Lider\Create.cshtml" />
-    <Content Include="Views\Cargo_Lider\Delete.cshtml" />
-    <Content Include="Views\Cargo_Lider\Details.cshtml" />
-    <Content Include="Views\Cargo_Lider\Edit.cshtml" />
-    <Content Include="Views\Cargo_Lider\Index.cshtml" />
-    <Content Include="Views\Cargo_Lider_Treinamento\Create.cshtml" />
-    <Content Include="Views\Cargo_Lider_Treinamento\Delete.cshtml" />
-    <Content Include="Views\Cargo_Lider_Treinamento\Details.cshtml" />
-    <Content Include="Views\Cargo_Lider_Treinamento\Edit.cshtml" />
-    <Content Include="Views\Cargo_Lider_Treinamento\Index.cshtml" />
-    <Content Include="Views\Cargo_Supervisor\Create.cshtml" />
-    <Content Include="Views\Cargo_Supervisor\Delete.cshtml" />
-    <Content Include="Views\Cargo_Supervisor\Details.cshtml" />
-    <Content Include="Views\Cargo_Supervisor\Edit.cshtml" />
-    <Content Include="Views\Cargo_Supervisor\Index.cshtml" />
-    <Content Include="Views\Cargo_Supervisor_Treinamento\Create.cshtml" />
-    <Content Include="Views\Cargo_Supervisor_Treinamento\Delete.cshtml" />
-    <Content Include="Views\Cargo_Supervisor_Treinamento\Details.cshtml" />
-    <Content Include="Views\Cargo_Supervisor_Treinamento\Edit.cshtml" />
-    <Content Include="Views\Cargo_Supervisor_Treinamento\Index.cshtml" />
     <Content Include="Views\Shared\_Endereco_Celula.cshtml" />
-    <Content Include="Views\Celula\Create.cshtml" />
-    <Content Include="Views\Celula\Delete.cshtml" />
-    <Content Include="Views\Celula\Details.cshtml" />
-    <Content Include="Views\Celula\Edit.cshtml" />
-    <Content Include="Views\Celula\Index.cshtml" />
-    <Content Include="Views\Membro_Transferencia\Create.cshtml" />
-    <Content Include="Views\Membro_Transferencia\Delete.cshtml" />
-    <Content Include="Views\Membro_Transferencia\Details.cshtml" />
-    <Content Include="Views\Membro_Transferencia\Edit.cshtml" />
-    <Content Include="Views\Membro_Transferencia\Index.cshtml" />
-    <Content Include="Views\Membro_Aclamacao\Create.cshtml" />
-    <Content Include="Views\Membro_Aclamacao\Delete.cshtml" />
-    <Content Include="Views\Membro_Aclamacao\Details.cshtml" />
-    <Content Include="Views\Membro_Aclamacao\Edit.cshtml" />
-    <Content Include="Views\Membro_Aclamacao\Index.cshtml" />
-    <Content Include="Views\Membro_Batismo\Create.cshtml" />
-    <Content Include="Views\Membro_Batismo\Delete.cshtml" />
-    <Content Include="Views\Membro_Batismo\Details.cshtml" />
-    <Content Include="Views\Membro_Batismo\Edit.cshtml" />
-    <Content Include="Views\Membro_Batismo\Index.cshtml" />
-    <Content Include="Views\Membro_Reconciliacao\Create.cshtml" />
-    <Content Include="Views\Membro_Reconciliacao\Delete.cshtml" />
-    <Content Include="Views\Membro_Reconciliacao\Details.cshtml" />
-    <Content Include="Views\Membro_Reconciliacao\Edit.cshtml" />
-    <Content Include="Views\Membro_Reconciliacao\Index.cshtml" />
     <Content Include="Views\Crianca\Create.cshtml" />
     <Content Include="Views\Crianca\Delete.cshtml" />
     <Content Include="Views\Crianca\Details.cshtml" />
@@ -485,6 +443,61 @@
     <None Include="Service References\ClienteServiceReference\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Membro_Aclamacao\Create.cshtml" />
+    <Content Include="Views\Membro_Aclamacao\Delete.cshtml" />
+    <Content Include="Views\Membro_Aclamacao\Details.cshtml" />
+    <Content Include="Views\Membro_Aclamacao\Edit.cshtml" />
+    <Content Include="Views\Membro_Aclamacao\Index.cshtml" />
+    <Content Include="Views\Membro_Batismo\Create.cshtml" />
+    <Content Include="Views\Membro_Batismo\Delete.cshtml" />
+    <Content Include="Views\Membro_Batismo\Details.cshtml" />
+    <Content Include="Views\Membro_Batismo\Edit.cshtml" />
+    <Content Include="Views\Membro_Batismo\Index.cshtml" />
+    <Content Include="Views\Membro_Reconciliacao\Create.cshtml" />
+    <Content Include="Views\Membro_Reconciliacao\Delete.cshtml" />
+    <Content Include="Views\Membro_Reconciliacao\Details.cshtml" />
+    <Content Include="Views\Membro_Reconciliacao\Edit.cshtml" />
+    <Content Include="Views\Membro_Reconciliacao\Index.cshtml" />
+    <Content Include="Views\Membro_Transferencia\Create.cshtml" />
+    <Content Include="Views\Membro_Transferencia\Delete.cshtml" />
+    <Content Include="Views\Membro_Transferencia\Details.cshtml" />
+    <Content Include="Views\Membro_Transferencia\Edit.cshtml" />
+    <Content Include="Views\Membro_Transferencia\Index.cshtml" />
+    <Content Include="Views\Cargo_Lider_Ministerio\Create.cshtml" />
+    <Content Include="Views\Cargo_Lider_Ministerio\Delete.cshtml" />
+    <Content Include="Views\Cargo_Lider_Ministerio\Details.cshtml" />
+    <Content Include="Views\Cargo_Lider_Ministerio\Edit.cshtml" />
+    <Content Include="Views\Cargo_Lider_Ministerio\Index.cshtml" />
+    <Content Include="Views\Celula\Create.cshtml" />
+    <Content Include="Views\Celula\Delete.cshtml" />
+    <Content Include="Views\Celula\Details.cshtml" />
+    <Content Include="Views\Celula\Edit.cshtml" />
+    <Content Include="Views\Celula\Index.cshtml" />
+    <Content Include="Views\Endereco_Celula\Create.cshtml" />
+    <Content Include="Views\Endereco_Celula\Delete.cshtml" />
+    <Content Include="Views\Endereco_Celula\Details.cshtml" />
+    <Content Include="Views\Endereco_Celula\Edit.cshtml" />
+    <Content Include="Views\Endereco_Celula\Index.cshtml" />
+    <Content Include="Views\Cargo_Lider\Create.cshtml" />
+    <Content Include="Views\Cargo_Lider\Delete.cshtml" />
+    <Content Include="Views\Cargo_Lider\Details.cshtml" />
+    <Content Include="Views\Cargo_Lider\Edit.cshtml" />
+    <Content Include="Views\Cargo_Lider\Index.cshtml" />
+    <Content Include="Views\Cargo_Lider_Treinamento\Create.cshtml" />
+    <Content Include="Views\Cargo_Lider_Treinamento\Delete.cshtml" />
+    <Content Include="Views\Cargo_Lider_Treinamento\Details.cshtml" />
+    <Content Include="Views\Cargo_Lider_Treinamento\Edit.cshtml" />
+    <Content Include="Views\Cargo_Lider_Treinamento\Index.cshtml" />
+    <Content Include="Views\Cargo_Supervisor\Create.cshtml" />
+    <Content Include="Views\Cargo_Supervisor\Delete.cshtml" />
+    <Content Include="Views\Cargo_Supervisor\Details.cshtml" />
+    <Content Include="Views\Cargo_Supervisor\Edit.cshtml" />
+    <Content Include="Views\Cargo_Supervisor\Index.cshtml" />
+    <Content Include="Views\Cargo_Supervisor_Treinamento\Create.cshtml" />
+    <Content Include="Views\Cargo_Supervisor_Treinamento\Delete.cshtml" />
+    <Content Include="Views\Cargo_Supervisor_Treinamento\Details.cshtml" />
+    <Content Include="Views\Cargo_Supervisor_Treinamento\Edit.cshtml" />
+    <Content Include="Views\Cargo_Supervisor_Treinamento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

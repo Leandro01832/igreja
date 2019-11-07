@@ -55,13 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Cargo_Lider_Ministerio.cs" />
     <Compile Include="classes\Celula.cs" />
     <Compile Include="classes\Chamada.cs" />
     <Compile Include="classes\Crianca.cs" />
     <Compile Include="classes\Reuniao.cs" />
     <Compile Include="classes\Endereco.cs" />
     <Compile Include="classes\Endereco_Celula.cs" />
-    <Compile Include="classes\Frequentador.cs" />
     <Compile Include="classes\Historico.cs" />
     <Compile Include="classes\Cargo_Lider_Treinamento.cs" />
     <Compile Include="classes\Membro.cs" />

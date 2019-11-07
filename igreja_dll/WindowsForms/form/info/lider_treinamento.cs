@@ -44,15 +44,15 @@ namespace WindowsForms.form.info
 
         private void lider_treinamento_Load(object sender, EventArgs e)
         {
-            if (m.Cargo_Lider_Treinamento == null && pessoa.Cargo_Lider_Treinamento == null
-                && v.Cargo_Lider_Treinamento == null && c.Cargo_Lider_Treinamento == null)
-            {
-                label1.Text = "Esta pessoa não é um lider em treinamento";
-            }
-            else
-            {
-                label1.Text = "Esta pessoa é um lider em treinamento";
-            }
+            //if (m.Cargo_Lider_Treinamento == null && pessoa.Cargo_Lider_Treinamento == null
+            //    && v.Cargo_Lider_Treinamento == null && c.Cargo_Lider_Treinamento == null)
+            //{
+            //    label1.Text = "Esta pessoa não é um lider em treinamento";
+            //}
+            //else
+            //{
+            //    label1.Text = "Esta pessoa é um lider em treinamento";
+            //}
         }
     }
 }

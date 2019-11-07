@@ -10,7 +10,7 @@ namespace repositorioEF
     {
         public DB() : base("DefaultConnection")
         {
-
+           // Database.SetInitializer<DB>(null);
         }
 
         public DbSet<Chamada> Chamadas { get; set; }
@@ -33,6 +33,7 @@ namespace repositorioEF
         public DbSet<Cargo_Lider_Treinamento> lider_treinamento { get; set; }
         public DbSet<Cargo_Supervisor> supervisor { get; set; }
         public DbSet<Cargo_Supervisor_Treinamento> supervisor_treinamento { get; set; }
+        public DbSet<Cargo_Lider_Ministerio> Cargo_Lider_Ministerio { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {            

@@ -212,46 +212,46 @@ namespace igreja2.form.atualização
 
         private void liderToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            lider lid;
-            if (pessoa.Cargo_Lider != null)
-            { lid = new lider(pessoa); }
-            else
-            { lid = new lider(mem); }
-            lid.MdiParent = MDIsingleton.InstanciaMDI();
-            lid.Show();
+            //lider lid;
+            //if (pessoa.Cargo_Lider != null)
+            //{ lid = new lider(pessoa); }
+            //else
+            //{ lid = new lider(mem); }
+            //lid.MdiParent = MDIsingleton.InstanciaMDI();
+            //lid.Show();
         }
 
         private void liderEmTreinamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            lider_treinamento lid;
-            if (pessoa.Cargo_Lider_Treinamento != null)
-            { lid = new lider_treinamento(pessoa); }
-            else
-            { lid = new lider_treinamento(mem); }
-            lid.MdiParent = MDIsingleton.InstanciaMDI();
-            lid.Show();
+            //lider_treinamento lid;
+            //if (pessoa.Cargo_Lider_Treinamento != null)
+            //{ lid = new lider_treinamento(pessoa); }
+            //else
+            //{ lid = new lider_treinamento(mem); }
+            //lid.MdiParent = MDIsingleton.InstanciaMDI();
+            //lid.Show();
         }
 
         private void supervisorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            supervisor sup;
-            if (pessoa.Cargo_Supervisor != null)
-            { sup = new supervisor(pessoa); }
-            else
-            { sup = new supervisor(mem); }
-            sup.MdiParent = MDIsingleton.InstanciaMDI();
-            sup.Show();
+            //supervisor sup;
+            //if (pessoa.Cargo_Supervisor != null)
+            //{ sup = new supervisor(pessoa); }
+            //else
+            //{ sup = new supervisor(mem); }
+            //sup.MdiParent = MDIsingleton.InstanciaMDI();
+            //sup.Show();
         }
 
         private void supervisorEmTreinamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            supervisor_treinamento sup;
-            if (pessoa.Cargo_Supervisor_Treinamento != null)
-            { sup = new supervisor_treinamento(pessoa); }
-            else
-            { sup = new supervisor_treinamento(mem); }
-            sup.MdiParent = MDIsingleton.InstanciaMDI();
-            sup.Show();
+            //supervisor_treinamento sup;
+            //if (pessoa.Cargo_Supervisor_Treinamento != null)
+            //{ sup = new supervisor_treinamento(pessoa); }
+            //else
+            //{ sup = new supervisor_treinamento(mem); }
+            //sup.MdiParent = MDIsingleton.InstanciaMDI();
+            //sup.Show();
         }
 
         private void fotoToolStripMenuItem_Click(object sender, EventArgs e)

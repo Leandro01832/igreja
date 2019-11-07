@@ -1,0 +1,51 @@
+﻿@model IEnumerable<business.classes.Endereco_Celula>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Celula.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cel_bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cel_rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cel_numero)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celula.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cel_bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cel_rua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cel_numero)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.enderecoid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.enderecoid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.enderecoid })
+        </td>
+    </tr>
+}
+
+</table>

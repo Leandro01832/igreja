@@ -17,7 +17,7 @@ namespace projeto.Controllers
         // GET: Pessoa
         public ActionResult Index()
         {
-            var pessoas = db.pessoas.Include(p => p.Cargo_Lider).Include(p => p.Cargo_Lider_Treinamento).Include(p => p.Cargo_Supervisor).Include(p => p.Cargo_Supervisor_Treinamento).Include(p => p.Celula).Include(p => p.Chamada).Include(p => p.Endereco).Include(p => p.Telefone);
+            var pessoas = db.pessoas.Include(p => p.Celula).Include(p => p.Chamada).Include(p => p.Endereco).Include(p => p.Telefone);
             return View(pessoas.ToList());
         }
 
@@ -43,7 +43,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid");
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid");
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid");
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome");
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome");
             ViewBag.Id = new SelectList(db.Chamadas, "chamadaid", "chamadaid");
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais");
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone");
@@ -68,7 +68,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.Chamadas, "chamadaid", "chamadaid", pessoa.Id);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
@@ -91,7 +91,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.Chamadas, "chamadaid", "chamadaid", pessoa.Id);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
@@ -115,7 +115,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.Chamadas, "chamadaid", "chamadaid", pessoa.Id);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
@@ -141,7 +141,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
             return View(pessoa);
@@ -166,7 +166,7 @@ namespace projeto.Controllers
                 {
                     ViewBag.email = User.Identity.GetUserName();
                     ViewBag.error = "Você já foi cadastrado. " + ex.Message;
-                    ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome");
+                    ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome");
                     return View(pessoa);
                 }
 
@@ -175,7 +175,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
             return View(pessoa);
@@ -200,7 +200,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
             return View(pessoa);
@@ -226,7 +226,7 @@ namespace projeto.Controllers
                 {
                     ViewBag.email = User.Identity.GetUserName();
                     ViewBag.error = "Você já foi cadastrado. " + ex.Message;
-                    ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome");
+                    ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome");
                     return View(pessoa);
                 }
 
@@ -235,7 +235,7 @@ namespace projeto.Controllers
             ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", pessoa.Id);
             ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", pessoa.Id);
-            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Nome", pessoa.celula_);
             ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", pessoa.Id);
             ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", pessoa.Id);
             return View(pessoa);

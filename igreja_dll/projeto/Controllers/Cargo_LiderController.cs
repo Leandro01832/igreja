@@ -1,28 +1,28 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using business.classes;
 using repositorioEF;
-using Microsoft.AspNet.Identity;
 
 namespace projeto.Controllers
 {
-    [Authorize]
     public class Cargo_LiderController : Controller
     {
         private DB db = new DB();
 
         // GET: Cargo_Lider
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            var lider = db.lider.Include(c => c.Pessoa);
+            var lider = db.lider.Include(c => c.Celula).Include(c => c.Pessoa);
             return View(lider.ToList());
         }
 
         // GET: Cargo_Lider/Details/5
-        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,34 +34,33 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(cargo_Lider);
+            return View(cargo_Lider);
         }
 
         // GET: Cargo_Lider/Create
         public ActionResult Create()
         {
-            ViewBag.Liderid = new SelectList(db.pessoas, "Id", "Nome");
+            ViewBag.Liderid = new SelectList(db.celula, "Celulaid", "Nome");
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome");
             return View();
         }
 
         // POST: Cargo_Lider/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Liderid")] Cargo_Lider cargo_Lider)
+        public ActionResult Create([Bind(Include = "Liderid,pessoa_")] Cargo_Lider cargo_Lider)
         {
             if (ModelState.IsValid)
             {
-                var email = User.Identity.GetUserName();
-                var id = db.pessoas.First(e => e.Email == email).Id;
-                cargo_Lider.Liderid = id;
                 db.lider.Add(cargo_Lider);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Liderid = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider.Liderid);
+            ViewBag.Liderid = new SelectList(db.celula, "Celulaid", "Nome", cargo_Lider.Liderid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider.pessoa_);
             return View(cargo_Lider);
         }
 
@@ -77,16 +76,17 @@ namespace projeto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Liderid = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider.Liderid);
+            ViewBag.Liderid = new SelectList(db.celula, "Celulaid", "Nome", cargo_Lider.Liderid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider.pessoa_);
             return View(cargo_Lider);
         }
 
         // POST: Cargo_Lider/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Liderid")] Cargo_Lider cargo_Lider)
+        public ActionResult Edit([Bind(Include = "Liderid,pessoa_")] Cargo_Lider cargo_Lider)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,8 @@ namespace projeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Liderid = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider.Liderid);
+            ViewBag.Liderid = new SelectList(db.celula, "Celulaid", "Nome", cargo_Lider.Liderid);
+            ViewBag.pessoa_ = new SelectList(db.pessoas, "Id", "Nome", cargo_Lider.pessoa_);
             return View(cargo_Lider);
         }
 

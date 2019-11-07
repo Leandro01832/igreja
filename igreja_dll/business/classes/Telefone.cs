@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace business.classes
 {
-    [Table("Telefone")]   
+       
     public class Telefone : modelocrud<Telefone>
     {
         
