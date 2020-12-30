@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6B9F57E-CAE1-43D5-8311-1817EC037D33}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WFIgrejaLgpd</RootNamespace>
+    <AssemblyName>WFIgrejaLgpd</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DdataGridViews\IPesquisar.cs" />
+    <Compile Include="ImprimirRelatorio.cs" />
+    <Compile Include="Pesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DdataGridViews\Pesquisar.cs" />
+    <Compile Include="Formulario\Celula\Celula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\Celula.Designer.cs">
+      <DependentUpon>Celula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaAdolescente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaAdolescente.Designer.cs">
+      <DependentUpon>CelulaAdolescente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaAdulto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaAdulto.Designer.cs">
+      <DependentUpon>CelulaAdulto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaCasado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaCasado.Designer.cs">
+      <DependentUpon>CelulaCasado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaCrianca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaCrianca.Designer.cs">
+      <DependentUpon>CelulaCrianca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaJovem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\CelulaJovem.Designer.cs">
+      <DependentUpon>CelulaJovem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\DadoCelula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\DadoCelula.Designer.cs">
+      <DependentUpon>DadoCelula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\EnderecoCelula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\EnderecoCelula.Designer.cs">
+      <DependentUpon>EnderecoCelula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\FinalizarCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\FinalizarCadastro.Designer.cs">
+      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Celula\MinisteriosCelula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Celula\MinisteriosCelula.Designer.cs">
+      <DependentUpon>MinisteriosCelula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormCrudMinisterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormCrudMinisterio.Designer.cs">
+      <DependentUpon>FormCrudMinisterio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormCrudPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormCrudPessoa.Designer.cs">
+      <DependentUpon>FormCrudPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioCrudCelula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioListView.Designer.cs">
+      <DependentUpon>FormularioListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\DadoMinisterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\DadoMinisterio.Designer.cs">
+      <DependentUpon>DadoMinisterio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\FinalizarCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\FinalizarCadastro.Designer.cs">
+      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderCelula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderCelula.Designer.cs">
+      <DependentUpon>LiderCelula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderCelulaTreinamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderCelulaTreinamento.Designer.cs">
+      <DependentUpon>LiderCelulaTreinamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderMinisterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderMinisterio.Designer.cs">
+      <DependentUpon>LiderMinisterio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderMinisterioTreinamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\LiderMinisterioTreinamento.Designer.cs">
+      <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\Ministerio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\Ministerio.Designer.cs">
+      <DependentUpon>Ministerio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\PessoasCelulasMinisterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\PessoasCelulasMinisterio.Designer.cs">
+      <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorCelula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorCelula.Designer.cs">
+      <DependentUpon>SupervisorCelula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorCelulaTreinamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorCelulaTreinamento.Designer.cs">
+      <DependentUpon>SupervisorCelulaTreinamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorMinisterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorMinisterio.Designer.cs">
+      <DependentUpon>SupervisorMinisterio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorMinisterioTreinamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Ministerio\SupervisorMinisterioTreinamento.Designer.cs">
+      <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.Designer.cs">
+      <DependentUpon>CadastroCrianca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroAclamacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroAclamacao.Designer.cs">
+      <DependentUpon>CadastroMembroAclamacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroBatismo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroBatismo.Designer.cs">
+      <DependentUpon>CadastroMembroBatismo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroReconciliacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroReconciliacao.Designer.cs">
+      <DependentUpon>CadastroMembroReconciliacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroTransferencia.Designer.cs">
+      <DependentUpon>CadastroMembroTransferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroVisitante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroVisitante.Designer.cs">
+      <DependentUpon>CadastroVisitante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Chamada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Chamada.Designer.cs">
+      <DependentUpon>Chamada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.Designer.cs">
+      <DependentUpon>DadoPessoal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.Designer.cs">
+      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Foto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Foto.Designer.cs">
+      <DependentUpon>Foto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.Designer.cs">
+      <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Crianca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Crianca.Designer.cs">
+      <DependentUpon>Crianca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Membro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Membro.Designer.cs">
+      <DependentUpon>Membro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroAclamacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroAclamacao.Designer.cs">
+      <DependentUpon>MembroAclamacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroBatismo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroBatismo.Designer.cs">
+      <DependentUpon>MembroBatismo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroReconciliacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroReconciliacao.Designer.cs">
+      <DependentUpon>MembroReconciliacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\MembroTransferencia.Designer.cs">
+      <DependentUpon>MembroTransferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Pessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Pessoa.Designer.cs">
+      <DependentUpon>Pessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Visitante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\Visitante.Designer.cs">
+      <DependentUpon>Visitante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\Reuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\Reuniao.Designer.cs">
+      <DependentUpon>Reuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViews\ListViewCelula.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewCelulaAdolescente.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewCelulaAdulto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewCelulaCasado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewCelulaCrianca.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewCelulaJovem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewCrianca.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewLiderCelula.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewLiderCelulaTtreinamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewLiderMinisterio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewLiderMinisterioTreinamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewMembro.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewMembroAclamacao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewMembroBatismo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewMembroReconciliacao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewMembroTransferencia.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewMinisterio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewPessoa.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewSupervisorCelula.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewSupervisorCelulaTreinamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewSupervisorMinisterio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewSupervisorMinisterioTreinanemnto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewVisitante.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\TodosListViews.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDI.Designer.cs">
+      <DependentUpon>MDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDISingleton.cs" />
+    <Compile Include="Pesquisar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisar.Designer.cs">
+      <DependentUpon>Pesquisar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WFCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFCrud.Designer.cs">
+      <DependentUpon>WFCrud.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Formulario\Celula\Celula.resx">
+      <DependentUpon>Celula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\CelulaAdolescente.resx">
+      <DependentUpon>CelulaAdolescente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\CelulaAdulto.resx">
+      <DependentUpon>CelulaAdulto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\CelulaCasado.resx">
+      <DependentUpon>CelulaCasado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\CelulaCrianca.resx">
+      <DependentUpon>CelulaCrianca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\CelulaJovem.resx">
+      <DependentUpon>CelulaJovem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\DadoCelula.resx">
+      <DependentUpon>DadoCelula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\FinalizarCadastro.resx">
+      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Celula\MinisteriosCelula.resx">
+      <DependentUpon>MinisteriosCelula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormCrudMinisterio.resx">
+      <DependentUpon>FormCrudMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormCrudPessoa.resx">
+      <DependentUpon>FormCrudPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioCrudCelula.resx">
+      <DependentUpon>FormularioCrudCelula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioListView.resx">
+      <DependentUpon>FormularioListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\DadoMinisterio.resx">
+      <DependentUpon>DadoMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\FinalizarCadastro.resx">
+      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\LiderCelula.resx">
+      <DependentUpon>LiderCelula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\LiderCelulaTreinamento.resx">
+      <DependentUpon>LiderCelulaTreinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\LiderMinisterio.resx">
+      <DependentUpon>LiderMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\LiderMinisterioTreinamento.resx">
+      <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\Ministerio.resx">
+      <DependentUpon>Ministerio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\PessoasCelulasMinisterio.resx">
+      <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\SupervisorCelula.resx">
+      <DependentUpon>SupervisorCelula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\SupervisorCelulaTreinamento.resx">
+      <DependentUpon>SupervisorCelulaTreinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\SupervisorMinisterio.resx">
+      <DependentUpon>SupervisorMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Ministerio\SupervisorMinisterioTreinamento.resx">
+      <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.resx">
+      <DependentUpon>CadastroCrianca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroAclamacao.resx">
+      <DependentUpon>CadastroMembroAclamacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroBatismo.resx">
+      <DependentUpon>CadastroMembroBatismo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroReconciliacao.resx">
+      <DependentUpon>CadastroMembroReconciliacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroTransferencia.resx">
+      <DependentUpon>CadastroMembroTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroVisitante.resx">
+      <DependentUpon>CadastroVisitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Chamada.resx">
+      <DependentUpon>Chamada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.resx">
+      <DependentUpon>DadoPessoal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.resx">
+      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Foto.resx">
+      <DependentUpon>Foto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.resx">
+      <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Crianca.resx">
+      <DependentUpon>Crianca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Membro.resx">
+      <DependentUpon>Membro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroAclamacao.resx">
+      <DependentUpon>MembroAclamacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroBatismo.resx">
+      <DependentUpon>MembroBatismo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroReconciliacao.resx">
+      <DependentUpon>MembroReconciliacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroTransferencia.resx">
+      <DependentUpon>MembroTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Pessoa.resx">
+      <DependentUpon>Pessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Visitante.resx">
+      <DependentUpon>Visitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Reuniao\Reuniao.resx">
+      <DependentUpon>Reuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDI.resx">
+      <DependentUpon>MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisar.resx">
+      <DependentUpon>Pesquisar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="WFCrud.resx">
+      <DependentUpon>WFCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formulario\Historico\" />
+    <Folder Include="relatorio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\business\business.csproj">
+      <Project>{695abc28-63ef-4c54-ac28-a27ca2496482}</Project>
+      <Name>business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsApp1\WindowsFormsApp1.csproj">
+      <Project>{8756B28C-F968-42CA-AF18-485E32A78881}</Project>
+      <Name>WindowsFormsApp1</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -29,3 +29,16 @@ C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\
 C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.xml
 C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.csproj.CoreCompileInputs.cache
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.pdb
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\business.dll.config
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\business.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\business.pdb
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\MySql.Data.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.xml
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.csprojAssemblyReference.cache

@@ -1,8 +1,12 @@
 ﻿
 using business.classes;
+using business.classes.Celula;
+using business.classes.Ministerio;
+using business.classes.Abstrato;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using business.classes.Pessoas;
 
 namespace repositorioEF
 {
@@ -14,10 +18,11 @@ namespace repositorioEF
         }
 
         public DbSet<Chamada> Chamadas { get; set; }
+        public DbSet<MudancaEstado> MudancaEstado { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }
         public DbSet<Pessoa> pessoas { get; set; }
         public DbSet<Endereco> endereco { get; set; }
-        public DbSet<Endereco_Celula> endereco_celula { get; set; }
+        public DbSet<EnderecoCelula> EnderecoCelula { get; set; }
         public DbSet<Telefone> telefone { get; set; }
         public DbSet<Celula> celula { get; set; }
         public DbSet<Membro_Batismo> membro_batismo { get; set; }
@@ -26,14 +31,17 @@ namespace repositorioEF
         public DbSet<Membro_Transferencia> membro_transferencia { get; set; }
         public DbSet<Membro> membro { get; set; }
         public DbSet<Visitante> visitante { get; set; }
-        public DbSet<Crianca> crianca { get; set; }
-        public DbSet<Cargo_Lider> lider { get; set; }
+        public DbSet<Crianca> crianca { get; set; }        
         public DbSet<Ministerio> ministerio { get; set; }
         public DbSet<Historico> historico { get; set; }
-        public DbSet<Cargo_Lider_Treinamento> lider_treinamento { get; set; }
-        public DbSet<Cargo_Supervisor> supervisor { get; set; }
-        public DbSet<Cargo_Supervisor_Treinamento> supervisor_treinamento { get; set; }
-        public DbSet<Cargo_Lider_Ministerio> Cargo_Lider_Ministerio { get; set; }
+        public DbSet<Supervisor_Celula> Supervisor_Celula { get; set; }
+        public DbSet<Supervisor_Celula_Treinamento> Supervisor_Celula_Treinamento { get; set; }
+        public DbSet<Supervisor_Ministerio> Supervisor_Ministerio { get; set; }
+        public DbSet<Supervisor_Ministerio_Treinamento> Supervisor_Ministerio_Treinamento { get; set; }
+        public DbSet<Lider_Celula_Treinamento> lider_treinamento { get; set; }
+        public DbSet<Lider_Celula> lider { get; set; }
+        public DbSet<Lider_Ministerio> Lider_Ministerio { get; set; }
+        public DbSet<Lider_Ministerio_Treinamento> Lider_Ministerio_Treinamento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {            

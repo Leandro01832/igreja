@@ -1,0 +1,74 @@
+﻿@model business.classes.Abstrato.PessoaLgpd
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PessoaLgpd</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Celula.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celula.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Falta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Insert_padrao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Insert_padrao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_padrao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_padrao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delete_padrao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delete_padrao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Select_padrao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Select_padrao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

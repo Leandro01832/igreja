@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +12,8 @@
     <AssemblyName>business</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\database\conexao\MySql.Data.dll</HintPath>
@@ -55,28 +56,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\Cargo_Lider_Ministerio.cs" />
-    <Compile Include="classes\Celula.cs" />
+    <Compile Include="classes\Abstrato\EnderecoCelula.cs" />
+    <Compile Include="classes\Abstrato\MembroLgpd.cs" />
+    <Compile Include="classes\Abstrato\PessoaLgpd.cs" />
+    <Compile Include="classes\AddNalista.cs" />
+    <Compile Include="classes\BuscaLista.cs" />
+    <Compile Include="classes\Celulas\Celula_Adolescente.cs" />
+    <Compile Include="classes\Celulas\Celula_Casado.cs" />
+    <Compile Include="classes\Celulas\Celula_Jovem.cs" />
+    <Compile Include="classes\Celulas\Celula_Adulto.cs" />
+    <Compile Include="classes\Celulas\Celula_Crianca.cs" />
+    <Compile Include="classes\ChamadaLgpd.cs" />
+    <Compile Include="classes\IAddNalista.cs" />
+    <Compile Include="classes\IBuscaLista.cs" />
+    <Compile Include="classes\IMudancaEstadoLgpd.cs" />
+    <Compile Include="classes\IMudancaEstado.cs" />
+    <Compile Include="classes\Ministerio\Lider_Ministerio_Treianmento.cs" />
+    <Compile Include="classes\Ministerio\Lider_Ministerio.cs" />
+    <Compile Include="classes\Abstrato\Celula.cs" />
     <Compile Include="classes\Chamada.cs" />
-    <Compile Include="classes\Crianca.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Ministerio.cs" />
+    <Compile Include="classes\MudancaEstadoLgpd.cs" />
+    <Compile Include="classes\MudancaEstado.cs" />
+    <Compile Include="classes\PessoasLgpd\CriancaLgpd.cs" />
+    <Compile Include="classes\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
+    <Compile Include="classes\PessoasLgpd\Membro_BatismoLgpd.cs" />
+    <Compile Include="classes\PessoasLgpd\Membro_ReconciliacaoLgpd.cs" />
+    <Compile Include="classes\PessoasLgpd\Membro_TransferenciaLgpd.cs" />
+    <Compile Include="classes\PessoasLgpd\VisitanteLgpd.cs" />
+    <Compile Include="classes\Pessoas\Crianca.cs" />
     <Compile Include="classes\Reuniao.cs" />
     <Compile Include="classes\Endereco.cs" />
-    <Compile Include="classes\Endereco_Celula.cs" />
     <Compile Include="classes\Historico.cs" />
-    <Compile Include="classes\Cargo_Lider_Treinamento.cs" />
-    <Compile Include="classes\Membro.cs" />
-    <Compile Include="classes\Membro_Aclamacao.cs" />
-    <Compile Include="classes\Membro_Batismo.cs" />
-    <Compile Include="classes\Membro_Reconciliacao.cs" />
-    <Compile Include="classes\Membro_Transferencia.cs" />
-    <Compile Include="classes\Ministerio.cs" />
-    <Compile Include="classes\Pessoa.cs" />
-    <Compile Include="classes\Cargo_Supervisor.cs" />
-    <Compile Include="classes\Cargo_Supervisor_Treinamento.cs" />
+    <Compile Include="classes\Ministerio\Lider_Celula_Treinamento.cs" />
+    <Compile Include="classes\Abstrato\Membro.cs" />
+    <Compile Include="classes\Pessoas\Membro_Aclamacao.cs" />
+    <Compile Include="classes\Pessoas\Membro_Batismo.cs" />
+    <Compile Include="classes\Pessoas\Membro_Reconciliacao.cs" />
+    <Compile Include="classes\Pessoas\Membro_Transferencia.cs" />
+    <Compile Include="classes\Abstrato\Ministerio.cs" />
+    <Compile Include="classes\Abstrato\Pessoa.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Celula.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Celula_Treinamento.cs" />
     <Compile Include="classes\Telefone.cs" />
-    <Compile Include="classes\Visitante.cs" />
-    <Compile Include="classes\Cargo_Lider.cs" />
+    <Compile Include="classes\Pessoas\Visitante.cs" />
+    <Compile Include="classes\Ministerio\Lider_Celula.cs" />
     <Compile Include="contrato\Interface.cs" />
+    <Compile Include="database\BDcomum.cs" />
+    <Compile Include="database\dadosmysql.cs" />
+    <Compile Include="database\modelocrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,12 +125,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\database\database.csproj">
-      <Project>{b9006c80-0805-4d80-b57d-4628105c0117}</Project>
-      <Name>database</Name>
-    </ProjectReference>
+    <Content Include="conexao\MySql.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

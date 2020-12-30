@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1.Formulario.Ministerio
+{
+    public partial class DadoMinisterio : FormCrudMinisterio
+    {
+        public DadoMinisterio(business.classes.Abstrato.Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
+          : base(p, Deletar, Atualizar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        private void DadoMinisterio_Load(object sender, EventArgs e)
+        {
+            this.Text = " - Dados de Ministério";
+        }
+
+        private void txt_nome_ministerio_TextChanged(object sender, EventArgs e)
+        {
+            var m = (business.classes.Abstrato.Ministerio)modelo;
+            m.Nome = txt_nome_ministerio.Text;
+            
+        }
+
+        private void txt_proposito_TextChanged(object sender, EventArgs e)
+        {
+            var m = (business.classes.Abstrato.Ministerio)modelo;
+            m.Proposito = txt_proposito.Text;
+        }
+
+        private void txt_ministro_TextChanged(object sender, EventArgs e)
+        {
+            var m = (business.classes.Abstrato.Ministerio)modelo;
+            try
+            {
+                m.Ministro_ = int.Parse(txt_ministro.Text);
+            }
+            catch (Exception)
+            {
+                m.Ministro_ = null;
+                txt_ministro.Text = "";
+                MessageBox.Show("Informe um numero de indentificação. Apenas digitos.");
+            }
+        }
+    }
+}

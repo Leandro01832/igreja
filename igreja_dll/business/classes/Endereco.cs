@@ -9,14 +9,15 @@ using database.banco;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Collections;
+using System.Data.SqlClient;
+using database;
+using business.classes.Abstrato;
 
 namespace business.classes
 {
     
-    public class Endereco : modelocrud<Endereco>
+    public class Endereco : modelocrud
     {
-        
-        private int    id;        
         private string pais;
         private string estado;
         private string cidade;
@@ -26,6 +27,9 @@ namespace business.classes
         private long   cep;
         private string complemento;
 
+        [Key, ForeignKey("Pessoa")]
+        public new int Id { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Pais
@@ -177,66 +181,130 @@ namespace business.classes
             {                
                 complemento = value;
             }
-        }
-
-        [Key, ForeignKey("Pessoa")]
-        public int EnderecoId
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
-
-        public virtual Pessoa Pessoa { get; set; }
+        }             
 
         public Endereco()
         {
-            bd = new BDcomum();
         }
 
         public override string salvar()
         {
-            insert_padrao =
-        "insert into Endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, EnderecoId) values " +
-        " ('@pais', '@estado', '@cidade', '@bairro', '@rua', '@numero_casa', '@cep', '@complemento', IDENT_CURRENT('Pessoa'))";           
-         
-            Insert = insert_padrao.Replace("@pais", Pais);
-            Insert = Insert.Replace("@estado", Estado);
-            Insert = Insert.Replace("@cidade", Cidade);
-            Insert = Insert.Replace("@bairro", Bairro);
-            Insert = Insert.Replace("@rua", Rua);
-            Insert = Insert.Replace("@numero_casa", Numero_casa.ToString());
-            Insert = Insert.Replace("@cep", Cep.ToString());
-            Insert = Insert.Replace("@complemento", Complemento);
-
-            return Insert;
+            Insert_padrao =
+        $"insert into Endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
+        $" Id) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
+        $" '{Cep}', '{Complemento}', IDENT_CURRENT('Pessoa'))";            
+            return Insert_padrao;
         }
 
         public override string alterar(int id)
         {
-            throw new NotImplementedException();
+            Update_padrao = $"update Endereco set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
+            $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
+            $"  where Id='{id}' ";            
+            return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            throw new NotImplementedException();
+            Delete_padrao = $"delete from Endereco where Id='{id}' ";            
+            return Delete_padrao;
         }
 
-        public override Endereco recuperar(int id)
+        public override List<modelocrud> recuperar(int? id)
         {
-            throw new NotImplementedException();
-        }      
+            Select_padrao = "select * from Endereco as M";
+            if (id != null)
+                Select_padrao += $" where M.Id='{id}'";
 
-        public override IEnumerable<Endereco> recuperartodos()
-        {
-            throw new NotImplementedException();
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conecta = bd.obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                bd.obterconexao().Close();
+                return null;
+            }
+
+            if (id != null)
+            {
+                if (dr.HasRows == false)
+                {
+                    return null;
+                }
+                else
+                {
+                    try
+                    {
+                        dr.Read();
+                        this.Pais = Convert.ToString(dr["Pais"]);
+                        this.Estado = Convert.ToString(dr["Estado"]);
+                        this.Cidade = Convert.ToString(dr["Cidade"]);
+                        this.Bairro = Convert.ToString(dr["Bairro"]);
+                        this.Complemento = Convert.ToString(dr["Complemento"]);
+                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+                        this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
+
+                        dr.Close();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        bd.obterconexao().Close();
+                    }
+
+                    modelos.Add(this);
+                    return modelos;
+
+                }
+            }
+            else
+            {
+
+
+                if (dr.HasRows == false)
+                {
+                    return null;
+                }
+                else
+                {
+                    try
+                    {
+                        while (dr.Read())
+                        {
+                            this.Pais = Convert.ToString(dr["Pais"]);
+                            this.Estado = Convert.ToString(dr["Estado"]);
+                            this.Cidade = Convert.ToString(dr["Cidade"]);
+                            this.Bairro = Convert.ToString(dr["Bairro"]);
+                            this.Complemento = Convert.ToString(dr["Complemento"]);
+                            this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                            this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+                            this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
+                            modelos.Add(this);
+                        }
+
+                        dr.Close();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+
+                    }
+
+                    return modelos;
+                }
+
+            }
+
         }
+
     }
 
 

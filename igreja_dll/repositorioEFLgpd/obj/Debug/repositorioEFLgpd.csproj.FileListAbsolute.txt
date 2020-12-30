@@ -1,0 +1,16 @@
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\repositorioEFLgpd.dll.config
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\repositorioEFLgpd.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\repositorioEFLgpd.pdb
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\business.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\EntityFramework.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\EntityFramework.SqlServer.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\MySql.Data.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\business.pdb
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\business.dll.config
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\EntityFramework.xml
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\bin\Debug\EntityFramework.SqlServer.xml
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\obj\Debug\repositorioEFLgpd.csprojAssemblyReference.cache
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\obj\Debug\repositorioEFLgpd.csproj.CoreCompileInputs.cache
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\obj\Debug\repositorioEFLgpd.csproj.CopyComplete
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\obj\Debug\repositorioEFLgpd.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEFLgpd\obj\Debug\repositorioEFLgpd.pdb

@@ -8,3 +8,9 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojResolveAssemblyReference.cache
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.pdb
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csproj.CoreCompileInputs.cache
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb
+F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojAssemblyReference.cache

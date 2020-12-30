@@ -10,34 +10,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Collections;
 using System.Data.SqlClient;
+using database;
+using business.classes.Abstrato;
 
 namespace business.classes
 {
     
-    public class Reuniao : modelocrud<Reuniao>
+    public class Reuniao : modelocrud, IAddNalista
     {
-       
-        private int id;
+
         private DateTime data_reuniao;
         private DateTime horario_inicio;
         private DateTime horario_fim;
         private string local_reuniao;
-
-        [Display(Name = "Código")]
-        [Key]
-        public int cronologiaid
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
-
+        
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -120,34 +106,156 @@ namespace business.classes
         }
 
         public List<Pessoa> Pessoas { get; set; }
+        public List<PessoaLgpd> PessoasLgpd { get; set; }
 
-        public Reuniao()
+        AddNalista AddNalista;
+
+        public Reuniao() : base()
         {
-            bd = new BDcomum();
+            AddNalista = new AddNalista();
         }
 
         public override string alterar(int id)
         {
-            update_padrao = "update Reuniao set Data_reuniao='@data', Horario_inicio='@inicio', Horario_fim='@fim' where cronologiaid='@id'";
-            Update = update_padrao.Replace("@id", id.ToString());
-            return bd.montar_sql(Update, null, null);
+            Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao}', " +
+                $"  Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where Id='{id}'";
+            bd.Editar(this);
+            return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            delete_padrao = " delete from Reuniao where cronologiaid='@id' ";
-            Delete = delete_padrao.Replace("@id", id.ToString());
-
-            return bd.montar_sql(Delete, null, null);
+            Delete_padrao = $"delete from Reuniao where Id='{id}' ";
+            bd.Excluir(this);
+            return Delete_padrao;
         }
 
-        public override Reuniao recuperar(int id)
+        public override List<modelocrud> recuperar(int? id)
         {
-            select_padrao = "select * from Reuniao where cronologiaid='@id'";
-            Select = select_padrao.Replace("@id", id.ToString());
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+            Select_padrao = "select * from Reuniao as M";
+            if (id != null)
+                Select_padrao += Select_padrao + $" where M.Id='{id}'";
 
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conecta = bd.obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
             SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                bd.obterconexao().Close();
+                return null;
+            }
+
+            if (id != null)
+            {
+                if (dr.HasRows == false)
+                {
+                    return null;
+                }
+                else
+                {
+                    try
+                    {
+                        dr.Read();
+                        this.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                        this.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
+                        this.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
+                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
+                        modelos.Add(this);
+                        dr.Close();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        bd.obterconexao().Close();
+                    }
+                    return modelos;
+                }
+            }
+            else
+            {
+
+
+                if (dr.HasRows == false)
+                {
+                    return null;
+                }
+                else
+                {
+                    try
+                    {
+                        while (dr.Read())
+                        {
+                            Reuniao r = new Reuniao();
+                            r.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                            r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
+                            r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
+                            r.Id = int.Parse(Convert.ToString(dr["Id"]));
+                            r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
+                            modelos.Add(r);
+                        }
+
+                        dr.Close();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        bd.obterconexao().Close();
+                    }
+
+                    return modelos;
+                }
+
+            }
+
+        }
+
+        public override string salvar()
+        {
+            Insert_padrao = $"insert into Reuniao (Data_reuniao," +
+        " Horario_inicio, Horario_fim, Local_reuniao) values " +
+        $" ('{Data_reuniao.ToString("yyyy-MM-dd")}', '{Horario_inicio.ToString("HH:mm:ss")}', " +
+        $" '{Horario_fim.ToString("HH:mm:ss")}', '{Local_reuniao}')" + BDcomum.addNaLista;
+            
+            bd.SalvarModelo(this);
+            BDcomum.addNaLista = "";
+            return Insert_padrao;
+        }
+
+        public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
+        {
+            AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
+        }
+
+        public void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
+        {
+            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id);
+        }
+
+        public static modelocrud recuperarReuniao(int v)
+        {
+           var select_padrao = "select * from Reuniao as M";
+                select_padrao += select_padrao + $" where M.Id='{v}'";
+
+            var conecta = new BDcomum().obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(select_padrao, conecta);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                new BDcomum().obterconexao().Close();
+                return null;
+            }
 
             if (dr.HasRows == false)
             {
@@ -155,147 +263,30 @@ namespace business.classes
             }
             else
             {
+                Reuniao r = new Reuniao();
                 try
                 {
                     dr.Read();
-                    this.cronologiaid = int.Parse(dr["cronologiaid"].ToString());
-                    this.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
-                    this.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                    this.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
+                    
+                    r.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                    r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
+                    r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
+                    r.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
                     dr.Close();
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                   new BDcomum().obterconexao().Close();
                 }
-
-                return this;
-
-            }
-        }
-
-        public override string salvar()
-        {
-            insert_padrao = "insert into Reuniao (Data_reuniao," +
-                " Horario_inicio, Horario_fim, Local_reuniao) " +
-        " values ('@data', '@inicio', '@fim', '@local_reuniao')";
-
-            Insert = insert_padrao.Replace("@data", Data_reuniao.ToString("yyyy-MM-dd"));
-            Insert = Insert.Replace("@inicio", Horario_inicio.ToString("HH:mm:ss"));
-            Insert = Insert.Replace("@fim", Horario_fim.ToString("HH:mm:ss"));
-            Insert = Insert.Replace("@local_reuniao", Local_reuniao);
-
-            return bd.montar_sql(Insert, null, null);
-        }     
-
-        public List<Pessoa> preecher_reuniao()
-        {
-            select_padrao = "select * from Reuniao as R"
-               + " inner join ReuniaoPessoa as RP"
-               + " on R.cronologiaid=RP.Reuniao_cronologiaid"
-               + " inner join Pessoa as P on "
-              + " P.Id=RP.Pessoa_Id "
-              + " where R.cronologiaid='@id'";
-
-            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
-
-            SqlDataReader dr = comando.ExecuteReader();
-
-            List<Pessoa> lista = new List<Pessoa>();
-
-            while (dr.Read())
-            {
-                Pessoa cl = new Pessoa();                
-                cl.Id = int.Parse(Convert.ToString(dr["Id"]));
-                cl.Nome = Convert.ToString(dr["Nome"]);
-                cl.Email = Convert.ToString(dr["Email"]);
-                cl.Falta = int.Parse(dr["Falta"].ToString());
-                cl.Estado_civil = Convert.ToString(dr["Estado_civil"]);
-                cl.Falescimento = Convert.ToBoolean(Convert.ToString(dr["Falescimento"]));
-                cl.Sexo_feminino = Convert.ToBoolean(Convert.ToString(dr["Sexo_feminino"]));
-                cl.Sexo_masculino = Convert.ToBoolean(Convert.ToString(dr["Sexo_masculino"]));
-                cl.Rg = Convert.ToString(dr["Rg"]);
-                cl.Data_nascimento = Convert.ToDateTime(Convert.ToString(dr["Data_nascimento"]));
-                cl.Cpf = Convert.ToString(dr["Cpf"]);
-                cl.Status = Convert.ToString(dr["Status"]);
-                cl.Telefone.Fone = Convert.ToString(dr["Fone"]);
-                cl.Telefone.Celular = Convert.ToString(dr["Celular"]);
-                cl.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                cl.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-                cl.Endereco.Pais = Convert.ToString(dr["Pais"]);
-                cl.Endereco.Estado = Convert.ToString(dr["Estado"]);
-                cl.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
-                cl.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
-                cl.Endereco.Rua = Convert.ToString(dr["Rua"]);
-                cl.Endereco.Complemento = Convert.ToString(dr["Complemento"]);
-                cl.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero"]));
-                cl.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
-                cl.Chamada.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
-                cl.Celula.Celulaid = int.Parse(dr["celulaid"].ToString());
-                cl.Celula.Supervisor_ = int.Parse(dr["Supervisor"].ToString());
-                cl.Celula.Supervisortreinamento_ = int.Parse(dr["Supervisortreinamento_"].ToString());
-                cl.Celula.Pessoas = cl.Celula.preenchercelula(cl.Celula.Celulaid);
-                cl.Celula.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-                cl.Celula.Horario = TimeSpan.Parse(dr["Horario"].ToString());
-                cl.Celula.Nome = dr["Nome"].ToString();
-
-                
-                    Historico h = new Historico();
-                    h.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
-                    h.Falta = int.Parse(dr["Falta"].ToString());
-                    cl.Historico.Add(h);
-
-                    Ministerio m = new Ministerio();
-                    m.Ministerioid = int.Parse(dr["ministerioid"].ToString());
-                    m.Nome = dr["Nome"].ToString();
-                    m.Proposito = dr["proposito"].ToString();
-                    m.Pessoas = m.preencherministerio(m.Ministerioid);
-                    cl.Ministerios.Add(m);
-
-                    Reuniao r = new Reuniao();
-                    r.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"]);
-                    r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"]);
-                    r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"]);
-                    r.Local_reuniao = dr["Local_reuniao"].ToString();
-                    cl.Reuniao.Add(r);
-                
-                lista.Add(cl);
+                return r;
             }
 
-            return lista;
-        }
-
-
-        public override IEnumerable<Reuniao> recuperartodos()
-        {
-            select_padrao = "select * from Reuniao as R"
-                + " inner join ReuniaoPessoa as RP on R.cronologiaid=RP.Reuniao_cronologiaid ";
-
-            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
-
-            SqlDataReader dr = comando.ExecuteReader();
-
-            List<Reuniao> lista = new List<Reuniao>();
-
-            while (dr.Read())
-            {
-                Reuniao cl = new Reuniao();
-
-                cl.cronologiaid = int.Parse(dr["cronologiaid"].ToString());
-                cl.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
-                cl.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                cl.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
-                cl.Pessoas = cl.preecher_reuniao();
-                lista.Add(cl);
-            }
-
-            return lista;
         }
     }
 }
