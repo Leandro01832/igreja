@@ -74,9 +74,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private async void BotaoDetalhes_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Pessoas.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Pessoas.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é a pessoa."); return; }
 
-            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(numero)));
+            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(numero));
             VerificarModelo();
 
             FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.Pessoa)Modelo
@@ -114,9 +119,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private async void botaoAtualizar_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Pessoas.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+                 numero = int.Parse(Regex.Match(Pessoas.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é a pessoa."); return; }
             
-            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(numero)));
+            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(numero));
             VerificarModelo();
 
             FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.Pessoa)Modelo
@@ -127,9 +137,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         
         private async void botaoExcluir_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Pessoas.Text, @"\d+").Value;
-            
-            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(numero)));
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Pessoas.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é a pessoa."); return; }
+
+            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(numero));
             VerificarModelo();
 
             FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.Pessoa)Modelo

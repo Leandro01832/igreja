@@ -88,9 +88,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private async void BotaoDetalhes_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Membros.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+                numero = int.Parse(Regex.Match(Membros.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é o membro."); return; }
 
-            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(numero)));
+            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(numero));
 
             VerificarModelo();
 
@@ -103,9 +108,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private async void botaoAtualizar_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Membros.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+                numero = int.Parse(Regex.Match(Membros.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é o membro."); return; }
 
-            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(numero)));
+            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(numero));
 
             VerificarModelo();
 
@@ -117,9 +127,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private async void botaoExcluir_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Membros.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Membros.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é o membro."); return; }
 
-            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(numero)));
+            Modelo = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarPessoa(numero));
 
             VerificarModelo();
 

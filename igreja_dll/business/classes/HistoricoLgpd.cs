@@ -15,8 +15,8 @@ using business.classes.Abstrato;
 
 namespace business.classes
 {
-    
-   public class HistoricoLgpd : modelocrud
+    [Table("HistoricoLgpd")]
+    public class HistoricoLgpd : modelocrud
     {
         
         

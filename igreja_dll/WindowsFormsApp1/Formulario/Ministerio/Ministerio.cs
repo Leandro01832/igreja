@@ -73,8 +73,14 @@ namespace WindowsFormsApp1.Formulario.Ministerio
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Ministerios.Text, @"\d+").Value;
-            Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(int.Parse(numero));
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Ministerios.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é o ministério"); return; }
+
+            Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(numero);
             VerificarModelo();
 
             WindowsFormsApp1.Formulario.Ministerio.FinalizarCadastro dp =
@@ -121,8 +127,14 @@ namespace WindowsFormsApp1.Formulario.Ministerio
 
         private void botaoAtualizar_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Ministerios.Text, @"\d+").Value;
-            Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(int.Parse(numero));
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Ministerios.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é o ministério"); return; }
+
+            Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(numero);
             VerificarModelo();
 
             WindowsFormsApp1.Formulario.Ministerio.FinalizarCadastro dp =
@@ -134,8 +146,14 @@ namespace WindowsFormsApp1.Formulario.Ministerio
         
         private void botaoExcluir_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Ministerios.Text, @"\d+").Value;
-            Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(int.Parse(numero));
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Ministerios.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é o ministério"); return; }
+
+            Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(numero);
             VerificarModelo();
 
             WindowsFormsApp1.Formulario.Ministerio.FinalizarCadastro dp =
@@ -148,7 +166,7 @@ namespace WindowsFormsApp1.Formulario.Ministerio
 
         private void Ministerio_Load(object sender, EventArgs e)
         {
-            this.Text = " - Lista de ministerios";
+            this.Text = " - Lista de ministérios";
 
             Ministerios.Dock = DockStyle.Left;
         }

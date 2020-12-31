@@ -37,6 +37,7 @@ namespace repositorioEFLgpd
         public DbSet<CriancaLgpd> CriancaLgpd { get; set; }
         public DbSet<Ministerio> ministerio { get; set; }
         public DbSet<Historico> historico { get; set; }
+        public DbSet<HistoricoLgpd> HistoricoLgpd { get; set; }
         public DbSet<Supervisor_Celula> Supervisor_Celula { get; set; }
         public DbSet<Supervisor_Celula_Treinamento> Supervisor_Celula_Treinamento { get; set; }
         public DbSet<Supervisor_Ministerio> Supervisor_Ministerio { get; set; }

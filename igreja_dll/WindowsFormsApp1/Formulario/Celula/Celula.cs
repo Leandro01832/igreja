@@ -73,9 +73,14 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Celulas.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Celulas.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é a celula."); return; }
 
-            Modelo = business.classes.Abstrato.Celula.recuperarCelula(int.Parse(numero));
+            Modelo = business.classes.Abstrato.Celula.recuperarCelula(numero);
 
             if (Modelo is business.classes.Celulas.Celula_Adolescente)
                 Modelo =
@@ -107,9 +112,14 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         private void botaoAtualizar_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Celulas.Text, @"\d+").Value;
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Celulas.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é a celula."); return; }
 
-            Modelo = business.classes.Abstrato.Celula.recuperarCelula(int.Parse(numero));
+            Modelo = business.classes.Abstrato.Celula.recuperarCelula(numero);
             
             WindowsFormsApp1.Formulario.Celula.FinalizarCadastro dp =
             new WindowsFormsApp1.Formulario.Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -121,8 +131,14 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         private void botaoExcluir_Click(object sender, EventArgs e)
         {
-            var numero = Regex.Match(Celulas.Text, @"\d+").Value;
-            Modelo = business.classes.Abstrato.Celula.recuperarCelula(int.Parse(numero));
+            int numero = 0;
+            try
+            {
+               numero = int.Parse(Regex.Match(Celulas.Text, @"\d+").Value);
+            }
+            catch { MessageBox.Show("Informe qual é a celula."); return; }
+
+            Modelo = business.classes.Abstrato.Celula.recuperarCelula(numero);
 
             WindowsFormsApp1.Formulario.Celula.FinalizarCadastro dp =
             new WindowsFormsApp1.Formulario.Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo

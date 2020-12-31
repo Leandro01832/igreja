@@ -110,15 +110,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="relatorios\membro_rpt.rdlc" />
-    <EmbeddedResource Include="relatorios\Report1.rdlc" />
-    <EmbeddedResource Include="relatorios\rpt_membro_aclamacao.rdlc" />
-    <EmbeddedResource Include="relatorios\rpt_membro_batismo.rdlc" />
-    <EmbeddedResource Include="relatorios\rpt_membro_recociliacao.rdlc" />
-    <EmbeddedResource Include="relatorios\rpt_membro_transferencia.rdlc" />
-    <EmbeddedResource Include="relatorios\rpt_visitante.rdlc" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="imagens\" />
   </ItemGroup>
   <ItemGroup>

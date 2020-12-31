@@ -62,6 +62,11 @@ namespace WindowsFormsApp1.Formulario
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
         {
+            if (ListView.numero == 0)
+            {
+                MessageBox.Show("Escolha um item da lista.");
+                return;
+            }
             if (ListView is ListViewPessoa)
             {
                 Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
@@ -185,6 +190,11 @@ namespace WindowsFormsApp1.Formulario
 
         private void botaoAtualizar_Click(object sender, EventArgs e)
         {
+            if(ListView.numero == 0)
+            {
+                MessageBox.Show("Escolha um item da lista.");
+                return;
+            }
             if (ListView is ListViewPessoa)
             {
                 Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
@@ -227,6 +237,11 @@ namespace WindowsFormsApp1.Formulario
 
         private void botaoExcluir_Click(object sender, EventArgs e)
         {
+            if (ListView.numero == 0)
+            {
+                MessageBox.Show("Escolha um item da lista.");
+                return;
+            }
             if (ListView is ListViewPessoa)
             {
                 Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);

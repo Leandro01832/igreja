@@ -104,19 +104,18 @@ namespace WFIgrejaLgpd.DdataGridViews
                 return lista;
             }
 
-            if (modelo is business.classes.Historico)
+            if (modelo is business.classes.HistoricoLgpd)
             {
                 List<modelocrud> lista = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(new business.classes.Historico().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    lista.Add(new business.classes.HistoricoLgpd().recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
                 return lista;
             }
 
             return null;
         }
-
 
         public override string alterar(int id)
         {
