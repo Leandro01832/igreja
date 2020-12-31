@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     {
         public MembroBatismo() : base(
             new ListViewMembroBatismo
-            (new business.classes.Pessoas.Membro_Batismo()))
+            (new business.classes.Pessoas.Membro_Batismo(),""))
         {
             InitializeComponent();
         }

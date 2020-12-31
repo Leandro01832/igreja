@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Celula
     {
         public CelulaAdulto() : base(
             new ListViewCelulaAdulto
-            (new business.classes.Celulas.Celula_Adulto()))
+            (new business.classes.Celulas.Celula_Adulto(), ""))
         {
             InitializeComponent();
         }

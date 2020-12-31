@@ -14,7 +14,7 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
     public partial class SupervisorCelula : FormularioListView
     {
         public SupervisorCelula() : base(
-        new ListViewSupervisorCelula(new business.classes.Ministerio.Supervisor_Celula()))
+        new ListViewSupervisorCelula(new business.classes.Ministerio.Supervisor_Celula(), ""))
         {
             InitializeComponent();
         }

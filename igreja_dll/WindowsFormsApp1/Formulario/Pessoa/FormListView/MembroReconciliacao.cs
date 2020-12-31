@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     {
         public MembroReconciliacao() : base(
             new ListViewCrianca
-            (new business.classes.Pessoas.Membro_Reconciliacao()))
+            (new business.classes.Pessoas.Membro_Reconciliacao(), ""))
         {
             InitializeComponent();
         }

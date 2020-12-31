@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class MembroTransferencia : FormularioListView
     {
         public MembroTransferencia() : base(
-            new ListViewMembroTransferencia(new business.classes.Pessoas.Membro_Transferencia()))
+            new ListViewMembroTransferencia(new business.classes.Pessoas.Membro_Transferencia(),""))
         {
             InitializeComponent();
         }

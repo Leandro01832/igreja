@@ -15,7 +15,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
     {
         public MembroReconciliacao() : base(
             new ListViewCrianca
-            (new business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd()))
+            (new business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd(), ""))
         {
             InitializeComponent();
         }

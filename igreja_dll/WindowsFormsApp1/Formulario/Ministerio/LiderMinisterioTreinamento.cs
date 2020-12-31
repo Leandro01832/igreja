@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Ministerio
     {
         public LiderMinisterioTreinamento() : base(
          new ListViewLiderMinisterioTreinamento
-         (new business.classes.Ministerio.Lider_Ministerio_Treinamento()))
+         (new business.classes.Ministerio.Lider_Ministerio_Treinamento(), ""))
         {
             InitializeComponent();
         }

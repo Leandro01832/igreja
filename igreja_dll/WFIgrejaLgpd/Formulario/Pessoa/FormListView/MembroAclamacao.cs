@@ -16,7 +16,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 
         public MembroAclamacao() : base(
             new ListViewMembroAclamacao
-            (new business.classes.PessoasLgpd.Membro_AclamacaoLgpd()))
+            (new business.classes.PessoasLgpd.Membro_AclamacaoLgpd(), ""))
         {
             InitializeComponent();
         }

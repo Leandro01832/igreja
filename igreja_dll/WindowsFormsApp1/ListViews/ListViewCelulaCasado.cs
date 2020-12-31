@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewCelulaCasado : ListViewCelula
     {
-        public ListViewCelulaCasado(modelocrud modelo) : base(modelo)
+        public ListViewCelulaCasado(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

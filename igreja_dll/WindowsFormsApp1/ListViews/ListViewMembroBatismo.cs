@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewMembroBatismo : ListViewPessoa
     {
-        public ListViewMembroBatismo(modelocrud modelo) : base(modelo)
+        public ListViewMembroBatismo(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

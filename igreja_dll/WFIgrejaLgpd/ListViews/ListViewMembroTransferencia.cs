@@ -10,7 +10,7 @@ namespace WFIgrejaLgpd.ListViews
 {
     class ListViewMembroTransferencia : ListViewPessoa
     {
-        public ListViewMembroTransferencia(modelocrud modelo) : base(modelo)
+        public ListViewMembroTransferencia(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

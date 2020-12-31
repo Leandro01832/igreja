@@ -15,7 +15,7 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
     {
         public LiderCelula() : base(
          new ListViewLiderCelula
-         (new business.classes.Ministerio.Lider_Celula()))
+         (new business.classes.Ministerio.Lider_Celula(), ""))
         {
             InitializeComponent();
         }

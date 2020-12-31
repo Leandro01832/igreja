@@ -9,7 +9,7 @@ namespace WFIgrejaLgpd.ListViews
 {
     class ListViewLiderMinisterioTreinamento : ListViewMinisterio
     {
-        public ListViewLiderMinisterioTreinamento(modelocrud modelo) : base(modelo)
+        public ListViewLiderMinisterioTreinamento(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

@@ -12,8 +12,11 @@ namespace WFIgrejaLgpd.ListViews
         public int numero;
         public modelocrud Modelo { get; set; }
 
-        public  TodosListViews(modelocrud modelo)
+        public string Tipo { get; set; }
+
+        public  TodosListViews(modelocrud modelo, string tipo)
         {
+            this.Tipo = tipo;
             this.View = View.List;
             this.Size = new System.Drawing.Size(500, 300);
             this.ItemSelectionChanged += TodosListViews_ItemSelectionChanged;

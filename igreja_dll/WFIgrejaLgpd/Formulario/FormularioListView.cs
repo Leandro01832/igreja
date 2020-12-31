@@ -22,6 +22,7 @@ namespace WFIgrejaLgpd.Formulario
 
         public FormularioListView(TodosListViews ListView)
         {
+            this.Tipo = ListView.Tipo;
             this.Modelo = ListView.Modelo;
 
             botaoDeletar = new Button();
@@ -59,6 +60,8 @@ namespace WFIgrejaLgpd.Formulario
         private Button botaoDeletar { get; }
         public modelocrud Modelo { get; set; }
         public TodosListViews ListView { get; }
+
+        public string Tipo { get; set; }
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
         {
@@ -269,7 +272,26 @@ namespace WFIgrejaLgpd.Formulario
         
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
-            var lista = await Task.Run(() => Modelo.recuperar(null));
+            List<modelocrud> lista = new List<modelocrud>();
+            if (Modelo != null)
+                lista = await Task.Run(() => Modelo.recuperar(null));
+            else
+            {
+                if (Tipo == "Celula")
+                    lista = await Task.Run(() => business.classes.Abstrato.Celula.recuperarTodasCelulas());
+
+                if (Tipo == "Ministerio")
+                    lista = await Task.Run(() => business.classes.Abstrato.Ministerio.recuperarTodosMinisterios());
+
+                if (Tipo == "MembroLgpd")
+                    lista = await Task.Run(() => business.classes.Abstrato.MembroLgpd.recuperarTodosMembros());
+
+                if (Tipo == "PessoaLgpd")
+                    lista = await Task.Run(() => business.classes.Abstrato.PessoaLgpd.recuperarTodos());
+            }
+
+
+
             ListView.Dock = DockStyle.Left;
 
             if (lista != null)

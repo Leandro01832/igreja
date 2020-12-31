@@ -11,16 +11,16 @@ namespace WindowsFormsApp1.ListViews
     {
         public int numero;
         public modelocrud Modelo { get; set; }
+        public string Tipo { get; set; }
 
-        public  TodosListViews(modelocrud modelo)
+        public  TodosListViews(modelocrud modelo, string tipo)
         {
+            this.Tipo = tipo;
             this.View = View.List;
             this.Size = new System.Drawing.Size(500, 300);
             this.ItemSelectionChanged += TodosListViews_ItemSelectionChanged;
             this.Location = new System.Drawing.Point(50, 50);
             this.Font = new System.Drawing.Font("Arial", 15);
-
-
             Modelo = modelo;
         }
 

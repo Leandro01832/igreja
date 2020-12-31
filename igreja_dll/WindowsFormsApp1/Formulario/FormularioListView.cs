@@ -23,6 +23,7 @@ namespace WindowsFormsApp1.Formulario
         public FormularioListView(TodosListViews ListView)
         {
             this.Modelo = ListView.Modelo;
+            this.Tipo = ListView.Tipo;
 
             botaoDeletar = new Button();
             botaoDeletar.Location = new System.Drawing.Point(570, 120);
@@ -59,6 +60,8 @@ namespace WindowsFormsApp1.Formulario
         private Button botaoDeletar { get; }
         public modelocrud Modelo { get; set; }
         public TodosListViews ListView { get; }
+
+        public string Tipo { get; set; }
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
         {
@@ -284,7 +287,25 @@ namespace WindowsFormsApp1.Formulario
         
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
-            var lista = await Task.Run(() => Modelo.recuperar(null));
+            List<modelocrud> lista = new List<modelocrud>();
+            if (Modelo != null)
+            lista = await Task.Run(() => Modelo.recuperar(null));
+            else
+            {
+                if (Tipo == "Celula")
+                    lista = await Task.Run(() => business.classes.Abstrato.Celula.recuperarTodasCelulas());
+
+                if (Tipo == "Ministerio")
+                    lista = await Task.Run(() => business.classes.Abstrato.Ministerio.recuperarTodosMinisterios());
+
+                if (Tipo == "Membro")
+                    lista = await Task.Run(() => business.classes.Abstrato.Membro.recuperarTodosMembros());
+
+                if (Tipo == "Pessoa")
+                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+            }
+
+
             ListView.Dock = DockStyle.Left;
 
             if (lista != null)

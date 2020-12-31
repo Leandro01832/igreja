@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Formulario.Ministerio
     {
 
         public SupervisorMinisterio() : base(
-        new ListViewSupervisorMinisterio(new business.classes.Ministerio.Supervisor_Ministerio()))
+        new ListViewSupervisorMinisterio(new business.classes.Ministerio.Supervisor_Ministerio(), ""))
         {
             InitializeComponent();
         }

@@ -10,7 +10,7 @@ namespace WFIgrejaLgpd.ListViews
 {
     class ListViewCrianca : ListViewPessoa
     {
-        public ListViewCrianca(modelocrud modelo) : base(modelo)
+        public ListViewCrianca(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

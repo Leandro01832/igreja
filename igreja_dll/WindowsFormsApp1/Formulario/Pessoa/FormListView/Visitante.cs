@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class Visitante : FormularioListView
     {
         public Visitante() : base(
-            new ListViewVisitante(new business.classes.Pessoas.Visitante()))
+            new ListViewVisitante(new business.classes.Pessoas.Visitante(), ""))
         {
             InitializeComponent();
         }

@@ -15,7 +15,7 @@ namespace WFIgrejaLgpd.Formulario.Celula
     {
         public CelulaCrianca() : base(
             new ListViewCelulaCrianca
-            (new business.classes.Celulas.Celula_Crianca()))
+            (new business.classes.Celulas.Celula_Crianca(), ""))
         {
             InitializeComponent();
         }

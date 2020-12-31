@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace WFIgrejaLgpd.ListViews
 {
-    class ListViewCelula : TodosListViews
+   public class ListViewCelula : TodosListViews
     {
-        public ListViewCelula(modelocrud modelo) : base(modelo)
+        public ListViewCelula(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
             
         }

@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Formulario.Ministerio
     public partial class SupervisorCelulaTreinamento : FormularioListView
     {
         public SupervisorCelulaTreinamento() : base(
-        new ListViewSupervisorCelulaTreinamento(new business.classes.Ministerio.Supervisor_Celula_Treinamento()))
+        new ListViewSupervisorCelulaTreinamento(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), ""))
         {
             InitializeComponent();
         }

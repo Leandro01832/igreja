@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewLiderCelulaTtreinamento : ListViewMinisterio
     {
-        public ListViewLiderCelulaTtreinamento(modelocrud modelo) : base(modelo)
+        public ListViewLiderCelulaTtreinamento(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

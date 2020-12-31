@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         public Crianca() : base(
             new ListViewCrianca
-            (new business.classes.Pessoas.Crianca()))
+            (new business.classes.Pessoas.Crianca(), ""))
         {
             
             InitializeComponent();

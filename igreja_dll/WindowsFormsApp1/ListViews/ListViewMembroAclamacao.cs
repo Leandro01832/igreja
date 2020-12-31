@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewMembroAclamacao : ListViewPessoa
     {
-        public ListViewMembroAclamacao(modelocrud modelo) : base(modelo)
+        public ListViewMembroAclamacao(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

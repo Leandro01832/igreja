@@ -9,7 +9,7 @@ namespace WFIgrejaLgpd.ListViews
 {
     class ListViewCelulaJovem : ListViewCelula
     {
-        public ListViewCelulaJovem(modelocrud modelo) : base(modelo)
+        public ListViewCelulaJovem(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }

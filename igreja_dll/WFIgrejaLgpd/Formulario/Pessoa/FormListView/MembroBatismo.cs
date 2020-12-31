@@ -15,7 +15,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
     {
         public MembroBatismo() : base(
             new ListViewMembroBatismo
-            (new business.classes.PessoasLgpd.Membro_BatismoLgpd()))
+            (new business.classes.PessoasLgpd.Membro_BatismoLgpd(), ""))
         {
             InitializeComponent();
         }

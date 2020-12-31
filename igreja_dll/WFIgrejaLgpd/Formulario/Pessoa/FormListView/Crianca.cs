@@ -17,7 +17,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 
         public Crianca() : base(
             new ListViewCrianca
-            (new business.classes.PessoasLgpd.CriancaLgpd()))
+            (new business.classes.PessoasLgpd.CriancaLgpd(), ""))
         {
             
             InitializeComponent();

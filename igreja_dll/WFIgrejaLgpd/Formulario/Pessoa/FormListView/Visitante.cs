@@ -14,7 +14,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
     public partial class Visitante : FormularioListView
     {
         public Visitante() : base(
-            new ListViewVisitante(new business.classes.PessoasLgpd.VisitanteLgpd()))
+            new ListViewVisitante(new business.classes.PessoasLgpd.VisitanteLgpd(),""))
         {
             InitializeComponent();
         }

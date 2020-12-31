@@ -15,7 +15,7 @@ namespace WFIgrejaLgpd.Formulario.Celula
     {
         public CelulaCasado() : base(
             new ListViewCelulaCasado
-            (new business.classes.Celulas.Celula_Casado()))
+            (new business.classes.Celulas.Celula_Casado(), ""))
         {
             InitializeComponent();
         }

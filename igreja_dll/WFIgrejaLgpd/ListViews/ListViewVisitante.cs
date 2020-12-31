@@ -10,7 +10,7 @@ namespace WFIgrejaLgpd.ListViews
 {
     class ListViewVisitante : ListViewPessoa
     {
-        public ListViewVisitante(modelocrud modelo) : base(modelo)
+        public ListViewVisitante(modelocrud modelo, string tipo) : base(modelo, tipo)
         {
 
         }
