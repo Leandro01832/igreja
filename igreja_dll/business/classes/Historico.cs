@@ -54,10 +54,8 @@ namespace business.classes
             }
         }               
 
-        public Historico()
+        public Historico() : base()
         {
-            bd = new BDcomum();
-            bd.m = this;
         }
 
         public override string alterar(int id)

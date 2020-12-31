@@ -67,6 +67,7 @@
     <Compile Include="classes\Celulas\Celula_Adulto.cs" />
     <Compile Include="classes\Celulas\Celula_Crianca.cs" />
     <Compile Include="classes\ChamadaLgpd.cs" />
+    <Compile Include="classes\HistoricoLgpd.cs" />
     <Compile Include="classes\IAddNalista.cs" />
     <Compile Include="classes\IBuscaLista.cs" />
     <Compile Include="classes\IMudancaEstadoLgpd.cs" />

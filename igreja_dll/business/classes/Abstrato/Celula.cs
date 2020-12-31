@@ -277,7 +277,7 @@ namespace business.classes.Abstrato
         {
             var select = "select * from Ministerio as m inner join " +
                 " MinisterioCelula as mice on m.Id=mice.Ministerio_Id  inner join Celula as c" +
-                $" on mice.Celula_Id=c.Id where mice.Ministerio_Id='{id}' ";
+                $" on mice.Celula_Id=c.Id where mice.Celula_Id='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -302,9 +302,9 @@ namespace business.classes.Abstrato
 
         public List<modelocrud> buscarPessoas(int? id)
         {
-            Select_padrao = "select * from Celula as C "
-                + " inner join Pessoa as P on C.Id=P.celula_ "
-                + $" where P.celula_='{id}'";
+            Select_padrao = "select * from Pessoa as P "
+                + " inner join Celula as C on C.Id=P.celula_ "
+                + $" where P.celula_='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -319,7 +319,7 @@ namespace business.classes.Abstrato
 
             while (dr.Read())
             {
-                var m = (Pessoa)Pessoa.recuperarPessoa(int.Parse(Convert.ToString(dr["celula_"])));
+                var m = (Pessoa)Pessoa.recuperarPessoa(int.Parse(Convert.ToString(dr["Id"])));
                 modelos.Add(m);
             }
             dr.Close();

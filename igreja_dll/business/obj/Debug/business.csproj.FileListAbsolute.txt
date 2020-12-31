@@ -42,3 +42,16 @@ F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\Entity
 F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
 F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
 F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\business\obj\Debug\business.csprojAssemblyReference.cache
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\business.dll.config
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\business.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\business.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\EntityFramework.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\MySql.Data.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\EntityFramework.xml
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Debug\business.csprojAssemblyReference.cache
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Debug\business.csproj.CoreCompileInputs.cache
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Debug\business.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Debug\business.pdb

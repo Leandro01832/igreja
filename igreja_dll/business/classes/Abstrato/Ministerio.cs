@@ -235,7 +235,7 @@ namespace business.classes.Abstrato
             Select_padrao = "select * from Pessoa as P "
                 + " inner join PessoaMinisterio as PEMI on P.Id=PEMI.Pessoa_Id"
                 + " inner join Ministerio as M on PEMI.Ministerio_Id=M.Id"
-                + $" where PEMI.Pessoa_Id='{id}'";
+                + $" where PEMI.Ministerio_Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -264,7 +264,7 @@ namespace business.classes.Abstrato
             Select_padrao = "select * from Celula as C "
                 + " inner join MinisterioCelula as MICE on C.Id=MICE.Celula_Id"
                 + " inner join Ministerio as M on MICE.Ministerio_Id=M.Id"
-                + $" where MICE.Celula_Id='{id}'";
+                + $" where MICE.Ministerio_Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();

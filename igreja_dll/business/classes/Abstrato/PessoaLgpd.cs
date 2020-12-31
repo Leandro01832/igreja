@@ -1,19 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Drawing;
-using database.banco;
+﻿using business.classes.PessoasLgpd;
+using database;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Drawing.Imaging;
-using business.classes.Ministerio;
-using database;
-using business.classes.Pessoas;
 using System.Threading.Tasks;
-using business.classes.PessoasLgpd;
+using System.Windows.Forms;
 
 namespace business.classes.Abstrato
 {
@@ -49,10 +42,10 @@ namespace business.classes.Abstrato
                 var historicos = recuperarHistorico(id);
                 if (historicos != null)
                 {
-                    this.Historico = new List<Historico>();
+                    this.Historico = new List<HistoricoLgpd>();
                     foreach (var m in historicos)
                     {
-                        this.Historico.Add((Historico)m);
+                        this.Historico.Add((HistoricoLgpd)m);
                     }
                 }
             }           
@@ -85,7 +78,7 @@ namespace business.classes.Abstrato
        
         public virtual List<Abstrato.Ministerio> Ministerios { get; set; }
 
-        public virtual List<Historico> Historico { get; set; }
+        public virtual List<HistoricoLgpd> Historico { get; set; }
 
         public virtual List<Reuniao> Reuniao { get; set; }
 
@@ -305,8 +298,8 @@ namespace business.classes.Abstrato
 
         public List<modelocrud> recuperarHistorico(int? id)
         {
-            var select = "select * from Historico as H " +
-                " inner join Pessoa as P" +
+            var select = "select * from HistoricoLgpd as H " +
+                " inner join PessoaLgpd as P" +
                 $" on P.Id=H.pessoaid where P.Id='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -322,7 +315,7 @@ namespace business.classes.Abstrato
 
             while (dr.Read())
             {
-                Historico h = new Historico();
+                HistoricoLgpd h = new HistoricoLgpd();
                 h.pessoaid = int.Parse(dr["pessoaid"].ToString());
                 h.Id = int.Parse(dr["pessoaid"].ToString());
                 h.Falta = int.Parse(dr["Falta"].ToString());

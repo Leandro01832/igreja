@@ -377,7 +377,7 @@ namespace business.classes.Abstrato
                 r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"]);
                 r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"]);                
                 r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                r.Id = int.Parse(dr["Local_reuniao"].ToString());
+                r.Id = int.Parse(dr["Id"].ToString());
                 modelos.Add(r);
             }
             dr.Close();
@@ -407,7 +407,7 @@ namespace business.classes.Abstrato
             {
                 Historico h = new Historico();
                 h.pessoaid = int.Parse(dr["pessoaid"].ToString());
-                h.Id = int.Parse(dr["pessoaid"].ToString());
+                h.Id = int.Parse(dr["Id"].ToString());
                 h.Falta = int.Parse(dr["Falta"].ToString());
                 h.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
                 modelos.Add(h);
