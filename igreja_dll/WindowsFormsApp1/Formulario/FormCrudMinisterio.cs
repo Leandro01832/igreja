@@ -17,7 +17,8 @@ namespace WindowsFormsApp1.Formulario
 
         }
 
-        public FormCrudMinisterio(business.classes.Abstrato.Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
+        public FormCrudMinisterio(business.classes.Abstrato.Ministerio p,
+            bool Deletar, bool Atualizar, bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

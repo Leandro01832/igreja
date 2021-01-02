@@ -7,12 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using database;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroMembroAclamacao : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public CadastroMembroAclamacao(business.classes.Abstrato.Pessoa p, bool Deletar, bool Atualizar,  bool Detalhes)
+
+        public CadastroMembroAclamacao(modelocrud modelo, modelocrud modeloNovo)
+            :base(modelo, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
+        public CadastroMembroAclamacao(business.classes.Abstrato.Pessoa p,
+            bool Deletar, bool Atualizar,  bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
@@ -22,6 +31,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             this.Text = "Cadastro de membro por aclamação.";
 
+            if(modelo != null)
             if (modelo.Id != 0)
             {
                 this.Size = new Size(new Point(850, 750));

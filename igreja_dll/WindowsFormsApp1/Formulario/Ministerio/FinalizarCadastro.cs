@@ -12,7 +12,8 @@ namespace WindowsFormsApp1.Formulario.Ministerio
 {
     public partial class FinalizarCadastro : FormCrudMinisterio
     {
-        public FinalizarCadastro(business.classes.Abstrato.Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
+        public FinalizarCadastro(business.classes.Abstrato.Ministerio p,
+            bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

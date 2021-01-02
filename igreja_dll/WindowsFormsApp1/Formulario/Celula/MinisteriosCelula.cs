@@ -17,7 +17,8 @@ namespace WindowsFormsApp1.Formulario.Celula
             InitializeComponent();
         }
 
-        public MinisteriosCelula(business.classes.Abstrato.Celula p, bool Deletar, bool Atualizar, bool Detalhes)
+        public MinisteriosCelula(business.classes.Abstrato.Celula p,
+            bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

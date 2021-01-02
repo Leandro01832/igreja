@@ -12,7 +12,8 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class EnderecoCelula : FormularioCrudCelula
     {
-        public EnderecoCelula(business.classes.Abstrato.Celula p, bool Deletar, bool Atualizar, bool Detalhes)
+        public EnderecoCelula(business.classes.Abstrato.Celula p,
+            bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

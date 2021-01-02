@@ -7,12 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using database;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroMembroReconciliacao : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public CadastroMembroReconciliacao(business.classes.Abstrato.Pessoa p, bool Deletar, bool Atualizar,  bool Detalhes)
+
+        public CadastroMembroReconciliacao(modelocrud modelo, modelocrud modeloNovo)
+            :base(modelo, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
+        public CadastroMembroReconciliacao(business.classes.Abstrato.Pessoa p,
+            bool Deletar, bool Atualizar,  bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
@@ -21,8 +30,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         private void CadastroMembroReconciliacao_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de membro por reconciliação.";
-            var p = (business.classes.Pessoas.Membro_Reconciliacao)modelo;
-            txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
+            if(modelo != null)
+            if(modelo.Id != 0)
+            {
+                var p = (business.classes.Pessoas.Membro_Reconciliacao)modelo;
+                txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
+            }
+            
             
         }
 

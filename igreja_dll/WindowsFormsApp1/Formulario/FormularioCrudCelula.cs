@@ -14,7 +14,8 @@ namespace WindowsFormsApp1
 
         }
 
-        public FormularioCrudCelula(business.classes.Abstrato.Celula p, bool Deletar, bool Atualizar, bool Detalhes)
+        public FormularioCrudCelula(business.classes.Abstrato.Celula p,
+            bool Deletar, bool Atualizar, bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

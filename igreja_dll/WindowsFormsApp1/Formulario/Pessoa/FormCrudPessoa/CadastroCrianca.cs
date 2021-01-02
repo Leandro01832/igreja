@@ -7,16 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using database;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroCrianca : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public CadastroCrianca(business.classes.Abstrato.Pessoa p, bool Atualizar, bool Deletar, bool Detalhes)
+
+        public CadastroCrianca(business.classes.Abstrato.Pessoa p,
+            bool Atualizar, bool Deletar, bool Detalhes)
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
             P = p;
+        }
+
+        public CadastroCrianca(modelocrud modelo, modelocrud modeloNovo)
+            : base(modelo, modeloNovo)
+        {
+            InitializeComponent();
         }
 
         public business.classes.Abstrato.Pessoa P { get; }
@@ -24,7 +33,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         private void CadastroCrianca_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de Criança.";
-
+            if(modelo != null)
             if(modelo.Id != 0)
             {
                 var p = (business.classes.Pessoas.Crianca)modelo;

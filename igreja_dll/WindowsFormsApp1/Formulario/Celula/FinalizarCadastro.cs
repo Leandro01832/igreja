@@ -12,7 +12,8 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class FinalizarCadastro : FormularioCrudCelula
     {
-        public FinalizarCadastro(business.classes.Abstrato.Celula p, bool Deletar, bool Atualizar, bool Detalhes)
+        public FinalizarCadastro(business.classes.Abstrato.Celula p,
+            bool Deletar, bool Atualizar, bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

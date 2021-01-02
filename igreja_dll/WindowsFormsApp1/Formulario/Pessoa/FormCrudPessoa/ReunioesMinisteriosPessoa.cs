@@ -17,7 +17,8 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public ReunioesMinisteriosPessoa(business.classes.Abstrato.Pessoa p, bool Deletar, bool Atualizar, bool Detalhes)
+        public ReunioesMinisteriosPessoa(business.classes.Abstrato.Pessoa p,
+            bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

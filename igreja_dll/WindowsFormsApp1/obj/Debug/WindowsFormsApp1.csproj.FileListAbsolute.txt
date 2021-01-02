@@ -136,3 +136,4 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmMudancaEstado.resources

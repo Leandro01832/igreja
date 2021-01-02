@@ -19,7 +19,8 @@ namespace WindowsFormsApp1.Formulario.Ministerio
             InitializeComponent();
         }
 
-        public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
+        public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p,
+            bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

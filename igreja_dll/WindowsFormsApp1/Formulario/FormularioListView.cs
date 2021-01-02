@@ -25,6 +25,14 @@ namespace WindowsFormsApp1.Formulario
             this.Modelo = ListView.Modelo;
             this.Tipo = ListView.Tipo;
 
+            MudancaEstado = new Button();
+            MudancaEstado.Location = new System.Drawing.Point(570, 40);
+            MudancaEstado.Size = new System.Drawing.Size(100, 50);
+            MudancaEstado.Text = "Mudança de estado";
+            MudancaEstado.Click += MudancaEstado_Click;
+            MudancaEstado.Dock = DockStyle.Right;
+            MudancaEstado.Visible = false;
+
             botaoDeletar = new Button();
             botaoDeletar.Location = new System.Drawing.Point(570, 120);
             botaoDeletar.Size = new System.Drawing.Size(100, 50);
@@ -50,11 +58,26 @@ namespace WindowsFormsApp1.Formulario
             Controls.Add(botaoDetalhes);
             Controls.Add(botaoAtualizar);
             Controls.Add(botaoDeletar);
+            Controls.Add(MudancaEstado);
             this.ListView = ListView;
 
             InitializeComponent();
         }
 
+        private void MudancaEstado_Click(object sender, EventArgs e)
+        {
+            if (ListView.numero == 0)
+            {
+                MessageBox.Show("Escolha um item da lista.");
+                return;
+            }
+            Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
+            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+        }
+
+        private Button MudancaEstado { get; }
         private Button botaoDetalhes { get; }
         private Button botaoAtualizar { get; }
         private Button botaoDeletar { get; }
@@ -287,9 +310,14 @@ namespace WindowsFormsApp1.Formulario
         
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(700, 350);
             List<modelocrud> lista = new List<modelocrud>();
             if (Modelo != null)
-            lista = await Task.Run(() => Modelo.recuperar(null));
+            {
+                lista = await Task.Run(() => Modelo.recuperar(null));
+                if(Modelo is business.classes.Abstrato.Pessoa)
+                MudancaEstado.Visible = true;
+            }            
             else
             {
                 if (Tipo == "Celula")
@@ -299,10 +327,18 @@ namespace WindowsFormsApp1.Formulario
                     lista = await Task.Run(() => business.classes.Abstrato.Ministerio.recuperarTodosMinisterios());
 
                 if (Tipo == "Membro")
+                {
                     lista = await Task.Run(() => business.classes.Abstrato.Membro.recuperarTodosMembros());
+                    MudancaEstado.Visible = true;
+                }
+                    
 
                 if (Tipo == "Pessoa")
+                {
                     lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+                    MudancaEstado.Visible = true;
+                }
+                    
             }
 
 

@@ -47,6 +47,8 @@ namespace WindowsFormsApp1
         private Button dadoMinistro;
 
         public modelocrud modelo { get; set; }
+        public modelocrud modeloVelho { get; set; }
+        private modelocrud modeloNovo;
         public bool CondicaoDeletar { get => condicaoDeletar; set => condicaoDeletar = value; }
         public bool CondicaoAtualizar { get => condicaoAtualizar; set => condicaoAtualizar = value; }
         public bool CondicaoDetalhes { get => condicaoDetalhes; set => condicaoDetalhes = value; }
@@ -74,6 +76,7 @@ namespace WindowsFormsApp1
         private static string addNaListaPessoaMinsterios;
         private static string addNaListaPessoaReunioes;
         private static string addNaListaReuniaoPessoas;
+        
 
         public WFCrud(modelocrud modelo, bool deletar, bool atualizar, bool detalhes)
         {
@@ -285,6 +288,12 @@ namespace WindowsFormsApp1
 
             if (this.GetType().Name != "FinalizarCadastro" && condicaoDeletar)
                 Deletar.Visible = true;
+        }
+
+        public WFCrud(modelocrud modelo, modelocrud modeloNovo)
+        {
+            this.modeloVelho = modelo;
+            this.modeloNovo = modeloNovo;
         }
 
         private void DadoFoto_Click(object sender, EventArgs e)

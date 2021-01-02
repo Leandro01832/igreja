@@ -7,22 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using database;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroVisitante : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public CadastroVisitante(business.classes.Abstrato.Pessoa p, bool Deletar, bool Atualizar,  bool Detalhes)
+
+        public CadastroVisitante(business.classes.Abstrato.Pessoa p,
+            bool Deletar, bool Atualizar,  bool Detalhes)
             :base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
             this.modelo = p;
         }
 
+        public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)
+            :base(modelo, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         private void CadastroVisitante_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de visitante.";
 
+            if(modelo != null)
             if (modelo.Id != 0)
             {
                 var p = (business.classes.Pessoas.Visitante)modelo;

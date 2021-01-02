@@ -12,7 +12,8 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class Contato : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public Contato(business.classes.Abstrato.Pessoa p, bool Deletar, bool Atualizar,  bool Detalhes)
+        public Contato(business.classes.Abstrato.Pessoa p,
+            bool Deletar, bool Atualizar,  bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

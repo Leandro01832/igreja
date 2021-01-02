@@ -13,7 +13,8 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class DadoPessoal : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public DadoPessoal(business.classes.Abstrato.Pessoa P, bool Deletar, bool Atualizar,  bool Detalhes)
+        public DadoPessoal(business.classes.Abstrato.Pessoa P,
+            bool Deletar, bool Atualizar,  bool Detalhes)
             : base(P, Deletar, Atualizar,  Detalhes)
         { 
             InitializeComponent();

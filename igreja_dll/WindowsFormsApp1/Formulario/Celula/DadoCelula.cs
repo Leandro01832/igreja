@@ -17,7 +17,8 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         }
 
-        public DadoCelula(business.classes.Abstrato.Celula p, bool Deletar, bool Atualizar, bool Detalhes)
+        public DadoCelula(business.classes.Abstrato.Celula p,
+            bool Deletar, bool Atualizar, bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
