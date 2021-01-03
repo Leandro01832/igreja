@@ -71,6 +71,7 @@ namespace business.classes.Pessoas
                     {
                         Membro_Batismo mb = new Membro_Batismo();
                         mb.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mb.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         mb.Nome = Convert.ToString(dr["Nome"]);                        
                         modelos.Add(mb);
                     }

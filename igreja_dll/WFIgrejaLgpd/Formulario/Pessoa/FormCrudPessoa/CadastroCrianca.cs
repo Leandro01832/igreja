@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,12 +20,19 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
             P = p;
         }
 
+        public CadastroCrianca(modelocrud modelo, modelocrud modeloNovo)
+            : base(modelo, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         public business.classes.Abstrato.PessoaLgpd P { get; }
 
         private void CadastroCrianca_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de Criança.";
 
+            if(modelo != null)
             if(modelo.Id != 0)
             {
                 var p = (business.classes.PessoasLgpd.CriancaLgpd)modelo;
@@ -41,14 +49,32 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 
         private void txt_nome_pai_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.PessoasLgpd.CriancaLgpd)modelo;
-            p.Nome_pai = txt_nome_pai.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.PessoasLgpd.CriancaLgpd)modelo;
+                p.Nome_pai = txt_nome_pai.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.PessoasLgpd.CriancaLgpd)ModeloNovo;
+                p.Nome_pai = txt_nome_pai.Text;
+            }
+
         }
 
         private void txt_nome_mae_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.PessoasLgpd.CriancaLgpd)modelo;
-            p.Nome_mae = txt_nome_mae.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.PessoasLgpd.CriancaLgpd)modelo;
+                p.Nome_mae = txt_nome_mae.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.PessoasLgpd.CriancaLgpd)ModeloNovo;
+                p.Nome_mae = txt_nome_mae.Text;
+            }
+
         }
     }
 }

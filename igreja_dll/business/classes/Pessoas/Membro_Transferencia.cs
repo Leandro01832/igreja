@@ -154,6 +154,7 @@ namespace business.classes.Pessoas
                     {
                         Membro_Transferencia mt = new Membro_Transferencia();
                         mt.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mt.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         mt.Nome = Convert.ToString(dr["Nome"]);                        
                         modelos.Add(mt);
                     }

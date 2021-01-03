@@ -114,6 +114,7 @@ namespace business.classes.Pessoas
                     {
                         Membro_Aclamacao ma = new Membro_Aclamacao();
                         ma.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        ma.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         ma.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(ma);
                     }

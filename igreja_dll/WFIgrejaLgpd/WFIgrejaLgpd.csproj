@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DdataGridViews\IPesquisar.cs" />
+    <Compile Include="Formulario\Pessoa\FrmMudancaEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FrmMudancaEstado.Designer.cs">
+      <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImprimirRelatorio.cs" />
     <Compile Include="Pesquisa.cs">
       <SubType>Form</SubType>
@@ -555,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormListView\Visitante.resx">
       <DependentUpon>Visitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FrmMudancaEstado.resx">
+      <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Reuniao\Reuniao.resx">
       <DependentUpon>Reuniao.cs</DependentUpon>

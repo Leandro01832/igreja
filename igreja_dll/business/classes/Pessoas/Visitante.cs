@@ -140,6 +140,7 @@ namespace business.classes.Pessoas
                     {
                         Visitante v = new Visitante();
                         v.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        v.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         v.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(v);
                     }

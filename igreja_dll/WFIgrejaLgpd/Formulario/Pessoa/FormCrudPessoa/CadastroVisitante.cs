@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,16 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
             this.modelo = p;
         }
 
+        public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)
+            : base(modelo, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         private void CadastroVisitante_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de visitante.";
-
+            if(modelo != null)
             if (modelo.Id != 0)
             {
                 var p = (business.classes.PessoasLgpd.VisitanteLgpd)modelo;
@@ -38,20 +45,44 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 
         private void txt_condicao_religiosa_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.PessoasLgpd.VisitanteLgpd)modelo;
-            p.Condicao_religiosa = txt_condicao_religiosa.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.PessoasLgpd.VisitanteLgpd)modelo;
+                p.Condicao_religiosa = txt_condicao_religiosa.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.PessoasLgpd.VisitanteLgpd)ModeloNovo;
+                p.Condicao_religiosa = txt_condicao_religiosa.Text;
+            }
+
         }
 
         private void mask_data_visita_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.PessoasLgpd.VisitanteLgpd)modelo;
-            try
+            if(modelo != null)
             {
-                p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                var p = (business.classes.PessoasLgpd.VisitanteLgpd)modelo;
+                try
+                {
+                    p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                }
+                catch (Exception)
+                {
+                }
             }
-            catch (Exception)
+            if (ModeloNovo != null)
             {
+                var p = (business.classes.PessoasLgpd.VisitanteLgpd)ModeloNovo;
+                try
+                {
+                    p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                }
+                catch (Exception)
+                {
+                }
             }
+
         }
     }
 }

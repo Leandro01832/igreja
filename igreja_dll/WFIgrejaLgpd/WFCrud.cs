@@ -19,6 +19,12 @@ namespace WFIgrejaLgpd
             InitializeComponent();
         }
 
+        public WFCrud(modelocrud modelo, modelocrud modeloNovo)
+        {
+            this.ModeloVelho = modelo;
+            this.ModeloNovo = modeloNovo;
+        }
+
         private Label InfoForm;
 
         // botões para crud
@@ -45,6 +51,8 @@ namespace WFIgrejaLgpd
         private Button dadoMinistro;
 
         public modelocrud modelo { get; set; }
+        private modelocrud modeloVelho;
+        private modelocrud modeloNovo;
         public bool CondicaoDeletar { get => condicaoDeletar; set => condicaoDeletar = value; }
         public bool CondicaoAtualizar { get => condicaoAtualizar; set => condicaoAtualizar = value; }
         public bool CondicaoDetalhes { get => condicaoDetalhes; set => condicaoDetalhes = value; }
@@ -62,6 +70,8 @@ namespace WFIgrejaLgpd
         { get => addNaListaReuniaoPessoas; set => addNaListaReuniaoPessoas = value; }
         public Button Proximo { get => proximo; set => proximo = value; }
         public Button Atualizar { get => atualizar; set => atualizar = value; }
+        public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
+        public modelocrud ModeloNovo { get => modeloNovo; set => modeloNovo = value; }
 
         private bool condicaoDeletar;
         private bool condicaoAtualizar;

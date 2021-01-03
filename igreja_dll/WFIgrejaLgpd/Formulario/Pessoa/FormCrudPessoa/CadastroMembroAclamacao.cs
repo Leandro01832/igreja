@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,16 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
             InitializeComponent();
         }
 
+        public CadastroMembroAclamacao(modelocrud modelo, modelocrud modeloNovo)
+            : base(modelo, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         private void CadastroMembroAclamacao_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de membro por aclamação.";
-
+            if(modelo != null)
             if (modelo.Id != 0)
             {
                 this.Size = new Size(new Point(850, 750));
@@ -32,8 +39,17 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 
         private void txt_denominacao_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.PessoasLgpd.Membro_AclamacaoLgpd)modelo;
-            p.Denominacao = txt_denominacao.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.PessoasLgpd.Membro_AclamacaoLgpd)modelo;
+                p.Denominacao = txt_denominacao.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.PessoasLgpd.Membro_AclamacaoLgpd)ModeloNovo;
+                p.Denominacao = txt_denominacao.Text;
+            }
+
         }
     }
 }

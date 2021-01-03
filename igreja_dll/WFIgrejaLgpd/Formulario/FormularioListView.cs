@@ -20,10 +20,20 @@ namespace WFIgrejaLgpd.Formulario
 
         }
 
+        List<modelocrud> lista;
+
         public FormularioListView(TodosListViews ListView)
         {
             this.Tipo = ListView.Tipo;
             this.Modelo = ListView.Modelo;
+
+            MudancaEstado = new Button();
+            MudancaEstado.Location = new System.Drawing.Point(570, 40);
+            MudancaEstado.Size = new System.Drawing.Size(100, 50);
+            MudancaEstado.Text = "Mudança de estado";
+            MudancaEstado.Click += MudancaEstado_Click;
+            MudancaEstado.Dock = DockStyle.Right;
+            MudancaEstado.Visible = false;
 
             botaoDeletar = new Button();
             botaoDeletar.Location = new System.Drawing.Point(570, 120);
@@ -50,11 +60,31 @@ namespace WFIgrejaLgpd.Formulario
             Controls.Add(botaoDetalhes);
             Controls.Add(botaoAtualizar);
             Controls.Add(botaoDeletar);
+            Controls.Add(MudancaEstado);
             this.ListView = ListView;
 
             InitializeComponent();
         }
 
+        private void MudancaEstado_Click(object sender, EventArgs e)
+        {
+            if (ListView.numero == 0)
+            {
+                MessageBox.Show("Escolha um item da lista.");
+                return;
+            }
+            List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
+            foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Pessoa)item);
+            Modelo = lista2.First(i => i.Codigo == ListView.numero);
+            VerificarModeloPessoa();
+
+            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+        }
+
+        private Button MudancaEstado { get; }
         private Button botaoDetalhes { get; }
         private Button botaoAtualizar { get; }
         private Button botaoDeletar { get; }
@@ -67,7 +97,10 @@ namespace WFIgrejaLgpd.Formulario
         {
             if (ListView is ListViewPessoa)
             {
-                Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
+                List<business.classes.Abstrato.PessoaLgpd> lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+                foreach (var item in lista)
+                    lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+                Modelo = lista2.First(i => i.Codigo == ListView.numero);
                 VerificarModeloPessoa();
 
                 FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.PessoaLgpd)Modelo
@@ -78,7 +111,10 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = business.classes.Abstrato.Celula.recuperarCelula(ListView.numero);
+                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Celula)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
                 VerificarModeloCelula();
 
                 WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro dp =
@@ -90,7 +126,10 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(ListView.numero);
+                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Ministerio)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
                 VerificarModeloMinisterio();
 
                 WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro dp =
@@ -190,7 +229,10 @@ namespace WFIgrejaLgpd.Formulario
         {
             if (ListView is ListViewPessoa)
             {
-                Modelo = business.classes.Abstrato.PessoaLgpd.recuperarPessoa(ListView.numero);
+                List<business.classes.Abstrato.PessoaLgpd> lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+                foreach (var item in lista)
+                    lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+                Modelo = lista2.First(i => i.Codigo == ListView.numero);
 
                 VerificarModeloPessoa();
 
@@ -202,7 +244,10 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = business.classes.Abstrato.Celula.recuperarCelula(ListView.numero);
+                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
+                foreach (var item in lista)
+                    lista2.Add((business.classes.Abstrato.Celula)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloCelula();
 
@@ -215,7 +260,10 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(ListView.numero);
+                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
+                foreach (var item in lista)
+                    lista2.Add((business.classes.Abstrato.Ministerio)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloMinisterio();
 
@@ -232,7 +280,10 @@ namespace WFIgrejaLgpd.Formulario
         {
             if (ListView is ListViewPessoa)
             {
-                Modelo = business.classes.Abstrato.PessoaLgpd.recuperarPessoa(ListView.numero);
+                List<business.classes.Abstrato.PessoaLgpd> lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+                foreach (var item in lista)
+                    lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+                Modelo = lista2.First(i => i.Codigo == ListView.numero);
 
                 VerificarModeloPessoa();
 
@@ -244,7 +295,10 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = business.classes.Abstrato.Celula.recuperarCelula(ListView.numero);
+                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
+                foreach (var item in lista)
+                    lista2.Add((business.classes.Abstrato.Celula)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloCelula();
 
@@ -257,7 +311,10 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(ListView.numero);
+                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Ministerio)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloMinisterio();
 
@@ -304,49 +361,49 @@ namespace WFIgrejaLgpd.Formulario
                         {
                             case "Pessoa":
                                 p = (business.classes.Abstrato.PessoaLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Crianca":
                                 p = (business.classes.PessoasLgpd.CriancaLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Membro":
                                 p = (business.classes.Abstrato.MembroLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Membro_Aclamacao":
                                 p = (business.classes.PessoasLgpd.Membro_AclamacaoLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Membro_Reconciliacao":
                                 p = (business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Membro_Batismo":
                                 p = (business.classes.PessoasLgpd.Membro_BatismoLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Membro_Transferencia":
                                 p = (business.classes.PessoasLgpd.Membro_TransferenciaLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
 
                             case "Visitante":
                                 p = (business.classes.PessoasLgpd.VisitanteLgpd)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Email);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;
                         }

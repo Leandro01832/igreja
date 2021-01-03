@@ -241,8 +241,26 @@ namespace WindowsFormsApp1
                 Proximo.Visible = false;
                 FinalizarCadastro.Visible = false;
 
-                var pessoa = (business.classes.Abstrato.Pessoa)modelo;
-                InfoForm.Text = "Identificação: " + modelo.Id.ToString() + " - " + pessoa.Nome;
+                if(modelo is business.classes.Abstrato.Pessoa)
+                {
+                    var pessoa = (business.classes.Abstrato.Pessoa)modelo;
+                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() + " - " + pessoa.Nome;
+                }
+                else if(modelo is business.classes.Abstrato.Celula)
+                {
+                    var celula = (business.classes.Abstrato.Celula)modelo;
+                    InfoForm.Text = "Identificação: " + celula.Id.ToString() + " - " + celula.Nome;
+                }
+                else if (modelo is business.classes.Abstrato.Ministerio)
+                {
+                    var m = (business.classes.Abstrato.Ministerio)modelo;
+                    InfoForm.Text = "Identificação: " + m.Id.ToString() + " - " + m.Nome;
+                }
+                else 
+                {
+                    InfoForm.Text = "Identificação: " + modelo.Id.ToString() + " - ";
+                }
+
 
                 if (modelo is business.classes.Abstrato.Pessoa && this.GetType().Name == "FinalizarCadastro")
                 {

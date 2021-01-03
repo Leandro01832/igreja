@@ -30,44 +30,24 @@ namespace business.classes.Abstrato
         {
             string estado = "";
             PessoaLgpd p = (PessoaLgpd)m.recuperar(idVelhoEstado)[0];
+            estado = p.GetType().Name;
 
-            if (new Membro_TransferenciaLgpd().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_TransferenciaLgpd().excluir(idVelhoEstado);
-                estado = "Membro_Transferencia";
-            }
+            if (p is VisitanteLgpd)
+                p = (PessoaLgpd)new VisitanteLgpd(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is CriancaLgpd)
+                p = (PessoaLgpd)new CriancaLgpd(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_BatismoLgpd)
+                p = (PessoaLgpd)new Membro_BatismoLgpd(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_ReconciliacaoLgpd)
+                p = (PessoaLgpd)new Membro_ReconciliacaoLgpd(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_TransferenciaLgpd)
+                p = (PessoaLgpd)new Membro_TransferenciaLgpd(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_AclamacaoLgpd)
+                p = (PessoaLgpd)new Membro_AclamacaoLgpd(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
 
-            if (new Membro_ReconciliacaoLgpd().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_ReconciliacaoLgpd().excluir(idVelhoEstado);
-                estado = "Membro_Reconciliacao";
-            }               
+            p.excluir(idVelhoEstado);
 
-            if (new Membro_BatismoLgpd().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_BatismoLgpd().excluir(idVelhoEstado);
-                estado = "Membro_Batismo";
-            }               
-
-            if (new Membro_AclamacaoLgpd().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_AclamacaoLgpd().excluir(idVelhoEstado);
-                estado = "Membro_Aclamacao";
-            }                
-
-            if (new VisitanteLgpd().recuperar(idVelhoEstado) != null)
-            {
-                new Visitante().excluir(idVelhoEstado);
-                estado = "Visitante";
-            }                
-
-            if (new CriancaLgpd().recuperar(idVelhoEstado) != null)
-            {
-                new CriancaLgpd().excluir(idVelhoEstado);
-                estado = "Crianca";
-            }                
-
-            if (m is Membro_Aclamacao)
+            if (m is Membro_AclamacaoLgpd)
             {
                 var modelo = (Membro_AclamacaoLgpd)m;
                 Membro_AclamacaoLgpd membro = new Membro_AclamacaoLgpd
@@ -89,7 +69,7 @@ namespace business.classes.Abstrato
                 membro.salvar();
             }
 
-            if (m is Membro_Batismo)
+            if (m is Membro_BatismoLgpd)
             {
                 var modelo = (Membro_BatismoLgpd)m;
                 Membro_BatismoLgpd membro = new Membro_BatismoLgpd
@@ -110,7 +90,7 @@ namespace business.classes.Abstrato
                 membro.salvar();
             }
 
-            if (m is Membro_Reconciliacao)
+            if (m is Membro_ReconciliacaoLgpd)
             {
                 var modelo = (Membro_ReconciliacaoLgpd)m;
                 Membro_ReconciliacaoLgpd membro = new Membro_ReconciliacaoLgpd
@@ -132,7 +112,7 @@ namespace business.classes.Abstrato
                 membro.salvar();
             }
 
-            if (m is Membro_Transferencia)
+            if (m is Membro_TransferenciaLgpd)
             {
                 var modelo = (Membro_TransferenciaLgpd)m;
                 Membro_TransferenciaLgpd membro = new Membro_TransferenciaLgpd
@@ -156,7 +136,7 @@ namespace business.classes.Abstrato
                 membro.salvar();
             }
 
-            if (m is Crianca)
+            if (m is CriancaLgpd)
             {
                 var modelo = (CriancaLgpd)m;
                 CriancaLgpd c = new CriancaLgpd
@@ -176,7 +156,7 @@ namespace business.classes.Abstrato
                 c.salvar();
             }
 
-            if (m is Visitante)
+            if (m is VisitanteLgpd)
             {
                 var modelo = (VisitanteLgpd)m;
                 VisitanteLgpd v = new VisitanteLgpd

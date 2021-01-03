@@ -139,6 +139,7 @@ namespace business.classes.Pessoas
                     {
                         Crianca crianca = new Crianca();
                         crianca.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        crianca.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         crianca.Nome = Convert.ToString(dr["Nome"]);                                                
                         modelos.Add(crianca);
                     }

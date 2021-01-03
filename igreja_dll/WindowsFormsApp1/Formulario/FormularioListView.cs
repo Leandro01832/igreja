@@ -20,6 +20,8 @@ namespace WindowsFormsApp1.Formulario
 
         }
 
+        List<modelocrud> lista;
+
         public FormularioListView(TodosListViews ListView)
         {
             this.Modelo = ListView.Modelo;
@@ -71,7 +73,12 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
+            List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
+            foreach (var item in lista)
+            lista2.Add((business.classes.Abstrato.Pessoa)item);
+            Modelo = lista2.First(i => i.Codigo == ListView.numero);
+            VerificarModeloPessoa();
+
             FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
             frm.MdiParent = this.MdiParent;
             frm.Show();
@@ -95,7 +102,10 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
+                List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Pessoa)item);
+                Modelo = lista2.First(i =>  i.Codigo == ListView.numero);
                 VerificarModeloPessoa();
 
                 FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.Pessoa)Modelo
@@ -106,7 +116,10 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = business.classes.Abstrato.Celula.recuperarCelula(ListView.numero);
+                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Celula)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
                 VerificarModeloCelula();
 
                 WindowsFormsApp1.Formulario.Celula.FinalizarCadastro dp =
@@ -118,7 +131,10 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(ListView.numero);
+                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Ministerio)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
                 VerificarModeloMinisterio();
 
                 WindowsFormsApp1.Formulario.Ministerio.FinalizarCadastro dp =
@@ -191,27 +207,27 @@ namespace WindowsFormsApp1.Formulario
         {
             if (Modelo is business.classes.Pessoas.Crianca)
                 Modelo =
-             new business.classes.Pessoas.Crianca(ListView.numero, true).recuperar(ListView.numero)[0];
+             new business.classes.Pessoas.Crianca(Modelo.Id, true).recuperar(Modelo.Id)[0];
 
             if (Modelo is business.classes.Pessoas.Visitante)
                 Modelo =
-            new business.classes.Pessoas.Visitante(ListView.numero, true).recuperar(ListView.numero)[0];
+            new business.classes.Pessoas.Visitante(Modelo.Id, true).recuperar(Modelo.Id)[0];
 
             if (Modelo is business.classes.Pessoas.Membro_Aclamacao)
                 Modelo =
-            new business.classes.Pessoas.Membro_Aclamacao(ListView.numero, true).recuperar(ListView.numero)[0];
+            new business.classes.Pessoas.Membro_Aclamacao(Modelo.Id, true).recuperar(Modelo.Id)[0];
 
             if (Modelo is business.classes.Pessoas.Membro_Batismo)
                 Modelo =
-            new business.classes.Pessoas.Membro_Batismo(ListView.numero, true).recuperar(ListView.numero)[0];
+            new business.classes.Pessoas.Membro_Batismo(Modelo.Id, true).recuperar(Modelo.Id)[0];
 
             if (Modelo is business.classes.Pessoas.Membro_Reconciliacao)
                 Modelo =
-            new business.classes.Pessoas.Membro_Reconciliacao(ListView.numero, true).recuperar(ListView.numero)[0];
+            new business.classes.Pessoas.Membro_Reconciliacao(Modelo.Id, true).recuperar(Modelo.Id)[0];
 
             if (Modelo is business.classes.Pessoas.Membro_Transferencia)
                 Modelo =
-            new business.classes.Pessoas.Membro_Transferencia(ListView.numero, true).recuperar(ListView.numero)[0];
+            new business.classes.Pessoas.Membro_Transferencia(Modelo.Id, true).recuperar(Modelo.Id)[0];
         }
 
         private void botaoAtualizar_Click(object sender, EventArgs e)
@@ -223,8 +239,10 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
-
+                List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Pessoa)item);
+                Modelo = lista2.First(i => i.Codigo == ListView.numero);
                 VerificarModeloPessoa();
 
                 FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.Pessoa)Modelo
@@ -235,7 +253,10 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = business.classes.Abstrato.Celula.recuperarCelula(ListView.numero);
+                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Celula)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloCelula();
 
@@ -248,7 +269,10 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(ListView.numero);
+                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Ministerio)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloMinisterio();
 
@@ -270,8 +294,10 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = business.classes.Abstrato.Pessoa.recuperarPessoa(ListView.numero);
-
+                List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Pessoa)item);
+                Modelo = lista2.First(i => i.Codigo == ListView.numero);
                 VerificarModeloPessoa();
 
                 FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.Pessoa)Modelo
@@ -282,7 +308,10 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = business.classes.Abstrato.Celula.recuperarCelula(ListView.numero);
+                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Celula)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloCelula();
 
@@ -295,7 +324,10 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = business.classes.Abstrato.Ministerio.recuperarMinisterio(ListView.numero);
+                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
+                foreach (var item in lista)
+                lista2.Add((business.classes.Abstrato.Ministerio)item);
+                Modelo = lista2.First(i => i.Id == ListView.numero);
 
                 VerificarModeloMinisterio();
 
@@ -311,7 +343,7 @@ namespace WindowsFormsApp1.Formulario
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
             this.Size = new Size(700, 350);
-            List<modelocrud> lista = new List<modelocrud>();
+            lista = new List<modelocrud>();
             if (Modelo != null)
             {
                 lista = await Task.Run(() => Modelo.recuperar(null));
@@ -354,49 +386,49 @@ namespace WindowsFormsApp1.Formulario
                         {
                             case "Pessoa":
                                 p = (business.classes.Abstrato.Pessoa)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Crianca":
                                 p = (business.classes.Pessoas.Crianca)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Membro":
                                 p = (business.classes.Abstrato.Membro)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Membro_Aclamacao":
                                 p = (business.classes.Pessoas.Membro_Aclamacao)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Membro_Reconciliacao":
                                 p = (business.classes.Pessoas.Membro_Reconciliacao)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Membro_Batismo":
                                 p = (business.classes.Pessoas.Membro_Batismo)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Membro_Transferencia":
                                 p = (business.classes.Pessoas.Membro_Transferencia)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
 
                             case "Visitante":
                                 p = (business.classes.Pessoas.Visitante)v;
-                                ListView.Items.Add(p.Id.ToString() + " - " + p.Nome);
+                                ListView.Items.Add(p.Codigo.ToString() + " - " + p.Nome);
 
                                 break;
                         }

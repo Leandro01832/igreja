@@ -111,6 +111,7 @@ namespace business.classes.Pessoas
                     {
                         Membro_Reconciliacao mr = new Membro_Reconciliacao();
                         mr.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mr.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         mr.Nome = Convert.ToString(dr["Nome"]);                        
                         modelos.Add(mr);
                     }

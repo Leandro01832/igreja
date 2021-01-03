@@ -30,6 +30,19 @@ namespace business.classes.Abstrato
             string estado = "";
             Pessoa p = (Pessoa) Pessoa.recuperarPessoa(idVelhoEstado);
             estado = p.GetType().Name;
+            if (p is Visitante)
+                p = (Pessoa) new Visitante(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Crianca)
+                p = (Pessoa)new Crianca(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_Batismo)
+                p = (Pessoa)new Membro_Batismo(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_Reconciliacao)
+                p = (Pessoa)new Membro_Reconciliacao(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_Transferencia)
+                p = (Pessoa)new Membro_Transferencia(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+            if (p is Membro_Aclamacao)
+                p = (Pessoa)new Membro_Aclamacao(idVelhoEstado, true).recuperar(idVelhoEstado)[0];
+
             p.excluir(idVelhoEstado);
             
 
