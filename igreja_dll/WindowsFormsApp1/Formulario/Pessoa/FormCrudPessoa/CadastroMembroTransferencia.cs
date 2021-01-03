@@ -46,20 +46,46 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void txt_nome_igreja_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Membro_Transferencia)modelo;
-            p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Transferencia)modelo;
+                p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Transferencia)ModeloNovo;
+                p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+            }
+
         }
 
         private void txt_nome_estado_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Membro_Transferencia)modelo;
-            p.Estado_transferencia = txt_nome_estado.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Transferencia)modelo;
+                p.Estado_transferencia = txt_nome_estado.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Transferencia)ModeloNovo;
+                p.Estado_transferencia = txt_nome_estado.Text;
+            }
         }
 
         private void txt_nome_cidade_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Membro_Transferencia)modelo;
-            p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Transferencia)modelo;
+                p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+            }
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Transferencia)ModeloNovo;
+                p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+            }
+
         }
     }
 }

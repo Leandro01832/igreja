@@ -43,7 +43,8 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
+            p.MudarEstado(ModeloVelho.Id, ModeloNovo);
         }
 
         public FormCrudPessoa(modelocrud modelo,

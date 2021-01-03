@@ -50,14 +50,35 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void txt_nome_pai_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Crianca)modelo;
-            p.Nome_pai = txt_nome_pai.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Crianca)modelo;
+                p.Nome_pai = txt_nome_pai.Text;
+            }            
+
+            if(ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Crianca)ModeloNovo;
+                p.Nome_pai = txt_nome_pai.Text;
+            }
+            
         }
 
         private void txt_nome_mae_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Crianca)modelo;
-            p.Nome_mae = txt_nome_mae.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Crianca)modelo;
+                p.Nome_mae = txt_nome_mae.Text;
+            }
+            
+
+            if(ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Crianca)ModeloNovo;
+                p.Nome_mae = txt_nome_mae.Text;
+            }
+            
         }
     }
 }

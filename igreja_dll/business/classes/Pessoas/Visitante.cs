@@ -11,7 +11,7 @@ using business.classes.Abstrato;
 namespace business.classes.Pessoas
 {
     [Table("Visitante")]
-    public class Visitante : Pessoa, IMudancaEstado
+    public class Visitante : Pessoa
     {       
         private DateTime data_visita;
         
@@ -55,12 +55,10 @@ namespace business.classes.Pessoas
                 }
             }
         }
-
-        private MudancaEstado MudancaEstado;
+        
 
         public Visitante() : base()
         {
-            MudancaEstado = new MudancaEstado();
         }
 
         public Visitante(int? id, bool recuperaLista) : base(id, recuperaLista)
@@ -173,12 +171,6 @@ namespace business.classes.Pessoas
             BDcomum.addNaLista = "";
            return Insert_padrao;
         }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
-        }
-
-       
+        
     }
 }

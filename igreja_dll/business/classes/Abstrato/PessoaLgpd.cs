@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace business.classes.Abstrato
 {
     [Table("PessoaLgpd")]
-    public abstract class PessoaLgpd : modelocrud, IAddNalista  
+    public abstract class PessoaLgpd : modelocrud, IAddNalista, IMudancaEstado  
     {
         public PessoaLgpd(int? id, bool recuperaLista) : base(id, recuperaLista)
         {
@@ -66,6 +66,9 @@ namespace business.classes.Abstrato
 
         AddNalista AddNalista;
 
+        [Index("CODIGOLgpd", 2, IsUnique = true)]
+        public int Codigo { get; set; }
+
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [ScaffoldColumn(false)]
         public string Email { get; set; }
@@ -81,9 +84,7 @@ namespace business.classes.Abstrato
         public virtual List<HistoricoLgpd> Historico { get; set; }
 
         public virtual List<Reuniao> Reuniao { get; set; }
-
-        public virtual List<MudancaEstadoLgpd> Mudancas { get; set; }
-
+        
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
 
@@ -400,6 +401,11 @@ namespace business.classes.Abstrato
         public void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
         {
             AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id);
+        }
+
+        public void MudarEstado(int id, modelocrud m)
+        {
+            MudancaEstado.MudarEstado(id, m);
         }
     }
 }

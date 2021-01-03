@@ -48,20 +48,45 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void txt_condicao_religiosa_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Visitante)modelo;
-            p.Condicao_religiosa = txt_condicao_religiosa.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Visitante)modelo;
+                p.Condicao_religiosa = txt_condicao_religiosa.Text;
+            }
+            if(ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Visitante)ModeloNovo;
+                p.Condicao_religiosa = txt_condicao_religiosa.Text;
+            }
+            
         }
 
         private void mask_data_visita_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Visitante)modelo;
-            try
+            if(modelo != null)
             {
-                p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                var p = (business.classes.Pessoas.Visitante)modelo;
+                try
+                {
+                    p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                }
+                catch (Exception)
+                {
+                }
             }
-            catch (Exception)
+
+            if(ModeloNovo != null)
             {
+                var p = (business.classes.Pessoas.Visitante)ModeloNovo;
+                try
+                {
+                    p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                }
+                catch (Exception)
+                {
+                }
             }
+            
         }
     }
 }

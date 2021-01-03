@@ -12,14 +12,13 @@ using database.banco;
 
 namespace business.classes.Abstrato
 {
+    [Table("MudancaEstado")]
     public class MudancaEstado : modelocrud, IMudancaEstado
     {
         public string velhoEstado { get; set; }
         public string novoEstado { get; set; }
         public DateTime DataMudanca { get; set; }
-        public int Pessoa_ { get; set; }
-        [ForeignKey("Pessoa_")]
-        public virtual Pessoa Pessoa { get; set; }
+        public int CodigoPessoa { get; set; }
 
         public MudancaEstado() :base()
         {
@@ -29,45 +28,12 @@ namespace business.classes.Abstrato
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
-            Pessoa p = (Pessoa)m.recuperar(idVelhoEstado)[0];
+            Pessoa p = (Pessoa) Pessoa.recuperarPessoa(idVelhoEstado);
+            estado = p.GetType().Name;
+            p.excluir(idVelhoEstado);
+            
 
-            if (new Membro_Transferencia().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_Transferencia().excluir(idVelhoEstado);
-                estado = "Membro_Transferencia";
-            }
-
-            if (new Membro_Reconciliacao().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_Reconciliacao().excluir(idVelhoEstado);
-                estado = "Membro_Reconciliacao";
-            }               
-
-            if (new Membro_Batismo().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_Batismo().excluir(idVelhoEstado);
-                estado = "Membro_Batismo";
-            }               
-
-            if (new Membro_Aclamacao().recuperar(idVelhoEstado) != null)
-            {
-                new Membro_Aclamacao().excluir(idVelhoEstado);
-                estado = "Membro_Aclamacao";
-            }                
-
-            if (new Visitante().recuperar(idVelhoEstado) != null)
-            {
-                new Visitante().excluir(idVelhoEstado);
-                estado = "Visitante";
-            }                
-
-            if (new Crianca().recuperar(idVelhoEstado) != null)
-            {
-                new Crianca().excluir(idVelhoEstado);
-                estado = "Crianca";
-            }                
-
-            if (m.GetType().Name == "Membro_Aclamacao")
+            if (m is Membro_Aclamacao)
             {
                 var modelo = (Membro_Aclamacao)m;
                 Membro_Aclamacao membro = new Membro_Aclamacao
@@ -94,12 +60,13 @@ namespace business.classes.Abstrato
                     Sexo_feminino = p.Sexo_feminino,
                     Sexo_masculino = p.Sexo_masculino,
                     Telefone = p.Telefone,
-                    Status = p.Status
+                    Status = p.Status,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Membro_Batismo")
+            if (m is Membro_Batismo)
             {
                 var modelo = (Membro_Batismo)m;
                 Membro_Batismo membro = new Membro_Batismo
@@ -125,12 +92,13 @@ namespace business.classes.Abstrato
                     Sexo_feminino = p.Sexo_feminino,
                     Sexo_masculino = p.Sexo_masculino,
                     Telefone = p.Telefone,
-                    Status = p.Status
+                    Status = p.Status,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Membro_Reconciliacao")
+            if (m is Membro_Reconciliacao)
             {
                 var modelo = (Membro_Reconciliacao)m;
                 Membro_Reconciliacao membro = new Membro_Reconciliacao
@@ -157,12 +125,13 @@ namespace business.classes.Abstrato
                     Sexo_feminino = p.Sexo_feminino,
                     Sexo_masculino = p.Sexo_masculino,
                     Telefone = p.Telefone,
-                    Status = p.Status
+                    Status = p.Status,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Membro_Transferencia")
+            if (m is Membro_Transferencia)
             {
                 var modelo = (Membro_Transferencia)m;
                 Membro_Transferencia membro = new Membro_Transferencia
@@ -191,12 +160,13 @@ namespace business.classes.Abstrato
                     Sexo_feminino = p.Sexo_feminino,
                     Sexo_masculino = p.Sexo_masculino,
                     Telefone = p.Telefone,
-                    Status = p.Status
+                    Status = p.Status,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Crianca")
+            if (m is Crianca)
             {
                 var modelo = (Crianca)m;
                 Crianca c = new Crianca
@@ -221,12 +191,13 @@ namespace business.classes.Abstrato
                     Sexo_feminino = p.Sexo_feminino,
                     Sexo_masculino = p.Sexo_masculino,
                     Telefone = p.Telefone,
-                    Status = p.Status
+                    Status = p.Status,
+                    Codigo = p.Codigo
                 };
                 c.salvar();
             }
 
-            if (m.GetType().Name == "Visitante")
+            if (m is Visitante)
             {
                 var modelo = (Visitante)m;
                 Visitante v = new Visitante
@@ -251,7 +222,8 @@ namespace business.classes.Abstrato
                     Sexo_feminino = p.Sexo_feminino,
                     Sexo_masculino = p.Sexo_masculino,
                     Telefone = p.Telefone,
-                    Status = p.Status
+                    Status = p.Status,
+                    Codigo = p.Codigo
                 };
                 v.salvar();
             }
@@ -261,14 +233,14 @@ namespace business.classes.Abstrato
                 novoEstado = m.GetType().Name,
                 velhoEstado = estado,
                 DataMudanca = DateTime.Now,
-                Pessoa_ = m.recuperar(null).Last().Id
+                CodigoPessoa = p.Codigo
             }.salvar();
         }
 
         public override string alterar(int id)
         {
             Update_padrao = $"update MudancaEstado set velhoEstado='{velhoEstado}', " +
-           $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', Pessoa_='{Pessoa_}' " +
+           $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', CodigoPessoa='{CodigoPessoa}' " +
            $"  where Id='{id}' ";
             
             bd.Editar(this);
@@ -310,8 +282,9 @@ namespace business.classes.Abstrato
                     try
                     {
                         dr.Read();
-                        this.Pessoa_ = int.Parse(Convert.ToString(dr["Pessoa_"]));
+                        
                         this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                        this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
                         this.novoEstado = Convert.ToString(dr["novoEstado"]);
                         this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                         dr.Close();
@@ -346,11 +319,12 @@ namespace business.classes.Abstrato
                     {
                         while (dr.Read())
                         {
-                            this.Pessoa_ = int.Parse(Convert.ToString(dr["Pessoa_"]));
-                            this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                            this.novoEstado = Convert.ToString(dr["novoEstado"]);
-                            this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
-                            modelos.Add(this);
+                            MudancaEstado m = new MudancaEstado();
+                            m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                            m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                            m.novoEstado = Convert.ToString(dr["novoEstado"]);
+                            m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
+                            modelos.Add(m);
                         }
 
                         dr.Close();
@@ -371,8 +345,8 @@ namespace business.classes.Abstrato
 
         public override string salvar()
         {
-            Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, Pessoa_) " +
-                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString()}', '{Pessoa_}')";
+            Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, CodigoPessoa) " +
+                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString()}', '{CodigoPessoa}')";
             
             bd.SalvarModelo(this);
             return Insert_padrao;

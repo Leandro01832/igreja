@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace business.classes.PessoasLgpd
 {
        [Table("Membro_TransferenciaLgpd")]
-    public class Membro_TransferenciaLgpd : MembroLgpd, IMudancaEstadoLgpd
+    public class Membro_TransferenciaLgpd : MembroLgpd
     {    
         private string nome_cidade_transferencia;
         private string estado_transferencia;
@@ -79,12 +79,9 @@ namespace business.classes.PessoasLgpd
                 }
             }
         }
-
-        private MudancaEstadoLgpd MudancaEstado;
-
+        
         public Membro_TransferenciaLgpd() : base()
         {
-            MudancaEstado = new MudancaEstadoLgpd();
         }
 
         public Membro_TransferenciaLgpd(int id, bool recuperaLista) : base(id, recuperaLista)
@@ -186,11 +183,6 @@ namespace business.classes.PessoasLgpd
             bd.SalvarModelo(this);
             BDcomum.addNaLista = "";
             return Insert_padrao;            
-        }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
         }
     }
 }

@@ -14,19 +14,16 @@ using business.classes.Abstrato;
 namespace business.classes.PessoasLgpd
 {
     [Table("Membro_BatismoLgpd")]
-    public class Membro_BatismoLgpd : MembroLgpd, IMudancaEstadoLgpd
+    public class Membro_BatismoLgpd : MembroLgpd
     {
         public Membro_BatismoLgpd() : base()
         {
-            MudancaEstado = new MudancaEstadoLgpd();
         }
 
         public Membro_BatismoLgpd(int id, bool recuperaLista) : base(id, recuperaLista)
         {
 
         }
-
-        private MudancaEstadoLgpd MudancaEstado;
 
         public override string alterar(int id)
         {
@@ -40,11 +37,6 @@ namespace business.classes.PessoasLgpd
             Delete_padrao = $" delete from Membro_BatismoLgpd where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
-        }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
         }
 
         public override List<modelocrud> recuperar(int? id)

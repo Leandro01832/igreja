@@ -14,7 +14,7 @@ using business.classes.Abstrato;
 namespace business.classes.Pessoas
 {
     [Table("Membro_Aclamacao")]
-    public class Membro_Aclamacao : Membro, IMudancaEstado
+    public class Membro_Aclamacao : Membro
     {
 
         private string denominacao;
@@ -39,12 +39,10 @@ namespace business.classes.Pessoas
                 }
             }
         }
-
-        private MudancaEstado MudancaEstado;
+        
 
        public Membro_Aclamacao() : base()
         {
-            MudancaEstado = new MudancaEstado();
         }
 
         public Membro_Aclamacao(int id, bool recuperaLista) : base(id, recuperaLista)
@@ -147,9 +145,6 @@ namespace business.classes.Pessoas
             return Insert_padrao;
         }
 
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
-        }
+        
     }
 }

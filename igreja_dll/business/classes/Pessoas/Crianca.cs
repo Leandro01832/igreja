@@ -16,7 +16,7 @@ using business.classes.Ministerio;
 namespace business.classes.Pessoas
 {
     [Table("Crianca")]
-    public class Crianca : Pessoa, IMudancaEstado
+    public class Crianca : Pessoa
     {
 
         private string nome_pai;
@@ -63,11 +63,10 @@ namespace business.classes.Pessoas
             }
         }
 
-        MudancaEstado MudancaEstado;
+        
 
         public Crianca() : base()
         {
-            MudancaEstado = new MudancaEstado();
         }
 
         public Crianca(int id, bool recuperaLista) : base(id, recuperaLista)
@@ -168,10 +167,6 @@ namespace business.classes.Pessoas
             BDcomum.addNaLista = "";
             return Insert_padrao;
         }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
-        }
+        
     }
 }

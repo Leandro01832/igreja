@@ -42,8 +42,18 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void txt_denominacao_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Membro_Aclamacao)modelo;
-            p.Denominacao = txt_denominacao.Text;
+            if(modelo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Aclamacao)modelo;
+                p.Denominacao = txt_denominacao.Text;
+            }
+
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.Membro_Aclamacao)ModeloNovo;
+                p.Denominacao = txt_denominacao.Text;
+            }
+
         }
     }
 }

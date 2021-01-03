@@ -11,7 +11,7 @@ using business.classes.Abstrato;
 namespace business.classes.PessoasLgpd
 {
     [Table("VisitanteLgpd")]
-    public class VisitanteLgpd : PessoaLgpd, IMudancaEstadoLgpd
+    public class VisitanteLgpd : PessoaLgpd
     {       
         private DateTime data_visita;
         
@@ -55,12 +55,9 @@ namespace business.classes.PessoasLgpd
                 }
             }
         }
-
-        private MudancaEstadoLgpd MudancaEstado;
-
+        
         public VisitanteLgpd() : base()
         {
-            MudancaEstado = new MudancaEstadoLgpd();
         }
 
         public VisitanteLgpd(int? id, bool recuperaLista) : base(id, recuperaLista)
@@ -174,12 +171,6 @@ namespace business.classes.PessoasLgpd
             BDcomum.addNaLista = "";
            return Insert_padrao;
         }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
-        }
-
        
     }
 }

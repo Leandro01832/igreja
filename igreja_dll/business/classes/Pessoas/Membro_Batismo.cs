@@ -14,20 +14,17 @@ using business.classes.Abstrato;
 namespace business.classes.Pessoas
 {
     [Table("Membro_Batismo")]
-    public class Membro_Batismo : Membro, IMudancaEstado
+    public class Membro_Batismo : Membro
     {
         public Membro_Batismo() : base()
         {
-            MudancaEstado = new MudancaEstado();
         }
 
         public Membro_Batismo(int id, bool recuperaLista) : base(id, recuperaLista)
         {
 
         }
-
-        private MudancaEstado MudancaEstado;
-
+        
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -42,11 +39,7 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
-        }
-
+        
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Batismo as MB "

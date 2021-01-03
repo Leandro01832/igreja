@@ -19,6 +19,7 @@ namespace repositorioEF
 
         public DbSet<Chamada> Chamadas { get; set; }
         public DbSet<MudancaEstado> MudancaEstado { get; set; }
+        public DbSet<MudancaEstadoLgpd> MudancaEstadoLgpd { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }
         public DbSet<Pessoa> pessoas { get; set; }
         public DbSet<Endereco> endereco { get; set; }

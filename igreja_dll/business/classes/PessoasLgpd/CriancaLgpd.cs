@@ -16,7 +16,7 @@ using business.classes.Ministerio;
 namespace business.classes.PessoasLgpd
 {
     [Table("CriancaLgpd")]
-    public class CriancaLgpd : PessoaLgpd, IMudancaEstadoLgpd
+    public class CriancaLgpd : PessoaLgpd
     {
 
         private string nome_pai;
@@ -62,12 +62,9 @@ namespace business.classes.PessoasLgpd
                 }
             }
         }
-
-        MudancaEstadoLgpd MudancaEstado;
-
+        
         public CriancaLgpd() : base()
         {
-            MudancaEstado = new MudancaEstadoLgpd();
         }
 
         public CriancaLgpd(int id, bool recuperaLista) : base(id, recuperaLista)
@@ -167,11 +164,6 @@ namespace business.classes.PessoasLgpd
             bd.SalvarModelo(this);
             BDcomum.addNaLista = "";
             return Insert_padrao;
-        }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
         }
     }
 }

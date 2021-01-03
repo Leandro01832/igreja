@@ -14,7 +14,7 @@ using business.classes.Abstrato;
 namespace business.classes.Pessoas
 {
     [Table("Membro_Reconciliacao")]
-    public class Membro_Reconciliacao : Membro, IMudancaEstado
+    public class Membro_Reconciliacao : Membro
     {        
         private int data_reconciliacao;
 
@@ -38,12 +38,9 @@ namespace business.classes.Pessoas
                 }
             }
         }
-
-        private MudancaEstado MudancaEstado;
-
+        
         public Membro_Reconciliacao() : base()
         {
-            MudancaEstado = new MudancaEstado();
         }
 
         public Membro_Reconciliacao(int id, bool recuperaLista) : base(id, recuperaLista)
@@ -142,10 +139,6 @@ namespace business.classes.Pessoas
             BDcomum.addNaLista = "";
             return Insert_padrao;
         }
-
-        public void MudarEstado(int id, modelocrud m)
-        {
-            MudancaEstado.MudarEstado(id, this);
-        }
+        
     }
 }

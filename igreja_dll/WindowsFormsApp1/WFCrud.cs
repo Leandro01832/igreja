@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
         private Button dadoMinistro;
 
         public modelocrud modelo { get; set; }
-        public modelocrud modeloVelho { get; set; }
+        private modelocrud modeloVelho;
         private modelocrud modeloNovo;
         public bool CondicaoDeletar { get => condicaoDeletar; set => condicaoDeletar = value; }
         public bool CondicaoAtualizar { get => condicaoAtualizar; set => condicaoAtualizar = value; }
@@ -66,6 +66,8 @@ namespace WindowsFormsApp1
         { get => addNaListaReuniaoPessoas; set => addNaListaReuniaoPessoas = value; }
         public Button Proximo { get => proximo; set => proximo = value; }
         public Button Atualizar { get => atualizar; set => atualizar = value; }
+        public modelocrud ModeloNovo { get => modeloNovo; set => modeloNovo = value; }
+        public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
 
         private bool condicaoDeletar;
         private bool condicaoAtualizar;
@@ -292,8 +294,8 @@ namespace WindowsFormsApp1
 
         public WFCrud(modelocrud modelo, modelocrud modeloNovo)
         {
-            this.modeloVelho = modelo;
-            this.modeloNovo = modeloNovo;
+            this.ModeloVelho = modelo;
+            this.ModeloNovo = modeloNovo;
         }
 
         private void DadoFoto_Click(object sender, EventArgs e)

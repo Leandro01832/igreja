@@ -13,14 +13,13 @@ using database.banco;
 
 namespace business.classes.Abstrato
 {
+    [Table("MudancaEstadoLgpd")]
     public class MudancaEstadoLgpd : modelocrud, IMudancaEstadoLgpd
     {
         public string velhoEstado { get; set; }
         public string novoEstado { get; set; }
         public DateTime DataMudanca { get; set; }
-        public int Pessoa_ { get; set; }
-        [ForeignKey("Pessoa_")]
-        public virtual PessoaLgpd Pessoa { get; set; }
+        public int CodigoPessoa { get; set; }
 
         public MudancaEstadoLgpd() :base()
         {
@@ -68,7 +67,7 @@ namespace business.classes.Abstrato
                 estado = "Crianca";
             }                
 
-            if (m.GetType().Name == "Membro_Aclamacao")
+            if (m is Membro_Aclamacao)
             {
                 var modelo = (Membro_AclamacaoLgpd)m;
                 Membro_AclamacaoLgpd membro = new Membro_AclamacaoLgpd
@@ -84,12 +83,13 @@ namespace business.classes.Abstrato
                     Historico = p.Historico,
                     Img = p.Img,
                     Reuniao = p.Reuniao,
-                    Ministerios = p.Ministerios
+                    Ministerios = p.Ministerios,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Membro_Batismo")
+            if (m is Membro_Batismo)
             {
                 var modelo = (Membro_BatismoLgpd)m;
                 Membro_BatismoLgpd membro = new Membro_BatismoLgpd
@@ -104,12 +104,13 @@ namespace business.classes.Abstrato
                     Historico = p.Historico,
                     Img = p.Img,
                     Reuniao = p.Reuniao,
-                    Ministerios = p.Ministerios
+                    Ministerios = p.Ministerios,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Membro_Reconciliacao")
+            if (m is Membro_Reconciliacao)
             {
                 var modelo = (Membro_ReconciliacaoLgpd)m;
                 Membro_ReconciliacaoLgpd membro = new Membro_ReconciliacaoLgpd
@@ -125,12 +126,13 @@ namespace business.classes.Abstrato
                     Historico = p.Historico,
                     Img = p.Img,
                     Reuniao = p.Reuniao,
-                    Ministerios = p.Ministerios
+                    Ministerios = p.Ministerios,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Membro_Transferencia")
+            if (m is Membro_Transferencia)
             {
                 var modelo = (Membro_TransferenciaLgpd)m;
                 Membro_TransferenciaLgpd membro = new Membro_TransferenciaLgpd
@@ -148,12 +150,13 @@ namespace business.classes.Abstrato
                     Historico = p.Historico,
                     Img = p.Img,
                     Reuniao = p.Reuniao,
-                    Ministerios = p.Ministerios
+                    Ministerios = p.Ministerios,
+                    Codigo = p.Codigo
                 };
                 membro.salvar();
             }
 
-            if (m.GetType().Name == "Crianca")
+            if (m is Crianca)
             {
                 var modelo = (CriancaLgpd)m;
                 CriancaLgpd c = new CriancaLgpd
@@ -167,12 +170,13 @@ namespace business.classes.Abstrato
                     Historico = p.Historico,
                     Img = p.Img,
                     Reuniao = p.Reuniao,
-                    Ministerios = p.Ministerios
+                    Ministerios = p.Ministerios,
+                    Codigo = p.Codigo
                 };
                 c.salvar();
             }
 
-            if (m.GetType().Name == "Visitante")
+            if (m is Visitante)
             {
                 var modelo = (VisitanteLgpd)m;
                 VisitanteLgpd v = new VisitanteLgpd
@@ -186,7 +190,8 @@ namespace business.classes.Abstrato
                     Historico = p.Historico,
                     Img = p.Img,
                     Reuniao = p.Reuniao,
-                    Ministerios = p.Ministerios
+                    Ministerios = p.Ministerios,
+                    Codigo = p.Codigo
                 };
                 v.salvar();
             }
@@ -196,14 +201,14 @@ namespace business.classes.Abstrato
                 novoEstado = m.GetType().Name,
                 velhoEstado = estado,
                 DataMudanca = DateTime.Now,
-                Pessoa_ = m.recuperar(null).Last().Id
+                CodigoPessoa = p.Codigo
             }.salvar();
         }
 
         public override string alterar(int id)
         {
             Update_padrao = $"update MudancaEstado set velhoEstado='{velhoEstado}', " +
-           $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', Pessoa_='{Pessoa_}' " +
+           $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', CodigoPessoa='{CodigoPessoa}' " +
            $"  where Id='{id}' ";
             
             bd.Editar(this);
@@ -245,7 +250,7 @@ namespace business.classes.Abstrato
                     try
                     {
                         dr.Read();
-                        this.Pessoa_ = int.Parse(Convert.ToString(dr["Pessoa_"]));
+                        this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
                         this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                         this.novoEstado = Convert.ToString(dr["novoEstado"]);
                         this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
@@ -281,11 +286,12 @@ namespace business.classes.Abstrato
                     {
                         while (dr.Read())
                         {
-                            this.Pessoa_ = int.Parse(Convert.ToString(dr["Pessoa_"]));
-                            this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                            this.novoEstado = Convert.ToString(dr["novoEstado"]);
-                            this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
-                            modelos.Add(this);
+                            MudancaEstadoLgpd m = new MudancaEstadoLgpd();
+                            m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                            m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                            m.novoEstado = Convert.ToString(dr["novoEstado"]);
+                            m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
+                            modelos.Add(m);
                         }
 
                         dr.Close();
@@ -306,8 +312,8 @@ namespace business.classes.Abstrato
 
         public override string salvar()
         {
-            Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, Pessoa_) " +
-                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString()}', '{Pessoa_}')";
+            Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, CodigoPessoa) " +
+                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString()}', '{CodigoPessoa}')";
             
             bd.SalvarModelo(this);
             return Insert_padrao;

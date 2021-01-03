@@ -23,7 +23,8 @@ namespace repositorioEFLgpd
 
         public DbSet<Chamada> Chamada { get; set; }
         public DbSet<ChamadaLgpd> ChamadaLgpd { get; set; }
-        public DbSet<MudancaEstadoLgpd> MudancaEstado { get; set; }
+        public DbSet<MudancaEstadoLgpd> MudancaEstadoLgpd { get; set; }
+        public DbSet<MudancaEstado> MudancaEstado { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }
         public DbSet<PessoaLgpd> PessoaLgpd { get; set; }
         public DbSet<EnderecoCelula> EnderecoCelula { get; set; }

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace business.classes.Abstrato
 {
     [Table("Pessoa")]
-    public abstract class Pessoa : modelocrud, IAddNalista  
+    public abstract class Pessoa : modelocrud, IAddNalista, IMudancaEstado  
     {
         public Pessoa(int? id, bool recuperaLista) : base(id, recuperaLista)
         {
@@ -70,9 +70,13 @@ namespace business.classes.Abstrato
                 Numero_chamada = 1
 
             };
+           
         }
 
         AddNalista AddNalista;
+
+        [Index("CODIGO", 2, IsUnique = true)]
+        public int Codigo { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome { get; set; }
@@ -130,9 +134,7 @@ namespace business.classes.Abstrato
         public virtual List<Historico> Historico { get; set; }
 
         public virtual List<Reuniao> Reuniao { get; set; }
-
-        public virtual List<MudancaEstado> Mudancas { get; set; }
-
+        
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
 
@@ -140,6 +142,7 @@ namespace business.classes.Abstrato
 
         public override string salvar()
         {
+            Codigo = recuperarTodos().Count + 1;
             Telefone t = new Telefone(); t = this.Telefone;
             Endereco e = new Endereco(); e = this.Endereco;
             Chamada c = new Chamada(); c = this.Chamada;
@@ -150,11 +153,11 @@ namespace business.classes.Abstrato
                       Insert_padrao =
               "insert into Pessoa (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
               "Rg, Cpf, Sexo_feminino, Falescimento, " +
-              "Email, Status, Falta, celula_, Img)" +
+              "Email, Status, Falta, celula_, Img, Codigo)" +
               $" values ('{this.Nome}', '{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
               $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
               $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +
-              $" '{this.Email}', '{this.Status}', '{this.Falta}', {celula}, '{this.Img}') " +
+              $" '{this.Email}', '{this.Status}', '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
                c.salvar() + " " +
               e.salvar() + " " +
               t.salvar() + " ";
@@ -173,7 +176,7 @@ namespace business.classes.Abstrato
             $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Email='{Email}', Status='{Status}', " +
             $"celula_={celula}, Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
             $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +
-            $" Falta='{Falta}', Img='{this.Img}' " +
+            $" Falta='{Falta}', Img='{this.Img}' Codigo='{Codigo}' " +
             $"  where Id='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
             
             bd.Editar(null);
@@ -182,13 +185,17 @@ namespace business.classes.Abstrato
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Pessoa as P where P.Id='{id}' " +
+            Delete_padrao = 
                 " delete Telefone from Telefone as T inner " +
                 " join Pessoa as P on T.Id=P.Id" +
                 $" where P.Id='{id}' " +
                 "delete Endereco from Endereco as E inner " +
                 "join Pessoa as P on E.Id=P.Id" +
-                $" where P.Id='{id}' ";
+                $" where P.Id='{id}' " +
+                " delete Chamada from Chamada as CH inner " +
+                "join Pessoa as P on CH.Id=P.Id" +
+                $" where P.Id='{id}' " +
+                $" delete Pessoa from Pessoa as P where P.Id='{id}' " ;
             
             bd.Excluir(null);
             return Delete_padrao;
@@ -252,7 +259,7 @@ namespace business.classes.Abstrato
             return  t6.Result;
         }
 
-        public modelocrud buscarPessoa(int? id)
+        public void buscarPessoa(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
             + " inner join Endereco as E on E.Id=P.Id "
@@ -268,7 +275,6 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
             }
 
             if (id != null)
@@ -279,6 +285,7 @@ namespace business.classes.Abstrato
                     this.Img = Convert.ToString(dr["Img"]);
                     this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.Nome = Convert.ToString(dr["Nome"]);
+                    this.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                     this.Email = Convert.ToString(dr["Email"]);
                     this.Falta = int.Parse(dr["Falta"].ToString());
                     this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
@@ -320,9 +327,7 @@ namespace business.classes.Abstrato
                 {
                     bd.obterconexao().Close();
                 }
-                return this;
             }
-            return null;
         }
 
         public List<modelocrud> recuperarMinisterios(int? id)
@@ -491,5 +496,10 @@ namespace business.classes.Abstrato
         {
             AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id);
         }
+
+        public void MudarEstado(int id, modelocrud m)
+        {
+            MudancaEstado.MudarEstado(id, m);
+        }        
     }
 }

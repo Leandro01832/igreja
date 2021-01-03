@@ -42,14 +42,30 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void txt_reconciliacao_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.Membro_Reconciliacao)modelo;
-            try
+            if(modelo != null)
             {
-                p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                var p = (business.classes.Pessoas.Membro_Reconciliacao)modelo;
+                try
+                {
+                    p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                }
             }
-            catch (Exception)
+
+            if (ModeloNovo != null)
             {
-                MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                var p = (business.classes.Pessoas.Membro_Reconciliacao)ModeloNovo;
+                try
+                {
+                    p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                }
             }
         }
     }
