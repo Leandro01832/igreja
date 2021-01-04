@@ -185,7 +185,7 @@ namespace business.classes.Abstrato
             return t8.Result;
         }
         
-        public modelocrud buscarMinisterio(int? id)
+        public void buscarMinisterio(int? id)
         {
             Select_padrao = "select * from Ministerio as M  ";
             if (id != null) Select_padrao += $" where M.Id='{id}'";
@@ -198,7 +198,6 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
             }
 
             if (id != null)
@@ -220,14 +219,8 @@ namespace business.classes.Abstrato
                 finally
                 {
                     bd.obterconexao().Close();
-                }
-
-                this.Celulas = new List<Celula>();
-                var listaCelulas = buscarCelulas(id);
-
-                return this;
+                }            
             }
-            return null;
         }
 
         public List<modelocrud> buscarPessoas(int? id)
@@ -248,9 +241,13 @@ namespace business.classes.Abstrato
                 return null;
             }
 
+            var lista = Pessoa.recuperarTodos();
+            List<Pessoa> lista2 = new List<Pessoa>();
+            foreach (var item in lista)
+            lista2.Add((Pessoa)item);
             while (dr.Read())
             {
-                var m = Pessoa.recuperarPessoa(int.Parse(Convert.ToString(dr["Pessoa_Id"])));
+                var m = lista2.First(i => i.Id == int.Parse(Convert.ToString(dr["Pessoa_Id"])));
                 
                 modelos.Add(m);
             }
@@ -277,9 +274,11 @@ namespace business.classes.Abstrato
                 return null;
             }
 
+            var lista = Celula.recuperarTodasCelulas();
+
             while (dr.Read())
             {
-                var m = Celula.recuperarCelula(int.Parse(Convert.ToString(dr["Celula_Id"])));
+                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Celula_Id"])));
 
                 modelos.Add(m);
             }
@@ -287,91 +286,7 @@ namespace business.classes.Abstrato
             bd.obterconexao().Close();
             return modelos;
         }
-
-        public static modelocrud recuperarMinisterio(int v)
-        {
-            Task<modelocrud> t = Task.Factory.StartNew(() =>
-            {
-                var m = new Lider_Celula(v, false).recuperar(v);
-                if (m != null) return m[0];
-                return null;
-            });
-
-            Task<modelocrud> t2 = t.ContinueWith((task) =>
-            {
-                if(task.Result == null)
-                {
-                    var m = new Lider_Celula_Treinamento(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }                
-                return task.Result;
-            });
-
-            Task<modelocrud> t3 = t2.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var m = new Lider_Ministerio(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t4 = t3.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var m = new Lider_Ministerio_Treinamento(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t5 = t4.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var m = new Supervisor_Celula(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t6 = t5.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var m = new Supervisor_Celula_Treinamento(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t7 = t6.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var m = new Supervisor_Ministerio(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t8 = t7.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var m = new Supervisor_Ministerio_Treinamento(v, false).recuperar(v);
-                    if (m != null) return m[0];
-                }
-                return task.Result;
-            });
-
-            Task.WaitAll(t, t2, t3, t4, t5,t6,t7,t8);
-
-            return t8.Result;
-        }
-
+        
         public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
         {
             AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);

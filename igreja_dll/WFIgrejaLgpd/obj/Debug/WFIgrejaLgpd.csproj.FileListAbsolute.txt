@@ -132,3 +132,4 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WFIg
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WFIgrejaLgpd\obj\Debug\WFIgrejaLgpd.csproj.CopyComplete
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WFIgrejaLgpd\obj\Debug\WFIgrejaLgpd.exe
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WFIgrejaLgpd\obj\Debug\WFIgrejaLgpd.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WFIgrejaLgpd\obj\Debug\WFIgrejaLgpd.Formulario.Pessoa.FrmMudancaEstado.resources

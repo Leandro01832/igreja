@@ -17,6 +17,10 @@ namespace WindowsFormsApp1.DdataGridViews
             var innerjoin = "";
             DataTable dtable = new DataTable();
 
+            var listaPessoa = business.classes.Abstrato.PessoaLgpd.recuperarTodos();
+            var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
+            var listaCelula = business.classes.Abstrato.Celula.recuperarTodasCelulas();
+
             if (modelo is business.classes.Abstrato.Membro)
                 innerjoin = " inner join Membro as MEM  on M.Id=MEM.Id inner join Pessoa as P on MEM.Id=P.Id";
 
@@ -44,12 +48,12 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Pessoas.Membro_Reconciliacao ||
                 modelo is business.classes.Pessoas.Membro_Transferencia)
             {
-                List<modelocrud> lista = new List<modelocrud>();
+                List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(business.classes.Abstrato.Pessoa.recuperarPessoa(int.Parse(item["Id"].ToString())));
+                    l.Add(listaPessoa.First(i => i.Id == int.Parse(item["Id"].ToString())));
                 }
-                return lista;
+                return l;
             }
 
             if (modelo == null && tipo == "Ministerio" || modelo is business.classes.Ministerio.Lider_Celula ||
@@ -61,12 +65,12 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Ministerio.Supervisor_Ministerio ||
                 modelo is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
             {
-                List<modelocrud> lista = new List<modelocrud>();
+                List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(business.classes.Abstrato.Ministerio.recuperarMinisterio(int.Parse(item["Id"].ToString())));
+                    l.Add(listaMinisterio.First(i => i.Id == int.Parse(item["Id"].ToString())));
                 }
-                return lista;
+                return l;
             }
 
             if (modelo == null && tipo == "Celula" ||
@@ -76,42 +80,42 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Celulas.Celula_Crianca ||
                 modelo is business.classes.Celulas.Celula_Jovem)
             {
-                List<modelocrud> lista = new List<modelocrud>();
+                List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(business.classes.Abstrato.Celula.recuperarCelula(int.Parse(item["Id"].ToString())));
+                    l.Add(listaCelula.First(i => i.Id == int.Parse(item["Id"].ToString())));
                 }
-                return lista;
+                return l;
             }
 
             if ( modelo is business.classes.Chamada)
             {
-                List<modelocrud> lista = new List<modelocrud>();
+                List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(new business.classes.Chamada().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    l.Add(new business.classes.Chamada().recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
-                return lista;
+                return l;
             }
 
             if (modelo is business.classes.Reuniao)
             {
-                List<modelocrud> lista = new List<modelocrud>();
+                List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(new business.classes.Reuniao().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    l.Add(new business.classes.Reuniao().recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
-                return lista;
+                return l;
             }
 
             if (modelo is business.classes.Historico)
             {
-                List<modelocrud> lista = new List<modelocrud>();
+                List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    lista.Add(new business.classes.Historico().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    l.Add(new business.classes.Historico().recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
-                return lista;
+                return l;
             }
 
             return null;

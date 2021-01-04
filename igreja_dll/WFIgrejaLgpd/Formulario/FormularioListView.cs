@@ -329,7 +329,7 @@ namespace WFIgrejaLgpd.Formulario
         
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
-            List<modelocrud> lista = new List<modelocrud>();
+             lista = new List<modelocrud>();
             if (Modelo != null)
                 lista = await Task.Run(() => Modelo.recuperar(null));
             else

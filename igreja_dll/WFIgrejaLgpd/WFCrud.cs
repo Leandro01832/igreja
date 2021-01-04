@@ -1,6 +1,7 @@
 ﻿using database;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WFIgrejaLgpd.Formulario;
@@ -418,15 +419,17 @@ namespace WFIgrejaLgpd
             FinalizarCadastro.Enabled = false;
             if(modelo is business.classes.Abstrato.Celula)
             {
+                
                 var p = (business.classes.Abstrato.Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
+                    var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
                         try
                         {
-                            if (business.classes.Abstrato.Ministerio.recuperarMinisterio(int.Parse(item)) == null)
+                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
                                 AddNaListaCelulaMinisterios.Replace(item, "");
                         }
                         catch { }
@@ -477,12 +480,13 @@ namespace WFIgrejaLgpd
                 var p = (business.classes.Abstrato.Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
+                    var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
                         try
                         {
-                            if (business.classes.Abstrato.Ministerio.recuperarMinisterio(int.Parse(item)) == null)
+                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
                                 AddNaListaCelulaMinisterios.Replace(item, "");
                         }
                         catch { }

@@ -28,7 +28,11 @@ namespace business.classes.Abstrato
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
-            Pessoa p = (Pessoa) Pessoa.recuperarPessoa(idVelhoEstado);
+            var lista = Pessoa.recuperarTodos();
+            List<Pessoa> lista2 = new List<Pessoa>();
+            foreach (var item in lista)
+            lista2.Add((Pessoa)item);
+            Pessoa p = lista2.First(i => i.Id == idVelhoEstado);
             estado = p.GetType().Name;
             if (p is Visitante)
                 p = (Pessoa) new Visitante(idVelhoEstado, true).recuperar(idVelhoEstado)[0];

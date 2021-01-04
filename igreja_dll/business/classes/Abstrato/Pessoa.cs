@@ -13,6 +13,7 @@ using business.classes.Ministerio;
 using database;
 using business.classes.Pessoas;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace business.classes.Abstrato
 {
@@ -72,6 +73,9 @@ namespace business.classes.Abstrato
             };
            
         }
+
+        //propriedades
+        #region
 
         AddNalista AddNalista;
 
@@ -139,6 +143,8 @@ namespace business.classes.Abstrato
         public string Img { get; set; }
 
         private MudancaEstado MudancaEstado;
+
+        #endregion
 
         public override string salvar()
         {
@@ -347,10 +353,11 @@ namespace business.classes.Abstrato
                 return null;
             }
 
+            var lista = Ministerio.recuperarTodosMinisterios();
+
             while (dr.Read())
             {
-               var m = (Ministerio)
-               Ministerio.recuperarMinisterio(int.Parse(Convert.ToString(dr["Ministerio_Id"])));
+               var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Ministerio_Id"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -422,71 +429,7 @@ namespace business.classes.Abstrato
             bd.obterconexao().Close();
             return modelos;
         }
-
-        public static modelocrud recuperarPessoa(int v)
-        {
-            Task<modelocrud> t = Task.Factory.StartNew(() =>
-            {
-                var p = new Visitante(v, false).recuperar(v);
-                if (p != null) return p[0];
-                return null;
-            });
-
-            Task<modelocrud> t2 = t.ContinueWith((task) =>
-            {
-                if(task.Result == null)
-                {
-                    var p = new Crianca(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t3 = t2.ContinueWith((task) =>
-            {
-                if(task.Result == null)
-                {
-                    var p = new Membro_Aclamacao(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t4 = t3.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var p = new Membro_Batismo(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t5 = t4.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var p = new Membro_Reconciliacao(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t6 = t5.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var p = new Membro_Transferencia(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task.WaitAll(t, t2, t3, t4, t5,t6);
-
-            return t6.Result;
-        }
-
+        
         public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
         {
             AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);

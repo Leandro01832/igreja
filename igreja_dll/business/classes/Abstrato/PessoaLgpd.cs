@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -187,7 +188,7 @@ namespace business.classes.Abstrato
             return  t6.Result;
         }
 
-        public modelocrud buscarPessoa(int? id)
+        public void buscarPessoa(int? id)
         {
             Select_padrao = "select * from PessoaLgpd as P "
         + " inner join ChamadaLgpd as CH on CH.Id=P.Id ";
@@ -201,7 +202,6 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
             }
 
             if (id != null)
@@ -231,9 +231,7 @@ namespace business.classes.Abstrato
                 {
                     bd.obterconexao().Close();
                 }
-                return this;
             }
-            return null;
         }
 
         public List<modelocrud> recuperarMinisterios(int? id)
@@ -253,10 +251,11 @@ namespace business.classes.Abstrato
                 return null;
             }
 
+            var lista = Ministerio.recuperarTodosMinisterios();
+
             while (dr.Read())
             {
-               var m = (Ministerio)
-               Ministerio.recuperarMinisterio(int.Parse(Convert.ToString(dr["Ministerio_Id"])));
+               var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Ministerio_Id"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -328,71 +327,7 @@ namespace business.classes.Abstrato
             bd.obterconexao().Close();
             return modelos;
         }
-
-        public static modelocrud recuperarPessoa(int v)
-        {
-            Task<modelocrud> t = Task.Factory.StartNew(() =>
-            {
-                var p = new VisitanteLgpd(v, false).recuperar(v);
-                if (p != null) return p[0];
-                return null;
-            });
-
-            Task<modelocrud> t2 = t.ContinueWith((task) =>
-            {
-                if(task.Result == null)
-                {
-                    var p = new CriancaLgpd(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t3 = t2.ContinueWith((task) =>
-            {
-                if(task.Result == null)
-                {
-                    var p = new Membro_AclamacaoLgpd(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t4 = t3.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var p = new Membro_BatismoLgpd(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t5 = t4.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var p = new Membro_ReconciliacaoLgpd(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t6 = t5.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var p = new Membro_TransferenciaLgpd(v, false).recuperar(v);
-                    if (p != null) return p[0];
-                }
-                return task.Result;
-            });
-
-            Task.WaitAll(t, t2, t3, t4, t5,t6);
-
-            return t6.Result;
-        }
-
+        
         public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
         {
             AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);

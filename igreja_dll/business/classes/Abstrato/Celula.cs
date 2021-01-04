@@ -11,6 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -161,66 +162,8 @@ namespace business.classes.Abstrato
 
             return t5.Result;
         }
-
-        public static modelocrud recuperarCelula(int v)
-        {
-            Task<modelocrud> t = Task.Factory.StartNew(() =>
-            {
-                var c = new Celula_Adolescente(v, false).recuperar(v);
-                if (c != null) return c[0];
-                return null;
-            });
-
-            Task<modelocrud> t2 = t.ContinueWith((task) =>
-            {
-                if(task.Result == null)
-                {
-                    var c = new Celula_Adulto(v, false).recuperar(v);
-                    if(c != null)
-                    return c[0];
-                }                
-                return task.Result;
-            });
-
-            Task<modelocrud> t3 = t2.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var c = new Celula_Casado(v, false).recuperar(v);
-                    if (c != null)
-                        return c[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t4 = t3.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var c = new Celula_Crianca(v, false).recuperar(v);
-                    if (c != null)
-                        return c[0];
-                }
-                return task.Result;
-            });
-
-            Task<modelocrud> t5 = t4.ContinueWith((task) =>
-            {
-                if (task.Result == null)
-                {
-                    var c = new Celula_Jovem(v, false).recuperar(v);
-                    if (c != null)
-                        return c[0];
-                }
-                return task.Result;
-            });
-
-            Task.WaitAll(t,t2,t3,t4,t5);
-            
-            return t5.Result;
-        }
-
-        public modelocrud buscarCelula(int? id)
+        
+        public void buscarCelula(int? id)
 
         {
             Select_padrao = "select * from Celula as C "
@@ -235,7 +178,6 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
             }
 
             if (id != null)
@@ -268,9 +210,7 @@ namespace business.classes.Abstrato
                 {
                     bd.obterconexao().Close();
                 }
-                return this;
             }
-            return null;
         }
 
         public List<modelocrud> recuperarMinisterios(int? id)
@@ -290,9 +230,11 @@ namespace business.classes.Abstrato
                 return null;
             }
 
+            var lista = Ministerio.recuperarTodosMinisterios();
+
             while (dr.Read())
             {
-                var m = (Ministerio)Ministerio.recuperarMinisterio(int.Parse(Convert.ToString(dr["Ministerio_Id"])));
+                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Ministerio_Id"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -317,9 +259,13 @@ namespace business.classes.Abstrato
                 return null;
             }
 
+            var lista = Pessoa.recuperarTodos();
+            List<Pessoa> lista2 = new List<Pessoa>();
+            foreach (var item in lista)
+            lista2.Add((Pessoa)item);
             while (dr.Read())
             {
-                var m = (Pessoa)Pessoa.recuperarPessoa(int.Parse(Convert.ToString(dr["Id"])));
+                var m = lista2.First(i => i.Id == int.Parse(Convert.ToString(dr["Id"])));
                 modelos.Add(m);
             }
             dr.Close();
