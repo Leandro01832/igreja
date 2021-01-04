@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,17 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
             InitializeComponent();
         }
 
+        List<modelocrud> lista;
+        List<business.classes.Abstrato.Pessoa> lista2;
+
         private void DadoMinisterio_Load(object sender, EventArgs e)
         {
             this.Text = " - Dados de Ministério";
+            lista = new List<modelocrud>();
+            lista2 = new List<business.classes.Abstrato.Pessoa>();
+            lista = business.classes.Abstrato.Pessoa.recuperarTodos();
+            foreach (var item in lista)
+            lista2.Add((business.classes.Abstrato.Pessoa)item);
         }
 
         private void txt_nome_ministerio_TextChanged(object sender, EventArgs e)
@@ -41,7 +50,8 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
             var m = (business.classes.Abstrato.Ministerio)modelo;
             try
             {
-                m.Ministro_ = int.Parse(txt_ministro.Text);
+                var modelo = lista2.First(i => i.Codigo == int.Parse(txt_ministro.Text));
+                m.Ministro_ = modelo.Id;
             }
             catch (Exception)
             {

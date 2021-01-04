@@ -19,6 +19,9 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
             InitializeComponent();
         }
 
+        List<modelocrud> lista;
+        List<business.classes.Abstrato.PessoaLgpd> lista2;
+
         public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
@@ -29,11 +32,27 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)
         {
             this.Text = " - Celulas e pessoas do ministério.";
+            lista = new List<modelocrud>();
+            lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+            lista = business.classes.Abstrato.Pessoa.recuperarTodos();
+            foreach (var item in lista)
+            lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
         }
 
         private void txt_pessoas_TextChanged(object sender, EventArgs e)
         {
-            AddNaListaMinisterioPessoas = txt_pessoas.Text;
+            var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
+
+            foreach (var item in arr)
+            {
+                try
+                {
+                    int numero = int.Parse(item);
+                    var modelo = lista2.FirstOrDefault(i => i.Codigo == numero);
+                    AddNaListaMinisterioPessoas += modelo.Id.ToString() + ", ";
+                }
+                catch { }
+            }
         }
 
         private void txt_celulas_TextChanged(object sender, EventArgs e)

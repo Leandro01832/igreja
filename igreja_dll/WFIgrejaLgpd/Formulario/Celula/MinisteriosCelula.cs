@@ -30,7 +30,7 @@ namespace WFIgrejaLgpd.Formulario.Celula
             var c = (business.classes.Abstrato.Celula)modelo;
             if(c.Id != 0)
             {
-                var lista = c.buscarLista("Pessoa", "Celula", "celula_", c.Id);
+                var lista = c.buscarLista("PessoaLgpd", "Celula", "celula_", c.Id);
                 if (lista != null) lbl_pessoas.Text = "Pessoas: ";
                 foreach (var numero in lista)
                 {

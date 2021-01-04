@@ -31,8 +31,17 @@ namespace business.classes
             {
                 while (dr.Read())
                 {
-                    var numero = int.Parse(dr["Id"].ToString());
-                    modelos.Add(numero);
+                    if(TipoDaLista == "Pessoa" || TipoDaLista == "PessoaLgpd")
+                    {
+                        var numero = int.Parse(dr["Codigo"].ToString());
+                        modelos.Add(numero);
+                    }
+                    else
+                    {
+                        var numero = int.Parse(dr["Id"].ToString());
+                        modelos.Add(numero);
+                    }
+                    
                 }                
                 dr.Close();                
             }
