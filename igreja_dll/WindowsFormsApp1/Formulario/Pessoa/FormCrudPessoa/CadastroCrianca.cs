@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class CadastroCrianca : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
 
-        public CadastroCrianca(business.classes.Abstrato.Pessoa p,
+        public CadastroCrianca(business.classes.Pessoas.PessoaDado p,
             bool Atualizar, bool Deletar, bool Detalhes)
             : base(p, Atualizar, Deletar, Detalhes)
         {
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public business.classes.Abstrato.Pessoa P { get; }
+        public business.classes.Pessoas.PessoaDado P { get; }
 
         private void CadastroCrianca_Load(object sender, EventArgs e)
         {

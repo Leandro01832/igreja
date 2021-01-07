@@ -3,6 +3,7 @@ using business.classes.Abstrato;
 using business.classes.Celula;
 using business.classes.Celulas;
 using business.classes.Ministerio;
+using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
@@ -52,37 +53,7 @@ namespace business.classes.Abstrato
             AddNalista = new AddNalista();
             BuscaLista = new BuscaLista();
         }
-
-        public Celula(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-            buscarCelula(id);
-            this.Pessoas = new List<Pessoa>();
-            this.Ministerios = new List<Ministerio>();
-            BuscaLista = new BuscaLista();
-
-            if(recuperaLista)
-            {
-                var ministerios = recuperarMinisterios(id);
-                if (ministerios != null)
-                {
-                    foreach (var m in ministerios)
-                    {
-                        this.Ministerios.Add((Ministerio)m);
-                    }
-                }
-
-                var pessoas = buscarPessoas(id);
-                if (pessoas != null)
-                {
-                    foreach (var p in pessoas)
-                    {
-                        this.Pessoas.Add((Pessoa)p);
-                    }
-                }
-            }
-           
-        }
-
+        
         public override string alterar(int id)
         {
             Update_padrao = $"update Celula set Nome='{Nome}', Dia_semana='{Dia_semana}', " +
@@ -104,7 +75,69 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public abstract override List<modelocrud> recuperar(int? id);
+        public override List<modelocrud> recuperar(int? id)
+        {
+            Select_padrao = "select * from Celula as C "
+            + " inner join EnderecoCelula as E on E.Id=C.Id ";
+            if (id != null) Select_padrao += $" where C.Id='{id}'";
+
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conecta = bd.obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                bd.obterconexao().Close();
+                return modelos;
+            }
+
+            if (id != null)
+            {
+                try
+                {
+                    dr.Read();
+                    this.Id = int.Parse(dr["Id"].ToString());
+                    this.Nome = Convert.ToString(dr["Nome"]);
+                    this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
+                    this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
+                    this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
+                    this.EnderecoCelula = new EnderecoCelula();
+                    this.EnderecoCelula.Bairro = Convert.ToString(dr["Bairro"]);
+                    this.EnderecoCelula.Cidade = Convert.ToString(dr["Cidade"]);
+                    this.EnderecoCelula.Complemento = Convert.ToString(dr["Complemento"]);
+                    this.EnderecoCelula.Estado = Convert.ToString(dr["Estado"]);
+                    this.EnderecoCelula.Rua = Convert.ToString(dr["Rua"]);
+                    this.EnderecoCelula.Pais = Convert.ToString(dr["Pais"]);
+                    this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
+                    this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
+                    dr.Close();
+
+                    this.Ministerios = new List<Ministerio>();
+                    var listaMinisterios = recuperarMinisterios(id);
+                    foreach (var item in listaMinisterios)
+                    this.Ministerios.Add((Ministerio)item);
+
+                    this.Pessoas = new List<Pessoa>();
+                    var listaPessoas = buscarPessoas(id);
+                    foreach (var item in listaPessoas)
+                    this.Pessoas.Add((Pessoa)item);
+
+                    modelos.Add(this);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+                return modelos;
+            }
+            return modelos;
+        }
 
         public override string salvar()
         {
@@ -163,56 +196,6 @@ namespace business.classes.Abstrato
             return t5.Result;
         }
         
-        public void buscarCelula(int? id)
-
-        {
-            Select_padrao = "select * from Celula as C "
-            + " inner join EnderecoCelula as E on E.Id=C.Id ";
-            if (id != null) Select_padrao += $" where C.Id='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-            }
-
-            if (id != null)
-            {
-                try
-                {
-                    dr.Read();
-                    this.Id = int.Parse(dr["Id"].ToString());
-                    this.Nome = Convert.ToString(dr["Nome"]);
-                    this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
-                    this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
-                    this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-                    this.EnderecoCelula = new EnderecoCelula();
-                    this.EnderecoCelula.Bairro = Convert.ToString(dr["Bairro"]);
-                    this.EnderecoCelula.Cidade = Convert.ToString(dr["Cidade"]);
-                    this.EnderecoCelula.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.EnderecoCelula.Estado = Convert.ToString(dr["Estado"]);
-                    this.EnderecoCelula.Rua = Convert.ToString(dr["Rua"]);
-                    this.EnderecoCelula.Pais = Convert.ToString(dr["Pais"]);
-                    this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
-                    this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
-            }
-        }
-
         public List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
@@ -259,10 +242,10 @@ namespace business.classes.Abstrato
                 return null;
             }
 
-            var lista = Pessoa.recuperarTodos();
-            List<Pessoa> lista2 = new List<Pessoa>();
+            var lista = PessoaDado.recuperarTodos();
+            List<PessoaDado> lista2 = new List<PessoaDado>();
             foreach (var item in lista)
-            lista2.Add((Pessoa)item);
+            lista2.Add((PessoaDado)item);
             while (dr.Read())
             {
                 var m = lista2.First(i => i.Id == int.Parse(Convert.ToString(dr["Id"])));

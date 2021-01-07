@@ -22,8 +22,8 @@ namespace repositorioEFLgpd
         }
 
         public DbSet<Chamada> Chamada { get; set; }
-        public DbSet<ChamadaLgpd> ChamadaLgpd { get; set; }
-        public DbSet<MudancaEstadoLgpd> MudancaEstadoLgpd { get; set; }
+        public DbSet<Chamada> ChamadaLgpd { get; set; }
+        public DbSet<MudancaEstado> MudancaEstadoLgpd { get; set; }
         public DbSet<MudancaEstado> MudancaEstado { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }
         public DbSet<PessoaLgpd> PessoaLgpd { get; set; }
@@ -38,7 +38,7 @@ namespace repositorioEFLgpd
         public DbSet<CriancaLgpd> CriancaLgpd { get; set; }
         public DbSet<Ministerio> ministerio { get; set; }
         public DbSet<Historico> historico { get; set; }
-        public DbSet<HistoricoLgpd> HistoricoLgpd { get; set; }
+        public DbSet<Historico> HistoricoLgpd { get; set; }
         public DbSet<Supervisor_Celula> Supervisor_Celula { get; set; }
         public DbSet<Supervisor_Celula_Treinamento> Supervisor_Celula_Treinamento { get; set; }
         public DbSet<Supervisor_Ministerio> Supervisor_Ministerio { get; set; }

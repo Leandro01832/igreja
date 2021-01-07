@@ -1,4 +1,5 @@
 ﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
 using database;
 using database.banco;
 
@@ -30,7 +31,7 @@ namespace business.classes
         [Display(Name = "Numero da chamada")]
         public int Numero_chamada { get; set; }
 
-        public virtual Pessoa Pessoa { get; set; }
+        public virtual PessoaDado Pessoa { get; set; }
 
         public Chamada()
         {

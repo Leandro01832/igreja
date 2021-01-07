@@ -12,7 +12,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 {
     public partial class Chamada : WFIgrejaLgpd.Formulario.FormCrudPessoa
     {
-        public Chamada(business.classes.Abstrato.PessoaLgpd p, bool Deletar, bool Atualizar,  bool Detalhes)
+        public Chamada(business.classes.Pessoas.PessoaLgpd p, bool Deletar, bool Atualizar,  bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

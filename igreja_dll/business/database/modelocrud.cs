@@ -24,11 +24,7 @@ namespace database
             bd.m = this;
         }
 
-        public modelocrud(int? id, bool recuperaLista)
-        {
-            this.bd = new BDcomum();
-            bd.m = this;
-        }
+        
 
         private string insert_padrao;
         private string update_padrao;

@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroReconciliacao(business.classes.Abstrato.Pessoa p,
+        public CadastroMembroReconciliacao(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar,  bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {

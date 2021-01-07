@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using database;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 
 namespace business.classes.PessoasLgpd
 {
@@ -60,11 +61,6 @@ namespace business.classes.PessoasLgpd
         {
         }
 
-        public VisitanteLgpd(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public DateTime freguentar()
         {
 
@@ -110,6 +106,7 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();

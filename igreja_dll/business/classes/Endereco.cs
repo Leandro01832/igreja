@@ -12,6 +12,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 
 namespace business.classes
 {
@@ -29,7 +30,7 @@ namespace business.classes
 
         [Key, ForeignKey("Pessoa")]
         public new int Id { get; set; }
-        public virtual Pessoa Pessoa { get; set; }
+        public virtual PessoaDado Pessoa { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Pais

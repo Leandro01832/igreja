@@ -17,14 +17,14 @@ namespace WindowsFormsApp1.DdataGridViews
             var innerjoin = "";
             DataTable dtable = new DataTable();
 
-            var listaPessoa = business.classes.Abstrato.PessoaLgpd.recuperarTodos();
+            var listaPessoa = business.classes.Abstrato.Pessoa.recuperarTodos();
             var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
             var listaCelula = business.classes.Abstrato.Celula.recuperarTodasCelulas();
 
             if (modelo is business.classes.Abstrato.Membro)
                 innerjoin = " inner join Membro as MEM  on M.Id=MEM.Id inner join Pessoa as P on MEM.Id=P.Id";
 
-           else if (modelo is business.classes.Abstrato.Pessoa)
+           else if (modelo is business.classes.Pessoas.PessoaDado)
                 innerjoin = " inner join Pessoa as P on M.Id=P.Id";
 
             if (modelo != null)

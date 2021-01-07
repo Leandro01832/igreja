@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class Chamada : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public Chamada(business.classes.Abstrato.Pessoa p,
+        public Chamada(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar,  bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {

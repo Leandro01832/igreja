@@ -242,9 +242,9 @@ namespace WindowsFormsApp1
                 Proximo.Visible = false;
                 FinalizarCadastro.Visible = false;
 
-                if(modelo is business.classes.Abstrato.Pessoa)
+                if(modelo is business.classes.Pessoas.PessoaDado)
                 {
-                    var pessoa = (business.classes.Abstrato.Pessoa)modelo;
+                    var pessoa = (business.classes.Pessoas.PessoaDado)modelo;
                     InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() + " - " + pessoa.Nome;
                 }
                 else if(modelo is business.classes.Abstrato.Celula)
@@ -263,7 +263,7 @@ namespace WindowsFormsApp1
                 }
 
 
-                if (modelo is business.classes.Abstrato.Pessoa && this.GetType().Name == "FinalizarCadastro")
+                if (modelo is business.classes.Pessoas.PessoaDado && this.GetType().Name == "FinalizarCadastro")
                 {
                     dadoPessoal.Visible = true;
                     dadoEnderecoPessoa.Visible = true;
@@ -319,7 +319,7 @@ namespace WindowsFormsApp1
 
         private void DadoFoto_Click(object sender, EventArgs e)
         {
-            Foto c = new Foto((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+            Foto c = new Foto((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
             c.MdiParent = this.MdiParent;
             c.Show();
@@ -329,7 +329,7 @@ namespace WindowsFormsApp1
         {
             if(modelo is business.classes.Pessoas.Crianca)
             {
-                CadastroCrianca c = new CadastroCrianca((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+                CadastroCrianca c = new CadastroCrianca((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -338,7 +338,7 @@ namespace WindowsFormsApp1
             if (modelo is business.classes.Pessoas.Visitante)
             {
                 CadastroVisitante c = 
-                new CadastroVisitante((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+                new CadastroVisitante((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -347,7 +347,7 @@ namespace WindowsFormsApp1
             if (modelo is business.classes.Pessoas.Membro_Aclamacao)
             {
                 CadastroMembroAclamacao c = 
-                new CadastroMembroAclamacao((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+                new CadastroMembroAclamacao((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -356,7 +356,7 @@ namespace WindowsFormsApp1
             if (modelo is business.classes.Pessoas.Membro_Batismo)
             {
                 CadastroMembroBatismo c = 
-                new CadastroMembroBatismo((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+                new CadastroMembroBatismo((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -365,7 +365,7 @@ namespace WindowsFormsApp1
             if (modelo is business.classes.Pessoas.Membro_Reconciliacao)
             {
                 CadastroMembroReconciliacao c = 
-                new CadastroMembroReconciliacao((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+                new CadastroMembroReconciliacao((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -374,7 +374,7 @@ namespace WindowsFormsApp1
             if (modelo is business.classes.Pessoas.Membro_Transferencia)
             {
                 CadastroMembroTransferencia c = 
-                new CadastroMembroTransferencia((business.classes.Abstrato.Pessoa)modelo, condicaoAtualizar,
+                new CadastroMembroTransferencia((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -437,7 +437,7 @@ namespace WindowsFormsApp1
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((business.classes.Abstrato.Pessoa)modelo
+            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((business.classes.Pessoas.PessoaDado)modelo
             , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             rmp.MdiParent = this.MdiParent;
             rmp.Show();
@@ -445,7 +445,7 @@ namespace WindowsFormsApp1
 
         private void DadoContato_Click(object sender, EventArgs e)
         {
-            Contato dp = new Contato((business.classes.Abstrato.Pessoa)modelo,
+            Contato dp = new Contato((business.classes.Pessoas.PessoaDado)modelo,
             condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -453,7 +453,7 @@ namespace WindowsFormsApp1
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
-            Endereco dp = new Endereco((business.classes.Abstrato.Pessoa)modelo,
+            Endereco dp = new Endereco((business.classes.Pessoas.PessoaDado)modelo,
             condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -461,7 +461,7 @@ namespace WindowsFormsApp1
 
         private void DadoPessoal_Click(object sender, EventArgs e)
         {
-            DadoPessoal dp = new DadoPessoal((business.classes.Abstrato.Pessoa)modelo,
+            DadoPessoal dp = new DadoPessoal((business.classes.Pessoas.PessoaDado)modelo,
                 condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -500,9 +500,9 @@ namespace WindowsFormsApp1
                 p.AdicionarNaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas);                               
             }
 
-            if (modelo is business.classes.Abstrato.Pessoa)
+            if (modelo is business.classes.Pessoas.PessoaDado)
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (business.classes.Pessoas.PessoaDado)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
                 p.AdicionarNaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios);                
                 
@@ -558,9 +558,9 @@ namespace WindowsFormsApp1
                     p.RemoverDaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas, modelo.Id);
             }
 
-            if (modelo is business.classes.Abstrato.Pessoa)
+            if (modelo is business.classes.Pessoas.PessoaDado)
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (business.classes.Pessoas.PessoaDado)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
                     p.RemoverDaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios, modelo.Id);
 
@@ -593,7 +593,7 @@ namespace WindowsFormsApp1
                 if (this.GetType().Name == "DadoPessoal")
                 {
                     
-                    Endereco end = new Endereco((business.classes.Abstrato.Pessoa)modelo,
+                    Endereco end = new Endereco((business.classes.Pessoas.PessoaDado)modelo,
                     condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
                     end.MdiParent = this.MdiParent;
                     this.Close();
@@ -603,7 +603,7 @@ namespace WindowsFormsApp1
                 if (this.GetType().Name == "Endereco")
                 {
                    
-                    Contato con = new Contato((business.classes.Abstrato.Pessoa)modelo,
+                    Contato con = new Contato((business.classes.Pessoas.PessoaDado)modelo,
                         condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -612,7 +612,7 @@ namespace WindowsFormsApp1
 
                 if (this.GetType().Name == "Contato")
                 {                    
-                    Foto con = new Foto((business.classes.Abstrato.Pessoa)modelo,
+                    Foto con = new Foto((business.classes.Pessoas.PessoaDado)modelo,
                     condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -621,7 +621,7 @@ namespace WindowsFormsApp1
 
                 if (this.GetType().Name == "Foto")
                 {
-                    ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((business.classes.Abstrato.Pessoa)modelo,
+                    ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((business.classes.Pessoas.PessoaDado)modelo,
                     condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -632,7 +632,7 @@ namespace WindowsFormsApp1
                 {
                     if (modelo.GetType().Name == "Crianca")
                     {                        
-                        CadastroCrianca cc = new CadastroCrianca((business.classes.Abstrato.Pessoa)
+                        CadastroCrianca cc = new CadastroCrianca((business.classes.Pessoas.PessoaDado)
                         modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cc.MdiParent = this.MdiParent;
                         this.Close();
@@ -642,7 +642,7 @@ namespace WindowsFormsApp1
 
                     if (modelo.GetType().Name == "Visitante")
                     {                        
-                        CadastroVisitante cv = new CadastroVisitante((business.classes.Abstrato.Pessoa)
+                        CadastroVisitante cv = new CadastroVisitante((business.classes.Pessoas.PessoaDado)
                         modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cv.MdiParent = this.MdiParent;
                         this.Close();
@@ -652,7 +652,7 @@ namespace WindowsFormsApp1
 
                     if (modelo.GetType().Name == "Membro_Aclamacao")
                     {                        
-                        CadastroMembroAclamacao cma = new CadastroMembroAclamacao((business.classes.Abstrato.Pessoa)
+                        CadastroMembroAclamacao cma = new CadastroMembroAclamacao((business.classes.Pessoas.PessoaDado)
                        modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cma.MdiParent = this.MdiParent;
                         this.Close();
@@ -662,7 +662,7 @@ namespace WindowsFormsApp1
 
                     if (modelo.GetType().Name == "Membro_Reconciliacao")
                     {
-                        CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((business.classes.Abstrato.Pessoa)
+                        CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((business.classes.Pessoas.PessoaDado)
                         modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cmr.MdiParent = this.MdiParent;
                         this.Close();
@@ -672,7 +672,7 @@ namespace WindowsFormsApp1
 
                     if (modelo.GetType().Name == "Membro_Batismo")
                     {
-                        CadastroMembroBatismo cmb = new CadastroMembroBatismo((business.classes.Abstrato.Pessoa)
+                        CadastroMembroBatismo cmb = new CadastroMembroBatismo((business.classes.Pessoas.PessoaDado)
                         modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cmb.MdiParent = this.MdiParent;
                         this.Close();
@@ -682,7 +682,7 @@ namespace WindowsFormsApp1
 
                     if (modelo.GetType().Name == "Membro_Transferencia")
                     {
-                        CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((business.classes.Abstrato.Pessoa)
+                        CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((business.classes.Pessoas.PessoaDado)
                         modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cmt.MdiParent = this.MdiParent;
                         this.Close();
@@ -696,7 +696,7 @@ namespace WindowsFormsApp1
                     this.GetType().Name == "CadastroMembroBatismo" || this.GetType().Name == "CadastroMembroTransferencia")
                 {
                     WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro fn = new
-                    WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro((business.classes.Abstrato.Pessoa)modelo,
+                    WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro((business.classes.Pessoas.PessoaDado)modelo,
                    CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     fn.MdiParent = this.MdiParent;
                     this.Close();

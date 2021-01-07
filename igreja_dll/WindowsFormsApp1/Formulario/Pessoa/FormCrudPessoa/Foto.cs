@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public Foto(business.classes.Abstrato.Pessoa p,
+        public Foto(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar, bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
@@ -33,14 +33,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 
             if(modelo.Id != 0)
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (business.classes.Pessoas.PessoaDado)modelo;
                 ptrb_foto.ImageLocation = p.Img;
             }
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             try
             {
 

@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroBatismo(business.classes.Abstrato.Pessoa p,
+        public CadastroMembroBatismo(business.classes.Pessoas.PessoaDado p,
             bool Atualizar, bool Deletar, bool Detalhes)
             : base(p, Atualizar, Deletar, Detalhes)
         {
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             P = p;
         }
 
-        public business.classes.Abstrato.Pessoa P { get; }
+        public business.classes.Pessoas.PessoaDado P { get; }
 
         private void CadastroMembroBatismo_Load(object sender, EventArgs e)
         {

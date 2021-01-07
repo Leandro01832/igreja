@@ -12,13 +12,13 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 {
     public partial class FinalizarCadastro : WFIgrejaLgpd.Formulario.FormCrudPessoa
     {
-        public FinalizarCadastro(business.classes.Abstrato.PessoaLgpd p, bool Deletar, bool Atualizar,  bool Detalhes)
+        public FinalizarCadastro(business.classes.Pessoas.PessoaLgpd p, bool Deletar, bool Atualizar,  bool Detalhes)
             :base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
 
-        public business.classes.Abstrato.PessoaLgpd P { get; }
+        public business.classes.Pessoas.PessoaLgpd P { get; }
 
         
 

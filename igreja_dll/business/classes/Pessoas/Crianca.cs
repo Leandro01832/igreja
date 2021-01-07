@@ -16,7 +16,7 @@ using business.classes.Ministerio;
 namespace business.classes.Pessoas
 {
     [Table("Crianca")]
-    public class Crianca : Pessoa
+    public class Crianca : PessoaDado
     {
 
         private string nome_pai;
@@ -69,11 +69,6 @@ namespace business.classes.Pessoas
         {
         }
 
-        public Crianca(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -110,6 +105,7 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();                    

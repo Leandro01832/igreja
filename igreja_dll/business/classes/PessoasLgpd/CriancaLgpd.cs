@@ -12,6 +12,7 @@ using System.Data;
 using database;
 using business.classes.Abstrato;
 using business.classes.Ministerio;
+using business.classes.Pessoas;
 
 namespace business.classes.PessoasLgpd
 {
@@ -67,11 +68,6 @@ namespace business.classes.PessoasLgpd
         {
         }
 
-        public CriancaLgpd(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -108,6 +104,7 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();                    

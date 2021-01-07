@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class CadastroVisitante : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
 
-        public CadastroVisitante(business.classes.Abstrato.Pessoa p,
+        public CadastroVisitante(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar,  bool Detalhes)
             :base(p, Deletar, Atualizar, Detalhes)
         {

@@ -18,11 +18,6 @@ namespace business.classes.Celulas
         {
         }
 
-        public Celula_Adulto(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);

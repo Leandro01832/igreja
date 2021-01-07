@@ -73,11 +73,11 @@ namespace WFIgrejaLgpd.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
+            List<business.classes.Pessoas.PessoaDado> lista2 = new List<business.classes.Pessoas.PessoaDado>();
             foreach (var item in lista)
-                lista2.Add((business.classes.Abstrato.Pessoa)item);
+                lista2.Add((business.classes.Pessoas.PessoaDado)item);
             Modelo = lista2.First(i => i.Codigo == ListView.numero);
-            VerificarModeloPessoa();
+            Modelo = Modelo.recuperar(Modelo.Id)[0];
 
             FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
             frm.MdiParent = this.MdiParent;
@@ -97,13 +97,13 @@ namespace WFIgrejaLgpd.Formulario
         {
             if (ListView is ListViewPessoa)
             {
-                List<business.classes.Abstrato.PessoaLgpd> lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+                List<business.classes.Pessoas.PessoaLgpd> lista2 = new List<business.classes.Pessoas.PessoaLgpd>();
                 foreach (var item in lista)
-                    lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+                    lista2.Add((business.classes.Pessoas.PessoaLgpd)item);
                 Modelo = lista2.First(i => i.Codigo == ListView.numero);
-                VerificarModeloPessoa();
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-                FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.PessoaLgpd)Modelo
+                FinalizarCadastro fc = new FinalizarCadastro((business.classes.Pessoas.PessoaLgpd)Modelo
                 , false, false, true);
                 fc.MdiParent = this.MdiParent;
                 fc.Show();
@@ -111,11 +111,8 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewCelula)
             {
-                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
-                foreach (var item in lista)
-                lista2.Add((business.classes.Abstrato.Celula)item);
-                Modelo = lista2.First(i => i.Id == ListView.numero);
-                VerificarModeloCelula();
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
                 WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro dp =
             new WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -126,11 +123,8 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
-                foreach (var item in lista)
-                lista2.Add((business.classes.Abstrato.Ministerio)item);
-                Modelo = lista2.First(i => i.Id == ListView.numero);
-                VerificarModeloMinisterio();
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
                 WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro dp =
             new WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro((business.classes.Abstrato.Ministerio)Modelo
@@ -140,103 +134,18 @@ namespace WFIgrejaLgpd.Formulario
             }
         }
 
-        private void VerificarModeloMinisterio()
-        {
-            if (Modelo is business.classes.Ministerio.Lider_Celula)
-                Modelo =
-            new business.classes.Ministerio.Lider_Celula(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Lider_Celula_Treinamento)
-                Modelo =
-            new business.classes.Ministerio.Lider_Celula_Treinamento(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Lider_Ministerio)
-                Modelo =
-            new business.classes.Ministerio.Lider_Ministerio(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Lider_Ministerio_Treinamento)
-                Modelo =
-               new business.classes.Ministerio.Lider_Ministerio_Treinamento(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Supervisor_Celula)
-                Modelo =
-               new business.classes.Ministerio.Supervisor_Celula(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Supervisor_Celula_Treinamento)
-                Modelo =
-                new business.classes.Ministerio.Supervisor_Celula_Treinamento(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Supervisor_Ministerio)
-                Modelo =
-                new business.classes.Ministerio.Supervisor_Ministerio(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
-                Modelo =
-                new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(ListView.numero, true).recuperar(ListView.numero)[0];
-        }
-
-        private void VerificarModeloCelula()
-        {
-            if (Modelo is business.classes.Celulas.Celula_Adolescente)
-                Modelo =
-            new business.classes.Celulas.Celula_Adolescente(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Celulas.Celula_Adulto)
-                Modelo =
-            new business.classes.Celulas.Celula_Adulto(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Celulas.Celula_Casado)
-                Modelo =
-            new business.classes.Celulas.Celula_Casado(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Celulas.Celula_Crianca)
-                Modelo =
-            new business.classes.Celulas.Celula_Crianca(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.Celulas.Celula_Jovem)
-                Modelo =
-            new business.classes.Celulas.Celula_Jovem(ListView.numero, true).recuperar(ListView.numero)[0];
-        }
-
-        private void VerificarModeloPessoa()
-        {
-            if (Modelo is business.classes.PessoasLgpd.CriancaLgpd)
-                Modelo =
-             new business.classes.PessoasLgpd.CriancaLgpd(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.PessoasLgpd.VisitanteLgpd)
-                Modelo =
-            new business.classes.PessoasLgpd.VisitanteLgpd(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.PessoasLgpd.Membro_AclamacaoLgpd)
-                Modelo =
-            new business.classes.PessoasLgpd.Membro_AclamacaoLgpd(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.PessoasLgpd.Membro_BatismoLgpd)
-                Modelo =
-            new business.classes.PessoasLgpd.Membro_BatismoLgpd(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd)
-                Modelo =
-            new business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd(ListView.numero, true).recuperar(ListView.numero)[0];
-
-            if (Modelo is business.classes.PessoasLgpd.Membro_TransferenciaLgpd)
-                Modelo =
-            new business.classes.PessoasLgpd.Membro_TransferenciaLgpd(ListView.numero, true).recuperar(ListView.numero)[0];
-        }
-
         private void botaoAtualizar_Click(object sender, EventArgs e)
         {
             if (ListView is ListViewPessoa)
             {
-                List<business.classes.Abstrato.PessoaLgpd> lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+                List<business.classes.Pessoas.PessoaLgpd> lista2 = new List<business.classes.Pessoas.PessoaLgpd>();
                 foreach (var item in lista)
-                    lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+                    lista2.Add((business.classes.Pessoas.PessoaLgpd)item);
                 Modelo = lista2.First(i => i.Codigo == ListView.numero);
 
-                VerificarModeloPessoa();
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-                FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.PessoaLgpd)Modelo
+                FinalizarCadastro fc = new FinalizarCadastro((business.classes.Pessoas.PessoaLgpd)Modelo
                 , false, true, false);
                 fc.MdiParent = this.MdiParent;
                 fc.Show();
@@ -244,12 +153,9 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewCelula)
             {
-                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
-                foreach (var item in lista)
-                    lista2.Add((business.classes.Abstrato.Celula)item);
-                Modelo = lista2.First(i => i.Id == ListView.numero);
+                Modelo = lista.First(i => i.Id == ListView.numero);
 
-                VerificarModeloCelula();
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
                 WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro dp =
             new WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -260,12 +166,8 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
-                foreach (var item in lista)
-                    lista2.Add((business.classes.Abstrato.Ministerio)item);
-                Modelo = lista2.First(i => i.Id == ListView.numero);
-
-                VerificarModeloMinisterio();
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
                 WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro dp =
             new WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro((business.classes.Abstrato.Ministerio)Modelo
@@ -280,14 +182,14 @@ namespace WFIgrejaLgpd.Formulario
         {
             if (ListView is ListViewPessoa)
             {
-                List<business.classes.Abstrato.PessoaLgpd> lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+                List<business.classes.Pessoas.PessoaLgpd> lista2 = new List<business.classes.Pessoas.PessoaLgpd>();
                 foreach (var item in lista)
-                    lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+                    lista2.Add((business.classes.Pessoas.PessoaLgpd)item);
                 Modelo = lista2.First(i => i.Codigo == ListView.numero);
 
-                VerificarModeloPessoa();
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-                FinalizarCadastro fc = new FinalizarCadastro((business.classes.Abstrato.PessoaLgpd)Modelo
+                FinalizarCadastro fc = new FinalizarCadastro((business.classes.Pessoas.PessoaLgpd)Modelo
                 , true, false, false);
                 fc.MdiParent = this.MdiParent;
                 fc.Show();
@@ -295,12 +197,8 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewCelula)
             {
-                List<business.classes.Abstrato.Celula> lista2 = new List<business.classes.Abstrato.Celula>();
-                foreach (var item in lista)
-                    lista2.Add((business.classes.Abstrato.Celula)item);
-                Modelo = lista2.First(i => i.Id == ListView.numero);
-
-                VerificarModeloCelula();
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
                 WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro dp =
             new WFIgrejaLgpd.Formulario.Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -311,12 +209,8 @@ namespace WFIgrejaLgpd.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                List<business.classes.Abstrato.Ministerio> lista2 = new List<business.classes.Abstrato.Ministerio>();
-                foreach (var item in lista)
-                lista2.Add((business.classes.Abstrato.Ministerio)item);
-                Modelo = lista2.First(i => i.Id == ListView.numero);
-
-                VerificarModeloMinisterio();
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
 
                 WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro dp =
             new WFIgrejaLgpd.Formulario.Ministerio.FinalizarCadastro((business.classes.Abstrato.Ministerio)Modelo
@@ -344,7 +238,7 @@ namespace WFIgrejaLgpd.Formulario
                     lista = await Task.Run(() => business.classes.Abstrato.MembroLgpd.recuperarTodosMembros());
 
                 if (Tipo == "PessoaLgpd")
-                    lista = await Task.Run(() => business.classes.Abstrato.PessoaLgpd.recuperarTodos());
+                    lista = await Task.Run(() => business.classes.Pessoas.PessoaLgpd.recuperarTodos());
             }
 
 
@@ -354,13 +248,13 @@ namespace WFIgrejaLgpd.Formulario
             if (lista != null)
                 foreach (var v in lista)
                 {
-                    if (v is business.classes.Abstrato.PessoaLgpd)
+                    if (v is business.classes.Pessoas.PessoaLgpd)
                     {
-                        business.classes.Abstrato.PessoaLgpd p;
+                        business.classes.Pessoas.PessoaLgpd p;
                         switch (v.GetType().Name)
                         {
                             case "Pessoa":
-                                p = (business.classes.Abstrato.PessoaLgpd)v;
+                                p = (business.classes.Pessoas.PessoaLgpd)v;
                                 ListView.Items.Add(p.Codigo.ToString() + " - " + p.Email);
 
                                 break;

@@ -20,7 +20,7 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
         }
 
         List<modelocrud> lista;
-        List<business.classes.Abstrato.PessoaLgpd> lista2;
+        List<business.classes.Pessoas.PessoaLgpd> lista2;
 
         public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
@@ -33,10 +33,10 @@ namespace WFIgrejaLgpd.Formulario.Ministerio
         {
             this.Text = " - Celulas e pessoas do ministério.";
             lista = new List<modelocrud>();
-            lista2 = new List<business.classes.Abstrato.PessoaLgpd>();
+            lista2 = new List<business.classes.Pessoas.PessoaLgpd>();
             lista = business.classes.Abstrato.Pessoa.recuperarTodos();
             foreach (var item in lista)
-            lista2.Add((business.classes.Abstrato.PessoaLgpd)item);
+            lista2.Add((business.classes.Pessoas.PessoaLgpd)item);
         }
 
         private void txt_pessoas_TextChanged(object sender, EventArgs e)

@@ -13,7 +13,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 {
     public partial class DadoPessoal : WFIgrejaLgpd.Formulario.FormCrudPessoa
     {
-        public DadoPessoal(business.classes.Abstrato.PessoaLgpd P, bool Deletar, bool Atualizar,  bool Detalhes)
+        public DadoPessoal(business.classes.Pessoas.PessoaLgpd P, bool Deletar, bool Atualizar,  bool Detalhes)
             : base(P, Deletar, Atualizar,  Detalhes)
         { 
             InitializeComponent();
@@ -24,14 +24,14 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
             this.Text = "Daddos pessoais.";
             if (modelo.Id != 0)
             {
-                var p = (business.classes.Abstrato.PessoaLgpd)modelo;
+                var p = (business.classes.Pessoas.PessoaLgpd)modelo;
                 textemail.Text = p.Email;
             }
         }
 
         private void textemail_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.PessoaLgpd)modelo;
+            var p = (business.classes.Pessoas.PessoaLgpd)modelo;
             p.Email = textemail.Text;
         }
 

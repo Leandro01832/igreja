@@ -17,14 +17,14 @@ namespace WFIgrejaLgpd.DdataGridViews
             var innerjoin = "";
             DataTable dtable = new DataTable();
 
-            var listaPessoa = business.classes.Abstrato.PessoaLgpd.recuperarTodos();
+            var listaPessoa = business.classes.Pessoas.PessoaLgpd.recuperarTodos();
             var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
             var listaCelula = business.classes.Abstrato.Celula.recuperarTodasCelulas();
 
             if (modelo is business.classes.Abstrato.MembroLgpd)
                 innerjoin = " inner join MembroLgpd as MEM  on M.Id=MEM.Id inner join PessoaLgpd as P on MEM.Id=P.Id";
 
-           else if (modelo is business.classes.Abstrato.PessoaLgpd)
+           else if (modelo is business.classes.Pessoas.PessoaLgpd)
                 innerjoin = " inner join PessoaLgpd as P on M.Id=P.Id";
 
             if (modelo != null)
@@ -88,12 +88,12 @@ namespace WFIgrejaLgpd.DdataGridViews
                 return l;
             }
 
-            if ( modelo is business.classes.ChamadaLgpd)
+            if ( modelo is business.classes.Chamada)
             {
                 List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(new business.classes.ChamadaLgpd().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    l.Add(new business.classes.Chamada().recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
                 return l;
             }
@@ -108,12 +108,12 @@ namespace WFIgrejaLgpd.DdataGridViews
                 return l;
             }
 
-            if (modelo is business.classes.HistoricoLgpd)
+            if (modelo is business.classes.Historico)
             {
                 List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(new business.classes.HistoricoLgpd().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    l.Add(new business.classes.Historico().recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
                 return l;
             }

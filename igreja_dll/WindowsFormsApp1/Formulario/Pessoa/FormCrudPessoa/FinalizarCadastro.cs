@@ -12,14 +12,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class FinalizarCadastro : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public FinalizarCadastro(business.classes.Abstrato.Pessoa p,
+        public FinalizarCadastro(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar,  bool Detalhes)
             :base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
 
-        public business.classes.Abstrato.Pessoa P { get; }
+        public business.classes.Pessoas.PessoaDado P { get; }
 
         
 

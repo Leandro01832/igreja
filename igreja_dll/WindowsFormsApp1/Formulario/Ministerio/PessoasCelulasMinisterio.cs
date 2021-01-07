@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Formulario.Ministerio
             InitializeComponent();
         }
         List<modelocrud> lista;
-        List<business.classes.Abstrato.Pessoa> lista2;
+        List<business.classes.Pessoas.PessoaDado> lista2;
 
 
         public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p,
@@ -34,10 +34,10 @@ namespace WindowsFormsApp1.Formulario.Ministerio
         {
             this.Text = " - Celulas e pessoas do ministério.";
             lista = new List<modelocrud>();
-            lista2 = new List<business.classes.Abstrato.Pessoa>();
-            lista = business.classes.Abstrato.Pessoa.recuperarTodos();
+            lista2 = new List<business.classes.Pessoas.PessoaDado>();
+            lista = business.classes.Pessoas.PessoaDado.recuperarTodos();
             foreach (var item in lista)
-            lista2.Add((business.classes.Abstrato.Pessoa)item);
+            lista2.Add((business.classes.Pessoas.PessoaDado)item);
         }
 
         private void txt_pessoas_TextChanged(object sender, EventArgs e)

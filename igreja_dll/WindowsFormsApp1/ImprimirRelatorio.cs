@@ -1,5 +1,6 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 using database;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -21,13 +22,13 @@ namespace WindowsFormsApp1
                 PdfPTable table = null;
                 var valorTipo = "";
                 var porcentagem = "";
-                int totalPessoas = Pessoa.recuperarTodos().Count;
+                int totalPessoas = PessoaDado.recuperarTodos().Count;
                 int totalPessoasLgpd = PessoaLgpd.recuperarTodos().Count;
 
                 if (modelo != null)
                     lista = modelo.recuperar(null);
 
-                if (modelo != null && modelo is Pessoa)
+                if (modelo != null && modelo is PessoaDado)
                 {
                     decimal p = (modelo.recuperar(null).Count / Pessoa.recuperarTodos().Count);
                     porcentagem = "A procentagem em ralação ao total de pessoas é "
@@ -36,7 +37,7 @@ namespace WindowsFormsApp1
 
                 if (modelo != null && modelo is PessoaLgpd)
                 {
-                    decimal p = (modelo.recuperar(null).Count / PessoaLgpd.recuperarTodos().Count);
+                    decimal p = (modelo.recuperar(null).Count / Pessoa.recuperarTodos().Count);
                     porcentagem = "A procentagem em ralação ao total de pessoas é "
                         + p.ToString("f2") + "%.";
                 }
@@ -66,7 +67,7 @@ namespace WindowsFormsApp1
 
                 if (tipo == "Pessoa" && modelo == null)
                 {
-                    lista = Pessoa.recuperarTodos();
+                    lista = PessoaDado.recuperarTodos();
                     table = new PdfPTable(2);
                 }
 
@@ -133,7 +134,7 @@ namespace WindowsFormsApp1
                     table.AddCell("Data da reunião: " + item.Data_reuniao.ToString());
                 }
 
-                foreach (var item in lista.OfType<Pessoa>())
+                foreach (var item in lista.OfType<PessoaDado>())
                 {
                     table.AddCell("Id: " + item.Id.ToString());
                     table.AddCell("Email: " + item.Email.ToString());

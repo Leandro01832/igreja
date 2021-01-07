@@ -12,6 +12,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 
 namespace business.classes
 {
@@ -105,7 +106,7 @@ namespace business.classes
             }
         }
 
-        public List<Pessoa> Pessoas { get; set; }
+        public List<PessoaDado> Pessoas { get; set; }
         public List<PessoaLgpd> PessoasLgpd { get; set; }
 
         AddNalista AddNalista;

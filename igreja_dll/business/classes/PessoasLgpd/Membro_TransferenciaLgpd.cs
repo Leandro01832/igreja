@@ -83,11 +83,6 @@ namespace business.classes.PessoasLgpd
         public Membro_TransferenciaLgpd() : base()
         {
         }
-
-        public Membro_TransferenciaLgpd(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
         
         public override string alterar(int id)
         {
@@ -127,6 +122,7 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();

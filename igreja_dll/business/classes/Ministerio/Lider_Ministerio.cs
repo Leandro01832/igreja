@@ -19,11 +19,6 @@ namespace business.classes.Ministerio
         {
         }
 
-        public Lider_Ministerio(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -55,6 +50,7 @@ namespace business.classes.Ministerio
 
             if (id != null)
             {
+                base.recuperar(id);
                 modelos.Add(this);
                 return modelos;
             }

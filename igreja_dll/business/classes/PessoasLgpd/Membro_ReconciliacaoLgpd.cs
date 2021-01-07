@@ -43,11 +43,6 @@ namespace business.classes.PessoasLgpd
         {
         }
 
-        public Membro_ReconciliacaoLgpd(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }    
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -85,6 +80,7 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();

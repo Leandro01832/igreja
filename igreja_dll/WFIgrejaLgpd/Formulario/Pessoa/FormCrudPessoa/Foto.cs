@@ -17,7 +17,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public Foto(business.classes.Abstrato.PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)
+        public Foto(business.classes.Pessoas.PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
@@ -32,14 +32,14 @@ namespace WFIgrejaLgpd.Formulario.Pessoa.FormCrudPessoa
 
             if(modelo.Id != 0)
             {
-                var p = (business.classes.Abstrato.PessoaLgpd)modelo;
+                var p = (business.classes.Pessoas.PessoaLgpd)modelo;
                 ptrb_foto.ImageLocation = p.Img;
             }
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.PessoaLgpd)modelo;
+            var p = (business.classes.Pessoas.PessoaLgpd)modelo;
             try
             {
 

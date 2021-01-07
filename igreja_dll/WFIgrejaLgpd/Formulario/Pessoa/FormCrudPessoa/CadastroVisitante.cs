@@ -13,7 +13,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 {
     public partial class CadastroVisitante : WFIgrejaLgpd.Formulario.FormCrudPessoa
     {
-        public CadastroVisitante(business.classes.Abstrato.PessoaLgpd p, bool Deletar, bool Atualizar,  bool Detalhes)
+        public CadastroVisitante(business.classes.Pessoas.PessoaLgpd p, bool Deletar, bool Atualizar,  bool Detalhes)
             :base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

@@ -16,11 +16,6 @@ namespace business.classes.Ministerio
         public Lider_Celula() : base()
         {
         }
-
-        public Lider_Celula(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
         
         public override string salvar()
         {
@@ -43,11 +38,12 @@ namespace business.classes.Ministerio
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
             {
+                base.recuperar(id);
                 modelos.Add(this);                
                 return modelos;
             }

@@ -19,11 +19,6 @@ namespace business.classes.Ministerio
         {
         }
 
-        public Lider_Ministerio_Treinamento(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -48,13 +43,14 @@ namespace business.classes.Ministerio
             SqlCommand comando = new SqlCommand(Select_padrao, conecta);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
-            {
+            {                
                 bd.obterconexao().Close();
                 return null;
             }
 
             if (id != null)
             {
+                base.recuperar(id);
                 modelos.Add(this);
                 return modelos;
             }

@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public ReunioesMinisteriosPessoa(business.classes.Abstrato.Pessoa p,
+        public ReunioesMinisteriosPessoa(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         {
             try
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.celula_ = int.Parse(txt_celula.Text);
             }
             catch (Exception)

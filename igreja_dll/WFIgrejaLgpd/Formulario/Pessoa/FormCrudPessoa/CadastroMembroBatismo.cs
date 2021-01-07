@@ -13,7 +13,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 {
     public partial class CadastroMembroBatismo : WFIgrejaLgpd.Formulario.FormCrudPessoa
     {
-        public CadastroMembroBatismo(business.classes.Abstrato.PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)
+        public CadastroMembroBatismo(business.classes.Pessoas.PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public business.classes.Abstrato.PessoaLgpd P { get; }
+        public business.classes.Pessoas.PessoaLgpd P { get; }
 
         private void CadastroMembroBatismo_Load(object sender, EventArgs e)
         {

@@ -39,7 +39,7 @@ namespace WFIgrejaLgpd
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
-                var dado = (business.classes.Abstrato.PessoaLgpd)item;
+                var dado = (business.classes.Pessoas.PessoaLgpd)item;
                 dgdados.Rows.Add(dado.Id, dado.Email, dado.celula_, dado.Falta, dado.Img);
             }   
         }
@@ -77,14 +77,14 @@ namespace WFIgrejaLgpd
         private void radio_chamada_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.ChamadaLgpd();
+            modelo = new business.classes.Chamada();
             FormataDataGrid(false, false, false, true, false, false);
             if (radio_chamada.Checked)
                 MessageBox.Show("Você esta vendo informações de chamada.");
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
-                var dado = (business.classes.ChamadaLgpd)item;
+                var dado = (business.classes.Chamada)item;
                 dgdados.Rows.Add(dado.Id, dado.Data_inicio, dado.Numero_chamada);
             }
         }
@@ -107,14 +107,14 @@ namespace WFIgrejaLgpd
         private void radio_historico_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.HistoricoLgpd();
+            modelo = new business.classes.Historico();
             FormataDataGrid(false, false, false, false, false, true);
             if (radio_historico.Checked)
                 MessageBox.Show("Você esta vendo informações de histórico.");
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
             {
-                var dado = (business.classes.HistoricoLgpd)item;
+                var dado = (business.classes.Historico)item;
                 dgdados.Rows.Add(dado.Id, dado.Data_inicio, dado.Falta, dado.pessoaid);
             }
         }       
@@ -254,7 +254,7 @@ namespace WFIgrejaLgpd
                 FormataDataGrid(false, false, true, false, false, false);
             }
 
-            if (m is business.classes.Abstrato.PessoaLgpd)
+            if (m is business.classes.Pessoas.PessoaLgpd)
             {
                 if (m is business.classes.PessoasLgpd.VisitanteLgpd)
                 {
@@ -337,7 +337,7 @@ namespace WFIgrejaLgpd
 
             foreach (var item in pesquisa.BuscarPorRestricao(m, tipo, comando))
             {
-                if (m is business.classes.Abstrato.PessoaLgpd)
+                if (m is business.classes.Pessoas.PessoaLgpd)
                 {
                     if (m is business.classes.PessoasLgpd.VisitanteLgpd)
                     {

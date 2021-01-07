@@ -19,11 +19,6 @@ namespace business.classes.Ministerio
         {
         }
 
-        public Lider_Celula_Treinamento(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string salvar()
         {
             Insert_padrao = base.salvar();
@@ -52,6 +47,7 @@ namespace business.classes.Ministerio
 
             if (id != null)
             {
+                base.recuperar(id);
                 modelos.Add(this);
                 return modelos;
             }

@@ -21,11 +21,6 @@ namespace business.classes.Ministerio
             this.Maximo_celula = 5;
         }
 
-        public Supervisor_Celula(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -58,6 +53,7 @@ namespace business.classes.Ministerio
 
             if (id != null)
             {
+                base.recuperar(id);
                 dr.Read();
                 this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                 dr.Close();

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 
 namespace business.classes
 {
@@ -39,7 +40,7 @@ namespace business.classes
         public int pessoaid { get; set; }
 
         [ForeignKey("pessoaid")]
-        public virtual Pessoa Pessoa { get; set; }
+        public virtual PessoaDado Pessoa { get; set; }
 
         public int Falta
         {

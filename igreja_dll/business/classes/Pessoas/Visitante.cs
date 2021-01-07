@@ -11,7 +11,7 @@ using business.classes.Abstrato;
 namespace business.classes.Pessoas
 {
     [Table("Visitante")]
-    public class Visitante : Pessoa
+    public class Visitante : PessoaDado
     {       
         private DateTime data_visita;
         
@@ -61,11 +61,6 @@ namespace business.classes.Pessoas
         {
         }
 
-        public Visitante(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public DateTime freguentar()
         {
 
@@ -111,6 +106,7 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();

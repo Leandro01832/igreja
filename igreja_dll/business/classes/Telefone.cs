@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 
 namespace business.classes
 {
@@ -22,11 +23,11 @@ namespace business.classes
         private string fone;
         private string celular;
         private string whatsapp;
-        private Pessoa pessoa;
+        private PessoaDado pessoa;
 
         [Key, ForeignKey("Pessoa")]
         public new int Id {  get; set; }
-        public virtual Pessoa Pessoa
+        public virtual PessoaDado Pessoa
         {
             get
             {

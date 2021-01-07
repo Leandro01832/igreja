@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class Contato : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public Contato(business.classes.Abstrato.Pessoa p,
+        public Contato(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar,  bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             this.Text = "Contatos.";
 
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             mask_tel1.Text = p.Telefone.Fone;
             mask_tel2.Text = p.Telefone.Celular;
             mask_tel3.Text = p.Telefone.Whatsapp;
@@ -31,19 +31,19 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void mask_tel1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Telefone.Fone = mask_tel1.Text;
         }
 
         private void mask_tel2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Telefone.Celular = mask_tel2.Text;
         }
 
         private void mask_tel3_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Telefone.Whatsapp = mask_tel3.Text;
         }
     }

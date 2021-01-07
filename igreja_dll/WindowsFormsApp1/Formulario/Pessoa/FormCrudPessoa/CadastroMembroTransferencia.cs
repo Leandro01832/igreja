@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     {
        
 
-        public CadastroMembroTransferencia(business.classes.Abstrato.Pessoa p,
+        public CadastroMembroTransferencia(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar, bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {

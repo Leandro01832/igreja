@@ -16,7 +16,7 @@ namespace business.classes.Abstrato
 {
 
     [Table("Membro")]
-    public abstract class Membro : Pessoa
+    public abstract class Membro : PessoaDado
     {        
         
         private int data_batismo;
@@ -61,11 +61,6 @@ namespace business.classes.Abstrato
         {
         }
 
-        public Membro(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-            buscarMembro(id);
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -84,7 +79,48 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public abstract override List<modelocrud> recuperar(int? id);
+        public override List<modelocrud> recuperar(int? id)
+
+        {
+            Select_padrao = "select * from Membro as P ";
+            if (id != null) Select_padrao += $" where P.Id='{id}'";
+
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conecta = bd.obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                bd.obterconexao().Close();
+                return modelos;
+            }
+
+            if (id != null)
+            {
+                base.recuperar(id);
+                try
+                {
+                    dr.Read();
+                    this.Data_batismo = int.Parse(dr["Data_nascimento"].ToString());
+                    this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
+                    this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
+                    dr.Close();
+                    modelos.Add(this);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+                return modelos;
+            }
+            return modelos;
+        }
 
         public override string salvar()
         {

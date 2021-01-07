@@ -45,11 +45,6 @@ namespace business.classes.Pessoas
         {
         }
 
-        public Membro_Aclamacao(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
-
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -87,6 +82,7 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();

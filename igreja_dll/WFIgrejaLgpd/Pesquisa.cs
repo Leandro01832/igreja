@@ -313,7 +313,7 @@ namespace WFIgrejaLgpd
                 }
             }
 
-            if (modelo is business.classes.Abstrato.MembroLgpd || modelo is business.classes.Abstrato.PessoaLgpd)
+            if (modelo is business.classes.Abstrato.MembroLgpd || modelo is business.classes.Pessoas.PessoaLgpd)
             {
                 if (check_pesquisa_email.Checked)
                 {

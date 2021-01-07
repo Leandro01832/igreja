@@ -58,7 +58,8 @@
   <ItemGroup>
     <Compile Include="classes\Abstrato\EnderecoCelula.cs" />
     <Compile Include="classes\Abstrato\MembroLgpd.cs" />
-    <Compile Include="classes\Abstrato\PessoaLgpd.cs" />
+    <Compile Include="classes\Abstrato\Pessoa.cs" />
+    <Compile Include="classes\Pessoas\PessoaLgpd.cs" />
     <Compile Include="classes\AddNalista.cs" />
     <Compile Include="classes\BuscaLista.cs" />
     <Compile Include="classes\Celulas\Celula_Adolescente.cs" />
@@ -66,11 +67,8 @@
     <Compile Include="classes\Celulas\Celula_Jovem.cs" />
     <Compile Include="classes\Celulas\Celula_Adulto.cs" />
     <Compile Include="classes\Celulas\Celula_Crianca.cs" />
-    <Compile Include="classes\ChamadaLgpd.cs" />
-    <Compile Include="classes\HistoricoLgpd.cs" />
     <Compile Include="classes\IAddNalista.cs" />
     <Compile Include="classes\IBuscaLista.cs" />
-    <Compile Include="classes\IMudancaEstadoLgpd.cs" />
     <Compile Include="classes\IMudancaEstado.cs" />
     <Compile Include="classes\Ministerio\Lider_Ministerio_Treianmento.cs" />
     <Compile Include="classes\Ministerio\Lider_Ministerio.cs" />
@@ -78,7 +76,6 @@
     <Compile Include="classes\Chamada.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio.cs" />
-    <Compile Include="classes\MudancaEstadoLgpd.cs" />
     <Compile Include="classes\MudancaEstado.cs" />
     <Compile Include="classes\PessoasLgpd\CriancaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
@@ -97,7 +94,7 @@
     <Compile Include="classes\Pessoas\Membro_Reconciliacao.cs" />
     <Compile Include="classes\Pessoas\Membro_Transferencia.cs" />
     <Compile Include="classes\Abstrato\Ministerio.cs" />
-    <Compile Include="classes\Abstrato\Pessoa.cs" />
+    <Compile Include="classes\Pessoas\PessoaDado.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Celula.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Celula_Treinamento.cs" />
     <Compile Include="classes\Telefone.cs" />

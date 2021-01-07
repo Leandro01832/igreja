@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
-                var dado = (business.classes.Abstrato.Pessoa)item;
+                var dado = (business.classes.Pessoas.PessoaDado)item;
                 dgdados.Rows.Add(dado.Id, dado.Email, dado.celula_, dado.Falta, dado.Img);
             }   
         }
@@ -253,7 +253,7 @@ namespace WindowsFormsApp1
                 FormataDataGrid(false, false, true, false, false, false);
             }
 
-            if (m is business.classes.Abstrato.Pessoa)
+            if (m is business.classes.Pessoas.PessoaDado)
             {
                 if (m is business.classes.Pessoas.Visitante)
                 {
@@ -336,7 +336,7 @@ namespace WindowsFormsApp1
 
             foreach (var item in pesquisa.BuscarPorRestricao(m, tipo, comando))
             {
-                if (m is business.classes.Abstrato.Pessoa)
+                if (m is business.classes.Pessoas.PessoaDado)
                 {
                     if (m is business.classes.Pessoas.Visitante)
                     {

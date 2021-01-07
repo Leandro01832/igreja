@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class Endereco : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public Endereco(business.classes.Abstrato.Pessoa p,
+        public Endereco(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar, bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
             if (modelo.Id != 0)
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (business.classes.Pessoas.PessoaDado)modelo;
                 textpais.Text = p.Endereco.Pais;
                 text_cep.Text = p.Endereco.Cep.ToString();
                 text_estado.Text = p.Endereco.Estado;
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void textpais_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Endereco.Pais = textpais.Text;
         }
 
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             try
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Cep = long.Parse(text_cep.Text);
             }
             catch (Exception)
@@ -61,37 +61,37 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void text_estado_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Endereco.Estado = text_estado.Text;
         }
 
         private void text_cidade_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Endereco.Cidade = text_cidade.Text;
         }
 
         private void text_bairro_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Endereco.Bairro = text_bairro.Text;
         }
 
         private void text_rua_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Endereco.Rua = text_rua.Text;
         }
 
         private void text_complemento_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             p.Endereco.Complemento = text_complemento.Text;
         }
 
         private void text_numero_TextChanged(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
             try
             {
                 p.Endereco.Numero_casa = int.Parse(text_numero.Text);

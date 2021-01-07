@@ -317,7 +317,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo is business.classes.Abstrato.Membro || modelo is business.classes.Abstrato.Pessoa)
+            if (modelo is business.classes.Abstrato.Membro || modelo is business.classes.Pessoas.PessoaDado)
             {
                 if (check_pesquisa_email.Checked)
                 {

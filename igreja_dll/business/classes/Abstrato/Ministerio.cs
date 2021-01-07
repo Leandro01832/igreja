@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using business.classes.Ministerio;
 using database;
+using business.classes.Pessoas;
 
 namespace business.classes.Abstrato
 {
@@ -26,8 +27,6 @@ namespace business.classes.Abstrato
         public string Proposito { get; set; }
 
         public virtual List<Pessoa> Pessoas { get; set;}
-
-        public virtual List<PessoaLgpd> PessoasLgpd { get; set; }
 
         public int? Ministro_ { get; set; }
         [ForeignKey("Ministro_")]
@@ -44,36 +43,6 @@ namespace business.classes.Abstrato
         {
             this.Maximo_pessoa = 50;
             AddNalista = new AddNalista();
-        }
-
-        public Ministerio(int? id, bool recuperaLista) : base(id, recuperaLista)
-        {
-            buscarMinisterio(id);
-            this.Pessoas = new List<Pessoa>();
-
-            if(recuperaLista)
-            {
-                var pessoas = buscarPessoas(id);
-                var celulas = buscarCelulas(id);
-                if(pessoas != null)
-                {
-                    
-                    foreach (var p in pessoas)
-                    {
-                        this.Pessoas.Add((Pessoa)p); 
-                    }
-                }
-
-                if (celulas != null)
-                {
-
-                    foreach (var c in celulas)
-                    {
-                        this.Celulas.Add((Celula)c);
-                    }
-                }
-            }
-
         }
 
         public override string alterar(int id)
@@ -98,7 +67,58 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public abstract override List<modelocrud> recuperar(int? id);
+        public override List<modelocrud> recuperar(int? id)
+        {
+            Select_padrao = "select * from Ministerio as M  ";
+            if (id != null) Select_padrao += $" where M.Id='{id}'";
+
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conecta = bd.obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                bd.obterconexao().Close();
+                return modelos;
+            }
+
+            if (id != null)
+            {
+                try
+                {
+                    dr.Read();
+                    this.Id = int.Parse(dr["Id"].ToString());
+                    this.Nome = Convert.ToString(dr["Nome"]);
+                    this.Proposito = Convert.ToString(dr["Proposito"]);
+                    this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
+                    dr.Close();
+
+                    this.Pessoas = new List<Pessoa>();
+                    var listaPessoas = buscarPessoas(id);
+                    foreach (var item in listaPessoas)
+                    this.Pessoas.Add((Pessoa)item);
+
+                    this.Celulas = new List<Celula>();
+                    var listaCelulas = buscarCelulas(id);
+                    foreach (var item in listaCelulas)
+                    this.Celulas.Add((Celula)item);
+
+                    modelos.Add(this);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+                return modelos;
+            }
+            return modelos;
+        }
 
         public override string salvar()
         {
@@ -183,45 +203,7 @@ namespace business.classes.Abstrato
             Task.WaitAll(t, t2, t3, t4, t5, t6, t7, t8);
 
             return t8.Result;
-        }
-        
-        public void buscarMinisterio(int? id)
-        {
-            Select_padrao = "select * from Ministerio as M  ";
-            if (id != null) Select_padrao += $" where M.Id='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-            }
-
-            if (id != null)
-            {
-                try
-                {
-                    dr.Read();
-                    this.Id = int.Parse(dr["Id"].ToString());
-                    this.Nome = Convert.ToString(dr["Nome"]);
-                    this.Proposito = Convert.ToString(dr["Proposito"]);
-                    this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }            
-            }
-        }
+        }        
 
         public List<modelocrud> buscarPessoas(int? id)
         {
@@ -242,12 +224,10 @@ namespace business.classes.Abstrato
             }
 
             var lista = Pessoa.recuperarTodos();
-            List<Pessoa> lista2 = new List<Pessoa>();
-            foreach (var item in lista)
-            lista2.Add((Pessoa)item);
+
             while (dr.Read())
             {
-                var m = lista2.First(i => i.Id == int.Parse(Convert.ToString(dr["Pessoa_Id"])));
+                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Pessoa_Id"])));
                 
                 modelos.Add(m);
             }

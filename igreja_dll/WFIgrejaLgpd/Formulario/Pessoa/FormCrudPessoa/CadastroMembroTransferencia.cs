@@ -13,7 +13,7 @@ namespace WFIgrejaLgpd.Formulario.Pessoa
 {
     public partial class CadastroMembroTransferencia : WFIgrejaLgpd.Formulario.FormCrudPessoa
     {
-        public CadastroMembroTransferencia(business.classes.Abstrato.PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)
+        public CadastroMembroTransferencia(business.classes.Pessoas.PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

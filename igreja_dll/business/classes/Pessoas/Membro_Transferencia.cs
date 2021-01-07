@@ -83,11 +83,6 @@ namespace business.classes.Pessoas
         public Membro_Transferencia() : base()
         {
         }
-
-        public Membro_Transferencia(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
         
         public override string alterar(int id)
         {
@@ -127,6 +122,7 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
+                base.recuperar(id);
                 try
                 {
                     dr.Read();

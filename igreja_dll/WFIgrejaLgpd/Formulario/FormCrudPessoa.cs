@@ -42,7 +42,7 @@ namespace WFIgrejaLgpd.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
-            var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
+            var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
             p.MudarEstado(ModeloVelho.Id, ModeloNovo);
         }
 

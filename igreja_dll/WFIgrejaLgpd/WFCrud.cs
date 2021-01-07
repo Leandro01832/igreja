@@ -229,10 +229,10 @@ namespace WFIgrejaLgpd
                 Proximo.Visible = false;
                 FinalizarCadastro.Visible = false;
 
-                var pessoa = (business.classes.Abstrato.PessoaLgpd)modelo;
+                var pessoa = (business.classes.Pessoas.PessoaLgpd)modelo;
                 InfoForm.Text = "Identificação: " + modelo.Id.ToString() + " - " + pessoa.Email;
 
-                if (modelo is business.classes.Abstrato.PessoaLgpd && this.GetType().Name == "FinalizarCadastro")
+                if (modelo is business.classes.Pessoas.PessoaLgpd && this.GetType().Name == "FinalizarCadastro")
                 {
                     dadoPessoal.Visible = true;
                     dadoClasse.Visible = true;
@@ -280,7 +280,7 @@ namespace WFIgrejaLgpd
 
         private void DadoFoto_Click(object sender, EventArgs e)
         {
-            Foto c = new Foto((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+            Foto c = new Foto((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
             c.MdiParent = this.MdiParent;
             c.Show();
@@ -290,7 +290,7 @@ namespace WFIgrejaLgpd
         {
             if(modelo is business.classes.Pessoas.Crianca)
             {
-                CadastroCrianca c = new CadastroCrianca((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+                CadastroCrianca c = new CadastroCrianca((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -299,7 +299,7 @@ namespace WFIgrejaLgpd
             if (modelo is business.classes.Pessoas.Visitante)
             {
                 CadastroVisitante c = 
-                new CadastroVisitante((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+                new CadastroVisitante((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -308,7 +308,7 @@ namespace WFIgrejaLgpd
             if (modelo is business.classes.Pessoas.Membro_Aclamacao)
             {
                 CadastroMembroAclamacao c = 
-                new CadastroMembroAclamacao((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+                new CadastroMembroAclamacao((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -317,7 +317,7 @@ namespace WFIgrejaLgpd
             if (modelo is business.classes.Pessoas.Membro_Batismo)
             {
                 CadastroMembroBatismo c = 
-                new CadastroMembroBatismo((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+                new CadastroMembroBatismo((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -326,7 +326,7 @@ namespace WFIgrejaLgpd
             if (modelo is business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd)
             {
                 CadastroMembroReconciliacao c = 
-                new CadastroMembroReconciliacao((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+                new CadastroMembroReconciliacao((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -335,7 +335,7 @@ namespace WFIgrejaLgpd
             if (modelo is business.classes.PessoasLgpd.Membro_TransferenciaLgpd)
             {
                 CadastroMembroTransferencia c = 
-                new CadastroMembroTransferencia((business.classes.Abstrato.PessoaLgpd)modelo, condicaoAtualizar,
+                new CadastroMembroTransferencia((business.classes.Pessoas.PessoaLgpd)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -398,7 +398,7 @@ namespace WFIgrejaLgpd
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((business.classes.Abstrato.PessoaLgpd)modelo
+            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((business.classes.Pessoas.PessoaLgpd)modelo
             , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             rmp.MdiParent = this.MdiParent;
             rmp.Show();
@@ -408,7 +408,7 @@ namespace WFIgrejaLgpd
 
         private void DadoPessoal_Click(object sender, EventArgs e)
         {
-            DadoPessoal dp = new DadoPessoal((business.classes.Abstrato.PessoaLgpd)modelo,
+            DadoPessoal dp = new DadoPessoal((business.classes.Pessoas.PessoaLgpd)modelo,
                 condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -448,9 +448,9 @@ namespace WFIgrejaLgpd
                 p.AdicionarNaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas);                               
             }
 
-            if (modelo is business.classes.Abstrato.PessoaLgpd)
+            if (modelo is business.classes.Pessoas.PessoaLgpd)
             {
-                var p = (business.classes.Abstrato.PessoaLgpd)modelo;
+                var p = (business.classes.Pessoas.PessoaLgpd)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
                 p.AdicionarNaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios);                
                 
@@ -505,9 +505,9 @@ namespace WFIgrejaLgpd
                     p.RemoverDaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas, modelo.Id);
             }
 
-            if (modelo is business.classes.Abstrato.PessoaLgpd)
+            if (modelo is business.classes.Pessoas.PessoaLgpd)
             {
-                var p = (business.classes.Abstrato.PessoaLgpd)modelo;
+                var p = (business.classes.Pessoas.PessoaLgpd)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
                     p.RemoverDaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios, modelo.Id);
 
@@ -540,7 +540,7 @@ namespace WFIgrejaLgpd
                 if (this.GetType().Name == "DadoPessoal")
                 {
 
-                    Foto con = new Foto((business.classes.Abstrato.PessoaLgpd)modelo,
+                    Foto con = new Foto((business.classes.Pessoas.PessoaLgpd)modelo,
                     condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -549,7 +549,7 @@ namespace WFIgrejaLgpd
 
                 if (this.GetType().Name == "Foto")
                 {
-                    ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((business.classes.Abstrato.PessoaLgpd)modelo,
+                    ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((business.classes.Pessoas.PessoaLgpd)modelo,
                     condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -560,7 +560,7 @@ namespace WFIgrejaLgpd
                 {
                     if (modelo.GetType().Name == "CriancaLgpd")
                     {                        
-                        CadastroCrianca cc = new CadastroCrianca((business.classes.Abstrato.PessoaLgpd)
+                        CadastroCrianca cc = new CadastroCrianca((business.classes.Pessoas.PessoaLgpd)
                         modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cc.MdiParent = this.MdiParent;
                         this.Close();
@@ -570,7 +570,7 @@ namespace WFIgrejaLgpd
 
                     if (modelo.GetType().Name == "VisitanteLgpd")
                     {                        
-                        CadastroVisitante cv = new CadastroVisitante((business.classes.Abstrato.PessoaLgpd)
+                        CadastroVisitante cv = new CadastroVisitante((business.classes.Pessoas.PessoaLgpd)
                         modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cv.MdiParent = this.MdiParent;
                         this.Close();
@@ -580,7 +580,7 @@ namespace WFIgrejaLgpd
 
                     if (modelo.GetType().Name == "Membro_AclamacaoLgpd")
                     {                        
-                        CadastroMembroAclamacao cma = new CadastroMembroAclamacao((business.classes.Abstrato.PessoaLgpd)
+                        CadastroMembroAclamacao cma = new CadastroMembroAclamacao((business.classes.Pessoas.PessoaLgpd)
                        modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cma.MdiParent = this.MdiParent;
                         this.Close();
@@ -590,7 +590,7 @@ namespace WFIgrejaLgpd
 
                     if (modelo.GetType().Name == "Membro_ReconciliacaoLgpd")
                     {
-                        CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((business.classes.Abstrato.PessoaLgpd)
+                        CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((business.classes.Pessoas.PessoaLgpd)
                         modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cmr.MdiParent = this.MdiParent;
                         this.Close();
@@ -600,7 +600,7 @@ namespace WFIgrejaLgpd
 
                     if (modelo.GetType().Name == "Membro_BatismoLgpd")
                     {
-                        CadastroMembroBatismo cmb = new CadastroMembroBatismo((business.classes.Abstrato.PessoaLgpd)
+                        CadastroMembroBatismo cmb = new CadastroMembroBatismo((business.classes.Pessoas.PessoaLgpd)
                         modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cmb.MdiParent = this.MdiParent;
                         this.Close();
@@ -610,7 +610,7 @@ namespace WFIgrejaLgpd
 
                     if (modelo.GetType().Name == "Membro_TransferenciaLgpd")
                     {
-                        CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((business.classes.Abstrato.PessoaLgpd)
+                        CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((business.classes.Pessoas.PessoaLgpd)
                         modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         cmt.MdiParent = this.MdiParent;
                         this.Close();
@@ -624,7 +624,7 @@ namespace WFIgrejaLgpd
                     this.GetType().Name == "CadastroMembroBatismo" || this.GetType().Name == "CadastroMembroTransferencia")
                 {
                     WFIgrejaLgpd.Formulario.Pessoa.FinalizarCadastro fn = new
-                    WFIgrejaLgpd.Formulario.Pessoa.FinalizarCadastro((business.classes.Abstrato.PessoaLgpd)modelo,
+                    WFIgrejaLgpd.Formulario.Pessoa.FinalizarCadastro((business.classes.Pessoas.PessoaLgpd)modelo,
                    CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     fn.MdiParent = this.MdiParent;
                     this.Close();

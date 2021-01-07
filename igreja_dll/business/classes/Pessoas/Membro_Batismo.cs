@@ -19,11 +19,6 @@ namespace business.classes.Pessoas
         public Membro_Batismo() : base()
         {
         }
-
-        public Membro_Batismo(int id, bool recuperaLista) : base(id, recuperaLista)
-        {
-
-        }
         
         public override string alterar(int id)
         {
@@ -60,6 +55,7 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
+                base.recuperar(id);
                 modelos.Add(this);
                 return modelos;
             }

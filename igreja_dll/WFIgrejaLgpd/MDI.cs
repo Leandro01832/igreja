@@ -622,7 +622,7 @@ namespace WFIgrejaLgpd
         private void chamadaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.ChamadaLgpd(), "");
+            ir.imprimir(new business.classes.Chamada(), "");
         }
 
         private void historicoToolStripMenuItem_Click(object sender, EventArgs e)
