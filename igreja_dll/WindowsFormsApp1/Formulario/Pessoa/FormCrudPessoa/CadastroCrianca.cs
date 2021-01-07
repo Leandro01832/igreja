@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using database;
+using WindowsFormsApp1.Formulario;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
@@ -19,7 +20,6 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
-            P = p;
         }
 
         public CadastroCrianca(modelocrud modelo, modelocrud modeloNovo)
@@ -28,20 +28,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public business.classes.Pessoas.PessoaDado P { get; }
-
-        private void CadastroCrianca_Load(object sender, EventArgs e)
-        {
-            this.Text = "Cadastro de Criança.";
-            if(modelo != null)
-            if(modelo.Id != 0)
-            {
-                var p = (business.classes.Pessoas.Crianca)modelo;
-                txt_nome_pai.Text = p.Nome_pai;
-                txt_nome_mae.Text = p.Nome_mae;
-            }
-            
-        }
+        public business.classes.Pessoas.PessoaDado P { get; }        
 
         private void Proximo_Click(object sender, EventArgs e)
         {
@@ -79,6 +66,18 @@ namespace WindowsFormsApp1.Formulario.Pessoa
                 p.Nome_mae = txt_nome_mae.Text;
             }
             
+        }
+
+        private void CadastroCrianca_Load_1(object sender, EventArgs e)
+        {
+            this.Text = "Cadastro de Criança.";
+            if (modelo != null)
+                if (modelo.Id != 0)
+                {
+                    var p = (business.classes.Pessoas.Crianca)modelo;
+                    txt_nome_pai.Text = p.Nome_pai;
+                    txt_nome_mae.Text = p.Nome_mae;
+                }
         }
     }
 }

@@ -242,13 +242,11 @@ namespace business.classes.Abstrato
                 return null;
             }
 
-            var lista = PessoaDado.recuperarTodos();
-            List<PessoaDado> lista2 = new List<PessoaDado>();
-            foreach (var item in lista)
-            lista2.Add((PessoaDado)item);
+            var lista = Pessoa.recuperarTodos();
+
             while (dr.Read())
             {
-                var m = lista2.First(i => i.Id == int.Parse(Convert.ToString(dr["Id"])));
+                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Id"])));
                 modelos.Add(m);
             }
             dr.Close();

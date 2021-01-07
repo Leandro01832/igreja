@@ -1,18 +1,14 @@
 ﻿using database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using business.classes.PessoasLgpd;
+using business.classes.Pessoas;
+using business.classes.Ministerio;
+using business.classes.Abstrato;
 
 namespace WindowsFormsApp1
 {
-    
-
     public partial class Pesquisar : Form
     {
         public Pesquisar()
@@ -28,17 +24,64 @@ namespace WindowsFormsApp1
         string comando = "";
         string tipo = "";
 
+        private void radio_mudanca_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox1.Text = "Escolha o tipo se necessário.";
+            modelo = new business.classes.MudancaEstado();
+            FormataDataGrid(false, false, false, false, false, false, false, false, true);
+            if (radio_reuniao.Checked)
+                MessageBox.Show("Você esta vendo informações de mudança de estado.");
+
+            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
+            {
+                var dado = (business.classes.MudancaEstado)item;
+                dgdados.Rows.Add(dado.Id, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
+                dado.DataMudanca);
+            }
+        }
+
+        private void radio_endereco_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox1.Text = "Escolha o tipo se necessário.";
+            modelo = new business.classes.Endereco();
+            FormataDataGrid(false, false, false, false, false, false, false, true, false);
+            if (radio_reuniao.Checked)
+                MessageBox.Show("Você esta vendo informações de Endereço.");
+
+            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
+            {
+                var dado = (business.classes.Endereco)item;
+                dgdados.Rows.Add(dado.Id, dado.Pais, dado.Estado, dado.Cidade,
+                dado.Bairro, dado.Rua, dado.Numero_casa, dado.Cep);
+            }
+        }
+
+        private void radio_telefone_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox1.Text = "Escolha o tipo se necessário.";
+            modelo = new business.classes.Telefone();
+            FormataDataGrid(false, false, false, false, false, false, true, false, false);
+            if (radio_reuniao.Checked)
+                MessageBox.Show("Você esta vendo informações de Telefone.");
+
+            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
+            {
+                var dado = (business.classes.Telefone)item;
+                dgdados.Rows.Add(dado.Id, dado.Fone, dado.Celular, dado.Whatsapp);
+            }
+        }
+
         private void radio_pessoa_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
             comando = "";
-            FormataDataGrid(true, false, false, false, false, false);
+            FormataDataGrid(true, false, false, false, false, false, false, false, false);
             if (radio_pessoa.Checked)
                 MessageBox.Show("Você esta vendo informações de pessoa.");
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
-                var dado = (business.classes.Pessoas.PessoaDado)item;
+                var dado = (PessoaDado)item;
                 dgdados.Rows.Add(dado.Id, dado.Email, dado.celula_, dado.Falta, dado.Img);
             }   
         }
@@ -47,13 +90,13 @@ namespace WindowsFormsApp1
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
             comando = "";
-            FormataDataGrid(false, true, false, false, false, false);
+            FormataDataGrid(false, true, false, false, false, false, false, false, false);
             if (radio_ministerio.Checked)
                 MessageBox.Show("Você esta vendo informações de ministério.");
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
-                var dado = (business.classes.Abstrato.Ministerio)item;
+                var dado = (Ministerio)item;
                 dgdados.Rows.Add(dado.Id, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
             }
         }
@@ -62,13 +105,13 @@ namespace WindowsFormsApp1
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
             comando = "";
-            FormataDataGrid(false, false, true, false, false, false);
+            FormataDataGrid(false, false, true, false, false, false, false, false, false);
             if (radio_celula.Checked)
                 MessageBox.Show("Você esta vendo informações de celula.");
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {                
-                var dado = (business.classes.Abstrato.Celula)item;
+                var dado = (Celula)item;
                 dgdados.Rows.Add(dado.Id, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
             }
         }
@@ -77,7 +120,7 @@ namespace WindowsFormsApp1
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
             modelo = new business.classes.Chamada();
-            FormataDataGrid(false, false, false, true, false, false);
+            FormataDataGrid(false, false, false, true, false, false, false, false, false);
             if (radio_chamada.Checked)
                 MessageBox.Show("Você esta vendo informações de chamada.");
 
@@ -92,7 +135,7 @@ namespace WindowsFormsApp1
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
             modelo = new business.classes.Reuniao();
-            FormataDataGrid(false, false, false, false, true, false);
+            FormataDataGrid(false, false, false, false, true, false, false, false, false);
             if (radio_reuniao.Checked)
                 MessageBox.Show("Você esta vendo informações de reunião.");
 
@@ -107,7 +150,7 @@ namespace WindowsFormsApp1
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
             modelo = new business.classes.Historico();
-            FormataDataGrid(false, false, false, false, false, true);
+            FormataDataGrid(false, false, false, false, false, true, false, false, false);
             if (radio_historico.Checked)
                 MessageBox.Show("Você esta vendo informações de histórico.");
 
@@ -119,7 +162,7 @@ namespace WindowsFormsApp1
         }       
 
         private void FormataDataGrid(bool Pessoa, bool Ministerio,
-        bool Celula, bool Chamada, bool Reuniao, bool Historico)
+        bool Celula, bool Chamada, bool Reuniao, bool Historico, bool Telefone, bool Endereco,  bool Mudanca)
         {
             comboBox1.Text = "";
             comboBox1.Items.Clear();
@@ -138,7 +181,7 @@ namespace WindowsFormsApp1
                 tipo = "Pessoa";
                 check_pesquisa_email.Enabled = true;
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("Codigo", "Id");
                 dgdados.Columns.Add("Email", "Email");
                 dgdados.Columns.Add("celula_", "Celula");
                 dgdados.Columns.Add("Falta", "Falta");
@@ -151,6 +194,7 @@ namespace WindowsFormsApp1
                 comboBox1.Items.Add("Membro por batismo");
                 comboBox1.Items.Add("Membro por reconciliação");
                 comboBox1.Items.Add("Membro por trandferência");
+
             }
 
             if (Ministerio)
@@ -227,7 +271,37 @@ namespace WindowsFormsApp1
                 dgdados.Columns[3].Width = 400;
             }
 
+            if (Telefone)
+            {
+                dgdados.Columns.Clear();
+                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("Fone", "Fone");
+                dgdados.Columns.Add("Celular", "Celular");
+                dgdados.Columns.Add("Whatsapp", "Whatsapp");
+            }
 
+            if (Endereco)
+            {
+                dgdados.Columns.Clear();
+                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("Pais", "País");
+                dgdados.Columns.Add("Estado", "Estado");
+                dgdados.Columns.Add("Cidade", "Cidade");
+                dgdados.Columns.Add("Bairro", "Bairro");
+                dgdados.Columns.Add("Rua", "Rua");
+                dgdados.Columns.Add("Numero_casa", "Numero da casa");
+                dgdados.Columns.Add("Cep", "Cep");
+            }
+
+            if (Mudanca)
+            {
+                dgdados.Columns.Clear();
+                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("CodigoPessoa", "Identificação da pessoa");
+                dgdados.Columns.Add("velhoEstado", "Estado antigo");
+                dgdados.Columns.Add("novoEstado", "Estado novo");
+                dgdados.Columns.Add("DataMudanca", "Data da mudança");
+            }
         }
 
         private void Pesquisar_Load(object sender, EventArgs e)
@@ -240,64 +314,64 @@ namespace WindowsFormsApp1
         {
             if(m == null && tipo == "Pessoa")
             {
-                FormataDataGrid(true, false, false, false, false, false);
+                FormataDataGrid(true, false, false, false, false, false, false, false, false);
             }
 
             if (m == null && tipo == "Ministerio")
             {
-                FormataDataGrid(false, true, false, false, false, false);
+                FormataDataGrid(false, true, false, false, false, false, false, false, false);
             }
 
             if (m == null && tipo == "Celula")
             {
-                FormataDataGrid(false, false, true, false, false, false);
+                FormataDataGrid(false, false, true, false, false, false, false, false, false);
             }
-
-            if (m is business.classes.Pessoas.PessoaDado)
+            
+            if (m is Pessoa)
             {
-                if (m is business.classes.Pessoas.Visitante)
+                if (m is Visitante || m is VisitanteLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Data_visita", "Data da visita");
                     dgdados.Columns.Add("Condicao_religiosa", "Condição religiosa");
                 }
 
-                if (m is business.classes.Pessoas.Crianca)
+                if (m is Crianca || m is CriancaLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Nome_mae", "Nome da mãe");
                     dgdados.Columns.Add("Nome_pai", "Nome do pai");
                 }
 
-                if (m is business.classes.Pessoas.Membro_Aclamacao)
+                if (m is Membro_Aclamacao || m is Membro_AclamacaoLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
                     dgdados.Columns.Add("Denominacao", "Denominação");
                 }
 
-                if (m is business.classes.Pessoas.Membro_Batismo)
+                if (m is Membro_Batismo || m is Membro_BatismoLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
                 }
 
-                if (m is business.classes.Pessoas.Membro_Reconciliacao)
+                if (m is Membro_Reconciliacao ||  m is Membro_ReconciliacaoLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
                     dgdados.Columns.Add("Data_reconciliacao", "Ano da reconciliação");
                 }
 
-                if (m is business.classes.Pessoas.Membro_Reconciliacao)
+                if (m is Membro_Transferencia || m is Membro_TransferenciaLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
@@ -307,118 +381,123 @@ namespace WindowsFormsApp1
                 } 
             }
 
-            if(m is business.classes.Abstrato.Ministerio)
+            if(m is Ministerio)
             {
-                if(m is business.classes.Ministerio.Supervisor_Celula)
+                if(m is Supervisor_Celula)
                 {
-                    FormataDataGrid(false, true, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
 
-                if (m is business.classes.Ministerio.Supervisor_Celula_Treinamento)
+                if (m is Supervisor_Celula_Treinamento)
                 {
-                    FormataDataGrid(false, true, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
 
-                if (m is business.classes.Ministerio.Supervisor_Ministerio)
+                if (m is Supervisor_Ministerio)
                 {
-                    FormataDataGrid(false, true, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
 
-                if (m is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
+                if (m is Supervisor_Ministerio_Treinamento)
                 {
-                    FormataDataGrid(false, true, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
             }
 
             foreach (var item in pesquisa.BuscarPorRestricao(m, tipo, comando))
             {
-                if (m is business.classes.Pessoas.PessoaDado)
+                if (m is Pessoa)
                 {
-                    if (m is business.classes.Pessoas.Visitante)
+                    if (m is Visitante || m is VisitanteLgpd)
                     {
-                        business.classes.Pessoas.Visitante info = (business.classes.Pessoas.Visitante)item;
+                        Visitante info = (Visitante)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_visita, info.Condicao_religiosa);
                     }
 
-                    if (m is business.classes.Pessoas.Crianca)
+                    if (m is Crianca || m is CriancaLgpd)
                     {
-                        business.classes.Pessoas.Crianca info = (business.classes.Pessoas.Crianca)item;
+                        Crianca info = (Crianca)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Nome_mae, info.Nome_pai);
                     }
 
-                    if (m is business.classes.Pessoas.Membro_Aclamacao)
+                    if (m is Membro_Aclamacao || m is CriancaLgpd)
                     {
-                        business.classes.Pessoas.Membro_Aclamacao info = (business.classes.Pessoas.Membro_Aclamacao)item;
+                        Membro_Aclamacao info = (Membro_Aclamacao)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
                     }
 
-                    if (m is business.classes.Pessoas.Membro_Batismo)
+                    if (m is Membro_Batismo || m is CriancaLgpd)
                     {
-                        business.classes.Pessoas.Membro_Batismo info = (business.classes.Pessoas.Membro_Batismo)item;
+                        Membro_Batismo info = (Membro_Batismo)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
                     }
 
-                    if (m is business.classes.Pessoas.Membro_Reconciliacao)
+                    if (m is Membro_Reconciliacao || m is Membro_ReconciliacaoLgpd)
                     {
-                        business.classes.Pessoas.Membro_Reconciliacao info = (business.classes.Pessoas.Membro_Reconciliacao)item;
+                        Membro_Reconciliacao info = (Membro_Reconciliacao)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
                     }
 
-                    if (m is business.classes.Pessoas.Membro_Transferencia)
+                    if (m is Membro_Transferencia || m is Membro_TransferenciaLgpd)
                     {
-                        business.classes.Pessoas.Membro_Transferencia info = (business.classes.Pessoas.Membro_Transferencia)item;
+                        Membro_Transferencia info = (Membro_Transferencia)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Nome_cidade_transferencia,
+                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
+                        info.Nome_cidade_transferencia,
                         info.Estado_transferencia, info.Nome_igreja_transferencia);
                     } 
                 }
                 
-                if(m is business.classes.Abstrato.Ministerio)
+                if(m is Ministerio)
                 {
-                    if (m is business.classes.Ministerio.Supervisor_Celula)
+                    if (m is Supervisor_Celula)
                     {
-                        business.classes.Ministerio.Supervisor_Celula info = (business.classes.Ministerio.Supervisor_Celula)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito, info.Maximo_celula);
+                        Supervisor_Celula info = (Supervisor_Celula)item;
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa,
+                            info.Ministro_, info.Proposito, info.Maximo_celula);
                     }
 
-                    if (m is business.classes.Ministerio.Supervisor_Celula_Treinamento)
+                    if (m is Supervisor_Celula_Treinamento)
                     {
-                        business.classes.Ministerio.Supervisor_Celula_Treinamento info = (business.classes.Ministerio.Supervisor_Celula_Treinamento)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito, info.Maximo_celula);
+                        Supervisor_Celula_Treinamento info = (Supervisor_Celula_Treinamento)item;
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                            info.Proposito, info.Maximo_celula);
                     }
 
-                    if (m is business.classes.Ministerio.Supervisor_Ministerio)
+                    if (m is Supervisor_Ministerio)
                     {
-                        business.classes.Ministerio.Supervisor_Ministerio info = (business.classes.Ministerio.Supervisor_Ministerio)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito, info.Maximo_celula);
+                        Supervisor_Ministerio info = (Supervisor_Ministerio)item;
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                            info.Proposito, info.Maximo_celula);
                     }
 
-                    if (m is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
+                    if (m is Supervisor_Ministerio_Treinamento)
                     {
-                        business.classes.Ministerio.Supervisor_Ministerio_Treinamento info = (business.classes.Ministerio.Supervisor_Ministerio_Treinamento)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito, info.Maximo_celula);
+                        Supervisor_Ministerio_Treinamento info = (Supervisor_Ministerio_Treinamento)item;
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        info.Proposito, info.Maximo_celula);
                     }
 
-                    if(m is business.classes.Ministerio.Lider_Celula ||
-                       m is business.classes.Ministerio.Lider_Celula_Treinamento ||
-                       m is business.classes.Ministerio.Lider_Ministerio ||
-                       m is business.classes.Ministerio.Lider_Ministerio_Treinamento)
+                    if(m is Lider_Celula ||
+                       m is Lider_Celula_Treinamento ||
+                       m is Lider_Ministerio ||
+                       m is Lider_Ministerio_Treinamento)
                     {
-                        business.classes.Ministerio.Lider_Celula info = (business.classes.Ministerio.Lider_Celula)item;
+                        Lider_Celula info = (Lider_Celula)item;
                         dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito);
                     }
                 }
 
-                if(m is business.classes.Abstrato.Celula)
+                if(m is Celula)
                 {
                     if(m is business.classes.Celulas.Celula_Adolescente ||
                         m is business.classes.Celulas.Celula_Adulto ||

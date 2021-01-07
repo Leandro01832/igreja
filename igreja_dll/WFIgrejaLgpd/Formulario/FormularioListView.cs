@@ -73,9 +73,9 @@ namespace WFIgrejaLgpd.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            List<business.classes.Pessoas.PessoaDado> lista2 = new List<business.classes.Pessoas.PessoaDado>();
+            List<business.classes.Pessoas.PessoaLgpd> lista2 = new List<business.classes.Pessoas.PessoaLgpd>();
             foreach (var item in lista)
-                lista2.Add((business.classes.Pessoas.PessoaDado)item);
+                lista2.Add((business.classes.Pessoas.PessoaLgpd)item);
             Modelo = lista2.First(i => i.Codigo == ListView.numero);
             Modelo = Modelo.recuperar(Modelo.Id)[0];
 

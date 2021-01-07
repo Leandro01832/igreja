@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace business.classes.Pessoas
 {
     [Table("PessoaDado")]
-    public abstract class PessoaDado : Pessoa, IAddNalista, IMudancaEstado  
+    public abstract class PessoaDado : Pessoa 
     {
         public PessoaDado() : base()
         {
@@ -69,13 +69,12 @@ namespace business.classes.Pessoas
         #endregion
 
         public override string salvar()
-        {
-            Codigo = recuperarTodos().Count + 1;
+        {            
             Telefone t = new Telefone(); t = this.Telefone;
             Endereco e = new Endereco(); e = this.Endereco;
 
                       Insert_padrao =
-              "insert into Pessoa (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
+              "insert into PessoaDado (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
               "Rg, Cpf, Sexo_feminino, Falescimento, " +
               "Email, Status)" +
               $" values ('{this.Nome}', '{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
@@ -95,7 +94,7 @@ namespace business.classes.Pessoas
             if (this.celula_ == null) celula = "null";
             else celula = this.celula_.ToString();
 
-            Update_padrao = $"update Pessoa set Nome='{Nome}', Estado_civil='{Estado_civil}', " +
+            Update_padrao = $"update PessoaDado set Nome='{Nome}', Estado_civil='{Estado_civil}', " +
             $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Email='{Email}', Status='{Status}', " +
             $"celula_={celula}, Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
             $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +
@@ -110,15 +109,15 @@ namespace business.classes.Pessoas
         {
             Delete_padrao = 
                 " delete Telefone from Telefone as T inner " +
-                " join Pessoa as P on T.Id=P.Id" +
+                " join PessoaDado as P on T.Id=P.Id" +
                 $" where P.Id='{id}' " +
                 "delete Endereco from Endereco as E inner " +
-                "join Pessoa as P on E.Id=P.Id" +
+                "join PessoaDado as P on E.Id=P.Id" +
                 $" where P.Id='{id}' " +
                 " delete Chamada from Chamada as CH inner " +
-                "join Pessoa as P on CH.Id=P.Id" +
+                "join PessoaDado as P on CH.Id=P.Id" +
                 $" where P.Id='{id}' " +
-                $" delete Pessoa from Pessoa as P where P.Id='{id}' " ;
+                $" delete PessoaDado from PessoaDado as P where P.Id='{id}' " ;
             
             bd.Excluir(null);
             return Delete_padrao;
@@ -156,6 +155,17 @@ namespace business.classes.Pessoas
                     this.Rg = Convert.ToString(dr["Rg"]);
                     this.Cpf = Convert.ToString(dr["Cpf"]);
                     this.Status = Convert.ToString(dr["Status"]);
+                    this.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
+                    this.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
+                    this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+                    this.Endereco.Estado = Convert.ToString(dr["Estado"]);
+                    this.Endereco.Rua = Convert.ToString(dr["Rua"]);
+                    this.Endereco.Cep = long.Parse(Convert.ToString(dr["Status"]));
+                    this.Endereco.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Telefone.Fone = Convert.ToString(dr["Rua"]);
+                    this.Telefone.Celular = Convert.ToString(dr["Celular"]);
+                    this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
+                    this.Telefone.Id = int.Parse(Convert.ToString(dr["Id"]));
 
                     dr.Close();
                     modelos.Add(this);

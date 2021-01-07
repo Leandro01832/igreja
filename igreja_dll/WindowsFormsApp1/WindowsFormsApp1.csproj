@@ -255,6 +255,12 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\Contato.Designer.cs">
       <DependentUpon>Contato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.Designer.cs">
+      <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\Foto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Contato.resx">
       <DependentUpon>Contato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.resx">
+      <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Foto.resx">
       <DependentUpon>Foto.cs</DependentUpon>

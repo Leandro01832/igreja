@@ -64,6 +64,9 @@
             this.txt_pesquisa_id_valor2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_pesquisa_id_valor1 = new System.Windows.Forms.TextBox();
+            this.radio_telefone = new System.Windows.Forms.RadioButton();
+            this.radio_endereco = new System.Windows.Forms.RadioButton();
+            this.radio_mudanca = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgdados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +74,7 @@
             // 
             this.radio_pessoa.AutoSize = true;
             this.radio_pessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_pessoa.Location = new System.Drawing.Point(37, 30);
+            this.radio_pessoa.Location = new System.Drawing.Point(55, 20);
             this.radio_pessoa.Name = "radio_pessoa";
             this.radio_pessoa.Size = new System.Drawing.Size(115, 33);
             this.radio_pessoa.TabIndex = 0;
@@ -84,7 +87,7 @@
             // 
             this.radio_ministerio.AutoSize = true;
             this.radio_ministerio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_ministerio.Location = new System.Drawing.Point(177, 30);
+            this.radio_ministerio.Location = new System.Drawing.Point(205, 20);
             this.radio_ministerio.Name = "radio_ministerio";
             this.radio_ministerio.Size = new System.Drawing.Size(139, 33);
             this.radio_ministerio.TabIndex = 1;
@@ -97,7 +100,7 @@
             // 
             this.radio_celula.AutoSize = true;
             this.radio_celula.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_celula.Location = new System.Drawing.Point(350, 30);
+            this.radio_celula.Location = new System.Drawing.Point(363, 20);
             this.radio_celula.Name = "radio_celula";
             this.radio_celula.Size = new System.Drawing.Size(103, 33);
             this.radio_celula.TabIndex = 2;
@@ -110,7 +113,7 @@
             // 
             this.radio_chamada.AutoSize = true;
             this.radio_chamada.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_chamada.Location = new System.Drawing.Point(37, 87);
+            this.radio_chamada.Location = new System.Drawing.Point(55, 68);
             this.radio_chamada.Name = "radio_chamada";
             this.radio_chamada.Size = new System.Drawing.Size(137, 33);
             this.radio_chamada.TabIndex = 3;
@@ -123,7 +126,7 @@
             // 
             this.radio_reuniao.AutoSize = true;
             this.radio_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_reuniao.Location = new System.Drawing.Point(192, 87);
+            this.radio_reuniao.Location = new System.Drawing.Point(205, 68);
             this.radio_reuniao.Name = "radio_reuniao";
             this.radio_reuniao.Size = new System.Drawing.Size(124, 33);
             this.radio_reuniao.TabIndex = 4;
@@ -136,7 +139,7 @@
             // 
             this.radio_historico.AutoSize = true;
             this.radio_historico.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_historico.Location = new System.Drawing.Point(350, 87);
+            this.radio_historico.Location = new System.Drawing.Point(363, 68);
             this.radio_historico.Name = "radio_historico";
             this.radio_historico.Size = new System.Drawing.Size(129, 33);
             this.radio_historico.TabIndex = 5;
@@ -158,7 +161,7 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(55, 170);
+            this.comboBox1.Location = new System.Drawing.Point(37, 242);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(487, 37);
             this.comboBox1.TabIndex = 7;
@@ -441,11 +444,53 @@
             this.txt_pesquisa_id_valor1.TabIndex = 33;
             this.txt_pesquisa_id_valor1.TextChanged += new System.EventHandler(this.txt_pesquisa_id_valor1_TextChanged);
             // 
+            // radio_telefone
+            // 
+            this.radio_telefone.AutoSize = true;
+            this.radio_telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_telefone.Location = new System.Drawing.Point(55, 117);
+            this.radio_telefone.Name = "radio_telefone";
+            this.radio_telefone.Size = new System.Drawing.Size(131, 33);
+            this.radio_telefone.TabIndex = 38;
+            this.radio_telefone.TabStop = true;
+            this.radio_telefone.Text = "Telefone";
+            this.radio_telefone.UseVisualStyleBackColor = true;
+            this.radio_telefone.CheckedChanged += new System.EventHandler(this.radio_telefone_CheckedChanged);
+            // 
+            // radio_endereco
+            // 
+            this.radio_endereco.AutoSize = true;
+            this.radio_endereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_endereco.Location = new System.Drawing.Point(205, 117);
+            this.radio_endereco.Name = "radio_endereco";
+            this.radio_endereco.Size = new System.Drawing.Size(139, 33);
+            this.radio_endereco.TabIndex = 39;
+            this.radio_endereco.TabStop = true;
+            this.radio_endereco.Text = "Endereço";
+            this.radio_endereco.UseVisualStyleBackColor = true;
+            this.radio_endereco.CheckedChanged += new System.EventHandler(this.radio_endereco_CheckedChanged);
+            // 
+            // radio_mudanca
+            // 
+            this.radio_mudanca.AutoSize = true;
+            this.radio_mudanca.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_mudanca.Location = new System.Drawing.Point(55, 162);
+            this.radio_mudanca.Name = "radio_mudanca";
+            this.radio_mudanca.Size = new System.Drawing.Size(245, 33);
+            this.radio_mudanca.TabIndex = 40;
+            this.radio_mudanca.TabStop = true;
+            this.radio_mudanca.Text = "Mudança de estado";
+            this.radio_mudanca.UseVisualStyleBackColor = true;
+            this.radio_mudanca.CheckedChanged += new System.EventHandler(this.radio_mudanca_CheckedChanged);
+            // 
             // Pesquisar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1817, 819);
+            this.Controls.Add(this.radio_mudanca);
+            this.Controls.Add(this.radio_endereco);
+            this.Controls.Add(this.radio_telefone);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_pesquisa_id_valor2);
@@ -530,5 +575,8 @@
         private System.Windows.Forms.TextBox txt_pesquisa_id_valor2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_pesquisa_id_valor1;
+        private System.Windows.Forms.RadioButton radio_telefone;
+        private System.Windows.Forms.RadioButton radio_endereco;
+        private System.Windows.Forms.RadioButton radio_mudanca;
     }
 }

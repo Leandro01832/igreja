@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using business.classes.Abstrato;
 using business.classes.Pessoas;
 using database;
 using database.banco;
 
-namespace business.classes.Abstrato
+namespace business.classes
 {
     [Table("MudancaEstado")]
     public class MudancaEstado : modelocrud, IMudancaEstado

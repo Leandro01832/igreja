@@ -1,4 +1,5 @@
-﻿using business.classes.PessoasLgpd;
+﻿using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,12 @@ namespace business.classes.Abstrato
             AddNalista = new AddNalista();
             this.Chamada = new Chamada
             {
-                Data_inicio = DateTime.Now,
-                Numero_chamada = 1
-
+                Data_inicio = DateTime.Now
             };
         }
+
+        //Propriedades
+        #region
 
         AddNalista AddNalista;
 
@@ -52,14 +54,17 @@ namespace business.classes.Abstrato
 
         private MudancaEstado MudancaEstado;
 
+        #endregion
+
         public override string salvar()
         {
+            Codigo = recuperarTodos().Count + 1;
             string celula = "";
             if (this.celula_ == null) celula = "null";
             else celula = this.celula_.ToString();
 
                       Insert_padrao =
-              "insert into PessoaLgpd (Email,  Falta, celula_, Img) " +
+              "insert into Pessoa (Email,  Falta, celula_, Img) " +
               $" values ( '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}') " +
                this.Chamada.salvar() + " ";
             
@@ -73,7 +78,7 @@ namespace business.classes.Abstrato
             if (this.celula_ == null) celula = "null";
             else celula = this.celula_.ToString();
 
-            Update_padrao = $"update PessoaLgpd set  " +
+            Update_padrao = $"update Pessoa set  " +
             $" Email='{Email}',  " +
             $"celula_={celula}, " +
             $" Falta='{Falta}', Img='{this.Img}' " +
@@ -85,7 +90,7 @@ namespace business.classes.Abstrato
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from PessoaLgpd as P where P.Id='{id}' ";
+            Delete_padrao = $" delete from Pessoa as P where P.Id='{id}' ";
             
             bd.Excluir(null);
             return Delete_padrao;
@@ -93,8 +98,7 @@ namespace business.classes.Abstrato
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from PessoaLgpd as P "
-        + " inner join ChamadaLgpd as CH on CH.Id=P.Id ";
+            Select_padrao = "select * from Pessoa as P ";
             if (id != null) Select_padrao += $" where P.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -212,9 +216,57 @@ namespace business.classes.Abstrato
                 return task.Result;
             });
 
-            Task.WaitAll(t, t2, t3, t4, t5, t6);
+            Task<List<modelocrud>> t7 = t6.ContinueWith((task) =>
+            {
+                var p = new Visitante().recuperar(null);
+                if (p != null)
+                    task.Result.AddRange(p);
+                return task.Result;
+            });
 
-            return  t6.Result;
+            Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
+            {
+                var p = new Crianca().recuperar(null);
+                if (p != null)
+                    task.Result.AddRange(p);
+                return task.Result;
+            });
+
+            Task<List<modelocrud>> t9 = t8.ContinueWith((task) =>
+            {
+                var p = new Membro_Aclamacao().recuperar(null);
+                if (p != null)
+                    task.Result.AddRange(p);
+                return task.Result;
+            });
+
+            Task<List<modelocrud>> t10 = t9.ContinueWith((task) =>
+            {
+                var p = new Membro_Reconciliacao().recuperar(null);
+                if (p != null)
+                    task.Result.AddRange(p);
+                return task.Result;
+            });
+
+            Task<List<modelocrud>> t11 = t10.ContinueWith((task) =>
+            {
+                var p = new Membro_Batismo().recuperar(null);
+                if (p != null)
+                    task.Result.AddRange(p);
+                return task.Result;
+            });
+
+            Task<List<modelocrud>> t12 = t11.ContinueWith((task) =>
+            {
+                var p = new Membro_Transferencia().recuperar(null);
+                if (p != null)
+                    task.Result.AddRange(p);
+                return task.Result;
+            });
+
+            Task.WaitAll(t, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12);
+
+            return  t12.Result;
         }       
 
         public List<modelocrud> recuperarMinisterios(int? id)
@@ -281,8 +333,8 @@ namespace business.classes.Abstrato
 
         public List<modelocrud> recuperarHistorico(int? id)
         {
-            var select = "select * from HistoricoLgpd as H " +
-                " inner join PessoaLgpd as P" +
+            var select = "select * from Historico as H " +
+                " inner join Pessoa as P" +
                 $" on P.Id=H.pessoaid where P.Id='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();

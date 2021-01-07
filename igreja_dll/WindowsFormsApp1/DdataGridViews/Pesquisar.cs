@@ -15,17 +15,21 @@ namespace WindowsFormsApp1.DdataGridViews
         {
             var comand = "";
             var innerjoin = "";
-            DataTable dtable = new DataTable();
-
-            var listaPessoa = business.classes.Abstrato.Pessoa.recuperarTodos();
-            var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
-            var listaCelula = business.classes.Abstrato.Celula.recuperarTodasCelulas();
+            DataTable dtable = new DataTable();            
 
             if (modelo is business.classes.Abstrato.Membro)
-                innerjoin = " inner join Membro as MEM  on M.Id=MEM.Id inner join Pessoa as P on MEM.Id=P.Id";
+                innerjoin = " inner join Membro as MEM  on M.Id=MEM.Id inner join PessoaDado as PD on MEM.Id=P.Id"
+                    + " inner join Pessoa as P on PD.Id=P.Id";
 
-           else if (modelo is business.classes.Pessoas.PessoaDado)
-                innerjoin = " inner join Pessoa as P on M.Id=P.Id";
+            if (modelo is business.classes.Abstrato.MembroLgpd)
+                innerjoin = " inner join MembroLgpd as MEM  on M.Id=MEM.Id inner join PessoaLgpd as PL on MEM.Id=P.Id"
+                    + " inner join Pessoa as P on PD.Id=P.Id";
+
+             if (modelo is business.classes.Pessoas.PessoaDado)
+                innerjoin = " inner join PessoaDado as PD on M.Id=P.Id inner join Pessoa as P on PD.Id=P.Id ";
+
+             if (modelo is business.classes.Pessoas.PessoaLgpd)
+                innerjoin = " inner join PessoaLgpd as PD on M.Id=P.Id inner join Pessoa as P on PD.Id=P.Id ";
 
             if (modelo != null)
                 comand = $"select * from {modelo.GetType().Name} as M {innerjoin} ";
@@ -41,17 +45,31 @@ namespace WindowsFormsApp1.DdataGridViews
             objadp.Fill(dtable);
 
             if (modelo == null && tipo == "Pessoa" ||
+                modelo == null && tipo == "PessoaLgpd" ||
                 modelo is business.classes.Pessoas.Visitante ||
                 modelo is business.classes.Pessoas.Crianca ||
                 modelo is business.classes.Pessoas.Membro_Aclamacao ||
                 modelo is business.classes.Pessoas.Membro_Batismo ||
                 modelo is business.classes.Pessoas.Membro_Reconciliacao ||
-                modelo is business.classes.Pessoas.Membro_Transferencia)
+                modelo is business.classes.Pessoas.Membro_Transferencia ||
+                modelo is business.classes.PessoasLgpd.VisitanteLgpd ||
+                modelo is business.classes.PessoasLgpd.CriancaLgpd ||
+                modelo is business.classes.PessoasLgpd.Membro_AclamacaoLgpd ||
+                modelo is business.classes.PessoasLgpd.Membro_BatismoLgpd ||
+                modelo is business.classes.PessoasLgpd.Membro_ReconciliacaoLgpd ||
+                modelo is business.classes.PessoasLgpd.Membro_TransferenciaLgpd)
             {
                 List<modelocrud> l = new List<modelocrud>();
+                var listaPessoa = business.classes.Abstrato.Pessoa.recuperarTodos();
+                var lista = new List<modelocrud>();
+                foreach(var itemlista in listaPessoa)
+                {
+                    lista.Add(itemlista.recuperar(itemlista.Id)[0]);
+                }
+
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(listaPessoa.First(i => i.Id == int.Parse(item["Id"].ToString())));
+                    l.Add(lista.First(i => i.Id == int.Parse(item["Id"].ToString())));
                 }
                 return l;
             }
@@ -66,9 +84,16 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
             {
                 List<modelocrud> l = new List<modelocrud>();
+                var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
+                var lista = new List<modelocrud>();
+                foreach (var itemlista in listaMinisterio)
+                {
+                    lista.Add(itemlista.recuperar(itemlista.Id)[0]);
+                }
+
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(listaMinisterio.First(i => i.Id == int.Parse(item["Id"].ToString())));
+                    l.Add(lista.First(i => i.Id == int.Parse(item["Id"].ToString())));
                 }
                 return l;
             }
@@ -81,39 +106,30 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Celulas.Celula_Jovem)
             {
                 List<modelocrud> l = new List<modelocrud>();
+                var listaCelula = business.classes.Abstrato.Celula.recuperarTodasCelulas();
+                var lista = new List<modelocrud>();
+                foreach (var itemlista in listaCelula)
+                {
+                    lista.Add(itemlista.recuperar(itemlista.Id)[0]);
+                }
+
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(listaCelula.First(i => i.Id == int.Parse(item["Id"].ToString())));
+                    l.Add(lista.First(i => i.Id == int.Parse(item["Id"].ToString())));
                 }
                 return l;
             }
 
-            if ( modelo is business.classes.Chamada)
-            {
-                List<modelocrud> l = new List<modelocrud>();
-                foreach (var item in dtable.Select(""))
-                {
-                    l.Add(new business.classes.Chamada().recuperar(int.Parse(item["Id"].ToString()))[0]);
-                }
-                return l;
-            }
+           
 
-            if (modelo is business.classes.Reuniao)
+            if (modelo is business.classes.Historico || modelo is business.classes.Reuniao ||
+                modelo is business.classes.Chamada || modelo is business.classes.MudancaEstado ||
+                modelo is business.classes.Endereco || modelo is business.classes.Telefone)
             {
                 List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(new business.classes.Reuniao().recuperar(int.Parse(item["Id"].ToString()))[0]);
-                }
-                return l;
-            }
-
-            if (modelo is business.classes.Historico)
-            {
-                List<modelocrud> l = new List<modelocrud>();
-                foreach (var item in dtable.Select(""))
-                {
-                    l.Add(new business.classes.Historico().recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    l.Add(modelo.recuperar(int.Parse(item["Id"].ToString()))[0]);
                 }
                 return l;
             }

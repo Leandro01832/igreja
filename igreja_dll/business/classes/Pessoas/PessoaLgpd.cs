@@ -13,13 +13,12 @@ using System.Windows.Forms;
 namespace business.classes.Pessoas
 {
     [Table("PessoaLgpd")]
-    public abstract class PessoaLgpd : Pessoa, IAddNalista, IMudancaEstado  
+    public abstract class PessoaLgpd : Pessoa 
     {
         public PessoaLgpd() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();
-            
+            AddNalista = new AddNalista();            
         }
 
         AddNalista AddNalista;
