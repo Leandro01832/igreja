@@ -27,16 +27,9 @@ namespace business.classes.Pessoas
 
         public override string salvar()
         {
-            string celula = "";
-            if (this.celula_ == null) celula = "null";
-            else celula = this.celula_.ToString();
-
-                      Insert_padrao =
-              "insert into PessoaLgpd (Email,  Falta, celula_, Img) " +
-              $" values ( '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}') " +
-               this.Chamada.salvar() + " ";
+            Insert_padrao = base.salvar();
+            Insert_padrao += " insert into PessoaLgpd (Id) values (IDENT_CURRENT('Pessoa')) ";            
             
-            bd.SalvarModelo(null);
             return Insert_padrao;
         }
 

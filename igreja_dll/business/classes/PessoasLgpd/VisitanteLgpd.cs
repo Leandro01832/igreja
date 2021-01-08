@@ -162,7 +162,7 @@ namespace business.classes.PessoasLgpd
         {
             Insert_padrao = base.salvar();
             Insert_padrao += $" insert into {this.GetType().Name} (Data_visita, Condicao_religiosa, Id) " +
-            $" values ('{this.Data_visita.ToString("yyyy-MM-dd")}', '{Condicao_religiosa}', IDENT_CURRENT('PessoaLgpd'))"
+            $" values ('{this.Data_visita.ToString("yyyy-MM-dd")}', '{Condicao_religiosa}', IDENT_CURRENT('Pessoa'))"
             + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);

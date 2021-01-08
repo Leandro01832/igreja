@@ -158,7 +158,7 @@ namespace business.classes.Pessoas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Crianca (Nome_pai, Nome_mae, Id) values" +
-                $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
+                $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('PessoaDado'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
             BDcomum.addNaLista = "";

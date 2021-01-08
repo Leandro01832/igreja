@@ -19,8 +19,6 @@ namespace business.classes
     [Table("Historico")]
    public class Historico : modelocrud
     {
-        
-        
         private DateTime data_inicio;        
         private int falta;  
 
@@ -40,7 +38,7 @@ namespace business.classes
         public int pessoaid { get; set; }
 
         [ForeignKey("pessoaid")]
-        public virtual PessoaDado Pessoa { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
 
         public int Falta
         {
@@ -145,8 +143,8 @@ namespace business.classes
         public override string salvar()
         {
             Insert_padrao =
-        $"insert into Historico (Data_inicio, pessoaid, Falta, Id) " +
-        $"values ({Data_inicio.ToString()}, {pessoaid}, {Falta}, IDENT_CURRENT('Pessoa'))";
+        $"insert into Historico (Data_inicio, pessoaid, Falta) " +
+        $"values ({Data_inicio.ToString()}, {pessoaid}, {Falta})";
             
             bd.SalvarModelo(this);
             return Insert_padrao;

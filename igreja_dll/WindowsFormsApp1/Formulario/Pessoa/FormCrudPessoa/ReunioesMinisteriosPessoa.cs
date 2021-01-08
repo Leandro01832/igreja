@@ -1,4 +1,5 @@
 ﻿using business.classes.Pessoas;
+using database;
 using System;
 using System.Windows.Forms;
 
@@ -11,13 +12,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public ReunioesMinisteriosPessoa(PessoaDado p, bool Deletar, bool Atualizar, bool Detalhes)            
-          : base(p, Deletar, Atualizar, Detalhes)
-        {
-            InitializeComponent();
-        }
-
-        public ReunioesMinisteriosPessoa(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
+        public ReunioesMinisteriosPessoa(modelocrud p, bool Deletar, bool Atualizar, bool Detalhes)            
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

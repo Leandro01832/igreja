@@ -106,8 +106,7 @@ namespace business.classes
             }
         }
 
-        public List<PessoaDado> Pessoas { get; set; }
-        public List<PessoaLgpd> PessoasLgpd { get; set; }
+        public List<Pessoa> Pessoas { get; set; }
 
         AddNalista AddNalista;
 

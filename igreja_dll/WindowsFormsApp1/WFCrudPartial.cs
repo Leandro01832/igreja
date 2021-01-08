@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
 
         private void DadoClasse_Click(object sender, EventArgs e)
         {
-            if (modelo is Crianca)
+            if (modelo is Crianca || modelo is CriancaLgpd)
             {
                 CadastroCrianca c = new CadastroCrianca((Pessoa)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
                 c.Show();
             }
 
-            if (modelo is Visitante)
+            if (modelo is Visitante || modelo is VisitanteLgpd)
             {
                 CadastroVisitante c =
                 new CadastroVisitante((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
                 c.Show();
             }
 
-            if (modelo is Membro_Aclamacao)
+            if (modelo is Membro_Aclamacao || modelo is Membro_AclamacaoLgpd)
             {
                 CadastroMembroAclamacao c =
                 new CadastroMembroAclamacao((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
                 c.Show();
             }
 
-            if (modelo is Membro_Batismo)
+            if (modelo is Membro_Batismo || modelo is Membro_BatismoLgpd)
             {
                 CadastroMembroBatismo c =
                 new CadastroMembroBatismo((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
                 c.Show();
             }
 
-            if (modelo is Membro_Reconciliacao)
+            if (modelo is Membro_Reconciliacao || modelo is Membro_ReconciliacaoLgpd)
             {
                 CadastroMembroReconciliacao c =
                 new CadastroMembroReconciliacao((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
@@ -66,11 +66,10 @@ namespace WindowsFormsApp1
                 c.Show();
             }
 
-            if (modelo is Membro_Transferencia)
+            if (modelo is Membro_Transferencia || modelo is Membro_TransferenciaLgpd)
             {
                 CadastroMembroTransferencia c =
                 new CadastroMembroTransferencia((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
@@ -132,10 +131,12 @@ namespace WindowsFormsApp1
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((PessoaDado)modelo
-            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
-            rmp.MdiParent = this.MdiParent;
-            rmp.Show();
+                ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((Pessoa)modelo
+                , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+                rmp.MdiParent = this.MdiParent;
+                rmp.Show();
+            
+
         }
 
         private void DadoContato_Click(object sender, EventArgs e)
@@ -480,6 +481,19 @@ namespace WindowsFormsApp1
                             this.Close();
                             cmt.Show();
                         }
+                    }
+
+                    if (this is CadastroCrianca || this is CadastroVisitante ||
+                        this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
+                        this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
+                    {
+                        FinalizarCadastroPessoa fn = new
+                        FinalizarCadastroPessoa((PessoaLgpd)modelo,
+                        CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                        fn.MdiParent = this.MdiParent;
+                        this.Close();
+                        fn.Show();
+
                     }
                 }
 

@@ -17,7 +17,6 @@ namespace database.banco
     public class BDcomum
     {       
         public static string conecta = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public static string conectaLgpd = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IgrejaLgpd;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         
         public static string addNaLista = "";
         public int i;
@@ -27,7 +26,7 @@ namespace database.banco
         {
             try
             {
-                SqlConnection conn = new SqlConnection(conectaLgpd);
+                SqlConnection conn = new SqlConnection(conecta);
                 
                 return conn;
             }

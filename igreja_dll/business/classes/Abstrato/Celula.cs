@@ -40,7 +40,7 @@ namespace business.classes.Abstrato
         [Display(Name = "Máximo de pessoas")]
         public int Maximo_pessoa { get; set; }
 
-        public virtual List<Abstrato.Ministerio> Ministerios { get; set; }
+        public virtual List<Ministerio> Ministerios { get; set; }
 
         public virtual EnderecoCelula EnderecoCelula { get; set; }
 

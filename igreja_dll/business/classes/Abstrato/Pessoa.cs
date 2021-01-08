@@ -58,17 +58,22 @@ namespace business.classes.Abstrato
 
         public override string salvar()
         {
-            Codigo = recuperarTodos().Count + 1;
+            try
+            {
+                var numero = recuperarTodos().Last().Id;
+                Codigo = numero + 1;
+            }
+            catch { Codigo = 1; }          
+            
             string celula = "";
             if (this.celula_ == null) celula = "null";
             else celula = this.celula_.ToString();
 
                       Insert_padrao =
-              "insert into Pessoa (Email,  Falta, celula_, Img) " +
-              $" values ( '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}') " +
+              "insert into Pessoa (Email, Falta, celula_, Img, Codigo) " +
+              $" values ( '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
                this.Chamada.salvar() + " ";
             
-            bd.SalvarModelo(null);
             return Insert_padrao;
         }
 
@@ -122,6 +127,7 @@ namespace business.classes.Abstrato
                     dr.Read();
                     this.Img = Convert.ToString(dr["Img"]);
                     this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                     this.Email = Convert.ToString(dr["Email"]);
                     this.Falta = int.Parse(dr["Falta"].ToString());
                     this.Chamada = new Chamada();

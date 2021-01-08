@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
         {
             if (Lgpd)
             {
-                Pessoa p2 = new Membro_AclamacaoLgpd();
+                Pessoa p2 = new Membro_BatismoLgpd();
                 MembroBatismo m = new MembroBatismo(p2);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
@@ -177,7 +177,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                Pessoa p1 = new Membro_Aclamacao();
+                Pessoa p1 = new Membro_Batismo();
                 MembroBatismo m = new MembroBatismo(p1);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
@@ -235,20 +235,18 @@ namespace WindowsFormsApp1
 
         private void membroPorAclamaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Visitante();
-            PessoaLgpd p2 = new VisitanteLgpd();
             if (Lgpd)
             {
-                DadoPessoalLgpd cma =
-                new DadoPessoalLgpd(p2, false, false, false);
+                PessoaLgpd p2 = new Membro_AclamacaoLgpd();
+                DadoPessoalLgpd cma = new DadoPessoalLgpd(p2, false, false, false);               
                 cma.MdiParent = this;
                 cma.Text = "Janela " + childFormNumber++;
                 cma.Show();
             }
             else
             {
-                DadoPessoal cma =
-                new DadoPessoal(p1, false, false, false);
+                PessoaDado p1 = new Membro_Aclamacao();
+                DadoPessoal cma = new DadoPessoal(p1, false, false, false);               
                 cma.MdiParent = this;
                 cma.Text = "Janela " + childFormNumber++;
                 cma.Show();
@@ -258,20 +256,18 @@ namespace WindowsFormsApp1
 
         private void membroPorBatismoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Visitante();
-            PessoaLgpd p2 = new VisitanteLgpd();
             if (Lgpd)
             {
-                DadoPessoalLgpd cmb =
-                new DadoPessoalLgpd(p2, false, false, false);
+                PessoaLgpd p2 = new Membro_BatismoLgpd();
+                DadoPessoalLgpd cmb = new DadoPessoalLgpd(p2, false, false, false);                
                 cmb.MdiParent = this;
                 cmb.Text = "Janela " + childFormNumber++;
                 cmb.Show();
             }
             else
             {
-                DadoPessoal cmb =
-                new DadoPessoal(p1, false, false, false);
+                PessoaDado p1 = new Membro_Batismo();
+                DadoPessoal cmb = new DadoPessoal(p1, false, false, false);                
                 cmb.MdiParent = this;
                 cmb.Text = "Janela " + childFormNumber++;
                 cmb.Show();
@@ -281,20 +277,20 @@ namespace WindowsFormsApp1
 
         private void membroPorReconciliaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Visitante();
-            PessoaLgpd p2 = new VisitanteLgpd();
             if (Lgpd)
             {
-                DadoPessoalLgpd cmr =
-                new DadoPessoalLgpd(p2, false, false, false);
+                PessoaLgpd p2 = new Membro_ReconciliacaoLgpd();
+                DadoPessoalLgpd cmr = new DadoPessoalLgpd(p2, false, false, false);
+                
                 cmr.MdiParent = this;
                 cmr.Text = "Janela " + childFormNumber++;
                 cmr.Show();
             }
             else
             {
-                DadoPessoal cmr =
-                new DadoPessoal(p1, false, false, false);
+                PessoaDado p1 = new Membro_Reconciliacao();
+                DadoPessoal cmr = new DadoPessoal(p1, false, false, false);
+                
                 cmr.MdiParent = this;
                 cmr.Text = "Janela " + childFormNumber++;
                 cmr.Show();
@@ -304,21 +300,18 @@ namespace WindowsFormsApp1
 
         private void membroPorTransferênciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Visitante();
-            PessoaLgpd p2 = new VisitanteLgpd();            
-
             if (Lgpd)
             {
-                DadoPessoalLgpd cmt = 
-                new DadoPessoalLgpd(p2, false, false, false);
+                PessoaLgpd p2 = new Membro_TransferenciaLgpd();
+                DadoPessoalLgpd cmt =  new DadoPessoalLgpd(p2, false, false, false);               
                 cmt.MdiParent = this;
                 cmt.Text = "Janela " + childFormNumber++;
                 cmt.Show();
             }
             else
             {
-                DadoPessoal cmt =
-                new DadoPessoal(p1, false, false, false);
+                PessoaDado p1 = new Membro_Transferencia();
+                DadoPessoal cmt = new DadoPessoal(p1, false, false, false);                
                 cmt.MdiParent = this;
                 cmt.Text = "Janela " + childFormNumber++;
                 cmt.Show();
@@ -328,22 +321,20 @@ namespace WindowsFormsApp1
 
         private void vIsitanteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Visitante();
-            PessoaLgpd p2 = new VisitanteLgpd();
             if (Lgpd)
             {
-                DadoPessoalLgpd cv =
-                new DadoPessoalLgpd(p2, false, false, false);
+                PessoaLgpd p2 = new VisitanteLgpd();
+                DadoPessoalLgpd cv = new DadoPessoalLgpd(p2, false, false, false);                
                 cv.MdiParent = this;
                 cv.Text = "Janela " + childFormNumber++;
                 cv.Show();
             }
             else
             {
+                PessoaDado p1 = new Visitante();
                 if (Lgpd)
                 {
-                    DadoPessoal cv =
-                    new DadoPessoal(p1, false, false, false);
+                    DadoPessoal cv = new DadoPessoal(p1, false, false, false);                   
                     cv.MdiParent = this;
                     cv.Text = "Janela " + childFormNumber++;
                     cv.Show();
@@ -354,20 +345,18 @@ namespace WindowsFormsApp1
 
         private void criançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Visitante();
-            PessoaLgpd p2 = new VisitanteLgpd();
             if (Lgpd)
             {
-                DadoPessoalLgpd cc =
-                new DadoPessoalLgpd(p2, false, false, false);
+                PessoaLgpd p2 = new CriancaLgpd();
+                DadoPessoalLgpd cc = new DadoPessoalLgpd(p2, false, false, false);                
                 cc.MdiParent = this;
                 cc.Text = "Janela " + childFormNumber++;
                 cc.Show();
             }
             else
             {
-                DadoPessoal cc =
-                new DadoPessoal(p1, false, false, false);
+                PessoaDado p1 = new Crianca();
+                DadoPessoal cc = new DadoPessoal(p1, false, false, false);                
                 cc.MdiParent = this;
                 cc.Text = "Janela " + childFormNumber++;
                 cc.Show();

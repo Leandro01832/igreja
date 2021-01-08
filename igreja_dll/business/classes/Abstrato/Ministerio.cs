@@ -32,7 +32,7 @@ namespace business.classes.Abstrato
         [ForeignKey("Ministro_")]
         public virtual Membro Ministro { get; set; }
 
-        public virtual List<Abstrato.Celula> Celulas { get; set; }
+        public virtual List<Celula> Celulas { get; set; }
 
         [Display(Name = "Maximo de pessoas")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
