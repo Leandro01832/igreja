@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace business.classes.Abstrato
 {
     [Table("Pessoa")]
-    public abstract class Pessoa : modelocrud, IAddNalista, IMudancaEstado  
+    public abstract class Pessoa : modelocrud, IAddNalista, IMudancaEstado
     {
         public Pessoa() : base()
         {
@@ -27,10 +27,10 @@ namespace business.classes.Abstrato
 
         //Propriedades
         #region
-
+            
         AddNalista AddNalista;
 
-        [Index("CODIGOLgpd", 2, IsUnique = true)]
+        [Index("CODIGO", 2, IsUnique = true)]
         public int Codigo { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -80,7 +80,7 @@ namespace business.classes.Abstrato
 
             Update_padrao = $"update Pessoa set  " +
             $" Email='{Email}',  " +
-            $"celula_={celula}, " +
+            $" celula_={celula}, " +
             $" Falta='{Falta}', Img='{this.Img}' " +
             $"  where Id='{id}' ";
             
@@ -90,7 +90,10 @@ namespace business.classes.Abstrato
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Pessoa as P where P.Id='{id}' ";
+            Delete_padrao = " delete Chamada from Chamada as CH inner " +
+                "join Pessoa as P on CH.Id=P.Id " +
+                $" where P.Id='{id}' " +
+                $" delete from Pessoa as P where P.Id='{id}' ";
             
             bd.Excluir(null);
             return Delete_padrao;
@@ -377,5 +380,7 @@ namespace business.classes.Abstrato
         {
             MudancaEstado.MudarEstado(id, m);
         }
+
+        
     }
 }

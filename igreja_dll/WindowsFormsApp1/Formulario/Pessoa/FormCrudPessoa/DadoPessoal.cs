@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class DadoPessoal : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public DadoPessoal(business.classes.Pessoas.PessoaDado P,
+        public DadoPessoal(PessoaDado P,
             bool Deletar, bool Atualizar,  bool Detalhes)
             : base(P, Deletar, Atualizar,  Detalhes)
-        { 
+        {            
             InitializeComponent();
         }
 
@@ -24,9 +25,9 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             this.Text = "Daddos pessoais.";
 
-            if (modelo.Id != 0)
+            if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 text_nome.Text = p.Nome;
                 text_rg.Text = p.Rg;
                 text_cpf.Text = p.Cpf;

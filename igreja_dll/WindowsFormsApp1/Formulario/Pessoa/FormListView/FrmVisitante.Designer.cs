@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    partial class Visitante
+    partial class FrmVisitante
     {
         /// <summary>
         /// Required designer variable.

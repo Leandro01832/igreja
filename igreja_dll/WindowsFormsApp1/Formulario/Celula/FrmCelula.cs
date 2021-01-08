@@ -6,9 +6,9 @@ using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario.Celula
 {
-    public partial class Celula : FormularioListView
+    public partial class FrmCelula : FormularioListView
     {
-        public Celula() : base(new ListViewCelula(null, "Celula"))
+        public FrmCelula() : base(new ListViewCelula(null, "Celula"))
         {
             InitializeComponent();
         }

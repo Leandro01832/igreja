@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
+using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
@@ -20,9 +15,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroReconciliacao(business.classes.Pessoas.PessoaDado p,
-            bool Deletar, bool Atualizar,  bool Detalhes)
-            : base(p, Deletar, Atualizar, Detalhes)
+        public CadastroMembroReconciliacao(PessoaDado p, bool Deletar, bool Atualizar,  bool Detalhes)            
+        : base(p, Deletar, Atualizar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        public CadastroMembroReconciliacao(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
+        : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
@@ -31,10 +31,18 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             this.Text = "Cadastro de membro por reconciliação.";
             if(modelo != null)
-            if(modelo.Id != 0)
             {
-                var p = (business.classes.Pessoas.Membro_Reconciliacao)modelo;
-                txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
+                if(modelo is Membro_Reconciliacao)
+                {
+                    var p = (Membro_Reconciliacao)modelo;
+                    txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
+                }
+                if (modelo is Membro_ReconciliacaoLgpd)
+                {
+                    var p = (Membro_ReconciliacaoLgpd)modelo;
+                    txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
+                }
+
             }
             
             
@@ -44,27 +52,58 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             if(modelo != null)
             {
-                var p = (business.classes.Pessoas.Membro_Reconciliacao)modelo;
-                try
+                if(modelo is Membro_Reconciliacao)
                 {
-                    p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                    var p = (Membro_Reconciliacao)modelo;
+                    try
+                    {
+                        p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                    }
                 }
-                catch (Exception)
+                if (modelo is Membro_ReconciliacaoLgpd)
                 {
-                    MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                    var p = (Membro_ReconciliacaoLgpd)modelo;
+                    try
+                    {
+                        p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                    }
                 }
+
             }
 
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.Membro_Reconciliacao)ModeloNovo;
-                try
+                if (ModeloNovo is Membro_Reconciliacao)
                 {
-                    p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                    var p = (Membro_Reconciliacao)ModeloNovo;
+                    try
+                    {
+                        p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                    }
                 }
-                catch (Exception)
+                if (ModeloNovo is Membro_ReconciliacaoLgpd)
                 {
-                    MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                    var p = (Membro_ReconciliacaoLgpd)ModeloNovo;
+                    try
+                    {
+                        p.Data_reconciliacao = int.Parse(txt_reconciliacao.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Informe apenas o ano. (4 digitos.)");
+                    }
                 }
             }
         }

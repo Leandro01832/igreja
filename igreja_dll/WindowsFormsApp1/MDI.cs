@@ -1,27 +1,20 @@
-﻿using business.classes;
-using database;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario;
 using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.Ministerio;
 using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
 
 namespace WindowsFormsApp1
 {
     public partial class MDI : Form
     {
         private int childFormNumber = 1;
+        private bool Lgpd = true;
 
         public MDI()
         {
@@ -118,50 +111,124 @@ namespace WindowsFormsApp1
 
         private void visitanteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Visitante m = new Visitante();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (Lgpd)
+            {
+                FrmVisitante m = new FrmVisitante(new VisitanteLgpd());
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else
+            {
+                FrmVisitante m = new FrmVisitante(new Visitante());
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            
         }
 
         private void criançaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Crianca m = new Crianca();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (Lgpd)
+            {
+                FrmCrianca m = new FrmCrianca(new CriancaLgpd());
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else
+            {
+                FrmCrianca m = new FrmCrianca(new Crianca());
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+           
         }
 
         private void membroPorAclamaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MembroAclamacao m = new MembroAclamacao();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (Lgpd)
+            {
+                Pessoa p2 = new Membro_AclamacaoLgpd();
+                FrmMembroAclamacao m = new FrmMembroAclamacao(p2);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else
+            {
+                Pessoa p1 = new Membro_Aclamacao();
+                FrmMembroAclamacao m = new FrmMembroAclamacao(p1);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            
         }
 
         private void membroPorBatismoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MembroBatismo m = new MembroBatismo();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (Lgpd)
+            {
+                Pessoa p2 = new Membro_AclamacaoLgpd();
+                MembroBatismo m = new MembroBatismo(p2);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else
+            {
+                Pessoa p1 = new Membro_Aclamacao();
+                MembroBatismo m = new MembroBatismo(p1);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            
         }
 
         private void membroPorReconciliaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MembroReconciliacao m = new MembroReconciliacao();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (Lgpd)
+            {
+                Pessoa p = new Membro_Reconciliacao();
+                MembroReconciliacao m = new MembroReconciliacao(p);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else
+            {
+                Pessoa p = new Membro_ReconciliacaoLgpd();
+                MembroReconciliacao m = new MembroReconciliacao(p);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+           
         }
 
         private void membroPorTransferênciaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MembroTransferencia m = new MembroTransferencia();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (Lgpd)
+            {
+                Pessoa p = new Membro_Transferencia();
+                MembroTransferencia m = new MembroTransferencia(p);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else
+            {
+                Pessoa p = new Membro_TransferenciaLgpd();
+                MembroTransferencia m = new MembroTransferencia(p);
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            
         }
 
         private void pessoaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,61 +238,151 @@ namespace WindowsFormsApp1
 
         private void membroPorAclamaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoPessoal cma = 
-                new DadoPessoal(new business.classes.Pessoas.Membro_Aclamacao(), false, false, false);
-            cma.MdiParent = this;
-            cma.Text = "Janela " + childFormNumber++;
-            cma.Show();
+            PessoaDado p1 = new Visitante();
+            PessoaLgpd p2 = new VisitanteLgpd();
+            if (Lgpd)
+            {
+                DadoPessoalLgpd cma =
+                new DadoPessoalLgpd(p2, false, false, false);
+                cma.MdiParent = this;
+                cma.Text = "Janela " + childFormNumber++;
+                cma.Show();
+            }
+            else
+            {
+                DadoPessoal cma =
+                new DadoPessoal(p1, false, false, false);
+                cma.MdiParent = this;
+                cma.Text = "Janela " + childFormNumber++;
+                cma.Show();
+            }
+            
         }
 
         private void membroPorBatismoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoPessoal cmb =
-            new DadoPessoal(new business.classes.Pessoas.Membro_Batismo(), false, false, false);
-            cmb.MdiParent = this;
-            cmb.Text = "Janela " + childFormNumber++;
-            cmb.Show();
+            PessoaDado p1 = new Visitante();
+            PessoaLgpd p2 = new VisitanteLgpd();
+            if (Lgpd)
+            {
+                DadoPessoalLgpd cmb =
+                new DadoPessoalLgpd(p2, false, false, false);
+                cmb.MdiParent = this;
+                cmb.Text = "Janela " + childFormNumber++;
+                cmb.Show();
+            }
+            else
+            {
+                DadoPessoal cmb =
+                new DadoPessoal(p1, false, false, false);
+                cmb.MdiParent = this;
+                cmb.Text = "Janela " + childFormNumber++;
+                cmb.Show();
+            }
+            
         }
 
         private void membroPorReconciliaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoPessoal cmr =
-            new DadoPessoal(new business.classes.Pessoas.Membro_Reconciliacao(), false, false, false);
-            cmr.MdiParent = this;
-            cmr.Text = "Janela " + childFormNumber++;
-            cmr.Show();
+            PessoaDado p1 = new Visitante();
+            PessoaLgpd p2 = new VisitanteLgpd();
+            if (Lgpd)
+            {
+                DadoPessoalLgpd cmr =
+                new DadoPessoalLgpd(p2, false, false, false);
+                cmr.MdiParent = this;
+                cmr.Text = "Janela " + childFormNumber++;
+                cmr.Show();
+            }
+            else
+            {
+                DadoPessoal cmr =
+                new DadoPessoal(p1, false, false, false);
+                cmr.MdiParent = this;
+                cmr.Text = "Janela " + childFormNumber++;
+                cmr.Show();
+            }
+            
         }
 
         private void membroPorTransferênciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoPessoal cmt = 
-            new DadoPessoal(new business.classes.Pessoas.Membro_Transferencia(), false, false, false);
-            cmt.MdiParent = this;
-            cmt.Text = "Janela " + childFormNumber++;
-            cmt.Show();
+            PessoaDado p1 = new Visitante();
+            PessoaLgpd p2 = new VisitanteLgpd();            
+
+            if (Lgpd)
+            {
+                DadoPessoalLgpd cmt = 
+                new DadoPessoalLgpd(p2, false, false, false);
+                cmt.MdiParent = this;
+                cmt.Text = "Janela " + childFormNumber++;
+                cmt.Show();
+            }
+            else
+            {
+                DadoPessoal cmt =
+                new DadoPessoal(p1, false, false, false);
+                cmt.MdiParent = this;
+                cmt.Text = "Janela " + childFormNumber++;
+                cmt.Show();
+            }
+            
         }
 
         private void vIsitanteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoPessoal cv =
-            new DadoPessoal(new business.classes.Pessoas.Visitante(), false, false, false);
-            cv.MdiParent = this;
-            cv.Text = "Janela " + childFormNumber++;
-            cv.Show();
+            PessoaDado p1 = new Visitante();
+            PessoaLgpd p2 = new VisitanteLgpd();
+            if (Lgpd)
+            {
+                DadoPessoalLgpd cv =
+                new DadoPessoalLgpd(p2, false, false, false);
+                cv.MdiParent = this;
+                cv.Text = "Janela " + childFormNumber++;
+                cv.Show();
+            }
+            else
+            {
+                if (Lgpd)
+                {
+                    DadoPessoal cv =
+                    new DadoPessoal(p1, false, false, false);
+                    cv.MdiParent = this;
+                    cv.Text = "Janela " + childFormNumber++;
+                    cv.Show();
+                }
+            }
+            
         }
 
         private void criançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoPessoal cc =
-            new DadoPessoal(new business.classes.Pessoas.Crianca(), false, false, false);
-            cc.MdiParent = this;
-            cc.Text = "Janela " + childFormNumber++;
-            cc.Show();
+            PessoaDado p1 = new Visitante();
+            PessoaLgpd p2 = new VisitanteLgpd();
+            if (Lgpd)
+            {
+                DadoPessoalLgpd cc =
+                new DadoPessoalLgpd(p2, false, false, false);
+                cc.MdiParent = this;
+                cc.Text = "Janela " + childFormNumber++;
+                cc.Show();
+            }
+            else
+            {
+                DadoPessoal cc =
+                new DadoPessoal(p1, false, false, false);
+                cc.MdiParent = this;
+                cc.Text = "Janela " + childFormNumber++;
+                cc.Show();
+            }
+            
         }
 
         private void membroToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Membro m = new Membro();
+            string tipo = "";
+            if (Lgpd) tipo = "Membro"; else tipo = "MembroLgpd";
+            FrmMembro m = new FrmMembro(null, tipo);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -233,7 +390,10 @@ namespace WindowsFormsApp1
 
         private void pessoaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Pessoa p = new Pessoa();
+            string tipo = "";
+            if (Lgpd) tipo = "Pessoa"; else tipo = "PessoaLgpd";
+
+            FrmPessoa p = new FrmPessoa(null, tipo);
             p.MdiParent = this;
             p.Text = "Janela " + childFormNumber++;
             p.Show();
@@ -241,7 +401,7 @@ namespace WindowsFormsApp1
 
         private void ministerioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Ministerio m = new Ministerio();
+            FrmMinisterio m = new FrmMinisterio();
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -249,7 +409,7 @@ namespace WindowsFormsApp1
 
         private void celulaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Celula c = new Celula();
+            FrmCelula c = new FrmCelula();
             c.MdiParent = this;
             c.Text = "Janela " + childFormNumber++;
             c.Show();
@@ -471,7 +631,7 @@ namespace WindowsFormsApp1
 
         private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pesquisar query = new Pesquisar();
+            Pesquisar query = new Pesquisar(Lgpd);
             query.MdiParent = this;
             query.Text = "Janela " + childFormNumber++;
             query.Show();
@@ -481,50 +641,72 @@ namespace WindowsFormsApp1
 
         private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            string tipo = "";
+            if (Lgpd) tipo = "Pessoa"; else tipo = "PessoaLgpd";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, "Pessoa");
+            ir.imprimir(null, tipo);
         }
 
         private void criançaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
+        {           
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Pessoas.Crianca(), "");
+            if (Lgpd)
+            ir.imprimir(new CriancaLgpd(), "");
+            else
+            ir.imprimir(new Crianca(), "");
         }
 
         private void membroToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            string tipo = "";
+            if (Lgpd) tipo = "Membro"; else tipo = "MembroLgpd";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, "Membro");
+            ir.imprimir(null, tipo);
         }
 
         private void membroPorAclamaçãoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Pessoas.Membro_Aclamacao(), "");
+            if(Lgpd)
+            ir.imprimir(new Membro_AclamacaoLgpd(), "");
+            else
+            ir.imprimir(new Membro_Aclamacao(), "");
         }
 
         private void membroPorBatismoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Pessoas.Membro_Batismo(), "");
+            if(Lgpd)
+            ir.imprimir(new Membro_BatismoLgpd(), "");
+            else
+            ir.imprimir(new Membro_Batismo(), "");
         }
 
         private void membroPorTransferenciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Pessoas.Membro_Transferencia(), "");
+            if(Lgpd)
+            ir.imprimir(new Membro_TransferenciaLgpd(), "");
+            else
+            ir.imprimir(new Membro_Transferencia(), "");
         }
 
         private void membroPorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Pessoas.Membro_Reconciliacao(), "");
+            if(Lgpd)
+            ir.imprimir(new Membro_ReconciliacaoLgpd(), "");
+            else
+            ir.imprimir(new Membro_Reconciliacao(), "");
         }
 
         private void visitanteToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Pessoas.Visitante(), "");
+            if(Lgpd)
+            ir.imprimir(new VisitanteLgpd(), "");
+            else
+            ir.imprimir(new Visitante(), "");
         }
 
         private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)

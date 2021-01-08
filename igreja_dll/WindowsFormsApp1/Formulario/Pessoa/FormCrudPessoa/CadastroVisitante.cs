@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
+using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroVisitante : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
 
-        public CadastroVisitante(business.classes.Pessoas.PessoaDado p,
-            bool Deletar, bool Atualizar,  bool Detalhes)
-            :base(p, Deletar, Atualizar, Detalhes)
+        public CadastroVisitante(PessoaDado p, bool Deletar, bool Atualizar,  bool Detalhes)            
+        :base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
             this.modelo = p;
+        }
+
+        public CadastroVisitante(PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)           
+        : base(p, Atualizar, Deletar, Detalhes)
+        {
+            InitializeComponent();
         }
 
         public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)
@@ -33,11 +33,20 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             this.Text = "Cadastro de visitante.";
 
             if(modelo != null)
-            if (modelo.Id != 0)
             {
-                var p = (business.classes.Pessoas.Visitante)modelo;
-                mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy");
-                txt_condicao_religiosa.Text = p.Condicao_religiosa; 
+                if(modelo is Visitante)
+                {
+                    var p = (Visitante)modelo;
+                    mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy");
+                    txt_condicao_religiosa.Text = p.Condicao_religiosa;
+                }
+
+                if (modelo is VisitanteLgpd)
+                {
+                    var p = (VisitanteLgpd)modelo;
+                    mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy");
+                    txt_condicao_religiosa.Text = p.Condicao_religiosa;
+                }
             }
         }
 
@@ -50,40 +59,87 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             if(modelo != null)
             {
-                var p = (business.classes.Pessoas.Visitante)modelo;
-                p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                if(modelo is Visitante)
+                {
+                    var p = (Visitante)modelo;
+                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                }
+                if (modelo is VisitanteLgpd)
+                {
+                    var p = (VisitanteLgpd)modelo;
+                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                }
+
             }
             if(ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.Visitante)ModeloNovo;
-                p.Condicao_religiosa = txt_condicao_religiosa.Text;
-            }
-            
+                if (ModeloNovo is Visitante)
+                {
+                    var p = (Visitante)ModeloNovo;
+                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                }
+                if (ModeloNovo is VisitanteLgpd)
+                {
+                    var p = (VisitanteLgpd)ModeloNovo;
+                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                }
+            }            
         }
 
         private void mask_data_visita_TextChanged(object sender, EventArgs e)
         {
             if(modelo != null)
             {
-                var p = (business.classes.Pessoas.Visitante)modelo;
-                try
+                if(modelo is Visitante)
                 {
-                    p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                    var p = (Visitante)modelo;
+                    try
+                    {
+                        p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
-                catch (Exception)
+
+                if (modelo is VisitanteLgpd)
                 {
+                    var p = (VisitanteLgpd)modelo;
+                    try
+                    {
+                        p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
+
             }
 
             if(ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.Visitante)ModeloNovo;
-                try
+                if (ModeloNovo is Visitante)
                 {
-                    p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                    var p = (Visitante)ModeloNovo;
+                    try
+                    {
+                        p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
-                catch (Exception)
+
+                if (ModeloNovo is VisitanteLgpd)
                 {
+                    var p = (VisitanteLgpd)ModeloNovo;
+                    try
+                    {
+                        p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
             }
             

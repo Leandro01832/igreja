@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Formulario.Ministerio
+﻿namespace WindowsFormsApp1.Formulario.Celula
 {
-    partial class Ministerio
+    partial class FrmCelula
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Ministerio
+            // Celula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Ministerio";
-            this.Text = "Ministerio";
-            this.Load += new System.EventHandler(this.Ministerio_Load);
+            this.Name = "Celula";
+            this.Text = "Celula";
+            this.Load += new System.EventHandler(this.Celula_Load);
             this.ResumeLayout(false);
 
         }

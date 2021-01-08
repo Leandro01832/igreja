@@ -11,18 +11,21 @@ namespace WindowsFormsApp1
 {
     public partial class Pesquisar : Form
     {
-        public Pesquisar()
+        public Pesquisar(bool Lgpd)
         {
             pesquisa = new WindowsFormsApp1.DdataGridViews.Pesquisar();
             modelo = null;
             
             InitializeComponent();
+            this.Lgpd = Lgpd;
         }
 
        WindowsFormsApp1.DdataGridViews.Pesquisar pesquisa;
         modelocrud modelo;
         string comando = "";
         string tipo = "";
+
+        public bool Lgpd { get; }
 
         private void radio_mudanca_CheckedChanged(object sender, EventArgs e)
         {
@@ -178,7 +181,10 @@ namespace WindowsFormsApp1
 
             if (Pessoa)
             {
-                tipo = "Pessoa";
+                if(Lgpd)
+                tipo = "PessoaLgpd";
+                else
+                    tipo = "Pessoa";
                 check_pesquisa_email.Enabled = true;
                 dgdados.Columns.Clear();
                 dgdados.Columns.Add("Codigo", "Id");
@@ -312,7 +318,7 @@ namespace WindowsFormsApp1
 
         private void ModificaDataGridView(modelocrud m, string tipo, string comando)
         {
-            if(m == null && tipo == "Pessoa")
+            if(m == null && tipo == "Pessoa" || m == null && tipo == "PessoaLgpd")
             {
                 FormataDataGrid(true, false, false, false, false, false, false, false, false);
             }
@@ -412,49 +418,91 @@ namespace WindowsFormsApp1
             {
                 if (m is Pessoa)
                 {
-                    if (m is Visitante || m is VisitanteLgpd)
+                    if (m is Visitante)
                     {
                         Visitante info = (Visitante)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_visita, info.Condicao_religiosa);
                     }
 
-                    if (m is Crianca || m is CriancaLgpd)
+                    if ( m is VisitanteLgpd)
+                    {
+                        VisitanteLgpd info = (VisitanteLgpd)item;
+                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        info.Data_visita, info.Condicao_religiosa);
+                    }
+
+                    if (m is Crianca)
                     {
                         Crianca info = (Crianca)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Nome_mae, info.Nome_pai);
                     }
+                    if ( m is CriancaLgpd)
+                    {
+                        CriancaLgpd info = (CriancaLgpd)item;
+                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        info.Nome_mae, info.Nome_pai);
+                    }
 
-                    if (m is Membro_Aclamacao || m is CriancaLgpd)
+                    if ( m is Membro_Aclamacao)
                     {
                         Membro_Aclamacao info = (Membro_Aclamacao)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
                     }
+                    if (m is Membro_AclamacaoLgpd)
+                    {
+                        Membro_AclamacaoLgpd info = (Membro_AclamacaoLgpd)item;
+                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
+                    }
 
-                    if (m is Membro_Batismo || m is CriancaLgpd)
+                    if (m is Membro_Batismo)
                     {
                         Membro_Batismo info = (Membro_Batismo)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
                     }
 
-                    if (m is Membro_Reconciliacao || m is Membro_ReconciliacaoLgpd)
+                    if (m is Membro_BatismoLgpd)
+                    {
+                        Membro_BatismoLgpd info = (Membro_BatismoLgpd)item;
+                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
+                    }
+
+                    if (m is Membro_Reconciliacao)
                     {
                         Membro_Reconciliacao info = (Membro_Reconciliacao)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
                     }
 
-                    if (m is Membro_Transferencia || m is Membro_TransferenciaLgpd)
+                    if ( m is Membro_ReconciliacaoLgpd)
+                    {
+                        Membro_ReconciliacaoLgpd info = (Membro_ReconciliacaoLgpd)item;
+                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
+                    }
+
+                    if (m is Membro_Transferencia)
                     {
                         Membro_Transferencia info = (Membro_Transferencia)item;
                         dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
                         info.Nome_cidade_transferencia,
                         info.Estado_transferencia, info.Nome_igreja_transferencia);
-                    } 
+                    }
+
+                    if ( m is Membro_TransferenciaLgpd)
+                    {
+                        Membro_TransferenciaLgpd info = (Membro_TransferenciaLgpd)item;
+                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
+                        info.Nome_cidade_transferencia,
+                        info.Estado_transferencia, info.Nome_igreja_transferencia);
+                    }
                 }
                 
                 if(m is Ministerio)

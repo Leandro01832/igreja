@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    partial class MembroAclamacao
+    partial class FrmMembroAclamacao
     {
         /// <summary>
         /// Required designer variable.

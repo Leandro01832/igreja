@@ -1,4 +1,6 @@
-﻿using System;
+﻿using business.classes.Pessoas;
+using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +13,10 @@ using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class MembroAclamacao : FormularioListView
+    public partial class FrmMembroAclamacao : FormularioListView
     {
 
-        public MembroAclamacao() : base(
-            new ListViewMembroAclamacao
-            (new business.classes.Pessoas.Membro_Aclamacao(), ""))
+        public FrmMembroAclamacao(modelocrud modelo) : base(new ListViewMembroAclamacao(modelo, ""))
         {
             InitializeComponent();
         }

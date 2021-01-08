@@ -13,7 +13,9 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 {
     public partial class DadoPessoalLgpd : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public DadoPessoalLgpd()
+        public DadoPessoalLgpd(PessoaLgpd P,
+             bool Deletar, bool Atualizar, bool Detalhes)
+             : base(P, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }

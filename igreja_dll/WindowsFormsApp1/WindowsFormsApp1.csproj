@@ -63,11 +63,11 @@
     <Compile Include="Formulario\FormularioCrudCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\Celula.cs">
+    <Compile Include="Formulario\Celula\FrmCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\Celula.Designer.cs">
-      <DependentUpon>Celula.cs</DependentUpon>
+    <Compile Include="Formulario\Celula\FrmCelula.Designer.cs">
+      <DependentUpon>FrmCelula.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Celula\CelulaAdolescente.cs">
       <SubType>Form</SubType>
@@ -171,11 +171,11 @@
     <Compile Include="Formulario\Ministerio\LiderMinisterioTreinamento.Designer.cs">
       <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\Ministerio.cs">
+    <Compile Include="Formulario\Ministerio\FrmMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\Ministerio.Designer.cs">
-      <DependentUpon>Ministerio.cs</DependentUpon>
+    <Compile Include="Formulario\Ministerio\FrmMinisterio.Designer.cs">
+      <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Ministerio\PessoasCelulasMinisterio.cs">
       <SubType>Form</SubType>
@@ -273,11 +273,11 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.Designer.cs">
       <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Crianca.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmCrianca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Crianca.Designer.cs">
-      <DependentUpon>Crianca.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmCrianca.Designer.cs">
+      <DependentUpon>FrmCrianca.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.cs">
       <SubType>Form</SubType>
@@ -297,47 +297,47 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.Designer.cs">
       <DependentUpon>FinalizarCadastro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Membro.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Membro.Designer.cs">
-      <DependentUpon>Membro.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembro.Designer.cs">
+      <DependentUpon>FrmMembro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroAclamacao.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroAclamacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroAclamacao.Designer.cs">
-      <DependentUpon>MembroAclamacao.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroAclamacao.Designer.cs">
+      <DependentUpon>FrmMembroAclamacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroBatismo.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroBatismo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroBatismo.Designer.cs">
-      <DependentUpon>MembroBatismo.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroBatismo.Designer.cs">
+      <DependentUpon>FrmMembroBatismo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroReconciliacao.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroReconciliacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroReconciliacao.Designer.cs">
-      <DependentUpon>MembroReconciliacao.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroReconciliacao.Designer.cs">
+      <DependentUpon>FrmMembroReconciliacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroTransferencia.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroTransferencia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\MembroTransferencia.Designer.cs">
-      <DependentUpon>MembroTransferencia.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroTransferencia.Designer.cs">
+      <DependentUpon>FrmMembroTransferencia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Pessoa.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Pessoa.Designer.cs">
-      <DependentUpon>Pessoa.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmPessoa.Designer.cs">
+      <DependentUpon>FrmPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Visitante.cs">
+    <Compile Include="Formulario\Pessoa\FormListView\FrmVisitante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\Visitante.Designer.cs">
-      <DependentUpon>Visitante.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormListView\FrmVisitante.Designer.cs">
+      <DependentUpon>FrmVisitante.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FrmMudancaEstado.cs">
       <SubType>Form</SubType>
@@ -448,8 +448,8 @@
     <Compile Include="WFCrud.Designer.cs">
       <DependentUpon>WFCrud.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Formulario\Celula\Celula.resx">
-      <DependentUpon>Celula.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Celula\FrmCelula.resx">
+      <DependentUpon>FrmCelula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Celula\CelulaAdolescente.resx">
       <DependentUpon>CelulaAdolescente.cs</DependentUpon>
@@ -505,8 +505,8 @@
     <EmbeddedResource Include="Formulario\Ministerio\LiderMinisterioTreinamento.resx">
       <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\Ministerio.resx">
-      <DependentUpon>Ministerio.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Ministerio\FrmMinisterio.resx">
+      <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Ministerio\PessoasCelulasMinisterio.resx">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
@@ -556,8 +556,8 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.resx">
       <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Crianca.resx">
-      <DependentUpon>Crianca.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmCrianca.resx">
+      <DependentUpon>FrmCrianca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.resx">
       <DependentUpon>DadoPessoal.cs</DependentUpon>
@@ -568,26 +568,26 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.resx">
       <DependentUpon>FinalizarCadastro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Membro.resx">
-      <DependentUpon>Membro.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembro.resx">
+      <DependentUpon>FrmMembro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroAclamacao.resx">
-      <DependentUpon>MembroAclamacao.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroAclamacao.resx">
+      <DependentUpon>FrmMembroAclamacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroBatismo.resx">
-      <DependentUpon>MembroBatismo.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroBatismo.resx">
+      <DependentUpon>FrmMembroBatismo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroReconciliacao.resx">
-      <DependentUpon>MembroReconciliacao.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroReconciliacao.resx">
+      <DependentUpon>FrmMembroReconciliacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\MembroTransferencia.resx">
-      <DependentUpon>MembroTransferencia.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroTransferencia.resx">
+      <DependentUpon>FrmMembroTransferencia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Pessoa.resx">
-      <DependentUpon>Pessoa.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmPessoa.resx">
+      <DependentUpon>FrmPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\Visitante.resx">
-      <DependentUpon>Visitante.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmVisitante.resx">
+      <DependentUpon>FrmVisitante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FrmMudancaEstado.resx">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>

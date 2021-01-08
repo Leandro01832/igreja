@@ -89,7 +89,7 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Crianca as C "
-             + " inner join Pessoa as P on C.Id=P.Id ";
+             + " inner join PessoaDado as PD on C.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
             if (id != null) Select_padrao += $" where C.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();

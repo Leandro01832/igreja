@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Pessoas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
+        public Foto(business.classes.Pessoas.PessoaLgpd p,
+            bool Deletar, bool Atualizar, bool Detalhes)
+            : base(p, Deletar, Atualizar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
         private void Foto_Load(object sender, EventArgs e)
         {
             this.Text = "Foto da pessoa";
@@ -31,36 +39,71 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             this.Proximo.Location = new Point(900, 150);
             this.Atualizar.Location = new Point(900, 250);
 
-            if(modelo.Id != 0)
+            if(modelo !=  null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
-                ptrb_foto.ImageLocation = p.Img;
+                if(modelo is PessoaDado)
+                {
+                    var p = (PessoaDado)modelo;
+                    ptrb_foto.ImageLocation = p.Img;
+                }
+                if (modelo is PessoaLgpd)
+                {
+                    var p = (PessoaLgpd)modelo;
+                    ptrb_foto.ImageLocation = p.Img;
+                }
+
             }
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
         {
-            var p = (business.classes.Pessoas.PessoaDado)modelo;
-            try
+            if(modelo is PessoaDado)
             {
-
-                OpenFileDialog dlg = new OpenFileDialog();
-                dlg.InitialDirectory = @"F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\WindowsFormsApp1\bin\Debug\Fotos";
-                dlg.Filter = "JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files (*.*)|*.*";
-                dlg.Title = "selecione uma imagem";
-                if (dlg.ShowDialog() == DialogResult.OK)
+                var p = (PessoaDado)modelo;
+                try
                 {
-                    string imagem;
-                    imagem = dlg.FileName;
-                    ptrb_foto.ImageLocation = imagem;
-                    p.Img = ptrb_foto.ImageLocation;
+
+                    OpenFileDialog dlg = new OpenFileDialog();
+                    dlg.InitialDirectory = @"F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\WindowsFormsApp1\bin\Debug\Fotos";
+                    dlg.Filter = "JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files (*.*)|*.*";
+                    dlg.Title = "selecione uma imagem";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        string imagem;
+                        imagem = dlg.FileName;
+                        ptrb_foto.ImageLocation = imagem;
+                        p.Img = ptrb_foto.ImageLocation;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
+
+            if (modelo is PessoaLgpd)
             {
-                MessageBox.Show(ex.Message);
+                var p = (PessoaLgpd)modelo;
+                try
+                {
+
+                    OpenFileDialog dlg = new OpenFileDialog();
+                    dlg.InitialDirectory = @"F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\WindowsFormsApp1\bin\Debug\Fotos";
+                    dlg.Filter = "JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files (*.*)|*.*";
+                    dlg.Title = "selecione uma imagem";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        string imagem;
+                        imagem = dlg.FileName;
+                        ptrb_foto.ImageLocation = imagem;
+                        p.Img = ptrb_foto.ImageLocation;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            
         }
     }
 }

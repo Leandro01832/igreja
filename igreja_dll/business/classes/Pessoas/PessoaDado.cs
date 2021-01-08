@@ -90,15 +90,11 @@ namespace business.classes.Pessoas
 
         public override string alterar(int id)
         {
-            string celula = "";
-            if (this.celula_ == null) celula = "null";
-            else celula = this.celula_.ToString();
 
             Update_padrao = $"update PessoaDado set Nome='{Nome}', Estado_civil='{Estado_civil}', " +
-            $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Email='{Email}', Status='{Status}', " +
-            $"celula_={celula}, Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
-            $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +
-            $" Falta='{Falta}', Img='{this.Img}' Codigo='{Codigo}' " +
+            $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Status='{Status}', " +
+            $" Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
+            $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +           
             $"  where Id='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
             
             bd.Editar(null);
@@ -109,15 +105,12 @@ namespace business.classes.Pessoas
         {
             Delete_padrao = 
                 " delete Telefone from Telefone as T inner " +
-                " join PessoaDado as P on T.Id=P.Id" +
+                " join PessoaDado as PD on T.Id=PD.Id" +
                 $" where P.Id='{id}' " +
                 "delete Endereco from Endereco as E inner " +
-                "join PessoaDado as P on E.Id=P.Id" +
-                $" where P.Id='{id}' " +
-                " delete Chamada from Chamada as CH inner " +
-                "join PessoaDado as P on CH.Id=P.Id" +
-                $" where P.Id='{id}' " +
-                $" delete PessoaDado from PessoaDado as P where P.Id='{id}' " ;
+                "join PessoaDado as PD on E.Id=PD.Id" +
+                $" where P.Id='{id}' " +                
+                $" delete PessoaDado from PessoaDado as PD where PD.Id='{id}' " ;
             
             bd.Excluir(null);
             return Delete_padrao;
@@ -125,9 +118,10 @@ namespace business.classes.Pessoas
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from PessoaDado as P "
-        + " inner join ChamadaLgpd as CH on CH.Id=P.Id ";
-            if (id != null) Select_padrao += $" where P.Id='{id}'";
+            Select_padrao = "select * from PessoaDado as PD "
+        + " inner join Endereco as EN on EN.Id=PD.Id "
+        + " inner join Telefone as TE on TE.Id=PD.Id ";
+            if (id != null) Select_padrao += $" where PD.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();

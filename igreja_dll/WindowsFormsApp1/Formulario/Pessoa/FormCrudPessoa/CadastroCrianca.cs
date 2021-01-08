@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
-using WindowsFormsApp1.Formulario;
+using System;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroCrianca : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
 
-        public CadastroCrianca(business.classes.Pessoas.PessoaDado p,
-            bool Atualizar, bool Deletar, bool Detalhes)
+        public CadastroCrianca(PessoaDado p, bool Atualizar, bool Deletar, bool Detalhes)            
+            : base(p, Atualizar, Deletar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        public CadastroCrianca(PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)            
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
@@ -35,49 +33,73 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         }
 
-        private void txt_nome_pai_TextChanged(object sender, EventArgs e)
-        {
-            if(modelo != null)
-            {
-                var p = (business.classes.Pessoas.Crianca)modelo;
-                p.Nome_pai = txt_nome_pai.Text;
-            }            
-
-            if(ModeloNovo != null)
-            {
-                var p = (business.classes.Pessoas.Crianca)ModeloNovo;
-                p.Nome_pai = txt_nome_pai.Text;
-            }
-            
-        }
-
-        private void txt_nome_mae_TextChanged(object sender, EventArgs e)
-        {
-            if(modelo != null)
-            {
-                var p = (business.classes.Pessoas.Crianca)modelo;
-                p.Nome_mae = txt_nome_mae.Text;
-            }
-            
-
-            if(ModeloNovo != null)
-            {
-                var p = (business.classes.Pessoas.Crianca)ModeloNovo;
-                p.Nome_mae = txt_nome_mae.Text;
-            }
-            
-        }
-
         private void CadastroCrianca_Load_1(object sender, EventArgs e)
         {
             this.Text = "Cadastro de Criança.";
             if (modelo != null)
-                if (modelo.Id != 0)
+            {
+                if(modelo is Crianca)
                 {
-                    var p = (business.classes.Pessoas.Crianca)modelo;
-                    txt_nome_pai.Text = p.Nome_pai;
-                    txt_nome_mae.Text = p.Nome_mae;
+                    var p = (Crianca)modelo;
+                    textBox1.Text = p.Nome_pai;
+                    textBox2.Text = p.Nome_mae;
                 }
+
+                if (modelo is CriancaLgpd)
+                {
+                    var p = (CriancaLgpd)modelo;
+                    textBox1.Text = p.Nome_pai;
+                    textBox2.Text = p.Nome_mae;
+                }
+
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if(modelo != null)
+            {
+                if (modelo is Crianca)
+                {
+                    var p = (Crianca)modelo;
+                    p.Nome_mae = textBox2.Text;
+                }
+                if (modelo is CriancaLgpd)
+                {
+                    var p = (CriancaLgpd)modelo;
+                    p.Nome_mae = textBox2.Text;
+                }
+            }
+
+            if (ModeloNovo != null)
+            {
+                if (ModeloNovo is Crianca)
+                {
+                    var p = (Crianca)ModeloNovo;
+                    p.Nome_mae = textBox2.Text;
+                }
+                if (ModeloNovo is CriancaLgpd)
+                {
+                    var p = (CriancaLgpd)ModeloNovo;
+                    p.Nome_mae = textBox2.Text;
+                }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(modelo is Crianca)
+            {
+                var p = (Crianca)modelo;
+                p.Nome_pai = textBox1.Text;
+            }
+
+            if (modelo is CriancaLgpd)
+            {
+                var p = (CriancaLgpd)modelo;
+                p.Nome_pai = textBox1.Text;
+            }
+
         }
     }
 }

@@ -65,7 +65,7 @@ namespace business.classes.PessoasLgpd
         {
             Select_padrao = "select * from Membro_AclamacaoLgpd as MA "
             + " inner join MembroLgpd as M on MA.Id=M.Id "
-            + " inner join PessoaLgpd as P on M.Id=P.Id ";
+            + " inner join PessoaLgpd as PL on M.Id=PL.Id inner join Pessoa as P on PL.Id=P.Id";
             if (id != null) Select_padrao += $" where MA.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -109,6 +109,7 @@ namespace business.classes.PessoasLgpd
                     {
                         Membro_AclamacaoLgpd ma = new Membro_AclamacaoLgpd();
                         ma.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        ma.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         ma.Email = Convert.ToString(dr["Email"]);
                         modelos.Add(ma);
                     }

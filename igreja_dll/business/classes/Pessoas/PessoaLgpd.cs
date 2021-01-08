@@ -42,23 +42,14 @@ namespace business.classes.Pessoas
 
         public override string alterar(int id)
         {
-            string celula = "";
-            if (this.celula_ == null) celula = "null";
-            else celula = this.celula_.ToString();
+            Update_padrao = base.alterar(id);
 
-            Update_padrao = $"update PessoaLgpd set  " +
-            $" Email='{Email}',  " +
-            $"celula_={celula}, " +
-            $" Falta='{Falta}', Img='{this.Img}' " +
-            $"  where Id='{id}' ";
-            
-            bd.Editar(null);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from PessoaLgpd as P where P.Id='{id}' ";
+            Delete_padrao = $" delete from PessoaLgpd as PL where PL.Id='{id}' " + base.excluir(id);
             
             bd.Excluir(null);
             return Delete_padrao;
@@ -66,9 +57,8 @@ namespace business.classes.Pessoas
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from PessoaLgpd as P "
-        + " inner join ChamadaLgpd as CH on CH.Id=P.Id ";
-            if (id != null) Select_padrao += $" where P.Id='{id}'";
+            Select_padrao = "select * from PessoaLgpd as PL ";
+            if (id != null) Select_padrao += $" where PL.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();

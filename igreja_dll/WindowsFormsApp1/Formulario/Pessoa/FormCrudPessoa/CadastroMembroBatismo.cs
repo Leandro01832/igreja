@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using database;
+using business.classes.Pessoas;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
@@ -20,15 +21,20 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroBatismo(business.classes.Pessoas.PessoaDado p,
-            bool Atualizar, bool Deletar, bool Detalhes)
+        public CadastroMembroBatismo(PessoaDado p, bool Atualizar, bool Deletar, bool Detalhes)            
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
             P = p;
         }
 
-        public business.classes.Pessoas.PessoaDado P { get; }
+        public CadastroMembroBatismo(PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)            
+            : base(p, Atualizar, Deletar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        public PessoaDado P { get; }
 
         private void CadastroMembroBatismo_Load(object sender, EventArgs e)
         {

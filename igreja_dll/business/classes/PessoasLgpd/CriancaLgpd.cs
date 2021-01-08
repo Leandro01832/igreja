@@ -88,7 +88,7 @@ namespace business.classes.PessoasLgpd
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from CriancaLgpd as C "
-             + " inner join PessoaLgpd as P on C.Id=P.Id ";
+             + " inner join PessoaLgpd as PL on C.Id=PL.Id inner join Pessoa as P on PL.Id=P.Id ";
             if (id != null) Select_padrao += $" where C.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -134,6 +134,7 @@ namespace business.classes.PessoasLgpd
                     {
                         CriancaLgpd crianca = new CriancaLgpd();
                         crianca.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        crianca.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         crianca.Email = Convert.ToString(dr["Email"]);                                                
                         modelos.Add(crianca);
                     }

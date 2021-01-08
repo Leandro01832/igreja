@@ -64,7 +64,7 @@ namespace business.classes.Pessoas
         {
             Select_padrao = "select * from Membro_Reconciliacao as MR "
             + " inner join Membro as M on MR.Id=M.Id "
-            + " inner join Pessoa as P on M.Id=P.Id ";
+            + " inner join PessoaDado as PD on M.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
             if (id != null) Select_padrao += $" where MR.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();

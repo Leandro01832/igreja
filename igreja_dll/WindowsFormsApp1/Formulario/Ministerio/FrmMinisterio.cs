@@ -6,10 +6,10 @@ using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario.Ministerio
 {
-    public partial class Ministerio : FormularioListView
+    public partial class FrmMinisterio : FormularioListView
     {
 
-        public Ministerio() : base(new ListViewMinisterio(null, "Ministerio"))
+        public FrmMinisterio() : base(new ListViewMinisterio(null, "Ministerio"))
         {
             InitializeComponent();
         }       

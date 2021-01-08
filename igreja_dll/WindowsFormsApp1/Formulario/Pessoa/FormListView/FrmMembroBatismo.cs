@@ -1,4 +1,6 @@
-﻿using System;
+﻿using business.classes.Pessoas;
+using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,21 +13,18 @@ using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class Crianca : FormularioListView
+    public partial class MembroBatismo : FormularioListView
     {
-        
+        public MembroBatismo(modelocrud modelo) : base(new ListViewMembroBatismo(modelo, ""))
 
-        public Crianca() : base(
-            new ListViewCrianca
-            (new business.classes.Pessoas.Crianca(), ""))
+
         {
-            
             InitializeComponent();
         }
 
-        private void Crianca_Load(object sender, EventArgs e)
+        private void MembroBatismo_Load(object sender, EventArgs e)
         {
-            this.Text = " - Lista de Crianças";
+            this.Text = " - Lista de membro por batismo";
         }
     }
 }

@@ -106,8 +106,8 @@ namespace business.classes.PessoasLgpd
         {
             Select_padrao = "select * from Membro_TransferenciaLgpd as MT "
             + " inner join MembroLgpd as M on MT.Id=M.Id "
-            + " inner join PessoaLgpd as P on M.Id=P.Id ";
-            if (id != null) Select_padrao += $" where MT.Id='{id}'";
+            + " inner join PessoaLgpd as PL on M.Id=PL.Id inner join Pessoa as P on PL.Id=P.Id ";
+            if (id != null) Select_padrao += $" where MT.Id='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -150,6 +150,7 @@ namespace business.classes.PessoasLgpd
                     {
                         Membro_TransferenciaLgpd mt = new Membro_TransferenciaLgpd();
                         mt.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mt.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         mt.Email = Convert.ToString(dr["Email"]);                        
                         modelos.Add(mt);
                     }

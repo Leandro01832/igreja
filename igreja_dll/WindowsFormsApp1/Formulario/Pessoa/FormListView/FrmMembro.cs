@@ -13,10 +13,10 @@ using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class Membro : FormularioListView
+    public partial class FrmMembro : FormularioListView
     {
 
-        public Membro() : base(new ListViewMembro(null, "Membro"))
+        public FrmMembro(modelocrud modelo, string tipo) : base(new ListViewMembro(modelo, tipo))
         {
             InitializeComponent();
         }

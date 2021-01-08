@@ -80,7 +80,6 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\itextsharp.xml
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\EntityFramework.xml
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celula.Celula.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celula.CelulaAdolescente.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celula.CelulaAdulto.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celula.CelulaCasado.resources
@@ -99,7 +98,6 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.LiderCelulaTreinamento.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.LiderMinisterio.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.LiderMinisterioTreinamento.resources
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.Ministerio.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.PessoasCelulasMinisterio.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.SupervisorCelula.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.SupervisorCelulaTreinamento.resources
@@ -115,17 +113,13 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.Contato.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa.Foto.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa.ReunioesMinisteriosPessoa.resources
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.Crianca.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.DadoPessoal.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.Endereco.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro.resources
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.Membro.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.MembroAclamacao.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.MembroBatismo.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.MembroReconciliacao.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.MembroTransferencia.resources
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.Pessoa.resources
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.Visitante.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.Reuniao.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDI.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Pesquisar.resources
@@ -138,3 +132,9 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmMudancaEstado.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa.DadoPessoalLgpd.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmVisitante.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmCrianca.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celula.FrmCelula.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Ministerio.FrmMinisterio.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmMembro.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmPessoa.resources

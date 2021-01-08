@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    partial class Crianca
+    partial class FrmMembro
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Crianca
+            // Membro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Crianca";
-            this.Text = "Crianca";
-            this.Load += new System.EventHandler(this.Crianca_Load);
+            this.Name = "Membro";
+            this.Text = "Membro";
+            this.Load += new System.EventHandler(this.Membro_Load);
             this.ResumeLayout(false);
 
         }

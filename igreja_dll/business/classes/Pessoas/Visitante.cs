@@ -90,8 +90,8 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Visitante as V "
-            + " inner join Pessoa as P on V.Id=P.Id ";
-            if (id != null) Select_padrao += $" where V.Id='{id}'";
+            + " inner join PessoaDado as PD on V.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
+            if (id != null) Select_padrao += $" where V.Id='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();

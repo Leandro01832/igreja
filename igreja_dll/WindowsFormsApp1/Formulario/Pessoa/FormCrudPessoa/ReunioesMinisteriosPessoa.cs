@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using business.classes.Pessoas;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
@@ -17,8 +11,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public ReunioesMinisteriosPessoa(business.classes.Pessoas.PessoaDado p,
-            bool Deletar, bool Atualizar, bool Detalhes)
+        public ReunioesMinisteriosPessoa(PessoaDado p, bool Deletar, bool Atualizar, bool Detalhes)            
+          : base(p, Deletar, Atualizar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        public ReunioesMinisteriosPessoa(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
@@ -26,7 +25,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 
         private void ReunioesMinisteriosPessoa_Load(object sender, EventArgs e)
         {
-            this.Text = "Reuniões e ministérios da pessoa.";
+            this.Text = "Reuniões, celula e ministérios da pessoa.";
         }
 
         private void txt_reunioes_TextChanged(object sender, EventArgs e)
@@ -69,8 +68,17 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         {
             try
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.celula_ = int.Parse(txt_celula.Text);
+                if(modelo is PessoaDado)
+                {
+                    var p = (PessoaDado)modelo;
+                    p.celula_ = int.Parse(txt_celula.Text);
+                }
+                if (modelo is PessoaLgpd)
+                {
+                    var p = (PessoaLgpd)modelo;
+                    p.celula_ = int.Parse(txt_celula.Text);
+                }
+
             }
             catch (Exception)
             {

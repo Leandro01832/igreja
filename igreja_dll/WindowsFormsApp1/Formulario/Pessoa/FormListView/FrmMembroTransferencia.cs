@@ -1,4 +1,6 @@
-﻿using System;
+﻿using business.classes.Pessoas;
+using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +15,8 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class MembroTransferencia : FormularioListView
     {
-        public MembroTransferencia() : base(
-            new ListViewMembroTransferencia(new business.classes.Pessoas.Membro_Transferencia(),""))
+        public MembroTransferencia(modelocrud modelo) : base(new ListViewMembroTransferencia(modelo, ""))
+
         {
             InitializeComponent();
         }

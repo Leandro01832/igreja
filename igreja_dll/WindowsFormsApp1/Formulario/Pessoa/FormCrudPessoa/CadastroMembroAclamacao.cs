@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
+using System;
+using System.Drawing;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
@@ -20,8 +15,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroAclamacao(business.classes.Pessoas.PessoaDado p,
-            bool Deletar, bool Atualizar,  bool Detalhes)
+        public CadastroMembroAclamacao(PessoaDado p, bool Deletar, bool Atualizar,  bool Detalhes)            
+            : base(p, Deletar, Atualizar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        public CadastroMembroAclamacao(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
@@ -30,13 +30,20 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         private void CadastroMembroAclamacao_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de membro por aclamação.";
-
+             this.Size = new Size(new Point(850, 750));
             if(modelo != null)
-            if (modelo.Id != 0)
             {
-                this.Size = new Size(new Point(850, 750));
-                var p = (business.classes.Pessoas.Membro_Aclamacao)modelo;
-                txt_denominacao.Text = p.Denominacao; 
+                if(modelo is Membro_Aclamacao)
+                {
+                    var p = (Membro_Aclamacao)modelo;
+                    txt_denominacao.Text = p.Denominacao;
+                }
+                if (modelo is Membro_AclamacaoLgpd)
+                {
+                    var p = (Membro_AclamacaoLgpd)modelo;
+                    txt_denominacao.Text = p.Denominacao;
+                }
+
             }
         }
 
@@ -44,14 +51,31 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             if(modelo != null)
             {
-                var p = (business.classes.Pessoas.Membro_Aclamacao)modelo;
-                p.Denominacao = txt_denominacao.Text;
+                if(modelo is Membro_Aclamacao)
+                {
+                    var p = (Membro_Aclamacao)modelo;
+                    p.Denominacao = txt_denominacao.Text;
+                }
+                if (modelo is Membro_AclamacaoLgpd)
+                {
+                    var p = (Membro_AclamacaoLgpd)modelo;
+                    p.Denominacao = txt_denominacao.Text;
+                }
+
             }
 
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.Membro_Aclamacao)ModeloNovo;
-                p.Denominacao = txt_denominacao.Text;
+                if (ModeloNovo is Membro_Aclamacao)
+                {
+                    var p = (Membro_Aclamacao)ModeloNovo;
+                    p.Denominacao = txt_denominacao.Text;
+                }
+                if (ModeloNovo is Membro_AclamacaoLgpd)
+                {
+                    var p = (Membro_AclamacaoLgpd)ModeloNovo;
+                    p.Denominacao = txt_denominacao.Text;
+                }
             }
 
         }

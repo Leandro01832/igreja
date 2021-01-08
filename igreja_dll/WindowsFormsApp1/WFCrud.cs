@@ -1,4 +1,6 @@
-﻿using database;
+﻿using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
+using database;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -242,9 +244,9 @@ namespace WindowsFormsApp1
                 Proximo.Visible = false;
                 FinalizarCadastro.Visible = false;
 
-                if(modelo is business.classes.Pessoas.PessoaDado)
+                if(modelo is PessoaDado)
                 {
-                    var pessoa = (business.classes.Pessoas.PessoaDado)modelo;
+                    var pessoa = (PessoaDado)modelo;
                     InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() + " - " + pessoa.Nome;
                 }
                 else if(modelo is business.classes.Abstrato.Celula)
@@ -263,7 +265,7 @@ namespace WindowsFormsApp1
                 }
 
 
-                if (modelo is business.classes.Pessoas.PessoaDado && this.GetType().Name == "FinalizarCadastro")
+                if (modelo is PessoaDado && this.GetType().Name == "FinalizarCadastro")
                 {
                     dadoPessoal.Visible = true;
                     dadoEnderecoPessoa.Visible = true;
@@ -319,7 +321,7 @@ namespace WindowsFormsApp1
 
         private void DadoFoto_Click(object sender, EventArgs e)
         {
-            Foto c = new Foto((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+            Foto c = new Foto((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
             c.MdiParent = this.MdiParent;
             c.Show();
@@ -327,54 +329,54 @@ namespace WindowsFormsApp1
 
         private void DadoClasse_Click(object sender, EventArgs e)
         {
-            if(modelo is business.classes.Pessoas.Crianca)
+            if(modelo is Crianca)
             {
-                CadastroCrianca c = new CadastroCrianca((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+                CadastroCrianca c = new CadastroCrianca((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
 
-            if (modelo is business.classes.Pessoas.Visitante)
+            if (modelo is Visitante)
             {
                 CadastroVisitante c = 
-                new CadastroVisitante((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+                new CadastroVisitante((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
 
-            if (modelo is business.classes.Pessoas.Membro_Aclamacao)
+            if (modelo is Membro_Aclamacao)
             {
                 CadastroMembroAclamacao c = 
-                new CadastroMembroAclamacao((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+                new CadastroMembroAclamacao((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
 
-            if (modelo is business.classes.Pessoas.Membro_Batismo)
+            if (modelo is Membro_Batismo)
             {
                 CadastroMembroBatismo c = 
-                new CadastroMembroBatismo((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+                new CadastroMembroBatismo((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
 
-            if (modelo is business.classes.Pessoas.Membro_Reconciliacao)
+            if (modelo is Membro_Reconciliacao)
             {
                 CadastroMembroReconciliacao c = 
-                new CadastroMembroReconciliacao((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+                new CadastroMembroReconciliacao((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
 
-            if (modelo is business.classes.Pessoas.Membro_Transferencia)
+            if (modelo is Membro_Transferencia)
             {
                 CadastroMembroTransferencia c = 
-                new CadastroMembroTransferencia((business.classes.Pessoas.PessoaDado)modelo, condicaoAtualizar,
+                new CadastroMembroTransferencia((PessoaDado)modelo, condicaoAtualizar,
                 condicaoDeletar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
@@ -437,7 +439,7 @@ namespace WindowsFormsApp1
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((business.classes.Pessoas.PessoaDado)modelo
+            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((PessoaDado)modelo
             , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             rmp.MdiParent = this.MdiParent;
             rmp.Show();
@@ -445,7 +447,7 @@ namespace WindowsFormsApp1
 
         private void DadoContato_Click(object sender, EventArgs e)
         {
-            Contato dp = new Contato((business.classes.Pessoas.PessoaDado)modelo,
+            Contato dp = new Contato((PessoaDado)modelo,
             condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -453,7 +455,7 @@ namespace WindowsFormsApp1
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
-            Endereco dp = new Endereco((business.classes.Pessoas.PessoaDado)modelo,
+            Endereco dp = new Endereco((PessoaDado)modelo,
             condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -461,7 +463,7 @@ namespace WindowsFormsApp1
 
         private void DadoPessoal_Click(object sender, EventArgs e)
         {
-            DadoPessoal dp = new DadoPessoal((business.classes.Pessoas.PessoaDado)modelo,
+            DadoPessoal dp = new DadoPessoal((PessoaDado)modelo,
                 condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
@@ -500,9 +502,9 @@ namespace WindowsFormsApp1
                 p.AdicionarNaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas);                               
             }
 
-            if (modelo is business.classes.Pessoas.PessoaDado)
+            if (modelo is PessoaDado)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
                 p.AdicionarNaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios);                
                 
@@ -558,9 +560,9 @@ namespace WindowsFormsApp1
                     p.RemoverDaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas, modelo.Id);
             }
 
-            if (modelo is business.classes.Pessoas.PessoaDado)
+            if (modelo is PessoaDado)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
                     p.RemoverDaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios, modelo.Id);
 
@@ -590,119 +592,193 @@ namespace WindowsFormsApp1
         {
             if (this is FormCrudPessoa)
             {
-                if (this.GetType().Name == "DadoPessoal")
+                if(modelo is PessoaDado)
                 {
-                    
-                    Endereco end = new Endereco((business.classes.Pessoas.PessoaDado)modelo,
-                    condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
-                    end.MdiParent = this.MdiParent;
-                    this.Close();
-                    end.Show();
-                }
+                    if (this is DadoPessoal)
+                    {
 
-                if (this.GetType().Name == "Endereco")
-                {
-                   
-                    Contato con = new Contato((business.classes.Pessoas.PessoaDado)modelo,
+                        Endereco end = new Endereco((PessoaDado)modelo,
+                        condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
+                        end.MdiParent = this.MdiParent;
+                        this.Close();
+                        end.Show();
+                    }
+
+                    if (this is Endereco)
+                    {
+
+                        Contato con = new Contato((PessoaDado)modelo,
+                            condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                        con.MdiParent = this.MdiParent;
+                        this.Close();
+                        con.Show();
+                    }
+
+                    if (this is Contato)
+                    {
+                        Foto con = new Foto((PessoaDado)modelo,
                         condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                    con.MdiParent = this.MdiParent;
-                    this.Close();
-                    con.Show();
-                }
-
-                if (this.GetType().Name == "Contato")
-                {                    
-                    Foto con = new Foto((business.classes.Pessoas.PessoaDado)modelo,
-                    condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                    con.MdiParent = this.MdiParent;
-                    this.Close();
-                    con.Show();
-                }
-
-                if (this.GetType().Name == "Foto")
-                {
-                    ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((business.classes.Pessoas.PessoaDado)modelo,
-                    condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                    con.MdiParent = this.MdiParent;
-                    this.Close();
-                    con.Show();
-                }
-
-                if (this.GetType().Name == "ReunioesMinisteriosPessoa")
-                {
-                    if (modelo.GetType().Name == "Crianca")
-                    {                        
-                        CadastroCrianca cc = new CadastroCrianca((business.classes.Pessoas.PessoaDado)
-                        modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                        cc.MdiParent = this.MdiParent;
+                        con.MdiParent = this.MdiParent;
                         this.Close();
-                        cc.Show();
+                        con.Show();
                     }
 
-
-                    if (modelo.GetType().Name == "Visitante")
-                    {                        
-                        CadastroVisitante cv = new CadastroVisitante((business.classes.Pessoas.PessoaDado)
-                        modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                        cv.MdiParent = this.MdiParent;
-                        this.Close();
-                        cv.Show();
-                    }
-
-
-                    if (modelo.GetType().Name == "Membro_Aclamacao")
-                    {                        
-                        CadastroMembroAclamacao cma = new CadastroMembroAclamacao((business.classes.Pessoas.PessoaDado)
-                       modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                        cma.MdiParent = this.MdiParent;
-                        this.Close();
-                        cma.Show();
-                    }
-
-
-                    if (modelo.GetType().Name == "Membro_Reconciliacao")
+                    if (this is Foto)
                     {
-                        CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((business.classes.Pessoas.PessoaDado)
-                        modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                        cmr.MdiParent = this.MdiParent;
+                        ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((PessoaDado)modelo,
+                        condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                        con.MdiParent = this.MdiParent;
                         this.Close();
-                        cmr.Show();
+                        con.Show();
                     }
 
-
-                    if (modelo.GetType().Name == "Membro_Batismo")
+                    if (this is ReunioesMinisteriosPessoa)
                     {
-                        CadastroMembroBatismo cmb = new CadastroMembroBatismo((business.classes.Pessoas.PessoaDado)
-                        modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                        cmb.MdiParent = this.MdiParent;
-                        this.Close();
-                        cmb.Show();
+                        if (modelo is Crianca)
+                        {
+                            CadastroCrianca cc = new CadastroCrianca((PessoaDado)
+                            modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cc.MdiParent = this.MdiParent;
+                            this.Close();
+                            cc.Show();
+                        }
+
+                        if (modelo is Visitante)
+                        {
+                            CadastroVisitante cv = new CadastroVisitante((PessoaDado)
+                            modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cv.MdiParent = this.MdiParent;
+                            this.Close();
+                            cv.Show();
+                        }
+
+                        if (modelo is Membro_Aclamacao)
+                        {
+                            CadastroMembroAclamacao cma = new CadastroMembroAclamacao((PessoaDado)
+                           modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cma.MdiParent = this.MdiParent;
+                            this.Close();
+                            cma.Show();
+                        }
+
+                        if (modelo is Membro_Reconciliacao)
+                        {
+                            CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((PessoaDado)
+                            modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cmr.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmr.Show();
+                        }
+
+                        if (modelo is Membro_Batismo)
+                        {
+                            CadastroMembroBatismo cmb = new CadastroMembroBatismo((PessoaDado)
+                            modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cmb.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmb.Show();
+                        }
+
+                        if (modelo is Membro_Transferencia)
+                        {
+                            CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((PessoaDado)
+                            modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cmt.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmt.Show();
+                        }
                     }
 
-
-                    if (modelo.GetType().Name == "Membro_Transferencia")
+                    if (this is CadastroCrianca || this is CadastroVisitante ||
+                        this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
+                        this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                     {
-                        CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((business.classes.Pessoas.PessoaDado)
-                        modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                        cmt.MdiParent = this.MdiParent;
+                        WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro fn = new
+                        WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro((PessoaDado)modelo,
+                       CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                        fn.MdiParent = this.MdiParent;
                         this.Close();
-                        cmt.Show();
-                    }
+                        fn.Show();
 
+                    }
                 }
 
-                if (this.GetType().Name == "CadastroCrianca" || this.GetType().Name == "CadastroVisitante" ||
-                    this.GetType().Name == "CadastroMembroAclamacao" || this.GetType().Name == "CadastroMembroReconciliacao" ||
-                    this.GetType().Name == "CadastroMembroBatismo" || this.GetType().Name == "CadastroMembroTransferencia")
+                if(modelo is PessoaLgpd)
                 {
-                    WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro fn = new
-                    WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro((business.classes.Pessoas.PessoaDado)modelo,
-                   CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
-                    fn.MdiParent = this.MdiParent;
-                    this.Close();
-                    fn.Show();
+                    if(this is DadoPessoalLgpd)
+                    {
+                        Foto con = new Foto((PessoaLgpd)modelo,
+                        condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                        con.MdiParent = this.MdiParent;
+                        this.Close();
+                        con.Show();
+                    }
+                    if(this is Foto)
+                    {
+                        ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((PessoaLgpd)modelo,
+                        condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                        con.MdiParent = this.MdiParent;
+                        this.Close();
+                        con.Show();
+                    }
+                    if(this is ReunioesMinisteriosPessoa)
+                    {
+                        if (modelo is CriancaLgpd)
+                        {
+                            CadastroCrianca cc = new CadastroCrianca((PessoaLgpd)
+                            modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cc.MdiParent = this.MdiParent;
+                            this.Close();
+                            cc.Show();
+                        }
 
+                        if (modelo is VisitanteLgpd)
+                        {
+                            CadastroVisitante cv = new CadastroVisitante((PessoaLgpd)
+                            modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cv.MdiParent = this.MdiParent;
+                            this.Close();
+                            cv.Show();
+                        }
+
+                        if (modelo is Membro_AclamacaoLgpd)
+                        {
+                            CadastroMembroAclamacao cma = new CadastroMembroAclamacao((PessoaLgpd)
+                           modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cma.MdiParent = this.MdiParent;
+                            this.Close();
+                            cma.Show();
+                        }
+
+                        if (modelo is Membro_ReconciliacaoLgpd)
+                        {
+                            CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao((PessoaLgpd)
+                            modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cmr.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmr.Show();
+                        }
+
+                        if (modelo is Membro_BatismoLgpd)
+                        {
+                            CadastroMembroBatismo cmb = new CadastroMembroBatismo((PessoaLgpd)
+                            modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cmb.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmb.Show();
+                        }
+
+                        if (modelo is Membro_TransferenciaLgpd)
+                        {
+                            CadastroMembroTransferencia cmt = new CadastroMembroTransferencia((PessoaLgpd)
+                            modelo, CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                            cmt.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmt.Show();
+                        }
+                    }
                 }
+                
             }
 
             if (this is FormularioCrudCelula)
