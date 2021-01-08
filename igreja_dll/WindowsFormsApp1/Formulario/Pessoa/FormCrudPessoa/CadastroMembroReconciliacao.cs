@@ -15,13 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroReconciliacao(PessoaDado p, bool Deletar, bool Atualizar,  bool Detalhes)            
-        : base(p, Deletar, Atualizar, Detalhes)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroMembroReconciliacao(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
+        public CadastroMembroReconciliacao(modelocrud p, bool Deletar, bool Atualizar,  bool Detalhes)            
         : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();

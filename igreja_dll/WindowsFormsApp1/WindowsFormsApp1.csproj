@@ -448,6 +448,9 @@
     <Compile Include="WFCrud.Designer.cs">
       <DependentUpon>WFCrud.cs</DependentUpon>
     </Compile>
+    <Compile Include="WFCrudPartial.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Formulario\Celula\FrmCelula.resx">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </EmbeddedResource>

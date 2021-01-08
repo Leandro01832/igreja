@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
     {
         private int childFormNumber = 1;
         private bool Lgpd = true;
+        
 
         public MDI()
         {
@@ -58,12 +59,7 @@ namespace WindowsFormsApp1
 
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
+        }        
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -101,6 +97,7 @@ namespace WindowsFormsApp1
 
         private void MDI_Load(object sender, EventArgs e)
         {
+            toolStrip.Visible = false;
             visitanteToolStripMenuItem1.BackColor = Color.Aqua;
             criançaToolStripMenuItem1.BackColor = Color.Bisque;
             membroPorAclamaçãoToolStripMenuItem1.BackColor = Color.Brown;
@@ -797,6 +794,16 @@ namespace WindowsFormsApp1
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
             ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), "");
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbl_horario.Text = DateTime.Now.AddMilliseconds(timer1.Interval).ToString("HH:mm:ss");
+        }
+
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

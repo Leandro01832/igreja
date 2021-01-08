@@ -1,4 +1,5 @@
 ﻿using business.classes.Pessoas;
+using database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,19 +19,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
-        public Foto(business.classes.Pessoas.PessoaDado p,
+        public Foto(modelocrud p,
             bool Deletar, bool Atualizar, bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
 
-        public Foto(business.classes.Pessoas.PessoaLgpd p,
-            bool Deletar, bool Atualizar, bool Detalhes)
-            : base(p, Deletar, Atualizar, Detalhes)
-        {
-            InitializeComponent();
-        }
+        
 
         private void Foto_Load(object sender, EventArgs e)
         {

@@ -9,17 +9,11 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class CadastroVisitante : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
 
-        public CadastroVisitante(PessoaDado p, bool Deletar, bool Atualizar,  bool Detalhes)            
+        public CadastroVisitante(modelocrud p, bool Deletar, bool Atualizar,  bool Detalhes)            
         :base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
             this.modelo = p;
-        }
-
-        public CadastroVisitante(PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)           
-        : base(p, Atualizar, Deletar, Detalhes)
-        {
-            InitializeComponent();
         }
 
         public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)

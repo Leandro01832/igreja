@@ -7,25 +7,17 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class CadastroMembroTransferencia : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
-        public CadastroMembroTransferencia(PessoaDado p, bool Deletar, bool Atualizar, bool Detalhes)            
+        public CadastroMembroTransferencia(modelocrud p, bool Deletar, bool Atualizar, bool Detalhes)            
         : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
-
-        public CadastroMembroTransferencia(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
-        : base(p, Deletar, Atualizar, Detalhes)
-        {
-            InitializeComponent();
-        }
-
+        
         public CadastroMembroTransferencia(modelocrud modelo, modelocrud modeloNovo)
             :base(modelo, modeloNovo)
         {
             InitializeComponent();
         }
-
-        
 
         private void CadastroMembroTransferencia_Load(object sender, EventArgs e)
         {

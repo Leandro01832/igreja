@@ -5,20 +5,16 @@ using System;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class CadastroCrianca : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class CadastroCrianca : Formulario.FormCrudPessoa
     {
 
-        public CadastroCrianca(PessoaDado p, bool Atualizar, bool Deletar, bool Detalhes)            
+        public CadastroCrianca(modelocrud p, bool Atualizar, bool Deletar, bool Detalhes)            
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
         }
 
-        public CadastroCrianca(PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)            
-            : base(p, Atualizar, Deletar, Detalhes)
-        {
-            InitializeComponent();
-        }
+       
 
         public CadastroCrianca(modelocrud modelo, modelocrud modeloNovo)
             : base(modelo, modeloNovo)

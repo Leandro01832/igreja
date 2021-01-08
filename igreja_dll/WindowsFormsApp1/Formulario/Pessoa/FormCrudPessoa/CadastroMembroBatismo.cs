@@ -21,20 +21,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroBatismo(PessoaDado p, bool Atualizar, bool Deletar, bool Detalhes)            
-            : base(p, Atualizar, Deletar, Detalhes)
-        {
-            InitializeComponent();
-            P = p;
-        }
-
-        public CadastroMembroBatismo(PessoaLgpd p, bool Atualizar, bool Deletar, bool Detalhes)            
+        public CadastroMembroBatismo(modelocrud p, bool Atualizar, bool Deletar, bool Detalhes)            
             : base(p, Atualizar, Deletar, Detalhes)
         {
             InitializeComponent();
         }
-
-        public PessoaDado P { get; }
+        
 
         private void CadastroMembroBatismo_Load(object sender, EventArgs e)
         {

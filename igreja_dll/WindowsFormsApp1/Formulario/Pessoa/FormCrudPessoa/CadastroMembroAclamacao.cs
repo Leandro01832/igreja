@@ -15,17 +15,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-        public CadastroMembroAclamacao(PessoaDado p, bool Deletar, bool Atualizar,  bool Detalhes)            
+        public CadastroMembroAclamacao(modelocrud p, bool Deletar, bool Atualizar,  bool Detalhes)            
             : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
-
-        public CadastroMembroAclamacao(PessoaLgpd p, bool Deletar, bool Atualizar, bool Detalhes)            
-            : base(p, Deletar, Atualizar, Detalhes)
-        {
-            InitializeComponent();
-        }
+        
 
         private void CadastroMembroAclamacao_Load(object sender, EventArgs e)
         {
