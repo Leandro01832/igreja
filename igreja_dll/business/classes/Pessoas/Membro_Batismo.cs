@@ -97,5 +97,10 @@ namespace business.classes.Pessoas
             return Insert_padrao;
         }
 
+        public override string ToString()
+        {
+            return base.Codigo + " - " + base.Nome;
+        }
+
     }
 }

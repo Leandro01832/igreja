@@ -168,6 +168,11 @@ namespace business.classes.Pessoas
             BDcomum.addNaLista = "";
            return Insert_padrao;
         }
-        
+
+        public override string ToString()
+        {
+            return base.Codigo + " - " + base.Nome;
+        }
+
     }
 }

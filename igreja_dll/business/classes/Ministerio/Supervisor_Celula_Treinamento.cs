@@ -112,5 +112,10 @@ namespace business.classes.Ministerio
          
         }
 
+        public override string ToString()
+        {
+            return base.Id.ToString() + " - " + base.Nome;
+        }
+
     }
 }

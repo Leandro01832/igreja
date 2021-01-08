@@ -140,5 +140,10 @@ namespace business.classes.PessoasLgpd
             BDcomum.addNaLista = "";
             return Insert_padrao;
         }
+
+        public override string ToString()
+        {
+            return base.Codigo + " - " + base.Email;
+        }
     }
 }

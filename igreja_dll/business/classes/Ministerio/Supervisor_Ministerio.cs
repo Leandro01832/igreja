@@ -97,8 +97,12 @@ namespace business.classes.Ministerio
             bd.SalvarModelo(this);
             BDcomum.addNaLista = "";
             return Insert_padrao;
-        }        
+        }
 
-        
+        public override string ToString()
+        {
+            return base.Id.ToString() + " - " + base.Nome;
+        }
+
     }
 }

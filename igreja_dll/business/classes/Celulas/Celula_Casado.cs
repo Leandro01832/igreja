@@ -101,5 +101,10 @@ namespace business.classes.Celulas
             BDcomum.addNaLista = "";
             return Insert_padrao;
         }
+
+        public override string ToString()
+        {
+            return base.Id.ToString() + " - " + base.Nome;
+        }
     }
 }

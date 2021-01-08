@@ -97,5 +97,10 @@ namespace business.classes.Ministerio
             return Insert_padrao;
         }
 
+        public override string ToString()
+        {
+            return base.Id.ToString() + " - " + base.Nome;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario;
 using WindowsFormsApp1.Formulario.Celula;
-using WindowsFormsApp1.Formulario.Ministerio;
+using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
 using FinalizarCadastro = WindowsFormsApp1.Formulario.Celula.FinalizarCadastro;
@@ -249,14 +250,14 @@ namespace WindowsFormsApp1
                     var pessoa = (PessoaDado)modelo;
                     InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() + " - " + pessoa.Nome;
                 }
-                else if(modelo is business.classes.Abstrato.Celula)
+                else if(modelo is Celula)
                 {
-                    var celula = (business.classes.Abstrato.Celula)modelo;
+                    var celula = (Celula)modelo;
                     InfoForm.Text = "Identificação: " + celula.Id.ToString() + " - " + celula.Nome;
                 }
-                else if (modelo is business.classes.Abstrato.Ministerio)
+                else if (modelo is Ministerio)
                 {
-                    var m = (business.classes.Abstrato.Ministerio)modelo;
+                    var m = (Ministerio)modelo;
                     InfoForm.Text = "Identificação: " + m.Id.ToString() + " - " + m.Nome;
                 }
                 else 
@@ -275,22 +276,22 @@ namespace WindowsFormsApp1
                     dadoFoto.Visible = true;                    
                 }
 
-                if (modelo is business.classes.Abstrato.Ministerio && this.GetType().Name == "FinalizarCadastro")
+                if (modelo is Ministerio && this.GetType().Name == "FinalizarCadastro")
                 {
                     dadoMinisterio.Visible = true;
                     dadoMinisterioPessoas.Visible = true;
                     dadoMinistro.Visible = true;
-                    var p = (business.classes.Abstrato.Ministerio)modelo;
+                    var p = (Ministerio)modelo;
                     InfoForm.Text += p.Nome;
                 }
 
-                if (modelo is business.classes.Abstrato.Celula && this.GetType().Name == "FinalizarCadastro")
+                if (modelo is Celula && this.GetType().Name == "FinalizarCadastro")
                 {
                     dadoCelula.Visible = true;
                     dadoEnderecoCelula.Visible = true;
                     dadoCelulaMinisterio.Visible = true;
                     dadoCelulaPessoas.Visible = true;
-                    var p = (business.classes.Abstrato.Celula)modelo;
+                    var p = (Celula)modelo;
                     InfoForm.Text += p.Nome;
                 }
 
@@ -386,7 +387,7 @@ namespace WindowsFormsApp1
 
         private void DadoCelula_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula((business.classes.Abstrato.Celula)modelo, condicaoDeletar,
+            DadoCelula dc = new DadoCelula((Celula)modelo, condicaoDeletar,
             condicaoAtualizar, condicaoDetalhes);
             dc.MdiParent = this.MdiParent;
             dc.Show();
@@ -394,7 +395,7 @@ namespace WindowsFormsApp1
 
         private void DadoEnderecoCelula_Click(object sender, EventArgs e)
         {
-            EnderecoCelula dc = new EnderecoCelula((business.classes.Abstrato.Celula)modelo, condicaoDeletar,
+            EnderecoCelula dc = new EnderecoCelula((Celula)modelo, condicaoDeletar,
             condicaoAtualizar, condicaoDetalhes);
             dc.MdiParent = this.MdiParent;
             dc.Show();
@@ -402,7 +403,7 @@ namespace WindowsFormsApp1
 
         private void DadoCelulaMinisterio_Click(object sender, EventArgs e)
         {
-            MinisteriosCelula mt = new MinisteriosCelula((business.classes.Abstrato.Celula)modelo,
+            MinisteriosCelula mt = new MinisteriosCelula((Celula)modelo,
             condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             mt.MdiParent = this.MdiParent;
             mt.Show();
@@ -410,7 +411,7 @@ namespace WindowsFormsApp1
 
         private void DadoCelulaPessoas_Click(object sender, EventArgs e)
         {
-            MinisteriosCelula mt = new MinisteriosCelula((business.classes.Abstrato.Celula)modelo,
+            MinisteriosCelula mt = new MinisteriosCelula((Celula)modelo,
             condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             mt.MdiParent = this.MdiParent;
             mt.Show();
@@ -418,7 +419,7 @@ namespace WindowsFormsApp1
 
         private void DadoMinisterio_Click(object sender, EventArgs e)
         {
-            DadoMinisterio pcm = new DadoMinisterio((business.classes.Abstrato.Ministerio)modelo
+            DadoMinisterio pcm = new DadoMinisterio((Ministerio)modelo
             , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             pcm.MdiParent = this.MdiParent;
             pcm.Show();
@@ -426,7 +427,7 @@ namespace WindowsFormsApp1
 
         private void DadoMinisterioPessoas_Click(object sender, EventArgs e)
         {
-            PessoasCelulasMinisterio pcm = new PessoasCelulasMinisterio((business.classes.Abstrato.Ministerio)modelo
+            PessoasCelulasMinisterio pcm = new PessoasCelulasMinisterio((Ministerio)modelo
             , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             pcm.MdiParent = this.MdiParent;
             pcm.Show();
@@ -472,12 +473,12 @@ namespace WindowsFormsApp1
         private  void FinalizarCadastro_Click(object sender, EventArgs e)
         {
             FinalizarCadastro.Enabled = false;
-            if(modelo is business.classes.Abstrato.Celula)
+            if(modelo is Celula)
             {
-                var p = (business.classes.Abstrato.Celula)modelo;
+                var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
+                    var listaMinisterio = Ministerio.recuperarTodosMinisterios();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
@@ -492,9 +493,9 @@ namespace WindowsFormsApp1
                 }                
             }
 
-            if (modelo is business.classes.Abstrato.Ministerio)
+            if (modelo is Ministerio)
             {
-                var p = (business.classes.Abstrato.Ministerio)modelo;
+                var p = (Ministerio)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
                 p.AdicionarNaLista("PessoaMinisterio", "Ministerio", "Pessoa", AddNaListaMinisterioPessoas);               
                                
@@ -529,13 +530,13 @@ namespace WindowsFormsApp1
 
         private void Atualizar_Click(object sender, EventArgs e)
         {
-            if (modelo is business.classes.Abstrato.Celula)
+            if (modelo is Celula)
             {
                 
-                var p = (business.classes.Abstrato.Celula)modelo;
+                var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios();
+                    var listaMinisterio = Ministerio.recuperarTodosMinisterios();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
@@ -550,9 +551,9 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo is business.classes.Abstrato.Ministerio)
+            if (modelo is Ministerio)
             {
-                var p = (business.classes.Abstrato.Ministerio)modelo;
+                var p = (Ministerio)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
                     p.RemoverDaLista("PessoaMinisterio", "Ministerio", "Pessoa", AddNaListaMinisterioPessoas, modelo.Id);
 
@@ -693,8 +694,8 @@ namespace WindowsFormsApp1
                         this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                         this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                     {
-                        WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro fn = new
-                        WindowsFormsApp1.Formulario.Pessoa.FinalizarCadastro((PessoaDado)modelo,
+                       FinalizarCadastroPessoa fn = new
+                       FinalizarCadastroPessoa((PessoaDado)modelo,
                        CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         fn.MdiParent = this.MdiParent;
                         this.Close();
@@ -785,7 +786,7 @@ namespace WindowsFormsApp1
             {
                 if (this.GetType().Name == "DadoCelula")
                 {
-                    EnderecoCelula end = new EnderecoCelula((business.classes.Abstrato.Celula)modelo,
+                    EnderecoCelula end = new EnderecoCelula((Celula)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     end.MdiParent = this.MdiParent;
                     this.Close();
@@ -794,7 +795,7 @@ namespace WindowsFormsApp1
 
                 if (this.GetType().Name == "EnderecoCelula")
                 {
-                    MinisteriosCelula con = new MinisteriosCelula((business.classes.Abstrato.Celula)modelo,
+                    MinisteriosCelula con = new MinisteriosCelula((Celula)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -802,7 +803,7 @@ namespace WindowsFormsApp1
                 }
                 if (this.GetType().Name == "MinisteriosCelula")
                 {                    
-                    FinalizarCadastro con = new FinalizarCadastro((business.classes.Abstrato.Celula)modelo,
+                    FinalizarCadastro con = new FinalizarCadastro((Celula)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     con.MdiParent = this.MdiParent;
                     this.Close();
@@ -815,7 +816,7 @@ namespace WindowsFormsApp1
                 if (this.GetType().Name == "DadoMinisterio")
                 {
                     PessoasCelulasMinisterio fn = new
-                    WindowsFormsApp1.Formulario.Ministerio.PessoasCelulasMinisterio((business.classes.Abstrato.Ministerio)modelo,
+                    PessoasCelulasMinisterio((Ministerio)modelo,
                    CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     fn.MdiParent = this.MdiParent;
                     this.Close();
@@ -824,8 +825,8 @@ namespace WindowsFormsApp1
 
                 if (this.GetType().Name == "PessoasCelulasMinisterio")
                 {
-                    WindowsFormsApp1.Formulario.Ministerio.FinalizarCadastro fn = new
-                    WindowsFormsApp1.Formulario.Ministerio.FinalizarCadastro((business.classes.Abstrato.Ministerio)modelo,
+                    FinalizarCadastroMinisterio fn = new
+                    FinalizarCadastroMinisterio((Ministerio)modelo,
                    CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     fn.MdiParent = this.MdiParent;
                     this.Close();

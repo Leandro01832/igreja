@@ -135,76 +135,76 @@
     <Compile Include="Formulario\FormularioListView.Designer.cs">
       <DependentUpon>FormularioListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\DadoMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\DadoMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\DadoMinisterio.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\DadoMinisterio.Designer.cs">
       <DependentUpon>DadoMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\FinalizarCadastro.cs">
+    <Compile Include="Formulario\FormularioMinisterio\FinalizarCadastroMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\FinalizarCadastro.Designer.cs">
-      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    <Compile Include="Formulario\FormularioMinisterio\FinalizarCadastroMinisterio.Designer.cs">
+      <DependentUpon>FinalizarCadastroMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderCelula.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderCelula.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderCelula.Designer.cs">
       <DependentUpon>LiderCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderCelulaTreinamento.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderCelulaTreinamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderCelulaTreinamento.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderCelulaTreinamento.Designer.cs">
       <DependentUpon>LiderCelulaTreinamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderMinisterio.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterio.Designer.cs">
       <DependentUpon>LiderMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderMinisterioTreinamento.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterioTreinamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\LiderMinisterioTreinamento.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterioTreinamento.Designer.cs">
       <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\FrmMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\FrmMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\FrmMinisterio.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\FrmMinisterio.Designer.cs">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\PessoasCelulasMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\PessoasCelulasMinisterio.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.Designer.cs">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorCelula.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorCelula.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelula.Designer.cs">
       <DependentUpon>SupervisorCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorCelulaTreinamento.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelulaTreinamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorCelulaTreinamento.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelulaTreinamento.Designer.cs">
       <DependentUpon>SupervisorCelulaTreinamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorMinisterio.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterio.Designer.cs">
       <DependentUpon>SupervisorMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorMinisterioTreinamento.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Ministerio\SupervisorMinisterioTreinamento.Designer.cs">
+    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.Designer.cs">
       <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.cs">
@@ -291,11 +291,11 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\Endereco.Designer.cs">
       <DependentUpon>Endereco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.Designer.cs">
-      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.Designer.cs">
+      <DependentUpon>FinalizarCadastroPessoa.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormListView\FrmMembro.cs">
       <SubType>Form</SubType>
@@ -487,40 +487,40 @@
     <EmbeddedResource Include="Formulario\FormularioListView.resx">
       <DependentUpon>FormularioListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\DadoMinisterio.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\DadoMinisterio.resx">
       <DependentUpon>DadoMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\FinalizarCadastro.resx">
-      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\FinalizarCadastroMinisterio.resx">
+      <DependentUpon>FinalizarCadastroMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\LiderCelula.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderCelula.resx">
       <DependentUpon>LiderCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\LiderCelulaTreinamento.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderCelulaTreinamento.resx">
       <DependentUpon>LiderCelulaTreinamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\LiderMinisterio.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderMinisterio.resx">
       <DependentUpon>LiderMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\LiderMinisterioTreinamento.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderMinisterioTreinamento.resx">
       <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\FrmMinisterio.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmMinisterio.resx">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\PessoasCelulasMinisterio.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.resx">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\SupervisorCelula.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorCelula.resx">
       <DependentUpon>SupervisorCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\SupervisorCelulaTreinamento.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorCelulaTreinamento.resx">
       <DependentUpon>SupervisorCelulaTreinamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\SupervisorMinisterio.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorMinisterio.resx">
       <DependentUpon>SupervisorMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Ministerio\SupervisorMinisterioTreinamento.resx">
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.resx">
       <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.resx">
@@ -565,8 +565,8 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Endereco.resx">
       <DependentUpon>Endereco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastro.resx">
-      <DependentUpon>FinalizarCadastro.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.resx">
+      <DependentUpon>FinalizarCadastroPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembro.resx">
       <DependentUpon>FrmMembro.cs</DependentUpon>
