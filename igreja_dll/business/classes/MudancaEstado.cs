@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using business.classes.Abstrato;
 using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
 using database.banco;
 
@@ -38,207 +39,348 @@ namespace business.classes
             p = (Pessoa)p.recuperar(p.Id)[0];
 
             p.excluir(idVelhoEstado);
-            
 
-            if (m is Membro_Aclamacao)
+
+            if (m is PessoaDado)
             {
-                var modelo = (Membro_Aclamacao)m;
-                var pd = (PessoaDado)p;
-                Membro_Aclamacao membro = new Membro_Aclamacao
+                if (m is Membro_Aclamacao)
                 {
-                    Data_batismo = modelo.Data_batismo,
-                    Desligamento = modelo.Desligamento,
-                    Motivo_desligamento = modelo.Motivo_desligamento,
-                    Denominacao = modelo.Denominacao,
-                    celula_ = pd.celula_,
-                    Chamada = pd.Chamada,
-                    Cpf = pd.Cpf,
-                    Data_nascimento = pd.Data_nascimento,
-                    Email = pd.Email,
-                    Endereco = pd.Endereco,
-                    Estado_civil = pd.Estado_civil,
-                    Falta = pd.Falta,
-                    Historico = pd.Historico,
-                    Img = pd.Img,
-                    Falescimento = pd.Falescimento,
-                    Nome = pd.Nome,
-                    Reuniao = pd.Reuniao,
-                    Rg = pd.Rg,
-                    Ministerios = pd.Ministerios,
-                    Sexo_feminino = pd.Sexo_feminino,
-                    Sexo_masculino = pd.Sexo_masculino,
-                    Telefone = pd.Telefone,
-                    Status = pd.Status,
-                    Codigo = pd.Codigo
-                };
-                membro.salvar();
+                    var modelo = (Membro_Aclamacao)m;
+                    var pd = (PessoaDado)p;
+                    Membro_Aclamacao membro = new Membro_Aclamacao
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        Denominacao = modelo.Denominacao,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Cpf = pd.Cpf,
+                        Data_nascimento = pd.Data_nascimento,
+                        Email = pd.Email,
+                        Endereco = pd.Endereco,
+                        Estado_civil = pd.Estado_civil,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Falescimento = pd.Falescimento,
+                        Nome = pd.Nome,
+                        Reuniao = pd.Reuniao,
+                        Rg = pd.Rg,
+                        Ministerios = pd.Ministerios,
+                        Sexo_feminino = pd.Sexo_feminino,
+                        Sexo_masculino = pd.Sexo_masculino,
+                        Telefone = pd.Telefone,
+                        Status = pd.Status,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
+
+                if (m is Membro_Batismo)
+                {
+                    var modelo = (Membro_Batismo)m;
+                    var pd = (PessoaDado)p;
+                    Membro_Batismo membro = new Membro_Batismo
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Cpf = pd.Cpf,
+                        Data_nascimento = pd.Data_nascimento,
+                        Email = pd.Email,
+                        Endereco = pd.Endereco,
+                        Estado_civil = pd.Estado_civil,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Falescimento = pd.Falescimento,
+                        Nome = pd.Nome,
+                        Reuniao = pd.Reuniao,
+                        Rg = pd.Rg,
+                        Ministerios = pd.Ministerios,
+                        Sexo_feminino = pd.Sexo_feminino,
+                        Sexo_masculino = pd.Sexo_masculino,
+                        Telefone = pd.Telefone,
+                        Status = pd.Status,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
+
+                if (m is Membro_Reconciliacao)
+                {
+                    var modelo = (Membro_Reconciliacao)m;
+                    var pd = (PessoaDado)p;
+                    Membro_Reconciliacao membro = new Membro_Reconciliacao
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        Data_reconciliacao = modelo.Data_reconciliacao,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Cpf = pd.Cpf,
+                        Data_nascimento = pd.Data_nascimento,
+                        Email = pd.Email,
+                        Endereco = pd.Endereco,
+                        Estado_civil = pd.Estado_civil,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Falescimento = pd.Falescimento,
+                        Nome = pd.Nome,
+                        Reuniao = pd.Reuniao,
+                        Rg = pd.Rg,
+                        Ministerios = pd.Ministerios,
+                        Sexo_feminino = pd.Sexo_feminino,
+                        Sexo_masculino = pd.Sexo_masculino,
+                        Telefone = pd.Telefone,
+                        Status = pd.Status,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
+
+                if (m is Membro_Transferencia)
+                {
+                    var modelo = (Membro_Transferencia)m;
+                    var pd = (PessoaDado)p;
+                    Membro_Transferencia membro = new Membro_Transferencia
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        Estado_transferencia = modelo.Estado_transferencia,
+                        Nome_cidade_transferencia = modelo.Nome_cidade_transferencia,
+                        Nome_igreja_transferencia = modelo.Nome_igreja_transferencia,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Cpf = pd.Cpf,
+                        Data_nascimento = pd.Data_nascimento,
+                        Email = pd.Email,
+                        Endereco = pd.Endereco,
+                        Estado_civil = pd.Estado_civil,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Falescimento = pd.Falescimento,
+                        Nome = pd.Nome,
+                        Reuniao = pd.Reuniao,
+                        Rg = pd.Rg,
+                        Ministerios = pd.Ministerios,
+                        Sexo_feminino = pd.Sexo_feminino,
+                        Sexo_masculino = pd.Sexo_masculino,
+                        Telefone = pd.Telefone,
+                        Status = pd.Status,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
+
+                if (m is Crianca)
+                {
+                    var modelo = (Crianca)m;
+                    var pd = (PessoaDado)p;
+                    Crianca c = new Crianca
+                    {
+                        Nome_mae = modelo.Nome_mae,
+                        Nome_pai = modelo.Nome_pai,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Cpf = pd.Cpf,
+                        Data_nascimento = pd.Data_nascimento,
+                        Email = pd.Email,
+                        Endereco = pd.Endereco,
+                        Estado_civil = pd.Estado_civil,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Falescimento = pd.Falescimento,
+                        Nome = pd.Nome,
+                        Reuniao = pd.Reuniao,
+                        Rg = pd.Rg,
+                        Ministerios = pd.Ministerios,
+                        Sexo_feminino = pd.Sexo_feminino,
+                        Sexo_masculino = pd.Sexo_masculino,
+                        Telefone = pd.Telefone,
+                        Status = pd.Status,
+                        Codigo = pd.Codigo
+                    };
+                    c.salvar();
+                }
+
+                if (m is Visitante)
+                {
+                    var modelo = (Visitante)m;
+                    var pd = (PessoaDado)p;
+                    Visitante v = new Visitante
+                    {
+                        Condicao_religiosa = modelo.Condicao_religiosa,
+                        Data_visita = modelo.Data_visita,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Cpf = pd.Cpf,
+                        Data_nascimento = pd.Data_nascimento,
+                        Email = pd.Email,
+                        Endereco = pd.Endereco,
+                        Estado_civil = pd.Estado_civil,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Falescimento = pd.Falescimento,
+                        Nome = pd.Nome,
+                        Reuniao = pd.Reuniao,
+                        Rg = pd.Rg,
+                        Ministerios = pd.Ministerios,
+                        Sexo_feminino = pd.Sexo_feminino,
+                        Sexo_masculino = pd.Sexo_masculino,
+                        Telefone = pd.Telefone,
+                        Status = pd.Status,
+                        Codigo = pd.Codigo
+                    };
+                    v.salvar();
+                } 
             }
 
-            if (m is Membro_Batismo)
+            if (m is PessoaLgpd)
             {
-                var modelo = (Membro_Batismo)m;
-                var pd = (PessoaDado)p;
-                Membro_Batismo membro = new Membro_Batismo
+                if (m is Membro_AclamacaoLgpd)
                 {
-                    Data_batismo = modelo.Data_batismo,
-                    Desligamento = modelo.Desligamento,
-                    Motivo_desligamento = modelo.Motivo_desligamento,
-                    celula_ = pd.celula_,
-                    Chamada = pd.Chamada,
-                    Cpf = pd.Cpf,
-                    Data_nascimento = pd.Data_nascimento,
-                    Email = pd.Email,
-                    Endereco = pd.Endereco,
-                    Estado_civil = pd.Estado_civil,
-                    Falta = pd.Falta,
-                    Historico = pd.Historico,
-                    Img = pd.Img,
-                    Falescimento = pd.Falescimento,
-                    Nome = pd.Nome,
-                    Reuniao = pd.Reuniao,
-                    Rg = pd.Rg,
-                    Ministerios = pd.Ministerios,
-                    Sexo_feminino = pd.Sexo_feminino,
-                    Sexo_masculino = pd.Sexo_masculino,
-                    Telefone = pd.Telefone,
-                    Status = pd.Status,
-                    Codigo = pd.Codigo
-                };
-                membro.salvar();
-            }
+                    var modelo = (Membro_AclamacaoLgpd)m;
+                    var pd = (PessoaLgpd)p;
+                    Membro_AclamacaoLgpd membro = new Membro_AclamacaoLgpd
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        Denominacao = modelo.Denominacao,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Email = pd.Email,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Reuniao = pd.Reuniao,
+                        Ministerios = pd.Ministerios,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
 
-            if (m is Membro_Reconciliacao)
-            {
-                var modelo = (Membro_Reconciliacao)m;
-                var pd = (PessoaDado)p;
-                Membro_Reconciliacao membro = new Membro_Reconciliacao
+                if (m is Membro_BatismoLgpd)
                 {
-                    Data_batismo = modelo.Data_batismo,
-                    Desligamento = modelo.Desligamento,
-                    Motivo_desligamento = modelo.Motivo_desligamento,
-                    Data_reconciliacao = modelo.Data_reconciliacao,
-                    celula_ = pd.celula_,
-                    Chamada = pd.Chamada,
-                    Cpf = pd.Cpf,
-                    Data_nascimento = pd.Data_nascimento,
-                    Email = pd.Email,
-                    Endereco = pd.Endereco,
-                    Estado_civil = pd.Estado_civil,
-                    Falta = pd.Falta,
-                    Historico = pd.Historico,
-                    Img = pd.Img,
-                    Falescimento = pd.Falescimento,
-                    Nome = pd.Nome,
-                    Reuniao = pd.Reuniao,
-                    Rg = pd.Rg,
-                    Ministerios = pd.Ministerios,
-                    Sexo_feminino = pd.Sexo_feminino,
-                    Sexo_masculino = pd.Sexo_masculino,
-                    Telefone = pd.Telefone,
-                    Status = pd.Status,
-                    Codigo = pd.Codigo
-                };
-                membro.salvar();
-            }
+                    var modelo = (Membro_BatismoLgpd)m;
+                    var pd = (PessoaLgpd)p;
+                    Membro_BatismoLgpd membro = new Membro_BatismoLgpd
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Email = pd.Email,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Reuniao = pd.Reuniao,
+                        Ministerios = pd.Ministerios,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
 
-            if (m is Membro_Transferencia)
-            {
-                var modelo = (Membro_Transferencia)m;
-                var pd = (PessoaDado)p;
-                Membro_Transferencia membro = new Membro_Transferencia
+                if (m is Membro_ReconciliacaoLgpd)
                 {
-                    Data_batismo = modelo.Data_batismo,
-                    Desligamento = modelo.Desligamento,
-                    Motivo_desligamento = modelo.Motivo_desligamento,
-                    Estado_transferencia = modelo.Estado_transferencia,
-                    Nome_cidade_transferencia = modelo.Nome_cidade_transferencia,
-                    Nome_igreja_transferencia = modelo.Nome_igreja_transferencia,
-                    celula_ = pd.celula_,
-                    Chamada = pd.Chamada,
-                    Cpf = pd.Cpf,
-                    Data_nascimento = pd.Data_nascimento,
-                    Email = pd.Email,
-                    Endereco = pd.Endereco,
-                    Estado_civil = pd.Estado_civil,
-                    Falta = pd.Falta,
-                    Historico = pd.Historico,
-                    Img = pd.Img,
-                    Falescimento = pd.Falescimento,
-                    Nome = pd.Nome,
-                    Reuniao = pd.Reuniao,
-                    Rg = pd.Rg,
-                    Ministerios = pd.Ministerios,
-                    Sexo_feminino = pd.Sexo_feminino,
-                    Sexo_masculino = pd.Sexo_masculino,
-                    Telefone = pd.Telefone,
-                    Status = pd.Status,
-                    Codigo = pd.Codigo
-                };
-                membro.salvar();
-            }
+                    var modelo = (Membro_ReconciliacaoLgpd)m;
+                    var pd = (PessoaLgpd)p;
+                    Membro_ReconciliacaoLgpd membro = new Membro_ReconciliacaoLgpd
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        Data_reconciliacao = modelo.Data_reconciliacao,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Email = pd.Email,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Reuniao = pd.Reuniao,
+                        Ministerios = pd.Ministerios,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
 
-            if (m is Crianca)
-            {
-                var modelo = (Crianca)m;
-                var pd = (PessoaDado)p;
-                Crianca c = new Crianca
+                if (m is Membro_TransferenciaLgpd)
                 {
-                    Nome_mae = modelo.Nome_mae,
-                    Nome_pai = modelo.Nome_pai,
-                    celula_ = pd.celula_,
-                    Chamada = pd.Chamada,
-                    Cpf = pd.Cpf,
-                    Data_nascimento = pd.Data_nascimento,
-                    Email = pd.Email,
-                    Endereco = pd.Endereco,
-                    Estado_civil = pd.Estado_civil,
-                    Falta = pd.Falta,
-                    Historico = pd.Historico,
-                    Img = pd.Img,
-                    Falescimento = pd.Falescimento,
-                    Nome = pd.Nome,
-                    Reuniao = pd.Reuniao,
-                    Rg = pd.Rg,
-                    Ministerios = pd.Ministerios,
-                    Sexo_feminino = pd.Sexo_feminino,
-                    Sexo_masculino = pd.Sexo_masculino,
-                    Telefone = pd.Telefone,
-                    Status = pd.Status,
-                    Codigo = pd.Codigo
-                };
-                c.salvar();
-            }
+                    var modelo = (Membro_TransferenciaLgpd)m;
+                    var pd = (PessoaLgpd)p;
+                    Membro_TransferenciaLgpd membro = new Membro_TransferenciaLgpd
+                    {
+                        Data_batismo = modelo.Data_batismo,
+                        Desligamento = modelo.Desligamento,
+                        Motivo_desligamento = modelo.Motivo_desligamento,
+                        Estado_transferencia = modelo.Estado_transferencia,
+                        Nome_cidade_transferencia = modelo.Nome_cidade_transferencia,
+                        Nome_igreja_transferencia = modelo.Nome_igreja_transferencia,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Email = pd.Email,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Reuniao = pd.Reuniao,
+                        Ministerios = pd.Ministerios,
+                        Codigo = pd.Codigo
+                    };
+                    membro.salvar();
+                }
 
-            if (m is Visitante)
-            {
-                var modelo = (Visitante)m;
-                var pd = (PessoaDado)p;
-                Visitante v = new Visitante
+                if (m is CriancaLgpd)
                 {
-                    Condicao_religiosa = modelo.Condicao_religiosa,
-                    Data_visita = modelo.Data_visita,
-                    celula_ = pd.celula_,
-                    Chamada = pd.Chamada,
-                    Cpf = pd.Cpf,
-                    Data_nascimento = pd.Data_nascimento,
-                    Email = pd.Email,
-                    Endereco = pd.Endereco,
-                    Estado_civil = pd.Estado_civil,
-                    Falta = pd.Falta,
-                    Historico = pd.Historico,
-                    Img = pd.Img,
-                    Falescimento = pd.Falescimento,
-                    Nome = pd.Nome,
-                    Reuniao = pd.Reuniao,
-                    Rg = pd.Rg,
-                    Ministerios = pd.Ministerios,
-                    Sexo_feminino = pd.Sexo_feminino,
-                    Sexo_masculino = pd.Sexo_masculino,
-                    Telefone = pd.Telefone,
-                    Status = pd.Status,
-                    Codigo = pd.Codigo
-                };
-                v.salvar();
+                    var modelo = (CriancaLgpd)m;
+                    var pd = (PessoaLgpd)p;
+                    CriancaLgpd c = new CriancaLgpd
+                    {
+                        Nome_mae = modelo.Nome_mae,
+                        Nome_pai = modelo.Nome_pai,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Email = pd.Email,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Reuniao = pd.Reuniao,
+                        Ministerios = pd.Ministerios,
+                        Codigo = pd.Codigo
+                    };
+                    c.salvar();
+                }
+
+                if (m is VisitanteLgpd)
+                {
+                    var modelo = (VisitanteLgpd)m;
+                    var pd = (PessoaLgpd)p;
+                    VisitanteLgpd v = new VisitanteLgpd
+                    {
+                        Condicao_religiosa = modelo.Condicao_religiosa,
+                        Data_visita = modelo.Data_visita,
+                        celula_ = pd.celula_,
+                        Chamada = pd.Chamada,
+                        Email = pd.Email,
+                        Falta = pd.Falta,
+                        Historico = pd.Historico,
+                        Img = pd.Img,
+                        Reuniao = pd.Reuniao,
+                        Ministerios = pd.Ministerios,
+                        Codigo = pd.Codigo
+                    };
+                    v.salvar();
+                }
             }
 
             new MudancaEstado

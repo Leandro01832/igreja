@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Celulas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,9 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class CelulaJovem : FormularioListView
     {
-        public CelulaJovem() : base(
+        public CelulaJovem(bool Lgpd) : base(
             new ListViewCelulaJovem
-            (new business.classes.Celulas.Celula_Jovem(), ""))
+            (new Celula_Jovem(), ""), Lgpd)
         {
             InitializeComponent();
         }

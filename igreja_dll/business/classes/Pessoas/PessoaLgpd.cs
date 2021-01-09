@@ -42,7 +42,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from PessoaLgpd as PL where PL.Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.Id='{id}' " + base.excluir(id);
             
             bd.Excluir(null);
             return Delete_padrao;

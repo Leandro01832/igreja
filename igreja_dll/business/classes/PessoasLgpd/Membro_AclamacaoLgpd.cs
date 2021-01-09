@@ -56,7 +56,7 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_AclamacaoLgpd where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -134,7 +134,7 @@ namespace business.classes.PessoasLgpd
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Membro_aclamacaoLgpd (Denominacao, Id) " +
-                $" values ('{Denominacao}', IDENT_CURRENT('PessoaLgpd'))" + BDcomum.addNaLista;
+                $" values ('{Denominacao}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
             BDcomum.addNaLista = "";

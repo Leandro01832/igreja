@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         public Contato(business.classes.Pessoas.PessoaDado p,
             bool Deletar, bool Atualizar,  bool Detalhes)
             : base(p, Deletar, Atualizar, Detalhes)
+        {
+            InitializeComponent();
+        }
+
+        public Contato(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
+           : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
         {
             InitializeComponent();
         }

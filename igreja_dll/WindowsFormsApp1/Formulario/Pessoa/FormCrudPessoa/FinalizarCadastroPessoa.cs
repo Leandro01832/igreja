@@ -20,6 +20,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
+        public FinalizarCadastroPessoa(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
+            modelocrud modeloNovo)
+            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         private void FinalizarCadastro_Load(object sender, EventArgs e)
         {
             if(CondicaoAtualizar)

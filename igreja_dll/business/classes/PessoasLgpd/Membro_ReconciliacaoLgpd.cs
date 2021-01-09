@@ -55,7 +55,7 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_ReconciliacaoLgpd where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -65,7 +65,7 @@ namespace business.classes.PessoasLgpd
             Select_padrao = "select * from Membro_ReconciliacaoLgpd as MR "
             + " inner join MembroLgpd as M on MR.Id=M.Id "
             + " inner join PessoaLgpd as PL on M.Id=PL.Id inner join Pessoa as P on PL.Id=P.Id ";
-            if (id != null) Select_padrao += $" where MR.Id='{id}'";
+            if (id != null) Select_padrao += $" where MR.Id='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -130,7 +130,7 @@ namespace business.classes.PessoasLgpd
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Membro_ReconciliacaoLgpd (Data_reconciliacao, Id) " +
-                $" values ({Data_reconciliacao}, IDENT_CURRENT('PessoaLgpd'))" + BDcomum.addNaLista;
+                $" values ({Data_reconciliacao}, IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
             BDcomum.addNaLista = "";

@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class MembroBatismo : FormularioListView
     {
-        public MembroBatismo(modelocrud modelo) : base(new ListViewMembroBatismo(modelo, ""))
+        public MembroBatismo(modelocrud modelo, bool Lgpd) : base(new ListViewMembroBatismo(modelo, ""), Lgpd)
 
 
         {

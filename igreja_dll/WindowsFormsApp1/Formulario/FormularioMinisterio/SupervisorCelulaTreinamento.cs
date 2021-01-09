@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Ministerio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,8 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class SupervisorCelulaTreinamento : FormularioListView
     {
-        public SupervisorCelulaTreinamento() : base(
-        new ListViewSupervisorCelulaTreinamento(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), ""))
+        public SupervisorCelulaTreinamento(bool Lgpd) : base(
+        new ListViewSupervisorCelulaTreinamento(new Supervisor_Celula_Treinamento(), ""), Lgpd)
         {
             InitializeComponent();
         }

@@ -8,7 +8,7 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class FrmCelula : FormularioListView
     {
-        public FrmCelula() : base(new ListViewCelula(null, "Celula"))
+        public FrmCelula(bool Lgpd) : base(new ListViewCelula(null, "Celula"), Lgpd)
         {
             InitializeComponent();
         }

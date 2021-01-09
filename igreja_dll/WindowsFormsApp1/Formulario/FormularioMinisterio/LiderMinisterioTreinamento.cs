@@ -1,13 +1,14 @@
-﻿using System;
+﻿using business.classes.Ministerio;
+using System;
 using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class LiderMinisterioTreinamento : FormularioListView
     {
-        public LiderMinisterioTreinamento() : base(
+        public LiderMinisterioTreinamento( bool Lgpd) : base(
          new ListViewLiderMinisterioTreinamento
-         (new business.classes.Ministerio.Lider_Ministerio_Treinamento(), ""))
+         (new Lider_Ministerio_Treinamento(), ""), Lgpd)
         {
             InitializeComponent();
         }

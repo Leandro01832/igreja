@@ -14,7 +14,11 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             InitializeComponent();
         }
 
-       
+        public CadastroCrianca(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
+            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
+        {
+            InitializeComponent();
+        }
 
         public CadastroCrianca(modelocrud modelo, modelocrud modeloNovo)
             : base(modelo, modeloNovo)

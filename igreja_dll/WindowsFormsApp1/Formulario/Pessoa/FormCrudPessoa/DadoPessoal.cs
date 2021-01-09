@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using business.classes.Abstrato;
 using business.classes.Pessoas;
+using database;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
@@ -18,6 +19,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             bool Deletar, bool Atualizar,  bool Detalhes)
             : base(P, Deletar, Atualizar,  Detalhes)
         {            
+            InitializeComponent();
+        }
+
+        public DadoPessoal(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
+            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
+        {
             InitializeComponent();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Celulas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,9 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class CelulaCasado : FormularioListView
     {
-        public CelulaCasado() : base(
+        public CelulaCasado(bool Lgpd) : base(
             new ListViewCelulaCasado
-            (new business.classes.Celulas.Celula_Casado(), ""))
+            (new Celula_Casado(), ""), Lgpd)
         {
             InitializeComponent();
         }

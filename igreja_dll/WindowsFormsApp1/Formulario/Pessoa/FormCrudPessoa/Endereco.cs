@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
            : base(p, Deletar, Atualizar, Detalhes)
         {
             
+            InitializeComponent();
+        }
+
+        public Endereco(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
+           : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
+        {
             InitializeComponent();
         }
 

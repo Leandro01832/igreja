@@ -1,11 +1,15 @@
 ﻿using business.classes.Abstrato;
 using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
 using FinalizarCadastro = WindowsFormsApp1.Formulario.Celula.FinalizarCadastro;
 
 namespace WindowsFormsApp1
@@ -23,7 +27,8 @@ namespace WindowsFormsApp1
         private Button proximo;
         private Button Deletar;
         private Button atualizar;
-        private Button FinalizarCadastro;
+        private Button finalizarCadastro;
+
 
         // botões para select: PESSOA
         private Button dadoPessoal;
@@ -66,6 +71,7 @@ namespace WindowsFormsApp1
         public Button Atualizar { get => atualizar; set => atualizar = value; }
         public modelocrud ModeloNovo { get => modeloNovo; set => modeloNovo = value; }
         public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
+        public Button FinalizarCadastro { get => finalizarCadastro; set => finalizarCadastro = value; }
 
         private bool condicaoDeletar;
         private bool condicaoAtualizar;
@@ -202,7 +208,7 @@ namespace WindowsFormsApp1
             Atualizar.Visible = false;
 
             FinalizarCadastro = new Button();
-            FinalizarCadastro.Click +=  FinalizarCadastro_Click;
+            FinalizarCadastro.Click += FinalizarCadastro_Click;
             FinalizarCadastro.Text = "Finalizar Cadastro";
             FinalizarCadastro.Location = new Point(650, 250);
             FinalizarCadastro.Size = new System.Drawing.Size(100, 50);
@@ -322,11 +328,180 @@ namespace WindowsFormsApp1
         {
             this.ModeloVelho = modelo;
             this.ModeloNovo = modeloNovo;
-        }        
+        }
+
+        public WFCrud(bool deletar, bool atualizar, bool detalhes,  modelocrud modelo, modelocrud modeloNovo)
+        {
+            this.ModeloVelho = modelo;
+            this.ModeloNovo = modeloNovo;
+            condicaoDeletar = deletar;
+            condicaoAtualizar = atualizar;
+            condicaoDetalhes = detalhes;
+
+
+        }
 
         private void WFCrud_Load(object sender, EventArgs e)
         {
 
+        }
+
+        
+
+        private void DadoCelula_Click(object sender, EventArgs e)
+        {
+            DadoCelula dc = new DadoCelula((Celula)modelo, condicaoDeletar,
+            condicaoAtualizar, condicaoDetalhes);
+            dc.MdiParent = this.MdiParent;
+            dc.Show();
+        }
+
+        private void DadoEnderecoCelula_Click(object sender, EventArgs e)
+        {
+            EnderecoCelula dc = new EnderecoCelula((Celula)modelo, condicaoDeletar,
+            condicaoAtualizar, condicaoDetalhes);
+            dc.MdiParent = this.MdiParent;
+            dc.Show();
+        }
+
+        private void DadoCelulaMinisterio_Click(object sender, EventArgs e)
+        {
+            MinisteriosCelula mt = new MinisteriosCelula((Celula)modelo,
+            condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            mt.MdiParent = this.MdiParent;
+            mt.Show();
+        }
+
+        private void DadoCelulaPessoas_Click(object sender, EventArgs e)
+        {
+            MinisteriosCelula mt = new MinisteriosCelula((Celula)modelo,
+            condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            mt.MdiParent = this.MdiParent;
+            mt.Show();
+        }
+
+        private void DadoMinisterio_Click(object sender, EventArgs e)
+        {
+            DadoMinisterio pcm = new DadoMinisterio((Ministerio)modelo
+            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            pcm.MdiParent = this.MdiParent;
+            pcm.Show();
+        }
+
+        private void DadoMinisterioPessoas_Click(object sender, EventArgs e)
+        {
+            PessoasCelulasMinisterio pcm = new PessoasCelulasMinisterio((Ministerio)modelo
+            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            pcm.MdiParent = this.MdiParent;
+            pcm.Show();
+        }
+
+        private void DadoMinistro_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
+        {
+            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((Pessoa)modelo
+            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            rmp.MdiParent = this.MdiParent;
+            rmp.Show();
+
+
+        }
+
+        private void DadoContato_Click(object sender, EventArgs e)
+        {
+            Contato dp = new Contato((PessoaDado)modelo,
+            condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+            dp.MdiParent = this.MdiParent;
+            dp.Show();
+        }
+
+        private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
+        {
+            Endereco dp = new Endereco((PessoaDado)modelo,
+            condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+            dp.MdiParent = this.MdiParent;
+            dp.Show();
+        }
+
+        private void DadoPessoal_Click(object sender, EventArgs e)
+        {
+            if (modelo is PessoaDado)
+            {
+                DadoPessoal dp = new DadoPessoal((PessoaDado)modelo,
+                condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+                dp.MdiParent = this.MdiParent;
+                dp.Show();
+            }
+            if (modelo is PessoaLgpd)
+            {
+                DadoPessoalLgpd dp = new DadoPessoalLgpd((PessoaLgpd)modelo,
+               condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+                dp.MdiParent = this.MdiParent;
+                dp.Show();
+            }
+
+        }
+
+        private void FinalizarCadastro_Click(object sender, EventArgs e)
+        {
+            FinalizarCadastro.Enabled = false;
+            if (modelo is Celula)
+            {
+                var p = (Celula)modelo;
+                if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
+                {
+                    var listaMinisterio = Ministerio.recuperarTodosMinisterios();
+                    var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
+                    foreach (var item in arr)
+                    {
+                        try
+                        {
+                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
+                                AddNaListaCelulaMinisterios.Replace(item, "");
+                        }
+                        catch { }
+                    }
+                    p.AdicionarNaLista("MinisterioCelula", "Celula", "Ministerio", AddNaListaCelulaMinisterios);
+                }
+            }
+
+            if (modelo is Ministerio)
+            {
+                var p = (Ministerio)modelo;
+                if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
+                    p.AdicionarNaLista("PessoaMinisterio", "Ministerio", "Pessoa", AddNaListaMinisterioPessoas);
+
+                if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
+                    p.AdicionarNaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas);
+            }
+
+            if (modelo is Pessoa)
+            {
+                var p = (Pessoa)modelo;
+                if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
+                    p.AdicionarNaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios);
+
+                if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
+                    p.AdicionarNaLista("ReuniaoPessoa", "Pessoa", "Reuniao", AddNaListaPessoaReunioes);
+
+            }
+
+            if (modelo is business.classes.Reuniao)
+            {
+                var p = (business.classes.Reuniao)modelo;
+                if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
+                    p.AdicionarNaLista("ReuniaoPessoa", "Reuniao", "Pessoa", AddNaListaReuniaoPessoas);
+
+            }
+
+            modelo.salvar();
+
+            MessageBox.Show("Cadastro realiado com sucesso.");
+            this.Close();
         }
     }
 }

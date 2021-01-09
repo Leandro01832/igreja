@@ -110,14 +110,14 @@ namespace WindowsFormsApp1
         {
             if (Lgpd)
             {
-                FrmVisitante m = new FrmVisitante(new VisitanteLgpd());
+                FrmVisitante m = new FrmVisitante(new VisitanteLgpd(), Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
             }
             else
             {
-                FrmVisitante m = new FrmVisitante(new Visitante());
+                FrmVisitante m = new FrmVisitante(new Visitante(), Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -129,14 +129,14 @@ namespace WindowsFormsApp1
         {
             if (Lgpd)
             {
-                FrmCrianca m = new FrmCrianca(new CriancaLgpd());
+                FrmCrianca m = new FrmCrianca(new CriancaLgpd(), Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
             }
             else
             {
-                FrmCrianca m = new FrmCrianca(new Crianca());
+                FrmCrianca m = new FrmCrianca(new Crianca(), Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             if (Lgpd)
             {
                 Pessoa p2 = new Membro_AclamacaoLgpd();
-                FrmMembroAclamacao m = new FrmMembroAclamacao(p2);
+                FrmMembroAclamacao m = new FrmMembroAclamacao(p2, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -157,7 +157,7 @@ namespace WindowsFormsApp1
             else
             {
                 Pessoa p1 = new Membro_Aclamacao();
-                FrmMembroAclamacao m = new FrmMembroAclamacao(p1);
+                FrmMembroAclamacao m = new FrmMembroAclamacao(p1, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -170,7 +170,7 @@ namespace WindowsFormsApp1
             if (Lgpd)
             {
                 Pessoa p2 = new Membro_BatismoLgpd();
-                MembroBatismo m = new MembroBatismo(p2);
+                MembroBatismo m = new MembroBatismo(p2, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -178,7 +178,7 @@ namespace WindowsFormsApp1
             else
             {
                 Pessoa p1 = new Membro_Batismo();
-                MembroBatismo m = new MembroBatismo(p1);
+                MembroBatismo m = new MembroBatismo(p1, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -191,7 +191,7 @@ namespace WindowsFormsApp1
             if (Lgpd)
             {
                 Pessoa p = new Membro_Reconciliacao();
-                MembroReconciliacao m = new MembroReconciliacao(p);
+                MembroReconciliacao m = new MembroReconciliacao(p, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -199,7 +199,7 @@ namespace WindowsFormsApp1
             else
             {
                 Pessoa p = new Membro_ReconciliacaoLgpd();
-                MembroReconciliacao m = new MembroReconciliacao(p);
+                MembroReconciliacao m = new MembroReconciliacao(p, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -212,7 +212,7 @@ namespace WindowsFormsApp1
             if (Lgpd)
             {
                 Pessoa p = new Membro_Transferencia();
-                MembroTransferencia m = new MembroTransferencia(p);
+                MembroTransferencia m = new MembroTransferencia(p, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -220,7 +220,7 @@ namespace WindowsFormsApp1
             else
             {
                 Pessoa p = new Membro_TransferenciaLgpd();
-                MembroTransferencia m = new MembroTransferencia(p);
+                MembroTransferencia m = new MembroTransferencia(p, Lgpd);
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();
@@ -368,7 +368,7 @@ namespace WindowsFormsApp1
         {
             string tipo = "";
             if (Lgpd) tipo = "Membro"; else tipo = "MembroLgpd";
-            FrmMembro m = new FrmMembro(null, tipo);
+            FrmMembro m = new FrmMembro(null, tipo, Lgpd);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -379,7 +379,7 @@ namespace WindowsFormsApp1
             string tipo = "";
             if (Lgpd) tipo = "Pessoa"; else tipo = "PessoaLgpd";
 
-            FrmPessoa p = new FrmPessoa(null, tipo);
+            FrmPessoa p = new FrmPessoa(null, tipo, Lgpd);
             p.MdiParent = this;
             p.Text = "Janela " + childFormNumber++;
             p.Show();
@@ -387,7 +387,7 @@ namespace WindowsFormsApp1
 
         private void ministerioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmMinisterio m = new FrmMinisterio();
+            FrmMinisterio m = new FrmMinisterio(Lgpd);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -395,7 +395,7 @@ namespace WindowsFormsApp1
 
         private void celulaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmCelula c = new FrmCelula();
+            FrmCelula c = new FrmCelula(Lgpd);
             c.MdiParent = this;
             c.Text = "Janela " + childFormNumber++;
             c.Show();
@@ -403,7 +403,7 @@ namespace WindowsFormsApp1
 
         private void mininstérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderCelula lc = new LiderCelula();
+            LiderCelula lc = new LiderCelula(Lgpd);
             lc.MdiParent = this;
             lc.Text = "Janela " + childFormNumber++;
             lc.Show();
@@ -411,7 +411,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeLiderançaEmTreinamentoDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderCelulaTreinamento lct = new LiderCelulaTreinamento();
+            LiderCelulaTreinamento lct = new LiderCelulaTreinamento(Lgpd);
             lct.MdiParent = this;
             lct.Text = "Janela " + childFormNumber++;
             lct.Show();
@@ -419,7 +419,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeLiderançaDeMinistérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderMinisterio lm = new LiderMinisterio();
+            LiderMinisterio lm = new LiderMinisterio(Lgpd);
             lm.MdiParent = this;
             lm.Text = "Janela " + childFormNumber++;
             lm.Show();
@@ -427,7 +427,7 @@ namespace WindowsFormsApp1
 
         private void ministerioDeLiderancaDeMinistérioEmTreianmentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderMinisterioTreinamento lmt = new LiderMinisterioTreinamento();
+            LiderMinisterioTreinamento lmt = new LiderMinisterioTreinamento(Lgpd);
             lmt.MdiParent = this;
             lmt.Text = "Janela " + childFormNumber++;
             lmt.Show();
@@ -435,7 +435,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorCelula sc = new SupervisorCelula();
+            SupervisorCelula sc = new SupervisorCelula(Lgpd);
             sc.MdiParent = this;
             sc.Text = "Janela " + childFormNumber++;
             sc.Show();
@@ -443,7 +443,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorCelulaTreinamento sct = new SupervisorCelulaTreinamento();
+            SupervisorCelulaTreinamento sct = new SupervisorCelulaTreinamento(Lgpd);
             sct.MdiParent = this;
             sct.Text = "Janela " + childFormNumber++;
             sct.Show();
@@ -451,7 +451,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeMinistérioDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorMinisterio sm = new SupervisorMinisterio();
+            SupervisorMinisterio sm = new SupervisorMinisterio(Lgpd);
             sm.MdiParent = this;
             sm.Text = "Janela " + childFormNumber++;
             sm.Show();
@@ -459,7 +459,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorMinisterioTreinamento smt = new SupervisorMinisterioTreinamento();
+            SupervisorMinisterioTreinamento smt = new SupervisorMinisterioTreinamento(Lgpd);
             smt.MdiParent = this;
             smt.Text = "Janela " + childFormNumber++;
             smt.Show();
@@ -467,7 +467,7 @@ namespace WindowsFormsApp1
 
         private void ceulaParaAdolescenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaAdolescente ca = new CelulaAdolescente();
+            CelulaAdolescente ca = new CelulaAdolescente(Lgpd);
             ca.MdiParent = this;
             ca.Text = "Janela " + childFormNumber++;
             ca.Show();
@@ -475,7 +475,7 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdultoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaAdulto cad = new CelulaAdulto();
+            CelulaAdulto cad = new CelulaAdulto(Lgpd);
             cad.MdiParent = this;
             cad.Text = "Janela " + childFormNumber++;
             cad.Show();
@@ -483,7 +483,7 @@ namespace WindowsFormsApp1
 
         private void ceulaParaJovemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaJovem cj = new CelulaJovem();
+            CelulaJovem cj = new CelulaJovem(Lgpd);
             cj.MdiParent = this;
             cj.Text = "Janela " + childFormNumber++;
             cj.Show();
@@ -491,7 +491,7 @@ namespace WindowsFormsApp1
 
         private void celulaParaCasadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaCasado cc = new CelulaCasado();
+            CelulaCasado cc = new CelulaCasado(Lgpd);
             cc.MdiParent = this;
             cc.Text = "Janela " + childFormNumber++;
             cc.Show();

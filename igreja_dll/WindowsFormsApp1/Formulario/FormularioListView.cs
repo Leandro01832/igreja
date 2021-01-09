@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Formulario
 
         List<modelocrud> lista;
 
-        public FormularioListView(TodosListViews ListView)
+        public FormularioListView(TodosListViews ListView, bool Lgpd)
         {
             this.Modelo = ListView.Modelo;
             this.Tipo = ListView.Tipo;
@@ -65,7 +65,7 @@ namespace WindowsFormsApp1.Formulario
             Controls.Add(botaoDeletar);
             Controls.Add(MudancaEstado);
             this.ListView = ListView;
-
+            this.Lgpd = Lgpd;
             InitializeComponent();
         }
 
@@ -76,13 +76,13 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            List<PessoaDado> lista2 = new List<PessoaDado>();
+            List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
             foreach (var item in lista)
-            lista2.Add((PessoaDado)item);
+            lista2.Add((business.classes.Abstrato.Pessoa)item);
             Modelo = lista2.First(i => i.Codigo == ListView.numero);
             Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
+            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo, Lgpd);
             frm.MdiParent = this.MdiParent;
             frm.Show();
         }
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1.Formulario
         private Button botaoDeletar { get; }
         public modelocrud Modelo { get; set; }
         public TodosListViews ListView { get; }
-
+        public bool Lgpd { get; }
         public string Tipo { get; set; }
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)

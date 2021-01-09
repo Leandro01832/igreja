@@ -60,7 +60,7 @@ namespace business.classes.Abstrato
         {
             try
             {
-                var numero = recuperarTodos().Last().Id;
+                var numero = recuperarTodos().OrderBy(m => m.Id).Last().Id;
                 Codigo = numero + 1;
             }
             catch { Codigo = 1; }          
@@ -98,7 +98,7 @@ namespace business.classes.Abstrato
             Delete_padrao = " delete Chamada from Chamada as CH inner " +
                 "join Pessoa as P on CH.Id=P.Id " +
                 $" where P.Id='{id}' " +
-                $" delete from Pessoa as P where P.Id='{id}' ";
+                $" delete Pessoa from Pessoa as P where P.Id='{id}' ";
             
             bd.Excluir(null);
             return Delete_padrao;

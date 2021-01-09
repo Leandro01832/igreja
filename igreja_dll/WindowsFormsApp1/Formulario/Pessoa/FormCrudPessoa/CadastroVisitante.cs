@@ -16,6 +16,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             this.modelo = p;
         }
 
+        public CadastroVisitante(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
+            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)
             :base(modelo, modeloNovo)
         {

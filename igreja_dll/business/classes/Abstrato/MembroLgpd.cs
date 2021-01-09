@@ -126,7 +126,7 @@ namespace business.classes.Abstrato
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into MembroLgpd (Data_batismo, Desligamento, Motivo_desligamento, Id) values" +
-                $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('PessoaLgpd'))";
+                $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
 
             bd.SalvarModelo(null);
             return Insert_padrao;
