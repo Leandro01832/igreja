@@ -115,11 +115,13 @@ namespace business.classes.Abstrato
 
                     this.Ministerios = new List<Ministerio>();
                     var listaMinisterios = recuperarMinisterios(id);
+                    if(listaMinisterios != null)
                     foreach (var item in listaMinisterios)
                     this.Ministerios.Add((Ministerio)item);
 
                     this.Pessoas = new List<Pessoa>();
                     var listaPessoas = buscarPessoas(id);
+                    if (listaPessoas != null)
                     foreach (var item in listaPessoas)
                     this.Pessoas.Add((Pessoa)item);
 

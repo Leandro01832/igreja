@@ -96,11 +96,13 @@ namespace business.classes.Abstrato
 
                     this.Pessoas = new List<Pessoa>();
                     var listaPessoas = buscarPessoas(id);
+                    if(listaPessoas != null)
                     foreach (var item in listaPessoas)
                     this.Pessoas.Add((Pessoa)item);
 
                     this.Celulas = new List<Celula>();
                     var listaCelulas = buscarCelulas(id);
+                    if (listaCelulas != null)
                     foreach (var item in listaCelulas)
                     this.Celulas.Add((Celula)item);
 

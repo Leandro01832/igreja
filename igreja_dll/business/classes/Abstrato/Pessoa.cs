@@ -106,7 +106,8 @@ namespace business.classes.Abstrato
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from Pessoa as P ";
+            Select_padrao = "select * from Pessoa as P "
+                 + " inner join Chamada as CH on CH.Id=P.Id ";
             if (id != null) Select_padrao += $" where P.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -131,7 +132,7 @@ namespace business.classes.Abstrato
                     this.Email = Convert.ToString(dr["Email"]);
                     this.Falta = int.Parse(dr["Falta"].ToString());
                     this.Chamada = new Chamada();
-                    this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
+                    this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
                     this.Chamada.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
 
                     if (retornoDados(dr, "celula_"))
@@ -141,19 +142,22 @@ namespace business.classes.Abstrato
 
                     this.Ministerios = new List<Ministerio>();
                     var listaMinisterios = recuperarMinisterios(id);
+                    if(listaMinisterios != null)
                     foreach(var item in listaMinisterios)
                     {
                         this.Ministerios.Add((Ministerio)item);
                     }
                     this.Reuniao = new List<Reuniao>();
                     var listaReunioes = recuperarReuniao(id);
-                    foreach(var item in listaReunioes)
+                    if (listaReunioes != null)
+                    foreach (var item in listaReunioes)
                     {
                         this.Reuniao.Add((Reuniao)item);
                     }
                     this.Historico = new List<Historico>();
                     var listaHistoricos = recuperarHistorico(id);
-                    foreach(var item in listaHistoricos)
+                    if (listaHistoricos != null)
+                    foreach (var item in listaHistoricos)
                     {
                         this.Historico.Add((Historico)item);
                     }

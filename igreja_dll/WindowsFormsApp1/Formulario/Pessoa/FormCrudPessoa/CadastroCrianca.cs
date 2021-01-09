@@ -88,18 +88,35 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if(modelo is Crianca)
+            if(modelo != null)
             {
-                var p = (Crianca)modelo;
-                p.Nome_pai = textBox1.Text;
+                if (modelo is Crianca)
+                {
+                    var p = (Crianca)modelo;
+                    p.Nome_pai = textBox1.Text;
+                }
+
+                if (modelo is CriancaLgpd)
+                {
+                    var p = (CriancaLgpd)modelo;
+                    p.Nome_pai = textBox1.Text;
+                }
             }
 
-            if (modelo is CriancaLgpd)
+            if (ModeloNovo != null)
             {
-                var p = (CriancaLgpd)modelo;
-                p.Nome_pai = textBox1.Text;
-            }
+                if (ModeloNovo is Crianca)
+                {
+                    var p = (Crianca)ModeloNovo;
+                    p.Nome_pai = textBox1.Text;
+                }
 
+                if (ModeloNovo is CriancaLgpd)
+                {
+                    var p = (CriancaLgpd)ModeloNovo;
+                    p.Nome_pai = textBox1.Text;
+                }
+            }
         }
     }
 }
