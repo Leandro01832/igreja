@@ -66,7 +66,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 {
 
                     OpenFileDialog dlg = new OpenFileDialog();
-                    dlg.InitialDirectory = @"F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\WindowsFormsApp1\bin\Debug\Fotos";
+                    dlg.InitialDirectory = $@"F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\WindowsFormsApp1\bin\Debug\Fotos";
                     dlg.Filter = "JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files (*.*)|*.*";
                     dlg.Title = "selecione uma imagem";
                     if (dlg.ShowDialog() == DialogResult.OK)

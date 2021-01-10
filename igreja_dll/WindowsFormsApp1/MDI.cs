@@ -784,13 +784,214 @@ namespace WindowsFormsApp1
             ImprimirRelatorio ir = new ImprimirRelatorio();
             ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), "");
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            lbl_horario.Text = DateTime.Now.AddMilliseconds(timer1.Interval).ToString("HH:mm:ss");
+
         }
 
-        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripStatusLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+            
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void fileMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void celulaParaCriançaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void membroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ministerioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void celulaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reuniãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void relatórioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reuniãoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chamadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void historicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolsMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void windowsMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void indexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printPreviewToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolTip_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_horario_Click(object sender, EventArgs e)
         {
 
         }

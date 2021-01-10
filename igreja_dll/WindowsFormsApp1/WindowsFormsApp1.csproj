@@ -351,6 +351,12 @@
     <Compile Include="Formulario\Reuniao\Reuniao.Designer.cs">
       <DependentUpon>Reuniao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImprimirRelatorio.cs" />
     <Compile Include="ListViews\ListViewCelula.cs">
       <SubType>Component</SubType>
@@ -597,6 +603,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Reuniao\Reuniao.resx">
       <DependentUpon>Reuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
