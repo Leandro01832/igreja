@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 {
-    public partial class Foto : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class Foto : Formulario.FormCrudPessoa
     {
         public Foto()
         {

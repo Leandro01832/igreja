@@ -40,6 +40,21 @@ namespace business.classes
 
             p.excluir(idVelhoEstado);
 
+            var addMinisterios = "";
+            var minis = p.Ministerios;
+            if(minis != null)
+            foreach(var itemMinisterio in minis)
+            addMinisterios += itemMinisterio.Id.ToString() + ", ";
+            if (minis != null)
+            p.AdicionarNaLista("PessoaMinsterio", "Pessoa", "Ministerio", addMinisterios);
+
+            var addReunioes = "";
+            var reu = p.Reuniao;
+            if (reu != null)
+            foreach (var itemReuniao in reu)
+            addReunioes += itemReuniao.Id.ToString() + ", ";
+            if (reu != null)
+            p.AdicionarNaLista("ReuniaoPessoa", "Pessoa", "Reuniao", addReunioes);
 
             if (m is PessoaDado)
             {

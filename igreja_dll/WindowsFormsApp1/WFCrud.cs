@@ -250,7 +250,14 @@ namespace WindowsFormsApp1
                     var pessoa = (PessoaDado)modelo;
                     InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() + " - " + pessoa.Nome;
                 }
-                else if (modelo is Celula)
+                else
+                if (modelo is PessoaLgpd)
+                {
+                    var pessoa = (PessoaLgpd)modelo;
+                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() + " - " + pessoa.Email;
+                }
+                else
+                if (modelo is Celula)
                 {
                     var celula = (Celula)modelo;
                     InfoForm.Text = "Identificação: " + celula.Id.ToString() + " - " + celula.Nome;
@@ -265,7 +272,7 @@ namespace WindowsFormsApp1
                     InfoForm.Text = "Identificação: " + modelo.Id.ToString() + " - ";
                 }
 
-            }
+            }            
 
             if (modelo is Pessoa && this is FinalizarCadastroPessoa)
             {
@@ -285,8 +292,6 @@ namespace WindowsFormsApp1
                 dadoMinisterio.Visible = true;
                 dadoMinisterioPessoas.Visible = true;
                 dadoMinistro.Visible = true;
-                var p = (Ministerio)modelo;
-                InfoForm.Text += p.Nome;
             }
 
             if (modelo is Celula && this is FinalizarCadastro)
@@ -295,12 +300,8 @@ namespace WindowsFormsApp1
                 dadoEnderecoCelula.Visible = true;
                 dadoCelulaMinisterio.Visible = true;
                 dadoCelulaPessoas.Visible = true;
-                var p = (Celula)modelo;
-                InfoForm.Text += p.Nome;
             }
-
             
-
             if(!condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes)
                 Proximo.Visible = true;
 

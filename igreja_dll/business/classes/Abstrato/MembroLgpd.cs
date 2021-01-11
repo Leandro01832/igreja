@@ -102,7 +102,7 @@ namespace business.classes.Abstrato
                 try
                 {
                     dr.Read();
-                    this.Data_batismo = int.Parse(dr["Data_nascimento"].ToString());
+                    this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
                     this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
                     this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
                     dr.Close();

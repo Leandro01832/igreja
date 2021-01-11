@@ -71,7 +71,7 @@
             // 
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(83, 32);
+            this.fileMenu.Size = new System.Drawing.Size(92, 32);
             this.fileMenu.Text = "Sistema";
             this.fileMenu.Click += new System.EventHandler(this.fileMenu_Click);
             // 

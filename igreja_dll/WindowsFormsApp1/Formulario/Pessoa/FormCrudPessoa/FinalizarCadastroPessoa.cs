@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class FinalizarCadastroPessoa : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class FinalizarCadastroPessoa : Formulario.FormCrudPessoa
     {
         public FinalizarCadastroPessoa(modelocrud p,
             bool Deletar, bool Atualizar,  bool Detalhes)

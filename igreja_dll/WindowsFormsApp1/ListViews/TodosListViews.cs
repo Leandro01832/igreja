@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.ListViews
         public  TodosListViews(modelocrud modelo, string tipo)
         {
             this.Tipo = tipo;
-            this.View = View.List;
+            this.View = View.Tile;
             this.Size = new System.Drawing.Size(500, 300);
             this.ItemSelectionChanged += TodosListViews_ItemSelectionChanged;
             this.Location = new System.Drawing.Point(50, 50);
