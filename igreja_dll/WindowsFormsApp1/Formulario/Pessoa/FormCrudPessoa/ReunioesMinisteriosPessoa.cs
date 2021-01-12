@@ -45,15 +45,21 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         {
             try
             {
+                AddNaListaPessoaMinsterios = "";
                 var arr = txt_ministerios.Text.Replace(" ", "").Split(',');
                 foreach (var valor in arr)
                 {
-                    int v = int.Parse(valor);
+                    if(valor != "")
+                    {
+                        int v = int.Parse(valor);
+                    }
+                    
                 }
                 AddNaListaPessoaMinsterios = txt_ministerios.Text;
             }
             catch (Exception)
             {
+                AddNaListaPessoaMinsterios = "";
                 txt_ministerios.Text = "";
                 MessageBox.Show("Informe numeros de identificação de ministerios.");
             }

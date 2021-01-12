@@ -19,17 +19,14 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         {
             InitializeComponent();
         }
-        List<modelocrud> lista;
-        List<business.classes.Pessoas.PessoaDado> lista2;
+        List<business.classes.Abstrato.Pessoa> lista;
 
         private void DadoMinisterio_Load(object sender, EventArgs e)
         {
             this.Text = " - Dados de Ministério";
-            lista = new List<modelocrud>();
-            lista2 = new List<business.classes.Pessoas.PessoaDado>();
-            lista = business.classes.Pessoas.PessoaDado.recuperarTodos();
-            foreach (var item in lista)
-            lista2.Add((business.classes.Pessoas.PessoaDado)item);
+            lista = new List<business.classes.Abstrato.Pessoa>();
+            lista = business.classes.Abstrato.Pessoa.recuperarTodos()
+            .OfType<business.classes.Abstrato.Pessoa>().ToList();
         }
 
         private void txt_nome_ministerio_TextChanged(object sender, EventArgs e)
@@ -50,7 +47,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             var m = (business.classes.Abstrato.Ministerio)modelo;
             try
             {
-                var modelo = lista2.First(i => i.Codigo == int.Parse(txt_ministro.Text));
+                var modelo = lista.First(i => i.Codigo == int.Parse(txt_ministro.Text));
                 m.Ministro_ = modelo.Id;
             }
             catch (Exception)

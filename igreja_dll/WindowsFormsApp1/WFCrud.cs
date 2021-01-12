@@ -338,16 +338,12 @@ namespace WindowsFormsApp1
             condicaoDeletar = deletar;
             condicaoAtualizar = atualizar;
             condicaoDetalhes = detalhes;
-
-
         }
 
         private void WFCrud_Load(object sender, EventArgs e)
         {
 
         }
-
-        
 
         private void DadoCelula_Click(object sender, EventArgs e)
         {

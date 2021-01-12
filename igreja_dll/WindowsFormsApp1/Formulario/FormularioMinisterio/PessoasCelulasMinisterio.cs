@@ -18,8 +18,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         {
             InitializeComponent();
         }
-        List<modelocrud> lista;
-        List<business.classes.Pessoas.PessoaDado> lista2;
+        List<business.classes.Abstrato.Pessoa> lista;
 
 
         public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p,
@@ -28,20 +27,19 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         {
             InitializeComponent();
         }
-        
-               
+
+
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)
         {
             this.Text = " - Celulas e pessoas do ministério.";
-            lista = new List<modelocrud>();
-            lista2 = new List<business.classes.Pessoas.PessoaDado>();
-            lista = business.classes.Pessoas.PessoaDado.recuperarTodos();
-            foreach (var item in lista)
-            lista2.Add((business.classes.Pessoas.PessoaDado)item);
+            lista = new List<business.classes.Abstrato.Pessoa>();
+            lista = business.classes.Abstrato.Pessoa.recuperarTodos()
+            .OfType<business.classes.Abstrato.Pessoa>().ToList();
         }
 
         private void txt_pessoas_TextChanged(object sender, EventArgs e)
         {
+            AddNaListaMinisterioPessoas = "";
             var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
 
             foreach (var item in arr)
@@ -49,13 +47,18 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 try
                 {
                     int numero = int.Parse(item);
-                    var modelo = lista2.FirstOrDefault(i => i.Codigo == numero);
-                    AddNaListaMinisterioPessoas += modelo.Id.ToString() + ", ";
+                    var modelo = lista.FirstOrDefault(i => i.Codigo == numero);
+                    try
+                    {
+                        AddNaListaMinisterioPessoas += modelo.Id.ToString() + ", ";
+                    }
+                    catch { MessageBox.Show("Este formulario não está atualizado." +
+                        " Atualize o formulário fechando e abrindo novamente."); }
                 }
                 catch { }
             }
 
-            
+
         }
 
         private void txt_celulas_TextChanged(object sender, EventArgs e)

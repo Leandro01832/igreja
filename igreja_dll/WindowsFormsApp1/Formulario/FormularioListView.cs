@@ -151,13 +151,13 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                List<PessoaDado> lista2 = new List<PessoaDado>();
+                List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
                 foreach (var item in lista)
-                lista2.Add((PessoaDado)item);
+                lista2.Add((business.classes.Abstrato.Pessoa)item);
                 Modelo = lista2.First(i => i.Codigo == ListView.numero);
                 Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((PessoaDado)Modelo
+                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , false, true, false);
                 fc.MdiParent = this.MdiParent;
                 fc.Show();
