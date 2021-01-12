@@ -20,7 +20,7 @@ namespace business.classes.Celulas
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
+            Update_padrao = base.alterar(id) + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -97,7 +97,7 @@ namespace business.classes.Celulas
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Celula_Jovem (Id) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

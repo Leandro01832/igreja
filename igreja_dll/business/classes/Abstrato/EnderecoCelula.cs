@@ -176,10 +176,8 @@ namespace business.classes.Celula
             }
         }
 
-        public EnderecoCelula()
+        public EnderecoCelula() : base()
         {
-            bd = new BDcomum();
-            bd.m = this;
         }
 
         public override string salvar()

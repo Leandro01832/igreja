@@ -376,14 +376,16 @@ namespace business.classes.Abstrato
             return modelos;
         }
         
-        public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
+        public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
+            modelocrud modeloQPreenche, string numeros)
         {
             AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
-        public void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
+        public void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe,
+            modelocrud modeloQPreenche, string numeros)
         {
-            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id);
+            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
         public void MudarEstado(int id, modelocrud m)

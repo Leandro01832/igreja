@@ -68,7 +68,6 @@ namespace business.classes.Abstrato
             Update_padrao += $" update MembroLgpd set Data_batismo='{Data_batismo}', " +
             $" Desligamento='{Desligamento.ToString()}', Motivo_desligamento='{Motivo_desligamento}' where Id='{id}'";
             
-            bd.Editar(null);
             return Update_padrao;
         }
 
@@ -127,8 +126,7 @@ namespace business.classes.Abstrato
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into MembroLgpd (Data_batismo, Desligamento, Motivo_desligamento, Id) values" +
                 $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
-
-            bd.SalvarModelo(null);
+            
             return Insert_padrao;
         }
 

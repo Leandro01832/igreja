@@ -31,7 +31,7 @@ namespace business.classes
             {
                 while (dr.Read())
                 {
-                    if(TipoDaLista == "Pessoa" || TipoDaLista == "PessoaLgpd")
+                    if(TipoDaLista == "Pessoa")
                     {
                         var numero = int.Parse(dr["Codigo"].ToString());
                         modelos.Add(numero);

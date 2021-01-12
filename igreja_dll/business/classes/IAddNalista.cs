@@ -9,7 +9,7 @@ namespace business.classes
 {
     interface IAddNalista
     {
-        void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros);
-        void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id);
+        void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros);
+        void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros);
     }
 }

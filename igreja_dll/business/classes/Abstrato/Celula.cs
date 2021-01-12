@@ -144,7 +144,8 @@ namespace business.classes.Abstrato
         public override string salvar()
         {
             Insert_padrao = "insert into Celula (Nome, Dia_semana, Horario, Maximo_pessoa) " +
-                $" values  ('{Nome}', '{Dia_semana}', '{Horario}', '{Maximo_pessoa}') " + this.EnderecoCelula.salvar() + " ";
+                $" values  ('{Nome}', '{Dia_semana}', '{Horario}', '{Maximo_pessoa}') "
+                + this.EnderecoCelula.salvar() + " ";
             
             bd.SalvarModelo(null);
             return Insert_padrao;
@@ -256,14 +257,16 @@ namespace business.classes.Abstrato
             return modelos;
         }
 
-        public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
+        public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
+            modelocrud modeloQPreenche, string numeros)
         {
             AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
-        public void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
+        public void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe,
+            modelocrud modeloQPreenche, string numeros)
         {
-            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id);
+            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
         public List<int> buscarLista(string TipoDaLista, string Ligacao, string nomeDaChave, int id)

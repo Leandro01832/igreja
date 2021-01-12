@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using business.classes.Abstrato;
 using database;
 using database.banco;
 
@@ -15,44 +16,75 @@ namespace business.classes
         public AddNalista() : base()
         {
         }
-        public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
+
+        private string recebe = "";
+        private string preenche = "";
+
+        public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros)
         {
+            verificaModelos(modeloQRecebe, modeloQPreenche);
+
             var arr = numeros.Replace(" ", "").Split(',');
             var v = "";
-
-            foreach(var valor in arr)
+            //IDENT_CURRENT('
+            foreach (var valor in arr)
             {
                 try
                 {
+                    var valorId = "";
+                    if (modeloQRecebe.Id == 0)
+                        valorId = $"IDENT_CURRENT('{recebe}')";
+                    else
+                        valorId = modeloQRecebe.Id.ToString();
+
                     int numero = int.Parse(valor);
                     var insert = $" insert into {NomeTabela} " +
-                    $" ({modeloQRecebe}_Id, {modeloQPreenche}_Id) " +
-                    $" values (IDENT_CURRENT('{modeloQRecebe}'), '{numero}') ";
+                    $" ({recebe}_Id, {preenche}_Id) " +
+                    $" values ({valorId}, '{numero}') ";
                     v += insert;
                 }
-                catch{}
+                catch { }
             }
 
             BDcomum.addNaLista += v;
         }
 
-        public void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
+        private void verificaModelos(modelocrud modeloQRecebe, modelocrud modeloQPreenche)
         {
-            var arr = VerificaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id).Replace(" ", "").Split(',');
+            if (modeloQRecebe is Pessoa) recebe = "Pessoa";
+            if (modeloQPreenche is Pessoa) preenche = "Pessoa";
+
+            if (modeloQRecebe is Abstrato.Ministerio) recebe = "Ministerio";
+            if (modeloQPreenche is Abstrato.Ministerio) preenche = "Ministerio";
+
+            if (modeloQRecebe is Abstrato.Celula) recebe = "Celula";
+            if (modeloQPreenche is Abstrato.Celula) preenche = "Celula";
+
+            if (modeloQRecebe is Reuniao) recebe = "Reuniao";
+            if (modeloQPreenche is Reuniao) preenche = "Reuniao";
+        }
+
+        public void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros)
+        {
+            verificaModelos(modeloQRecebe, modeloQPreenche);
+
+            var arr = VerificaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros).Replace(" ", "").Split(',');
             var v = "";
 
             foreach (var valor in arr)
             {
-                Delete_padrao = $"delete from {NomeTabela} where {modeloQRecebe}_Id='{valor}' ";
+                Delete_padrao = $"delete from {NomeTabela} where {recebe}_Id='{valor}' ";
                 v += Delete_padrao;
             }
 
             BDcomum.addNaLista += v;
         }
 
-        private string VerificaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
+        private string VerificaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros)
         {
-            Select_padrao = $"select * from {NomeTabela} where {modeloQRecebe}_Id='{id}'";
+            verificaModelos(modeloQRecebe, modeloQPreenche);
+
+            Select_padrao = $"select * from {NomeTabela} where {recebe}_Id='{modeloQRecebe.Id}'";
             var conecta = bd.obterconexao();
             conecta.Open();
             SqlCommand comando = new SqlCommand(Select_padrao, conecta);
@@ -60,6 +92,7 @@ namespace business.classes
 
             if (dr.HasRows == false)
             {
+                AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
                 return "";
             }
             else

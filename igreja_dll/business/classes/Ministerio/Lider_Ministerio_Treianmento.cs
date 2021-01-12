@@ -21,7 +21,7 @@ namespace business.classes.Ministerio
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
+            Update_padrao = base.alterar(id) + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -86,7 +86,7 @@ namespace business.classes.Ministerio
             Insert_padrao += $" insert into Lider_Ministerio_Treinamento (Id) values " +
             $" (IDENT_CURRENT('Ministerio'))" + BDcomum.addNaLista;
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

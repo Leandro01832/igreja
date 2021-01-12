@@ -18,9 +18,8 @@ namespace database.banco
     {       
         public static string conecta = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         
-        public static string addNaLista = "";
+        public static string addNaLista;
         public int i;
-        public modelocrud m;
 
         public  SqlConnection obterconexao()
         {
@@ -39,17 +38,15 @@ namespace database.banco
 
         public void SalvarModelo(modelocrud modelo)
         {
-            if (modelo != null)
-            if (modelo.GetType().Name == m.GetType().Name)
-            ExecutarComandoSqlServer(modelo.Insert_padrao);            
+            ExecutarComandoSqlServer(modelo.Insert_padrao);
+            addNaLista = "";
         }
 
 
         public void Editar(modelocrud modelo)
         {
-            if(modelo != null)
-            if (modelo.GetType().Name == m.GetType().Name)
-            ExecutarComandoSqlServer(modelo.Update_padrao);           
+            ExecutarComandoSqlServer(modelo.Update_padrao);
+            addNaLista = "";
         }
 
         public void Excluir(modelocrud modelo)

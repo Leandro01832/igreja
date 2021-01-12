@@ -47,7 +47,7 @@ namespace business.classes.Pessoas
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_Reconciliacao set Data_reconciliacao='{Data_reconciliacao}' " +
-            $" where Id='{id}' ";
+            $" where Id='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -133,7 +133,7 @@ namespace business.classes.Pessoas
                 $" values ({Data_reconciliacao}, IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

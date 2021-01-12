@@ -73,7 +73,7 @@ namespace business.classes.Pessoas
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Crianca set Nome_pai='{Nome_pai}', Nome_mae='{Nome_mae}' " +
-                $" where Id='{id}' ";
+                $" where Id='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -158,10 +158,10 @@ namespace business.classes.Pessoas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Crianca (Nome_pai, Nome_mae, Id) values" +
-                $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('PessoaDado'))" + BDcomum.addNaLista;
+                $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

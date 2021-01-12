@@ -22,7 +22,7 @@ namespace business.classes.Pessoas
         
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
+            Update_padrao = base.alterar(id) + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -93,7 +93,7 @@ namespace business.classes.Pessoas
             Insert_padrao += " insert into Membro_Batismo (Id) values (IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

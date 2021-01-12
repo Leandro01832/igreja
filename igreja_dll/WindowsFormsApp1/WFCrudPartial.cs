@@ -1,4 +1,7 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
+using business.classes.Celulas;
+using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using System;
@@ -12,6 +15,7 @@ using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using Endereco = WindowsFormsApp1.Formulario.Pessoa.Endereco;
 
 namespace WindowsFormsApp1
 {
@@ -95,7 +99,7 @@ namespace WindowsFormsApp1
                         }
                         catch { }
                     }
-                    p.RemoverDaLista("MinisterioCelula", "Celula", "Ministerio", AddNaListaCelulaMinisterios, modelo.Id);
+                    p.RemoverDaLista("MinisterioCelula", p, new Lider_Celula(), AddNaListaCelulaMinisterios);
                 }
             }
 
@@ -103,20 +107,20 @@ namespace WindowsFormsApp1
             {
                 var p = (Ministerio)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
-                    p.RemoverDaLista("PessoaMinisterio", "Ministerio", "Pessoa", AddNaListaMinisterioPessoas, modelo.Id);
+                    p.RemoverDaLista("PessoaMinisterio", p, new Visitante(), AddNaListaMinisterioPessoas);
 
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
-                    p.RemoverDaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas, modelo.Id);
+                    p.RemoverDaLista("MinisterioCelula", p, new Celula_Adolescente(), AddNaListaMinisterioCelulas);
             }
 
-            if (modelo is Pessoa)
+            if (modelo is business.classes.Abstrato.Pessoa)
             {
                 var p = (Pessoa)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
-                    p.RemoverDaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios, modelo.Id);
+                    p.RemoverDaLista("PessoaMinisterio", p, new Lider_Celula(), AddNaListaPessoaMinsterios);
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
-                    p.RemoverDaLista("ReuniaoPessoa", "Pessoa", "Reuniao", AddNaListaPessoaReunioes, modelo.Id);
+                    p.RemoverDaLista("ReuniaoPessoa", p, new Reuniao(), AddNaListaPessoaReunioes);
 
             }
 
@@ -124,7 +128,7 @@ namespace WindowsFormsApp1
             {
                 var p = (business.classes.Reuniao)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                    p.RemoverDaLista("ReuniaoPessoa", "Reuniao", "Pessoa", AddNaListaReuniaoPessoas, modelo.Id);
+                    p.RemoverDaLista("ReuniaoPessoa", p, new Visitante(), AddNaListaReuniaoPessoas);
 
             }
 

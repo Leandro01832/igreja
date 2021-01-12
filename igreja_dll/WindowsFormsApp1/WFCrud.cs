@@ -1,4 +1,6 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
+using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
@@ -10,6 +12,7 @@ using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using Endereco = WindowsFormsApp1.Formulario.Pessoa.Endereco;
 using FinalizarCadastro = WindowsFormsApp1.Formulario.Celula.FinalizarCadastro;
 
 namespace WindowsFormsApp1
@@ -313,15 +316,11 @@ namespace WindowsFormsApp1
                 FinalizarCadastro.Visible = true;
             }                
 
-            if (this is FinalizarCadastro && condicaoAtualizar ||
-                this is FinalizarCadastroMinisterio && condicaoAtualizar ||
-                this is FinalizarCadastroPessoa && condicaoAtualizar)
+            if (condicaoAtualizar)
                 Atualizar.Visible = true;
 
 
-            if (this is FinalizarCadastro && condicaoDeletar ||
-                this is FinalizarCadastroMinisterio && condicaoDeletar ||
-                this is FinalizarCadastroPessoa && condicaoDeletar)
+            if (condicaoDeletar)
                 Deletar.Visible = true;
         }
 
@@ -462,7 +461,7 @@ namespace WindowsFormsApp1
                         }
                         catch { }
                     }
-                    p.AdicionarNaLista("MinisterioCelula", "Celula", "Ministerio", AddNaListaCelulaMinisterios);
+                    p.AdicionarNaLista("MinisterioCelula", p, new Lider_Celula(), AddNaListaCelulaMinisterios);
                 }
             }
 
@@ -470,20 +469,20 @@ namespace WindowsFormsApp1
             {
                 var p = (Ministerio)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
-                    p.AdicionarNaLista("PessoaMinisterio", "Ministerio", "Pessoa", AddNaListaMinisterioPessoas);
+                    p.AdicionarNaLista("PessoaMinisterio", p, new Visitante(), AddNaListaMinisterioPessoas);
 
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
-                    p.AdicionarNaLista("MinisterioCelula", "Ministerio", "Celula", AddNaListaMinisterioCelulas);
+                    p.AdicionarNaLista("MinisterioCelula", p, new Visitante(), AddNaListaMinisterioCelulas);
             }
 
             if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
-                    p.AdicionarNaLista("PessoaMinisterio", "Pessoa", "Ministerio", AddNaListaPessoaMinsterios);
+                    p.AdicionarNaLista("PessoaMinisterio", p, new Lider_Celula(), AddNaListaPessoaMinsterios);
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
-                    p.AdicionarNaLista("ReuniaoPessoa", "Pessoa", "Reuniao", AddNaListaPessoaReunioes);
+                    p.AdicionarNaLista("ReuniaoPessoa", p, new Reuniao(), AddNaListaPessoaReunioes);
 
             }
 
@@ -491,7 +490,7 @@ namespace WindowsFormsApp1
             {
                 var p = (business.classes.Reuniao)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                    p.AdicionarNaLista("ReuniaoPessoa", "Reuniao", "Pessoa", AddNaListaReuniaoPessoas);
+                    p.AdicionarNaLista("ReuniaoPessoa", new Reuniao(), new Visitante(), AddNaListaReuniaoPessoas);
 
             }
 

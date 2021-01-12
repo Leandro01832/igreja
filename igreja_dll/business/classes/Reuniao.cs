@@ -228,18 +228,20 @@ namespace business.classes
         $" '{Horario_fim.ToString("HH:mm:ss")}', '{Local_reuniao}')" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 
-        public void AdicionarNaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros)
+        public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
+            modelocrud modeloQPreenche, string numeros)
         {
             AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
-        public void RemoverDaLista(string NomeTabela, string modeloQRecebe, string modeloQPreenche, string numeros, int id)
+        public void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe,
+            modelocrud modeloQPreenche, string numeros)
         {
-            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros, id);
+            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
         public static modelocrud recuperarReuniao(int v)

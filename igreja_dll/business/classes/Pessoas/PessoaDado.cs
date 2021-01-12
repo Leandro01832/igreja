@@ -73,45 +73,45 @@ namespace business.classes.Pessoas
             Telefone t = new Telefone(); t = this.Telefone;
             Endereco e = new Endereco(); e = this.Endereco;
 
-                      Insert_padrao =
-              "insert into PessoaDado (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
-              "Rg, Cpf, Sexo_feminino, Falescimento, " +
-              "Email, Status, Id)" +
-              $" values ('{this.Nome}', '{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
-              $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
-              $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +
-              $" '{this.Status}', IDENT_CURRENT('Pessoa')) " +
-              e.salvar() + " " +
-              t.salvar() + " ";
+            Insert_padrao = base.salvar();
+            Insert_padrao +=
+            "insert into PessoaDado (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
+            "Rg, Cpf, Sexo_feminino, Falescimento, " +
+            "Email, Status, Id)" +
+            $" values ('{this.Nome}', '{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
+            $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
+            $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +
+            $" '{this.Status}', IDENT_CURRENT('Pessoa')) " +
+            e.salvar() + " " +
+            t.salvar() + " ";
             
             return Insert_padrao;
         }
 
         public override string alterar(int id)
         {
-
-            Update_padrao = $"update PessoaDado set Nome='{Nome}', Estado_civil='{Estado_civil}', " +
+            Update_padrao = base.alterar(id);
+            Update_padrao += $"update PessoaDado set Nome='{Nome}', Estado_civil='{Estado_civil}', " +
             $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Status='{Status}', " +
             $" Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
             $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +           
             $"  where Id='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
             
-            bd.Editar(null);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = 
-                " delete Telefone from Telefone as T inner " +
-                " join PessoaDado as PD on T.Id=PD.Id" +
-                $" where P.Id='{id}' " +
-                "delete Endereco from Endereco as E inner " +
-                "join PessoaDado as PD on E.Id=PD.Id" +
-                $" where P.Id='{id}' " +                
-                $" delete PessoaDado from PessoaDado as PD where PD.Id='{id}' " ;
+            Delete_padrao = base.excluir(id);
+            Delete_padrao += 
+            " delete Telefone from Telefone as T inner " +
+            " join PessoaDado as PD on T.Id=PD.Id" +
+            $" where P.Id='{id}' " +
+            "delete Endereco from Endereco as E inner " +
+            "join PessoaDado as PD on E.Id=PD.Id" +
+            $" where P.Id='{id}' " +                
+            $" delete PessoaDado from PessoaDado as PD where PD.Id='{id}' " ;
             
-            bd.Excluir(null);
             return Delete_padrao;
         }        
 

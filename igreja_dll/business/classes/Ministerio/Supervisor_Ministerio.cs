@@ -26,7 +26,8 @@ namespace business.classes.Ministerio
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update  Supervisor_Ministerio set Maximo_celula='{Maximo_celula}' where Id='{id}' ";
+            Update_padrao += $" update  Supervisor_Ministerio set Maximo_celula='{Maximo_celula}' where Id='{id}' " 
+            + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -95,7 +96,7 @@ namespace business.classes.Ministerio
            $" (Id, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;            
 
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

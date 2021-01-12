@@ -21,7 +21,6 @@ namespace database
         public modelocrud()
         {
             this.bd = new BDcomum();
-            bd.m = this;
         }
 
         

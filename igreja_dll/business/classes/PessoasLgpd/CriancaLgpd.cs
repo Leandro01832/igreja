@@ -72,7 +72,7 @@ namespace business.classes.PessoasLgpd
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update CriancaLgpd set Nome_pai='{Nome_pai}', Nome_mae='{Nome_mae}' " +
-                $" where Id='{id}' ";
+                $" where Id='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -160,7 +160,7 @@ namespace business.classes.PessoasLgpd
                 $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 

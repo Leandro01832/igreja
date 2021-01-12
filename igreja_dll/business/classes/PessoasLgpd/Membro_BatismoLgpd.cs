@@ -22,7 +22,7 @@ namespace business.classes.PessoasLgpd
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
+            Update_padrao = base.alterar(id) + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -89,10 +89,11 @@ namespace business.classes.PessoasLgpd
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_BatismoLgpd (Id) values (IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
+            Insert_padrao += " insert into Membro_BatismoLgpd (Id) values (IDENT_CURRENT('Pessoa')) "
+            + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
-            BDcomum.addNaLista = "";
+            
             return Insert_padrao;
         }
 
