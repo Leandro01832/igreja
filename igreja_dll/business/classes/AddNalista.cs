@@ -104,7 +104,7 @@ namespace business.classes
                 {
                     while (dr.Read())
                     {
-                       valor = Convert.ToString(dr[modeloQPreenche +"_Id"]);
+                       valor = Convert.ToString(dr[preenche +"_Id"]);
                         if (!numeros.Contains(valor))
                             valores += valor + ", ";
                         dadosBanco += valor + ", ";

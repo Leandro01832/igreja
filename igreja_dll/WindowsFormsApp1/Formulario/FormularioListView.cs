@@ -31,30 +31,30 @@ namespace WindowsFormsApp1.Formulario
             this.Tipo = ListView.Tipo;
 
             MudancaEstado = new Button();
-            MudancaEstado.Location = new System.Drawing.Point(570, 40);
-            MudancaEstado.Size = new System.Drawing.Size(100, 50);
+            MudancaEstado.Location = new Point(570, 40);
+            MudancaEstado.Size = new Size(100, 50);
             MudancaEstado.Text = "Mudança de estado";
             MudancaEstado.Click += MudancaEstado_Click;
             MudancaEstado.Dock = DockStyle.Right;
             MudancaEstado.Visible = false;
 
             botaoDeletar = new Button();
-            botaoDeletar.Location = new System.Drawing.Point(570, 120);
-            botaoDeletar.Size = new System.Drawing.Size(100, 50);
+            botaoDeletar.Location = new Point(570, 120);
+            botaoDeletar.Size = new Size(100, 50);
             botaoDeletar.Text = "Excluir";
             botaoDeletar.Click += botaoExcluir_Click;
             botaoDeletar.Dock = DockStyle.Right;
 
             botaoAtualizar = new Button();
-            botaoAtualizar.Location = new System.Drawing.Point(570, 200);
-            botaoAtualizar.Size = new System.Drawing.Size(100, 50);
+            botaoAtualizar.Location = new Point(570, 200);
+            botaoAtualizar.Size = new Size(100, 50);
             botaoAtualizar.Text = "Atualizar";
             botaoAtualizar.Click += botaoAtualizar_Click;
             botaoAtualizar.Dock = DockStyle.Right;
 
             botaoDetalhes = new Button();
-            botaoDetalhes.Location = new System.Drawing.Point(570, 280);
-            botaoDetalhes.Size = new System.Drawing.Size(100, 50);
+            botaoDetalhes.Location = new Point(570, 280);
+            botaoDetalhes.Size = new Size(100, 50);
             botaoDetalhes.Text = "Detalhes";
             botaoDetalhes.Click += BotaoDetalhes_Click;
             botaoDetalhes.Dock = DockStyle.Right;
@@ -203,13 +203,13 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                List<PessoaDado> lista2 = new List<PessoaDado>();
+                List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
                 foreach (var item in lista)
-                lista2.Add((PessoaDado)item);
+                lista2.Add((business.classes.Abstrato.Pessoa)item);
                 Modelo = lista2.First(i => i.Codigo == ListView.numero);
                 Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((PessoaDado)Modelo
+                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , true, false, false);
                 fc.MdiParent = this.MdiParent;
                 fc.Show();

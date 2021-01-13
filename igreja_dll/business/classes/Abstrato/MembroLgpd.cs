@@ -75,7 +75,7 @@ namespace business.classes.Abstrato
         {
             Delete_padrao = $" delete from MembroLgpd where Id='{id}' " + base.excluir(id);
 
-            bd.Excluir(null);
+            
             return Delete_padrao;
         }
 

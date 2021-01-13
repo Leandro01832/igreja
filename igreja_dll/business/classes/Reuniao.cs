@@ -1,22 +1,14 @@
-﻿using database.banco;
+﻿using business.classes.Abstrato;
+using database;
+using database.banco;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using System.Collections;
 using System.Data.SqlClient;
-using database;
-using business.classes.Abstrato;
-using business.classes.Pessoas;
+using System.Windows.Forms;
 
 namespace business.classes
 {
-    
     public class Reuniao : modelocrud, IAddNalista
     {
 
@@ -118,7 +110,9 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao}', " +
-                $"  Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where Id='{id}'";
+            $" Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where Id='{id}'"
+            + BDcomum.addNaLista;
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -134,7 +128,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Reuniao as M";
             if (id != null)
-                Select_padrao += Select_padrao + $" where M.Id='{id}'";
+                Select_padrao +=  $" where M.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -244,51 +238,9 @@ namespace business.classes
             AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
-        public static modelocrud recuperarReuniao(int v)
+        public override string ToString()
         {
-           var select_padrao = "select * from Reuniao as M";
-                select_padrao += select_padrao + $" where M.Id='{v}'";
-
-            var conecta = new BDcomum().obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                new BDcomum().obterconexao().Close();
-                return null;
-            }
-
-            if (dr.HasRows == false)
-            {
-                return null;
-            }
-            else
-            {
-                Reuniao r = new Reuniao();
-                try
-                {
-                    dr.Read();
-                    
-                    r.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                    r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                    r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
-                    r.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                   new BDcomum().obterconexao().Close();
-                }
-                return r;
-            }
-
+            return base.Id.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
         }
     }
 }

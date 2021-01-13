@@ -1,16 +1,11 @@
-﻿
-using business.classes.Abstrato;
-using business.classes.Celula;
+﻿using business.classes.Celula;
 using business.classes.Celulas;
-using business.classes.Ministerio;
-using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,18 +55,16 @@ namespace business.classes.Abstrato
             $"Horario='{Horario.ToString()}', Maximo_pessoa='{Maximo_pessoa}' " +
             $"  where Id='{id}' " + this.EnderecoCelula.alterar(id);
             
-            bd.Editar(null);
             return Update_padrao;
         }        
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Celula where Id='{id}'"
+            Delete_padrao = $"delete Celula from Celula where Id='{id}'"
                 + " delete EnderecoCelula from EnderecoCelula "
                 + " as E inner join Celula as C on E.Id=C.Id"
                 + $" where C.Id='{id}'";
             
-            bd.Excluir(null);
             return Delete_padrao;
         }
 
@@ -145,9 +138,8 @@ namespace business.classes.Abstrato
         {
             Insert_padrao = "insert into Celula (Nome, Dia_semana, Horario, Maximo_pessoa) " +
                 $" values  ('{Nome}', '{Dia_semana}', '{Horario}', '{Maximo_pessoa}') "
-                + this.EnderecoCelula.salvar() + " ";
+                + this.EnderecoCelula.salvar();
             
-            bd.SalvarModelo(null);
             return Insert_padrao;
         }
 

@@ -54,15 +54,13 @@ namespace business.classes.Abstrato
             $" Proposito='{Proposito}', Ministro_={ministro} " +
             $"  where Id='{id}' ";
             
-            bd.Editar(null);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
             Delete_padrao = $" delete from Ministerio where Id='{id}' ";
-                
-            bd.Excluir(null);
+            
             return Delete_padrao;
         }
 
@@ -130,7 +128,7 @@ namespace business.classes.Abstrato
             Insert_padrao = "insert into Ministerio (Nome, Proposito, Maximo_pessoa, Ministro_)" +
                 $" values ('{Nome}', '{Proposito}', '{Maximo_pessoa}', {ministro}) ";
             
-            bd.SalvarModelo(null);
+            
             return Insert_padrao;
         }
 

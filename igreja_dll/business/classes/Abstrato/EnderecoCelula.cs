@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace business.classes.Celula
 {
-    public class EnderecoCelula    : modelocrud
+    public class EnderecoCelula : modelocrud
     {
         private string pais;
         private string estado;

@@ -15,6 +15,7 @@ using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using WindowsFormsApp1.Formulario.Reuniao;
 using Endereco = WindowsFormsApp1.Formulario.Pessoa.Endereco;
 
 namespace WindowsFormsApp1
@@ -139,6 +140,7 @@ namespace WindowsFormsApp1
         private void Deletar_Click(object sender, EventArgs e)
         {
             modelo.excluir(modelo.Id);
+            MessageBox.Show("Informação removida do banco de dados com sucesso.");
         }
 
         private void Proximo_Click(object sender, EventArgs e)
@@ -499,6 +501,27 @@ namespace WindowsFormsApp1
                     fn.MdiParent = this.MdiParent;
                     this.Close();
                     fn.Show();
+                }
+            }
+
+            if(this is FormCrudReuniao)
+            {
+                if(this is DadoReuniao)
+                {
+                    PessoasReuniao frm = new PessoasReuniao(modelo,
+                    condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
+                    frm.MdiParent = this.MdiParent;
+                    this.Close();
+                    frm.Show();
+                }
+
+                if(this is PessoasReuniao)
+                {
+                    FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(modelo,
+                    condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
+                    frm.MdiParent = this.MdiParent;
+                    this.Close();
+                    frm.Show();
                 }
             }
 

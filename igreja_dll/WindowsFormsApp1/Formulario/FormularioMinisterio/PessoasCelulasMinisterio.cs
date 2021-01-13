@@ -20,14 +20,12 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         }
         List<business.classes.Abstrato.Pessoa> lista;
 
-
         public PessoasCelulasMinisterio(business.classes.Abstrato.Ministerio p,
             bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
         }
-
 
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)
         {
@@ -42,7 +40,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             AddNaListaMinisterioPessoas = "";
             var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
 
-            foreach (var item in arr)
+                foreach (var item in arr)
             {
                 try
                 {
@@ -52,10 +50,9 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     {
                         AddNaListaMinisterioPessoas += modelo.Id.ToString() + ", ";
                     }
-                    catch { MessageBox.Show("Este formulario não está atualizado." +
-                        " Atualize o formulário fechando e abrindo novamente."); }
+                    catch { }
                 }
-                catch { }
+                catch {}
             }
 
 

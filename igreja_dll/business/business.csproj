@@ -103,7 +103,9 @@
     <Compile Include="contrato\Interface.cs" />
     <Compile Include="database\BDcomum.cs" />
     <Compile Include="database\dadosmysql.cs" />
+    <Compile Include="database\DBIgreja.cs" />
     <Compile Include="database\modelocrud.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

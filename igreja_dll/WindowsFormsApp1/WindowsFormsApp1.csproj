@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DdataGridViews\IPesquisar.cs" />
     <Compile Include="DdataGridViews\Pesquisar.cs" />
     <Compile Include="Formulario\Celula\MinisteriosCelula.cs">
@@ -59,6 +79,12 @@
     </Compile>
     <Compile Include="Formulario\Celula\MinisteriosCelula.Designer.cs">
       <DependentUpon>MinisteriosCelula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormCrudReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormCrudReuniao.Designer.cs">
+      <DependentUpon>FormCrudReuniao.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormularioCrudCelula.cs">
       <SubType>Form</SubType>
@@ -345,11 +371,29 @@
     <Compile Include="Formulario\Pessoa\FrmMudancaEstado.Designer.cs">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Reuniao\Reuniao.cs">
+    <Compile Include="Formulario\Reuniao\DadoReuniao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Reuniao\Reuniao.Designer.cs">
-      <DependentUpon>Reuniao.cs</DependentUpon>
+    <Compile Include="Formulario\Reuniao\DadoReuniao.Designer.cs">
+      <DependentUpon>DadoReuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\FinalizarCadastroReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\FinalizarCadastroReuniao.Designer.cs">
+      <DependentUpon>FinalizarCadastroReuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\FrmReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\FrmReuniao.Designer.cs">
+      <DependentUpon>FrmReuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\PessoasReuniao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Reuniao\PessoasReuniao.Designer.cs">
+      <DependentUpon>PessoasReuniao.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -410,6 +454,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ListViews\ListViewPessoa.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListViews\ListViewReuniao.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ListViews\ListViewSupervisorCelula.cs">
@@ -489,6 +536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormCrudPessoa.resx">
       <DependentUpon>FormCrudPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormCrudReuniao.resx">
+      <DependentUpon>FormCrudReuniao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioCrudCelula.resx">
       <DependentUpon>FormularioCrudCelula.cs</DependentUpon>
@@ -601,8 +651,17 @@
     <EmbeddedResource Include="Formulario\Pessoa\FrmMudancaEstado.resx">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Reuniao\Reuniao.resx">
-      <DependentUpon>Reuniao.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Reuniao\DadoReuniao.resx">
+      <DependentUpon>DadoReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Reuniao\FinalizarCadastroReuniao.resx">
+      <DependentUpon>FinalizarCadastroReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Reuniao\FrmReuniao.resx">
+      <DependentUpon>FrmReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Reuniao\PessoasReuniao.resx">
+      <DependentUpon>PessoasReuniao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -625,6 +684,20 @@
     <EmbeddedResource Include="WFCrud.resx">
       <DependentUpon>WFCrud.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\business.dll.config" />
+    <None Include="bin\Debug\relatorio\relatorio.pdf" />
+    <None Include="bin\Debug\WindowsFormsApp1.exe.config" />
+    <None Include="DatabaseDataSet.xsc">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet.xss">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -646,7 +719,68 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Release\" />
     <Folder Include="Formulario\Historico\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\72-images.jpg" />
+    <Content Include="bin\Debug\BouncyCastle.Crypto.dll" />
+    <Content Include="bin\Debug\business.dll" />
+    <Content Include="bin\Debug\business.pdb" />
+    <Content Include="bin\Debug\Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\Fotos\124232344.jpg" />
+    <Content Include="bin\Debug\Fotos\14 - 1.jpg" />
+    <Content Include="bin\Debug\Fotos\20200220_175817.jpg" />
+    <Content Include="bin\Debug\Fotos\20200220_175848.jpg" />
+    <Content Include="bin\Debug\Fotos\20200220_180559.jpg" />
+    <Content Include="bin\Debug\Fotos\20200220_181022.jpg" />
+    <Content Include="bin\Debug\Fotos\20200220_182133.jpg" />
+    <Content Include="bin\Debug\Fotos\20200604_095240.jpg" />
+    <Content Include="bin\Debug\Fotos\20200604_095258.jpg" />
+    <Content Include="bin\Debug\Fotos\20200604_095719.jpg" />
+    <Content Include="bin\Debug\Fotos\20200604_095755.jpg" />
+    <Content Include="bin\Debug\Fotos\562810_178489075616743_518036201_n.jpg" />
+    <Content Include="bin\Debug\Fotos\81-814513_mao-com-celular-png-peca-seu-gas-pelo.png" />
+    <Content Include="bin\Debug\Fotos\aproveite-bem-a-vida.jpg" />
+    <Content Include="bin\Debug\Fotos\ciclo_projeto.jpg %281%29.jpg" />
+    <Content Include="bin\Debug\Fotos\ciclo_projeto.jpg.png" />
+    <Content Include="bin\Debug\Fotos\conta de luz.jpg" />
+    <Content Include="bin\Debug\Fotos\criacao-de-sites-.png" />
+    <Content Include="bin\Debug\Fotos\depositphotos_17717907-Vector-illustration-crying-eyes.jpg" />
+    <Content Include="bin\Debug\Fotos\download.jpg" />
+    <Content Include="bin\Debug\Fotos\hqdefault.jpg" />
+    <Content Include="bin\Debug\Fotos\images %282%29.jpg" />
+    <Content Include="bin\Debug\Fotos\images %283%29.jpg" />
+    <Content Include="bin\Debug\Fotos\images.jpg" />
+    <Content Include="bin\Debug\Fotos\informatica.jpg" />
+    <Content Include="bin\Debug\Fotos\mao-segurando-o-dispositivo-de-smartphone_135649-95.jpg" />
+    <Content Include="bin\Debug\Fotos\museu8.jpg" />
+    <Content Include="bin\Debug\Fotos\propaganda.jpg" />
+    <Content Include="bin\Debug\itextsharp.dll" />
+    <Content Include="bin\Debug\itextsharp.xml" />
+    <Content Include="bin\Debug\MySql.Data.dll" />
+    <Content Include="bin\Debug\WindowsFormsApp1.exe" />
+    <Content Include="bin\Debug\WindowsFormsApp1.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

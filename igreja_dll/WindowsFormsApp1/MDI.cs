@@ -1,4 +1,5 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using System;
@@ -8,6 +9,7 @@ using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
@@ -818,7 +820,7 @@ namespace WindowsFormsApp1
 
         private void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            FrmReuniao frm = new FrmReuniao(Lgpd);
         }
 
         private void celulaParaCriançaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -853,7 +855,9 @@ namespace WindowsFormsApp1
 
         private void reuniãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DadoReuniao frm = new DadoReuniao(new Reuniao(), false, false, false);
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void toolStripSeparator4_Click(object sender, EventArgs e)

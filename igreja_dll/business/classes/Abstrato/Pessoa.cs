@@ -89,7 +89,6 @@ namespace business.classes.Abstrato
             $" Falta='{Falta}', Img='{this.Img}' " +
             $"  where Id='{id}' ";
             
-            bd.Editar(null);
             return Update_padrao;
         }
 
@@ -100,7 +99,6 @@ namespace business.classes.Abstrato
                 $" where P.Id='{id}' " +
                 $" delete Pessoa from Pessoa as P where P.Id='{id}' ";
             
-            bd.Excluir(null);
             return Delete_padrao;
         }        
 

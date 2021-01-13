@@ -67,7 +67,6 @@ namespace business.classes.Abstrato
             Update_padrao += $" update Membro set Data_batismo='{Data_batismo}', " +
             $" Desligamento='{Desligamento.ToString()}', Motivo_desligamento='{Motivo_desligamento}' where Id='{id}'";
             
-            bd.Editar(null);
             return Update_padrao;
         }
 
@@ -75,7 +74,7 @@ namespace business.classes.Abstrato
         {
             Delete_padrao = $" delete from Membro where Id='{id}' " + base.excluir(id);
 
-            bd.Excluir(null);
+            
             return Delete_padrao;
         }
 
@@ -126,9 +125,8 @@ namespace business.classes.Abstrato
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Membro (Data_batismo, Desligamento, Motivo_desligamento, Id) values" +
-                $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
-
-            bd.SalvarModelo(null);
+            $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
+            
             return Insert_padrao;
         }
 

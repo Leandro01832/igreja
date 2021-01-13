@@ -70,9 +70,7 @@ F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\WindowsFormsApp1\bin\Debu
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\business.dll
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\itextsharp.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\MySql.Data.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\EntityFramework.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\business.pdb
@@ -128,7 +126,6 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmPessoa.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmVisitante.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.FrmMudancaEstado.resources
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.Reuniao.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDI.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Pesquisar.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
@@ -139,3 +136,10 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmPrincipal.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormCrudReuniao.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.DadoReuniao.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.FinalizarCadastroReuniao.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.PessoasReuniao.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.FrmReuniao.resources
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\bin\Debug\Database.mdf
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\bin\Debug\Database_log.ldf

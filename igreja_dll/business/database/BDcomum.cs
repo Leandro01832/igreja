@@ -15,8 +15,10 @@ using System.Windows.Forms;
 namespace database.banco
 {
     public class BDcomum
-    {       
-        public static string conecta = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+    {
+        static string path = Directory.GetCurrentDirectory();
+        public static string conecta = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
+       // public static string conecta = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         
         public static string addNaLista;
         public int i;
@@ -51,8 +53,6 @@ namespace database.banco
 
         public void Excluir(modelocrud modelo)
         {
-            if (modelo != null)
-            if (modelo.GetType().Name == m.GetType().Name)
             ExecutarComandoSqlServer(modelo.Delete_padrao);
         }
 

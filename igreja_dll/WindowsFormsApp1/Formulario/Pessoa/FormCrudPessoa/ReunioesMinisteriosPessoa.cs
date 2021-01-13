@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 {
-    public partial class ReunioesMinisteriosPessoa : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class ReunioesMinisteriosPessoa : Formulario.FormCrudPessoa
     {
         public ReunioesMinisteriosPessoa()
         {
