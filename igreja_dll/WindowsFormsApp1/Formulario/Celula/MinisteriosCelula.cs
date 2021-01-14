@@ -29,6 +29,11 @@ namespace WindowsFormsApp1.Formulario.Celula
             this.Text = " - Ministérios da celula";
 
             var c = (business.classes.Abstrato.Celula)modelo;
+            if(c.Id == 0)
+            {
+                txt_ministerio.Text = AddNaListaCelulaMinisterios;
+            }
+
             if(c.Id != 0)
             {
                 var lista = c.buscarLista("Pessoa", "Celula", "celula_", c.Id);

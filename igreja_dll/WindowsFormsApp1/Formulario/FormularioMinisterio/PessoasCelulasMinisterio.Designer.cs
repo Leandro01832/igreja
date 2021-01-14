@@ -51,6 +51,7 @@
             this.txt_pessoas.Size = new System.Drawing.Size(227, 30);
             this.txt_pessoas.TabIndex = 6;
             this.txt_pessoas.TextChanged += new System.EventHandler(this.txt_pessoas_TextChanged);
+            this.txt_pessoas.Leave += new System.EventHandler(this.txt_pessoas_Leave);
             // 
             // label2
             // 

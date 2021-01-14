@@ -1,12 +1,5 @@
 ﻿using database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Pessoa;
 
@@ -45,18 +38,16 @@ namespace WindowsFormsApp1.Formulario
         public FormCrudPessoa(bool deletar, bool atualizar, bool detalhes, modelocrud modelo, modelocrud modeloNovo)
             : base(deletar, atualizar, detalhes, modelo, modeloNovo)
         {
-            this.modeloVelho = modelo;
-            this.modeloNovo = modeloNovo;
-
             if(this is FinalizarCadastroPessoa)
             {
+                Proximo.Visible = false;
                 this.MudarEstado = new Button();
                 this.MudarEstado.Location = new System.Drawing.Point(570, 140);
                 this.MudarEstado.Size = new System.Drawing.Size(100, 50);
                 this.MudarEstado.Text = "Fazer mudança";
                 this.MudarEstado.Click += MudarEstado_Click;
                 this.MudarEstado.Dock = DockStyle.Right;
-                this.MudarEstado.Visible = false;
+                this.MudarEstado.Visible = true;
                 this.Controls.Add(this.MudarEstado);
             }
 
