@@ -34,6 +34,8 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 if (reunioes != null)
                 foreach (var item in reunioes)
                 txt_reunioes.Text += item.Id.ToString() + ", ";
+
+                txt_celula.Text = pessoa.celula_.ToString();
             }
             
             

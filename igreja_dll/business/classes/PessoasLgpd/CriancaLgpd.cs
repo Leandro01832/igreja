@@ -157,7 +157,7 @@ namespace business.classes.PessoasLgpd
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into CriancaLgpd (Nome_pai, Nome_mae, Id) values" +
-                $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
+                $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
             

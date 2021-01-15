@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
     {
         private void DadoFoto_Click(object sender, EventArgs e)
         {
-            Foto c = new Foto((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+            Foto c = new Foto((Pessoa)modelo, condicaoDeletar , condicaoAtualizar, condicaoDetalhes);
             c.MdiParent = this.MdiParent;
             c.Show();
         }

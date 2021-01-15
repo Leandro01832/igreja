@@ -87,7 +87,7 @@ namespace business.classes.Pessoas
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update Membro_Transferencia set Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
+            Update_padrao += $" update Membro_Transferencia set Nome_igreja_transferencia='{Nome_igreja_transferencia}', " +
             $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
             $"  where Id='{id}' " + BDcomum.addNaLista;
             

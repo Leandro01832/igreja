@@ -479,7 +479,10 @@ namespace WindowsFormsApp1
 
         private void DadoMinistro_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            DadoMinisterio rmp = new DadoMinisterio((Ministerio)modelo
+            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            rmp.MdiParent = this.MdiParent;
+            rmp.Show();
         }
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
@@ -488,8 +491,6 @@ namespace WindowsFormsApp1
             , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             rmp.MdiParent = this.MdiParent;
             rmp.Show();
-
-
         }
 
         private void DadoContato_Click(object sender, EventArgs e)

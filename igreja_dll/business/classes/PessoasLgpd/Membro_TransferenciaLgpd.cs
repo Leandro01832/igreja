@@ -87,8 +87,8 @@ namespace business.classes.PessoasLgpd
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update Membro_TransferenciaLgpd set Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
-            $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
+            Update_padrao += $" update Membro_TransferenciaLgpd set nome_igreja_transferencia='{nome_igreja_transferencia}', " +
+            $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}' " +
             $"  where Id='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
