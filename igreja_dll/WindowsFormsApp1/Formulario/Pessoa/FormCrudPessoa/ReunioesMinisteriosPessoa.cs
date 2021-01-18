@@ -12,6 +12,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             InitializeComponent();
         }
 
+        public ReunioesMinisteriosPessoa(bool Deletar, bool Atualizar, bool Detalhes,
+        modelocrud modeloVelho, modelocrud modeloNovo)
+           : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
+        {
+            InitializeComponent();
+        }
+
         public ReunioesMinisteriosPessoa(modelocrud p, bool Deletar, bool Atualizar, bool Detalhes)            
           : base(p, Deletar, Atualizar, Detalhes)
         {

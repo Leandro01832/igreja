@@ -14,9 +14,9 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class LiderCelulaTreinamento : FormularioListView
     {
-        public LiderCelulaTreinamento( bool Lgpd) : base(
+        public LiderCelulaTreinamento() : base(
          new ListViewLiderCelulaTtreinamento
-         (new Lider_Celula_Treinamento(), ""), Lgpd)
+         (new Lider_Celula_Treinamento(), ""))
         {
             InitializeComponent();
         }

@@ -37,31 +37,25 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         private void Foto_Load(object sender, EventArgs e)
         {
             this.Text = "Foto da pessoa";
-
             this.Proximo.Location = new Point(900, 150);
-            this.Atualizar.Location = new Point(900, 250);
 
-            if(modelo !=  null)
+            if (modelo !=  null)
             {
-                if(modelo is PessoaDado)
-                {
-                    var p = (PessoaDado)modelo;
-                    ptrb_foto.ImageLocation = p.Img;
-                }
-                if (modelo is PessoaLgpd)
-                {
-                    var p = (PessoaLgpd)modelo;
-                    ptrb_foto.ImageLocation = p.Img;
-                }
+                this.Atualizar.Location = new Point(900, 250);
 
+                if (modelo is business.classes.Abstrato.Pessoa)
+                {
+                    var p = (business.classes.Abstrato.Pessoa)modelo;
+                    ptrb_foto.ImageLocation = p.Img;
+                }
             }
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
         {
-            if(modelo is PessoaDado)
+            if(modelo != null)
             {
-                var p = (PessoaDado)modelo;
+                var p = (business.classes.Abstrato.Pessoa)modelo;
                 try
                 {
 
@@ -83,9 +77,9 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 }
             }
 
-            if (modelo is PessoaLgpd)
+            if (ModeloNovo != null)
             {
-                var p = (PessoaLgpd)modelo;
+                var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
                 try
                 {
 

@@ -11,21 +11,18 @@ namespace WindowsFormsApp1
 {
     public partial class Pesquisar : Form
     {
-        public Pesquisar(bool Lgpd)
+        public Pesquisar()
         {
-            pesquisa = new WindowsFormsApp1.DdataGridViews.Pesquisar();
+            pesquisa = new DdataGridViews.Pesquisar();
             modelo = null;
             
             InitializeComponent();
-            this.Lgpd = Lgpd;
         }
 
-       WindowsFormsApp1.DdataGridViews.Pesquisar pesquisa;
+       DdataGridViews.Pesquisar pesquisa;
         modelocrud modelo;
         string comando = "";
         string tipo = "";
-
-        public bool Lgpd { get; }
 
         private void radio_mudanca_CheckedChanged(object sender, EventArgs e)
         {
@@ -181,10 +178,7 @@ namespace WindowsFormsApp1
 
             if (Pessoa)
             {
-                if(Lgpd)
-                tipo = "PessoaLgpd";
-                else
-                    tipo = "Pessoa";
+                tipo = "Pessoa";
                 check_pesquisa_email.Enabled = true;
                 dgdados.Columns.Clear();
                 dgdados.Columns.Add("Codigo", "Id");

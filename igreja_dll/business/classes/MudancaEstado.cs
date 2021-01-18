@@ -46,6 +46,7 @@ namespace business.classes
             foreach(var itemMinisterio in minis)
             addMinisterios += itemMinisterio.Id.ToString() + ", ";
             if (minis != null)
+            if(minis.Count != 0)
             p.AdicionarNaLista("PessoaMinsterio", p, minis[0], addMinisterios);
 
             var addReunioes = "";
@@ -54,6 +55,7 @@ namespace business.classes
             foreach (var itemReuniao in reu)
             addReunioes += itemReuniao.Id.ToString() + ", ";
             if (reu != null)
+            if(reu.Count != 0)
             p.AdicionarNaLista("ReuniaoPessoa", p, reu[0], addReunioes);
 
             if (m is PessoaDado)

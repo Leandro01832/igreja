@@ -16,8 +16,8 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
     public partial class SupervisorMinisterio : FormularioListView
     {
 
-        public SupervisorMinisterio( bool Lgpd) : base(
-        new ListViewSupervisorMinisterio(new Supervisor_Ministerio(), ""), Lgpd)
+        public SupervisorMinisterio() : base(
+        new ListViewSupervisorMinisterio(new Supervisor_Ministerio(), ""))
         {
             InitializeComponent();
         }

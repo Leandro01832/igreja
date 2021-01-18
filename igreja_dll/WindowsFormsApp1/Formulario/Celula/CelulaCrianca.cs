@@ -14,9 +14,9 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class CelulaCrianca : FormularioListView
     {
-        public CelulaCrianca(bool Lgpd) : base(
+        public CelulaCrianca() : base(
             new ListViewCelulaCrianca
-            (new Celula_Crianca(), ""), Lgpd)
+            (new Celula_Crianca(), ""))
         {
             InitializeComponent();
         }

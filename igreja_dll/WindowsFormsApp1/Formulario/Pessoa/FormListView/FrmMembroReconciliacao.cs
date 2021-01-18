@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class MembroReconciliacao : FormularioListView
     {
-        public MembroReconciliacao(modelocrud modelo, bool Lgpd) : base(new ListViewCrianca(modelo, ""), Lgpd)
+        public MembroReconciliacao(modelocrud modelo) : base(new ListViewCrianca(modelo, ""))
         {
             InitializeComponent();
         }

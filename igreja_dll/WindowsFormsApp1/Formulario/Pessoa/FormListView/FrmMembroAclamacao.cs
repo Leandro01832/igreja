@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class FrmMembroAclamacao : FormularioListView
     {
 
-        public FrmMembroAclamacao(modelocrud modelo, bool Lgpd) : base(new ListViewMembroAclamacao(modelo, ""), Lgpd)
+        public FrmMembroAclamacao(modelocrud modelo) : base(new ListViewMembroAclamacao(modelo, ""))
         {
             InitializeComponent();
         }

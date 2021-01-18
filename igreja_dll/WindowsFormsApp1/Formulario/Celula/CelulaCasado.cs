@@ -14,9 +14,9 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class CelulaCasado : FormularioListView
     {
-        public CelulaCasado(bool Lgpd) : base(
+        public CelulaCasado() : base(
             new ListViewCelulaCasado
-            (new Celula_Casado(), ""), Lgpd)
+            (new Celula_Casado(), ""))
         {
             InitializeComponent();
         }

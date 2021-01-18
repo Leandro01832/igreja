@@ -20,19 +20,15 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         }
 
-        public FrmMudancaEstado(modelocrud modelo, bool Lgpd)
+        public FrmMudancaEstado(modelocrud modelo)
         {
             Modelo = modelo;
-            this.Lgpd = Lgpd;
             AlterarPTodoDado = new CheckBox();
+            AlterarPTodoDado.Width = 500;
             AlterarPTodoDado.Text = "Alterar para modelo com todos os dados";
             AlterarPTodoDado.Location = new Point(20, 20);
             AlterarPTodoDado.Font = new Font("Arial", 12);
-
-            if (!Lgpd)
-                AlterarPTodoDado.Visible = true;
-            else
-                AlterarPTodoDado.Visible = false;
+            AlterarPTodoDado.Visible = true;
 
             Controls.Add(AlterarPTodoDado);
 
@@ -41,7 +37,6 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private CheckBox AlterarPTodoDado;
         public modelocrud Modelo { get; }
-        public bool Lgpd { get; }
         public modelocrud ModeloNovo { get; set; }
 
         private void FrmMudancaEstado_Load(object sender, EventArgs e)
@@ -94,68 +89,58 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             else
             {
                 DadoPessoal frm = new DadoPessoal(false, false, false, Modelo, ModeloNovo);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
             }
 
 
         }
 
         private void radio_crianca_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radio_crianca.Checked && Lgpd)
-                ModeloNovo = new CriancaLgpd();            
-            if (radio_crianca.Checked && !Lgpd )
+        {       
+            if (radio_crianca.Checked )
                 ModeloNovo = new CriancaLgpd();
-            if (radio_crianca.Checked && !Lgpd && AlterarPTodoDado.Checked)
+            if (radio_crianca.Checked && AlterarPTodoDado.Checked)
                 ModeloNovo = new Crianca();
         }
 
         private void radio_visitante_CheckedChanged(object sender, EventArgs e)
-        {
-            if(radio_visitante.Checked && Lgpd)
-                ModeloNovo = new VisitanteLgpd();            
-            if (radio_visitante.Checked && !Lgpd)
+        {    
+            if (radio_visitante.Checked)
                 ModeloNovo = new VisitanteLgpd();
-            if (radio_visitante.Checked && !Lgpd && AlterarPTodoDado.Checked)
+            if (radio_visitante.Checked && AlterarPTodoDado.Checked)
                 ModeloNovo = new Visitante();
         }
 
         private void radio_membrotransferencia_CheckedChanged(object sender, EventArgs e)
         {
-            if(radio_membrotransferencia.Checked && Lgpd)
+            if (radio_membrotransferencia.Checked)
                 ModeloNovo = new Membro_TransferenciaLgpd();
-            if (radio_membrotransferencia.Checked && !Lgpd)
-                ModeloNovo = new Membro_TransferenciaLgpd();
-            if (radio_membrotransferencia.Checked && !Lgpd && AlterarPTodoDado.Checked)
+            if (radio_membrotransferencia.Checked && AlterarPTodoDado.Checked)
                 ModeloNovo = new Membro_Transferencia();
         }
 
         private void radio_membroaclamacao_CheckedChanged(object sender, EventArgs e)
         {
-            if(radio_membroaclamacao.Checked && Lgpd)
+            if (radio_membroaclamacao.Checked)
                 ModeloNovo = new Membro_AclamacaoLgpd();
-            if (radio_membroaclamacao.Checked && !Lgpd)
-                ModeloNovo = new Membro_AclamacaoLgpd();
-            if (radio_membroaclamacao.Checked && !Lgpd && AlterarPTodoDado.Checked)
+            if (radio_membroaclamacao.Checked && AlterarPTodoDado.Checked)
                 ModeloNovo = new Membro_Aclamacao();
         }
 
         private void radio_membroreconciliacao_CheckedChanged(object sender, EventArgs e)
         {
-            if(radio_membroreconciliacao.Checked && Lgpd)
+            if (radio_membroreconciliacao.Checked)
                 ModeloNovo = new Membro_ReconciliacaoLgpd();
-            if (radio_membroreconciliacao.Checked && !Lgpd)
-                ModeloNovo = new Membro_ReconciliacaoLgpd();
-            if (radio_membroreconciliacao.Checked && !Lgpd && AlterarPTodoDado.Checked)
+            if (radio_membroreconciliacao.Checked && AlterarPTodoDado.Checked)
                 ModeloNovo = new Membro_Reconciliacao();
         }
 
         private void radio_membrobatismo_CheckedChanged(object sender, EventArgs e)
         {
-            if(radio_membrobatismo.Checked && Lgpd)
+            if (radio_membrobatismo.Checked)
                 ModeloNovo = new Membro_BatismoLgpd();
-            if (radio_membrobatismo.Checked && !Lgpd)
-                ModeloNovo = new Membro_BatismoLgpd();
-            if (radio_membrobatismo.Checked && !Lgpd && AlterarPTodoDado.Checked)
+            if (radio_membrobatismo.Checked && AlterarPTodoDado.Checked)
                 ModeloNovo = new Membro_Batismo();
         }
     }

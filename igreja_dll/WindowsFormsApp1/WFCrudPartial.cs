@@ -147,7 +147,7 @@ namespace WindowsFormsApp1
         {
             if (this is FormCrudPessoa)
             {
-                if (modelo is PessoaDado)
+                if (modelo is PessoaDado || ModeloNovo is PessoaDado)
                 {
                     if (this is DadoPessoal)
                     {
@@ -194,7 +194,15 @@ namespace WindowsFormsApp1
 
                     if (this is Contato)
                     {
-                        if(ModeloNovo == null)
+                        if(ModeloNovo != null)
+                        {
+                            Foto con = new Foto(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
+                            ModeloVelho, ModeloNovo);
+                            con.MdiParent = this.MdiParent;
+                            this.Close();
+                            con.Show();
+                        }
+                        else
                         {
                             Foto con = new Foto((PessoaDado)modelo,
                             condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
@@ -207,9 +215,18 @@ namespace WindowsFormsApp1
 
                     if (this is Foto)
                     {
-                        if(ModeloNovo == null)
+                        if(ModeloNovo != null)
                         {
-                            ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((PessoaDado)modelo,
+                            ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa
+                            (condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
+                            ModeloVelho, ModeloNovo);
+                            con.MdiParent = this.MdiParent;
+                            this.Close();
+                            con.Show();
+                        }
+                        else
+                        {
+                            ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa((Pessoa)modelo,
                             condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                             con.MdiParent = this.MdiParent;
                             this.Close();
@@ -350,18 +367,16 @@ namespace WindowsFormsApp1
                         else
                         {
                             FinalizarCadastroPessoa fn = new
-                        FinalizarCadastroPessoa((PessoaDado)modelo,
+                        FinalizarCadastroPessoa((Pessoa)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                             fn.MdiParent = this.MdiParent;
                             this.Close();
                             fn.Show();
                         }
-                        
-
                     }
                 }
 
-                if (modelo is PessoaLgpd)
+                if (modelo is PessoaLgpd || ModeloNovo is PessoaLgpd)
                 {
                     if (this is DadoPessoalLgpd)
                     {
@@ -441,7 +456,7 @@ namespace WindowsFormsApp1
                         this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                     {
                         FinalizarCadastroPessoa fn = new
-                        FinalizarCadastroPessoa((PessoaLgpd)modelo,
+                        FinalizarCadastroPessoa((Pessoa)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                         fn.MdiParent = this.MdiParent;
                         this.Close();

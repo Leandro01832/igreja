@@ -6,9 +6,9 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class LiderMinisterioTreinamento : FormularioListView
     {
-        public LiderMinisterioTreinamento( bool Lgpd) : base(
+        public LiderMinisterioTreinamento() : base(
          new ListViewLiderMinisterioTreinamento
-         (new Lider_Ministerio_Treinamento(), ""), Lgpd)
+         (new Lider_Ministerio_Treinamento(), ""))
         {
             InitializeComponent();
         }

@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
     public partial class FrmMinisterio : FormularioListView
     {
 
-        public FrmMinisterio(bool Lgpd) : base(new ListViewMinisterio(null, "Ministerio"), Lgpd)
+        public FrmMinisterio() : base(new ListViewMinisterio(null, "Ministerio"))
         {
             InitializeComponent();
         }       

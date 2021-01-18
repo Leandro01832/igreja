@@ -483,6 +483,9 @@
     <Compile Include="MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDIPartial.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MDISingleton.cs" />
     <Compile Include="Pesquisar.cs">
       <SubType>Form</SubType>

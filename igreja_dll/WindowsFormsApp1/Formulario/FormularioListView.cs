@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Formulario
 
         List<modelocrud> lista;
 
-        public FormularioListView(TodosListViews ListView, bool Lgpd)
+        public FormularioListView(TodosListViews ListView)
         {
             this.Modelo = ListView.Modelo;
             this.Tipo = ListView.Tipo;
@@ -65,7 +65,6 @@ namespace WindowsFormsApp1.Formulario
             Controls.Add(botaoDeletar);
             Controls.Add(MudancaEstado);
             this.ListView = ListView;
-            this.Lgpd = Lgpd;
             InitializeComponent();
         }
 
@@ -82,7 +81,7 @@ namespace WindowsFormsApp1.Formulario
             Modelo = lista2.First(i => i.Codigo == ListView.numero);
             Modelo = Modelo.recuperar(Modelo.Id)[0];
 
-            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo, Lgpd);
+            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
             frm.MdiParent = this.MdiParent;
             frm.Show();
         }
@@ -93,7 +92,6 @@ namespace WindowsFormsApp1.Formulario
         private Button botaoDeletar { get; }
         public modelocrud Modelo { get; set; }
         public TodosListViews ListView { get; }
-        public bool Lgpd { get; }
         public string Tipo { get; set; }
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
@@ -264,19 +262,32 @@ namespace WindowsFormsApp1.Formulario
                 if (Tipo == "Ministerio")
                     lista = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
 
-                if (Tipo == "Membro")
-                {
-                    lista = await Task.Run(() => Membro.recuperarTodosMembros());
-                    MudancaEstado.Visible = true;
-                }
-                    
-
-                if (Tipo == "Pessoa")
+                if (Tipo != "Celula" || Tipo != "Ministerio")
                 {
                     lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
                     MudancaEstado.Visible = true;
                 }
-                    
+
+                if (Tipo == "PessoaDado")
+                {
+                    lista = lista.OfType<PessoaDado>().Select(m => (modelocrud)m).ToList();
+                }
+
+                if (Tipo == "PessoaLgpd")
+                {
+                    lista = lista.OfType<PessoaLgpd>().Select(m => (modelocrud)m).ToList();
+                }
+
+                if (Tipo == "MembroLgpd")
+                {
+                    lista = lista.OfType<MembroLgpd>().Select(m => (modelocrud)m).ToList();
+                }
+
+                if (Tipo == "Membro")
+                {
+                    lista = lista.OfType<Membro>().Select(m => (modelocrud)m).ToList();
+                }
+
             }
 
 

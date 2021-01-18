@@ -16,8 +16,6 @@ namespace WindowsFormsApp1
     public partial class MDI : Form
     {
         private int childFormNumber = 1;
-        private bool Lgpd = true;
-        
 
         public MDI()
         {
@@ -108,288 +106,9 @@ namespace WindowsFormsApp1
             membroPorTransferênciaToolStripMenuItem1.BackColor = Color.DeepPink;
         }
 
-        private void visitanteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                FrmVisitante m = new FrmVisitante(new VisitanteLgpd(), Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            else
-            {
-                FrmVisitante m = new FrmVisitante(new Visitante(), Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            
-        }
-
-        private void criançaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                FrmCrianca m = new FrmCrianca(new CriancaLgpd(), Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            else
-            {
-                FrmCrianca m = new FrmCrianca(new Crianca(), Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-           
-        }
-
-        private void membroPorAclamaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                Pessoa p2 = new Membro_AclamacaoLgpd();
-                FrmMembroAclamacao m = new FrmMembroAclamacao(p2, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            else
-            {
-                Pessoa p1 = new Membro_Aclamacao();
-                FrmMembroAclamacao m = new FrmMembroAclamacao(p1, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            
-        }
-
-        private void membroPorBatismoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                Pessoa p2 = new Membro_BatismoLgpd();
-                MembroBatismo m = new MembroBatismo(p2, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            else
-            {
-                Pessoa p1 = new Membro_Batismo();
-                MembroBatismo m = new MembroBatismo(p1, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            
-        }
-
-        private void membroPorReconciliaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                Pessoa p = new Membro_Reconciliacao();
-                MembroReconciliacao m = new MembroReconciliacao(p, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            else
-            {
-                Pessoa p = new Membro_ReconciliacaoLgpd();
-                MembroReconciliacao m = new MembroReconciliacao(p, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-           
-        }
-
-        private void membroPorTransferênciaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                Pessoa p = new Membro_Transferencia();
-                MembroTransferencia m = new MembroTransferencia(p, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            else
-            {
-                Pessoa p = new Membro_TransferenciaLgpd();
-                MembroTransferencia m = new MembroTransferencia(p, Lgpd);
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();
-            }
-            
-        }
-
-        private void pessoaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void membroPorAclamaçãoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                PessoaLgpd p2 = new Membro_AclamacaoLgpd();
-                DadoPessoalLgpd cma = new DadoPessoalLgpd(p2, false, false, false);               
-                cma.MdiParent = this;
-                cma.Text = "Janela " + childFormNumber++;
-                cma.Show();
-            }
-            else
-            {
-                PessoaDado p1 = new Membro_Aclamacao();
-                DadoPessoal cma = new DadoPessoal(p1, false, false, false);               
-                cma.MdiParent = this;
-                cma.Text = "Janela " + childFormNumber++;
-                cma.Show();
-            }
-            
-        }
-
-        private void membroPorBatismoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                PessoaLgpd p2 = new Membro_BatismoLgpd();
-                DadoPessoalLgpd cmb = new DadoPessoalLgpd(p2, false, false, false);                
-                cmb.MdiParent = this;
-                cmb.Text = "Janela " + childFormNumber++;
-                cmb.Show();
-            }
-            else
-            {
-                PessoaDado p1 = new Membro_Batismo();
-                DadoPessoal cmb = new DadoPessoal(p1, false, false, false);                
-                cmb.MdiParent = this;
-                cmb.Text = "Janela " + childFormNumber++;
-                cmb.Show();
-            }
-            
-        }
-
-        private void membroPorReconciliaçãoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                PessoaLgpd p2 = new Membro_ReconciliacaoLgpd();
-                DadoPessoalLgpd cmr = new DadoPessoalLgpd(p2, false, false, false);
-                
-                cmr.MdiParent = this;
-                cmr.Text = "Janela " + childFormNumber++;
-                cmr.Show();
-            }
-            else
-            {
-                PessoaDado p1 = new Membro_Reconciliacao();
-                DadoPessoal cmr = new DadoPessoal(p1, false, false, false);
-                
-                cmr.MdiParent = this;
-                cmr.Text = "Janela " + childFormNumber++;
-                cmr.Show();
-            }
-            
-        }
-
-        private void membroPorTransferênciaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                PessoaLgpd p2 = new Membro_TransferenciaLgpd();
-                DadoPessoalLgpd cmt =  new DadoPessoalLgpd(p2, false, false, false);               
-                cmt.MdiParent = this;
-                cmt.Text = "Janela " + childFormNumber++;
-                cmt.Show();
-            }
-            else
-            {
-                PessoaDado p1 = new Membro_Transferencia();
-                DadoPessoal cmt = new DadoPessoal(p1, false, false, false);                
-                cmt.MdiParent = this;
-                cmt.Text = "Janela " + childFormNumber++;
-                cmt.Show();
-            }
-            
-        }
-
-        private void vIsitanteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                PessoaLgpd p2 = new VisitanteLgpd();
-                DadoPessoalLgpd cv = new DadoPessoalLgpd(p2, false, false, false);                
-                cv.MdiParent = this;
-                cv.Text = "Janela " + childFormNumber++;
-                cv.Show();
-            }
-            else
-            {
-                PessoaDado p1 = new Visitante();
-                if (Lgpd)
-                {
-                    DadoPessoal cv = new DadoPessoal(p1, false, false, false);                   
-                    cv.MdiParent = this;
-                    cv.Text = "Janela " + childFormNumber++;
-                    cv.Show();
-                }
-            }
-            
-        }
-
-        private void criançaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Lgpd)
-            {
-                PessoaLgpd p2 = new CriancaLgpd();
-                DadoPessoalLgpd cc = new DadoPessoalLgpd(p2, false, false, false);                
-                cc.MdiParent = this;
-                cc.Text = "Janela " + childFormNumber++;
-                cc.Show();
-            }
-            else
-            {
-                PessoaDado p1 = new Crianca();
-                DadoPessoal cc = new DadoPessoal(p1, false, false, false);                
-                cc.MdiParent = this;
-                cc.Text = "Janela " + childFormNumber++;
-                cc.Show();
-            }
-            
-        }
-
-        private void membroToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string tipo = "";
-            if (Lgpd) tipo = "Membro"; else tipo = "MembroLgpd";
-            FrmMembro m = new FrmMembro(null, tipo, Lgpd);
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void pessoaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string tipo = "";
-            if (Lgpd) tipo = "Pessoa"; else tipo = "PessoaLgpd";
-
-            FrmPessoa p = new FrmPessoa(null, tipo, Lgpd);
-            p.MdiParent = this;
-            p.Text = "Janela " + childFormNumber++;
-            p.Show();
-        }
-
         private void ministerioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmMinisterio m = new FrmMinisterio(Lgpd);
+            FrmMinisterio m = new FrmMinisterio();
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -397,7 +116,7 @@ namespace WindowsFormsApp1
 
         private void celulaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmCelula c = new FrmCelula(Lgpd);
+            FrmCelula c = new FrmCelula();
             c.MdiParent = this;
             c.Text = "Janela " + childFormNumber++;
             c.Show();
@@ -405,7 +124,7 @@ namespace WindowsFormsApp1
 
         private void mininstérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderCelula lc = new LiderCelula(Lgpd);
+            LiderCelula lc = new LiderCelula();
             lc.MdiParent = this;
             lc.Text = "Janela " + childFormNumber++;
             lc.Show();
@@ -413,7 +132,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeLiderançaEmTreinamentoDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderCelulaTreinamento lct = new LiderCelulaTreinamento(Lgpd);
+            LiderCelulaTreinamento lct = new LiderCelulaTreinamento();
             lct.MdiParent = this;
             lct.Text = "Janela " + childFormNumber++;
             lct.Show();
@@ -421,7 +140,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeLiderançaDeMinistérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderMinisterio lm = new LiderMinisterio(Lgpd);
+            LiderMinisterio lm = new LiderMinisterio();
             lm.MdiParent = this;
             lm.Text = "Janela " + childFormNumber++;
             lm.Show();
@@ -429,7 +148,7 @@ namespace WindowsFormsApp1
 
         private void ministerioDeLiderancaDeMinistérioEmTreianmentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiderMinisterioTreinamento lmt = new LiderMinisterioTreinamento(Lgpd);
+            LiderMinisterioTreinamento lmt = new LiderMinisterioTreinamento();
             lmt.MdiParent = this;
             lmt.Text = "Janela " + childFormNumber++;
             lmt.Show();
@@ -437,7 +156,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorCelula sc = new SupervisorCelula(Lgpd);
+            SupervisorCelula sc = new SupervisorCelula();
             sc.MdiParent = this;
             sc.Text = "Janela " + childFormNumber++;
             sc.Show();
@@ -445,7 +164,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorCelulaTreinamento sct = new SupervisorCelulaTreinamento(Lgpd);
+            SupervisorCelulaTreinamento sct = new SupervisorCelulaTreinamento();
             sct.MdiParent = this;
             sct.Text = "Janela " + childFormNumber++;
             sct.Show();
@@ -453,7 +172,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeMinistérioDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorMinisterio sm = new SupervisorMinisterio(Lgpd);
+            SupervisorMinisterio sm = new SupervisorMinisterio();
             sm.MdiParent = this;
             sm.Text = "Janela " + childFormNumber++;
             sm.Show();
@@ -461,7 +180,7 @@ namespace WindowsFormsApp1
 
         private void ministérioDeSupervisionamentoDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupervisorMinisterioTreinamento smt = new SupervisorMinisterioTreinamento(Lgpd);
+            SupervisorMinisterioTreinamento smt = new SupervisorMinisterioTreinamento();
             smt.MdiParent = this;
             smt.Text = "Janela " + childFormNumber++;
             smt.Show();
@@ -469,7 +188,7 @@ namespace WindowsFormsApp1
 
         private void ceulaParaAdolescenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaAdolescente ca = new CelulaAdolescente(Lgpd);
+            CelulaAdolescente ca = new CelulaAdolescente();
             ca.MdiParent = this;
             ca.Text = "Janela " + childFormNumber++;
             ca.Show();
@@ -477,7 +196,7 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdultoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaAdulto cad = new CelulaAdulto(Lgpd);
+            CelulaAdulto cad = new CelulaAdulto();
             cad.MdiParent = this;
             cad.Text = "Janela " + childFormNumber++;
             cad.Show();
@@ -485,7 +204,7 @@ namespace WindowsFormsApp1
 
         private void ceulaParaJovemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaJovem cj = new CelulaJovem(Lgpd);
+            CelulaJovem cj = new CelulaJovem();
             cj.MdiParent = this;
             cj.Text = "Janela " + childFormNumber++;
             cj.Show();
@@ -493,7 +212,7 @@ namespace WindowsFormsApp1
 
         private void celulaParaCasadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CelulaCasado cc = new CelulaCasado(Lgpd);
+            CelulaCasado cc = new CelulaCasado();
             cc.MdiParent = this;
             cc.Text = "Janela " + childFormNumber++;
             cc.Show();
@@ -619,7 +338,7 @@ namespace WindowsFormsApp1
 
         private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pesquisar query = new Pesquisar(Lgpd);
+            Pesquisar query = new Pesquisar();
             query.MdiParent = this;
             query.Text = "Janela " + childFormNumber++;
             query.Show();
@@ -629,72 +348,9 @@ namespace WindowsFormsApp1
 
         private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            string tipo = "";
-            if (Lgpd) tipo = "Pessoa"; else tipo = "PessoaLgpd";
+            string tipo = "Pessoa";
             ImprimirRelatorio ir = new ImprimirRelatorio();
             ir.imprimir(null, tipo);
-        }
-
-        private void criançaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {           
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            if (Lgpd)
-            ir.imprimir(new CriancaLgpd(), "");
-            else
-            ir.imprimir(new Crianca(), "");
-        }
-
-        private void membroToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            string tipo = "";
-            if (Lgpd) tipo = "Membro"; else tipo = "MembroLgpd";
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, tipo);
-        }
-
-        private void membroPorAclamaçãoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            if(Lgpd)
-            ir.imprimir(new Membro_AclamacaoLgpd(), "");
-            else
-            ir.imprimir(new Membro_Aclamacao(), "");
-        }
-
-        private void membroPorBatismoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            if(Lgpd)
-            ir.imprimir(new Membro_BatismoLgpd(), "");
-            else
-            ir.imprimir(new Membro_Batismo(), "");
-        }
-
-        private void membroPorTransferenciaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            if(Lgpd)
-            ir.imprimir(new Membro_TransferenciaLgpd(), "");
-            else
-            ir.imprimir(new Membro_Transferencia(), "");
-        }
-
-        private void membroPorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            if(Lgpd)
-            ir.imprimir(new Membro_ReconciliacaoLgpd(), "");
-            else
-            ir.imprimir(new Membro_Reconciliacao(), "");
-        }
-
-        private void visitanteToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            if(Lgpd)
-            ir.imprimir(new VisitanteLgpd(), "");
-            else
-            ir.imprimir(new Visitante(), "");
         }
 
         private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -786,71 +442,10 @@ namespace WindowsFormsApp1
             ImprimirRelatorio ir = new ImprimirRelatorio();
             ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), "");
         }
-        
-        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripStatusLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-            
-        }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void fileMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmReuniao frm = new FrmReuniao(Lgpd);
-        }
-
-        private void celulaParaCriançaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripSeparator3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void membroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ministerioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void celulaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            FrmReuniao frm = new FrmReuniao();
         }
 
         private void reuniãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -860,144 +455,5 @@ namespace WindowsFormsApp1
             frm.Show();
         }
 
-        private void toolStripSeparator4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripSeparator5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void relatórioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void reuniãoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chamadaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void historicoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void viewMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolsMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void windowsMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void helpMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void indexToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripSeparator8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void saveToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripSeparator1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void printToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void printPreviewToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripSeparator2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void helpToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolTip_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_horario_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
