@@ -142,3 +142,4 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Wind
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.FrmReuniao.resources
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\bin\Debug\Database.mdf
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\bin\Debug\bin\Debug\Database_log.ldf
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoa.ListaMudancaEstado.resources

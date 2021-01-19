@@ -26,6 +26,7 @@ namespace business.database
         public DbSet<Historico> Historico { get; set; }
         public DbSet<Chamada> Chamada { get; set; }
         public DbSet<Reuniao> Reuniao { get; set; }
+        public DbSet<MudancaEstado> MudancaEstado { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

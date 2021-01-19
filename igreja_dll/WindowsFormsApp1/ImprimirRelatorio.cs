@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
             {
                 lista = modelo.recuperar(null);
                 var i = 0;
-                foreach (var item in lista)
+                foreach (var item in lista.ToList())
                 {
 
                     lista[i] = item.recuperar(item.Id)[0];
@@ -127,9 +127,12 @@ namespace WindowsFormsApp1
                     lista[i] = item.recuperar(item.Id)[0];
                     i++;
                 }
-            }
+         }
 
-         if (tipo != "")
+         if(modelo is MudancaEstado)
+         table = new PdfPTable(4);
+
+            if (tipo != "")
              valorTipo = tipo;
          else
              valorTipo = modelo.GetType().Name;
@@ -199,7 +202,15 @@ namespace WindowsFormsApp1
              table.AddCell("Faltas: " + item.Falta.ToString());
          }
 
-         doc.Add(table);
+            foreach (var item in lista.OfType<MudancaEstado>())
+            {
+                table.AddCell("Data da mudança: " + item.DataMudanca.ToString("dd/MM/yyyy"));
+                table.AddCell("antigo estado: " + item.velhoEstado);
+                table.AddCell("novo estado: " + item.novoEstado);
+                table.AddCell("Id da pessoa: " + item.CodigoPessoa);
+            }
+
+            doc.Add(table);
 
          string caminhoImg =
          "http://www.clickfamilia.org.br/oikos2015/wp-content/uploads/2019/07/what-is-family-ministry-lead-300x225.jpg";

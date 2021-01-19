@@ -39,7 +39,7 @@ namespace business.classes.Abstrato
         public int Falta { get; set; }        
         public int? celula_ { get; set; }
         [ForeignKey("celula_")]
-        public virtual Abstrato.Celula Celula { get; set; }
+        public virtual Celula Celula { get; set; }
 
         public virtual Chamada Chamada { get; set; }
        

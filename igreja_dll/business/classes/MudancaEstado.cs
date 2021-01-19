@@ -63,7 +63,7 @@ namespace business.classes
                 if (m is Membro_Aclamacao)
                 {
                     var modelo = (Membro_Aclamacao)m;
-                    var pd = (PessoaDado)p;
+                    var pd = modelo;
                     Membro_Aclamacao membro = new Membro_Aclamacao
                     {
                         Data_batismo = modelo.Data_batismo,
@@ -97,7 +97,7 @@ namespace business.classes
                 if (m is Membro_Batismo)
                 {
                     var modelo = (Membro_Batismo)m;
-                    var pd = (PessoaDado)p;
+                    var pd = modelo;
                     Membro_Batismo membro = new Membro_Batismo
                     {
                         Data_batismo = modelo.Data_batismo,
@@ -130,7 +130,7 @@ namespace business.classes
                 if (m is Membro_Reconciliacao)
                 {
                     var modelo = (Membro_Reconciliacao)m;
-                    var pd = (PessoaDado)p;
+                    var pd = modelo;
                     Membro_Reconciliacao membro = new Membro_Reconciliacao
                     {
                         Data_batismo = modelo.Data_batismo,
@@ -164,7 +164,7 @@ namespace business.classes
                 if (m is Membro_Transferencia)
                 {
                     var modelo = (Membro_Transferencia)m;
-                    var pd = (PessoaDado)p;
+                    var pd = modelo;
                     Membro_Transferencia membro = new Membro_Transferencia
                     {
                         Data_batismo = modelo.Data_batismo,
@@ -200,7 +200,7 @@ namespace business.classes
                 if (m is Crianca)
                 {
                     var modelo = (Crianca)m;
-                    var pd = (PessoaDado)p;
+                    var pd = modelo;
                     Crianca c = new Crianca
                     {
                         Nome_mae = modelo.Nome_mae,
@@ -232,7 +232,7 @@ namespace business.classes
                 if (m is Visitante)
                 {
                     var modelo = (Visitante)m;
-                    var pd = (PessoaDado)p;
+                    var pd = modelo;
                     Visitante v = new Visitante
                     {
                         Condicao_religiosa = modelo.Condicao_religiosa,
@@ -457,6 +457,7 @@ namespace business.classes
                         
                         this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                         this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
                         this.novoEstado = Convert.ToString(dr["novoEstado"]);
                         this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                         dr.Close();
@@ -493,6 +494,7 @@ namespace business.classes
                         {
                             MudancaEstado m = new MudancaEstado();
                             m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                            m.Id = int.Parse(Convert.ToString(dr["Id"]));
                             m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                             m.novoEstado = Convert.ToString(dr["novoEstado"]);
                             m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
@@ -518,10 +520,15 @@ namespace business.classes
         public override string salvar()
         {
             Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, CodigoPessoa) " +
-                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString()}', '{CodigoPessoa}')";
+                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString("yyyy-MM-dd")}', '{CodigoPessoa}')";
             
             bd.SalvarModelo(this);
             return Insert_padrao;
+        }
+
+        public override string ToString()
+        {
+            return "ID da mudança: " + base.Id.ToString() + " ID da pessoa: " + this.CodigoPessoa;
         }
     }
 }

@@ -455,5 +455,18 @@ namespace WindowsFormsApp1
             frm.Show();
         }
 
+        private void mudançaDeEstadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListaMudancaEstado frm = new ListaMudancaEstado();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string tipo = "";
+            ImprimirRelatorio ir = new ImprimirRelatorio();
+            ir.imprimir(new MudancaEstado(), tipo);
+        }
     }
 }

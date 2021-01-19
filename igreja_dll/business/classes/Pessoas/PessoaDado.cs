@@ -77,7 +77,7 @@ namespace business.classes.Pessoas
             Insert_padrao +=
             "insert into PessoaDado (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
             "Rg, Cpf, Sexo_feminino, Falescimento, " +
-            "Email, Status, Id)" +
+            "Status, Id)" +
             $" values ('{this.Nome}', '{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
             $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
             $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +

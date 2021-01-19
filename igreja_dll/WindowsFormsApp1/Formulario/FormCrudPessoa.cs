@@ -58,6 +58,8 @@ namespace WindowsFormsApp1.Formulario
         {
             var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
             p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+
+            MessageBox.Show("Mudança realizada com sucesso!!!");
         }
 
         public FormCrudPessoa(modelocrud modelo,
