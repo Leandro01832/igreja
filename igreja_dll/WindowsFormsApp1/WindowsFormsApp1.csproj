@@ -233,6 +233,12 @@
     <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.Designer.cs">
       <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\Pessoa\DetalhesMudancaEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\DetalhesMudancaEstado.Designer.cs">
+      <DependentUpon>DetalhesMudancaEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -593,6 +599,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.resx">
       <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\DetalhesMudancaEstado.resx">
+      <DependentUpon>DetalhesMudancaEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.resx">
       <DependentUpon>CadastroCrianca.cs</DependentUpon>

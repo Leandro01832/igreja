@@ -1,4 +1,5 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
 using business.classes.Pessoas;
 using database;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Reuniao;
 using WindowsFormsApp1.ListViews;
 
 namespace WindowsFormsApp1.Formulario
@@ -30,13 +32,13 @@ namespace WindowsFormsApp1.Formulario
             this.Modelo = ListView.Modelo;
             this.Tipo = ListView.Tipo;
 
-            MudancaEstado = new Button();
-            MudancaEstado.Location = new Point(570, 40);
-            MudancaEstado.Size = new Size(100, 50);
-            MudancaEstado.Text = "Mudança de estado";
-            MudancaEstado.Click += MudancaEstado_Click;
-            MudancaEstado.Dock = DockStyle.Right;
-            MudancaEstado.Visible = false;
+            Mudanca = new Button();
+            Mudanca.Location = new Point(570, 40);
+            Mudanca.Size = new Size(100, 50);
+            Mudanca.Text = "Mudança de estado";
+            Mudanca.Click += MudancaEstado_Click;
+            Mudanca.Dock = DockStyle.Right;
+            Mudanca.Visible = false;
 
             botaoDeletar = new Button();
             botaoDeletar.Location = new Point(570, 120);
@@ -63,7 +65,7 @@ namespace WindowsFormsApp1.Formulario
             Controls.Add(botaoDetalhes);
             Controls.Add(botaoAtualizar);
             Controls.Add(botaoDeletar);
-            Controls.Add(MudancaEstado);
+            Controls.Add(Mudanca);
             this.ListView = ListView;
             InitializeComponent();
         }
@@ -86,7 +88,7 @@ namespace WindowsFormsApp1.Formulario
             frm.Show();
         }
 
-        private Button MudancaEstado { get; }
+        private Button Mudanca { get; }
         private Button botaoDetalhes { get; }
         private Button botaoAtualizar { get; }
         private Button botaoDeletar { get; }
@@ -137,6 +139,26 @@ namespace WindowsFormsApp1.Formulario
             , false, false, true);
                 dp.MdiParent = this.MdiParent;
                 dp.Show();
+            }
+
+            if(ListView is ListViewReuniao)
+            {
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
+
+                FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+            }
+
+            if (ListView is ListViewMudanca)
+            {
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
+
+                DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
             }
         }
         
@@ -190,6 +212,15 @@ namespace WindowsFormsApp1.Formulario
                 dp.Show();
             }
 
+            if (ListView is ListViewReuniao)
+            {
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
+
+                FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, true, false);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+            }
         }        
 
         private void botaoExcluir_Click(object sender, EventArgs e)
@@ -199,6 +230,7 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
+
             if (ListView is ListViewPessoa)
             {
                 List<business.classes.Abstrato.Pessoa> lista2 = new List<business.classes.Abstrato.Pessoa>();
@@ -242,17 +274,34 @@ namespace WindowsFormsApp1.Formulario
                 dp.Show();
             }
 
+            if (ListView is ListViewReuniao)
+            {
+                Modelo = lista.First(i => i.Id == ListView.numero);
+                Modelo = Modelo.recuperar(Modelo.Id)[0];
+
+                FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, true, false, false);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+            }
+
         }
         
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
             this.Size = new Size(700, 350);
+
+            if(Modelo is MudancaEstado)
+            {
+                botaoAtualizar.Visible = false;
+                botaoDeletar.Visible = false;
+            }
+
             lista = new List<modelocrud>();
             if (Modelo != null)
             {
                 lista = await Task.Run(() => Modelo.recuperar(null));
                 if(Modelo is business.classes.Abstrato.Pessoa)
-                MudancaEstado.Visible = true;
+                Mudanca.Visible = true;
             }            
             else
             {
@@ -265,7 +314,7 @@ namespace WindowsFormsApp1.Formulario
                 if (Tipo != "Celula" || Tipo != "Ministerio")
                 {
                     lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
-                    MudancaEstado.Visible = true;
+                    Mudanca.Visible = true;
                 }
 
                 if (Tipo == "PessoaDado")
