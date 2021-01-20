@@ -1,61 +1,3 @@
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll.config
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\repositorioEF.pdb
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\business.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\EntityFramework.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\database.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\MySql.Data.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\business.pdb
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\EntityFramework.xml
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\bin\Debug\database.pdb
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csprojResolveAssemblyReference.cache
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.dll
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.pdb
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.igreja.resources
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.GenerateResource.Cache
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.reuniao.resources
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.reuniao2.resources
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.chamada.resources
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.reuniao3.resources
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.historico.resources
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\repositorioEF\obj\Debug\repositorioEF.Migrations.historico2.resources
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll.config
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.pdb
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\database.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\MySql.Data.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.pdb
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.dll.config
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.xml
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\database.pdb
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\bin\Debug\database.dll.config
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csprojAssemblyReference.cache
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CoreCompileInputs.cache
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CopyComplete
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.dll
-C:\Users\leandro\Desktop\igreja_dll\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.pdb
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll.config
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\repositorioEF.pdb
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.dll
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.dll
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.dll
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\MySql.Data.dll
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.pdb
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\business.dll.config
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.xml
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.xml
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csprojAssemblyReference.cache
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CoreCompileInputs.cache
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CopyComplete
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.dll
-F:\repos\Igreja\igreja-master\igreja-master\igreja_dll\repositorioEF\obj\Debug\repositorioEF.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll.config
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\bin\Debug\repositorioEF.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\bin\Debug\repositorioEF.pdb
@@ -67,8 +9,8 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repo
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\bin\Debug\business.dll.config
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\bin\Debug\EntityFramework.xml
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csprojAssemblyReference.cache
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CoreCompileInputs.cache
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csproj.CopyComplete
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\obj\Debug\repositorioEF.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\obj\Debug\repositorioEF.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\repositorioEF\obj\Debug\repositorioEF.csprojAssemblyReference.cache

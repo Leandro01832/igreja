@@ -1,5 +1,4 @@
 ﻿using repositorioEF;
-using repositorioEF.Migrations;
 using System.Configuration;
 using System.Data.Entity;
 

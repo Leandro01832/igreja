@@ -1,8 +1,13 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Site.Controllers;
+using Site.Models;
 using Site.Models.Repository;
 using System;
 using System.Web.Mvc;
 using Unity;
 using Unity.AspNet.Mvc;
+using Unity.Injection;
 
 namespace Site
 {
@@ -49,7 +54,10 @@ namespace Site
         public static void RegistraComponentes()
         {
             var container = new UnityContainer();
+            container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<ICelulaRepository, CelulaRepository>();
+            container.RegisterType<IMinisterioRepository, MinisterioRepository>();
+            container.RegisterType<IReuniaoRepository, ReuniaoRepository>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

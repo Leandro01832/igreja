@@ -173,9 +173,6 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.WebPages.Deployment.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.WebPages.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.WebPages.Razor.dll
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Abstractions.dll
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Container.dll
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Mvc.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\WebActivatorEx.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\WebGrease.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\MySql.Data.dll
@@ -193,9 +190,6 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.WebPages.Razor.xml
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.Optimization.xml
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Newtonsoft.Json.xml
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Abstractions.pdb
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Container.pdb
-C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Mvc.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Antlr3.Runtime.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\EntityFramework.xml
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\EntityFramework.SqlServer.xml
@@ -227,3 +221,9 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\obj\Debug\Site.csproj.CopyComplete
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\obj\Debug\Site.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\obj\Debug\Site.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Abstractions.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Container.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Mvc.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Abstractions.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Container.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Mvc.pdb

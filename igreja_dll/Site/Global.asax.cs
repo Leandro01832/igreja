@@ -19,7 +19,7 @@ namespace Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            UnityConfig.RegistraComponentes();
+           UnityConfig.RegistraComponentes();
         }
     }
 }

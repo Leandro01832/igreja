@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace business.Properties {
+namespace repositorioEF.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

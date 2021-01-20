@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace business {
+namespace repositorioEF {
     
     
     /// <summary>
@@ -18790,7 +18790,7 @@ namespace business {
         }
     }
 }
-namespace business.DatabaseDataSetTableAdapters {
+namespace repositorioEF.DatabaseDataSetTableAdapters {
     
     
     /// <summary>
@@ -18955,7 +18955,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19342,7 +19342,7 @@ SELECT Id, Nome, Dia_semana, Horario, Maximo_pessoa FROM Celula WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19662,7 +19662,7 @@ SELECT Id, Nome, Dia_semana, Horario, Maximo_pessoa FROM Celula WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19951,7 +19951,7 @@ SELECT Id, Nome, Dia_semana, Horario, Maximo_pessoa FROM Celula WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20240,7 +20240,7 @@ SELECT Id, Nome, Dia_semana, Horario, Maximo_pessoa FROM Celula WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20529,7 +20529,7 @@ SELECT Id, Nome, Dia_semana, Horario, Maximo_pessoa FROM Celula WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20818,7 +20818,7 @@ SELECT Id, Nome, Dia_semana, Horario, Maximo_pessoa FROM Celula WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21119,7 +21119,7 @@ SELECT Id, Data_inicio, Numero_chamada FROM Chamada WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21423,7 +21423,7 @@ SELECT Id, Data_inicio, Numero_chamada FROM Chamada WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21744,7 +21744,7 @@ SELECT Id, Data_inicio, Numero_chamada FROM Chamada WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22086,7 +22086,7 @@ SELECT Id, Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22485,7 +22485,7 @@ SELECT Id, Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22872,7 +22872,7 @@ SELECT Id, Data_inicio, pessoaid, Falta FROM Historico WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23172,7 +23172,7 @@ SELECT Id, Data_inicio, pessoaid, Falta FROM Historico WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23461,7 +23461,7 @@ SELECT Id, Data_inicio, pessoaid, Falta FROM Historico WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23750,7 +23750,7 @@ SELECT Id, Data_inicio, pessoaid, Falta FROM Historico WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24039,7 +24039,7 @@ SELECT Id, Data_inicio, pessoaid, Falta FROM Historico WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24344,7 +24344,7 @@ SELECT Id, Data_batismo, Desligamento, Motivo_desligamento FROM Membro WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24657,7 +24657,7 @@ SELECT Id, Data_batismo, Desligamento, Motivo_desligamento FROM Membro WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24962,7 +24962,7 @@ SELECT Id, Data_batismo, Desligamento, Motivo_desligamento FROM Membro WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25263,7 +25263,7 @@ SELECT Id, Data_batismo, Desligamento, Motivo_desligamento FROM Membro WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25552,7 +25552,7 @@ SELECT Id, Data_batismo, Desligamento, Motivo_desligamento FROM Membro WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25848,7 +25848,7 @@ SELECT Id, Data_reconciliacao FROM Membro_Reconciliacao WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26148,7 +26148,7 @@ SELECT Id, Data_reconciliacao FROM Membro_ReconciliacaoLgpd WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26450,7 +26450,7 @@ SELECT Id, Nome_cidade_transferencia, Estado_transferencia, Nome_igreja_transfer
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26785,7 +26785,7 @@ SELECT Id, Nome_cidade_transferencia, Estado_transferencia, Nome_igreja_transfer
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27127,7 +27127,7 @@ SELECT Id, Data_batismo, Desligamento, Motivo_desligamento FROM MembroLgpd WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27456,7 +27456,7 @@ SELECT Id, Nome, Proposito, Ministro_, Maximo_pessoa FROM Ministerio WHERE (Id =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27807,7 +27807,7 @@ SELECT Ministerio_Id, Celula_Id FROM MinisterioCelula WHERE (Celula_Id = @Celula
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28125,7 +28125,7 @@ SELECT Id, Codigo, Email, Falta, celula_, Img FROM Pessoa WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28510,7 +28510,7 @@ SELECT Id, Nome, Data_nascimento, Rg, Cpf, Estado_civil, Sexo_masculino, Sexo_fe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28904,7 +28904,7 @@ SELECT Id, Nome, Data_nascimento, Rg, Cpf, Estado_civil, Sexo_masculino, Sexo_fe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29200,7 +29200,7 @@ SELECT Pessoa_Id, Ministerio_Id FROM PessoaMinisterio WHERE (Ministerio_Id = @Mi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29512,7 +29512,7 @@ SELECT Id, Data_reuniao, Horario_inicio, Horario_fim, Local_reuniao FROM Reuniao
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29832,7 +29832,7 @@ SELECT Reuniao_Id, Pessoa_Id FROM ReuniaoPessoa WHERE (Pessoa_Id = @Pessoa_Id) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30132,7 +30132,7 @@ SELECT Reuniao_Id, Pessoa_Id FROM ReuniaoPessoa WHERE (Pessoa_Id = @Pessoa_Id) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30434,7 +30434,7 @@ SELECT Reuniao_Id, Pessoa_Id FROM ReuniaoPessoa WHERE (Pessoa_Id = @Pessoa_Id) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30735,7 +30735,7 @@ SELECT Reuniao_Id, Pessoa_Id FROM ReuniaoPessoa WHERE (Pessoa_Id = @Pessoa_Id) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -31035,7 +31035,7 @@ SELECT Id, Maximo_celula FROM Supervisor_Ministerio_Treinamento WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -31339,7 +31339,7 @@ SELECT Id, Maximo_celula FROM Supervisor_Ministerio_Treinamento WHERE (Id = @Id)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -31674,7 +31674,7 @@ SELECT Id, Data_visita, Condicao_religiosa FROM Visitante WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -31989,7 +31989,7 @@ SELECT Id, Data_visita, Condicao_religiosa FROM VisitanteLgpd WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::business.Properties.Settings.Default.DatabaseConnectionString;
+            this._connection.ConnectionString = global::repositorioEF.Properties.Settings.Default.DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

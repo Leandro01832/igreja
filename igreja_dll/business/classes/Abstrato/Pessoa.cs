@@ -34,6 +34,8 @@ namespace business.classes.Abstrato
         public int Codigo { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        [Index("EMAIL", 2, IsUnique = true)]
+        [MaxLength(80, ErrorMessage ="No maximo 80 caracteres!!!")]
         [ScaffoldColumn(false)]
         public string Email { get; set; }
         public int Falta { get; set; }        
@@ -43,7 +45,7 @@ namespace business.classes.Abstrato
 
         public virtual Chamada Chamada { get; set; }
        
-        public virtual List<Abstrato.Ministerio> Ministerios { get; set; }
+        public virtual List<Ministerio> Ministerios { get; set; }
 
         public virtual List<Historico> Historico { get; set; }
 

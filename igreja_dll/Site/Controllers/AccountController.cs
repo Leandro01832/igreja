@@ -5,6 +5,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using business.classes.Abstrato;
+using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
+using database;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -151,7 +155,35 @@ namespace Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                modelocrud m = null;
+                if (model.Crianca)
+                m = new CriancaLgpd();
+                if (model.Visitante)
+                {
+                    m = new VisitanteLgpd();
+                    var v = (VisitanteLgpd)m;
+                    v.Data_visita = DateTime.Now;
+                }
+                    
+                if (model.MembroAclamacao)
+                    m = new Membro_AclamacaoLgpd();
+                if (model.MembroBatismo)
+                    m = new Membro_BatismoLgpd();
+                if (model.MembroReconciliacao)
+                    m = new Membro_ReconciliacaoLgpd();
+                if (model.MembroTransferencia)
+                    m = new Membro_TransferenciaLgpd();
+                
+                var p = (Pessoa)m;
+                try
+                {
+                    p.Email = model.Email;
+                    p.salvar();
+                }
+                catch { return View(model); }
+
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Codigo = p.Codigo };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

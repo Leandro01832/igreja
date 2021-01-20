@@ -79,6 +79,19 @@ namespace Site.Models
         [Display(Name = "Confirmar Senha")]
         [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Visitante")]
+        public bool Visitante { get; set; }
+        [Display(Name = "Criança")]
+        public bool Crianca { get; set; }
+        [Display(Name = "Membro por aclamação")]
+        public bool MembroAclamacao { get; set; }
+        [Display(Name = "Membro por reconciliação")]
+        public bool MembroReconciliacao { get; set; }
+        [Display(Name = "Membro por transferência")]
+        public bool MembroTransferencia { get; set; }
+        [Display(Name = "Membro por batismo")]
+        public bool MembroBatismo { get; set; }
     }
 
     public class ResetPasswordViewModel

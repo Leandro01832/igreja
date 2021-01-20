@@ -10,7 +10,51 @@
     @Html.AntiForgeryToken()
     <h4>Crie uma nova conta.</h4>
     <hr />
+
     @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Visitante, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Visitante, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Crianca, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Crianca, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MembroAclamacao, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.MembroAclamacao, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MembroBatismo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.MembroBatismo, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MembroReconciliacao, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.MembroReconciliacao, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MembroTransferencia, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.MembroTransferencia, new { @class = "form-control" })
+        </div>
+    </div>  
+
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">

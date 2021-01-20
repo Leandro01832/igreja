@@ -15,7 +15,7 @@ namespace Site.Models.Repository
         Celula Get(int id);
         void Add(Celula item);
         void Update(Celula item);
-        void Delete(int id);
+        bool Delete(int id);
     }
 
     public class CelulaRepository : BaseRepository<Celula>, ICelulaRepository
@@ -26,17 +26,23 @@ namespace Site.Models.Repository
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var condicao = contexto.celula.FirstOrDefault(m => m.Id == id);
+            if (condicao != null)
+            {
+                contexto.celula.Remove(contexto.celula.First(m => m.Id == id));
+                return true;
+            }
+            else return false;
         }
 
         public Celula Get(int id)
         {
-            throw new NotImplementedException();
+            return contexto.celula.Find(id);
         }
 
         public IEnumerable<Celula> GetAll()
         {
-            return contexto.celula;
+            return contexto.celula.ToList();
         }
 
         public void Update(Celula item)
@@ -47,12 +53,9 @@ namespace Site.Models.Repository
 
         public void Add(Celula item)
         {
-            throw new NotImplementedException();
+            contexto.celula.Add(item);
+            contexto.SaveChanges();
         }
-
-        void ICelulaRepository.Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
