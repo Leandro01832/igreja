@@ -59,6 +59,9 @@
     <Compile Include="classes\Abstrato\EnderecoCelula.cs" />
     <Compile Include="classes\Abstrato\MembroLgpd.cs" />
     <Compile Include="classes\Abstrato\Pessoa.cs" />
+    <Compile Include="classes\Intermediario\MinisterioCelula.cs" />
+    <Compile Include="classes\Intermediario\PessoaMinisterio.cs" />
+    <Compile Include="classes\Intermediario\ReuniaoPessoa.cs" />
     <Compile Include="classes\Pessoas\PessoaLgpd.cs" />
     <Compile Include="classes\AddNalista.cs" />
     <Compile Include="classes\BuscaLista.cs" />

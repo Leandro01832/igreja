@@ -12,74 +12,20 @@ namespace business.classes.PessoasLgpd
 {
        [Table("Membro_TransferenciaLgpd")]
     public class Membro_TransferenciaLgpd : MembroLgpd
-    {    
-        private string nome_cidade_transferencia;
-        private string estado_transferencia;
-        private string nome_igreja_transferencia;
+    {  
 
         [Display(Name = "Nome da cidade onde morava")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome_cidade_transferencia
-        {
-            get
-            {
-                return nome_cidade_transferencia;
-            }
-
-            set
-            {
-                if (value != "")
-                nome_cidade_transferencia = value;
-                else
-                {
-                    MessageBox.Show("O nome de cidade de transerencia pecisa ser preechido corretamente");
-                    nome_cidade_transferencia = null;
-                }
-            }
-        }
+        public string Nome_cidade_transferencia { get; set; }
 
         [Display(Name = "Estado onde morava")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Estado_transferencia
-        {
-            get
-            {
-                return estado_transferencia;
-            }
-
-            set
-            {
-                if(value != "")
-                estado_transferencia = value;
-                else
-                {
-                    MessageBox.Show("O estado de transferencia deve ser preechido corretamente");
-                    estado_transferencia = null;
-                }
-            }
-        }
+        public string Estado_transferencia { get; set; }
 
         [Display(Name = "Igreja onde congregava")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome_igreja_transferencia
-        {
-            get
-            {
-                return nome_igreja_transferencia;
-            }
+        public string Nome_igreja_transferencia { get; set; }
 
-            set
-            {
-                if(value != "")
-                nome_igreja_transferencia = value;
-                else
-                {
-                    MessageBox.Show("O nome da igreja deve ser preenchido corretamente");
-                    nome_igreja_transferencia = null;
-                }
-            }
-        }
-        
         public Membro_TransferenciaLgpd() : base()
         {
         }
@@ -87,7 +33,7 @@ namespace business.classes.PessoasLgpd
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update Membro_TransferenciaLgpd set nome_igreja_transferencia='{nome_igreja_transferencia}', " +
+            Update_padrao += $" update Membro_TransferenciaLgpd set nome_igreja_transferencia='{Nome_igreja_transferencia}', " +
             $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}' " +
             $"  where Id='{id}' " + BDcomum.addNaLista;
             
@@ -117,7 +63,7 @@ namespace business.classes.PessoasLgpd
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

@@ -20,50 +20,14 @@ namespace business.classes.PessoasLgpd
     public class CriancaLgpd : PessoaLgpd
     {
 
-        private string nome_pai;
-        private string nome_mae;
-
         [Display(Name = "Nome do pai")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome_pai
-        {
-            get
-            {
-                return nome_pai;
-            }
-
-            set
-            {
-                if(value != "")
-                nome_pai = value;
-                else
-                {
-                    MessageBox.Show("informe o nome do pai");
-                }
-            }
-        }
+        public string Nome_pai { get; set; }
 
         [Display(Name = "Nome da mãe")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome_mae
-        {
-            get
-            {
-                return nome_mae;
-            }
+        public string Nome_mae { get; set; }
 
-            set
-            {
-                if(value != "")
-                nome_mae = value;
-                else
-                {
-                    MessageBox.Show("informe o nome da mãe");
-                    nome_mae = null;
-                }
-            }
-        }
-        
         public CriancaLgpd() : base()
         {
         }
@@ -99,7 +63,7 @@ namespace business.classes.PessoasLgpd
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

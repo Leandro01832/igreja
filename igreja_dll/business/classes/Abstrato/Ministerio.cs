@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using business.classes.Ministerio;
 using database;
+using business.classes.Intermediario;
 
 namespace business.classes.Abstrato
 {
@@ -25,13 +26,13 @@ namespace business.classes.Abstrato
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Proposito { get; set; }
 
-        public virtual List<Pessoa> Pessoas { get; set;}
+        public virtual List<PessoaMinisterio> Pessoas { get; set;}
 
         public int? Ministro_ { get; set; }
         [ForeignKey("Ministro_")]
         public virtual Membro Ministro { get; set; }
 
-        public virtual List<Celula> Celulas { get; set; }
+        public virtual List<MinisterioCelula> Celulas { get; set; }
 
         [Display(Name = "Maximo de pessoas")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -91,17 +92,17 @@ namespace business.classes.Abstrato
                     this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
                     dr.Close();
 
-                    this.Pessoas = new List<Pessoa>();
+                    this.Pessoas = new List<PessoaMinisterio>();
                     var listaPessoas = buscarPessoas(id);
                     if(listaPessoas != null)
                     foreach (var item in listaPessoas)
-                    this.Pessoas.Add((Pessoa)item);
+                    this.Pessoas.Add((PessoaMinisterio)item);
 
-                    this.Celulas = new List<Celula>();
+                    this.Celulas = new List<MinisterioCelula>();
                     var listaCelulas = buscarCelulas(id);
                     if (listaCelulas != null)
                     foreach (var item in listaCelulas)
-                    this.Celulas.Add((Celula)item);
+                    this.Celulas.Add((MinisterioCelula)item);
 
                     modelos.Add(this);
                 }
@@ -207,9 +208,9 @@ namespace business.classes.Abstrato
         public List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
-                + " inner join PessoaMinisterio as PEMI on P.Id=PEMI.Pessoa_Id"
-                + " inner join Ministerio as M on PEMI.Ministerio_Id=M.Id"
-                + $" where PEMI.Ministerio_Id='{id}'";
+                + " inner join PessoaMinisterio as PEMI on P.Id=PEMI.PessoaId"
+                + " inner join Ministerio as M on PEMI.MinisterioId=M.Id"
+                + $" where PEMI.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -219,15 +220,14 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
-            var lista = Pessoa.recuperarTodos();
+            var lista = new PessoaMinisterio().recuperar(null).OfType<PessoaMinisterio>().ToList();
 
             while (dr.Read())
             {
-                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Pessoa_Id"])));
-                
+                var m = lista.First(i => i.PessoaId == int.Parse(Convert.ToString(dr["PessoaId"])));                
                 modelos.Add(m);
             }
             dr.Close();
@@ -238,9 +238,9 @@ namespace business.classes.Abstrato
         public List<modelocrud> buscarCelulas(int? id)
         {
             Select_padrao = "select * from Celula as C "
-                + " inner join MinisterioCelula as MICE on C.Id=MICE.Celula_Id"
-                + " inner join Ministerio as M on MICE.Ministerio_Id=M.Id"
-                + $" where MICE.Ministerio_Id='{id}'";
+                + " inner join MinisterioCelula as MICE on C.Id=MICE.CelulaId"
+                + " inner join Ministerio as M on MICE.MinisterioId=M.Id"
+                + $" where MICE.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -250,15 +250,14 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
-            var lista = Celula.recuperarTodasCelulas();
+            var lista = new MinisterioCelula().recuperar(null).OfType<MinisterioCelula>().ToList();
 
             while (dr.Read())
             {
-                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Celula_Id"])));
-
+                var m = lista.First(i => i.CelulaId == int.Parse(Convert.ToString(dr["CelulaId"])));
                 modelos.Add(m);
             }
             dr.Close();

@@ -440,79 +440,61 @@ namespace business.classes
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
             {
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
+                    dr.Read();
+
+                    this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                    this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.novoEstado = Convert.ToString(dr["novoEstado"]);
+                    this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        dr.Read();
-                        
-                        this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                        this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                        this.novoEstado = Convert.ToString(dr["novoEstado"]);
-                        this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
-                        dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-
-                    }
-                    finally
-                    {
-                        bd.obterconexao().Close();
-                    }
-
-                    modelos.Add(this);
-                    return modelos;
+                    MessageBox.Show(ex.Message);
 
                 }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                modelos.Add(this);
+                return modelos;
             }
             else
             {
-
-
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
-                }
-                else
-                {
-                    try
+                    while (dr.Read())
                     {
-                        while (dr.Read())
-                        {
-                            MudancaEstado m = new MudancaEstado();
-                            m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                            m.Id = int.Parse(Convert.ToString(dr["Id"]));
-                            m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                            m.novoEstado = Convert.ToString(dr["novoEstado"]);
-                            m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
-                            modelos.Add(m);
-                        }
-
-                        dr.Close();
+                        MudancaEstado m = new MudancaEstado();
+                        m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                        m.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                        m.novoEstado = Convert.ToString(dr["novoEstado"]);
+                        m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
+                        modelos.Add(m);
                     }
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-
-                    }
-
-                    return modelos;
+                    dr.Close();
                 }
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+
+                return modelos;
             }
 
         }

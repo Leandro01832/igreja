@@ -17,30 +17,11 @@ namespace business.classes.PessoasLgpd
     public class Membro_AclamacaoLgpd : MembroLgpd
     {
 
-        private string denominacao;
-
         [Display(Name = "Denominação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Denominacao
-        {
-            get
-            {
-                return denominacao;
-            }
+        public string Denominacao { get; set; }
 
-            set
-            {
-                if(value != "")
-                denominacao = value;
-                else
-                {
-                    MessageBox.Show("denominação precisa ser preenchido corretamente");
-                    denominacao = null;
-                }
-            }
-        }
-        
-       public Membro_AclamacaoLgpd() : base()
+        public Membro_AclamacaoLgpd() : base()
         {
         }
 
@@ -76,7 +57,7 @@ namespace business.classes.PessoasLgpd
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

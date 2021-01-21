@@ -39,7 +39,7 @@ namespace business.classes
 
                     int numero = int.Parse(valor);
                     var insert = $" insert into {NomeTabela} " +
-                    $" ({recebe}_Id, {preenche}_Id) " +
+                    $" ({recebe}Id, {preenche}Id) " +
                     $" values ({valorId}, '{numero}') ";
                     v += insert;
                 }
@@ -73,7 +73,7 @@ namespace business.classes
 
             foreach (var valor in arr)
             {
-                Delete_padrao = $"delete from {NomeTabela} where {recebe}_Id='{valor}' ";
+                Delete_padrao = $"delete from {NomeTabela} where {recebe}Id='{valor}' ";
                 v += Delete_padrao;
             }
 
@@ -84,7 +84,7 @@ namespace business.classes
         {
             verificaModelos(modeloQRecebe, modeloQPreenche);
 
-            Select_padrao = $"select * from {NomeTabela} where {recebe}_Id='{modeloQRecebe.Id}'";
+            Select_padrao = $"select * from {NomeTabela} where {recebe}Id='{modeloQRecebe.Id}'";
             var conecta = bd.obterconexao();
             conecta.Open();
             SqlCommand comando = new SqlCommand(Select_padrao, conecta);
@@ -104,7 +104,7 @@ namespace business.classes
                 {
                     while (dr.Read())
                     {
-                       valor = Convert.ToString(dr[preenche +"_Id"]);
+                       valor = Convert.ToString(dr[preenche +"Id"]);
                         if (!numeros.Contains(valor))
                             valores += valor + ", ";
                         dadosBanco += valor + ", ";

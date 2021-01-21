@@ -16,29 +16,11 @@ namespace business.classes.PessoasLgpd
     [Table("Membro_ReconciliacaoLgpd")]
     public class Membro_ReconciliacaoLgpd : MembroLgpd
     {        
-        private int data_reconciliacao;
 
         [Display(Name = "Ano da reconciliação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public int Data_reconciliacao
-        {
-            get
-            {
-                return data_reconciliacao;
-            }
+        public int Data_reconciliacao { get; set; }
 
-            set
-            {
-                if(value != 0)
-                data_reconciliacao = value;
-                else
-                {
-                    MessageBox.Show("O ano de reconciliação deve ser preenchido corretamente");
-                    data_reconciliacao = 0;
-                }
-            }
-        }
-        
         public Membro_ReconciliacaoLgpd() : base()
         {
         }
@@ -75,7 +57,7 @@ namespace business.classes.PessoasLgpd
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

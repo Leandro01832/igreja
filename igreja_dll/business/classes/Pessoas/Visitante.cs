@@ -13,61 +13,20 @@ namespace business.classes.Pessoas
     [Table("Visitante")]
     public class Visitante : PessoaDado
     {       
-        private DateTime data_visita;
-        
-        private string condicao_religiosa;
 
         [Display(Name = "Data da visita")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Data_visita
-        {
-            get
-            {
-                string sqlTimeAsString = data_visita.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                return Convert.ToDateTime(sqlTimeAsString);
-            }
-
-            set
-            {
-                string sqlTimeAsString = value.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                data_visita = Convert.ToDateTime(sqlTimeAsString);
-            }
-        }
+        public DateTime Data_visita { get; set; }
 
         [Display(Name = "Condição religiosa")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Condicao_religiosa
-        {
-            get
-            {
-                return condicao_religiosa;
-            }
+        public string Condicao_religiosa { get; set; }
 
-            set
-            {
-                if(value != "")
-                condicao_religiosa = value;
-                else
-                {
-                    MessageBox.Show("indique a condição religiiosa");
-                    condicao_religiosa = null;
-                }
-            }
-        }
-        
 
         public Visitante() : base()
         {
-        }
-
-        public DateTime freguentar()
-        {
-
-            DateTime frequencia = DateTime.Today.AddDays(30);
-
-            return data_visita;
-        }      
+        }    
 
         public override string alterar(int id)
         {
@@ -101,7 +60,7 @@ namespace business.classes.Pessoas
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

@@ -110,74 +110,56 @@ namespace business.classes
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
             {
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
+                    dr.Read();
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Fone = Convert.ToString(dr["Fone"]);
+                    this.Celular = Convert.ToString(dr["Celular"]);
+                    this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                modelos.Add(this);
+                return modelos;
+            }
+            else
+            {
+                try
+                {
+                    while (dr.Read())
                     {
-                        dr.Read();
                         this.Id = int.Parse(Convert.ToString(dr["Id"]));
                         this.Fone = Convert.ToString(dr["Fone"]);
                         this.Celular = Convert.ToString(dr["Celular"]);
                         this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                        dr.Close();
+                        modelos.Add(this);
                     }
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        bd.obterconexao().Close();
-                    }
-
-                    modelos.Add(this);
-                    return modelos;
-
+                    dr.Close();
                 }
-            }
-            else
-            {
 
-
-                if (dr.HasRows == false)
+                catch (Exception ex)
                 {
-                    return null;
-                }
-                else
-                {
-                    try
-                    {
-                        while (dr.Read())
-                        {
-                            this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                            this.Fone = Convert.ToString(dr["Fone"]);
-                            this.Celular = Convert.ToString(dr["Celular"]);
-                            this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                            modelos.Add(this);
-                        }
+                    MessageBox.Show(ex.Message);
 
-                        dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-
-                    }
-
-                    return modelos;
                 }
 
+                return modelos;
             }
 
         }

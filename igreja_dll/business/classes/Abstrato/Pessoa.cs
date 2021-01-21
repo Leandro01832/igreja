@@ -1,10 +1,12 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes.Intermediario;
+using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,11 +47,11 @@ namespace business.classes.Abstrato
 
         public virtual Chamada Chamada { get; set; }
        
-        public virtual List<Ministerio> Ministerios { get; set; }
+        public virtual List<PessoaMinisterio> Ministerios { get; set; }
 
         public virtual List<Historico> Historico { get; set; }
 
-        public virtual List<Reuniao> Reuniao { get; set; }
+        public virtual List<ReuniaoPessoa> Reuniao { get; set; }
         
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
@@ -140,19 +142,19 @@ namespace business.classes.Abstrato
 
                     dr.Close();
 
-                    this.Ministerios = new List<Ministerio>();
+                    this.Ministerios = new List<PessoaMinisterio>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if(listaMinisterios != null)
                     foreach(var item in listaMinisterios)
                     {
-                        this.Ministerios.Add((Ministerio)item);
+                        this.Ministerios.Add((PessoaMinisterio)item);
                     }
-                    this.Reuniao = new List<Reuniao>();
+                    this.Reuniao = new List<ReuniaoPessoa>();
                     var listaReunioes = recuperarReuniao(id);
                     if (listaReunioes != null)
                     foreach (var item in listaReunioes)
                     {
-                        this.Reuniao.Add((Reuniao)item);
+                        this.Reuniao.Add((ReuniaoPessoa)item);
                     }
                     this.Historico = new List<Historico>();
                     var listaHistoricos = recuperarHistorico(id);
@@ -285,8 +287,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
-                " PessoaMinisterio as mipe on m.Id=mipe.Ministerio_Id  inner join Pessoa as p" + 
-                $" on mipe.Pessoa_Id=p.Id where mipe.Pessoa_Id='{id}' ";
+                " PessoaMinisterio as mipe on m.Id=mipe.MinisterioId  inner join Pessoa as p" + 
+                $" on mipe.PessoaId=p.Id where mipe.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -296,14 +298,14 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
-            var lista = Ministerio.recuperarTodosMinisterios();
+            var lista = new PessoaMinisterio().recuperar(null).OfType<PessoaMinisterio>().ToList();
 
             while (dr.Read())
             {
-               var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Ministerio_Id"])));
+               var m = lista.First(i =>  i.MinisterioId == int.Parse(Convert.ToString(dr["MinisterioId"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -314,8 +316,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> recuperarReuniao(int? id)
         {
             var select = "select * from Reuniao as R inner join " +
-                " ReuniaoPessoa as PERE on R.Id=PERE.Reuniao_Id  inner join Pessoa as P" +
-                $" on PERE.Pessoa_Id=P.Id where PERE.Pessoa_Id='{id}' ";
+                " ReuniaoPessoa as PERE on R.Id=PERE.ReuniaoId  inner join Pessoa as P" +
+                $" on PERE.PessoaId=P.Id where PERE.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -325,17 +327,14 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
+
+            var lista = new ReuniaoPessoa().recuperar(null).OfType<ReuniaoPessoa>().ToList();
 
             while (dr.Read())
             {
-                Reuniao r = new Reuniao();
-                r.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"]);
-                r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"]);
-                r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"]);                
-                r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                r.Id = int.Parse(dr["Local_reuniao"].ToString());
+                var r = lista.First(i => i.ReuniaoId == int.Parse(Convert.ToString(dr["ReuniaoId"])));
                 modelos.Add(r);
             }
             dr.Close();
@@ -358,7 +357,7 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             while (dr.Read())

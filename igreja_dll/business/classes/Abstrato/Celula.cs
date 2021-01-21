@@ -1,5 +1,6 @@
 ﻿using business.classes.Celula;
 using business.classes.Celulas;
+using business.classes.Intermediario;
 using database;
 using database.banco;
 using System;
@@ -35,7 +36,7 @@ namespace business.classes.Abstrato
         [Display(Name = "Máximo de pessoas")]
         public int Maximo_pessoa { get; set; }
 
-        public virtual List<Ministerio> Ministerios { get; set; }
+        public virtual List<MinisterioCelula> Ministerios { get; set; }
 
         public virtual EnderecoCelula EnderecoCelula { get; set; }
 
@@ -106,11 +107,11 @@ namespace business.classes.Abstrato
                     this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
                     dr.Close();
 
-                    this.Ministerios = new List<Ministerio>();
+                    this.Ministerios = new List<MinisterioCelula>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if(listaMinisterios != null)
                     foreach (var item in listaMinisterios)
-                    this.Ministerios.Add((Ministerio)item);
+                    this.Ministerios.Add((MinisterioCelula)item);
 
                     this.Pessoas = new List<Pessoa>();
                     var listaPessoas = buscarPessoas(id);
@@ -194,8 +195,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
-                " MinisterioCelula as mice on m.Id=mice.Ministerio_Id  inner join Celula as c" +
-                $" on mice.Celula_Id=c.Id where mice.Celula_Id='{id}' ";
+                " MinisterioCelula as mice on m.Id=mice.MinisterioId  inner join Celula as c" +
+                $" on mice.CelulaId=c.Id where mice.CelulaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -205,14 +206,14 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
-            var lista = Ministerio.recuperarTodosMinisterios();
+            var lista = new MinisterioCelula().recuperar(null).OfType<MinisterioCelula>().ToList();
 
             while (dr.Read())
             {
-                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Ministerio_Id"])));
+                var m = lista.First(i => i.MinisterioId == int.Parse(Convert.ToString(dr["MinisterioId"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -234,7 +235,7 @@ namespace business.classes.Abstrato
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             var lista = Pessoa.recuperarTodos();

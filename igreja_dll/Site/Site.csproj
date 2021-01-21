@@ -203,14 +203,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\carousel.css" />
-    <Content Include="Content\css\large.css" />
-    <Content Include="Content\css\medium.css" />
-    <Content Include="Content\css\RenderizarDinamico.css" />
-    <Content Include="Content\css\site.css" />
-    <Content Include="Content\css\siteCliente.css" />
-    <Content Include="Content\css\small.css" />
-    <Content Include="Content\css\the-big-picture.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -218,6 +210,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Incluir.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />

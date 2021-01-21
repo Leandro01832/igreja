@@ -66,73 +66,55 @@ namespace business.classes
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
             {
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
+                    dr.Read();
+                    this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
+
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        dr.Read();
-                        this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
-                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                        this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
-
-                        dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        bd.obterconexao().Close();
-                    }
-
-                    modelos.Add(this);
-                    return modelos;
-
+                    MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                modelos.Add(this);
+                return modelos;
             }
             else
             {
-
-
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
-                }
-                else
-                {
-                    try
+                    while (dr.Read())
                     {
-                        while (dr.Read())
-                        {
-                            this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
-                            this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                            this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
-                            modelos.Add(this);
-                        }
-
-                        dr.Close();
+                        this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
+                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
+                        modelos.Add(this);
                     }
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-
-                    }
-
-                    return modelos;
+                    dr.Close();
                 }
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+
+                return modelos;
             }
 
         }

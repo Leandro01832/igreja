@@ -1,10 +1,12 @@
 ﻿using business.classes.Abstrato;
+using business.classes.Intermediario;
 using database;
 using database.banco;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace business.classes
@@ -98,7 +100,7 @@ namespace business.classes
             }
         }
 
-        public List<Pessoa> Pessoas { get; set; }
+        public List<ReuniaoPessoa> Pessoas { get; set; }
 
         AddNalista AddNalista;
 
@@ -138,77 +140,69 @@ namespace business.classes
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
             {
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
-                }
-                else
-                {
-                    try
-                    {
-                        dr.Read();
-                        this.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                        this.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                        this.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
-                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                        this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                        modelos.Add(this);
-                        dr.Close();
-                    }
+                    dr.Read();
+                    this.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                    this.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
+                    this.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
+                    modelos.Add(this);
+                    dr.Close();
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        bd.obterconexao().Close();
-                    }
-                    return modelos;
+                    this.Pessoas = new List<ReuniaoPessoa>();
+                    var listaPessoas = recuperarPessoas(id);
+                    if (listaPessoas != null)
+                        foreach (var item in listaPessoas)
+                        {
+                            this.Pessoas.Add((ReuniaoPessoa)item);
+                        }
                 }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+                return modelos;
             }
             else
             {
-
-
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
+                    while (dr.Read())
+                    {
+                        Reuniao r = new Reuniao();
+                        r.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                        r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
+                        r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
+                        r.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
+                        modelos.Add(r);
+                    }
+
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        while (dr.Read())
-                        {
-                            Reuniao r = new Reuniao();
-                            r.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                            r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                            r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
-                            r.Id = int.Parse(Convert.ToString(dr["Id"]));
-                            r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                            modelos.Add(r);
-                        }
-
-                        dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        bd.obterconexao().Close();
-                    }
-
-                    return modelos;
+                    MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                return modelos;
 
             }
 
@@ -224,6 +218,36 @@ namespace business.classes
             bd.SalvarModelo(this);
             
             return Insert_padrao;
+        }
+
+        public List<modelocrud> recuperarPessoas(int? id)
+        {
+            var select = "select * from Pessoa as P inner join " +
+                " ReuniaoPessoa as PERE on P.Id=PERE.PessoaId  inner join Reuniao as R" +
+                $" on PERE.ReuniaoId=R.Id where PERE.ReuniaoId='{id}' ";
+
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conecta = bd.obterconexao();
+            conecta.Open();
+            SqlCommand comando = new SqlCommand(select, conecta);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
+            {
+                bd.obterconexao().Close();
+                return modelos;
+            }
+
+            var lista = Pessoa.recuperarTodos();
+
+            while (dr.Read())
+            {
+                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["PessoaId"])));
+                modelos.Add(m);
+            }
+            dr.Close();
+
+            bd.obterconexao().Close();
+            return modelos;
         }
 
         public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,

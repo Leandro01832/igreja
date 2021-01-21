@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using business.classes.Pessoas;
+using business.classes.Intermediario;
 
 namespace repositorioEF
 {
@@ -26,10 +27,20 @@ namespace repositorioEF
         public DbSet<Telefone> telefone { get; set; }
         public DbSet<Celula> celula { get; set; }     
         public DbSet<Ministerio> ministerio { get; set; }
+        public DbSet<Lider_Celula> Lider_Celula { get; set; }
         public DbSet<Historico> historico { get; set; }
+        public DbSet<PessoaMinisterio> PessoaMinisterio { get; set; }
+        public DbSet<ReuniaoPessoa> ReuniaoPessoa { get; set; }
+        public DbSet<MinisterioCelula> MinisterioCelula { get; set; }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {            
+        {
+            modelBuilder.Configurations.Add(new PessoaMinisterioMap());
+            modelBuilder.Configurations.Add(new ReuniaoPessoaMap());
+            modelBuilder.Configurations.Add(new MinisterioCelulaMap());
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             // modelBuilder.Conventions.Remove<PrimaryKeyNameForeignKeyDiscoveryConvention>();

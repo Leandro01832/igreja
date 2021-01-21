@@ -55,7 +55,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 var pessoas = mini.Pessoas;
                 if (pessoas != null)
                     foreach (var item in pessoas)
-                        txt_pessoas.Text += item.Codigo.ToString() + ", ";
+                        txt_pessoas.Text += item.Pessoa.Codigo.ToString() + ", ";
             }
 
         }

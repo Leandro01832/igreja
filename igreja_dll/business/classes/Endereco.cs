@@ -225,83 +225,64 @@ namespace business.classes
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
             {
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
+                    dr.Read();
+                    this.Pais = Convert.ToString(dr["Pais"]);
+                    this.Estado = Convert.ToString(dr["Estado"]);
+                    this.Cidade = Convert.ToString(dr["Cidade"]);
+                    this.Bairro = Convert.ToString(dr["Bairro"]);
+                    this.Complemento = Convert.ToString(dr["Complemento"]);
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+                    this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
+
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        dr.Read();
-                        this.Pais = Convert.ToString(dr["Pais"]);
-                        this.Estado = Convert.ToString(dr["Estado"]);
-                        this.Cidade = Convert.ToString(dr["Cidade"]);
-                        this.Bairro = Convert.ToString(dr["Bairro"]);
-                        this.Complemento = Convert.ToString(dr["Complemento"]);
-                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                        this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-                        this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-
-                        dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        bd.obterconexao().Close();
-                    }
-
-                    modelos.Add(this);
-                    return modelos;
-
+                    MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                modelos.Add(this);
+                return modelos;
             }
             else
             {
-
-
-                if (dr.HasRows == false)
+                try
                 {
-                    return null;
-                }
-                else
-                {
-                    try
+                    while (dr.Read())
                     {
-                        while (dr.Read())
-                        {
-                            this.Pais = Convert.ToString(dr["Pais"]);
-                            this.Estado = Convert.ToString(dr["Estado"]);
-                            this.Cidade = Convert.ToString(dr["Cidade"]);
-                            this.Bairro = Convert.ToString(dr["Bairro"]);
-                            this.Complemento = Convert.ToString(dr["Complemento"]);
-                            this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                            this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-                            this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-                            modelos.Add(this);
-                        }
-
-                        dr.Close();
+                        Endereco end = new Endereco();
+                        end.Pais = Convert.ToString(dr["Pais"]);
+                        end.Estado = Convert.ToString(dr["Estado"]);
+                        end.Cidade = Convert.ToString(dr["Cidade"]);
+                        end.Bairro = Convert.ToString(dr["Bairro"]);
+                        end.Complemento = Convert.ToString(dr["Complemento"]);
+                        end.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        end.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+                        end.Cep = long.Parse(Convert.ToString(dr["Cep"]));
+                        modelos.Add(end);
                     }
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-
-                    }
-
-                    return modelos;
+                    dr.Close();
                 }
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return modelos;
             }
 
         }

@@ -49,7 +49,7 @@ namespace business.classes.PessoasLgpd
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

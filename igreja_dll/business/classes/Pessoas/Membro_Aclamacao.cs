@@ -17,31 +17,11 @@ namespace business.classes.Pessoas
     public class Membro_Aclamacao : Membro
     {
 
-        private string denominacao;
-
         [Display(Name = "Denominação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Denominacao
-        {
-            get
-            {
-                return denominacao;
-            }
+        public string Denominacao { get; set; }
 
-            set
-            {
-                if(value != "")
-                denominacao = value;
-                else
-                {
-                    MessageBox.Show("denominação precisa ser preenchido corretamente");
-                    denominacao = null;
-                }
-            }
-        }
-        
-
-       public Membro_Aclamacao() : base()
+        public Membro_Aclamacao() : base()
         {
         }
 
@@ -77,7 +57,7 @@ namespace business.classes.Pessoas
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)

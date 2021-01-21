@@ -29,13 +29,17 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
             if(modelo.Id == 0)
             {
-                var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
-                if(!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                    foreach(var item in arr)
+
+                if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
+                {
+                    var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
+                    foreach (var item in arr)
                     {
                         var modelo = lista.First(m => m.Id == int.Parse(item));
                         txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                     }
+                }
+                    
             }
             else if (modelo != null)
             {
@@ -43,7 +47,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                 var pessoas = reuniao.Pessoas;
                 if (pessoas != null)
                 foreach (var item in pessoas)
-                txt_pessoas.Text += item.Codigo + ", ";
+                txt_pessoas.Text += item.Pessoa.Codigo + ", ";
             }
         }
 

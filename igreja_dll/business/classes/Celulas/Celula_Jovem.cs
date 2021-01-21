@@ -46,7 +46,7 @@ namespace business.classes.Celulas
             if (dr.HasRows == false)
             {
                 bd.obterconexao().Close();
-                return null;
+                return modelos;
             }
 
             if (id != null)
