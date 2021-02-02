@@ -17,6 +17,8 @@ namespace business.classes.Abstrato
     [Table("Celula")]
     public abstract  class Celula : modelocrud, IAddNalista, IBuscaLista
     {
+        [Key]
+        public int IdCelula { get; set; }
 
         [Display(Name = "Nome da celula")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -54,17 +56,17 @@ namespace business.classes.Abstrato
         {
             Update_padrao = $"update Celula set Nome='{Nome}', Dia_semana='{Dia_semana}', " +
             $"Horario='{Horario.ToString()}', Maximo_pessoa='{Maximo_pessoa}' " +
-            $"  where Id='{id}' " + this.EnderecoCelula.alterar(id);
+            $"  where IdCelula='{id}' " + this.EnderecoCelula.alterar(id);
             
             return Update_padrao;
         }        
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete Celula from Celula where Id='{id}'"
+            Delete_padrao = $"delete Celula from Celula where IdCelula='{id}'"
                 + " delete EnderecoCelula from EnderecoCelula "
-                + " as E inner join Celula as C on E.Id=C.Id"
-                + $" where C.Id='{id}'";
+                + " as E inner join Celula as C on E.IdEnderecoCelula=C.IdCelula"
+                + $" where C.IdCelula='{id}'";
             
             return Delete_padrao;
         }
@@ -72,8 +74,8 @@ namespace business.classes.Abstrato
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Celula as C "
-            + " inner join EnderecoCelula as E on E.Id=C.Id ";
-            if (id != null) Select_padrao += $" where C.Id='{id}'";
+            + " inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula ";
+            if (id != null) Select_padrao += $" where C.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -91,7 +93,7 @@ namespace business.classes.Abstrato
                 try
                 {
                     dr.Read();
-                    this.Id = int.Parse(dr["Id"].ToString());
+                    this.IdCelula = int.Parse(dr["IdCelula"].ToString());
                     this.Nome = Convert.ToString(dr["Nome"]);
                     this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
                     this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
@@ -195,8 +197,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
-                " MinisterioCelula as mice on m.Id=mice.MinisterioId  inner join Celula as c" +
-                $" on mice.CelulaId=c.Id where mice.CelulaId='{id}' ";
+                " MinisterioCelula as mice on m.IdMinisterio=mice.MinisterioId  inner join Celula as c" +
+                $" on mice.CelulaId=c.IdCelula where mice.CelulaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -224,7 +226,7 @@ namespace business.classes.Abstrato
         public List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
-                + " inner join Celula as C on C.Id=P.celula_ "
+                + " inner join Celula as C on C.IdCelula=P.celula_ "
                 + $" where P.celula_='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -238,11 +240,11 @@ namespace business.classes.Abstrato
                 return modelos;
             }
 
-            var lista = Pessoa.recuperarTodos();
+            var lista = Pessoa.recuperarTodos().OfType<Pessoa>().ToList();
 
             while (dr.Read())
             {
-                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["Id"])));
+                var m = lista.First(i => i.IdPessoa == int.Parse(Convert.ToString(dr["IdPessoa"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -262,7 +264,7 @@ namespace business.classes.Abstrato
             AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
-        public List<int> buscarLista(string TipoDaLista, string Ligacao, string nomeDaChave, int id)
+        public List<int> buscarLista(modelocrud TipoDaLista, modelocrud Ligacao, string nomeDaChave, int id)
         {
            return  BuscaLista.buscarLista(TipoDaLista, Ligacao, nomeDaChave, id);
         }

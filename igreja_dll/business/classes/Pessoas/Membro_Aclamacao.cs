@@ -29,7 +29,7 @@ namespace business.classes.Pessoas
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_Aclamacao set Denominacao='{Denominacao}' " +
-            $" where Id='{id}' " + BDcomum.addNaLista;
+            $" where IdPessoa='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -37,7 +37,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_Aclamacao where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Membro_Aclamacao where IdPessoa='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -45,9 +45,9 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Aclamacao as MA "
-            + " inner join Membro as M on MA.Id=M.Id "
-            + " inner join PessoaDado as PD on M.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
-            if (id != null) Select_padrao += $" where MA.Id='{id}'";
+            + " inner join Membro as M on MA.IdPessoa=M.IdPessoa "
+            + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where MA.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -89,9 +89,9 @@ namespace business.classes.Pessoas
                     while (dr.Read())
                     {
                         Membro_Aclamacao ma = new Membro_Aclamacao();
-                        ma.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        ma.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         ma.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        ma.Nome = Convert.ToString(dr["Nome"]);
+                        ma.NomePessoa = Convert.ToString(dr["NomePessoa"]);
                         modelos.Add(ma);
                     }
 
@@ -114,7 +114,7 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_aclamacao (Denominacao, Id) " +
+            Insert_padrao += " insert into Membro_aclamacao (Denominacao, IdPessoa) " +
                 $" values ('{Denominacao}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
@@ -124,7 +124,7 @@ namespace business.classes.Pessoas
 
         public override string ToString()
         {
-            return base.Codigo + " - " + base.Nome;
+            return base.Codigo + " - " + base.NomePessoa;
         }
 
     }

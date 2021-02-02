@@ -12,7 +12,7 @@ namespace database.banco
     {
         static string path = Directory.GetCurrentDirectory();
       //  public static string conecta = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
-        public static string conecta = $@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static string conecta = $@"Data Source=DatabaseIgreja.mssql.somee.com;packet size=4096;user id=igrejadedeus_SQLLogin_1;pwd=ltij2t3loe;data source=DatabaseIgreja.mssql.somee.com;persist security info=False;initial catalog=DatabaseIgreja";
       
         
         public static string addNaLista;

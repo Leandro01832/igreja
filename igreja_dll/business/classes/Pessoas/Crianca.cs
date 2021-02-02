@@ -37,7 +37,7 @@ namespace business.classes.Pessoas
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Crianca set Nome_pai='{Nome_pai}', Nome_mae='{Nome_mae}' " +
-                $" where Id='{id}' " + BDcomum.addNaLista;
+                $" where IdPessoa='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -45,7 +45,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Crianca where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Crianca where IdPessoa='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -53,8 +53,8 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Crianca as C "
-             + " inner join PessoaDado as PD on C.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
-            if (id != null) Select_padrao += $" where C.Id='{id}'";
+             + " inner join PessoaDado as PD on C.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -98,9 +98,9 @@ namespace business.classes.Pessoas
                     while (dr.Read())
                     {
                         Crianca crianca = new Crianca();
-                        crianca.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        crianca.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         crianca.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        crianca.Nome = Convert.ToString(dr["Nome"]);                                                
+                        crianca.NomePessoa = Convert.ToString(dr["NomePessoa"]);                                                
                         modelos.Add(crianca);
                     }
                     dr.Close();
@@ -121,7 +121,7 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Crianca (Nome_pai, Nome_mae, Id) values" +
+            Insert_padrao += " insert into Crianca (Nome_pai, Nome_mae, IdPessoa) values" +
                 $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
@@ -131,7 +131,7 @@ namespace business.classes.Pessoas
 
         public override string ToString()
         {
-            return base.Codigo + " - " + base.Nome;
+            return base.Codigo + " - " + base.NomePessoa;
         }
 
     }

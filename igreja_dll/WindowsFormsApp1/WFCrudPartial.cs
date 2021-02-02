@@ -89,13 +89,14 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = Ministerio.recuperarTodosMinisterios();
+                    var listaMinisterio = Ministerio.recuperarTodosMinisterios()
+                        .OfType<Ministerio>().ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
                         try
                         {
-                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
+                            if (listaMinisterio.FirstOrDefault(i => i.IdMinisterio == int.Parse(item)) == null)
                                 AddNaListaCelulaMinisterios.Replace(item, "");
                         }
                         catch { }
@@ -133,13 +134,25 @@ namespace WindowsFormsApp1
 
             }
 
-            modelo.alterar(modelo.Id);
+            var id = 0;
+            if (modelo is Pessoa) { var p = (Pessoa)modelo; id = p.IdPessoa; }
+            if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.IdMinisterio; }
+            if (modelo is Celula) { var p = (Celula)modelo; id = p.IdCelula; }
+            if (modelo is Reuniao) { var p = (Reuniao)modelo; id = p.IdReuniao; }
+
+            modelo.alterar(id);
             MessageBox.Show("Informação atualizada com sucesso.");
         }
 
         private void Deletar_Click(object sender, EventArgs e)
         {
-            modelo.excluir(modelo.Id);
+            var id = 0;
+            if(modelo is Pessoa) { var p = (Pessoa)modelo; id = p.IdPessoa; }
+            if(modelo is Ministerio) { var p = (Ministerio)modelo; id = p.IdMinisterio; }
+            if(modelo is Celula) { var p = (Celula)modelo; id = p.IdCelula; }
+            if(modelo is Reuniao) { var p = (Reuniao)modelo; id = p.IdReuniao; }
+
+            modelo.excluir(id);
             MessageBox.Show("Informação removida do banco de dados com sucesso.");
         }
 

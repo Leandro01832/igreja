@@ -19,170 +19,34 @@ namespace business.classes
     
     public class Endereco : modelocrud
     {
-        private string pais;
-        private string estado;
-        private string cidade;
-        private string bairro;
-        private string rua;
-        private int    numero_casa;
-        private long   cep;
-        private string complemento;
-
         [Key, ForeignKey("Pessoa")]
-        public new int Id { get; set; }
+        public int IdEndereco { get; set; }
         public virtual PessoaDado Pessoa { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Pais
-        {
-            get
-            {
-                return pais;
-            }
-
-            set
-            {
-                
-                pais = value;
-                
-            }
-        }
+        public string Pais { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Estado
-        {
-            get
-            {
-                return estado;
-            }
-
-            set
-            {
-                if(value != "")
-                estado = value;
-                else
-                {
-                    MessageBox.Show("Estado precisa ser preenchido corretamente!!!");
-                    estado = null;
-                }
-            }
-        }
+        public string Estado { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Cidade
-        {
-            get
-            {
-                return cidade;
-            }
-
-            set
-            {
-                if(value != "")
-                cidade = value;
-                else
-                {
-                    MessageBox.Show("cidade precisa ser preenchido corretamente!!!");
-                    cidade = null;
-                }
-            }
-          
-        }
+        public string Cidade { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Bairro
-        {
-            get
-            {
-                return bairro;
-            }
-
-            set
-            {
-                if(value != "")
-                bairro = value;
-                else
-                {
-                    MessageBox.Show("bairro precisa ser preenchido corretamente!!!");
-                    bairro = null;
-                }
-            }
-        }
+        public string Bairro { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Rua
-        {
-            get
-            {
-                return rua;
-            }
-
-            set
-            {
-                if (value!= "")
-                rua = value;
-                else
-                {
-                    MessageBox.Show("rua precisa ser preenchido corretamente!!!");
-                    rua = null;
-                }
-            }
-        }
+        public string Rua { get; set; }
 
         [Display(Name = "Numero da casa")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public int Numero_casa
-        {
-            get
-            {
-                return numero_casa;
-            }
-
-            set
-            {
-                if (value != 0)
-                numero_casa = value;
-                else
-                {
-                    MessageBox.Show("numero da casa precisa ser preenchido corretamente!!!");
-                    numero_casa = 0;
-                }
-            }
-        }
+        public int Numero_casa { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public long Cep
-        {
-            get
-            {
-                return cep;
-            }
-
-            set
-            {
-                if(value != 0)
-                cep = value;
-                else
-                {
-                    MessageBox.Show("Cep precisa ser preenchido corretamente!!!");
-                    cep = 0;
-                }
-            }
-        }
+        public long Cep { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Complemento
-        {
-            get
-            {
-                return complemento;
-            }
-
-            set
-            {                
-                complemento = value;
-            }
-        }             
+        public string Complemento { get; set; }
 
         public Endereco()
         {
@@ -192,7 +56,7 @@ namespace business.classes
         {
             Insert_padrao =
         $"insert into Endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
-        $" Id) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
+        $" IdEndereco) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
         $" '{Cep}', '{Complemento}', IDENT_CURRENT('Pessoa'))";            
             return Insert_padrao;
         }
@@ -201,13 +65,13 @@ namespace business.classes
         {
             Update_padrao = $"update Endereco set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
             $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
-            $"  where Id='{id}' ";            
+            $"  where IdEndereco='{id}' ";            
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Endereco where Id='{id}' ";            
+            Delete_padrao = $"delete from Endereco where IdEndereco='{id}' ";            
             return Delete_padrao;
         }
 
@@ -215,7 +79,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Endereco as M";
             if (id != null)
-                Select_padrao += $" where M.Id='{id}'";
+                Select_padrao += $" where M.IdEndereco='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -238,7 +102,7 @@ namespace business.classes
                     this.Cidade = Convert.ToString(dr["Cidade"]);
                     this.Bairro = Convert.ToString(dr["Bairro"]);
                     this.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
                     this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                     this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
 
@@ -269,7 +133,7 @@ namespace business.classes
                         end.Cidade = Convert.ToString(dr["Cidade"]);
                         end.Bairro = Convert.ToString(dr["Bairro"]);
                         end.Complemento = Convert.ToString(dr["Complemento"]);
-                        end.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        end.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
                         end.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                         end.Cep = long.Parse(Convert.ToString(dr["Cep"]));
                         modelos.Add(end);

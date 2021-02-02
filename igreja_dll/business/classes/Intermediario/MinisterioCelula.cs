@@ -83,8 +83,8 @@ namespace business.classes.Intermediario
                     var ministerios = Abstrato.Ministerio.recuperarTodosMinisterios().OfType<Abstrato.Ministerio>().ToList();
                     foreach(var item in modelos.OfType<MinisterioCelula>().ToList())
                     {
-                        item.Celula = celulas.First(i => i.Id == item.CelulaId);
-                        item.Ministerio = ministerios.First(i => i.Id == item.MinisterioId);
+                        item.Celula = celulas.First(i => i.IdCelula == item.CelulaId);
+                        item.Ministerio = ministerios.First(i => i.IdMinisterio == item.MinisterioId);
                     }
                 }
 

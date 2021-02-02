@@ -1,21 +1,23 @@
-﻿
-using business.classes;
-using business.classes.Celula;
-using business.classes.Ministerio;
+﻿using business.classes;
 using business.classes.Abstrato;
-using System.ComponentModel.DataAnnotations.Schema;
+using business.classes.Celula;
+using business.classes.Intermediario;
+using business.classes.Ministerio;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using business.classes.Pessoas;
-using business.classes.Intermediario;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace repositorioEF
+namespace RepositorioEF
 {
-    public class DB : DbContext
+   public class DB : DbContext
     {
         public DB() : base("DefaultConnection")
         {
-           // Database.SetInitializer<DB>(null);
+
         }
 
         public DbSet<Chamada> Chamadas { get; set; }
@@ -25,15 +27,13 @@ namespace repositorioEF
         public DbSet<Endereco> endereco { get; set; }
         public DbSet<EnderecoCelula> EnderecoCelula { get; set; }
         public DbSet<Telefone> telefone { get; set; }
-        public DbSet<Celula> celula { get; set; }     
+        public DbSet<Celula> celula { get; set; }
         public DbSet<Ministerio> ministerio { get; set; }
         public DbSet<Lider_Celula> Lider_Celula { get; set; }
         public DbSet<Historico> historico { get; set; }
         public DbSet<PessoaMinisterio> PessoaMinisterio { get; set; }
         public DbSet<ReuniaoPessoa> ReuniaoPessoa { get; set; }
         public DbSet<MinisterioCelula> MinisterioCelula { get; set; }
-
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,7 +47,5 @@ namespace repositorioEF
             //  modelBuilder.Entity<Celula>().HasKey(c => c.Id).HasEntitySetName("Celulaid");
 
         }
-
-      
     }
 }

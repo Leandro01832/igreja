@@ -19,65 +19,15 @@ namespace business.classes
        
     public class Telefone : modelocrud
     {
-        
-        private string fone;
-        private string celular;
-        private string whatsapp;
-        private PessoaDado pessoa;
-
         [Key, ForeignKey("Pessoa")]
-        public new int Id {  get; set; }
-        public virtual PessoaDado Pessoa
-        {
-            get
-            {
-                return pessoa;
-            }
+        public int IdTelefone {  get; set; }
+        public virtual PessoaDado Pessoa { get; set; }
 
-            set
-            {
-                pessoa = value;
-            }
-        }
+        public string Fone { get; set; }
 
-        public string Fone
-        {
-            get
-            {
-                return fone;
-            }
+        public string Celular { get; set; }
 
-            set
-            {
-                fone = value;
-            }
-        }
-
-        public string Celular
-        {
-            get
-            {
-                return celular;
-            }
-
-            set
-            {
-                celular = value;
-            }
-        }
-
-        public string Whatsapp
-        {
-            get
-            {
-                return whatsapp;
-            }
-
-            set
-            {
-                whatsapp = value;
-            }
-        }
+        public string Whatsapp { get; set; }
 
         public Telefone()
         {
@@ -86,13 +36,13 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Telefone set Fone='{Fone}', Celular='{Celular}', " +
-            $"Whatsapp='{Whatsapp}' where Id='{id}' ";            
+            $"Whatsapp='{Whatsapp}' where IdTelefone='{id}' ";            
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Telefone where Id='{id}' ";            
+            Delete_padrao = $"delete from Telefone where IdTelefone='{id}' ";            
             return Delete_padrao;
         }
 
@@ -100,7 +50,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Telefone as M";
             if (id != null)
-                Select_padrao += Select_padrao + $" where M.Id={id}";
+                Select_padrao += Select_padrao + $" where M.IdTelefone={id}";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -118,7 +68,7 @@ namespace business.classes
                 try
                 {
                     dr.Read();
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
                     this.Fone = Convert.ToString(dr["Fone"]);
                     this.Celular = Convert.ToString(dr["Celular"]);
                     this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
@@ -143,7 +93,7 @@ namespace business.classes
                 {
                     while (dr.Read())
                     {
-                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        this.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
                         this.Fone = Convert.ToString(dr["Fone"]);
                         this.Celular = Convert.ToString(dr["Celular"]);
                         this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
@@ -167,7 +117,7 @@ namespace business.classes
         public override string salvar()
         {
             Insert_padrao =
-        $" insert into Telefone (Fone, Celular, Whatsapp, Id) " +
+        $" insert into Telefone (Fone, Celular, Whatsapp, IdTelefone) " +
         $" values ('{Fone}', '{Celular}', '{Whatsapp}', IDENT_CURRENT('Pessoa')) ";            
             return Insert_padrao;
         }

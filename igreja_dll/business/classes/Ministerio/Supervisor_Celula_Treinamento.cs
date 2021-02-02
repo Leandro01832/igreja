@@ -12,22 +12,10 @@ namespace business.classes.Ministerio
 {
     [Table("Supervisor_Celula_Treinamento")]
     public class Supervisor_Celula_Treinamento : Abstrato.Ministerio
-    {       
-        private int maximo_celula;        
+    {              
 
         [Display(Name = "Máximo de celulas para supervisioar")]
-        public int Maximo_celula
-        {
-            get
-            {
-                return maximo_celula;
-            }
-
-            set
-            {
-                maximo_celula = value;
-            }
-        }
+        public int Maximo_celula { get; set; }
 
         public Supervisor_Celula_Treinamento() : base()
         {
@@ -38,22 +26,22 @@ namespace business.classes.Ministerio
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update  Supervisor_Celula_Treinamento " +
-                $" set Maximo_celula='{Maximo_celula}' where Id='{id}' " + BDcomum.addNaLista;
+                $" set Maximo_celula='{Maximo_celula}' where IdMinisterio='{id}' " + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Supervisor_Celula_Treinamento where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Supervisor_Celula_Treinamento where IdMinisterio='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from Supervisor_Celula_Treinamento as SCT inner join Ministerio as MI on SCT.Id=MI.Id ";
-            if (id != null) Select_padrao += $" where SCT.Id='{id}'";
+            Select_padrao = "select * from Supervisor_Celula_Treinamento as SCT inner join Ministerio as MI on SCT.IdMinisterio=MI.IdMinisterio ";
+            if (id != null) Select_padrao += $" where SCT.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
             conecta.Open();
@@ -81,7 +69,7 @@ namespace business.classes.Ministerio
                     while (dr.Read())
                     {
                         Supervisor_Celula_Treinamento m = new Supervisor_Celula_Treinamento();
-                        m.Id = int.Parse(dr["Id"].ToString());
+                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
                         m.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(m);
                     }
@@ -104,7 +92,7 @@ namespace business.classes.Ministerio
         {
            Insert_padrao = base.salvar();
            Insert_padrao += $" insert into Supervisor_Celula_Treinamento " +
-          $" (Id, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
+          $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
             
            bd.SalvarModelo(this);
            
@@ -114,7 +102,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.Id.ToString() + " - " + base.Nome;
+            return base.IdMinisterio.ToString() + " - " + base.Nome;
         }
 
     }

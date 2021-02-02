@@ -21,7 +21,7 @@ namespace business.classes.Celula
         private string complemento;
 
         [Key, ForeignKey("Celula")]
-        public new int Id { get; set; }
+        public int IdEnderecoCelula { get; set; }
         public virtual Abstrato.Celula Celula { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -184,7 +184,7 @@ namespace business.classes.Celula
         {
             Insert_padrao =
         $"insert into EnderecoCelula (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
-        $" Id) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
+        $" IdEnderecoCelula) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
         $" '{Cep}', '{Complemento}', IDENT_CURRENT('Celula'))";
             return Insert_padrao;
         }
@@ -193,13 +193,13 @@ namespace business.classes.Celula
         {
             Update_padrao = $"update EnderecoCelula set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
             $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
-            $"  where Id='{id}' ";
+            $"  where IdEnderecoCelula='{id}' ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from EnderecoCelula where Id={id} ";
+            Delete_padrao = $"delete from EnderecoCelula where IdEnderecoCelula={id} ";
             return Delete_padrao;
         }
 
@@ -207,7 +207,7 @@ namespace business.classes.Celula
         {
             Select_padrao = "select * from EnderecoCelula as M";
             if (id != null)
-                Select_padrao += $" where M.Id={id}";
+                Select_padrao += $" where M.IdEnderecoCelula={id}";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -230,7 +230,7 @@ namespace business.classes.Celula
                     this.Cidade = Convert.ToString(dr["Cidade"]);
                     this.Bairro = Convert.ToString(dr["Bairro"]);
                     this.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdEnderecoCelula = int.Parse(Convert.ToString(dr["IdEnderecoCelula"]));
                     this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                     this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
 
@@ -261,7 +261,7 @@ namespace business.classes.Celula
                         end.Cidade = Convert.ToString(dr["Cidade"]);
                         end.Bairro = Convert.ToString(dr["Bairro"]);
                         end.Complemento = Convert.ToString(dr["Complemento"]);
-                        end.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        end.IdEnderecoCelula = int.Parse(Convert.ToString(dr["IdEnderecoCelula"]));
                         end.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                         end.Cep = long.Parse(Convert.ToString(dr["Cep"]));
                         modelos.Add(end);

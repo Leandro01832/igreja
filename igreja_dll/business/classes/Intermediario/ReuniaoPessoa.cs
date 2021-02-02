@@ -82,8 +82,8 @@ namespace business.classes.Intermediario
                     var reunioes = new Reuniao().recuperar(null).OfType<Reuniao>().ToList();
                     foreach (var item in modelos.OfType<ReuniaoPessoa>().ToList())
                     {
-                        item.Pessoa = pessoas.First(i => i.Id == item.PessoaId);
-                        item.Reuniao = reunioes.First(i => i.Id == item.ReuniaoId);
+                        item.Pessoa = pessoas.First(i => i.IdPessoa == item.PessoaId);
+                        item.Reuniao = reunioes.First(i => i.IdReuniao == item.ReuniaoId);
                     }
                 }
 

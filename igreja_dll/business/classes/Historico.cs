@@ -18,40 +18,19 @@ namespace business.classes
 {
     [Table("Historico")]
    public class Historico : modelocrud
-    {
-        private DateTime data_inicio;        
-        private int falta;  
+    {       
 
-        public DateTime Data_inicio
-        {
-            get
-            {
-                return data_inicio;
-            }
+        [Key]
+        public int IdHistorico { get; set; }
 
-            set
-            {
-                data_inicio = value;
-            }
-        }
+        public DateTime Data_inicio{get; set; }
 
         public int pessoaid { get; set; }
 
         [ForeignKey("pessoaid")]
         public virtual Pessoa Pessoa { get; set; }
 
-        public int Falta
-        {
-            get
-            {
-                return falta;
-            }
-
-            set
-            {
-                falta = value;
-            }
-        }               
+        public int Falta { get; set; }
 
         public Historico() : base()
         {
@@ -61,7 +40,7 @@ namespace business.classes
         {
             Update_padrao = $"update Historico set Data_inicio={Data_inicio.ToString()}, " +
             $"pessoaid={pessoaid}, Falta={Falta} " +
-            $"  where Id={id} ";
+            $"  where IdHistorico={id} ";
             
             bd.Editar(this);
             return Update_padrao;
@@ -69,7 +48,7 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Historico where Id='{id}' ";
+            Delete_padrao = $"delete from Historico where IdHistorico='{id}' ";
             
             bd.Excluir(this);
             return Delete_padrao;
@@ -79,7 +58,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Historico as M";
             if (id != null)
-                Select_padrao += $" where M.Id='{id}'";
+                Select_padrao += $" where M.IdHistorico='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -98,7 +77,7 @@ namespace business.classes
                 {
                     dr.Read();
                     this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdHistorico = int.Parse(Convert.ToString(dr["IdHistorico"]));
                     this.pessoaid = int.Parse(Convert.ToString(dr["pessoaid"]));
                     this.Falta = int.Parse(Convert.ToString(dr["Falta"]));
                     dr.Close();
@@ -124,7 +103,7 @@ namespace business.classes
                     {
                         Historico h = new Historico();
                         h.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                        h.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        h.IdHistorico = int.Parse(Convert.ToString(dr["IdHistorico"]));
                         h.pessoaid = int.Parse(Convert.ToString(dr["pessoaid"]));
                         h.Falta = int.Parse(Convert.ToString(dr["Falta"]));
                         modelos.Add(h);

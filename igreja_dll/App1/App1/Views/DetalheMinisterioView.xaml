@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.DetalheMinisterioView"
+             Title="{Binding Ministerio.Nome}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="64">
+            <!--<Image Source="aluracar.png"></Image>-->
+            <Label  Text="{Binding Ministerio.IdMinisterio}"></Label>
+            <Label  Text="{Binding Ministerio.Nome}"></Label>
+            <Label  Text="{Binding Ministerio.Proposito}"></Label>
+            <Label  Text="{Binding Ministerio.Ministro_}"></Label>
+            <Button Text="Participar" Command="{Binding ParticiparCommand}"/>
+            <Button Text="Celulas" Command="{Binding CelulasCommand}"/>
+            <Button Text="Pessoas" Command="{Binding PessoasCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

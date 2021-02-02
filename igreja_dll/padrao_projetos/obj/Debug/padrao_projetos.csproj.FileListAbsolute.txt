@@ -19,3 +19,4 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\padr
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csproj.CoreCompileInputs.cache
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojAssemblyReference.cache

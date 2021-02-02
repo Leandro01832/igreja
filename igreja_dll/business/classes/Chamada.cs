@@ -12,21 +12,15 @@ using System.Windows.Forms;
 
 namespace business.classes
 {
-
     public  class Chamada : modelocrud
     {
         [Key, ForeignKey("Pessoa")]
-        public new int Id { get; set; }
+        public int IdChamada { get; set; }
 
         [Display(Name = "Data de inicio")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public  DateTime Data_inicio
-        {
-            get;
-
-            set;
-        }
+        public  DateTime Data_inicio{ get; set; }
 
         [Display(Name = "Numero da chamada")]
         public int Numero_chamada { get; set; }
@@ -40,14 +34,14 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Chamada set Data_inicio={Data_inicio.ToString()},"
-               + $" Numero_chamada={Numero_chamada} where Id={id} ";
+               + $" Numero_chamada={Numero_chamada} where IdChamada={id} ";
             
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Chamada where Id={id} ";
+            Delete_padrao = $"delete from Chamada where IdChamada={id} ";
             
             return Delete_padrao;
         }
@@ -56,7 +50,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Chamada as C";
             if (id != null)
-                Select_padrao +=  $" where C.Id='{id}'";
+                Select_padrao +=  $" where C.IdChamada='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -75,7 +69,7 @@ namespace business.classes
                 {
                     dr.Read();
                     this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdChamada = int.Parse(Convert.ToString(dr["IdChamada"]));
                     this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
 
                     dr.Close();
@@ -100,7 +94,7 @@ namespace business.classes
                     while (dr.Read())
                     {
                         this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
-                        this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        this.IdChamada = int.Parse(Convert.ToString(dr["IdChamada"]));
                         this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
                         modelos.Add(this);
                     }
@@ -122,7 +116,7 @@ namespace business.classes
         public override string salvar()
         {            
             Insert_padrao = $"insert into Chamada "
-            + " (Data_inicio, Numero_chamada, Id) values"
+            + " (Data_inicio, Numero_chamada, IdChamada) values"
             + $" ('{DateTime.Now.ToString("yyyy-MM-dd")}', '{Numero_chamada.ToString()}', IDENT_CURRENT('Pessoa'))";
             
             return Insert_padrao;

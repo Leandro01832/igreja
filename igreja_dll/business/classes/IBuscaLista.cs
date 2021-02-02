@@ -9,6 +9,6 @@ namespace business.classes
 {
     interface IBuscaLista
     {
-        List<int> buscarLista(string TipoDaLista, string Ligacao, string nomeDaChave, int id);
+        List<int> buscarLista(modelocrud TipoDaLista, modelocrud Ligacao, string nomeDaChave, int id);
     }
 }

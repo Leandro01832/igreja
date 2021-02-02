@@ -27,7 +27,7 @@ namespace business.classes.Celulas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Celula_Crianca where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Celula_Crianca where IdCelula='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -35,8 +35,8 @@ namespace business.classes.Celulas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Celula_Crianca as CC "
-                + " inner join Celula as C on CC.Id=C.Id ";
-            if (id != null) Select_padrao += $" where CC.Id='{id}'";
+                + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
+            if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -73,7 +73,7 @@ namespace business.classes.Celulas
                     while (dr.Read())
                     {
                         Celula_Crianca c = new Celula_Crianca();
-                        c.Id = int.Parse(dr["Id"].ToString());
+                        c.IdCelula = int.Parse(dr["IdCelula"].ToString());
                         c.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(c);
                     }
@@ -95,7 +95,7 @@ namespace business.classes.Celulas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Celula_Crianca (Id) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
+            Insert_padrao += " insert into Celula_Crianca (IdCelula) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
             bd.SalvarModelo(this);
             
             return Insert_padrao;
@@ -103,7 +103,7 @@ namespace business.classes.Celulas
 
         public override string ToString()
         {
-            return base.Id.ToString() + " - " + base.Nome;
+            return base.IdCelula.ToString() + " - " + base.Nome;
         }
     }
 }

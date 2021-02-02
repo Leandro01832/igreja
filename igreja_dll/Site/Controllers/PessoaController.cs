@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using business.classes.Abstrato;
 using repositorioEF;
+using RepositorioEF;
 
 namespace Site.Controllers
 {
@@ -74,25 +75,20 @@ namespace Site.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.celula_ = new SelectList(db.celula, "Id", "Nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "IdCelula", "Nome", pessoa.celula_);
             return View(pessoa);
         }
 
         // POST: Pessoa/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Codigo,Email,Falta,celula_,Img")] Pessoa pessoa)
+        public ActionResult Edit(Pessoa pessoa)
         {
-            if (ModelState.IsValid)
-            {
                 db.Entry(pessoa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            ViewBag.celula_ = new SelectList(db.celula, "Id", "Nome", pessoa.celula_);
-            return View(pessoa);
         }
 
         // GET: Pessoa/Delete/5

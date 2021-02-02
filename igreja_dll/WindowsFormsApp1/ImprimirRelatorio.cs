@@ -31,7 +31,13 @@ namespace WindowsFormsApp1
                 foreach (var item in lista.ToList())
                 {
 
-                    lista[i] = item.recuperar(item.Id)[0];
+                    var id = 0;
+                    if (modelo is Pessoa) { var p = (Pessoa)modelo; id = p.IdPessoa; }
+                    if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.IdMinisterio; }
+                    if (modelo is Celula) { var p = (Celula)modelo; id = p.IdCelula; }
+                    if (modelo is Reuniao) { var p = (Reuniao)modelo; id = p.IdReuniao; }
+
+                    lista[i] = item.recuperar(id)[0];
                     i++;
                 }
             }
@@ -74,9 +80,9 @@ namespace WindowsFormsApp1
              lista = Pessoa.recuperarTodos();
              table = new PdfPTable(2);
                 var i = 0;
-                foreach (var item in lista.ToList())
+                foreach (var item in lista.OfType<Pessoa>().ToList())
                 {                    
-                    lista[i] = item.recuperar(item.Id)[0];
+                    lista[i] = item.recuperar(item.IdPessoa)[0];
                     i++;
                 }
             }
@@ -86,9 +92,9 @@ namespace WindowsFormsApp1
              lista = MembroLgpd.recuperarTodosMembros();
              table = new PdfPTable(2);
                 var i = 0;
-                foreach (var item in lista.ToList())
+                foreach (var item in lista.OfType<Pessoa>().ToList())
                 {                    
-                    lista[i] = item.recuperar(item.Id)[0];
+                    lista[i] = item.recuperar(item.IdPessoa)[0];
                     i++;
                 }
             }
@@ -98,9 +104,9 @@ namespace WindowsFormsApp1
              lista = Membro.recuperarTodosMembros();
              table = new PdfPTable(2);
                 var i = 0;
-                foreach (var item in lista.ToList())
+                foreach (var item in lista.OfType<Pessoa>().ToList())
                 {                    
-                    lista[i] = item.recuperar(item.Id)[0];
+                    lista[i] = item.recuperar(item.IdPessoa)[0];
                     i++;
                 }
             }
@@ -110,9 +116,9 @@ namespace WindowsFormsApp1
              lista = Ministerio.recuperarTodosMinisterios();
              table = new PdfPTable(2);
                 var i = 0;
-                foreach (var item in lista.ToList())
+                foreach (var item in lista.OfType<Ministerio>().ToList())
                 {                   
-                    lista[i] = item.recuperar(item.Id)[0];
+                    lista[i] = item.recuperar(item.IdMinisterio)[0];
                     i++;
                 }
             }
@@ -122,9 +128,9 @@ namespace WindowsFormsApp1
              lista = Celula.recuperarTodasCelulas();
              table = new PdfPTable(2);
                 var i = 0;
-                foreach (var item in lista.ToList())
+                foreach (var item in lista.OfType<Celula>().ToList())
                 {                    
-                    lista[i] = item.recuperar(item.Id)[0];
+                    lista[i] = item.recuperar(item.IdCelula)[0];
                     i++;
                 }
          }
@@ -167,14 +173,14 @@ namespace WindowsFormsApp1
 
          foreach (var item in lista.OfType<Reuniao>())
          {
-             table.AddCell("Id: " + item.Id.ToString());
+             table.AddCell("Id: " + item.IdReuniao.ToString());
              table.AddCell("Data da reunião: " + item.Data_reuniao.ToString());
          }
 
          foreach (var item in lista.OfType<PessoaDado>())
          {
              table.AddCell("ID: " + item.Codigo.ToString());
-             table.AddCell("Nome: " + item.Nome.ToString());
+             table.AddCell("Nome: " + item.NomePessoa.ToString());
          }
 
             foreach (var item in lista.OfType<PessoaLgpd>().ToList())
@@ -185,13 +191,13 @@ namespace WindowsFormsApp1
 
             foreach (var item in lista.OfType<Ministerio>())
          {
-             table.AddCell("Id: " + item.Id.ToString());
+             table.AddCell("Id: " + item.IdMinisterio.ToString());
              table.AddCell("Data da reunião: " + item.Nome.ToString());
          }
 
          foreach (var item in lista.OfType<Celula>())
          {
-             table.AddCell("Id: " + item.Id.ToString());
+             table.AddCell("Id: " + item.IdCelula.ToString());
              table.AddCell("Data da reunião: " + item.Nome.ToString());
          }
 

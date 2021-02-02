@@ -28,15 +28,15 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Ministerio where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Lider_Ministerio where IdMinisterio='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from Lider_Ministerio as LM inner join Ministerio as MI on LM.Id=MI.Id ";
-            if (id != null) Select_padrao += $" where LM.Id='{id}'";
+            Select_padrao = "select * from Lider_Ministerio as LM inner join Ministerio as MI on LM.IdMinisterio=MI.IdMinisterio ";
+            if (id != null) Select_padrao += $" where LM.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
             conecta.Open();
@@ -61,7 +61,7 @@ namespace business.classes.Ministerio
                     while (dr.Read())
                     {
                         Lider_Ministerio m = new Lider_Ministerio();
-                        m.Id = int.Parse(dr["Id"].ToString());
+                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
                         m.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(m);
                     }
@@ -83,7 +83,7 @@ namespace business.classes.Ministerio
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Lider_Ministerio (Id) values " +
+            Insert_padrao += $" insert into Lider_Ministerio (IdMinisterio) values " +
             $" (IDENT_CURRENT('Ministerio'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
@@ -93,7 +93,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.Id.ToString() + " - " + base.Nome;
+            return base.IdMinisterio.ToString() + " - " + base.Nome;
         }
     }
 }

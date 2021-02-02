@@ -227,3 +227,9 @@ C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Abstractions.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Container.pdb
 C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\Unity.Mvc.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Net.Http.Formatting.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.Http.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.Http.WebHost.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Net.Http.Formatting.xml
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.Http.xml
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\Site\bin\System.Web.Http.WebHost.xml

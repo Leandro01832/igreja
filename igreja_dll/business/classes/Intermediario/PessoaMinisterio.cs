@@ -32,7 +32,7 @@ namespace business.classes.Intermediario
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from PessoaMinsterio as PM ";
+            Select_padrao = "select * from PessoaMinisterio as PM ";
             if (id != null) Select_padrao += $" where PM.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -86,8 +86,8 @@ namespace business.classes.Intermediario
                     var ministerios = Abstrato.Ministerio.recuperarTodosMinisterios().OfType<Abstrato.Ministerio>().ToList();
                     foreach (var item in modelos.OfType<PessoaMinisterio>().ToList())
                     {
-                        item.Pessoa = pessoas.First(i => i.Id == item.PessoaId);
-                        item.Ministerio = ministerios.First(i => i.Id == item.MinisterioId);
+                        item.Pessoa = pessoas.First(i => i.IdPessoa == item.PessoaId);
+                        item.Ministerio = ministerios.First(i => i.IdMinisterio == item.MinisterioId);
                     }
                 }
 
@@ -115,7 +115,7 @@ namespace business.classes.Intermediario
         {
             ToTable("PessoaMinisterio");
 
-            HasKey(a => new { a.PessoaId, a.MinisterioId });
+            HasKey(a => new { a.PessoaId, a.MinisterioId});
 
             Property(a => a.PessoaId)
                 .IsRequired();

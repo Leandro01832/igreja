@@ -29,7 +29,7 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from {this.GetType().Name} where IdPessoa='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -37,9 +37,9 @@ namespace business.classes.PessoasLgpd
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_BatismoLgpd as MB "
-                + " inner join MembroLgpd as M on MB.Id=M.Id "
-                + " inner join PessoaLgpd as PL on M.Id=PL.Id inner join Pessoa as P on PL.Id=P.Id ";
-            if (id != null) Select_padrao += $" where MB.Id='{id}'";
+                + " inner join MembroLgpd as M on MB.IdPessoa=M.IdPessoa "
+                + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -65,7 +65,7 @@ namespace business.classes.PessoasLgpd
                     while (dr.Read())
                     {
                         Membro_BatismoLgpd mb = new Membro_BatismoLgpd();
-                        mb.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         mb.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         mb.Email = Convert.ToString(dr["Email"]);                        
                         modelos.Add(mb);
@@ -89,7 +89,7 @@ namespace business.classes.PessoasLgpd
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_BatismoLgpd (Id) values (IDENT_CURRENT('Pessoa')) "
+            Insert_padrao += " insert into Membro_BatismoLgpd (IdPessoa) values (IDENT_CURRENT('Pessoa')) "
             + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);

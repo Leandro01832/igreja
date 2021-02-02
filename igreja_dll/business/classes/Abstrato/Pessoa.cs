@@ -32,6 +32,12 @@ namespace business.classes.Abstrato
             
         AddNalista AddNalista;
 
+        [Key]
+        public int IdPessoa { get; set; }
+
+        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        public string NomePessoa { get; set; }
+
         [Index("CODIGO", 2, IsUnique = true)]
         public int Codigo { get; set; }
 
@@ -64,7 +70,7 @@ namespace business.classes.Abstrato
         {
             try
             {
-                var numero = recuperarTodos().OrderBy(m => m.Id).Last().Id;
+                var numero = recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
                 Codigo = numero + 1;
             }
             catch { Codigo = 1; }          
@@ -74,8 +80,8 @@ namespace business.classes.Abstrato
             else celula = this.celula_.ToString();
 
                       Insert_padrao =
-              "insert into Pessoa (Email, Falta, celula_, Img, Codigo) " +
-              $" values ( '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
+              "insert into Pessoa (NomePessoa, Email, Falta, celula_, Img, Codigo) " +
+              $" values ( '{this.NomePessoa}', '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
                this.Chamada.salvar() + " ";
             
             return Insert_padrao;
@@ -87,11 +93,11 @@ namespace business.classes.Abstrato
             if (this.celula_ == null) celula = "null";
             else celula = this.celula_.ToString();
 
-            Update_padrao = $"update Pessoa set  " +
+            Update_padrao = $"update Pessoa set NomePessoa='{NomePessoa}',  " +
             $" Email='{Email}',  " +
             $" celula_={celula}, " +
             $" Falta='{Falta}', Img='{this.Img}' " +
-            $"  where Id='{id}' ";
+            $"  where IdPessoa='{id}' ";
             
             return Update_padrao;
         }
@@ -99,9 +105,9 @@ namespace business.classes.Abstrato
         public override string excluir(int id)
         {
             Delete_padrao = " delete Chamada from Chamada as CH inner " +
-                "join Pessoa as P on CH.Id=P.Id " +
-                $" where P.Id='{id}' " +
-                $" delete Pessoa from Pessoa as P where P.Id='{id}' ";
+                "join Pessoa as P on CH.IdChamada=P.IdPessoa " +
+                $" where P.IdPessoa='{id}' " +
+                $" delete Pessoa from Pessoa as P where P.IdPessoa='{id}' ";
             
             return Delete_padrao;
         }        
@@ -109,8 +115,8 @@ namespace business.classes.Abstrato
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
-                 + " inner join Chamada as CH on CH.Id=P.Id ";
-            if (id != null) Select_padrao += $" where P.Id='{id}'";
+                 + " inner join Chamada as CH on CH.IdChamada=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -129,9 +135,10 @@ namespace business.classes.Abstrato
                 {
                     dr.Read();
                     this.Img = Convert.ToString(dr["Img"]);
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                     this.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                     this.Email = Convert.ToString(dr["Email"]);
+                    this.NomePessoa = Convert.ToString(dr["NomePessoa"]);
                     this.Falta = int.Parse(dr["Falta"].ToString());
                     this.Chamada = new Chamada();
                     this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
@@ -287,8 +294,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
-                " PessoaMinisterio as mipe on m.Id=mipe.MinisterioId  inner join Pessoa as p" + 
-                $" on mipe.PessoaId=p.Id where mipe.PessoaId='{id}' ";
+                " PessoaMinisterio as mipe on m.IdMinisterio=mipe.MinisterioId  inner join Pessoa as p" + 
+                $" on mipe.PessoaId=p.IdPessoa where mipe.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -316,8 +323,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> recuperarReuniao(int? id)
         {
             var select = "select * from Reuniao as R inner join " +
-                " ReuniaoPessoa as PERE on R.Id=PERE.ReuniaoId  inner join Pessoa as P" +
-                $" on PERE.PessoaId=P.Id where PERE.PessoaId='{id}' ";
+                " ReuniaoPessoa as PERE on R.IdReuniao=PERE.ReuniaoId  inner join Pessoa as P" +
+                $" on PERE.PessoaId=P.IdPessoa where PERE.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -347,7 +354,7 @@ namespace business.classes.Abstrato
         {
             var select = "select * from Historico as H " +
                 " inner join Pessoa as P" +
-                $" on P.Id=H.pessoaid where P.Id='{id}' ";
+                $" on P.IdPessoa=H.pessoaid where P.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -364,7 +371,7 @@ namespace business.classes.Abstrato
             {
                 Historico h = new Historico();
                 h.pessoaid = int.Parse(dr["pessoaid"].ToString());
-                h.Id = int.Parse(dr["pessoaid"].ToString());
+                h.IdHistorico = int.Parse(dr["IdHistorico"].ToString());
                 h.Falta = int.Parse(dr["Falta"].ToString());
                 h.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
                 modelos.Add(h);

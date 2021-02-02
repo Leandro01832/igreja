@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Http;
 
 namespace Site
 {
@@ -13,7 +14,8 @@ namespace Site
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<repositorioEF.DB, repositorioEF.Migrations.Configuration>());
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<RepositorioEF.DB, RepositorioEF.Migrations.Configuration>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

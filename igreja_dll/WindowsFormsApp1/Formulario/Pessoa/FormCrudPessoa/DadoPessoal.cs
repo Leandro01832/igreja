@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                text_nome.Text = p.Nome;
+                text_nome.Text = p.NomePessoa;
                 text_rg.Text = p.Rg;
                 text_cpf.Text = p.Cpf;
                 listestado_civil.Text = p.Estado_civil;
@@ -45,7 +45,6 @@ namespace WindowsFormsApp1.Formulario.Pessoa
                 radioButton_masculino.Checked = p.Sexo_masculino;
                 radioButton_feminino.Checked = p.Sexo_feminino; 
             }
-
         }
 
         private void text_nome_TextChanged(object sender, EventArgs e)
@@ -53,12 +52,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
             if(modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Nome = text_nome.Text;
+                p.NomePessoa = text_nome.Text;
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Nome = text_nome.Text;
+                p.NomePessoa = text_nome.Text;
             }
 
         }

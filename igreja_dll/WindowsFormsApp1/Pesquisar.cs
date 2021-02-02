@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
             {
                 var dado = (business.classes.MudancaEstado)item;
-                dgdados.Rows.Add(dado.Id, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
+                dgdados.Rows.Add(dado.IdMudanca, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
                 dado.DataMudanca);
             }
         }
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
             {
                 var dado = (business.classes.Endereco)item;
-                dgdados.Rows.Add(dado.Id, dado.Pais, dado.Estado, dado.Cidade,
+                dgdados.Rows.Add(dado.IdEndereco, dado.Pais, dado.Estado, dado.Cidade,
                 dado.Bairro, dado.Rua, dado.Numero_casa, dado.Cep);
             }
         }
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
             {
                 var dado = (business.classes.Telefone)item;
-                dgdados.Rows.Add(dado.Id, dado.Fone, dado.Celular, dado.Whatsapp);
+                dgdados.Rows.Add(dado.IdTelefone, dado.Fone, dado.Celular, dado.Whatsapp);
             }
         }
 
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
                 var dado = (PessoaDado)item;
-                dgdados.Rows.Add(dado.Id, dado.Email, dado.celula_, dado.Falta, dado.Img);
+                dgdados.Rows.Add(dado.IdPessoa, dado.Email, dado.celula_, dado.Falta, dado.Img);
             }   
         }
 
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
                 var dado = (Ministerio)item;
-                dgdados.Rows.Add(dado.Id, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
+                dgdados.Rows.Add(dado.IdMinisterio, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
             }
         }
 
@@ -112,7 +112,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {                
                 var dado = (Celula)item;
-                dgdados.Rows.Add(dado.Id, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
+                dgdados.Rows.Add(dado.IdCelula, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
             }
         }
 
@@ -127,7 +127,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
                 var dado = (business.classes.Chamada)item;
-                dgdados.Rows.Add(dado.Id, dado.Data_inicio, dado.Numero_chamada);
+                dgdados.Rows.Add(dado.IdChamada, dado.Data_inicio, dado.Numero_chamada);
             }
         }
 
@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
             {
                 var dado = (business.classes.Reuniao)item;
-                dgdados.Rows.Add(dado.Id, dado.Data_reuniao, dado.Horario_fim, dado.Horario_inicio);
+                dgdados.Rows.Add(dado.IdReuniao, dado.Data_reuniao, dado.Horario_fim, dado.Horario_inicio);
             }
         }
 
@@ -157,7 +157,7 @@ namespace WindowsFormsApp1
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
             {
                 var dado = (business.classes.Historico)item;
-                dgdados.Rows.Add(dado.Id, dado.Data_inicio, dado.Falta, dado.pessoaid);
+                dgdados.Rows.Add(dado.IdHistorico, dado.Data_inicio, dado.Falta, dado.pessoaid);
             }
         }       
 
@@ -415,75 +415,75 @@ namespace WindowsFormsApp1
                     if (m is Visitante)
                     {
                         Visitante info = (Visitante)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_visita, info.Condicao_religiosa);
                     }
 
                     if ( m is VisitanteLgpd)
                     {
                         VisitanteLgpd info = (VisitanteLgpd)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_visita, info.Condicao_religiosa);
                     }
 
                     if (m is Crianca)
                     {
                         Crianca info = (Crianca)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Nome_mae, info.Nome_pai);
                     }
                     if ( m is CriancaLgpd)
                     {
                         CriancaLgpd info = (CriancaLgpd)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Nome_mae, info.Nome_pai);
                     }
 
                     if ( m is Membro_Aclamacao)
                     {
                         Membro_Aclamacao info = (Membro_Aclamacao)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
                     }
                     if (m is Membro_AclamacaoLgpd)
                     {
                         Membro_AclamacaoLgpd info = (Membro_AclamacaoLgpd)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
                     }
 
                     if (m is Membro_Batismo)
                     {
                         Membro_Batismo info = (Membro_Batismo)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
                     }
 
                     if (m is Membro_BatismoLgpd)
                     {
                         Membro_BatismoLgpd info = (Membro_BatismoLgpd)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
                     }
 
                     if (m is Membro_Reconciliacao)
                     {
                         Membro_Reconciliacao info = (Membro_Reconciliacao)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
                     }
 
                     if ( m is Membro_ReconciliacaoLgpd)
                     {
                         Membro_ReconciliacaoLgpd info = (Membro_ReconciliacaoLgpd)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
                     }
 
                     if (m is Membro_Transferencia)
                     {
                         Membro_Transferencia info = (Membro_Transferencia)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
                         info.Nome_cidade_transferencia,
                         info.Estado_transferencia, info.Nome_igreja_transferencia);
@@ -492,7 +492,7 @@ namespace WindowsFormsApp1
                     if ( m is Membro_TransferenciaLgpd)
                     {
                         Membro_TransferenciaLgpd info = (Membro_TransferenciaLgpd)item;
-                        dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
+                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
                         info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
                         info.Nome_cidade_transferencia,
                         info.Estado_transferencia, info.Nome_igreja_transferencia);
@@ -504,28 +504,28 @@ namespace WindowsFormsApp1
                     if (m is Supervisor_Celula)
                     {
                         Supervisor_Celula info = (Supervisor_Celula)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa,
+                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa,
                             info.Ministro_, info.Proposito, info.Maximo_celula);
                     }
 
                     if (m is Supervisor_Celula_Treinamento)
                     {
                         Supervisor_Celula_Treinamento info = (Supervisor_Celula_Treinamento)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_,
                             info.Proposito, info.Maximo_celula);
                     }
 
                     if (m is Supervisor_Ministerio)
                     {
                         Supervisor_Ministerio info = (Supervisor_Ministerio)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_,
                             info.Proposito, info.Maximo_celula);
                     }
 
                     if (m is Supervisor_Ministerio_Treinamento)
                     {
                         Supervisor_Ministerio_Treinamento info = (Supervisor_Ministerio_Treinamento)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_,
                         info.Proposito, info.Maximo_celula);
                     }
 
@@ -535,7 +535,7 @@ namespace WindowsFormsApp1
                        m is Lider_Ministerio_Treinamento)
                     {
                         Lider_Celula info = (Lider_Celula)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito);
+                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito);
                     }
                 }
 
@@ -548,7 +548,7 @@ namespace WindowsFormsApp1
                         m is business.classes.Celulas.Celula_Crianca)
                     {
                         business.classes.Celulas.Celula_Crianca info = (business.classes.Celulas.Celula_Crianca)item;
-                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Dia_semana, info.Horario);
+                        dgdados.Rows.Add(info.IdCelula, info.Nome, info.Maximo_pessoa, info.Dia_semana, info.Horario);
                     }
                 }
             }

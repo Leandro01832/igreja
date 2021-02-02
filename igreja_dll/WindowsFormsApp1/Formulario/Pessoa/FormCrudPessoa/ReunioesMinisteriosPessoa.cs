@@ -35,12 +35,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 var ministerios = pessoa.Ministerios;
                 if (ministerios != null)
                 foreach (var item in ministerios)
-                txt_ministerios.Text += item.Id.ToString() + ", ";
+                txt_ministerios.Text += item.Ministerio.IdMinisterio.ToString() + ", ";
 
                 var reunioes = pessoa.Reuniao;
                 if (reunioes != null)
                 foreach (var item in reunioes)
-                txt_reunioes.Text += item.Id.ToString() + ", ";
+                txt_reunioes.Text += item.Reuniao.IdReuniao.ToString() + ", ";
 
                 txt_celula.Text = pessoa.celula_.ToString();
             }
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 var arr = txt_reunioes.Text.Replace(" ", "").Split(',');
                 foreach (var valor in arr)
                 {
-                    int v = int.Parse(valor);
+                    if (valor != "") { int v = int.Parse(valor); }
                 }
                 AddNaListaPessoaReunioes = txt_reunioes.Text;
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Site.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,10 +14,12 @@ namespace Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+          //  ConfiguraRota.RegisterRoutes(routes);
+
             routes.MapRoute(
-                name: "ParticiparMinisterios",
-                url: "Home/ParticiparMinisterio/{id}",
-                defaults: new { controller = "Home", action = "ParticiparMinisterio", id = UrlParameter.Optional }
+                name: "principio",
+                url: "Home/principio",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

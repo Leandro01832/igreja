@@ -56,8 +56,9 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
+            var m = (business.classes.Abstrato.Pessoa)modeloVelho;
             var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
-            p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+            p.MudarEstado(m.IdPessoa, ModeloNovo);
 
             MessageBox.Show("Mudança realizada com sucesso!!!");
         }

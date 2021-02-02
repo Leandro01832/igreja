@@ -25,9 +25,7 @@ namespace business.classes.Pessoas
         #region
 
         AddNalista AddNalista;
-
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome { get; set; }
+        
 
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -75,10 +73,10 @@ namespace business.classes.Pessoas
 
             Insert_padrao = base.salvar();
             Insert_padrao +=
-            "insert into PessoaDado (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
+            "insert into PessoaDado ( Data_nascimento, Estado_civil, Sexo_masculino, " +
             "Rg, Cpf, Sexo_feminino, Falescimento, " +
-            "Status, Id)" +
-            $" values ('{this.Nome}', '{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
+            "Status, IdPessoa)" +
+            $" values ('{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
             $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
             $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +
             $" '{this.Status}', IDENT_CURRENT('Pessoa')) " +
@@ -91,11 +89,11 @@ namespace business.classes.Pessoas
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $"update PessoaDado set Nome='{Nome}', Estado_civil='{Estado_civil}', " +
+            Update_padrao += $"update PessoaDado set Estado_civil='{Estado_civil}', " +
             $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Status='{Status}', " +
             $" Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
             $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +           
-            $"  where Id='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
+            $"  where IdPessoa='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
             
             return Update_padrao;
         }
@@ -105,12 +103,12 @@ namespace business.classes.Pessoas
             Delete_padrao = base.excluir(id);
             Delete_padrao += 
             " delete Telefone from Telefone as T inner " +
-            " join PessoaDado as PD on T.Id=PD.Id" +
+            " join PessoaDado as PD on T.IdTelefone=PD.IdPessoa" +
             $" where P.Id='{id}' " +
             "delete Endereco from Endereco as E inner " +
-            "join PessoaDado as PD on E.Id=PD.Id" +
-            $" where P.Id='{id}' " +                
-            $" delete PessoaDado from PessoaDado as PD where PD.Id='{id}' " ;
+            "join PessoaDado as PD on E.IdEndereco=PD.IdPessoa" +
+            $" where P.IdPessoa='{id}' " +                
+            $" delete PessoaDado from PessoaDado as PD where PD.IdPessoa='{id}' " ;
             
             return Delete_padrao;
         }        
@@ -118,9 +116,9 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from PessoaDado as PD "
-        + " inner join Endereco as EN on EN.Id=PD.Id "
-        + " inner join Telefone as TE on TE.Id=PD.Id ";
-            if (id != null) Select_padrao += $" where PD.Id='{id}'";
+        + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
+        + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
+            if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -140,7 +138,6 @@ namespace business.classes.Pessoas
                 {
                     dr.Read();
                     this.Data_nascimento = Convert.ToDateTime(dr["Data_nascimento"]);
-                    this.Nome = Convert.ToString(dr["Nome"]);
                     this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
                     this.Sexo_masculino = Convert.ToBoolean(dr["Sexo_masculino"]);
                     this.Sexo_feminino = Convert.ToBoolean(dr["Sexo_feminino"]);
@@ -154,11 +151,11 @@ namespace business.classes.Pessoas
                     this.Endereco.Estado = Convert.ToString(dr["Estado"]);
                     this.Endereco.Rua = Convert.ToString(dr["Rua"]);
                     this.Endereco.Cep = long.Parse(Convert.ToString(dr["Status"]));
-                    this.Endereco.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Endereco.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
                     this.Telefone.Fone = Convert.ToString(dr["Rua"]);
                     this.Telefone.Celular = Convert.ToString(dr["Celular"]);
                     this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                    this.Telefone.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Telefone.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
 
                     dr.Close();
                     modelos.Add(this);

@@ -1,4 +1,5 @@
-﻿using database;
+﻿using business.classes.Abstrato;
+using database;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,9 +12,12 @@ namespace business.classes
 {
     class BuscaLista : modelocrud, IBuscaLista
     {
-        public List<int> buscarLista(string TipoDaLista, string Ligacao, string nomeDaChave, int id)
+        private string tipolista;
+        private string ligacao;
+
+        public List<int> buscarLista(modelocrud TipoDaLista, modelocrud Ligacao, string nomeDaChave, int id)
         {
-            Select_padrao = $"select * from {TipoDaLista} as M inner join {Ligacao} as L on M.Id=L.Id " +
+            Select_padrao = $"select * from {tipolista} as M inner join {Ligacao} as L on M.Id{tipolista}=L.Id{ligacao} " +
                 $" where {nomeDaChave}='{id}' ";
 
             List<int> modelos = new List<int>();
@@ -31,14 +35,14 @@ namespace business.classes
             {
                 while (dr.Read())
                 {
-                    if(TipoDaLista == "Pessoa")
+                    if(tipolista == "Pessoa")
                     {
                         var numero = int.Parse(dr["Codigo"].ToString());
                         modelos.Add(numero);
                     }
                     else
                     {
-                        var numero = int.Parse(dr["Id"].ToString());
+                        var numero = int.Parse(dr["Id" + tipolista].ToString());
                         modelos.Add(numero);
                     }
                     
@@ -55,6 +59,24 @@ namespace business.classes
                 bd.obterconexao().Close();
             }
             return modelos;
+        }
+
+        private void verificaModelos(modelocrud TipoDaLista, modelocrud Ligacao)
+        {
+            if (TipoDaLista is Pessoa) { tipolista = "Pessoa"; }
+            if (Ligacao is Pessoa) ligacao = "Pessoa";
+
+            if (TipoDaLista is Abstrato.Ministerio)
+            { tipolista = "Ministerio";   }
+            if (Ligacao is Abstrato.Ministerio) ligacao = "Ministerio";
+
+            if (TipoDaLista is Abstrato.Celula)
+            { tipolista = "Celula";  }
+            if (Ligacao is Abstrato.Celula) ligacao = "Celula";
+
+            if (TipoDaLista is Reuniao)
+            { tipolista = "Reuniao";  }
+            if (Ligacao is Reuniao) ligacao = "Reuniao";
         }
 
         public override string alterar(int id)

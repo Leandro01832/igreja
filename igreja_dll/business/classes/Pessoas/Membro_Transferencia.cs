@@ -34,7 +34,7 @@ namespace business.classes.Pessoas
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_Transferencia set Nome_igreja_transferencia='{Nome_igreja_transferencia}', " +
             $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
-            $"  where Id='{id}' " + BDcomum.addNaLista;
+            $"  where IdPessoa='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -42,7 +42,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_Transferencia where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Membro_Transferencia where IdPessoa='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -50,9 +50,9 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Transferencia as MT "
-            + " inner join Membro as M on MT.Id=M.Id "
-            + " inner join PessoaDado as PD on M.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id";
-            if (id != null) Select_padrao += $" where MT.Id='{id}'";
+            + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
+            + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
+            if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -94,9 +94,9 @@ namespace business.classes.Pessoas
                     while (dr.Read())
                     {
                         Membro_Transferencia mt = new Membro_Transferencia();
-                        mt.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         mt.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        mt.Nome = Convert.ToString(dr["Nome"]);                        
+                        mt.NomePessoa = Convert.ToString(dr["NomePessoa"]);                        
                         modelos.Add(mt);
                     }
                     dr.Close();
@@ -118,7 +118,7 @@ namespace business.classes.Pessoas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Membro_transferencia (Nome_cidade_transferencia, " +
-              " Estado_transferencia, Nome_igreja_transferencia, Id) " +
+              " Estado_transferencia, Nome_igreja_transferencia, IdPessoa) " +
               $" values ('{Nome_cidade_transferencia}', '{Estado_transferencia}', '{Nome_igreja_transferencia}', " +
               " IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
@@ -129,7 +129,7 @@ namespace business.classes.Pessoas
 
         public override string ToString()
         {
-            return base.Codigo + " - " + base.Nome;
+            return base.Codigo + " - " + base.NomePessoa;
         }
 
     }

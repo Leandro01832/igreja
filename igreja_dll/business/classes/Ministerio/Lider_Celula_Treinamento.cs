@@ -22,7 +22,7 @@ namespace business.classes.Ministerio
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Lider_Celula_Treinamento (Id) values " +
+            Insert_padrao += $" insert into Lider_Celula_Treinamento (IdMinisterio) values " +
             $" (IDENT_CURRENT('Ministerio')) " + BDcomum.addNaLista;
             bd.SalvarModelo(this);
             
@@ -32,8 +32,8 @@ namespace business.classes.Ministerio
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Lider_Celula_Treinamento " +
-                " as LCT inner join Ministerio as MI on LCT.Id=MI.Id ";
-            if (id != null) Select_padrao += $" where LCT.Id='{id}'";
+                " as LCT inner join Ministerio as MI on LCT.IdMinisterio=MI.IdMinisterio ";
+            if (id != null) Select_padrao += $" where LCT.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
             conecta.Open();
@@ -58,7 +58,7 @@ namespace business.classes.Ministerio
                     while (dr.Read())
                     {
                         Lider_Celula_Treinamento m = new Lider_Celula_Treinamento();
-                        m.Id = int.Parse(dr["Id"].ToString());
+                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
                         m.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(m);
                     }
@@ -79,7 +79,7 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Celula_Treinamento where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Lider_Celula_Treinamento where IdMinisterio='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -93,7 +93,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.Id.ToString() + " - " + base.Nome;
+            return base.IdMinisterio.ToString() + " - " + base.Nome;
         }
 
     }

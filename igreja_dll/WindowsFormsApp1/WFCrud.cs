@@ -274,7 +274,7 @@ namespace WindowsFormsApp1
                 {
                     var pessoa = (PessoaDado)modelo;
                     InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
-                    " - " + pessoa.Nome;
+                    " - " + pessoa.NomePessoa;
                 }
                 else
                 if (modelo is PessoaLgpd)
@@ -287,18 +287,19 @@ namespace WindowsFormsApp1
                 if (modelo is Celula)
                 {
                     var celula = (Celula)modelo;
-                    InfoForm.Text = "Identificação: " + celula.Id.ToString() +
+                    InfoForm.Text = "Identificação: " + celula.IdCelula.ToString() +
                     " - " + celula.Nome;
                 }
                 else if (modelo is Ministerio)
                 {
                     var m = (Ministerio)modelo;
-                    InfoForm.Text = "Identificação: " + m.Id.ToString() +
+                    InfoForm.Text = "Identificação: " + m.IdMinisterio.ToString() +
                     " - " + m.Nome;
                 }
-                else
+                else if (modelo is Reuniao)
                 {
-                    InfoForm.Text = "Identificação: " + modelo.Id.ToString() + " - ";
+                    var p = (Reuniao)modelo;
+                    InfoForm.Text = "Identificação: " + p.IdReuniao.ToString() + " - ";
                 }
 
             }            
@@ -536,13 +537,14 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = Ministerio.recuperarTodosMinisterios();
+                    var listaMinisterio = Ministerio.recuperarTodosMinisterios()
+                        .OfType<Ministerio>().ToList(); ;
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
                         try
                         {
-                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
+                            if (listaMinisterio.FirstOrDefault(i => i.IdMinisterio == int.Parse(item)) == null)
                                 AddNaListaCelulaMinisterios.Replace(item, "");
                         }
                         catch { }

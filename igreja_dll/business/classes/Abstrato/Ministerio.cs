@@ -19,6 +19,8 @@ namespace business.classes.Abstrato
     [Table("Ministerio")]
     public abstract class Ministerio : modelocrud, IAddNalista
     {
+        [Key]
+        public int IdMinisterio { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome { get; set; }
@@ -29,8 +31,6 @@ namespace business.classes.Abstrato
         public virtual List<PessoaMinisterio> Pessoas { get; set;}
 
         public int? Ministro_ { get; set; }
-        [ForeignKey("Ministro_")]
-        public virtual Membro Ministro { get; set; }
 
         public virtual List<MinisterioCelula> Celulas { get; set; }
 
@@ -53,14 +53,14 @@ namespace business.classes.Abstrato
 
             Update_padrao = $" update Ministerio set Nome='{Nome}', " +
             $" Proposito='{Proposito}', Ministro_={ministro} " +
-            $"  where Id='{id}' ";
+            $"  where IdMinisterio='{id}' ";
             
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Ministerio where Id='{id}' ";
+            Delete_padrao = $" delete from Ministerio where IdMinisterio='{id}' ";
             
             return Delete_padrao;
         }
@@ -68,7 +68,7 @@ namespace business.classes.Abstrato
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Ministerio as M  ";
-            if (id != null) Select_padrao += $" where M.Id='{id}'";
+            if (id != null) Select_padrao += $" where M.IdMinisterio='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -86,7 +86,7 @@ namespace business.classes.Abstrato
                 try
                 {
                     dr.Read();
-                    this.Id = int.Parse(dr["Id"].ToString());
+                    this.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
                     this.Nome = Convert.ToString(dr["Nome"]);
                     this.Proposito = Convert.ToString(dr["Proposito"]);
                     this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
@@ -208,8 +208,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
-                + " inner join PessoaMinisterio as PEMI on P.Id=PEMI.PessoaId"
-                + " inner join Ministerio as M on PEMI.MinisterioId=M.Id"
+                + " inner join PessoaMinisterio as PEMI on P.IdPessoa=PEMI.PessoaId"
+                + " inner join Ministerio as M on PEMI.MinisterioId=M.IdMinisterio"
                 + $" where PEMI.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -238,8 +238,8 @@ namespace business.classes.Abstrato
         public List<modelocrud> buscarCelulas(int? id)
         {
             Select_padrao = "select * from Celula as C "
-                + " inner join MinisterioCelula as MICE on C.Id=MICE.CelulaId"
-                + " inner join Ministerio as M on MICE.MinisterioId=M.Id"
+                + " inner join MinisterioCelula as MICE on C.IdCelula=MICE.CelulaId"
+                + " inner join Ministerio as M on MICE.MinisterioId=M.IdMinisterio"
                 + $" where MICE.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();

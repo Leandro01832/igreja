@@ -29,7 +29,7 @@ namespace business.classes.Pessoas
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_Reconciliacao set Data_reconciliacao='{Data_reconciliacao}' " +
-            $" where Id='{id}' " + BDcomum.addNaLista;
+            $" where IdPessoa='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -45,9 +45,9 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Reconciliacao as MR "
-            + " inner join Membro as M on MR.Id=M.Id "
-            + " inner join PessoaDado as PD on M.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
-            if (id != null) Select_padrao += $" where MR.Id='{id}'";
+            + " inner join Membro as M on MR.IdPessoa=M.IdPessoa "
+            + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where MR.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -88,9 +88,9 @@ namespace business.classes.Pessoas
                     while (dr.Read())
                     {
                         Membro_Reconciliacao mr = new Membro_Reconciliacao();
-                        mr.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        mr.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         mr.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        mr.Nome = Convert.ToString(dr["Nome"]);                        
+                        mr.NomePessoa = Convert.ToString(dr["NomePessoa"]);                        
                         modelos.Add(mr);
                     }
 
@@ -111,7 +111,7 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_Reconciliacao (Data_reconciliacao, Id) " +
+            Insert_padrao += " insert into Membro_Reconciliacao (Data_reconciliacao, IdPessoa) " +
                 $" values ({Data_reconciliacao}, IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
@@ -121,7 +121,7 @@ namespace business.classes.Pessoas
 
         public override string ToString()
         {
-            return base.Codigo + " - " + base.Nome;
+            return base.Codigo + " - " + base.NomePessoa;
         }
 
     }

@@ -29,7 +29,7 @@ namespace business.classes.PessoasLgpd
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_AclamacaoLgpd set Denominacao='{Denominacao}' " +
-            $" where Id='{id}' " + BDcomum.addNaLista;
+            $" where IdPessoa='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -37,7 +37,7 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from {this.GetType().Name} where IdPessoa='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -45,9 +45,9 @@ namespace business.classes.PessoasLgpd
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_AclamacaoLgpd as MA "
-            + " inner join MembroLgpd as M on MA.Id=M.Id "
-            + " inner join PessoaLgpd as PL on M.Id=PL.Id inner join Pessoa as P on PL.Id=P.Id";
-            if (id != null) Select_padrao += $" where MA.Id='{id}'";
+            + " inner join MembroLgpd as M on MA.IdPessoa=M.IdPessoa "
+            + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa";
+            if (id != null) Select_padrao += $" where MA.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -89,7 +89,7 @@ namespace business.classes.PessoasLgpd
                     while (dr.Read())
                     {
                         Membro_AclamacaoLgpd ma = new Membro_AclamacaoLgpd();
-                        ma.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        ma.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         ma.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
                         ma.Email = Convert.ToString(dr["Email"]);
                         modelos.Add(ma);
@@ -114,7 +114,7 @@ namespace business.classes.PessoasLgpd
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_aclamacaoLgpd (Denominacao, Id) " +
+            Insert_padrao += " insert into Membro_aclamacaoLgpd (Denominacao, IdPessoa) " +
                 $" values ('{Denominacao}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);

@@ -15,10 +15,11 @@ namespace business.classes
     {
 
         private DateTime data_reuniao;
-        private DateTime horario_inicio;
-        private DateTime horario_fim;
         private string local_reuniao;
-        
+
+        [Key]
+        public int IdReuniao { get; set; }
+
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -44,40 +45,12 @@ namespace business.classes
         [Display(Name = "Horário de início")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-        public DateTime Horario_inicio
-        {
-            get
-            {
-                return horario_inicio;
-            }
-
-            set
-            {
-                horario_inicio = value;
-            }
-        }
+        public TimeSpan? Horario_inicio { get; set; }
 
         [Display(Name = "Horário de termino")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-        public DateTime Horario_fim
-        {
-            get
-            {
-                return horario_fim;
-            }
-
-            set
-            {
-                if (value > horario_inicio)
-                horario_fim = value;
-                else
-                {
-                    MessageBox.Show("O horario que termina a reunião deve ser maior que o horario de inicio");
-                    horario_fim = horario_inicio.AddHours(1);
-                }
-            }
-        }
+        public TimeSpan? Horario_fim { get; set; }
 
         [Display(Name = "Local da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -100,7 +73,7 @@ namespace business.classes
             }
         }
 
-        public List<ReuniaoPessoa> Pessoas { get; set; }
+        public virtual List<ReuniaoPessoa> Pessoas { get; set; }
 
         AddNalista AddNalista;
 
@@ -111,8 +84,8 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao}', " +
-            $" Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where Id='{id}'"
+            Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao.ToString("yyyy-MM-dd")}', " +
+            $" Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where IdReuniao='{id}'"
             + BDcomum.addNaLista;
 
             bd.Editar(this);
@@ -121,7 +94,7 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Reuniao where Id='{id}' ";
+            Delete_padrao = $"delete from Reuniao where IdReuniao='{id}' ";
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -130,7 +103,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Reuniao as M";
             if (id != null)
-                Select_padrao +=  $" where M.Id='{id}'";
+                Select_padrao +=  $" where M.IdReuniao='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -148,10 +121,10 @@ namespace business.classes
                 try
                 {
                     dr.Read();
-                    this.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                    this.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                    this.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
+                    this.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
+                    this.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
+                    this.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
                     this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
                     modelos.Add(this);
                     dr.Close();
@@ -182,10 +155,10 @@ namespace business.classes
                     while (dr.Read())
                     {
                         Reuniao r = new Reuniao();
-                        r.Data_reuniao = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                        r.Horario_inicio = Convert.ToDateTime(dr["Horario_inicio"].ToString());
-                        r.Horario_fim = Convert.ToDateTime(dr["Horario_fim"].ToString());
-                        r.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        r.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
+                        r.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
+                        r.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
+                        r.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
                         r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
                         modelos.Add(r);
                     }
@@ -212,8 +185,8 @@ namespace business.classes
         {
             Insert_padrao = $"insert into Reuniao (Data_reuniao," +
         " Horario_inicio, Horario_fim, Local_reuniao) values " +
-        $" ('{Data_reuniao.ToString("yyyy-MM-dd")}', '{Horario_inicio.ToString("HH:mm:ss")}', " +
-        $" '{Horario_fim.ToString("HH:mm:ss")}', '{Local_reuniao}')" + BDcomum.addNaLista;
+        $" ('{Data_reuniao.ToString("yyyy-MM-dd")}', '{Horario_inicio.ToString()}', " +
+        $" '{Horario_fim.ToString()}', '{Local_reuniao}')" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
             
@@ -223,8 +196,8 @@ namespace business.classes
         public List<modelocrud> recuperarPessoas(int? id)
         {
             var select = "select * from Pessoa as P inner join " +
-                " ReuniaoPessoa as PERE on P.Id=PERE.PessoaId  inner join Reuniao as R" +
-                $" on PERE.ReuniaoId=R.Id where PERE.ReuniaoId='{id}' ";
+                " ReuniaoPessoa as PERE on P.IdPessoa=PERE.PessoaId  inner join Reuniao as R" +
+                $" on PERE.ReuniaoId=R.IdReuniao where PERE.ReuniaoId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -237,11 +210,11 @@ namespace business.classes
                 return modelos;
             }
 
-            var lista = Pessoa.recuperarTodos();
+            var lista = Pessoa.recuperarTodos().OfType<Pessoa>().ToList();
 
             while (dr.Read())
             {
-                var m = lista.First(i => i.Id == int.Parse(Convert.ToString(dr["PessoaId"])));
+                var m = lista.First(i => i.IdPessoa == int.Parse(Convert.ToString(dr["PessoaId"])));
                 modelos.Add(m);
             }
             dr.Close();
@@ -264,7 +237,7 @@ namespace business.classes
 
         public override string ToString()
         {
-            return base.Id.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
+            return this.IdReuniao.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
         }
     }
 }

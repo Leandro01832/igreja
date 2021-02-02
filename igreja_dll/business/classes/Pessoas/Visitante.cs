@@ -33,7 +33,7 @@ namespace business.classes.Pessoas
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Visitante set Data_visita='{Data_visita.ToString("yyyy-MM-dd")}', " + 
             $"Condicao_religiosa='{Condicao_religiosa}' " +
-            $" where Id='{id}' " + BDcomum.addNaLista;
+            $" where IdPessoa='{id}' " + BDcomum.addNaLista;
             
             bd.Editar(this);
             return Update_padrao;
@@ -41,7 +41,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Visitante where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Visitante where IdPessoa='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -49,8 +49,8 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Visitante as V "
-            + " inner join PessoaDado as PD on V.Id=PD.Id inner join Pessoa as P on PD.Id=P.Id ";
-            if (id != null) Select_padrao += $" where V.Id='{id}' ";
+            + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -94,9 +94,9 @@ namespace business.classes.Pessoas
                     while (dr.Read())
                     {
                         Visitante v = new Visitante();
-                        v.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        v.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         v.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        v.Nome = Convert.ToString(dr["Nome"]);
+                        v.NomePessoa = Convert.ToString(dr["NomePessoa"]);
                         modelos.Add(v);
                     }
                     dr.Close();
@@ -119,7 +119,7 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Visitante (Data_visita, Condicao_religiosa, Id) " +
+            Insert_padrao += $" insert into Visitante (Data_visita, Condicao_religiosa, IdPessoa) " +
             $" values ('{this.Data_visita.ToString("yyyy-MM-dd")}', '{Condicao_religiosa}', IDENT_CURRENT('Pessoa'))"
             + BDcomum.addNaLista;
 
@@ -130,7 +130,7 @@ namespace business.classes.Pessoas
 
         public override string ToString()
         {
-            return base.Codigo + " - " + base.Nome;
+            return base.Codigo + " - " + base.NomePessoa;
         }
 
     }

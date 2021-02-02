@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace business.classes
     [Table("MudancaEstado")]
     public class MudancaEstado : modelocrud, IMudancaEstado
     {
+        [Key]
+        public int IdMudanca { get; set; }
         public string velhoEstado { get; set; }
         public string novoEstado { get; set; }
         public DateTime DataMudanca { get; set; }
@@ -34,9 +37,9 @@ namespace business.classes
             List<Pessoa> lista2 = new List<Pessoa>();
             foreach (var item in lista)
             lista2.Add((Pessoa)item);
-            Pessoa p = lista2.First(i => i.Id == idVelhoEstado);
+            Pessoa p = lista2.First(i => i.IdPessoa == idVelhoEstado);
             estado = p.GetType().Name;
-            p = (Pessoa)p.recuperar(p.Id)[0];
+            p = (Pessoa)p.recuperar(p.IdPessoa)[0];
 
             p.excluir(idVelhoEstado);
 
@@ -44,7 +47,7 @@ namespace business.classes
             var minis = p.Ministerios;
             if(minis != null)
             foreach(var itemMinisterio in minis)
-            addMinisterios += itemMinisterio.Id.ToString() + ", ";
+            addMinisterios += itemMinisterio.Ministerio.IdMinisterio.ToString() + ", ";
             if (minis != null)
             if(minis.Count != 0)
             p.AdicionarNaLista("PessoaMinsterio", p, minis[0], addMinisterios);
@@ -53,7 +56,7 @@ namespace business.classes
             var reu = p.Reuniao;
             if (reu != null)
             foreach (var itemReuniao in reu)
-            addReunioes += itemReuniao.Id.ToString() + ", ";
+            addReunioes += itemReuniao.Reuniao.IdReuniao.ToString() + ", ";
             if (reu != null)
             if(reu.Count != 0)
             p.AdicionarNaLista("ReuniaoPessoa", p, reu[0], addReunioes);
@@ -81,7 +84,7 @@ namespace business.classes
                         Historico = pd.Historico,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
-                        Nome = pd.Nome,
+                        NomePessoa = pd.NomePessoa,
                         Reuniao = pd.Reuniao,
                         Rg = pd.Rg,
                         Ministerios = pd.Ministerios,
@@ -114,7 +117,7 @@ namespace business.classes
                         Historico = pd.Historico,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
-                        Nome = pd.Nome,
+                        NomePessoa = pd.NomePessoa,
                         Reuniao = pd.Reuniao,
                         Rg = pd.Rg,
                         Ministerios = pd.Ministerios,
@@ -148,7 +151,7 @@ namespace business.classes
                         Historico = pd.Historico,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
-                        Nome = pd.Nome,
+                        NomePessoa = pd.NomePessoa,
                         Reuniao = pd.Reuniao,
                         Rg = pd.Rg,
                         Ministerios = pd.Ministerios,
@@ -184,7 +187,7 @@ namespace business.classes
                         Historico = pd.Historico,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
-                        Nome = pd.Nome,
+                        NomePessoa = pd.NomePessoa,
                         Reuniao = pd.Reuniao,
                         Rg = pd.Rg,
                         Ministerios = pd.Ministerios,
@@ -216,7 +219,7 @@ namespace business.classes
                         Historico = pd.Historico,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
-                        Nome = pd.Nome,
+                        NomePessoa = pd.NomePessoa,
                         Reuniao = pd.Reuniao,
                         Rg = pd.Rg,
                         Ministerios = pd.Ministerios,
@@ -248,7 +251,7 @@ namespace business.classes
                         Historico = pd.Historico,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
-                        Nome = pd.Nome,
+                        NomePessoa = pd.NomePessoa,
                         Reuniao = pd.Reuniao,
                         Rg = pd.Rg,
                         Ministerios = pd.Ministerios,
@@ -413,7 +416,7 @@ namespace business.classes
         {
             Update_padrao = $"update MudancaEstado set velhoEstado='{velhoEstado}', " +
            $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', CodigoPessoa='{CodigoPessoa}' " +
-           $"  where Id='{id}' ";
+           $"  where IdMudanca='{id}' ";
             
             bd.Editar(this);
             return Update_padrao;
@@ -421,7 +424,7 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from MudancaEstado as M where M.Id='{id}'";
+            Delete_padrao = $"delete from MudancaEstado as M where M.IdMudanca='{id}'";
             
             bd.Excluir(this);
             return Delete_padrao;
@@ -430,7 +433,7 @@ namespace business.classes
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from MudancaEstado ";
-            if(id != null) Select_padrao += $" as P where  P.Id='{id}'";
+            if(id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
@@ -451,7 +454,7 @@ namespace business.classes
 
                     this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                     this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
                     this.novoEstado = Convert.ToString(dr["novoEstado"]);
                     this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                     dr.Close();
@@ -478,7 +481,7 @@ namespace business.classes
                     {
                         MudancaEstado m = new MudancaEstado();
                         m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                        m.Id = int.Parse(Convert.ToString(dr["Id"]));
+                        m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
                         m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                         m.novoEstado = Convert.ToString(dr["novoEstado"]);
                         m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
@@ -510,7 +513,7 @@ namespace business.classes
 
         public override string ToString()
         {
-            return "ID da mudança: " + base.Id.ToString() + " ID da pessoa: " + this.CodigoPessoa;
+            return "ID da mudança: " + IdMudanca.ToString() + " ID da pessoa: " + this.CodigoPessoa;
         }
     }
 }

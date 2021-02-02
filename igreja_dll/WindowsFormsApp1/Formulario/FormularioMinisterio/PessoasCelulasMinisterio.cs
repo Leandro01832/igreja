@@ -28,14 +28,14 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             .OfType<business.classes.Abstrato.Pessoa>().ToList();
 
             var ministerio = (Ministerio)modelo;
-            if (ministerio.Id == 0)
+            if (ministerio.IdMinisterio == 0)
             {
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
                 {
                     var arr = AddNaListaMinisterioPessoas.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
-                        var modelo = lista.First(m => m.Id == int.Parse(item));
+                        var modelo = lista.First(m => m.IdPessoa == int.Parse(item));
                         txt_pessoas.Text = modelo.Codigo.ToString() + ", ";
                     }
 
@@ -50,7 +50,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 var celulas = mini.Celulas;
                 if (celulas != null)
                     foreach (var item in celulas)
-                        txt_celulas.Text += item.Id.ToString() + ", ";
+                        txt_celulas.Text += item.Celula.IdCelula.ToString() + ", ";
 
                 var pessoas = mini.Pessoas;
                 if (pessoas != null)
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     var modelo = lista.FirstOrDefault(i => i.Codigo == numero);
                     try
                     {
-                        AddNaListaMinisterioPessoas += modelo.Id.ToString() + ", ";
+                        AddNaListaMinisterioPessoas += modelo.IdPessoa.ToString() + ", ";
                     }
                     catch
                     {

@@ -27,7 +27,9 @@ namespace WindowsFormsApp1.Formulario.Reuniao
             lista = business.classes.Abstrato.Pessoa.recuperarTodos()
             .OfType<business.classes.Abstrato.Pessoa>().ToList();
 
-            if(modelo.Id == 0)
+            var p = (business.classes.Reuniao)modelo;
+
+            if(p.IdReuniao == 0)
             {
 
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
@@ -35,13 +37,13 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
-                        var modelo = lista.First(m => m.Id == int.Parse(item));
+                        var modelo = lista.First(m => m.IdPessoa == int.Parse(item));
                         txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                     }
                 }
                     
             }
-            else if (modelo != null)
+            else if (p != null)
             {
                 var reuniao = (business.classes.Reuniao)modelo;
                 var pessoas = reuniao.Pessoas;
@@ -69,7 +71,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                         var modelo = lista.FirstOrDefault(m => m.Codigo == int.Parse(item));
                         try
                         {
-                            AddNaListaReuniaoPessoas += modelo.Id.ToString() + ", ";
+                            AddNaListaReuniaoPessoas += modelo.IdPessoa.ToString() + ", ";
                         }
                         catch
                         {

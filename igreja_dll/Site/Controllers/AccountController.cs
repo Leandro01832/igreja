@@ -178,6 +178,7 @@ namespace Site.Controllers
                 try
                 {
                     p.Email = model.Email;
+                    p.NomePessoa = " - ";
                     p.salvar();
                 }
                 catch { return View(model); }

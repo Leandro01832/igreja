@@ -13,3 +13,16 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Rel
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Release\RdlCompile.compiled
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Release\business.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Release\business.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\business.dll.config
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\business.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\business.pdb
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\EntityFramework.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\MySql.Data.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\EntityFramework.xml
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Release\business.csprojAssemblyReference.cache
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Release\business.csproj.CoreCompileInputs.cache
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Release\business.csproj.CopyComplete
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Release\business.dll
+C:\Users\leand\Documents\codigo-github\projeto-igreja-30-12-2020\igreja_dll\business\obj\Release\business.pdb

@@ -24,7 +24,7 @@ namespace business.classes.Ministerio
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update Supervisor_Celula set Maximo_celula='{Maximo_celula}' where Id='{id}' "
+            Update_padrao += $" update Supervisor_Celula set Maximo_celula='{Maximo_celula}' where IdMinisterio='{id}' "
             + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
@@ -32,15 +32,15 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Supervisor_Celula where Id='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Supervisor_Celula where IdMinisterio='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override List<modelocrud> recuperar(int? id)
         {
-            Select_padrao = "select * from Supervisor_Celula as SC inner join Ministerio as MI on SC.Id=MI.Id ";
-            if (id != null) Select_padrao += $" where SC.Id='{id}'";
+            Select_padrao = "select * from Supervisor_Celula as SC inner join Ministerio as MI on SC.IdMinisterio=MI.IdMinisterio ";
+            if (id != null) Select_padrao += $" where SC.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
             conecta.Open();
@@ -68,7 +68,7 @@ namespace business.classes.Ministerio
                     while (dr.Read())
                     {
                         Supervisor_Celula m = new Supervisor_Celula();
-                        m.Id = int.Parse(dr["Id"].ToString());
+                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
                         m.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(m);
                     }
@@ -90,7 +90,7 @@ namespace business.classes.Ministerio
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Supervisor_Celula (Id, Maximo_celula) values " +
+            Insert_padrao += " insert into Supervisor_Celula (IdMinisterio, Maximo_celula) values " +
             $" (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
             
             bd.SalvarModelo(this);
@@ -100,7 +100,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.Id.ToString() + " - " + base.Nome;
+            return base.IdMinisterio.ToString() + " - " + base.Nome;
         }
 
     }

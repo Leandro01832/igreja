@@ -6,6 +6,7 @@ using System.Data.Entity;
 using business.classes.Abstrato;
 using System.Linq;
 using System.Web;
+using RepositorioEF;
 
 namespace Site.Models.Repository
 {
@@ -26,10 +27,10 @@ namespace Site.Models.Repository
 
         public bool Delete(int id)
         {
-            var condicao = contexto.celula.FirstOrDefault(m => m.Id == id);
+            var condicao = contexto.ministerio.FirstOrDefault(m => m.IdMinisterio == id);
             if (condicao != null)
             {
-                contexto.celula.Remove(contexto.celula.First(m => m.Id == id));
+                contexto.ministerio.Remove(contexto.ministerio.First(m => m.IdMinisterio == id));
                 return true;
             }
             else return false;
@@ -42,7 +43,7 @@ namespace Site.Models.Repository
 
         public IEnumerable<Ministerio> GetAll()
         {
-            return contexto.ministerio.ToList();
+            return contexto.ministerio;
         }
 
         public void Update(Ministerio item)

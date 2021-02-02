@@ -19,6 +19,7 @@ namespace business.classes
 
         private string recebe = "";
         private string preenche = "";
+        private int IdModelo = 0;
 
         public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros)
         {
@@ -32,10 +33,10 @@ namespace business.classes
                 try
                 {
                     var valorId = "";
-                    if (modeloQRecebe.Id == 0)
+                    if (IdModelo == 0)
                         valorId = $"IDENT_CURRENT('{recebe}')";
                     else
-                        valorId = modeloQRecebe.Id.ToString();
+                        valorId = IdModelo.ToString();
 
                     int numero = int.Parse(valor);
                     var insert = $" insert into {NomeTabela} " +
@@ -51,16 +52,19 @@ namespace business.classes
 
         private void verificaModelos(modelocrud modeloQRecebe, modelocrud modeloQPreenche)
         {
-            if (modeloQRecebe is Pessoa) recebe = "Pessoa";
+            if (modeloQRecebe is Pessoa) { recebe = "Pessoa"; var p = (Pessoa)modeloQRecebe; IdModelo = p.IdPessoa; }
             if (modeloQPreenche is Pessoa) preenche = "Pessoa";
 
-            if (modeloQRecebe is Abstrato.Ministerio) recebe = "Ministerio";
+            if (modeloQRecebe is Abstrato.Ministerio)
+            { recebe = "Ministerio"; var p = (Abstrato.Ministerio)modeloQRecebe; IdModelo = p.IdMinisterio; }
             if (modeloQPreenche is Abstrato.Ministerio) preenche = "Ministerio";
 
-            if (modeloQRecebe is Abstrato.Celula) recebe = "Celula";
+            if (modeloQRecebe is Abstrato.Celula)
+            { recebe = "Celula"; var p = (Abstrato.Celula)modeloQRecebe; IdModelo = p.IdCelula; }
             if (modeloQPreenche is Abstrato.Celula) preenche = "Celula";
 
-            if (modeloQRecebe is Reuniao) recebe = "Reuniao";
+            if (modeloQRecebe is Reuniao)
+            { recebe = "Reuniao"; var p = (Reuniao)modeloQRecebe; IdModelo = p.IdReuniao; }
             if (modeloQPreenche is Reuniao) preenche = "Reuniao";
         }
 
@@ -84,7 +88,7 @@ namespace business.classes
         {
             verificaModelos(modeloQRecebe, modeloQPreenche);
 
-            Select_padrao = $"select * from {NomeTabela} where {recebe}Id='{modeloQRecebe.Id}'";
+            Select_padrao = $"select * from {NomeTabela} where {recebe}Id='{IdModelo}'";
             var conecta = bd.obterconexao();
             conecta.Open();
             SqlCommand comando = new SqlCommand(Select_padrao, conecta);

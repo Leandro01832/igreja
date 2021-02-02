@@ -29,9 +29,7 @@ namespace database
         private string update_padrao;
         private string delete_padrao;
         private string select_padrao;
-
-        [Key]
-        public int Id { get; set; }
+        
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
         [NotMapped]

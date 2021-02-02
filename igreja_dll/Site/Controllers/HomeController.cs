@@ -10,6 +10,8 @@ using business.classes.Abstrato;
 using business.classes.PessoasLgpd;
 using business.classes.Intermediario;
 using business.classes;
+using business.classes.Ministerio;
+using RepositorioEF;
 
 namespace Site.Controllers
 {
@@ -29,7 +31,7 @@ namespace Site.Controllers
             MinisterioRepository = ministerioRepository;
             ReuniaoRepository = reuniaoRepository;
         }
-
+        
         public ActionResult Index()
         {
             return View();
@@ -64,18 +66,20 @@ namespace Site.Controllers
 
             if (user != null)
             {
-                var pessoa = banco.pessoas.First(p => p.Codigo == user.Codigo);
-                pessoa.celula_ = id;
-                db.Entry(pessoa).State = EntityState.Modified;
-                banco.SaveChanges();
+                var lista = Pessoa.recuperarTodos();
+                var pe = lista.OfType<Pessoa>().First(p => p.Codigo == user.Codigo);
+                pe = (Pessoa)pe.recuperar(pe.IdPessoa)[0];
+                pe.celula_ = id;
+                pe.alterar(pe.IdPessoa);
             }
-            return View();
+            ViewBag.mensagem = "Parabêns você esta participando da celula!!!";
+            return View("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public JsonResult ParticiparMinisterio(int Id)
+        public ActionResult ParticiparMinisterio(int Id)
         {
             var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             var users = usermaneger.Users.ToList();
@@ -83,14 +87,16 @@ namespace Site.Controllers
 
             if(user != null)
             {
+                Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Ministerio ministerio = banco.ministerio.Find(Id);
-                Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);                
-                pessoa = banco.pessoas.Find(pessoa.Id);
-                banco.PessoaMinisterio
-                .Add(new PessoaMinisterio { Pessoa = pessoa, Ministerio = ministerio });
-                banco.SaveChanges();
+                ministerio.RemoverDaLista("PessoaMinisterio", ministerio, new VisitanteLgpd(), pessoa.IdPessoa + ", ");
+
+                ministerio.alterar(Id);
             }
-            return Json("");
+
+            ViewBag.mensagem = "Parabêns você esta participando do ministério!!!";
+
+            return View("Index");
         }
 
         [HttpPost]
@@ -104,14 +110,16 @@ namespace Site.Controllers
 
             if (user != null)
             {
-                Reuniao reuniao = banco.reuniao.Find(Id);
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
-                pessoa = banco.pessoas.Find(pessoa.Id);
-                banco.ReuniaoPessoa
-                .Add(new ReuniaoPessoa { Pessoa = pessoa, Reuniao = reuniao });
-                banco.SaveChanges();
+                Reuniao reuniao = banco.reuniao.Find(Id);
+                reuniao.RemoverDaLista("ReuniaoPessoa", reuniao, new VisitanteLgpd(), pessoa.IdPessoa + ", ");
+
+                reuniao.alterar(Id);
             }
-            return View();
+
+            ViewBag.mensagem = "Parabêns você esta participando da reunião!!!";
+
+            return View("Index");
         }
 
         public ActionResult About()

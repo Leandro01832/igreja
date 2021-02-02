@@ -28,7 +28,7 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into PessoaLgpd (Id) values (IDENT_CURRENT('Pessoa')) ";            
+            Insert_padrao += " insert into PessoaLgpd (IdPessoa) values (IDENT_CURRENT('Pessoa')) ";            
             
             return Insert_padrao;
         }
@@ -42,7 +42,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.Id='{id}' " 
+            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.IdPessoa='{id}' " 
             + base.excluir(id);            
             
             return Delete_padrao;
@@ -51,7 +51,7 @@ namespace business.classes.Pessoas
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from PessoaLgpd as PL ";
-            if (id != null) Select_padrao += $" where PL.Id='{id}'";
+            if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();

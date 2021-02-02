@@ -18,8 +18,8 @@ namespace WindowsFormsApp1.Formulario.Reuniao
             {
                 var reuniao = (business.classes.Reuniao)modelo;
                 txt_local_reuniao.Text = reuniao.Local_reuniao;
-                mask_horario_final.Text = reuniao.Horario_fim.ToString("HH:mm:ss");
-                mask_horario_inicio.Text = reuniao.Horario_inicio.ToString("HH:mm:ss");
+                mask_horario_final.Text = reuniao.Horario_fim.ToString();
+                mask_horario_inicio.Text = reuniao.Horario_inicio.ToString();
                 mask_data_reuniao.Text = reuniao.Data_reuniao.ToString("dd/MM/yyyy");
             }
         }
@@ -60,7 +60,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
             var reuniao = (business.classes.Reuniao)modelo;
             try
             {
-                reuniao.Horario_inicio = Convert.ToDateTime(mask_horario_inicio.Text);
+                reuniao.Horario_inicio = TimeSpan.Parse(mask_horario_inicio.Text);
             }
             catch { }
         }
@@ -70,7 +70,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
             var reuniao = (business.classes.Reuniao)modelo;
             try
             {
-                reuniao.Horario_fim = Convert.ToDateTime(mask_horario_final.Text);
+                reuniao.Horario_fim = TimeSpan.Parse(mask_horario_final.Text);
             }
             catch { }
         }
