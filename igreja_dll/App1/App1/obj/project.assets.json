@@ -391,11 +391,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1\\App1.csproj",
+      "projectUniqueName": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1\\App1.csproj",
       "projectName": "App1",
-      "projectPath": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1\\App1.csproj",
+      "projectPath": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1\\App1.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1\\obj\\",
+      "outputPath": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

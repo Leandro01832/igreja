@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using business.classes.Ministerio;
 using database;
 using business.classes.Intermediario;
+using Newtonsoft.Json;
 
 namespace business.classes.Abstrato
 {
@@ -27,11 +28,11 @@ namespace business.classes.Abstrato
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Proposito { get; set; }
-
+        [JsonIgnore]
         public virtual List<PessoaMinisterio> Pessoas { get; set;}
 
         public int? Ministro_ { get; set; }
-
+        [JsonIgnore]
         public virtual List<MinisterioCelula> Celulas { get; set; }
 
         [Display(Name = "Maximo de pessoas")]

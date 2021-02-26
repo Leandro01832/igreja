@@ -194,7 +194,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CelulaApiController.cs" />
     <Compile Include="Controllers\Api\LoginApiController.cs" />
+    <Compile Include="Controllers\Api\MinisterioCelulaApiController.cs" />
     <Compile Include="Controllers\Api\PessoaApiController.cs" />
+    <Compile Include="Controllers\Api\PessoaMinisterioApiController.cs" />
+    <Compile Include="Controllers\Api\ReuniaoPessoaApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
@@ -205,7 +208,10 @@
     <Compile Include="Models\Api\CelulaApi.cs" />
     <Compile Include="Models\Api\MinisterioApi.cs" />
     <Compile Include="Controllers\Api\MinisterioApiController.cs" />
+    <Compile Include="Models\Api\MinisterioCelulaApi.cs" />
     <Compile Include="Models\Api\PessoaApi.cs" />
+    <Compile Include="Models\Api\PessoaMinisterioApi.cs" />
+    <Compile Include="Models\Api\ReuniaoPessoaApi.cs" />
     <Compile Include="Models\Roteamento.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

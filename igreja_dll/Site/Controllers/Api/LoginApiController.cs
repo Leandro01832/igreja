@@ -51,13 +51,8 @@ namespace Site.Controllers.Api
                 return this.BadRequest("Usuario não encontrado! Dados incorretos!");
             }
 
-            var usuario = db.pessoas.Where(c => c.Email == email)
-                .Include(usu => usu.Ministerios)
-                .Include(usu => usu.Celula)
-                .Include(usu => usu.Chamada)
-                .Include(usu => usu.Reuniao)
-                .Include(usu => usu.Historico)
-                .FirstOrDefault();
+            var usuario = db.pessoas.Where(c => c.Email == email).FirstOrDefault();
+            var user = db.pessoas.Find(usuario.IdPessoa);
 
 
             if (usuario == null)
@@ -65,29 +60,23 @@ namespace Site.Controllers.Api
                 return this.BadRequest("Usuario não encontrado! Dados incorretos!");
             }
 
-            usuario = db.pessoas.Where(c => c.Email == email)
-               .Include(usu => usu.Ministerios)
-                .Include(usu => usu.Celula)
-                .Include(usu => usu.Chamada)
-                .Include(usu => usu.Reuniao)
-                .Include(usu => usu.Historico)
-               .FirstOrDefault();
+            
 
 
 
             PessoaApi PessoaApi = new PessoaApi
             {
-                Historico = usuario.Historico,
-                Reuniao = usuario.Reuniao,
-                Chamada = usuario.Chamada,
-                Celula = usuario.Celula,
-                celula_ = usuario.celula_,
-                Codigo = usuario.Codigo,
-                Email = usuario.Email,
-                Falta = usuario.Falta,
-                IdPessoa = usuario.IdPessoa,
-                Ministerios = usuario.Ministerios,
-                Nome = usuario.NomePessoa
+                Historico = user.Historico,
+                Reuniao = user.Reuniao,
+                Chamada = user.Chamada,
+                Celula = user.Celula,
+                celula_ = user.celula_,
+                Codigo = user.Codigo,
+                Email = user.Email,
+                Falta = user.Falta,
+                IdPessoa = user.IdPessoa,
+                Ministerios = user.Ministerios,
+                Nome = user.NomePessoa
             };
 
             return this.Ok(PessoaApi);

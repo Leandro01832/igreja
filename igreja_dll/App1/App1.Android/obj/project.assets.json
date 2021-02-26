@@ -840,11 +840,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1.Android\\App1.Android.csproj",
+      "projectUniqueName": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1.Android\\App1.Android.csproj",
       "projectName": "App1.Android",
-      "projectPath": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1.Android\\App1.Android.csproj",
+      "projectPath": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1.Android\\App1.Android.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1.Android\\obj\\",
+      "outputPath": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -861,8 +861,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1\\App1.csproj": {
-              "projectPath": "C:\\Users\\leand\\Documents\\codigo-github\\projeto-igreja-30-12-2020\\igreja_dll\\App1\\App1\\App1.csproj"
+            "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1\\App1.csproj": {
+              "projectPath": "C:\\Users\\leand\\Documents\\codigo-github\\Igreja\\igreja_dll\\App1\\App1\\App1.csproj"
             }
           }
         }

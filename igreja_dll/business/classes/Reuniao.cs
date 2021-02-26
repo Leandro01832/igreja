@@ -2,6 +2,7 @@
 using business.classes.Intermediario;
 using database;
 using database.banco;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -72,7 +73,7 @@ namespace business.classes
                 }
             }
         }
-
+        [JsonIgnore]
         public virtual List<ReuniaoPessoa> Pessoas { get; set; }
 
         AddNalista AddNalista;

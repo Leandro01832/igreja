@@ -1,4 +1,5 @@
 ﻿using database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -13,8 +14,10 @@ namespace business.classes.Intermediario
    public class MinisterioCelula : modelocrud
     {
         public int CelulaId { get; set; }
+        [JsonIgnore]
         public virtual Abstrato.Celula Celula { get; set; }
         public int MinisterioId { get; set; }
+        [JsonIgnore]
         public virtual Abstrato.Ministerio Ministerio { get; set; }
 
         public override string alterar(int id)

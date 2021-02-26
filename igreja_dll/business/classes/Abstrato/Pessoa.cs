@@ -2,6 +2,7 @@
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -49,19 +50,21 @@ namespace business.classes.Abstrato
         public int Falta { get; set; }        
         public int? celula_ { get; set; }
         [ForeignKey("celula_")]
+        [JsonIgnore]
         public virtual Celula Celula { get; set; }
-
+        [JsonIgnore]
         public virtual Chamada Chamada { get; set; }
-       
+        [JsonIgnore]
         public virtual List<PessoaMinisterio> Ministerios { get; set; }
-
+        [JsonIgnore]
         public virtual List<Historico> Historico { get; set; }
 
+        [JsonIgnore]
         public virtual List<ReuniaoPessoa> Reuniao { get; set; }
         
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
-
+        [JsonIgnore]
         private MudancaEstado MudancaEstado;
 
         #endregion

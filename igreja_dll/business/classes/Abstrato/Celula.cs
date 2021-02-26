@@ -3,6 +3,7 @@ using business.classes.Celulas;
 using business.classes.Intermediario;
 using database;
 using database.banco;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -31,15 +32,15 @@ namespace business.classes.Abstrato
         [Display(Name = "Horário")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-        public TimeSpan? Horario { get; set; }        
-
+        public TimeSpan? Horario { get; set; }
+        [JsonIgnore]
         public virtual List<Pessoa> Pessoas { get; set; }
 
         [Display(Name = "Máximo de pessoas")]
         public int Maximo_pessoa { get; set; }
-
+        [JsonIgnore]
         public virtual List<MinisterioCelula> Ministerios { get; set; }
-
+        [JsonIgnore]
         public virtual EnderecoCelula EnderecoCelula { get; set; }
 
         AddNalista AddNalista;
