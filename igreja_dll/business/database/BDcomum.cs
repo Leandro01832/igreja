@@ -11,8 +11,8 @@ namespace database.banco
     public class BDcomum
     {
         static string path = Directory.GetCurrentDirectory();
-      //  public static string conecta = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
-        public static string conecta = $@"Data Source=DatabaseIgreja.mssql.somee.com;packet size=4096;user id=igrejadedeus_SQLLogin_1;pwd=ltij2t3loe;data source=DatabaseIgreja.mssql.somee.com;persist security info=False;initial catalog=DatabaseIgreja";
+        public static string conecta = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
+      //  public static string conecta = $@"Data Source=DatabaseIgreja.mssql.somee.com;packet size=4096;user id=igrejadedeus_SQLLogin_1;pwd=ltij2t3loe;data source=DatabaseIgreja.mssql.somee.com;persist security info=False;initial catalog=DatabaseIgreja";
       
         
         public static string addNaLista;

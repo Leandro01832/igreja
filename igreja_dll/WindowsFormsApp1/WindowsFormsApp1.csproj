@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -709,7 +709,6 @@
       <DependentUpon>WFCrud.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\business.dll.config" />
-    <None Include="bin\Debug\relatorio\relatorio.pdf" />
     <None Include="bin\Debug\WindowsFormsApp1.exe.config" />
     <None Include="DatabaseDataSet.xsc">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
@@ -760,37 +759,11 @@
     </Content>
     <Content Include="bin\Debug\EntityFramework.dll" />
     <Content Include="bin\Debug\EntityFramework.xml" />
-    <Content Include="bin\Debug\Fotos\124232344.jpg" />
-    <Content Include="bin\Debug\Fotos\14 - 1.jpg" />
-    <Content Include="bin\Debug\Fotos\20200220_175817.jpg" />
-    <Content Include="bin\Debug\Fotos\20200220_175848.jpg" />
-    <Content Include="bin\Debug\Fotos\20200220_180559.jpg" />
-    <Content Include="bin\Debug\Fotos\20200220_181022.jpg" />
-    <Content Include="bin\Debug\Fotos\20200220_182133.jpg" />
-    <Content Include="bin\Debug\Fotos\20200604_095240.jpg" />
-    <Content Include="bin\Debug\Fotos\20200604_095258.jpg" />
-    <Content Include="bin\Debug\Fotos\20200604_095719.jpg" />
-    <Content Include="bin\Debug\Fotos\20200604_095755.jpg" />
-    <Content Include="bin\Debug\Fotos\562810_178489075616743_518036201_n.jpg" />
-    <Content Include="bin\Debug\Fotos\81-814513_mao-com-celular-png-peca-seu-gas-pelo.png" />
-    <Content Include="bin\Debug\Fotos\aproveite-bem-a-vida.jpg" />
-    <Content Include="bin\Debug\Fotos\ciclo_projeto.jpg %281%29.jpg" />
-    <Content Include="bin\Debug\Fotos\ciclo_projeto.jpg.png" />
-    <Content Include="bin\Debug\Fotos\conta de luz.jpg" />
-    <Content Include="bin\Debug\Fotos\criacao-de-sites-.png" />
-    <Content Include="bin\Debug\Fotos\depositphotos_17717907-Vector-illustration-crying-eyes.jpg" />
-    <Content Include="bin\Debug\Fotos\download.jpg" />
-    <Content Include="bin\Debug\Fotos\hqdefault.jpg" />
-    <Content Include="bin\Debug\Fotos\images %282%29.jpg" />
-    <Content Include="bin\Debug\Fotos\images %283%29.jpg" />
-    <Content Include="bin\Debug\Fotos\images.jpg" />
-    <Content Include="bin\Debug\Fotos\informatica.jpg" />
-    <Content Include="bin\Debug\Fotos\mao-segurando-o-dispositivo-de-smartphone_135649-95.jpg" />
-    <Content Include="bin\Debug\Fotos\museu8.jpg" />
-    <Content Include="bin\Debug\Fotos\propaganda.jpg" />
+    <Content Include="bin\Debug\Fotos\foto.jpg" />
     <Content Include="bin\Debug\itextsharp.dll" />
     <Content Include="bin\Debug\itextsharp.xml" />
     <Content Include="bin\Debug\MySql.Data.dll" />
+    <Content Include="bin\Debug\relatorio\relatorio.jpg" />
     <Content Include="bin\Debug\WindowsFormsApp1.exe" />
     <Content Include="bin\Debug\WindowsFormsApp1.pdb" />
   </ItemGroup>
