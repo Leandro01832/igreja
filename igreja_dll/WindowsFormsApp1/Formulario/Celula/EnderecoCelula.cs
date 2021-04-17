@@ -22,6 +22,19 @@ namespace WindowsFormsApp1.Formulario.Celula
         private void EnderecoCelula_Load(object sender, EventArgs e)
         {
             this.Text = " - Endereço da celula";
+
+            if (modelo != null)
+            {
+                var p = (business.classes.Abstrato.Celula)modelo;
+                textpais.Text = p.EnderecoCelula.Pais;
+                text_cep.Text = p.EnderecoCelula.Cep.ToString();
+                text_estado.Text = p.EnderecoCelula.Estado;
+                text_cidade.Text = p.EnderecoCelula.Cidade;
+                text_bairro.Text = p.EnderecoCelula.Bairro;
+                text_rua.Text = p.EnderecoCelula.Rua;
+                text_complemento.Text = p.EnderecoCelula.Complemento;
+                text_numero.Text = p.EnderecoCelula.Numero_casa.ToString();
+            }
         }
 
         private void textpais_TextChanged(object sender, EventArgs e)
@@ -68,8 +81,17 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         private void text_numero_TextChanged(object sender, EventArgs e)
         {
-            var c = (business.classes.Abstrato.Celula)modelo;
-            c.EnderecoCelula.Numero_casa = int.Parse(text_numero.Text);
+            try
+            {
+                var c = (business.classes.Abstrato.Celula)modelo;
+                c.EnderecoCelula.Numero_casa = int.Parse(text_numero.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Digite apenas numeros.");
+                text_numero.Text = "";
+                text_numero.Focus();
+            }
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.MasterDetail"
+             xmlns:pages="clr-namespace:AplicativoXamarin.Views"
+              >
+  <MasterDetailPage.Master>
+    <pages:MasterDetailMaster x:Name="MasterPage" />
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+        <NavigationPage x:Name="Navigator" BarBackgroundColor="{StaticResource AcentColor}">        
+      <x:Arguments>
+        <pages:MasterDetailDetail />
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

@@ -35,8 +35,11 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     var arr = AddNaListaMinisterioPessoas.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
-                        var modelo = lista.First(m => m.IdPessoa == int.Parse(item));
-                        txt_pessoas.Text = modelo.Codigo.ToString() + ", ";
+                        if(item != "")
+                        {
+                            var modelo = lista.First(m => m.IdPessoa == int.Parse(item));
+                            txt_pessoas.Text = modelo.Codigo.ToString() + ", ";
+                        }                        
                     }
 
                 }
@@ -79,6 +82,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 try
                 {
                     int numero = int.Parse(item);
+                    
                     var modelo = lista.FirstOrDefault(i => i.Codigo == numero);
                     try
                     {
@@ -94,10 +98,13 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 }
                 catch
                 {
-                    AddNaListaMinisterioPessoas = "";
-                    txt_pessoas.Text = "";
-                    txt_pessoas.Focus();
-                    MessageBox.Show("Informe numeros de identificação de pessoas.");
+                    if(item != "")
+                    {
+                        AddNaListaMinisterioPessoas = "";
+                        txt_pessoas.Text = "";
+                        txt_pessoas.Focus();
+                        MessageBox.Show("Informe numeros de identificação de pessoas.");
+                    }                    
                 }
             }
         }

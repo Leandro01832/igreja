@@ -27,6 +27,15 @@ namespace WindowsFormsApp1.Formulario.Celula
         private void DadoCelula_Load(object sender, EventArgs e)
         {
                 this.Text = " - Dados de celula.";
+
+            if (modelo != null)
+            {
+                var p = (business.classes.Abstrato.Celula)modelo;
+                txt_nome_celula.Text = p.Nome;
+                txt_dia_semana.Text = p.Dia_semana;
+                mask_horario.Text = p.Horario.ToString();
+
+            }
         }
 
         private void txt_nome_celula_TextChanged(object sender, EventArgs e)

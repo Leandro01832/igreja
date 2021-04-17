@@ -52,7 +52,13 @@ namespace Site.Controllers.Api
             }
 
             var usuario = db.pessoas.Where(c => c.Email == email).FirstOrDefault();
-            var user = db.pessoas.Find(usuario.IdPessoa);
+            var user = db.pessoas
+                .Include(p => p.Ministerios)
+                .Include(p => p.Celula)
+               // .Include(p => p.Chamada)
+                .Include(p => p.Historico)
+                .Include(p => p.Reuniao)
+                .First(p => p.IdPessoa == usuario.IdPessoa);
 
 
             if (usuario == null)

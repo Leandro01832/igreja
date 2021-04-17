@@ -1,4 +1,5 @@
-﻿using database;
+﻿using business.classes.Abstrato;
+using database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,14 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             lista = new List<business.classes.Abstrato.Pessoa>();
             lista = business.classes.Abstrato.Pessoa.recuperarTodos()
             .OfType<business.classes.Abstrato.Pessoa>().ToList();
+
+            if (modelo != null)
+            {
+                var p = (Ministerio)modelo;
+                txt_nome_ministerio.Text = p.Nome;
+                txt_proposito.Text = p.Proposito;
+                txt_ministro.Text = p.Ministro_.ToString();
+            }
         }
 
         private void txt_nome_ministerio_TextChanged(object sender, EventArgs e)

@@ -52,13 +52,28 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(Celula))]
         public async Task<IHttpActionResult> GetCelula(int id)
         {
-            Celula celula = await db.celula.FindAsync(id);
-            if (celula == null)
+            Celula item = await db.celula
+                .Include(c => c.Pessoas)
+                .Include(c => c.Ministerios)
+                .FirstAsync(c => c.IdCelula == id);
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return Ok(celula);
+            CelulaApi modelo = new CelulaApi
+            {
+                Ministerios = item.Ministerios,
+                Pessoas = item.Pessoas,
+                Dia_semana = item.Dia_semana,
+                EnderecoCelula = item.EnderecoCelula,
+                Horario = item.Horario,
+                IdCelula = item.IdCelula,
+                Maximo_pessoa = item.Maximo_pessoa,
+                Nome = item.Nome
+            };
+
+            return Ok(modelo);
         }
 
         // PUT: api/CelulaApi/5
