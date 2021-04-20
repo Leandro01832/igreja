@@ -12,8 +12,8 @@ namespace AplicativoXamarin.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        public ICommand EntrarCommand { get; private set; }
-        public DataAccess data { get; set; }
+        public ICommand EntrarCommand { get; private set; }        
+        
 
         public void Logout()
         {
@@ -22,7 +22,6 @@ namespace AplicativoXamarin.ViewModels
 
         public LoginViewModel()
         {
-            data = new DataAccess();
             Lembrar_me = true;
 
             EntrarCommand = new Command(
@@ -40,14 +39,52 @@ namespace AplicativoXamarin.ViewModels
                             var conteudoResultado = await resultado.Content.ReadAsStringAsync();
                             var resultadoLogin =
                             JsonConvert.DeserializeObject<Pessoa>(conteudoResultado);
-                            App.CurrentUser = new UsuarioLogin { Email = usuario, Password = senha };
+                            resultadoLogin.Password = Senha;
+                            App.UserCurrent = resultadoLogin;
+
+                            var data = new DataAccess();
+                            if (Lembrar_me && data.First() == null)
+                            {
+                                data.Insert(new Pessoa
+                                {
+                                    celula_ = resultadoLogin.celula_,
+                                    Codigo = resultadoLogin.Codigo,
+                                    Img = resultadoLogin.Img,
+                                    Falta = resultadoLogin.Falta,
+                                    Email = resultadoLogin.Email,
+                                    Lembrar_me = Lembrar_me,
+                                    NomePessoa = resultadoLogin.NomePessoa,
+                                    Password = Senha
+                                });
+                            }
+                            else if (Lembrar_me && data.First() != null)
+                            {
+                                if (data.First().Email != usuario || 
+                                data.First().Password != senha ||
+                                data.First().Lembrar_me != Lembrar_me)
+                                {
+                                    var user = new Pessoa
+                                    {
+                                        celula_ = resultadoLogin.celula_,
+                                        Codigo = resultadoLogin.Codigo,
+                                        Img = resultadoLogin.Img,
+                                        IdPessoa = data.First().IdPessoa,
+                                        Falta = resultadoLogin.Falta,
+                                        Email = resultadoLogin.Email,
+                                        Lembrar_me = Lembrar_me,
+                                        NomePessoa = resultadoLogin.NomePessoa,
+                                        Password = Senha
+                                    };
+                                    data.Update(user);
+                                }
+                            }                                              
+
                             MessagingCenter.Send<Pessoa>(resultadoLogin,
                            "SucessoLogin");
                         }
 
                         else
                             MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
-
 
                     }
                     catch (Exception exc)
@@ -68,12 +105,16 @@ namespace AplicativoXamarin.ViewModels
         {
             get
             {
-                var modelo = data.First();
-                if (modelo == null)
-                {
-                    return "";
-                }
-                return modelo.Email;
+                var data = new DataAccess();
+                
+                    var modelo = data.First();
+                    if (modelo == null || !modelo.Lembrar_me)
+                    {
+                        return "";
+                    }
+
+                    return modelo.Email;
+                
             }
             set
             {
@@ -86,13 +127,16 @@ namespace AplicativoXamarin.ViewModels
         public string Senha
         {
             get {
-                var modelo = data.First();
-                if (modelo == null)
-                {
-                    return "";
+                var data = new DataAccess();
+                
+                    var modelo = data.First();
+                    if (modelo == null || !modelo.Lembrar_me)
+                    {
+                        return "";
+                    }
+                    return modelo.Password;
                 }
-                return  modelo.Password;
-            }
+            
             set
             {
                 senha = value;
@@ -107,7 +151,6 @@ namespace AplicativoXamarin.ViewModels
             set
             {
                 lembrar_me = value;
-               // ((Command)EntrarCommand).ChangeCanExecute();
             }
         }
 

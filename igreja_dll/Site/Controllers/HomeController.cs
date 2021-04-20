@@ -12,6 +12,10 @@ using business.classes.Intermediario;
 using business.classes;
 using business.classes.Ministerio;
 using RepositorioEF;
+using System.Threading.Tasks;
+using Ecommerce.Classes;
+using business.classes.Pessoas;
+using System.Web;
 
 namespace Site.Controllers
 {
@@ -120,6 +124,49 @@ namespace Site.Controllers
             ViewBag.mensagem = "Parabêns você esta participando da reunião!!!";
 
             return View("Index");
+        }
+        
+
+        [Authorize]
+        public async Task<ActionResult> Perfil()
+        {
+            var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var users = usermaneger.Users.ToList();
+            var user = users.FirstOrDefault(u => u.UserName == User.Identity.GetUserName());
+            var pessoa = await banco.pessoas.FirstAsync(p => p.Email == user.Email);
+
+            ViewBag.Message = "Site da igreja.";
+            return View(pessoa);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Perfil(int? id)
+        {
+            string email = User.Identity.GetUserName();
+            Pessoa pessoa =  banco.pessoas.First(c => c.Email == email);
+          
+
+                if (Request.Files[0] != null)
+                {
+                    var pic = string.Empty;
+                    var folder = "/Content/Imagens";
+                    var file = string.Format("{0}.jpg", pessoa.IdPessoa);
+
+                    var response = FileHelpers.UploadPhoto(Request.Files[0], folder, file);
+                    if (response)
+                    {
+                        pic = string.Format("{0}/{1}", folder, file);
+                        pessoa.Img = pic;
+                    }
+                }
+
+                banco.Entry(pessoa).State = EntityState.Modified;
+                banco.Entry(pessoa.Chamada).State = EntityState.Modified;
+                banco.SaveChanges();
+
+                return View("Perfil", pessoa);
         }
 
         public ActionResult About()

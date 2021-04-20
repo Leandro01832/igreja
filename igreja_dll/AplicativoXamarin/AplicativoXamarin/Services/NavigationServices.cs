@@ -1,4 +1,5 @@
 ﻿using AplicativoXamarin.models;
+using AplicativoXamarin.models.SQLite;
 using AplicativoXamarin.Views;
 using System;
 using System.Collections.Generic;
@@ -30,9 +31,34 @@ namespace AplicativoXamarin.Services
 
                     break;
 
+                case "LogoutPage":
+                    Logout();
+
+                    break;
+
 
                 default: break;
             }
         }
+
+        private void Logout()
+        {
+            var data = new DataAccess();
+            
+                var user = data.First();
+                user.Lembrar_me = false;
+                data.Update(user);
+            
+
+            App.Current.MainPage = new ViewLoginView();
+        }
+
+        public void SetMainPage(Pessoa user)
+        {
+            App.UserCurrent = user;
+            App.Current.MainPage = new MasterDetail(user);
+        }
+
+       
     }
 }

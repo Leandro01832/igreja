@@ -1,4 +1,6 @@
 ﻿using AplicativoXamarin.models;
+using AplicativoXamarin.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +15,15 @@ namespace AplicativoXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterDetail : MasterDetailPage
     {
-        public MasterDetail(Pessoa usuario)
+        public MasterDetail(Pessoa Usuario)
         {
             InitializeComponent();
-            Usuario = usuario;
+            this.user = Usuario;
+            //  user = Usuario;
+
         }
 
-        public Pessoa Usuario { get; }
-
+        public Pessoa user { get; set; }
 
         protected override void OnAppearing()
         {

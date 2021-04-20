@@ -15,7 +15,7 @@ namespace AplicativoXamarin.models.SQLite
         {
             var config = DependencyService.Get<IConfig>();
             connection = new SQLiteConnection(System.IO.Path.Combine(config.DirectoryDB, "Database.db3"), false);
-            connection.CreateTable<UsuarioLogin>();
+            connection.CreateTable<Pessoa>();
         }
 
         public void Insert<T>(T model)
@@ -33,14 +33,14 @@ namespace AplicativoXamarin.models.SQLite
             connection.Delete(model);
         }
 
-        public UsuarioLogin First()
+        public Pessoa First()
         {
-            return connection.Table<UsuarioLogin>().FirstOrDefault();
+            return connection.Table<Pessoa>().FirstOrDefault();
         }
 
-        public List<UsuarioLogin> GetList()
+        public List<Pessoa> GetList()
         {
-            return connection.Table<UsuarioLogin>().ToList();
+            return connection.Table<Pessoa>().ToList();
         }
 
 

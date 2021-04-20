@@ -1240,6 +1240,19 @@
           "lib/win8/_._": {}
         }
       },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        }
+      },
       "Xamarin.Forms/3.4.0.1008975": {
         "type": "package",
         "dependencies": {
@@ -2786,6 +2799,19 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
         }
       },
       "Xamarin.Forms/3.4.0.1008975": {
@@ -4435,6 +4461,19 @@
           "lib/win8/_._": {}
         }
       },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        }
+      },
       "Xamarin.Forms/3.4.0.1008975": {
         "type": "package",
         "dependencies": {
@@ -5806,6 +5845,19 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
         }
       },
       "Xamarin.Forms/3.4.0.1008975": {
@@ -7354,6 +7406,19 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
         }
       },
       "Xamarin.Forms/3.4.0.1008975": {
@@ -9003,6 +9068,19 @@
           "lib/win8/_._": {}
         }
       },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        }
+      },
       "Xamarin.Forms/3.4.0.1008975": {
         "type": "package",
         "dependencies": {
@@ -10549,6 +10627,19 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
         }
       },
       "Xamarin.Forms/3.4.0.1008975": {
@@ -12196,6 +12287,19 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+          "Xamarin.Forms": "3.0.0.446417"
+        },
+        "compile": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll": {}
         }
       },
       "Xamarin.Forms/3.4.0.1008975": {
@@ -19415,6 +19519,28 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+      "sha512": "59HyuAaUzuloQmu/PVCDCJQMRuuhqmIpCQ+d5hH5Qp8AZsa/vDi5ulrXDKRMZSZt/xbXsyZV+aZ/W/SZaYt2Mg==",
+      "type": "package",
+      "path": "xam.plugins.forms.imagecircle/3.0.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid71/ImageCircle.Forms.Plugin.dll",
+        "lib/monoandroid71/ImageCircle.Forms.Plugin.xml",
+        "lib/netstandard1.0/ImageCircle.Forms.Plugin.dll",
+        "lib/netstandard1.0/ImageCircle.Forms.Plugin.xml",
+        "lib/netstandard2.0/ImageCircle.Forms.Plugin.dll",
+        "lib/netstandard2.0/ImageCircle.Forms.Plugin.xml",
+        "lib/uap10.0.16299/ImageCircle.Forms.Plugin.dll",
+        "lib/uap10.0.16299/ImageCircle.Forms.Plugin.pri",
+        "lib/uap10.0.16299/ImageCircle.Forms.Plugin.xml",
+        "lib/xamarinios10/ImageCircle.Forms.Plugin.dll",
+        "lib/xamarinios10/ImageCircle.Forms.Plugin.xml",
+        "xam.plugins.forms.imagecircle.3.0.0.5.nupkg.sha512",
+        "xam.plugins.forms.imagecircle.nuspec"
+      ]
+    },
     "Xamarin.Forms/3.4.0.1008975": {
       "sha512": "tM9syeev45u92OFENGjq+Zw8WiEwLJFiXe317XpL9SY2RRk9sm2fc1lDVjzwz0da+5ZP5fi24NAPsPQdxBdMwQ==",
       "type": "package",
@@ -19572,6 +19698,7 @@
       "SQLite.Net.Platform.XamarinAndroidN >= 3.1.1",
       "SQLiteNetExtensions >= 2.1.0",
       "System.Net.Http >= 4.3.4",
+      "Xam.Plugins.Forms.ImageCircle >= 3.0.0.5",
       "Xamarin.Forms >= 3.4.0.1008975",
       "sqlite-net-pcl >= 1.7.335"
     ]
@@ -19644,6 +19771,10 @@
           "System.Net.Http": {
             "target": "Package",
             "version": "[4.3.4, )"
+          },
+          "Xam.Plugins.Forms.ImageCircle": {
+            "target": "Package",
+            "version": "[3.0.0.5, )"
           },
           "Xamarin.Forms": {
             "target": "Package",

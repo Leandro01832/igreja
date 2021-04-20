@@ -4,5 +4,6 @@
     <SelectedDevice>Samsung SM-J410G</SelectedDevice>
     <DefaultDevice>Android_Accelerated_x86_Oreo</DefaultDevice>
     <ProjectView>ShowAllFiles</ProjectView>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault.NoActionBar.Fullscreen</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

@@ -6,8 +6,8 @@ namespace AplicativoXamarin.models
 {
    public class Login
     {
-        public string email { get; private set; }
-        public string senha { get; private set; }
+        public string email { get;  set; }
+        public string senha { get;  set; }
         public bool lembrar { get; set; }
 
         public Login(string email, string senha, bool lembrar)

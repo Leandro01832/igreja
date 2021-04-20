@@ -11,6 +11,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace business.classes.Abstrato
@@ -28,10 +29,13 @@ namespace business.classes.Abstrato
             };
         }
 
-        //Propriedades
-        #region
+       
+        #region Properties
             
         AddNalista AddNalista;
+
+        [NotMapped]
+        public HttpPostedFileBase FiguraFile { get; set; }
 
         [Key]
         public int IdPessoa { get; set; }

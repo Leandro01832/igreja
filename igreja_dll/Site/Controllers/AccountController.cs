@@ -163,6 +163,7 @@ namespace Site.Controllers
                     m = new VisitanteLgpd();
                     var v = (VisitanteLgpd)m;
                     v.Data_visita = DateTime.Now;
+                    v.Condicao_religiosa = "Não registrado";
                 }
                     
                 if (model.MembroAclamacao)

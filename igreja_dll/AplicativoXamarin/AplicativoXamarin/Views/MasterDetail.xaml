@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AplicativoXamarin.Views.MasterDetail"
              xmlns:pages="clr-namespace:AplicativoXamarin.Views"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
               >
   <MasterDetailPage.Master>
     <pages:MasterDetailMaster x:Name="MasterPage" />
@@ -10,7 +11,7 @@
   <MasterDetailPage.Detail>
         <NavigationPage x:Name="Navigator" BarBackgroundColor="{StaticResource AcentColor}">        
       <x:Arguments>
-        <pages:MasterDetailDetail />
+        <pages:MasterDetailDetail  />
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>

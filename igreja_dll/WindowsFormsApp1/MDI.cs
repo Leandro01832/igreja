@@ -4,6 +4,8 @@ using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using System;
 using System.Drawing;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
@@ -467,6 +469,23 @@ namespace WindowsFormsApp1
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
             ir.imprimir(new MudancaEstado(), tipo);
+        }
+
+        private async Task envioDeArquivosPServidorToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        {
+            string StartDirectory = @"c:\Users\exampleuser\start";
+            string EndDirectory = @"c:\Users\exampleuser\end";
+
+            foreach (string filename in Directory.EnumerateFiles(StartDirectory))
+            {
+                using (FileStream SourceStream = File.Open(filename, FileMode.Open))
+                {
+                    using (FileStream DestinationStream = File.Create(EndDirectory + filename.Substring(filename.LastIndexOf('\\'))))
+                    {
+                        await SourceStream.CopyToAsync(DestinationStream);
+                    }
+                }
+            }
         }
     }
 }

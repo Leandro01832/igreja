@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using business.classes.Abstrato;
+using Microsoft.AspNet.Identity;
 using repositorioEF;
 using RepositorioEF;
 
@@ -116,6 +118,8 @@ namespace Site.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
 
         protected override void Dispose(bool disposing)
         {

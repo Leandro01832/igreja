@@ -11,24 +11,13 @@ namespace AplicativoXamarin.ViewModels
 {
     public class LoginServices
     {
-        public DataAccess data { get; set; }
 
         public LoginServices()
         {
-            data = new DataAccess();
         }
 
         public async Task<HttpResponseMessage> FazerLogin(Login login)
         {
-            if (login.lembrar)
-            {
-                data.Insert(new UsuarioLogin
-                {
-                     Email = login.email,
-                      Password = login.senha
-                });
-            }            
-
             using (var cliente = new HttpClient())
             {
                 cliente.BaseAddress = new Uri("http://igrejadeusbom.somee.com");

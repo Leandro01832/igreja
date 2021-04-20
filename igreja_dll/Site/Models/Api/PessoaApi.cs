@@ -21,5 +21,6 @@ namespace Site.Models.Api
         public virtual List<PessoaMinisterio> Ministerios { get; set; }
         public virtual List<Historico> Historico { get; set; }
         public virtual List<ReuniaoPessoa> Reuniao { get; set; }
+        public string Img { get; set; }
     }
 }

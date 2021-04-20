@@ -12,9 +12,16 @@ namespace AplicativoXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterDetailDetail : ContentPage
     {
+
         public MasterDetailDetail()
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
     }
 }

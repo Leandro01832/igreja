@@ -4,6 +4,10 @@ using AplicativoXamarin.models;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AplicativoXamarin.Infraestructure;
+using AplicativoXamarin.models.SQLite;
+using AplicativoXamarin.ViewModels;
+using Newtonsoft.Json;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AplicativoXamarin
@@ -12,21 +16,40 @@ namespace AplicativoXamarin
     {
         public static NavigationPage Navigator { get; internal set; }
         public static MasterDetailPage Master { get; internal set; }
-        public static UsuarioLogin CurrentUser { get; internal set; }
+        public static Pessoa UserCurrent { get; internal set; }
+        
 
         public App()
         {
             InitializeComponent();
-
-            MainPage = new ViewLoginView();
+            var data = new DataAccess();
+            
+            var user = data.First();
+            if (user != null && user.Lembrar_me)
+            {
+                var main = MainViewModel.GetInstance();
+                main.LoadUser(user);
+                App.UserCurrent = user;                
+                MainPage = new MasterDetail(data.First());
+            }
+            else
+            {
+                MainPage = new ViewLoginView();
+            }
         }
+
+        
 
         protected override void OnStart()
         {
             MessagingCenter.Subscribe<Pessoa>(this, "SucessoLogin",
                 (usuario) =>
                 {
+                    //new InstanceLocator();
                     //MainPage = new NavigationPage(new ListagemView());
+                    var main = MainViewModel.GetInstance();
+                    main.LoadUser(usuario);
+
                     MainPage = new MasterDetail(usuario);
                 });
         }
