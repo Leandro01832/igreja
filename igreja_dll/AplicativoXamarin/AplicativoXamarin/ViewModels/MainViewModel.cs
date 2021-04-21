@@ -28,6 +28,7 @@ namespace AplicativoXamarin.ViewModels
 
         public MainViewModel()
         {
+            instance = this;
             Menu = new ObservableCollection<MenuItemViewModel>();
             newLogin = new LoginViewModel();
             UsuarioLogado = new UserViewModel();
@@ -58,8 +59,9 @@ namespace AplicativoXamarin.ViewModels
 
         public void LoadUser(Pessoa user)
         {
-                UsuarioLogado.Email = user.Email;
-                UsuarioLogado.Foto = user.Foto;            
+            UsuarioLogado.Email = user.Email;
+            UsuarioLogado.Foto = user.Foto;
+            UsuarioLogado.Codigo = user.Codigo;
         }
 
         private void LoadMenu()
@@ -67,21 +69,21 @@ namespace AplicativoXamarin.ViewModels
             Menu.Add(new MenuItemViewModel
             {
                 icon = "people.png",
-                Title = "Celula",
+                Title = "Minha Celula",
                 PageName = "Celula"
             });
 
             Menu.Add(new MenuItemViewModel
             {
                 icon = "ic_people_roxo.png",
-                Title = "Ministérios",
+                Title = "Meus Ministérios",
                 PageName = "Ministerio"
             });
 
             Menu.Add(new MenuItemViewModel
             {
                 icon = "ic_people_verde.png",
-                Title = "Reuniões",
+                Title = "Minhas Reuniões",
                 PageName = "Reuniao"
             });
 

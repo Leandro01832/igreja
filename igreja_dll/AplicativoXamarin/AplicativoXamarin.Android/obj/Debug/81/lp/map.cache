@@ -3,7 +3,8 @@ FormsViewGroup
 GalaSoft.MvvmLight
 GalaSoft.MvvmLight.Extras
 GalaSoft.MvvmLight.Platform
-ImageCircle.Forms.Plugin
+ImageCircle.Forms.Plugin.Abstractions
+ImageCircle.Forms.Plugin.Android
 Newtonsoft.Json
 SQLite-net
 SQLiteNetExtensions

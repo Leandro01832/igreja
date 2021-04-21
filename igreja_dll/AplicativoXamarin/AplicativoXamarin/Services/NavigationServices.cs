@@ -22,12 +22,12 @@ namespace AplicativoXamarin.Services
                     break;
 
                 case "Ministerio":
-                    await App.Navigator.PushAsync(new MinistryView());
+                    await App.Navigator.PushAsync(new MinistryListView());
 
                     break;
 
                 case "Reuniao":
-                    await App.Navigator.PushAsync(new MeetingView());
+                    await App.Navigator.PushAsync(new ListMeetingView());
 
                     break;
 
@@ -47,17 +47,12 @@ namespace AplicativoXamarin.Services
             
                 var user = data.First();
                 user.Lembrar_me = false;
-                data.Update(user);
-            
+                data.Update(user); 
 
             App.Current.MainPage = new ViewLoginView();
         }
 
-        public void SetMainPage(Pessoa user)
-        {
-            App.UserCurrent = user;
-            App.Current.MainPage = new MasterDetail(user);
-        }
+        
 
        
     }

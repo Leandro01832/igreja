@@ -28,7 +28,7 @@ namespace AplicativoXamarin.models
 
         public string Foto { get { return "http://www.igrejadeusbom.somee.com" + Img; } }
 
-        public string Password { get; internal set; }
+        public string Password { get;  set; }
         public bool Lembrar_me { get; set; }
     }
 

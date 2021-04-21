@@ -13,13 +13,7 @@ namespace AplicativoXamarin.Infraestructure
 
 
         public InstanceLocator()
-        {
-            //var data = new DataAccess();
-            //var user = data.First();
-            //if (user != null)
-            //{
-            //    App.UserCurrent = user;
-            //}
+        {            
             Main = new MainViewModel();
         }
     }

@@ -8,5 +8,6 @@ namespace AplicativoXamarin.ViewModels
     {
         public string Email { get; set; }
         public string Foto { get; set; }
+        public int Codigo { get; set; }
     }
 }

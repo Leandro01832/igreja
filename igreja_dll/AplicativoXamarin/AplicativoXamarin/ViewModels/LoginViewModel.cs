@@ -40,12 +40,12 @@ namespace AplicativoXamarin.ViewModels
                             var resultadoLogin =
                             JsonConvert.DeserializeObject<Pessoa>(conteudoResultado);
                             resultadoLogin.Password = Senha;
-                            App.UserCurrent = resultadoLogin;
+                            
 
                             var data = new DataAccess();
                             if (Lembrar_me && data.First() == null)
                             {
-                                data.Insert(new Pessoa
+                                var p = new Pessoa
                                 {
                                     celula_ = resultadoLogin.celula_,
                                     Codigo = resultadoLogin.Codigo,
@@ -54,8 +54,10 @@ namespace AplicativoXamarin.ViewModels
                                     Email = resultadoLogin.Email,
                                     Lembrar_me = Lembrar_me,
                                     NomePessoa = resultadoLogin.NomePessoa,
-                                    Password = Senha
-                                });
+                                    Password = senha
+                                };
+                                data.Insert(p);
+                                App.UserCurrent = p;
                             }
                             else if (Lembrar_me && data.First() != null)
                             {
@@ -71,11 +73,12 @@ namespace AplicativoXamarin.ViewModels
                                         IdPessoa = data.First().IdPessoa,
                                         Falta = resultadoLogin.Falta,
                                         Email = resultadoLogin.Email,
-                                        Lembrar_me = Lembrar_me,
+                                        Lembrar_me = lembrar_me,
                                         NomePessoa = resultadoLogin.NomePessoa,
-                                        Password = Senha
+                                        Password = senha
                                     };
                                     data.Update(user);
+                                    App.UserCurrent = user;
                                 }
                             }                                              
 

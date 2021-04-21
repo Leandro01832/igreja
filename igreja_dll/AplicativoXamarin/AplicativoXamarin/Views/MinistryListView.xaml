@@ -2,14 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AplicativoXamarin.Views.MinistryListView">
-    <StackLayout Margin="25">
-        <Label Text="Ministérios"
+    <StackLayout Margin="25" Spacing="30">
+        <Label Text="Meus Ministérios"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         <ActivityIndicator IsRunning="{Binding Aguarde}"
                            IsVisible="{Binding Aguarde}">
-        </ActivityIndicator>
-
+        </ActivityIndicator>        
 
         <ListView x:Name="listViewMinisterios" ItemsSource="{Binding Ministerios}" 
                   SelectedItem="{Binding MinisterioSelecionado}">
@@ -40,4 +39,6 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
+
+    
 </ContentPage>

@@ -22,15 +22,16 @@ namespace AplicativoXamarin
         public App()
         {
             InitializeComponent();
+           // MainPage = new TabbedPageView();
             var data = new DataAccess();
-            
+
             var user = data.First();
             if (user != null && user.Lembrar_me)
             {
                 var main = MainViewModel.GetInstance();
                 main.LoadUser(user);
-                App.UserCurrent = user;                
-                MainPage = new MasterDetail(data.First());
+                App.UserCurrent = user;
+                MainPage = new MasterDetail(user);
             }
             else
             {

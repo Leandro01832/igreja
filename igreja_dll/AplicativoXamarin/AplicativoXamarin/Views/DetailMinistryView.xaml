@@ -10,9 +10,9 @@
             <Label  Text="{Binding Ministerio.Nome}"></Label>
             <Label  Text="{Binding Ministerio.Proposito}"></Label>
             <Label  Text="{Binding Ministerio.Ministro_}"></Label>
-            <Button Text="Participar" Command="{Binding ParticiparCommand}"/>
-            <Button Text="Celulas" Command="{Binding CelulasCommand}"/>
-            <Button Text="Pessoas" Command="{Binding PessoasCommand}"/>
+           
+            <Button Text="Celulas do ministério" Command="{Binding CelulasCommand}"/>
+            <Button Text="Pessoas do ministério" Command="{Binding PessoasCommand}"/>
         </StackLayout>
    
 </ContentPage>

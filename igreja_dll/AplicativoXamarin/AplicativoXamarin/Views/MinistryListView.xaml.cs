@@ -14,12 +14,12 @@ namespace AplicativoXamarin.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MinistryListView : ContentPage
 	{
-        private ListagemMinisterioViewModel ViewModel;
+        private ListagemViewModel ViewModel;
 
         public MinistryListView ()
 		{
 			InitializeComponent ();
-             this.ViewModel = new ListagemMinisterioViewModel();
+             this.ViewModel = new ListagemViewModel();
                BindingContext = this.ViewModel;
         }
 

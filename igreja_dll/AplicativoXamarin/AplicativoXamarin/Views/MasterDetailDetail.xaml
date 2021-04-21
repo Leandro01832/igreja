@@ -8,13 +8,13 @@
              Title="Usuario">
 
 
-    <StackLayout BackgroundColor="{StaticResource BackgroundColor}" 
+    <StackLayout BackgroundColor="{StaticResource MenuColor}" 
                  Padding="10"
                  Spacing="10"
                  BindingContext="{Binding UsuarioLogado}">
 
-        <controls:CircleImage Source="{Binding Foto}"  WidthRequest="300" HeightRequest="300"
-               HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" >
+        <controls:CircleImage Source="{Binding Foto}" Aspect="AspectFill"  WidthRequest="300" HeightRequest="300"
+               HorizontalOptions="Center" VerticalOptions="Center">
         </controls:CircleImage>
 
         <Label Text="Seja Bem Vindo!!!" FontSize="Medium" FontAttributes="Bold"
@@ -23,9 +23,16 @@
 
         <Label Text="{Binding Email}" FontSize="Medium"
                VerticalOptions="Center" HorizontalOptions="Center"></Label>
+
+        <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource AcentColor}">
+            <Label Text="Codigo de identificação: " FontSize="Medium" FontAttributes="Bold"
+               VerticalOptions="Center" HorizontalOptions="Center">
+            </Label>
+
+            <Label Text="{Binding Codigo}" FontSize="Medium"
+               VerticalOptions="Center" HorizontalOptions="Center"></Label>
+        </StackLayout>
         
-       
-                     
         
     </StackLayout>
 
