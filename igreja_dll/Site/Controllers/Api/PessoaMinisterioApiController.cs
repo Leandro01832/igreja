@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Intermediario;
 using Site.Models.Api;
+using System.Web.Http.OData;
 
 namespace Site.Controllers.Api
 {
@@ -20,7 +21,8 @@ namespace Site.Controllers.Api
         private DB db = new DB();
 
         // GET: api/PessoaMinisterioApi
-        public IHttpActionResult GetPessoaMinisterio()
+        [EnableQuery]
+        public IQueryable<PessoaMinisterioApi> GetPessoaMinisterio()
         {
             var pessoaMinisterios = db.PessoaMinisterio.Include(e => e.Pessoa).Include(e => e.Ministerio);
 
@@ -38,7 +40,9 @@ namespace Site.Controllers.Api
                 lista.Add(modelo);
             }
 
-            return Ok(lista);
+            IQueryable<PessoaMinisterioApi> retorno = lista.AsQueryable();
+
+            return retorno;
         }
 
         // GET: api/PessoaMinisterioApi/5

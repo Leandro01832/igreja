@@ -16,6 +16,20 @@ namespace AplicativoXamarin.Views
 		public DetailMeetingView (Reuniao reuniao)
 		{
 			InitializeComponent ();
+            BindingContext = reuniao;
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            MessagingCenter.Subscribe<Reuniao>(this, "NaoParticipar",
+               (msg) =>
+               {
+                   Navigation.PushAsync(new DetailMeetingView(msg));
+               });
+
+           
+        }
+    }
 }

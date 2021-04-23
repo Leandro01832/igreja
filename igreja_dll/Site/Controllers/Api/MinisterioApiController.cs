@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.OData;
 using business.classes.Abstrato;
 using repositorioEF;
 using RepositorioEF;
@@ -21,7 +22,8 @@ namespace Site.Controllers.Api
         private DB db = new DB();
 
         // GET: api/MinisterioApi
-        public IHttpActionResult Getministerio()
+        [EnableQuery]
+        public IQueryable<MinisterioApi> Getministerio()
         {
             var ministerios = db.ministerio
                 .Include(m => m.Pessoas)
@@ -43,8 +45,9 @@ namespace Site.Controllers.Api
                 };
                 lista.Add(modelo);
             }
+            IQueryable<MinisterioApi> retorno = lista.AsQueryable();
 
-            return Ok(lista);
+            return retorno;
         }
 
         // GET: api/MinisterioApi/5

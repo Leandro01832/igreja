@@ -16,25 +16,79 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>04/18/2021 11:08:20</publishTime>
+      <publishTime>04/22/2021 18:19:21</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>04/18/2021 11:08:20</publishTime>
+      <publishTime>04/22/2021 18:19:21</publishTime>
     </File>
     <File Include="bin/business.dll">
-      <publishTime>04/18/2021 09:53:04</publishTime>
+      <publishTime>04/22/2021 18:19:05</publishTime>
     </File>
     <File Include="bin/business.dll.config">
       <publishTime>02/25/2021 14:49:40</publishTime>
     </File>
     <File Include="bin/business.pdb">
-      <publishTime>04/18/2021 09:53:04</publishTime>
+      <publishTime>04/22/2021 18:19:05</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/de/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/es/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/fr/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/it/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/ja/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/ko/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -47,6 +101,12 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Edm.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.OData.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -79,13 +139,13 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/Microsoft.Win32.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>02/25/2021 14:49:40</publishTime>
     </File>
     <File Include="bin/netstandard.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -124,13 +184,13 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>11/28/2018 13:04:44</publishTime>
     </File>
     <File Include="bin/repositorioEF.dll">
-      <publishTime>04/18/2021 09:53:04</publishTime>
+      <publishTime>04/22/2021 18:19:05</publishTime>
     </File>
     <File Include="bin/repositorioEF.dll.config">
       <publishTime>02/25/2021 14:49:42</publishTime>
     </File>
     <File Include="bin/repositorioEF.pdb">
-      <publishTime>04/18/2021 09:53:04</publishTime>
+      <publishTime>04/22/2021 18:19:05</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -270,290 +330,305 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
+    <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/ru/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
     <File Include="bin/Site.dll">
-      <publishTime>04/18/2021 11:08:13</publishTime>
+      <publishTime>04/22/2021 18:19:06</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>04/18/2021 11:08:13</publishTime>
+      <publishTime>04/22/2021 18:19:06</publishTime>
     </File>
     <File Include="bin/System.AppContext.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Collections.Concurrent.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Collections.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Collections.NonGeneric.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Collections.Specialized.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.EventBasedAsync.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.TypeConverter.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Console.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Data.Common.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Contracts.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Debug.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Process.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.StackTrace.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.TextWriterTraceListener.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Tools.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.TraceSource.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Tracing.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Drawing.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Dynamic.Runtime.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Globalization.Calendars.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Globalization.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Globalization.Extensions.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.Compression.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.Compression.ZipFile.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.Watcher.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.IsolatedStorage.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.MemoryMappedFiles.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.Pipes.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.IO.UnmanagedMemoryStream.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Linq.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Linq.Expressions.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Linq.Parallel.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Linq.Queryable.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/System.Net.NameResolution.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.NetworkInformation.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Ping.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Requests.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Security.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.Sockets.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.WebHeaderCollection.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.WebSockets.Client.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Net.WebSockets.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.ObjectModel.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Reflection.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Reflection.Extensions.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Reflection.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Resources.Reader.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Resources.ResourceManager.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Resources.Writer.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/System.Runtime.CompilerServices.VisualC.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Extensions.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Handles.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.InteropServices.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.InteropServices.RuntimeInformation.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Numerics.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Formatters.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Json.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Xml.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Claims.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Csp.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Encoding.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Primitives.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.Principal.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Security.SecureString.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
+    </File>
+    <File Include="bin/System.Spatial.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/System.Text.Encoding.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Text.Encoding.Extensions.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Text.RegularExpressions.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.Overlapped.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.Extensions.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.Parallel.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.Thread.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.ThreadPool.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Threading.Timer.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.ValueTuple.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.OData.dll">
+      <publishTime>08/21/2015 00:18:24</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -577,22 +652,22 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:41</publishTime>
     </File>
     <File Include="bin/System.Xml.ReaderWriter.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Xml.XDocument.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Xml.XmlDocument.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Xml.XmlSerializer.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Xml.XPath.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/System.Xml.XPath.XDocument.dll">
-      <publishTime>02/25/2021 13:22:42</publishTime>
+      <publishTime>04/20/2021 13:48:45</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -617,6 +692,24 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/25/2021 14:49:42</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Edm.resources.dll">
+      <publishTime>08/16/2013 10:43:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.OData.resources.dll">
+      <publishTime>08/16/2013 10:55:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/System.Spatial.resources.dll">
+      <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -667,7 +760,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:38</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/18/2021 11:08:15</publishTime>
+      <publishTime>04/22/2021 18:19:09</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -855,6 +948,9 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     <File Include="Scripts/lib/jquery/LICENSE.txt">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
+    <File Include="Scripts/methods_pt.js">
+      <publishTime>02/27/2021 07:29:36</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
@@ -894,11 +990,44 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
+    <File Include="Views/Celula/Create.cshtml">
+      <publishTime>04/22/2021 11:11:25</publishTime>
+    </File>
+    <File Include="Views/Celula/Delete.cshtml">
+      <publishTime>04/22/2021 09:20:02</publishTime>
+    </File>
+    <File Include="Views/Celula/Details.cshtml">
+      <publishTime>04/22/2021 09:20:07</publishTime>
+    </File>
+    <File Include="Views/Celula/Edit.cshtml">
+      <publishTime>04/22/2021 11:16:00</publishTime>
+    </File>
+    <File Include="Views/Celula/Index.cshtml">
+      <publishTime>04/22/2021 09:20:17</publishTime>
+    </File>
+    <File Include="Views/Celula/_Celula_Adolescente.cshtml">
+      <publishTime>04/22/2021 12:56:15</publishTime>
+    </File>
+    <File Include="Views/Celula/_Celula_Adulto.cshtml">
+      <publishTime>04/22/2021 12:59:20</publishTime>
+    </File>
+    <File Include="Views/Celula/_Celula_Casado.cshtml">
+      <publishTime>04/22/2021 12:59:20</publishTime>
+    </File>
+    <File Include="Views/Celula/_Celula_Crianca.cshtml">
+      <publishTime>04/22/2021 12:59:20</publishTime>
+    </File>
+    <File Include="Views/Celula/_Celula_Jovem.cshtml">
+      <publishTime>04/22/2021 12:59:20</publishTime>
+    </File>
+    <File Include="Views/Celula/_EnderecoCelula.cshtml">
+      <publishTime>04/22/2021 12:59:20</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
     <File Include="Views/Home/Celulas.cshtml">
-      <publishTime>02/25/2021 14:49:37</publishTime>
+      <publishTime>04/22/2021 15:37:48</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -933,6 +1062,45 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
+    <File Include="Views/Ministerio/Create.cshtml">
+      <publishTime>04/21/2021 22:59:37</publishTime>
+    </File>
+    <File Include="Views/Ministerio/Delete.cshtml">
+      <publishTime>04/21/2021 19:43:14</publishTime>
+    </File>
+    <File Include="Views/Ministerio/Details.cshtml">
+      <publishTime>04/21/2021 19:43:19</publishTime>
+    </File>
+    <File Include="Views/Ministerio/Edit.cshtml">
+      <publishTime>04/22/2021 09:12:18</publishTime>
+    </File>
+    <File Include="Views/Ministerio/Index.cshtml">
+      <publishTime>04/21/2021 19:43:29</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Lider_Celula.cshtml">
+      <publishTime>04/22/2021 13:04:04</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Lider_Celula_Treinamento.cshtml">
+      <publishTime>04/22/2021 13:05:09</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Lider_Ministerio.cshtml">
+      <publishTime>04/22/2021 13:05:09</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Lider_Ministerio_Treinamento.cshtml">
+      <publishTime>04/22/2021 13:05:09</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Supervisor_Celula.cshtml">
+      <publishTime>04/22/2021 13:05:09</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Supervisor_Celula_Treinamento.cshtml">
+      <publishTime>04/22/2021 13:05:09</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Supervisor_Ministerio.cshtml">
+      <publishTime>04/22/2021 13:05:09</publishTime>
+    </File>
+    <File Include="Views/Ministerio/_Supervisor_Ministerio_Treinamento.cshtml">
+      <publishTime>04/22/2021 13:05:07</publishTime>
+    </File>
     <File Include="Views/Pessoa/Create.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
@@ -948,6 +1116,21 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     <File Include="Views/Pessoa/Index.cshtml">
       <publishTime>04/11/2021 20:03:13</publishTime>
     </File>
+    <File Include="Views/Reuniao/Create.cshtml">
+      <publishTime>04/22/2021 09:17:12</publishTime>
+    </File>
+    <File Include="Views/Reuniao/Delete.cshtml">
+      <publishTime>04/22/2021 09:17:17</publishTime>
+    </File>
+    <File Include="Views/Reuniao/Details.cshtml">
+      <publishTime>04/22/2021 09:17:22</publishTime>
+    </File>
+    <File Include="Views/Reuniao/Edit.cshtml">
+      <publishTime>04/22/2021 09:17:27</publishTime>
+    </File>
+    <File Include="Views/Reuniao/Index.cshtml">
+      <publishTime>04/22/2021 09:17:32</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
@@ -955,7 +1138,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/25/2021 14:49:37</publishTime>
+      <publishTime>04/22/2021 12:04:48</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -967,7 +1150,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/11/2021 22:57:02</publishTime>
+      <publishTime>04/22/2021 18:19:07</publishTime>
     </File>
   </ItemGroup>
 </Project>

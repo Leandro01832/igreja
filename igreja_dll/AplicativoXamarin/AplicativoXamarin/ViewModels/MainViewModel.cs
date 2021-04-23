@@ -89,6 +89,20 @@ namespace AplicativoXamarin.ViewModels
 
             Menu.Add(new MenuItemViewModel
             {
+                icon = "ic_people_verde.png",
+                Title = "Participar de Reuniões",
+                PageName = "JoinMeetingView"
+            });
+
+            Menu.Add(new MenuItemViewModel
+            {
+                icon = "ic_people_verde.png",
+                Title = "Participar de Ministérios",
+                PageName = "JoinMinistryView"
+            });
+
+            Menu.Add(new MenuItemViewModel
+            {
                 icon = "ic_action_exit.png",
                 Title = "Sair",
                 PageName = "LogoutPage"

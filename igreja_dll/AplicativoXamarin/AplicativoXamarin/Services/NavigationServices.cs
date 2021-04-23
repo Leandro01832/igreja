@@ -31,6 +31,16 @@ namespace AplicativoXamarin.Services
 
                     break;
 
+                case "JoinMinistryView":
+                    await App.Navigator.PushAsync(new JoinMinistryView());
+
+                    break;
+
+                case "JoinMeetingView":
+                    await App.Navigator.PushAsync(new JoinMeetingView());
+
+                    break;
+
                 case "LogoutPage":
                     Logout();
 

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.OData;
 using business.classes.Abstrato;
 using repositorioEF;
 using RepositorioEF;
@@ -21,7 +22,8 @@ namespace Site.Controllers.Api
         private DB db = new DB();
 
         // GET: api/CelulaApi
-        public IHttpActionResult Getcelula()
+        [EnableQuery]
+        public IQueryable<CelulaApi> Getcelula()
         {
             var celulas = db.celula
                 .Include(c => c.Pessoas)
@@ -45,7 +47,9 @@ namespace Site.Controllers.Api
                 lista.Add(modelo);
             }
 
-            return Ok(lista);
+            IQueryable<CelulaApi> retorno = lista.AsQueryable();
+
+            return retorno;
         }
 
         // GET: api/CelulaApi/5

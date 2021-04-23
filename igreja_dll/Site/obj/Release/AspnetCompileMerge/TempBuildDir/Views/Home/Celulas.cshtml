@@ -6,7 +6,7 @@
 
 <h2>Celulas</h2>
 
-<label style="background-color:blue;">Celula para adolescentes</label>
+<label style="background-color:cornflowerblue;">Celula para adolescentes</label>
 <label style="background-color:green;">Celula para adultos</label>
 <label style="background-color:lawngreen;">Celula para crianças</label>
 <label style="background-color:mediumpurple;">Celula para casados</label>
@@ -37,7 +37,7 @@
     @foreach (var item in Model.OfType<business.classes.Celulas.Celula_Adolescente>())
     {
 
-        <tr style="background-color:blue;">
+        <tr style="background-color:cornflowerblue;">
             <td>
                 @Html.DisplayFor(modelItem => item.EnderecoCelula.Pais)
             </td>

@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Intermediario;
 using Site.Models.Api;
+using System.Web.Http.OData;
 
 namespace Site.Controllers.Api
 {
@@ -20,10 +21,10 @@ namespace Site.Controllers.Api
         private DB db = new DB();
 
         // GET: api/ReuniaoPessoaApi
-        public IHttpActionResult GetReuniaoPessoa()
+        [EnableQuery]
+        public IQueryable<ReuniaoPessoaApi> GetReuniaoPessoa()
         {
             var reuniaoPessoas = db.ReuniaoPessoa.Include(e => e.Reuniao).Include(e => e.Pessoa);
-
             List<ReuniaoPessoaApi> lista = new List<ReuniaoPessoaApi>();
 
             foreach (var item in reuniaoPessoas)
@@ -37,8 +38,8 @@ namespace Site.Controllers.Api
                 };
                 lista.Add(modelo);
             }
-
-            return Ok(lista);
+            IQueryable<ReuniaoPessoaApi> retorno = lista.AsQueryable();
+            return retorno;
         }
 
         // GET: api/ReuniaoPessoaApi/5

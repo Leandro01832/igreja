@@ -23,7 +23,7 @@ namespace business.classes
 
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]        
         public DateTime Data_reuniao
         {
             get
@@ -46,11 +46,13 @@ namespace business.classes
         [Display(Name = "Horário de início")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Time)]
         public TimeSpan? Horario_inicio { get; set; }
 
         [Display(Name = "Horário de termino")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Time)]
         public TimeSpan? Horario_fim { get; set; }
 
         [Display(Name = "Local da reunião")]

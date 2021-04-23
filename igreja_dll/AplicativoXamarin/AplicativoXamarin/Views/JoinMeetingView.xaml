@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.JoinMeetingView">
+
+    <StackLayout Margin="25" Spacing="30">
+        <Label Text="Minhas Reuniões"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+        </ActivityIndicator>
+        <ListView x:Name="listViewMinisterios" ItemsSource="{Binding Reunioes}" 
+                  SelectedItem="{Binding ReuniaoSelecionado}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>                           
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding IdReuniao}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text=" - " VerticalTextAlignment="Center"></Label>
+                                <Label Text="Data da reunião: " FontSize="Large" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Data_reuniao}" FontSize="Large" VerticalTextAlignment="Center"></Label>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

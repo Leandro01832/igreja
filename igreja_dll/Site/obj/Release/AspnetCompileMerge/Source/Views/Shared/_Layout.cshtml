@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
@@ -29,6 +29,31 @@
                     <li>@Html.ActionLink("Celulas", "Celulas", "Home")</li>
                     <li>@Html.ActionLink("Reuniões", "Reunioes", "Home")</li>
                     <li>@Html.ActionLink("Programações", "Programacao", "Home")</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin</a>
+                        <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("lista de Celulas", "Index", "Celula", null, null)</li>
+                        <li>@Html.ActionLink("Lista de Reuniões", "Index", "Reuniao", null, null)</li>
+                        <li>@Html.ActionLink("Lista de Ministérios", "Index", "Ministerio", null, null)</li>
+
+                        <li>@Html.ActionLink("Cadastrar Lider de Celula", "Create", "Ministerio", new { tipo = "Lider_Celula" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Lider de Celula em Treinamento", "Create", "Ministerio", new { tipo = "Lider_Celula_Treinamento" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Lider de Ministério", "Create", "Ministerio", new { tipo = "Lider_Ministerio" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Lider de Ministério em treinamento", "Create", "Ministerio", new { tipo = "Lider_Ministerio_Treinamento" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Supervisor de Celula", "Create", "Ministerio", new { tipo = "Supervisor_Celula" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Supervisor de Celula em treinamento", "Create", "Ministerio", new { tipo = "Supervisor_Celula_Treinamento" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Supervisor de Ministério", "Create", "Ministerio", new { tipo = "Supervisor_Ministerio" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Supervisor de Ministério em Treinamento", "Create", "Ministerio", new { tipo = "Supervisor_Ministerio_Treinamento" }, null)</li>
+
+                        <li>@Html.ActionLink("Cadastrar Celula para Adolescente", "Create", "Celula", new { tipo = "Celula_Adolescente" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Celula para Adulto", "Create", "Celula", new { tipo = "Celula_Adulto" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Celula para Jovem", "Create", "Celula", new { tipo = "Celula_Jovem" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Celula para Criança", "Create", "Celula", new { tipo = "Celula_Crianca" }, null)</li>
+                        <li>@Html.ActionLink("Cadastrar Celula para Casados", "Create", "Celula", new { tipo = "Celula_casado" }, null)</li>
+
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

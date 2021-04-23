@@ -38,7 +38,7 @@ namespace AplicativoXamarin.Views
                     DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de ministérios. Por favor tente novamente mais tarde.", "Ok");
                 });
 
-            await this.ViewModel.GetMinisterios();
+            await this.ViewModel.GetMinisterios(false);
         }
 
         protected override void OnDisappearing()

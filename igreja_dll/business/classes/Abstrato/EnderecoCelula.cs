@@ -10,171 +10,37 @@ using System.Windows.Forms;
 namespace business.classes.Celula
 {
     public class EnderecoCelula : modelocrud
-    {
-        private string pais;
-        private string estado;
-        private string cidade;
-        private string bairro;
-        private string rua;
-        private int numero_casa;
-        private long cep;
-        private string complemento;
+    {       
 
         [Key, ForeignKey("Celula")]
         public int IdEnderecoCelula { get; set; }
         public virtual Abstrato.Celula Celula { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Pais
-        {
-            get
-            {
-                return pais;
-            }
-
-            set
-            {
-
-                pais = value;
-
-            }
-        }
+        public string Pais { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Estado
-        {
-            get
-            {
-                return estado;
-            }
-
-            set
-            {
-                if (value != "")
-                    estado = value;
-                else
-                {
-                    MessageBox.Show("Estado precisa ser preenchido corretamente!!!");
-                    estado = null;
-                }
-            }
-        }
+        public string Estado { get; set; }
+    
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Cidade
-        {
-            get
-            {
-                return cidade;
-            }
-
-            set
-            {
-                if (value != "")
-                    cidade = value;
-                else
-                {
-                    MessageBox.Show("cidade precisa ser preenchido corretamente!!!");
-                    cidade = null;
-                }
-            }
-
-        }
+        public string Cidade { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Bairro
-        {
-            get
-            {
-                return bairro;
-            }
-
-            set
-            {
-                if (value != "")
-                    bairro = value;
-                else
-                {
-                    MessageBox.Show("bairro precisa ser preenchido corretamente!!!");
-                    bairro = null;
-                }
-            }
-        }
+        public string Bairro { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Rua
-        {
-            get
-            {
-                return rua;
-            }
-
-            set
-            {
-                if (value != "")
-                    rua = value;
-                else
-                {
-                    MessageBox.Show("rua precisa ser preenchido corretamente!!!");
-                    rua = null;
-                }
-            }
-        }
+        public string Rua { get; set; }
 
         [Display(Name = "Numero da casa")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public int Numero_casa
-        {
-            get
-            {
-                return numero_casa;
-            }
-
-            set
-            {
-                if (value != 0)
-                    numero_casa = value;
-                else
-                {
-                    MessageBox.Show("numero da casa precisa ser preenchido corretamente!!!");
-                    numero_casa = 0;
-                }
-            }
-        }
+        public int Numero_casa { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public long Cep
-        {
-            get
-            {
-                return cep;
-            }
-
-            set
-            {
-                if (value != 0)
-                    cep = value;
-                else
-                {
-                    MessageBox.Show("Cep precisa ser preenchido corretamente!!!");
-                    cep = 0;
-                }
-            }
-        }
+        public long Cep { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Complemento
-        {
-            get
-            {
-                return complemento;
-            }
-
-            set
-            {
-                complemento = value;
-            }
-        }
+        public string Complemento { get; set; }
 
         public EnderecoCelula() : base()
         {

@@ -1,6 +1,7 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celula;
+using business.classes.Celulas;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using System;
@@ -28,8 +29,8 @@ namespace RepositorioEF
         public DbSet<EnderecoCelula> EnderecoCelula { get; set; }
         public DbSet<Telefone> telefone { get; set; }
         public DbSet<Celula> celula { get; set; }
+
         public DbSet<Ministerio> ministerio { get; set; }
-        public DbSet<Lider_Celula> Lider_Celula { get; set; }
         public DbSet<Historico> historico { get; set; }
         public DbSet<PessoaMinisterio> PessoaMinisterio { get; set; }
         public DbSet<ReuniaoPessoa> ReuniaoPessoa { get; set; }
@@ -47,5 +48,9 @@ namespace RepositorioEF
             //  modelBuilder.Entity<Celula>().HasKey(c => c.Id).HasEntitySetName("Celulaid");
 
         }
+
+        public System.Data.Entity.DbSet<business.classes.Ministerio.Lider_Celula_Treinamento> Ministerios { get; set; }
+
+        public System.Data.Entity.DbSet<business.classes.Celulas.Celula_Adolescente> Celulas { get; set; }
     }
 }

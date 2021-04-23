@@ -8,6 +8,7 @@ namespace AplicativoXamarin.models
    public class Pessoa
     {
         [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public int IdPessoa { get; set; }
         public string NomePessoa { get; set; }
         public int Codigo { get; set; }

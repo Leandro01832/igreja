@@ -50,6 +50,7 @@ namespace AplicativoXamarin.ViewModels
                                     celula_ = resultadoLogin.celula_,
                                     Codigo = resultadoLogin.Codigo,
                                     Img = resultadoLogin.Img,
+                                    IdPessoa = resultadoLogin.IdPessoa,
                                     Falta = resultadoLogin.Falta,
                                     Email = resultadoLogin.Email,
                                     Lembrar_me = Lembrar_me,
@@ -67,10 +68,11 @@ namespace AplicativoXamarin.ViewModels
                                 {
                                     var user = new Pessoa
                                     {
+                                        Id = data.First().Id,
                                         celula_ = resultadoLogin.celula_,
                                         Codigo = resultadoLogin.Codigo,
                                         Img = resultadoLogin.Img,
-                                        IdPessoa = data.First().IdPessoa,
+                                        IdPessoa = resultadoLogin.IdPessoa,
                                         Falta = resultadoLogin.Falta,
                                         Email = resultadoLogin.Email,
                                         Lembrar_me = lembrar_me,

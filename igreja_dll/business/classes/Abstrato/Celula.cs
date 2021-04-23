@@ -32,6 +32,7 @@ namespace business.classes.Abstrato
         [Display(Name = "Horário")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Time)]
         public TimeSpan? Horario { get; set; }
         [JsonIgnore]
         public virtual List<Pessoa> Pessoas { get; set; }
@@ -45,10 +46,22 @@ namespace business.classes.Abstrato
 
         AddNalista AddNalista;
         BuscaLista BuscaLista;
+
+        public Celula(int tipo)
+        {
+            if(tipo == 1)
+            {
+                this.Maximo_pessoa = 50;
+                EnderecoCelula = new EnderecoCelula();
+                AddNalista = new AddNalista();
+                BuscaLista = new BuscaLista();
+            }
+
+        }
+
         public Celula() : base()
         {
             this.Maximo_pessoa = 50;
-            EnderecoCelula = new EnderecoCelula();
             AddNalista = new AddNalista();
             BuscaLista = new BuscaLista();
         }

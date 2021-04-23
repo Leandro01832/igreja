@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -54,6 +60,9 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -69,6 +78,9 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -202,10 +214,14 @@
     <Compile Include="Controllers\Api\MinisterioCelulaApiController.cs" />
     <Compile Include="Controllers\Api\PessoaApiController.cs" />
     <Compile Include="Controllers\Api\PessoaMinisterioApiController.cs" />
+    <Compile Include="Controllers\Api\ReuniaoApiController.cs" />
     <Compile Include="Controllers\Api\ReuniaoPessoaApiController.cs" />
+    <Compile Include="Controllers\CelulaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MinisterioController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
+    <Compile Include="Controllers\ReuniaoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +232,7 @@
     <Compile Include="Models\Api\MinisterioCelulaApi.cs" />
     <Compile Include="Models\Api\PessoaApi.cs" />
     <Compile Include="Models\Api\PessoaMinisterioApi.cs" />
+    <Compile Include="Models\Api\ReuniaoApi.cs" />
     <Compile Include="Models\Api\ReuniaoPessoaApi.cs" />
     <Compile Include="Models\Roteamento.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -277,6 +294,7 @@
     <Content Include="Scripts\lib\jquery\dist\jquery.js" />
     <Content Include="Scripts\lib\jquery\dist\jquery.min.js" />
     <Content Include="Scripts\lib\jquery\LICENSE.txt" />
+    <Content Include="Scripts\methods_pt.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -346,6 +364,35 @@
     <Content Include="Views\Home\Ministerios.cshtml" />
     <Content Include="Views\Home\Reunioes.cshtml" />
     <Content Include="Views\Home\Perfil.cshtml" />
+    <Content Include="Views\Ministerio\Create.cshtml" />
+    <Content Include="Views\Ministerio\Delete.cshtml" />
+    <Content Include="Views\Ministerio\Details.cshtml" />
+    <Content Include="Views\Ministerio\Edit.cshtml" />
+    <Content Include="Views\Ministerio\Index.cshtml" />
+    <Content Include="Views\Ministerio\_Lider_Celula.cshtml" />
+    <Content Include="Views\Ministerio\_Lider_Celula_Treinamento.cshtml" />
+    <Content Include="Views\Ministerio\_Lider_Ministerio.cshtml" />
+    <Content Include="Views\Ministerio\_Lider_Ministerio_Treinamento.cshtml" />
+    <Content Include="Views\Ministerio\_Supervisor_Celula.cshtml" />
+    <Content Include="Views\Ministerio\_Supervisor_Celula_Treinamento.cshtml" />
+    <Content Include="Views\Ministerio\_Supervisor_Ministerio.cshtml" />
+    <Content Include="Views\Ministerio\_Supervisor_Ministerio_Treinamento.cshtml" />
+    <Content Include="Views\Reuniao\Create.cshtml" />
+    <Content Include="Views\Reuniao\Delete.cshtml" />
+    <Content Include="Views\Reuniao\Details.cshtml" />
+    <Content Include="Views\Reuniao\Edit.cshtml" />
+    <Content Include="Views\Reuniao\Index.cshtml" />
+    <Content Include="Views\Celula\Create.cshtml" />
+    <Content Include="Views\Celula\Delete.cshtml" />
+    <Content Include="Views\Celula\Details.cshtml" />
+    <Content Include="Views\Celula\Edit.cshtml" />
+    <Content Include="Views\Celula\Index.cshtml" />
+    <Content Include="Views\Celula\_Celula_Adolescente.cshtml" />
+    <Content Include="Views\Celula\_Celula_Adulto.cshtml" />
+    <Content Include="Views\Celula\_Celula_Casado.cshtml" />
+    <Content Include="Views\Celula\_Celula_Crianca.cshtml" />
+    <Content Include="Views\Celula\_Celula_Jovem.cshtml" />
+    <Content Include="Views\Celula\_EnderecoCelula.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

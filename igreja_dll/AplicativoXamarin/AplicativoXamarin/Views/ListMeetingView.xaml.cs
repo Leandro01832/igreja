@@ -26,19 +26,26 @@ namespace AplicativoXamarin.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Reuniao>(this, "ReuniaoSelecionado",
+            MessagingCenter.Subscribe<Reuniao>(this, "ReuniaoSelecionadoUsuario",
                (msg) =>
                {
                    Navigation.PushAsync(new DetailMeetingView(msg));
                });
 
-            MessagingCenter.Subscribe<Exception>(this, "FalhaListagem",
+            MessagingCenter.Subscribe<Exception>(this, "FalhaListagemReuniaoUsuario",
                 (msg) =>
                 {
                     DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de reuniões. Por favor tente novamente mais tarde.", "Ok");
                 });
 
-            await this.Listagem.GetReunioes();
+            await this.Listagem.GetReunioes(false);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Reuniao>(this, "ReuniaoSelecionadoUsuario");
+            MessagingCenter.Unsubscribe<Exception>(this, "FalhaListagemReuniaoUsuario");
         }
     }
 }

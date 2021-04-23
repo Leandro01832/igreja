@@ -11,6 +11,7 @@ namespace AplicativoXamarin.ViewModels
    public class ListagemMinisterioViewModel : BaseViewModel
     {
         const string URL_GET_MINISTERIOS = "http://www.igrejadedeus.somee.com/api/MinisterioApi";
+        
 
         public ObservableCollection<Ministerio> Ministerios { get; set; }
 
@@ -54,7 +55,6 @@ namespace AplicativoXamarin.ViewModels
             try
             {
                 var resultado = await cliente.GetStringAsync(URL_GET_MINISTERIOS);
-
                 var MinisterioJson = JsonConvert.DeserializeObject<Ministerio[]>(resultado);
 
                 this.Ministerios.Clear();
