@@ -37,24 +37,26 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DetalheMinisterioViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ListagemMinisterioViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LogoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\JoinViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ListagemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\CelView.xaml.cs">
       <DependentUpon>CelView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\DetailMeetingView.xaml.cs">
-      <DependentUpon>DetailMeetingView.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmMeetingView.xaml.cs">
+      <DependentUpon>ConfirmMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\DetailMinistryView.xaml.cs">
-      <DependentUpon>DetailMinistryView.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmMinistryView.xaml.cs">
+      <DependentUpon>ConfirmMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\JoinMeetingView.xaml.cs">
@@ -67,6 +69,14 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\ListMeetingView.xaml.cs">
       <DependentUpon>ListMeetingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LogoutMeetingView.xaml.cs">
+      <DependentUpon>LogoutMeetingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LogoutMinistryView.xaml.cs">
+      <DependentUpon>LogoutMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetail.xaml.cs">
@@ -97,6 +107,10 @@
       <DependentUpon>PageTeste.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TabbedPageView.xaml.cs">
       <DependentUpon>TabbedPageView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -112,10 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CelView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DetailMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -173,12 +183,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DetailMeetingView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\JoinMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +190,36 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\JoinMinistryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmMeetingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmMinistryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LogoutMeetingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LogoutMinistryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

@@ -3,6 +3,7 @@ using database;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
@@ -16,6 +17,8 @@ namespace business.classes.Intermediario
     [Table("PessoaMinisterio")]
    public class PessoaMinisterio : modelocrud
     {
+        [Key]
+        public int IdPessoaMinisterio { get; set; }
         public int PessoaId { get; set; }
         [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
@@ -118,7 +121,7 @@ namespace business.classes.Intermediario
         {
             ToTable("PessoaMinisterio");
 
-            HasKey(a => new { a.PessoaId, a.MinisterioId});
+            // HasKey(a => new { a.PessoaId, a.ReuniaoId });
 
             Property(a => a.PessoaId)
                 .IsRequired();

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.OData;
 using business.classes.Abstrato;
 using repositorioEF;
 using RepositorioEF;
@@ -20,7 +21,8 @@ namespace Site.Controllers.Api
         private DB db = new DB();
 
         // GET: api/PessoaApi
-        public IHttpActionResult Getpessoas()
+        [EnableQuery]
+        public IQueryable<PessoaApi> Getpessoas()
         {
             var pessoas = db.pessoas.Include(p => p.Ministerios)
                 .Include(p => p.Reuniao)
@@ -47,7 +49,8 @@ namespace Site.Controllers.Api
                 lista.Add(modelo);
             }
 
-            return Ok(lista);
+            IQueryable<PessoaApi> retorno = lista.AsQueryable();
+            return retorno;
         }
 
         // GET: api/PessoaApi/5

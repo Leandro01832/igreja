@@ -26,10 +26,10 @@ namespace AplicativoXamarin.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Ministerio>(this, "MinisterioSelecionado",
+            MessagingCenter.Subscribe<Ministerio>(this, "MinisterioSelecionadoUsuario",
                 (msg) =>
                 {
-                    Navigation.PushAsync(new DetailMinistryView(msg));
+                    Navigation.PushAsync(new LogoutMinistryView(msg));
                 });
 
             MessagingCenter.Subscribe<Exception>(this, "FalhaListagem",
@@ -44,7 +44,7 @@ namespace AplicativoXamarin.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<Ministerio>(this, "MinisterioSelecionado");
+            MessagingCenter.Unsubscribe<Ministerio>(this, "MinisterioSelecionadoUsuario");
             MessagingCenter.Unsubscribe<Exception>(this, "FalhaListagem");
         }
     }

@@ -16,6 +16,7 @@ namespace AplicativoXamarin.ViewModels
     {
         #region properties
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public RegisterViewModel Register { get; set; }
         public LoginViewModel newLogin { get; set; }
         public UserViewModel UsuarioLogado { get; set; }
         
@@ -29,6 +30,7 @@ namespace AplicativoXamarin.ViewModels
         public MainViewModel()
         {
             instance = this;
+            Register = new RegisterViewModel();
             Menu = new ObservableCollection<MenuItemViewModel>();
             newLogin = new LoginViewModel();
             UsuarioLogado = new UserViewModel();

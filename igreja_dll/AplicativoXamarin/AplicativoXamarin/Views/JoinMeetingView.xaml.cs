@@ -1,4 +1,5 @@
 ﻿using AplicativoXamarin.models;
+using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,16 @@ namespace AplicativoXamarin.Views
     {
         public ListagemViewModel Listagem { get; set; }
 
+        public ApiServices Api { get; set; }
+
         public JoinMeetingView()
         {
             InitializeComponent();
+            Listagem = new ListagemViewModel();
+            BindingContext = Listagem;
+            Api = new ApiServices();
+
+
         }
 
         protected override async void OnAppearing()
@@ -28,36 +36,14 @@ namespace AplicativoXamarin.Views
             MessagingCenter.Subscribe<Reuniao>(this, "ReuniaoSelecionado",
               async (msg) =>
                {
-                   if(await DisplayAlert("Confirmação", "Deseja realmente participar desta reunião?", "SIM", "Cancelar"))
-                   {
-                       using (var cliente = new HttpClient())
-                       {
-                           cliente.BaseAddress = new Uri("http://igrejadeusbom.somee.com");
-                           var camposFormulario = new FormUrlEncodedContent(new[]
-                            {
-                        new KeyValuePair<string, string>("ReuniaoId", msg.IdReuniao.ToString()),
-                        new KeyValuePair<string, string>("PessoaId", App.UserCurrent.IdPessoa.ToString())
-                        });
-                           var resultado = await cliente.PostAsync("/Api/ReuniaoPesoaApi", camposFormulario);
-
-                           if (resultado.IsSuccessStatusCode)
-                           {
-                               await DisplayAlert("Parabens!!!", "Parabens!!! você esta participando desta reunião.", "Ok");
-                               await this.Listagem.GetReunioes(true);
-                           }
-                           else
-                           {
-                               await DisplayAlert("Erro", "Ocorreu um erro ao enviar o cadastro.Tente novamente mais tarde.", "Ok");
-                           }
-                       }
-                   }
-                   
+                   await Navigation.PushAsync(new ConfirmMeetingView(msg));
                });
 
             MessagingCenter.Subscribe<Exception>(this, "FalhaListagemReuniao",
-                (msg) =>
+               async (msg) =>
                 {
-                    DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de reuniões. Por favor tente novamente mais tarde.", "Ok");
+                   await DisplayAlert("Erro", @"Ocorreu um erro ao obter a listagem de reuniões.
+                    Por favor tente novamente mais tarde.", "Ok");
                 });
 
             await this.Listagem.GetReunioes(true);

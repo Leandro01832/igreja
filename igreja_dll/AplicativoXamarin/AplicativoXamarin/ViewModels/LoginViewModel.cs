@@ -7,12 +7,14 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
+using AplicativoXamarin.Views;
 
 namespace AplicativoXamarin.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
         public ICommand EntrarCommand { get; private set; }        
+        public ICommand FazerCadastroCommand { get; private set; }        
         
 
         public void Logout()
@@ -23,6 +25,11 @@ namespace AplicativoXamarin.ViewModels
         public LoginViewModel()
         {
             Lembrar_me = true;
+
+            FazerCadastroCommand = new Command(() =>
+           {
+               App.Current.MainPage = new RegisterView();
+           });
 
             EntrarCommand = new Command(
                 async () =>

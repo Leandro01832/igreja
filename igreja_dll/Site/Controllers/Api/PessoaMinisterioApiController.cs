@@ -11,7 +11,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Intermediario;
-using Site.Models.Api;
 using System.Web.Http.OData;
 
 namespace Site.Controllers.Api
@@ -22,27 +21,9 @@ namespace Site.Controllers.Api
 
         // GET: api/PessoaMinisterioApi
         [EnableQuery]
-        public IQueryable<PessoaMinisterioApi> GetPessoaMinisterio()
+        public IQueryable<PessoaMinisterio> GetPessoaMinisterio()
         {
-            var pessoaMinisterios = db.PessoaMinisterio.Include(e => e.Pessoa).Include(e => e.Ministerio);
-
-            List<PessoaMinisterioApi> lista = new List<PessoaMinisterioApi>();
-
-            foreach (var item in pessoaMinisterios)
-            {
-                PessoaMinisterioApi modelo = new PessoaMinisterioApi
-                {
-                    Pessoa = item.Pessoa,
-                    Ministerio = item.Ministerio,
-                    PessoaId = item.PessoaId,
-                    MinisterioId = item.MinisterioId
-                };
-                lista.Add(modelo);
-            }
-
-            IQueryable<PessoaMinisterioApi> retorno = lista.AsQueryable();
-
-            return retorno;
+            return db.PessoaMinisterio.Include(rp => rp.Ministerio).Include(rp => rp.Pessoa);
         }
 
         // GET: api/PessoaMinisterioApi/5
@@ -67,7 +48,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != pessoaMinisterio.PessoaId)
+            if (id != pessoaMinisterio.IdPessoaMinisterio)
             {
                 return BadRequest();
             }
@@ -103,24 +84,9 @@ namespace Site.Controllers.Api
             }
 
             db.PessoaMinisterio.Add(pessoaMinisterio);
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (PessoaMinisterioExists(pessoaMinisterio.PessoaId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = pessoaMinisterio.PessoaId }, pessoaMinisterio);
+            return CreatedAtRoute("DefaultApi", new { id = pessoaMinisterio.IdPessoaMinisterio }, pessoaMinisterio);
         }
 
         // DELETE: api/PessoaMinisterioApi/5
@@ -150,7 +116,7 @@ namespace Site.Controllers.Api
 
         private bool PessoaMinisterioExists(int id)
         {
-            return db.PessoaMinisterio.Count(e => e.PessoaId == id) > 0;
+            return db.PessoaMinisterio.Count(e => e.IdPessoaMinisterio == id) > 0;
         }
     }
 }

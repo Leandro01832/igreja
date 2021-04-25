@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace business.classes.Intermediario
 {
    public class MinisterioCelula : modelocrud
     {
+        [Key]
+        public int IdMinisterioCelula { get; set; }
         public int CelulaId { get; set; }
         [JsonIgnore]
         public virtual Abstrato.Celula Celula { get; set; }
@@ -115,7 +118,7 @@ namespace business.classes.Intermediario
         {
             ToTable("MinisterioCelula");
 
-            HasKey(a => new { a.CelulaId, a.MinisterioId });
+            // HasKey(a => new { a.PessoaId, a.ReuniaoId });
 
             Property(a => a.CelulaId)
                 .IsRequired();

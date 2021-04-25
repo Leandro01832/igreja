@@ -11,7 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Intermediario;
-using Site.Models.Api;
+using System.Web.Http.OData;
 
 namespace Site.Controllers.Api
 {
@@ -20,25 +20,10 @@ namespace Site.Controllers.Api
         private DB db = new DB();
 
         // GET: api/MinisterioCelulaApi
-        public IHttpActionResult GetMinisterioCelula()
+        [EnableQuery]
+        public IQueryable<MinisterioCelula> GetMinisterioCelula()
         {
-            var ministerioCelulas = db.MinisterioCelula.Include(e => e.Celula).Include(e => e.Ministerio);
-
-            List<MinisterioCelulaApi> lista = new List<MinisterioCelulaApi>();
-
-            foreach (var item in ministerioCelulas)
-            {
-                MinisterioCelulaApi modelo = new MinisterioCelulaApi
-                {
-                    Celula = item.Celula,
-                    Ministerio = item.Ministerio,
-                    CelulaId = item.CelulaId,
-                    MinisterioId = item.MinisterioId
-                };
-                lista.Add(modelo);
-            }
-
-            return Ok(lista);
+            return db.MinisterioCelula.Include(rp => rp.Ministerio).Include(rp => rp.Celula);
         }
 
         // GET: api/MinisterioCelulaApi/5
@@ -63,7 +48,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != ministerioCelula.CelulaId)
+            if (id != ministerioCelula.IdMinisterioCelula)
             {
                 return BadRequest();
             }
@@ -99,24 +84,9 @@ namespace Site.Controllers.Api
             }
 
             db.MinisterioCelula.Add(ministerioCelula);
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (MinisterioCelulaExists(ministerioCelula.CelulaId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = ministerioCelula.CelulaId }, ministerioCelula);
+            return CreatedAtRoute("DefaultApi", new { id = ministerioCelula.IdMinisterioCelula }, ministerioCelula);
         }
 
         // DELETE: api/MinisterioCelulaApi/5
@@ -146,7 +116,7 @@ namespace Site.Controllers.Api
 
         private bool MinisterioCelulaExists(int id)
         {
-            return db.MinisterioCelula.Count(e => e.CelulaId == id) > 0;
+            return db.MinisterioCelula.Count(e => e.IdMinisterioCelula == id) > 0;
         }
     }
 }

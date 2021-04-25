@@ -11,7 +11,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Intermediario;
-using Site.Models.Api;
 using System.Web.Http.OData;
 
 namespace Site.Controllers.Api
@@ -22,24 +21,9 @@ namespace Site.Controllers.Api
 
         // GET: api/ReuniaoPessoaApi
         [EnableQuery]
-        public IQueryable<ReuniaoPessoaApi> GetReuniaoPessoa()
+        public IQueryable<ReuniaoPessoa> GetReuniaoPessoa()
         {
-            var reuniaoPessoas = db.ReuniaoPessoa.Include(e => e.Reuniao).Include(e => e.Pessoa);
-            List<ReuniaoPessoaApi> lista = new List<ReuniaoPessoaApi>();
-
-            foreach (var item in reuniaoPessoas)
-            {
-                ReuniaoPessoaApi modelo = new ReuniaoPessoaApi
-                {
-                    Pessoa = item.Pessoa,
-                    Reuniao = item.Reuniao,
-                    PessoaId = item.PessoaId,
-                    ReuniaoId = item.ReuniaoId
-                };
-                lista.Add(modelo);
-            }
-            IQueryable<ReuniaoPessoaApi> retorno = lista.AsQueryable();
-            return retorno;
+            return db.ReuniaoPessoa.Include(rp => rp.Reuniao).Include(rp => rp.Pessoa);
         }
 
         // GET: api/ReuniaoPessoaApi/5
@@ -64,7 +48,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != reuniaoPessoa.PessoaId)
+            if (id != reuniaoPessoa.IdReuniaoPessoa)
             {
                 return BadRequest();
             }
@@ -100,24 +84,9 @@ namespace Site.Controllers.Api
             }
 
             db.ReuniaoPessoa.Add(reuniaoPessoa);
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ReuniaoPessoaExists(reuniaoPessoa.PessoaId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = reuniaoPessoa.PessoaId }, reuniaoPessoa);
+            return CreatedAtRoute("DefaultApi", new { id = reuniaoPessoa.IdReuniaoPessoa }, reuniaoPessoa);
         }
 
         // DELETE: api/ReuniaoPessoaApi/5
@@ -147,7 +116,7 @@ namespace Site.Controllers.Api
 
         private bool ReuniaoPessoaExists(int id)
         {
-            return db.ReuniaoPessoa.Count(e => e.PessoaId == id) > 0;
+            return db.ReuniaoPessoa.Count(e => e.IdReuniaoPessoa == id) > 0;
         }
     }
 }

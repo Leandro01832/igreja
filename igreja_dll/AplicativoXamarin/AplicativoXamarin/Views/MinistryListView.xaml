@@ -11,7 +11,7 @@
         </ActivityIndicator>        
 
         <ListView x:Name="listViewMinisterios" ItemsSource="{Binding Ministerios}" 
-                  SelectedItem="{Binding MinisterioSelecionado}">
+                  SelectedItem="{Binding MinisterioSelecionadoUsuario}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -28,8 +28,8 @@
                                 </Label.FormattedText>
                             </Label>-->
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Nome}" FontSize="Large" VerticalTextAlignment="Center"></Label>
-                                <Label Text=" - " VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Nome}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="{Binding IdMinisterio}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                             </StackLayout>

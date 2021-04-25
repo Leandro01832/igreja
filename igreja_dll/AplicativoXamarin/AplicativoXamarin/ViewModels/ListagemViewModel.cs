@@ -13,12 +13,21 @@ namespace AplicativoXamarin.ViewModels
     public class ListagemViewModel : BaseViewModel
     {
 
-        const string URL_GET_MINISTERIOS = "http://www.igrejadedeus.somee.com/api/MinisterioApi";
-        const string URL_GET_REUNIOES = "http://www.igrejadedeus.somee.com/api/ReuniaoApi";
+        const string URL_GET_MINISTERIOS = "http://www.igrejadeusbom.somee.com/api/MinisterioApi";
+        
+        const string URL_GET_REUNIOES = "http://www.igrejadeusbom.somee.com/api/ReuniaoApi";
+
+        string URL_GET_MINISTERIOPESSOA =
+            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?filter=PessoaId" + " eq "
+            + App.UserCurrent.IdPessoa.ToString();
+
+        string URL_GET_REUNIAOPESSOA =
+            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?filter=PessoaId" + " eq "
+            + App.UserCurrent.IdPessoa.ToString();
 
         public ObservableCollection<Ministerio> Ministerios { get; set; }
         public ObservableCollection<Reuniao> Reunioes { get; set; }
-        public Pessoa resultadoLogin { get; set; }
+        
 
         Reuniao reuniaoSelecionado;
         public Reuniao ReuniaoSelecionado
@@ -35,6 +44,21 @@ namespace AplicativoXamarin.ViewModels
             }
         }
 
+        Reuniao reuniaoSelecionadoUsuario;
+        public Reuniao ReuniaoSelecionadoUsuario
+        {
+            get
+            {
+                return reuniaoSelecionadoUsuario;
+            }
+            set
+            {
+                reuniaoSelecionadoUsuario = value;
+                if (value != null)
+                    MessagingCenter.Send(reuniaoSelecionadoUsuario, "ReuniaoSelecionadoUsuario");
+            }
+        }
+
         Ministerio ministerioSelecionado;
         public Ministerio MinisterioSelecionado
         {
@@ -46,7 +70,22 @@ namespace AplicativoXamarin.ViewModels
             {
                 ministerioSelecionado = value;
                 if (value != null)
-                    MessagingCenter.Send(ministerioSelecionado, "VeiculoSelecionado");
+                    MessagingCenter.Send(ministerioSelecionado, "MinisterioSelecionado");
+            }
+        }
+
+        Ministerio ministerioSelecionadoUsuario;
+        public Ministerio MinisterioSelecionadoUsuario
+        {
+            get
+            {
+                return ministerioSelecionadoUsuario;
+            }
+            set
+            {
+                ministerioSelecionadoUsuario = value;
+                if (value != null)
+                    MessagingCenter.Send(ministerioSelecionadoUsuario, "MinisterioSelecionadoUsuario");
             }
         }
 
@@ -74,16 +113,18 @@ namespace AplicativoXamarin.ViewModels
             Aguarde = true;
             try
             {
-                List<PessoaMinisterio> listaPessoaMinisterio = new List<PessoaMinisterio>();
-                Pessoa resultadoLogin = await GetPessoa();
-                listaPessoaMinisterio = resultadoLogin.Ministerios;
+                HttpClient cliente = new HttpClient();
+
+                var resultadoLista = await cliente.GetStringAsync(URL_GET_MINISTERIOPESSOA);
+                var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
+               
                 if (!recuperarTodos)
                 {
                     this.Ministerios.Clear();
                     foreach (var ministerioJson in listaPessoaMinisterio)
                     {
                         this.Ministerios.Add(new Ministerio
-                        {
+                        {                            
                             Nome = ministerioJson.Ministerio.Nome,
                             IdMinisterio = ministerioJson.Ministerio.IdMinisterio,
                             Celulas = ministerioJson.Ministerio.Celulas,
@@ -96,7 +137,7 @@ namespace AplicativoXamarin.ViewModels
                 }
                 else
                 {
-                    HttpClient cliente = new HttpClient();
+                    
                     var resultado = await cliente.GetStringAsync(URL_GET_MINISTERIOS);
 
                    var lista = JsonConvert.DeserializeObject<Ministerio[]>(resultado);
@@ -104,47 +145,64 @@ namespace AplicativoXamarin.ViewModels
                     this.Ministerios.Clear();
                     foreach (var ministerioJson in lista)
                     {
-                        if(listaPessoaMinisterio.FirstOrDefault(i => i.MinisterioId == ministerioJson.IdMinisterio) == null &&
-                           listaPessoaMinisterio.FirstOrDefault(i => i.PessoaId == resultadoLogin.IdPessoa) == null ||
-                           listaPessoaMinisterio.FirstOrDefault(i => i.MinisterioId == ministerioJson.IdMinisterio) == null &&
-                           listaPessoaMinisterio.FirstOrDefault(i => i.PessoaId == resultadoLogin.IdPessoa) != null  ||
-                           listaPessoaMinisterio.FirstOrDefault(i => i.MinisterioId == ministerioJson.IdMinisterio) != null &&
-                           listaPessoaMinisterio.FirstOrDefault(i => i.PessoaId == resultadoLogin.IdPessoa) == null)
-                            this.Ministerios.Add(new Ministerio
+                        if(listaPessoaMinisterio != null)
                         {
-                            Nome = ministerioJson.Nome,
-                            IdMinisterio = ministerioJson.IdMinisterio,
-                            Celulas = ministerioJson.Celulas,
-                            Maximo_pessoa = ministerioJson.Maximo_pessoa,
-                            Ministro_ = ministerioJson.Ministro_,
-                            Pessoas = ministerioJson.Pessoas,
-                            Proposito = ministerioJson.Proposito
-                        });
+                            if (listaPessoaMinisterio.FirstOrDefault(i => i.MinisterioId == ministerioJson.IdMinisterio) == null &&
+                           listaPessoaMinisterio.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) == null ||
+                           listaPessoaMinisterio.FirstOrDefault(i => i.MinisterioId == ministerioJson.IdMinisterio) == null &&
+                           listaPessoaMinisterio.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) != null ||
+                           listaPessoaMinisterio.FirstOrDefault(i => i.MinisterioId == ministerioJson.IdMinisterio) != null &&
+                           listaPessoaMinisterio.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) == null)
+                                this.Ministerios.Add(new Ministerio
+                                {
+                                    Nome = ministerioJson.Nome,
+                                    IdMinisterio = ministerioJson.IdMinisterio,
+                                    Celulas = ministerioJson.Celulas,
+                                    Maximo_pessoa = ministerioJson.Maximo_pessoa,
+                                    Ministro_ = ministerioJson.Ministro_,
+                                    Pessoas = ministerioJson.Pessoas,
+                                    Proposito = ministerioJson.Proposito
+                                });
+                        }
+                        else
+                        {
+                            this.Ministerios.Add(new Ministerio
+                            {
+                                Nome = ministerioJson.Nome,
+                                IdMinisterio = ministerioJson.IdMinisterio,
+                                Celulas = ministerioJson.Celulas,
+                                Maximo_pessoa = ministerioJson.Maximo_pessoa,
+                                Ministro_ = ministerioJson.Ministro_,
+                                Pessoas = ministerioJson.Pessoas,
+                                Proposito = ministerioJson.Proposito
+                            });
+                        }
+                        
                     }
                 }               
             }
             catch (Exception exc)
             {
-                MessagingCenter.Send<Exception>(exc, "FalhaListagem");
+                MessagingCenter.Send<Exception>(exc, "FalhaListagemMinisterio");
             }
             Aguarde = false;
         }        
 
         public async Task GetReunioes(bool recuperarTodos)
         {
-            Aguarde = true; 
+            Aguarde = true;
 
             try
             {
-                List<ReuniaoPessoa> listaReuniaoPessoa = new List<ReuniaoPessoa>();
-                Pessoa resultadoLogin = await GetPessoa();
-                listaReuniaoPessoa = resultadoLogin.Reuniao;
+                HttpClient cliente = new HttpClient();
+                var resultadoLista = await cliente.GetStringAsync(URL_GET_REUNIAOPESSOA);
+                var listaReuniaoPessoa = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultadoLista);               
 
                 if (!recuperarTodos)
                 {
                     
-                    this.Ministerios.Clear();
-                    foreach (var reuniao in resultadoLogin.Reuniao)
+                    this.Reunioes.Clear();
+                    foreach (var reuniao in listaReuniaoPessoa)
                     {
                         this.Reunioes.Add(new Reuniao
                         {
@@ -159,52 +217,53 @@ namespace AplicativoXamarin.ViewModels
                 }
                 else
                 {
-                    HttpClient cliente = new HttpClient();
                     var resultado = await cliente.GetStringAsync(URL_GET_REUNIOES);
 
                     var lista = JsonConvert.DeserializeObject<Reuniao[]>(resultado);
 
-                    this.Ministerios.Clear();
+                    this.Reunioes.Clear();
                     foreach (var reuniao in lista)
                     {
                         //condicao que indica se usuario não pertence a esta reuniao
-                        if(listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) == null &&
-                           listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == resultadoLogin.IdPessoa) == null ||
-                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) != null &&
-                           listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == resultadoLogin.IdPessoa) == null ||
-                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) == null &&
-                           listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == resultadoLogin.IdPessoa) != null)
-                        this.Reunioes.Add(new Reuniao
+                        if(listaReuniaoPessoa != null)
                         {
-                            Data_reuniao = reuniao.Data_reuniao,
-                            Horario_fim = reuniao.Horario_fim,
-                            Horario_inicio = reuniao.Horario_inicio,
-                            IdReuniao = reuniao.IdReuniao,
-                            Local_reuniao = reuniao.Local_reuniao,
-                            Pessoas = reuniao.Pessoas
-                        });
+                            if (listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) == null &&
+                           listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) == null ||
+                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) != null &&
+                           listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) == null ||
+                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) == null &&
+                           listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) != null)
+                                this.Reunioes.Add(new Reuniao
+                                {
+                                    Data_reuniao = reuniao.Data_reuniao,
+                                    Horario_fim = reuniao.Horario_fim,
+                                    Horario_inicio = reuniao.Horario_inicio,
+                                    IdReuniao = reuniao.IdReuniao,
+                                    Local_reuniao = reuniao.Local_reuniao,
+                                    Pessoas = reuniao.Pessoas
+                                });
+                        }
+                        else
+                        {
+                            this.Reunioes.Add(new Reuniao
+                            {
+                                Data_reuniao = reuniao.Data_reuniao,
+                                Horario_fim = reuniao.Horario_fim,
+                                Horario_inicio = reuniao.Horario_inicio,
+                                IdReuniao = reuniao.IdReuniao,
+                                Local_reuniao = reuniao.Local_reuniao,
+                                Pessoas = reuniao.Pessoas
+                            });
+                        }                        
                     }
-                }
-
-                
+                }                
             }
             catch (Exception exc)
             {
-                MessagingCenter.Send<Exception>(exc, "FalhaListagem");
+                MessagingCenter.Send<Exception>(exc, "FalhaListagemReuniao");
             }
             Aguarde = false;
-        }
-
-        private static async Task<Pessoa> GetPessoa()
-        {
-            var login = new LoginServices();
-            var resultado = await login.FazerLogin
-            (new Login(App.UserCurrent.Email, App.UserCurrent.Password, false));
-            var conteudoResultado = await resultado.Content.ReadAsStringAsync();
-            var resultadoLogin =
-            JsonConvert.DeserializeObject<Pessoa>(conteudoResultado);
-            return resultadoLogin;
-        }
+        }        
     }
 
     

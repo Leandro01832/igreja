@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="AplicativoXamarin.Views.LogoutMeetingView"
+             Title="Reunião"
+             >
+
+    <StackLayout Orientation="Vertical" Padding="20" Spacing="20">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="ID:" FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.IdReuniao}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Data: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.Data_reuniao}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Local: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.Local_reuniao}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Horário de inicio: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.inicio}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Horário final: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.final}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <Label Text="Lista de pessoas da reunião" FontAttributes="Bold" VerticalTextAlignment="Center" />
+
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+        </ActivityIndicator>
+
+        <ListView  ItemsSource="{Binding PessoasDaReuniao}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="ID: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding IdPessoa}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="Email: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Email}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <controls:CircleImage Source="{Binding Foto}" Aspect="AspectFill"  WidthRequest="50" HeightRequest="50"
+                                HorizontalOptions="End" VerticalOptions="Center">
+                                </controls:CircleImage>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Sair desta reunião" Command="{Binding SaindoReuniao}"></Button>
+
+    </StackLayout>
+</ContentPage>

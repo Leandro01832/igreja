@@ -4,7 +4,7 @@
              x:Class="AplicativoXamarin.Views.JoinMeetingView">
 
     <StackLayout Margin="25" Spacing="30">
-        <Label Text="Minhas Reuniões"
+        <Label Text="Participar de Reuniões"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         <ActivityIndicator IsRunning="{Binding Aguarde}"
@@ -19,9 +19,9 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="{Binding IdReuniao}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text=" - " VerticalTextAlignment="Center"></Label>
-                                <Label Text="Data da reunião: " FontSize="Large" VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding Data_reuniao}" FontSize="Large" VerticalTextAlignment="Center"></Label>
+                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="Data da reunião: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Data_reuniao}"  FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

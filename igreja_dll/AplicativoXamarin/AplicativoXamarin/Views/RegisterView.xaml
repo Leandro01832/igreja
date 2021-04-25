@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.RegisterView"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Cadastrar"
+             >
+
+    <StackLayout Orientation="Vertical" BindingContext="Register">
+        <TableView>
+            <TableRoot>
+
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Crianca, Mode=TwoWay}" 
+                            VerticalOptions="Center"></Switch>
+                        </StackLayout>
+
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End"
+                            IsToggled="{Binding Visitante, Mode=TwoWay}"
+                            VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao, Mode=TwoWay}"
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo, Mode=TwoWay}" 
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um membro por reconciliação?" VerticalOptions="CenterAndExpand" 
+                                HorizontalOptions="CenterAndExpand" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao, Mode=TwoWay}" 
+                                VerticalOptions="Center"></Switch>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia, Mode=TwoWay}" 
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+
+
+                </TableSection>
+
+
+                <TableSection>
+                    <EntryCell Label="E-mail:" Keyboard="Email" Text="{Binding Email}"></EntryCell>
+                    <EntryCell Label="Senha:" Keyboard="Password" Text="{Binding Password}"></EntryCell>
+                </TableSection>
+            </TableRoot>
+
+        </TableView>
+
+        <Button Text="Cadastrar" Command="{Binding RegisterCommand}"></Button>
+
+    </StackLayout>
+</ContentPage>

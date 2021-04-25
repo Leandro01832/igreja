@@ -31,6 +31,7 @@
         <ActivityIndicator IsRunning="{Binding IsRunning}"></ActivityIndicator>
         
         <Button Text="Entrar" TextColor="{StaticResource MainColor}" Command="{Binding EntrarCommand}"/>
+        <Button Text="Fazer Cadastro" TextColor="{StaticResource MainColor}" Command="{Binding FazerCadastroCommand}"/>
 
         <StackLayout Orientation="Horizontal">
 

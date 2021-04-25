@@ -2,11 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AplicativoXamarin.Views.JoinMinistryView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+    <StackLayout Margin="25" Spacing="30">
+        <Label Text="Participar de Ministérios"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+        </ActivityIndicator>
+        <ListView x:Name="listViewMinisterios" ItemsSource="{Binding Ministerios}" 
+                  SelectedItem="{Binding MinisterioSelecionado}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>                            
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Nome}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding IdMinisterio}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

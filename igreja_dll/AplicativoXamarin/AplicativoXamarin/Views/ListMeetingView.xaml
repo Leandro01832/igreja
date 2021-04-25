@@ -10,7 +10,7 @@
                            IsVisible="{Binding Aguarde}">
         </ActivityIndicator>
         <ListView x:Name="listViewMinisterios" ItemsSource="{Binding Reunioes}" 
-                  SelectedItem="{Binding ReuniaoSelecionado}">
+                  SelectedItem="{Binding ReuniaoSelecionadoUsuario}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -29,9 +29,9 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="{Binding IdReuniao}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text=" - " VerticalTextAlignment="Center"></Label>
-                                <Label Text="Data da reunião: " FontSize="Large" VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding Data_reuniao}" FontSize="Large" VerticalTextAlignment="Center"></Label>
+                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="Data da reunião: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Data_reuniao}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
 
                             </StackLayout>
                         </ViewCell.View>
