@@ -29,7 +29,7 @@ namespace AplicativoXamarin.Views
             MessagingCenter.Subscribe<Reuniao>(this, "ReuniaoSelecionadoUsuario",
                (msg) =>
                {
-                   Navigation.PushAsync(new DetailMeetingView(msg));
+                   Navigation.PushAsync(new LogoutMeetingView(msg));
                });
 
             MessagingCenter.Subscribe<Exception>(this, "FalhaListagemReuniaoUsuario",

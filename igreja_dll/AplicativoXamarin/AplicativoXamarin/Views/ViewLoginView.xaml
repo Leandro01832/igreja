@@ -23,15 +23,29 @@
 
         </StackLayout>
 
-        <BoxView HeightRequest="3" Color="{StaticResource AcentColor}"></BoxView>
+        <BoxView HeightRequest="3" Color="{StaticResource AcentColor}"></BoxView>       
 
-        <Entry Placeholder="Usuário" TextColor="{StaticResource AcentColor}"  Text="{Binding Usuario, Mode=TwoWay}"></Entry>
-        <Entry Placeholder="Senha" Text="{Binding Senha, Mode=TwoWay}" IsPassword="True"></Entry>
+        <TableView>
+            <TableRoot>
+        <TableSection Title="Autenticação">
+            <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Usuario, Mode=TwoWay}"></EntryCell>
+            <ViewCell>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Senha: "></Label>
+                    <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Senha, Mode=TwoWay}"></Entry>
+                </StackLayout>
+            </ViewCell>
+
+        </TableSection>
+        </TableRoot>
+
+        </TableView>
 
         <ActivityIndicator IsRunning="{Binding IsRunning}"></ActivityIndicator>
         
         <Button Text="Entrar" TextColor="{StaticResource MainColor}" Command="{Binding EntrarCommand}"/>
-        <Button Text="Fazer Cadastro" TextColor="{StaticResource MainColor}" Command="{Binding FazerCadastroCommand}"/>
+       
 
         <StackLayout Orientation="Horizontal">
 
@@ -49,9 +63,11 @@
                 <Label Text="Recuperar Senha" TextColor="{StaticResource BackgroundColor}" FontSize="20"
                    HorizontalOptions="End" VerticalOptions="Center"></Label>
 
-            </StackLayout>
+            </StackLayout>           
 
         </StackLayout>
+
+        <Button Text="Fazer Cadastro" TextColor="{StaticResource MainColor}" Command="{Binding FazerCadastroCommand}"/>
 
     </StackLayout>
 </ContentPage>

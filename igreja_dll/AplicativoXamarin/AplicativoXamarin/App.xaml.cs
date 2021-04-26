@@ -46,8 +46,6 @@ namespace AplicativoXamarin
             MessagingCenter.Subscribe<Pessoa>(this, "SucessoLogin",
                 (usuario) =>
                 {
-                    //new InstanceLocator();
-                    //MainPage = new NavigationPage(new ListagemView());
                     var main = MainViewModel.GetInstance();
                     main.LoadUser(usuario);
 

@@ -8,28 +8,25 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
 using AplicativoXamarin.Views;
+using GalaSoft.MvvmLight.Command;
 
 namespace AplicativoXamarin.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        public ICommand EntrarCommand { get; private set; }        
-        public ICommand FazerCadastroCommand { get; private set; }        
-        
+        public ICommand EntrarCommand { get; private set; }
+        public ICommand FazerCadastroCommand { get { return new RelayCommand(Register); } }
 
-        public void Logout()
+        private void Register()
         {
-            //  App.CurrentUser.
+             App.Current.MainPage = new RegisterView();
         }
 
         public LoginViewModel()
         {
             Lembrar_me = true;
 
-            FazerCadastroCommand = new Command(() =>
-           {
-               App.Current.MainPage = new RegisterView();
-           });
+            
 
             EntrarCommand = new Command(
                 async () =>
@@ -104,12 +101,14 @@ namespace AplicativoXamarin.ViewModels
                         MessagingCenter.Send<LoginException>(new
                             LoginException("Erro de comunicação com o servidor.", exc), "FalhaLogin");
                     }
-                },
+                }
+                ,
             () =>
             {
                 return !string.IsNullOrEmpty(usuario)
                     && !string.IsNullOrEmpty(senha);
-            });
+            }
+            );
         }
 
         private string usuario;

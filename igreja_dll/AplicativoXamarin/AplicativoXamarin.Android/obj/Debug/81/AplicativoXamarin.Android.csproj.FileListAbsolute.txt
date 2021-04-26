@@ -7,7 +7,6 @@ D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\o
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\MainPage.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\AplicativoXamarin.Android.csproj.CoreCompileInputs.cache
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\CelView.xaml.g.cs
-D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\DetailMinistryView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\MasterDetail.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\MasterDetailMaster.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\MasterDetailDetail.xaml.g.cs
@@ -217,13 +216,13 @@ D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\o
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\PageTeste.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\TabbedPageView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\ListMeetingView.xaml.g.cs
-D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\DetailMeetingView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\JoinMeetingView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\JoinMinistryView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\ConfirmMeetingView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\ConfirmMinistryView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\LogoutMeetingView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\LogoutMinistryView.xaml.g.cs
+D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\Views\RegisterView.xaml.g.cs
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\GalaSoft.MvvmLight.dll.mdb
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\GalaSoft.MvvmLight.Extras.dll.mdb
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\GalaSoft.MvvmLight.Platform.dll.mdb

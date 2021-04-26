@@ -6,14 +6,16 @@
              Title="Cadastrar"
              >
 
-    <StackLayout Orientation="Vertical" BindingContext="Register">
+
+    <StackLayout Orientation="Vertical" BindingContext="{Binding Register}">
         <TableView>
             <TableRoot>
 
-                <TableSection>
+                <TableSection Title="Identificação">
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand" />
                             <Switch HorizontalOptions="End" IsToggled="{Binding Crianca, Mode=TwoWay}" 
                             VerticalOptions="Center"></Switch>
                         </StackLayout>
@@ -21,8 +23,9 @@
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand" />
                             <Switch HorizontalOptions="End"
                             IsToggled="{Binding Visitante, Mode=TwoWay}"
                             VerticalOptions="Center"></Switch>
@@ -30,7 +33,7 @@
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal">
                             <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
                             <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao, Mode=TwoWay}"
@@ -39,7 +42,7 @@
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal">
                             <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
                             <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo, Mode=TwoWay}" 
@@ -72,10 +75,16 @@
 
                 </TableSection>
 
+                <TableSection Title="Autenticação">
+                    <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Email, Mode=TwoWay}"></EntryCell>
+                    <ViewCell>
 
-                <TableSection>
-                    <EntryCell Label="E-mail:" Keyboard="Email" Text="{Binding Email}"></EntryCell>
-                    <EntryCell Label="Senha:" Keyboard="Password" Text="{Binding Password}"></EntryCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Senha: "></Label>
+                            <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Password, Mode=TwoWay}"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
                 </TableSection>
             </TableRoot>
 

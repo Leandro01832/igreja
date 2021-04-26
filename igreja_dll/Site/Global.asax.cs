@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using RepositorioEF;
 using business.classes.Pessoas;
 using Ecommerce.Classes;
+using business.classes.PessoasLgpd;
 
 namespace Site
 {
@@ -44,10 +45,13 @@ namespace Site
 
         private async void criarUsuario(DB banco)
         {
-            banco.pessoas.Add(new Visitante
+            banco.pessoas.Add(new VisitanteLgpd
             {
                 Email = "leandroleanleo@gmail.com",
-                NomePessoa = "Leandro Luis da Silva"
+                NomePessoa = "Leandro Luis da Silva",
+                Condicao_religiosa = " - ",
+                Data_visita = DateTime.Now
+                 
             });
             await banco.SaveChangesAsync();
         }

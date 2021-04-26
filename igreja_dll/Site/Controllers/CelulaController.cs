@@ -11,9 +11,11 @@ using RepositorioEF;
 using business.classes.Abstrato;
 using business.classes.Celulas;
 using business.classes.Ministerio;
+using business.classes.Celula;
 
 namespace Site.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CelulaController : Controller
     {
         private DB db = new DB();
@@ -50,6 +52,8 @@ namespace Site.Controllers
             if (tipo == "Celula_Casado") celula = new Celula_Casado();
             if (tipo == "Celula_Crianca") celula = new Celula_Crianca();
             if (tipo == "Celula_Jovem") celula = new Celula_Jovem();
+
+            celula.EnderecoCelula = new EnderecoCelula();
 
             ViewBag.IdCelula = new SelectList(db.EnderecoCelula, "IdEnderecoCelula", "Cep");
             return View(celula);

@@ -27,10 +27,9 @@ namespace AplicativoXamarin.ViewModels
             this.MembroBatismo = false;
             this.MembroReconciliacao = false;
             this.MembroTransferencia = false;
+            
 
-            Email = "leandroleanleo@gmail.com";
-
-            RegisterCommand = new Command(() =>
+            this.RegisterCommand = new Command(() =>
             {
                 MessagingCenter.Send<RegisterViewModel>(this, "Cadastrar");
             });

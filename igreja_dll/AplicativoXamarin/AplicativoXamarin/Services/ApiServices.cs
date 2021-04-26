@@ -17,6 +17,7 @@ namespace AplicativoXamarin.Services
         const string URL_DELETE_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi";
         const string URL_POST_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi";
         const string URL_DELETE_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi";
+        const string URL_REGISTRAR = "http://www.igrejadeusbom.somee.com/Register";
 
 
         public static async Task<Pessoa> GetPessoa()
@@ -48,7 +49,7 @@ namespace AplicativoXamarin.Services
 
             var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var resposta = await cliente.PostAsync(URL_POST_PARTICIPARREUNIAO, conteudo);
+            var resposta = await cliente.PostAsync(URL_REGISTRAR, conteudo);
             if (resposta.IsSuccessStatusCode)
                 MessagingCenter.Send<RegisterViewModel>(msg, "Cadastrado");
             else

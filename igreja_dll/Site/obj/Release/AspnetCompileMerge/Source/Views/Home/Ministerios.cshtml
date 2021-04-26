@@ -7,7 +7,7 @@
 <h2>Ministerios</h2>
 
 <input type="hidden" value="0" id="valor" />
-<label style="background-color:blue;">Lider de celula</label>
+<label style="background-color:aqua;">Lider de celula</label>
 <label style="background-color:green;">Lider de celula em treinamento</label>
 <label style="background-color:yellow;">Lider de ministério</label>
 <label style="background-color:skyblue;">Lider de ministério em treinamento</label>
@@ -34,7 +34,7 @@
 
     @foreach (var item in Model.OfType<business.classes.Ministerio.Lider_Celula>())
     {
-        <tr style="background-color:blue;">
+        <tr style="background-color:aqua;">
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>

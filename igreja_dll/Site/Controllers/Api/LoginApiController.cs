@@ -17,6 +17,7 @@ using database;
 using business.classes.PessoasLgpd;
 using business.classes.Abstrato;
 using Microsoft.AspNet.Identity.Owin;
+using System.Web.Http.Description;
 
 namespace Site.Controllers.Api
 {
@@ -61,7 +62,7 @@ namespace Site.Controllers.Api
             var user = await db.pessoas
             .Include(p => p.Ministerios)
             .Include(p => p.Celula)
-            .Include(p => p.Chamada)
+           // .Include(p => p.Chamada)
             .Include(p => p.Historico)
             .Include(p => p.Reuniao)
             .Include(x => x.Reuniao.Select(y => y.Pessoa))
@@ -94,14 +95,43 @@ namespace Site.Controllers.Api
 
         [HttpPost]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterViewModel model)
+        public IHttpActionResult Register(JObject form)
         {
             if (ModelState.IsValid)
             {
+                db.Configuration.ProxyCreationEnabled = false;
+                var email = string.Empty;
+                var password = string.Empty;
+                bool MembroAclamacao;
+                bool MembroTransferencia;
+                bool MembroReconciliacao;
+                bool MembroBatismo;
+                bool Visitante;
+                bool Crianca;
+
+                dynamic jsonobeject = form;
+
+                try
+                {
+                    email = jsonobeject.Email.Value;
+                    password = jsonobeject.Password.Value;
+                    MembroAclamacao = jsonobeject.MembroAclamacao.Value;
+                    Visitante = jsonobeject.Visitante.Value;
+                    Crianca = jsonobeject.Crianca.Value;
+                    MembroReconciliacao = jsonobeject.MembroReconciliacao.Value;
+                    MembroTransferencia = jsonobeject.MembroTransferencia.Value;
+                    MembroBatismo = jsonobeject.MembroBatismo.Value;
+                }
+
+                catch
+                {
+                    return BadRequest("Chamada incorreta, Preencha os campos corretamente.");
+                }
+
                 modelocrud m = null;
-                if (model.Crianca)
+                if (Crianca)
                     m = new CriancaLgpd();
-                if (model.Visitante)
+                if (Visitante)
                 {
                     m = new VisitanteLgpd();
                     var v = (VisitanteLgpd)m;
@@ -109,32 +139,36 @@ namespace Site.Controllers.Api
                     v.Condicao_religiosa = "Não registrado";
                 }
 
-                if (model.MembroAclamacao)
+                if (MembroAclamacao)
                     m = new Membro_AclamacaoLgpd();
-                if (model.MembroBatismo)
+                if (MembroBatismo)
                     m = new Membro_BatismoLgpd();
-                if (model.MembroReconciliacao)
+                if (MembroReconciliacao)
                     m = new Membro_ReconciliacaoLgpd();
-                if (model.MembroTransferencia)
+                if (MembroTransferencia)
                     m = new Membro_TransferenciaLgpd();
 
                 var p = (Pessoa)m;
                 try
                 {
-                    p.Email = model.Email;
+                    p.Email = email;
                     p.NomePessoa = " - ";
                     p.salvar();
                 }
-                catch { return this.BadRequest("Usuario não cadastrado! Dados incorretos!"); }
+                catch { return this.BadRequest("Usuario cadastrado apenas em uma tabela!!!"); }
+
 
                 var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(banco));
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Codigo = p.Codigo };
-                var result = await  usermaneger.CreateAsync(user, model.Password);
+                var user = new ApplicationUser { UserName = email, Email = email, Codigo = p.Codigo };
+                var result =  usermaneger.Create(user, password);
                 if (result.Succeeded)
-                {
+                {                    
                     return Ok();
                 }
-                return this.BadRequest("Usuario não cadastrado! Dados incorretos!");
+
+                p.excluir(p.IdPessoa);
+
+                return this.BadRequest("Usuario não cadastrado! Usuario ja existente!!!");
             }
             
             return this.BadRequest("Usuario não cadastrado! Dados incorretos!");

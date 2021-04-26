@@ -8,18 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("AplicativoXamarin.Droid.Views.DetailMinistryView.xaml", "Views/DetailMinistryView.xaml", typeof(global::AplicativoXamarin.Views.DetailMinistryView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("AplicativoXamarin.Droid.Views.RegisterView.xaml", "Views/RegisterView.xaml", typeof(global::AplicativoXamarin.Views.RegisterView))]
 
 namespace AplicativoXamarin.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Deta" +
-        "ilMinistryView.xaml")]
-    public partial class DetailMinistryView : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Regi" +
+        "sterView.xaml")]
+    public partial class RegisterView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(DetailMinistryView));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(RegisterView));
         }
     }
 }

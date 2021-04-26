@@ -1,10 +1,6 @@
 ﻿using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,10 +11,13 @@ namespace AplicativoXamarin.Views
     public partial class RegisterView : ContentPage
     {
         public ApiServices Api { get; set; }
+        public RegisterViewModel viewmodel { get; set; }
 
         public RegisterView()
         {
             InitializeComponent();
+            viewmodel = new RegisterViewModel();
+           // BindingContext = viewmodel;
             Api = new ApiServices();
         }
 
@@ -34,14 +33,14 @@ namespace AplicativoXamarin.Views
             MessagingCenter.Subscribe<RegisterViewModel>(this, "Cadastrado",
               async (msg) =>
               {
-                  await DisplayAlert("Confimação", "Você foi cadastrado com sucesso!!!.", "Ok");
-                  await Navigation.PushAsync(new ViewLoginView());
+                  await DisplayAlert("Confimação", "Você foi cadastrado com sucesso!!!", "Ok");
+                  App.Current.MainPage = new ViewLoginView();
               });
 
-            MessagingCenter.Subscribe<RegisterViewModel>(this, "FalhaCadastro",
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaCadastro",
               async (msg) =>
               {
-                  await DisplayAlert("Erro!!!", "Ocorreu um erro no cadastro.", "Ok");
+                  await DisplayAlert("Erro!!!", "Ocorreu um erro no cadastro." + msg.Message, "Ok");
               });
         }
 
