@@ -66,11 +66,11 @@ namespace AplicativoXamarin.ViewModels
             {
                 HttpClient cliente = new HttpClient();
 
-                var resultadoLista = await cliente.GetStringAsync(Url_Get_PessoaMinisterio + Ministerio.IdMinisterio.ToString());
-                var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
-
                 if (ministerio)
                 {
+                    var resultadoLista = await cliente.GetStringAsync(Url_Get_PessoaMinisterio + Ministerio.IdMinisterio.ToString());
+                    var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
+
                     this.PessoasDoMinisterio.Clear();
                     foreach (var pessoaMinisterio in listaPessoaMinisterio)
                     {

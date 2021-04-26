@@ -16,10 +16,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>04/26/2021 14:58:07</publishTime>
+      <publishTime>04/26/2021 15:52:20</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>04/26/2021 14:58:07</publishTime>
+      <publishTime>04/26/2021 15:52:20</publishTime>
     </File>
     <File Include="bin/business.dll">
       <publishTime>04/24/2021 18:37:30</publishTime>
@@ -340,10 +340,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>04/26/2021 14:58:00</publishTime>
+      <publishTime>04/26/2021 15:52:12</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>04/26/2021 14:58:00</publishTime>
+      <publishTime>04/26/2021 15:52:12</publishTime>
     </File>
     <File Include="bin/System.AppContext.dll">
       <publishTime>04/20/2021 13:48:45</publishTime>
@@ -760,7 +760,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:38</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/26/2021 14:58:01</publishTime>
+      <publishTime>04/26/2021 15:52:13</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/25/2021 14:49:37</publishTime>

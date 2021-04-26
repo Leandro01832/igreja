@@ -23,17 +23,17 @@ namespace AplicativoXamarin.Views
 			InitializeComponent ();
             viewmodel = new LogoutViewModel();
             viewmodel.Reuniao = reuniao;
-
+            BindingContext = viewmodel;
             Api = new ApiServices();
 		}
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
             MessagingCenter.Subscribe<Reuniao>(this, "SairReuniao",
                async (msg) => {
-                    if(await DisplayAlert("Confirmação", "Deseja realmente sair desta reunião", "SIM", "Cancelar"))
+                    if(await DisplayAlert("Confirmação", "Deseja realmente sair desta reunião?", "SIM", "Cancelar"))
                     Api.SairReuniao(msg);
                 });
 
@@ -43,10 +43,12 @@ namespace AplicativoXamarin.Views
                   await Navigation.PushAsync(new ListMeetingView());
                 });
 
-            MessagingCenter.Subscribe<Reuniao>(this, "FalhaSairReuniao",
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaSairReuniao",
               async (msg) => {
-                  await DisplayAlert("Erro", "Aconteceu um erro para sair da reunião", "Ok");
-              });            
+                  await DisplayAlert("Erro", "Aconteceu um erro." + msg.Message, "Ok");
+              });
+
+           await viewmodel.GetPessoas(false);
         }
 
         protected override void OnDisappearing()

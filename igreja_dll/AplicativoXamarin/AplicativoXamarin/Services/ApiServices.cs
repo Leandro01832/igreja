@@ -14,9 +14,9 @@ namespace AplicativoXamarin.Services
    public class ApiServices
     {
         const string URL_POST_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi";
-        const string URL_DELETE_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi";
+        const string URL_DELETE_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi/";
         const string URL_POST_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi";
-        const string URL_DELETE_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi";
+        const string URL_DELETE_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi/";
         const string URL_REGISTRAR = "http://www.igrejadeusbom.somee.com/Register";
 
 
@@ -80,11 +80,11 @@ namespace AplicativoXamarin.Services
             HttpClient cliente = new HttpClient();
 
             var resultadoLista = await cliente.GetStringAsync
-            (URL_DELETE_PARTICIPARMINISTERIO +"$filter=MinisterioId eq " + Ministerio.IdMinisterio.ToString() +
-            "&filter=PessoaId eq " + App.UserCurrent.IdPessoa.ToString());
+            (URL_POST_PARTICIPARMINISTERIO + "?$filter=MinisterioId eq " + Ministerio.IdMinisterio.ToString() +
+            "&$filter=PessoaId eq " + App.UserCurrent.IdPessoa.ToString());
             var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
 
-            var resposta = await cliente.DeleteAsync(URL_DELETE_PARTICIPARMINISTERIO + "/" +
+            var resposta = await cliente.DeleteAsync(URL_DELETE_PARTICIPARMINISTERIO + 
                  listaPessoaMinisterio[0].IdPessoaMinisterio.ToString());
 
 
@@ -118,11 +118,11 @@ namespace AplicativoXamarin.Services
             HttpClient cliente = new HttpClient();
 
             var resultadoLista = await cliente.GetStringAsync
-            (URL_DELETE_PARTICIPARREUNIAO + "$filter=MinisterioId eq " + Reuniao.IdReuniao.ToString() +
-            "&filter=PessoaId eq " + App.UserCurrent.IdPessoa.ToString());
+            (URL_POST_PARTICIPARREUNIAO + "?$filter=ReuniaoId eq " + Reuniao.IdReuniao.ToString() +
+            "&$filter=PessoaId eq " + App.UserCurrent.IdPessoa.ToString());
             var listaReuniaoPessoa = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultadoLista);
 
-            var resposta = await cliente.DeleteAsync(URL_DELETE_PARTICIPARREUNIAO + "/" +
+            var resposta = await cliente.DeleteAsync(URL_DELETE_PARTICIPARREUNIAO + 
                  listaReuniaoPessoa[0].IdReuniaoPessoa.ToString());
 
             if (resposta.IsSuccessStatusCode)

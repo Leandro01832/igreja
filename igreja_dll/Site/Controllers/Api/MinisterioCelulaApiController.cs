@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Intermediario;
 using System.Web.Http.OData;
+using Site.Models.Api;
 
 namespace Site.Controllers.Api
 {
@@ -21,9 +22,25 @@ namespace Site.Controllers.Api
 
         // GET: api/MinisterioCelulaApi
         [EnableQuery]
-        public IQueryable<MinisterioCelula> GetMinisterioCelula()
+        public IQueryable<MinisterioCelulaApi> GetMinisterioCelula()
         {
-            return db.MinisterioCelula.Include(rp => rp.Ministerio).Include(rp => rp.Celula);
+            var MinisterioCelulas = db.MinisterioCelula.Include(rp => rp.Ministerio).Include(rp => rp.Celula);
+            List<MinisterioCelulaApi> itens = new List<MinisterioCelulaApi>();
+
+            foreach(var modelo in MinisterioCelulas)
+            {
+                itens.Add(new MinisterioCelulaApi
+                {
+                    Celula = modelo.Celula,
+                    CelulaId = modelo.CelulaId,
+                    Ministerio = modelo.Ministerio,
+                    MinisterioId = modelo.MinisterioId,
+                    IdMinisterioCelula = modelo.IdMinisterioCelula
+                });
+            }
+
+            IQueryable<MinisterioCelulaApi> retorno = itens.AsQueryable();
+            return retorno;
         }
 
         // GET: api/MinisterioCelulaApi/5

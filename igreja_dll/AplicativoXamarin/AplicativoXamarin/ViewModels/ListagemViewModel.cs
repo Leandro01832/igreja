@@ -18,11 +18,11 @@ namespace AplicativoXamarin.ViewModels
         const string URL_GET_REUNIOES = "http://www.igrejadeusbom.somee.com/api/ReuniaoApi";
 
         string URL_GET_MINISTERIOPESSOA =
-            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?filter=PessoaId" + " eq "
+            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?$filter=PessoaId" + " eq "
             + App.UserCurrent.IdPessoa.ToString();
 
         string URL_GET_REUNIAOPESSOA =
-            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?filter=PessoaId" + " eq "
+            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?$filter=PessoaId" + " eq "
             + App.UserCurrent.IdPessoa.ToString();
 
         public ObservableCollection<Ministerio> Ministerios { get; set; }
@@ -195,12 +195,12 @@ namespace AplicativoXamarin.ViewModels
             try
             {
                 HttpClient cliente = new HttpClient();
+
                 var resultadoLista = await cliente.GetStringAsync(URL_GET_REUNIAOPESSOA);
-                var listaReuniaoPessoa = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultadoLista);               
+                var listaReuniaoPessoa = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultadoLista);
 
                 if (!recuperarTodos)
                 {
-                    
                     this.Reunioes.Clear();
                     foreach (var reuniao in listaReuniaoPessoa)
                     {

@@ -44,7 +44,7 @@ namespace AplicativoXamarin.Views
             MessagingCenter.Subscribe<Ministerio>(this, "SucessoSairMinisterio",
              async (msg2) =>
              {
-                 await DisplayAlert("Ministerio", "Parabens!!! Você esta participando deste ministério." +
+                 await DisplayAlert("Ministerio", " Você não esta mais participando deste ministério." +
                          " \n Identificação do ministério: " + msg2.IdMinisterio.ToString(), "ok");
 
                  await Navigation.PushAsync(new MinistryListView());

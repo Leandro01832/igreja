@@ -41,7 +41,9 @@ namespace AplicativoXamarin.ViewModels
 
 
         public JoinViewModel()
-        { 
+        {
+            PessoasDaReuniao = new ObservableCollection<Pessoa>();
+            PessoasDoMinisterio = new ObservableCollection<Pessoa>();
 
             ParticipandoMinisterio = new Command(() =>
             {
@@ -62,13 +64,12 @@ namespace AplicativoXamarin.ViewModels
             Aguarde = true;
             try
             {
-                HttpClient cliente = new HttpClient();
-
-                var resultadoLista = await cliente.GetStringAsync(Url_Get_PessoaMinisterio + Ministerio.IdMinisterio.ToString());
-                var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
+                HttpClient cliente = new HttpClient();               
 
                 if (ministerio)
                 {
+                    var resultadoLista = await cliente.GetStringAsync(Url_Get_PessoaMinisterio + Ministerio.IdMinisterio.ToString());
+                    var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
                     this.PessoasDoMinisterio.Clear();
                     foreach (var pessoaMinisterio in listaPessoaMinisterio)
                     {
@@ -91,9 +92,7 @@ namespace AplicativoXamarin.ViewModels
                 }
                 else
                 {
-
                     var resultado = await cliente.GetStringAsync(Url_Get_ReuniaoPessoa + Reuniao.IdReuniao.ToString());
-
                     var lista = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultado);
 
                     this.PessoasDaReuniao.Clear();
