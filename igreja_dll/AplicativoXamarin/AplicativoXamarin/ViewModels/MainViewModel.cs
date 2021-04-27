@@ -87,25 +87,32 @@ namespace AplicativoXamarin.ViewModels
                 icon = "ic_people_verde.png",
                 Title = "Minhas Reuniões",
                 PageName = "Reuniao"
-            });
+            });           
 
             Menu.Add(new MenuItemViewModel
             {
-                icon = "ic_people_verde.png",
-                Title = "Participar de Reuniões",
-                PageName = "JoinMeetingView"
-            });
-
-            Menu.Add(new MenuItemViewModel
-            {
-                icon = "ic_people_verde.png",
+                icon = "ic_mais_point.png",
                 Title = "Participar de Ministérios",
                 PageName = "JoinMinistryView"
             });
 
             Menu.Add(new MenuItemViewModel
             {
-                icon = "ic_action_exit.png",
+                icon = "ic_mais_verde.png",
+                Title = "Participar de Reuniões",
+                PageName = "JoinMeetingView"
+            });
+
+            Menu.Add(new MenuItemViewModel
+            {
+                icon = "ic_posts.png",
+                Title = "Postagens da igreja",
+                PageName = "MasterDetailPosts"
+            });
+
+            Menu.Add(new MenuItemViewModel
+            {
+                icon = "ic_saida_preto.png",
                 Title = "Sair",
                 PageName = "LogoutPage"
             });

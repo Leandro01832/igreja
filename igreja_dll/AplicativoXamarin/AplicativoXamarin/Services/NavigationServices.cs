@@ -41,6 +41,11 @@ namespace AplicativoXamarin.Services
 
                     break;
 
+                case "MasterDetailPosts":
+                    await App.Navigator.PushAsync(new MasterDetailPosts());
+
+                    break;
+
                 case "LogoutPage":
                     Logout();
 

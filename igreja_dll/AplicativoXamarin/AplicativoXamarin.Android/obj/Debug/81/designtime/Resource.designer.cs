@@ -2501,6 +2501,12 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F090077
 			public const int ic_group_expand_15 = 2131296375;
 			
+			// aapt resource value: 0x7F010012
+			public const int ic_mais_point = 2130771986;
+			
+			// aapt resource value: 0x7F010019
+			public const int ic_mais_verde = 2130771993;
+			
 			// aapt resource value: 0x7F090078
 			public const int ic_media_pause_dark = 2131296376;
 			
@@ -2906,14 +2912,17 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0900FE
 			public const int ic_mr_button_grey = 2131296510;
 			
-			// aapt resource value: 0x7F010012
-			public const int ic_people_roxo = 2130771986;
-			
 			// aapt resource value: 0x7F010013
-			public const int ic_people_verde = 2130771987;
+			public const int ic_people_roxo = 2130771987;
 			
 			// aapt resource value: 0x7F010014
-			public const int ic_saida_preto = 2130771988;
+			public const int ic_people_verde = 2130771988;
+			
+			// aapt resource value: 0x7F010015
+			public const int ic_posts = 2130771989;
+			
+			// aapt resource value: 0x7F010016
+			public const int ic_saida_preto = 2130771990;
 			
 			// aapt resource value: 0x7F0900FF
 			public const int ic_vol_type_speaker_dark = 2131296511;
@@ -2933,8 +2942,8 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F090104
 			public const int ic_vol_type_tv_light = 2131296516;
 			
-			// aapt resource value: 0x7F010015
-			public const int igreja = 2130771989;
+			// aapt resource value: 0x7F010017
+			public const int igreja = 2130771991;
 			
 			// aapt resource value: 0x7F090105
 			public const int mr_button_connected_dark = 2131296517;
@@ -3035,8 +3044,8 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010016
-			public const int people = 2130771990;
+			// aapt resource value: 0x7F010018
+			public const int people = 2130771992;
 			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;
