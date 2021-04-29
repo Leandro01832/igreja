@@ -69,7 +69,7 @@ namespace AplicativoXamarin.Views
 
         private async void Botao_Clicked(object sender, EventArgs e)
         {
-           await Navigation.PushAsync(new ViewLoginView());
+           await Navigation.PushAsync(new EnterCell());
         }
 
         //private async void Locator()

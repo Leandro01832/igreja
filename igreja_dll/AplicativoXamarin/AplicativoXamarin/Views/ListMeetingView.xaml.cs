@@ -27,15 +27,15 @@ namespace AplicativoXamarin.Views
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<Reuniao>(this, "ReuniaoSelecionadoUsuario",
-               (msg) =>
+              async (msg) =>
                {
-                   Navigation.PushAsync(new LogoutMeetingView(msg));
+                 await  Navigation.PushAsync(new LogoutMeetingView(msg));
                });
 
             MessagingCenter.Subscribe<Exception>(this, "FalhaListagemReuniaoUsuario",
-                (msg) =>
+               async (msg) =>
                 {
-                    DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de reuniões. Por favor tente novamente mais tarde.", "Ok");
+                   await DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de reuniões. Por favor tente novamente mais tarde.", "Ok");
                 });
 
             await this.Listagem.GetReunioes(false);

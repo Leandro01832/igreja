@@ -24,6 +24,9 @@
   </Jars>
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\41\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\42\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\44\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\46\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\22\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\25\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\27\jl\res</ResolvedResourceDirectory>
@@ -33,14 +36,22 @@
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\31\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\32\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\34\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\47\jl\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Release\81\lp\41\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\81\lp\42\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\81\lp\44\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\81\lp\46\jl\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Release\81\lp\29\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\81\lp\47\jl\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\41.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\42.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\44.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\46.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\22.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\25.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\27.stamp</ResolvedResourceDirectoryStamp>
@@ -50,5 +61,6 @@
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\31.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\32.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\34.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Release\81\lp\47.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

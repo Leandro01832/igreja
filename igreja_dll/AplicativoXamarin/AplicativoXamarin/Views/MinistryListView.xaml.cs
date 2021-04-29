@@ -27,15 +27,15 @@ namespace AplicativoXamarin.Views
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<Ministerio>(this, "MinisterioSelecionadoUsuario",
-                (msg) =>
+               async (msg) =>
                 {
-                    Navigation.PushAsync(new LogoutMinistryView(msg));
+                   await Navigation.PushAsync(new LogoutMinistryView(msg));
                 });
 
             MessagingCenter.Subscribe<Exception>(this, "FalhaListagem",
-                (msg) =>
+               async (msg) =>
                 {
-                    DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de ministérios. Por favor tente novamente mais tarde.", "Ok");
+                   await DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de ministérios. Por favor tente novamente mais tarde.", "Ok");
                 });
 
             await this.ViewModel.GetMinisterios(false);

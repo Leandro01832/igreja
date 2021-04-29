@@ -23,25 +23,8 @@ namespace business.classes
 
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]        
-        public DateTime Data_reuniao
-        {
-            get
-            {
-                return data_reuniao;
-            }
-
-            set
-            {
-                if(value >= DateTime.Now)
-                data_reuniao = value;
-                else
-                {
-                    MessageBox.Show("A data precisa ser maior ou igual ao dia atual");
-                    data_reuniao = DateTime.Now;
-                }
-            }
-        }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime Data_reuniao { get; set; }
 
         [Display(Name = "Horário de início")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -57,24 +40,8 @@ namespace business.classes
 
         [Display(Name = "Local da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Local_reuniao
-        {
-            get
-            {
-                return local_reuniao;
-            }
+        public string Local_reuniao { get; set; }
 
-            set
-            {
-                if(value != "")
-                local_reuniao = value;
-                else
-                {
-                    MessageBox.Show("Informe o local da reunião");
-                    local_reuniao = null;
-                }
-            }
-        }
         [JsonIgnore]
         public virtual List<ReuniaoPessoa> Pessoas { get; set; }
 
