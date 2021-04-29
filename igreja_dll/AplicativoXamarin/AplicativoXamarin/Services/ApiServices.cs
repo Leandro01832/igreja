@@ -14,10 +14,29 @@ namespace AplicativoXamarin.Services
    public class ApiServices
     {
         const string URL_POST_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi";
-        const string URL_DELETE_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi/";
+        const string URL_DELETE_PARTICIPARMINISTERIO = "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi/";        
+
         const string URL_POST_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi";
         const string URL_DELETE_PARTICIPARREUNIAO = "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi/";
         const string URL_REGISTRAR = "http://www.igrejadeusbom.somee.com/Register";
+
+        const string URL_GET_CELULA_USUARIO = "http://www.igrejadeusbom.somee.com/api/CelulaApi/";
+
+        internal async Task<Celula> GetCelulaUsuario()
+        {
+            HttpClient cliente = new HttpClient();
+            var pessoa = await GetPessoa();
+            if(pessoa.Celula != null)
+            {
+                var resultado = await cliente.GetStringAsync(URL_GET_CELULA_USUARIO + pessoa.celula_);
+                var cel = JsonConvert.DeserializeObject<Celula>(resultado);
+                return cel;
+            }
+            else
+            {
+                return null;
+            }           
+        }
 
 
         public static async Task<Pessoa> GetPessoa()

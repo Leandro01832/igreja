@@ -9,6 +9,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace AplicativoXamarin.ViewModels
 {
@@ -16,10 +18,12 @@ namespace AplicativoXamarin.ViewModels
     {
         #region properties
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public ObservableCollection<Pin> Pins { get; set; }
         public RegisterViewModel Register { get; set; }
         public LoginViewModel newLogin { get; set; }
         public UserViewModel UsuarioLogado { get; set; }
-        
+        public ViewModelCell CelulaUsuario { get; set; }
+
 
         #endregion
 
@@ -30,14 +34,16 @@ namespace AplicativoXamarin.ViewModels
         public MainViewModel()
         {
             instance = this;
+            
+            Pins = new ObservableCollection<Pin>();            
             Register = new RegisterViewModel();
             Menu = new ObservableCollection<MenuItemViewModel>();
             newLogin = new LoginViewModel();
             UsuarioLogado = new UserViewModel();
-            LoadMenu(); 
-        }
+            CelulaUsuario = new ViewModelCell();
 
-
+            LoadMenu();
+        }       
 
         #endregion
 
@@ -57,7 +63,40 @@ namespace AplicativoXamarin.ViewModels
 
         #endregion
 
-        #region Methods        
+        #region Methods 
+
+        internal void GetGeolocation()
+        {
+            var position1 = new Position(-23.536937, -46.779427);
+            var pin1 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position1,
+                Label = "Pin1",
+                Address = "Local Pino 01"
+            };
+            Pins.Add(pin1);
+
+            var position2 = new Position(-18.753730, -44.430406);
+            var pin2 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position2,
+                Label = "Pin2",
+                Address = "Local Pino 02"
+            };
+            Pins.Add(pin2);
+
+            var position3 = new Position(-12.971687, -38.475612);
+            var pin3 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position3,
+                Label = "Pin3",
+                Address = "Local Pino 03"
+            };
+            Pins.Add(pin3);
+        }
 
         public void LoadUser(Pessoa user)
         {
@@ -72,7 +111,7 @@ namespace AplicativoXamarin.ViewModels
             {
                 icon = "people.png",
                 Title = "Minha Celula",
-                PageName = "Celula"
+                PageName = "CelView"
             });
 
             Menu.Add(new MenuItemViewModel

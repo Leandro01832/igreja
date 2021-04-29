@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.CelView"
+             BackgroundColor="{StaticResource FontColor}"
+             Title="Celula"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             >
+    
+    <StackLayout Padding="10" Orientation="Horizontal" BindingContext="{Binding Usuario}">
+        <Label Text="Celula do usuario: " TextColor="{StaticResource BackgroundColor}"/>
+        <Entry Text="{Binding Email, Mode=TwoWay}" ></Entry>
+    </StackLayout>
+</ContentPage>

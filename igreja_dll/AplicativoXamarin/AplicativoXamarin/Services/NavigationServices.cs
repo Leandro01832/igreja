@@ -10,14 +10,18 @@ namespace AplicativoXamarin.Services
 {
     public class NavigationServices
     {
+        public ApiServices Api { get; set; }
+
         public async Task Navigate(string pagename)
         {
             App.Master.IsPresented = false;
+            Api = new ApiServices();
 
             switch (pagename)
             {
-                case "Celula":
-                    await App.Navigator.PushAsync(new CelView());
+                case "CelView":
+                    var cel = await Api.GetCelulaUsuario();
+                    await App.Navigator.PushAsync(new CelView(cel));
 
                     break;
 

@@ -47,6 +47,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MenuItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CellsMinistryView.xaml.cs">
+      <DependentUpon>CellsMinistryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CelView.xaml.cs">
       <DependentUpon>CelView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -120,6 +125,14 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\PageTeste.xaml.cs">
       <DependentUpon>PageTeste.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\PeopleMeetingView.xaml.cs">
+      <DependentUpon>PeopleMeetingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\PeopleMinistry.xaml.cs">
+      <DependentUpon>PeopleMinistry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml.cs">
@@ -253,6 +266,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PeopleMinistry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CellsMinistryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PeopleMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

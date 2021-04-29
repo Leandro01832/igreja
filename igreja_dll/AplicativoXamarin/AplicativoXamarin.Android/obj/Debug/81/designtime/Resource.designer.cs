@@ -211,6 +211,15 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F040022
 			public const int activityChooserViewStyle = 2130968610;
 			
+			// aapt resource value: 0x7F010000
+			public const int adSize = 2130771968;
+			
+			// aapt resource value: 0x7F010001
+			public const int adSizes = 2130771969;
+			
+			// aapt resource value: 0x7F010002
+			public const int adUnitId = 2130771970;
+			
 			// aapt resource value: 0x7F040023
 			public const int alertDialogButtonGroupStyle = 2130968611;
 			
@@ -231,6 +240,12 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F040029
 			public const int alphabeticModifiers = 2130968617;
+			
+			// aapt resource value: 0x7F010017
+			public const int ambientEnabled = 2130771991;
+			
+			// aapt resource value: 0x7F01001B
+			public const int appTheme = 2130771995;
 			
 			// aapt resource value: 0x7F04002A
 			public const int arrowHeadLength = 2130968618;
@@ -322,6 +337,9 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F040047
 			public const int buttonPanelSideLayout = 2130968647;
 			
+			// aapt resource value: 0x7F010018
+			public const int buttonSize = 2130771992;
+			
 			// aapt resource value: 0x7F040048
 			public const int buttonStyle = 2130968648;
 			
@@ -333,6 +351,33 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F04004B
 			public const int buttonTintMode = 2130968651;
+			
+			// aapt resource value: 0x7F010022
+			public const int buyButtonAppearance = 2130772002;
+			
+			// aapt resource value: 0x7F01001F
+			public const int buyButtonHeight = 2130771999;
+			
+			// aapt resource value: 0x7F010021
+			public const int buyButtonText = 2130772001;
+			
+			// aapt resource value: 0x7F010020
+			public const int buyButtonWidth = 2130772000;
+			
+			// aapt resource value: 0x7F010008
+			public const int cameraBearing = 2130771976;
+			
+			// aapt resource value: 0x7F010009
+			public const int cameraTargetLat = 2130771977;
+			
+			// aapt resource value: 0x7F01000A
+			public const int cameraTargetLng = 2130771978;
+			
+			// aapt resource value: 0x7F01000B
+			public const int cameraTilt = 2130771979;
+			
+			// aapt resource value: 0x7F01000C
+			public const int cameraZoom = 2130771980;
 			
 			// aapt resource value: 0x7F040001
 			public const int cardBackgroundColor = 2130968577;
@@ -357,6 +402,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F04004D
 			public const int checkedTextViewStyle = 2130968653;
+			
+			// aapt resource value: 0x7F010006
+			public const int circleCrop = 2130771974;
 			
 			// aapt resource value: 0x7F04004E
 			public const int closeIcon = 2130968654;
@@ -405,6 +453,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F04005D
 			public const int colorPrimaryDark = 2130968669;
+			
+			// aapt resource value: 0x7F010019
+			public const int colorScheme = 2130771993;
 			
 			// aapt resource value: 0x7F04005E
 			public const int colorSwitchThumbNormal = 2130968670;
@@ -517,6 +568,9 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F04007D
 			public const int elevation = 2130968701;
 			
+			// aapt resource value: 0x7F01001C
+			public const int environment = 2130771996;
+			
 			// aapt resource value: 0x7F04007E
 			public const int errorEnabled = 2130968702;
 			
@@ -604,6 +658,12 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F040099
 			public const int foregroundInsidePadding = 2130968729;
 			
+			// aapt resource value: 0x7F01001E
+			public const int fragmentMode = 2130771998;
+			
+			// aapt resource value: 0x7F01001D
+			public const int fragmentStyle = 2130771997;
+			
 			// aapt resource value: 0x7F04009A
 			public const int gapBetweenBars = 2130968730;
 			
@@ -645,6 +705,12 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0400A6
 			public const int iconTintMode = 2130968742;
+			
+			// aapt resource value: 0x7F010005
+			public const int imageAspectRatio = 2130771973;
+			
+			// aapt resource value: 0x7F010004
+			public const int imageAspectRatioAdjust = 2130771972;
 			
 			// aapt resource value: 0x7F0400A8
 			public const int imageButtonStyle = 2130968744;
@@ -748,11 +814,38 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0400C9
 			public const int listPreferredItemPaddingRight = 2130968777;
 			
+			// aapt resource value: 0x7F01000D
+			public const int liteMode = 2130771981;
+			
 			// aapt resource value: 0x7F0400CA
 			public const int logo = 2130968778;
 			
 			// aapt resource value: 0x7F0400CB
 			public const int logoDescription = 2130968779;
+			
+			// aapt resource value: 0x7F010007
+			public const int mapType = 2130771975;
+			
+			// aapt resource value: 0x7F010025
+			public const int maskedWalletDetailsBackground = 2130772005;
+			
+			// aapt resource value: 0x7F010027
+			public const int maskedWalletDetailsButtonBackground = 2130772007;
+			
+			// aapt resource value: 0x7F010026
+			public const int maskedWalletDetailsButtonTextAppearance = 2130772006;
+			
+			// aapt resource value: 0x7F010024
+			public const int maskedWalletDetailsHeaderTextAppearance = 2130772004;
+			
+			// aapt resource value: 0x7F010029
+			public const int maskedWalletDetailsLogoImageType = 2130772009;
+			
+			// aapt resource value: 0x7F010028
+			public const int maskedWalletDetailsLogoTextColor = 2130772008;
+			
+			// aapt resource value: 0x7F010023
+			public const int maskedWalletDetailsTextAppearance = 2130772003;
 			
 			// aapt resource value: 0x7F0400CC
 			public const int maxActionInlineWidth = 2130968780;
@@ -903,6 +996,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0400F0
 			public const int rippleColor = 2130968816;
+			
+			// aapt resource value: 0x7F01001A
+			public const int scopeUris = 2130771994;
 			
 			// aapt resource value: 0x7F0400F1
 			public const int scrimAnimationDuration = 2130968817;
@@ -1186,8 +1282,32 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F04014E
 			public const int trackTintMode = 2130968910;
 			
+			// aapt resource value: 0x7F01000E
+			public const int uiCompass = 2130771982;
+			
+			// aapt resource value: 0x7F010016
+			public const int uiMapToolbar = 2130771990;
+			
+			// aapt resource value: 0x7F01000F
+			public const int uiRotateGestures = 2130771983;
+			
+			// aapt resource value: 0x7F010010
+			public const int uiScrollGestures = 2130771984;
+			
+			// aapt resource value: 0x7F010011
+			public const int uiTiltGestures = 2130771985;
+			
+			// aapt resource value: 0x7F010012
+			public const int uiZoomControls = 2130771986;
+			
+			// aapt resource value: 0x7F010013
+			public const int uiZoomGestures = 2130771987;
+			
 			// aapt resource value: 0x7F04014F
 			public const int useCompatPadding = 2130968911;
+			
+			// aapt resource value: 0x7F010014
+			public const int useViewLifecycle = 2130771988;
 			
 			// aapt resource value: 0x7F040150
 			public const int voiceIcon = 2130968912;
@@ -1221,6 +1341,12 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F04015A
 			public const int windowNoTitle = 2130968922;
+			
+			// aapt resource value: 0x7F010003
+			public const int windowTransitionStyle = 2130771971;
+			
+			// aapt resource value: 0x7F010015
+			public const int zOrderOnTop = 2130771989;
 			
 			static Attribute()
 			{
@@ -1398,6 +1524,69 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F050004
 			public const int colorPrimaryDark = 2131034116;
 			
+			// aapt resource value: 0x7F050000
+			public const int common_action_bar_splitter = 2131034112;
+			
+			// aapt resource value: 0x7F050024
+			public const int common_google_signin_btn_text_dark = 2131034148;
+			
+			// aapt resource value: 0x7F050001
+			public const int common_google_signin_btn_text_dark_default = 2131034113;
+			
+			// aapt resource value: 0x7F050002
+			public const int common_google_signin_btn_text_dark_disabled = 2131034114;
+			
+			// aapt resource value: 0x7F050003
+			public const int common_google_signin_btn_text_dark_focused = 2131034115;
+			
+			// aapt resource value: 0x7F050004
+			public const int common_google_signin_btn_text_dark_pressed = 2131034116;
+			
+			// aapt resource value: 0x7F050025
+			public const int common_google_signin_btn_text_light = 2131034149;
+			
+			// aapt resource value: 0x7F050005
+			public const int common_google_signin_btn_text_light_default = 2131034117;
+			
+			// aapt resource value: 0x7F050006
+			public const int common_google_signin_btn_text_light_disabled = 2131034118;
+			
+			// aapt resource value: 0x7F050007
+			public const int common_google_signin_btn_text_light_focused = 2131034119;
+			
+			// aapt resource value: 0x7F050008
+			public const int common_google_signin_btn_text_light_pressed = 2131034120;
+			
+			// aapt resource value: 0x7F050026
+			public const int common_plus_signin_btn_text_dark = 2131034150;
+			
+			// aapt resource value: 0x7F050009
+			public const int common_plus_signin_btn_text_dark_default = 2131034121;
+			
+			// aapt resource value: 0x7F05000A
+			public const int common_plus_signin_btn_text_dark_disabled = 2131034122;
+			
+			// aapt resource value: 0x7F05000B
+			public const int common_plus_signin_btn_text_dark_focused = 2131034123;
+			
+			// aapt resource value: 0x7F05000C
+			public const int common_plus_signin_btn_text_dark_pressed = 2131034124;
+			
+			// aapt resource value: 0x7F050027
+			public const int common_plus_signin_btn_text_light = 2131034151;
+			
+			// aapt resource value: 0x7F05000D
+			public const int common_plus_signin_btn_text_light_default = 2131034125;
+			
+			// aapt resource value: 0x7F05000E
+			public const int common_plus_signin_btn_text_light_disabled = 2131034126;
+			
+			// aapt resource value: 0x7F05000F
+			public const int common_plus_signin_btn_text_light_focused = 2131034127;
+			
+			// aapt resource value: 0x7F050010
+			public const int common_plus_signin_btn_text_light_pressed = 2131034128;
+			
 			// aapt resource value: 0x7F060027
 			public const int design_bottom_navigation_shadow_color = 2131099687;
 			
@@ -1506,6 +1695,24 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F060049
 			public const int notification_material_background_media_default_color = 2131099721;
 			
+			// aapt resource value: 0x7F050011
+			public const int place_autocomplete_prediction_primary_text = 2131034129;
+			
+			// aapt resource value: 0x7F050012
+			public const int place_autocomplete_prediction_primary_text_highlight = 2131034130;
+			
+			// aapt resource value: 0x7F050013
+			public const int place_autocomplete_prediction_secondary_text = 2131034131;
+			
+			// aapt resource value: 0x7F050014
+			public const int place_autocomplete_search_hint = 2131034132;
+			
+			// aapt resource value: 0x7F050015
+			public const int place_autocomplete_search_text = 2131034133;
+			
+			// aapt resource value: 0x7F050016
+			public const int place_autocomplete_separator = 2131034134;
+			
 			// aapt resource value: 0x7F06004A
 			public const int primary_dark_material_dark = 2131099722;
 			
@@ -1571,6 +1778,51 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F06005F
 			public const int tooltip_background_light = 2131099743;
+			
+			// aapt resource value: 0x7F050017
+			public const int wallet_bright_foreground_disabled_holo_light = 2131034135;
+			
+			// aapt resource value: 0x7F050018
+			public const int wallet_bright_foreground_holo_dark = 2131034136;
+			
+			// aapt resource value: 0x7F050019
+			public const int wallet_bright_foreground_holo_light = 2131034137;
+			
+			// aapt resource value: 0x7F05001A
+			public const int wallet_dim_foreground_disabled_holo_dark = 2131034138;
+			
+			// aapt resource value: 0x7F05001B
+			public const int wallet_dim_foreground_holo_dark = 2131034139;
+			
+			// aapt resource value: 0x7F05001C
+			public const int wallet_dim_foreground_inverse_disabled_holo_dark = 2131034140;
+			
+			// aapt resource value: 0x7F05001D
+			public const int wallet_dim_foreground_inverse_holo_dark = 2131034141;
+			
+			// aapt resource value: 0x7F05001E
+			public const int wallet_highlighted_text_holo_dark = 2131034142;
+			
+			// aapt resource value: 0x7F05001F
+			public const int wallet_highlighted_text_holo_light = 2131034143;
+			
+			// aapt resource value: 0x7F050020
+			public const int wallet_hint_foreground_holo_dark = 2131034144;
+			
+			// aapt resource value: 0x7F050021
+			public const int wallet_hint_foreground_holo_light = 2131034145;
+			
+			// aapt resource value: 0x7F050022
+			public const int wallet_holo_blue_light = 2131034146;
+			
+			// aapt resource value: 0x7F050023
+			public const int wallet_link_text_light = 2131034147;
+			
+			// aapt resource value: 0x7F050028
+			public const int wallet_primary_text_holo_light = 2131034152;
+			
+			// aapt resource value: 0x7F050029
+			public const int wallet_secondary_text_holo_dark = 2131034153;
 			
 			static Color()
 			{
@@ -2053,6 +2305,36 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F080014
 			public const int notification_top_pad_large_text = 2131230740;
 			
+			// aapt resource value: 0x7F060000
+			public const int place_autocomplete_button_padding = 2131099648;
+			
+			// aapt resource value: 0x7F060001
+			public const int place_autocomplete_powered_by_google_height = 2131099649;
+			
+			// aapt resource value: 0x7F060002
+			public const int place_autocomplete_powered_by_google_start = 2131099650;
+			
+			// aapt resource value: 0x7F060003
+			public const int place_autocomplete_prediction_height = 2131099651;
+			
+			// aapt resource value: 0x7F060004
+			public const int place_autocomplete_prediction_horizontal_margin = 2131099652;
+			
+			// aapt resource value: 0x7F060005
+			public const int place_autocomplete_prediction_primary_text = 2131099653;
+			
+			// aapt resource value: 0x7F060006
+			public const int place_autocomplete_prediction_secondary_text = 2131099654;
+			
+			// aapt resource value: 0x7F060007
+			public const int place_autocomplete_progress_horizontal_margin = 2131099655;
+			
+			// aapt resource value: 0x7F060008
+			public const int place_autocomplete_progress_size = 2131099656;
+			
+			// aapt resource value: 0x7F060009
+			public const int place_autocomplete_separator_start = 2131099657;
+			
 			// aapt resource value: 0x7F080094
 			public const int tooltip_corner_radius = 2131230868;
 			
@@ -2344,6 +2626,147 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F090055
 			public const int avd_show_password = 2131296341;
+			
+			// aapt resource value: 0x7F020000
+			public const int cast_ic_notification_0 = 2130837504;
+			
+			// aapt resource value: 0x7F020001
+			public const int cast_ic_notification_1 = 2130837505;
+			
+			// aapt resource value: 0x7F020002
+			public const int cast_ic_notification_2 = 2130837506;
+			
+			// aapt resource value: 0x7F020003
+			public const int cast_ic_notification_connecting = 2130837507;
+			
+			// aapt resource value: 0x7F020004
+			public const int cast_ic_notification_on = 2130837508;
+			
+			// aapt resource value: 0x7F020005
+			public const int common_full_open_on_phone = 2130837509;
+			
+			// aapt resource value: 0x7F020006
+			public const int common_google_signin_btn_icon_dark = 2130837510;
+			
+			// aapt resource value: 0x7F020007
+			public const int common_google_signin_btn_icon_dark_disabled = 2130837511;
+			
+			// aapt resource value: 0x7F020008
+			public const int common_google_signin_btn_icon_dark_focused = 2130837512;
+			
+			// aapt resource value: 0x7F020009
+			public const int common_google_signin_btn_icon_dark_normal = 2130837513;
+			
+			// aapt resource value: 0x7F02000A
+			public const int common_google_signin_btn_icon_dark_pressed = 2130837514;
+			
+			// aapt resource value: 0x7F02000B
+			public const int common_google_signin_btn_icon_light = 2130837515;
+			
+			// aapt resource value: 0x7F02000C
+			public const int common_google_signin_btn_icon_light_disabled = 2130837516;
+			
+			// aapt resource value: 0x7F02000D
+			public const int common_google_signin_btn_icon_light_focused = 2130837517;
+			
+			// aapt resource value: 0x7F02000E
+			public const int common_google_signin_btn_icon_light_normal = 2130837518;
+			
+			// aapt resource value: 0x7F02000F
+			public const int common_google_signin_btn_icon_light_pressed = 2130837519;
+			
+			// aapt resource value: 0x7F020010
+			public const int common_google_signin_btn_text_dark = 2130837520;
+			
+			// aapt resource value: 0x7F020011
+			public const int common_google_signin_btn_text_dark_disabled = 2130837521;
+			
+			// aapt resource value: 0x7F020012
+			public const int common_google_signin_btn_text_dark_focused = 2130837522;
+			
+			// aapt resource value: 0x7F020013
+			public const int common_google_signin_btn_text_dark_normal = 2130837523;
+			
+			// aapt resource value: 0x7F020014
+			public const int common_google_signin_btn_text_dark_pressed = 2130837524;
+			
+			// aapt resource value: 0x7F020015
+			public const int common_google_signin_btn_text_light = 2130837525;
+			
+			// aapt resource value: 0x7F020016
+			public const int common_google_signin_btn_text_light_disabled = 2130837526;
+			
+			// aapt resource value: 0x7F020017
+			public const int common_google_signin_btn_text_light_focused = 2130837527;
+			
+			// aapt resource value: 0x7F020018
+			public const int common_google_signin_btn_text_light_normal = 2130837528;
+			
+			// aapt resource value: 0x7F020019
+			public const int common_google_signin_btn_text_light_pressed = 2130837529;
+			
+			// aapt resource value: 0x7F02001A
+			public const int common_ic_googleplayservices = 2130837530;
+			
+			// aapt resource value: 0x7F02001B
+			public const int common_plus_signin_btn_icon_dark = 2130837531;
+			
+			// aapt resource value: 0x7F02001C
+			public const int common_plus_signin_btn_icon_dark_disabled = 2130837532;
+			
+			// aapt resource value: 0x7F02001D
+			public const int common_plus_signin_btn_icon_dark_focused = 2130837533;
+			
+			// aapt resource value: 0x7F02001E
+			public const int common_plus_signin_btn_icon_dark_normal = 2130837534;
+			
+			// aapt resource value: 0x7F02001F
+			public const int common_plus_signin_btn_icon_dark_pressed = 2130837535;
+			
+			// aapt resource value: 0x7F020020
+			public const int common_plus_signin_btn_icon_light = 2130837536;
+			
+			// aapt resource value: 0x7F020021
+			public const int common_plus_signin_btn_icon_light_disabled = 2130837537;
+			
+			// aapt resource value: 0x7F020022
+			public const int common_plus_signin_btn_icon_light_focused = 2130837538;
+			
+			// aapt resource value: 0x7F020023
+			public const int common_plus_signin_btn_icon_light_normal = 2130837539;
+			
+			// aapt resource value: 0x7F020024
+			public const int common_plus_signin_btn_icon_light_pressed = 2130837540;
+			
+			// aapt resource value: 0x7F020025
+			public const int common_plus_signin_btn_text_dark = 2130837541;
+			
+			// aapt resource value: 0x7F020026
+			public const int common_plus_signin_btn_text_dark_disabled = 2130837542;
+			
+			// aapt resource value: 0x7F020027
+			public const int common_plus_signin_btn_text_dark_focused = 2130837543;
+			
+			// aapt resource value: 0x7F020028
+			public const int common_plus_signin_btn_text_dark_normal = 2130837544;
+			
+			// aapt resource value: 0x7F020029
+			public const int common_plus_signin_btn_text_dark_pressed = 2130837545;
+			
+			// aapt resource value: 0x7F02002A
+			public const int common_plus_signin_btn_text_light = 2130837546;
+			
+			// aapt resource value: 0x7F02002B
+			public const int common_plus_signin_btn_text_light_disabled = 2130837547;
+			
+			// aapt resource value: 0x7F02002C
+			public const int common_plus_signin_btn_text_light_focused = 2130837548;
+			
+			// aapt resource value: 0x7F02002D
+			public const int common_plus_signin_btn_text_light_normal = 2130837549;
+			
+			// aapt resource value: 0x7F02002E
+			public const int common_plus_signin_btn_text_light_pressed = 2130837550;
 			
 			// aapt resource value: 0x7F090056
 			public const int design_bottom_navigation_item_background = 2131296342;
@@ -2918,6 +3341,18 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F010014
 			public const int ic_people_verde = 2130771988;
 			
+			// aapt resource value: 0x7F02002F
+			public const int ic_plusone_medium_off_client = 2130837551;
+			
+			// aapt resource value: 0x7F020030
+			public const int ic_plusone_small_off_client = 2130837552;
+			
+			// aapt resource value: 0x7F020031
+			public const int ic_plusone_standard_off_client = 2130837553;
+			
+			// aapt resource value: 0x7F020032
+			public const int ic_plusone_tall_off_client = 2130837554;
+			
 			// aapt resource value: 0x7F010015
 			public const int ic_posts = 2130771989;
 			
@@ -3047,6 +3482,18 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F010018
 			public const int people = 2130771992;
 			
+			// aapt resource value: 0x7F020033
+			public const int places_ic_clear = 2130837555;
+			
+			// aapt resource value: 0x7F020034
+			public const int places_ic_search = 2130837556;
+			
+			// aapt resource value: 0x7F020035
+			public const int powered_by_google_dark = 2130837557;
+			
+			// aapt resource value: 0x7F020036
+			public const int powered_by_google_light = 2130837558;
+			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;
 			
@@ -3129,8 +3576,26 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0015
 			public const int add = 2131492885;
 			
+			// aapt resource value: 0x7F070003
+			public const int adjust_height = 2131165187;
+			
+			// aapt resource value: 0x7F070004
+			public const int adjust_width = 2131165188;
+			
 			// aapt resource value: 0x7F0C0016
 			public const int alertTitle = 2131492886;
+			
+			// aapt resource value: 0x7F070029
+			public const int android_pay = 2131165225;
+			
+			// aapt resource value: 0x7F070020
+			public const int android_pay_dark = 2131165216;
+			
+			// aapt resource value: 0x7F070021
+			public const int android_pay_light = 2131165217;
+			
+			// aapt resource value: 0x7F070022
+			public const int android_pay_light_with_border = 2131165218;
 			
 			// aapt resource value: 0x7F0C0006
 			public const int async = 2131492870;
@@ -3141,14 +3606,32 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0007
 			public const int blocking = 2131492871;
 			
+			// aapt resource value: 0x7F070019
+			public const int book_now = 2131165209;
+			
 			// aapt resource value: 0x7F0C001A
 			public const int bottom = 2131492890;
 			
 			// aapt resource value: 0x7F0C001B
 			public const int buttonPanel = 2131492891;
 			
+			// aapt resource value: 0x7F070015
+			public const int buyButton = 2131165205;
+			
+			// aapt resource value: 0x7F07001A
+			public const int buy_now = 2131165210;
+			
+			// aapt resource value: 0x7F07001B
+			public const int buy_with = 2131165211;
+			
+			// aapt resource value: 0x7F07001C
+			public const int buy_with_google = 2131165212;
+			
 			// aapt resource value: 0x7F0C001C
 			public const int cancel_action = 2131492892;
+			
+			// aapt resource value: 0x7F070000
+			public const int cast_notification_id = 2131165184;
 			
 			// aapt resource value: 0x7F0C001D
 			public const int center = 2131492893;
@@ -3158,6 +3641,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0C0008
 			public const int chronometer = 2131492872;
+			
+			// aapt resource value: 0x7F070023
+			public const int classic = 2131165219;
 			
 			// aapt resource value: 0x7F0C0020
 			public const int container = 2131492896;
@@ -3173,6 +3659,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0C0024
 			public const int customPanel = 2131492900;
+			
+			// aapt resource value: 0x7F07000D
+			public const int dark = 2131165197;
 			
 			// aapt resource value: 0x7F0C0025
 			public const int decor_content_parent = 2131492901;
@@ -3194,6 +3683,12 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0C002B
 			public const int design_navigation_view = 2131492907;
+			
+			// aapt resource value: 0x7F07001D
+			public const int donate_with = 2131165213;
+			
+			// aapt resource value: 0x7F07001E
+			public const int donate_with_google = 2131165214;
 			
 			// aapt resource value: 0x7F0C002C
 			public const int edit_query = 2131492908;
@@ -3222,14 +3717,38 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0034
 			public const int ghost_view = 2131492916;
 			
+			// aapt resource value: 0x7F070024
+			public const int google_wallet_classic = 2131165220;
+			
+			// aapt resource value: 0x7F070025
+			public const int google_wallet_grayscale = 2131165221;
+			
+			// aapt resource value: 0x7F070026
+			public const int google_wallet_monochrome = 2131165222;
+			
+			// aapt resource value: 0x7F070027
+			public const int grayscale = 2131165223;
+			
+			// aapt resource value: 0x7F07000F
+			public const int holo_dark = 2131165199;
+			
+			// aapt resource value: 0x7F070010
+			public const int holo_light = 2131165200;
+			
 			// aapt resource value: 0x7F0C0035
 			public const int home = 2131492917;
+			
+			// aapt resource value: 0x7F070005
+			public const int hybrid = 2131165189;
 			
 			// aapt resource value: 0x7F0C000A
 			public const int icon = 2131492874;
 			
 			// aapt resource value: 0x7F0C000B
 			public const int icon_group = 2131492875;
+			
+			// aapt resource value: 0x7F070009
+			public const int icon_only = 2131165193;
 			
 			// aapt resource value: 0x7F0C0038
 			public const int image = 2131492920;
@@ -3249,6 +3768,9 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C003D
 			public const int left = 2131492925;
 			
+			// aapt resource value: 0x7F07000E
+			public const int light = 2131165198;
+			
 			// aapt resource value: 0x7F0C000E
 			public const int line1 = 2131492878;
 			
@@ -3261,8 +3783,14 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0041
 			public const int list_item = 2131492929;
 			
+			// aapt resource value: 0x7F07001F
+			public const int logo_only = 2131165215;
+			
 			// aapt resource value: 0x7F0C0042
 			public const int masked = 2131492930;
+			
+			// aapt resource value: 0x7F070017
+			public const int match_parent = 2131165207;
 			
 			// aapt resource value: 0x7F0C0043
 			public const int media_actions = 2131492931;
@@ -3272,6 +3800,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0C0045
 			public const int mini = 2131492933;
+			
+			// aapt resource value: 0x7F070028
+			public const int monochrome = 2131165224;
 			
 			// aapt resource value: 0x7F0C0033
 			public const int mr_art = 2131492915;
@@ -3381,6 +3912,33 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0050
 			public const int pin = 2131492944;
 			
+			// aapt resource value: 0x7F07002C
+			public const int place_autocomplete_clear_button = 2131165228;
+			
+			// aapt resource value: 0x7F07002E
+			public const int place_autocomplete_powered_by_google = 2131165230;
+			
+			// aapt resource value: 0x7F070030
+			public const int place_autocomplete_prediction_primary_text = 2131165232;
+			
+			// aapt resource value: 0x7F070031
+			public const int place_autocomplete_prediction_secondary_text = 2131165233;
+			
+			// aapt resource value: 0x7F07002F
+			public const int place_autocomplete_progress = 2131165231;
+			
+			// aapt resource value: 0x7F07002A
+			public const int place_autocomplete_search_button = 2131165226;
+			
+			// aapt resource value: 0x7F07002B
+			public const int place_autocomplete_search_input = 2131165227;
+			
+			// aapt resource value: 0x7F07002D
+			public const int place_autocomplete_separator = 2131165229;
+			
+			// aapt resource value: 0x7F070011
+			public const int production = 2131165201;
+			
 			// aapt resource value: 0x7F0C0051
 			public const int progress_circular = 2131492945;
 			
@@ -3398,6 +3956,12 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0C0015
 			public const int right_side = 2131492885;
+			
+			// aapt resource value: 0x7F070012
+			public const int sandbox = 2131165202;
+			
+			// aapt resource value: 0x7F070007
+			public const int satellite = 2131165191;
 			
 			// aapt resource value: 0x7F0C0057
 			public const int save_image_matrix = 2131492951;
@@ -3453,11 +4017,17 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0068
 			public const int search_voice_btn = 2131492968;
 			
+			// aapt resource value: 0x7F070016
+			public const int selectionDetails = 2131165206;
+			
 			// aapt resource value: 0x7F0C0069
 			public const int select_dialog_listview = 2131492969;
 			
 			// aapt resource value: 0x7F0C006A
 			public const int shortcut = 2131492970;
+			
+			// aapt resource value: 0x7F070002
+			public const int slide = 2131165186;
 			
 			// aapt resource value: 0x7F020002
 			public const int sliding_tabs = 2130837506;
@@ -3486,11 +4056,17 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C0072
 			public const int src_over = 2131492978;
 			
+			// aapt resource value: 0x7F07000A
+			public const int standard = 2131165194;
+			
 			// aapt resource value: 0x7F0C0073
 			public const int start = 2131492979;
 			
 			// aapt resource value: 0x7F0C0074
 			public const int status_bar_latest_event_content = 2131492980;
+			
+			// aapt resource value: 0x7F070013
+			public const int strict_sandbox = 2131165203;
 			
 			// aapt resource value: 0x7F0C0075
 			public const int submenuarrow = 2131492981;
@@ -3503,6 +4079,12 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0C0016
 			public const int tag_transition_group = 2131492886;
+			
+			// aapt resource value: 0x7F070008
+			public const int terrain = 2131165192;
+			
+			// aapt resource value: 0x7F070014
+			public const int test = 2131165204;
 			
 			// aapt resource value: 0x7F0C0017
 			public const int text = 2131492887;
@@ -3579,6 +4161,9 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0C007D
 			public const int volume_item_container = 2131492989;
 			
+			// aapt resource value: 0x7F07000B
+			public const int wide = 2131165195;
+			
 			// aapt resource value: 0x7F0C0090
 			public const int wrap_content = 2131493008;
 			
@@ -3615,6 +4200,9 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F0D0007
 			public const int design_snackbar_text_max_lines = 2131558407;
+			
+			// aapt resource value: 0x7F080000
+			public const int google_play_services_version = 2131230720;
 			
 			// aapt resource value: 0x7F0D0008
 			public const int hide_password_duration = 2131558408;
@@ -3849,6 +4437,18 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F0F0006
 			public const int notification_template_part_time = 2131689478;
 			
+			// aapt resource value: 0x7F030000
+			public const int place_autocomplete_fragment = 2130903040;
+			
+			// aapt resource value: 0x7F030001
+			public const int place_autocomplete_item_powered_by_google = 2130903041;
+			
+			// aapt resource value: 0x7F030002
+			public const int place_autocomplete_item_prediction = 2130903042;
+			
+			// aapt resource value: 0x7F030003
+			public const int place_autocomplete_progress = 2130903043;
+			
 			// aapt resource value: 0x7F0F0038
 			public const int select_dialog_item_material = 2131689528;
 			
@@ -3898,6 +4498,22 @@ namespace AplicativoXamarin.Droid
 			}
 			
 			private Mipmap()
+			{
+			}
+		}
+		
+		public partial class Raw
+		{
+			
+			// aapt resource value: 0x7F040000
+			public const int gtm_analytics = 2130968576;
+			
+			static Raw()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Raw()
 			{
 			}
 		}
@@ -3992,14 +4608,128 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F15001D
 			public const int abc_toolbar_collapse_description = 2132082717;
 			
+			// aapt resource value: 0x7F090000
+			public const int accept = 2131296256;
+			
 			// aapt resource value: 0x7F15001E
 			public const int appbar_scrolling_view_behavior = 2132082718;
+			
+			// aapt resource value: 0x7F090001
+			public const int auth_google_play_services_client_facebook_display_name = 2131296257;
+			
+			// aapt resource value: 0x7F090002
+			public const int auth_google_play_services_client_google_display_name = 2131296258;
 			
 			// aapt resource value: 0x7F15001F
 			public const int bottom_sheet_behavior = 2132082719;
 			
+			// aapt resource value: 0x7F090003
+			public const int cast_notification_connected_message = 2131296259;
+			
+			// aapt resource value: 0x7F090004
+			public const int cast_notification_connecting_message = 2131296260;
+			
+			// aapt resource value: 0x7F090005
+			public const int cast_notification_disconnect = 2131296261;
+			
 			// aapt resource value: 0x7F150020
 			public const int character_counter_pattern = 2132082720;
+			
+			// aapt resource value: 0x7F090006
+			public const int common_google_play_services_api_unavailable_text = 2131296262;
+			
+			// aapt resource value: 0x7F090007
+			public const int common_google_play_services_enable_button = 2131296263;
+			
+			// aapt resource value: 0x7F090008
+			public const int common_google_play_services_enable_text = 2131296264;
+			
+			// aapt resource value: 0x7F090009
+			public const int common_google_play_services_enable_title = 2131296265;
+			
+			// aapt resource value: 0x7F09000A
+			public const int common_google_play_services_install_button = 2131296266;
+			
+			// aapt resource value: 0x7F09000B
+			public const int common_google_play_services_install_text_phone = 2131296267;
+			
+			// aapt resource value: 0x7F09000C
+			public const int common_google_play_services_install_text_tablet = 2131296268;
+			
+			// aapt resource value: 0x7F09000D
+			public const int common_google_play_services_install_title = 2131296269;
+			
+			// aapt resource value: 0x7F09000E
+			public const int common_google_play_services_invalid_account_text = 2131296270;
+			
+			// aapt resource value: 0x7F09000F
+			public const int common_google_play_services_invalid_account_title = 2131296271;
+			
+			// aapt resource value: 0x7F090010
+			public const int common_google_play_services_network_error_text = 2131296272;
+			
+			// aapt resource value: 0x7F090011
+			public const int common_google_play_services_network_error_title = 2131296273;
+			
+			// aapt resource value: 0x7F090012
+			public const int common_google_play_services_notification_ticker = 2131296274;
+			
+			// aapt resource value: 0x7F090013
+			public const int common_google_play_services_restricted_profile_text = 2131296275;
+			
+			// aapt resource value: 0x7F090014
+			public const int common_google_play_services_restricted_profile_title = 2131296276;
+			
+			// aapt resource value: 0x7F090015
+			public const int common_google_play_services_sign_in_failed_text = 2131296277;
+			
+			// aapt resource value: 0x7F090016
+			public const int common_google_play_services_sign_in_failed_title = 2131296278;
+			
+			// aapt resource value: 0x7F090017
+			public const int common_google_play_services_unknown_issue = 2131296279;
+			
+			// aapt resource value: 0x7F090018
+			public const int common_google_play_services_unsupported_text = 2131296280;
+			
+			// aapt resource value: 0x7F090019
+			public const int common_google_play_services_unsupported_title = 2131296281;
+			
+			// aapt resource value: 0x7F09001A
+			public const int common_google_play_services_update_button = 2131296282;
+			
+			// aapt resource value: 0x7F09001B
+			public const int common_google_play_services_update_text = 2131296283;
+			
+			// aapt resource value: 0x7F09001C
+			public const int common_google_play_services_update_title = 2131296284;
+			
+			// aapt resource value: 0x7F09001D
+			public const int common_google_play_services_updating_text = 2131296285;
+			
+			// aapt resource value: 0x7F09001E
+			public const int common_google_play_services_updating_title = 2131296286;
+			
+			// aapt resource value: 0x7F09001F
+			public const int common_google_play_services_wear_update_text = 2131296287;
+			
+			// aapt resource value: 0x7F090020
+			public const int common_open_on_phone = 2131296288;
+			
+			// aapt resource value: 0x7F090021
+			public const int common_signin_button_text = 2131296289;
+			
+			// aapt resource value: 0x7F090022
+			public const int common_signin_button_text_long = 2131296290;
+			
+			// aapt resource value: 0x7F090023
+			public const int create_calendar_message = 2131296291;
+			
+			// aapt resource value: 0x7F090024
+			public const int create_calendar_title = 2131296292;
+			
+			// aapt resource value: 0x7F090025
+			public const int decline = 2131296293;
 			
 			// aapt resource value: 0x7F15001E
 			public const int mr_button_content_description = 2132082718;
@@ -4079,11 +4809,26 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F150025
 			public const int path_password_strike_through = 2132082725;
 			
+			// aapt resource value: 0x7F090026
+			public const int place_autocomplete_clear_button = 2131296294;
+			
+			// aapt resource value: 0x7F090027
+			public const int place_autocomplete_search_hint = 2131296295;
+			
 			// aapt resource value: 0x7F150026
 			public const int search_menu_title = 2132082726;
 			
 			// aapt resource value: 0x7F150001
 			public const int status_bar_notification_info_overflow = 2132082689;
+			
+			// aapt resource value: 0x7F090028
+			public const int store_picture_message = 2131296296;
+			
+			// aapt resource value: 0x7F090029
+			public const int store_picture_title = 2131296297;
+			
+			// aapt resource value: 0x7F09002A
+			public const int wallet_buy_button_place_holder = 2131296298;
 			
 			static String()
 			{
@@ -5013,6 +5758,12 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F160125
 			public const int Theme_AppCompat_NoActionBar = 2132148517;
 			
+			// aapt resource value: 0x7F0A0000
+			public const int Theme_AppInvite_Preview = 2131361792;
+			
+			// aapt resource value: 0x7F0A0001
+			public const int Theme_AppInvite_Preview_Base = 2131361793;
+			
 			// aapt resource value: 0x7F160126
 			public const int Theme_Design = 2132148518;
 			
@@ -5031,6 +5782,9 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x7F16012B
 			public const int Theme_Design_NoActionBar = 2132148523;
 			
+			// aapt resource value: 0x7F0A0002
+			public const int Theme_IAPTheme = 2131361794;
+			
 			// aapt resource value: 0x7F16011E
 			public const int Theme_MediaRouter = 2132148510;
 			
@@ -5042,6 +5796,18 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x7F160121
 			public const int Theme_MediaRouter_Light_DarkControlPanel = 2132148513;
+			
+			// aapt resource value: 0x7F0A0003
+			public const int WalletFragmentDefaultButtonTextAppearance = 2131361795;
+			
+			// aapt resource value: 0x7F0A0004
+			public const int WalletFragmentDefaultDetailsHeaderTextAppearance = 2131361796;
+			
+			// aapt resource value: 0x7F0A0005
+			public const int WalletFragmentDefaultDetailsTextAppearance = 2131361797;
+			
+			// aapt resource value: 0x7F0A0006
+			public const int WalletFragmentDefaultStyle = 2131361798;
 			
 			// aapt resource value: 0x7F16012C
 			public const int Widget_AppCompat_ActionBar = 2132148524;
@@ -5482,6 +6248,20 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x1
 			public const int ActivityChooserView_initialActivityCount = 1;
+			
+			public static int[] AdsAttrs = new int[] {
+					2130771968,
+					2130771969,
+					2130771970};
+			
+			// aapt resource value: 0x7F070560
+			public const int AdsAttrs_adSize = 2131166560;
+			
+			// aapt resource value: 0x1
+			public const int AdsAttrs_adSizes = 1;
+			
+			// aapt resource value: 0x2
+			public const int AdsAttrs_adUnitId = 2;
 			
 			public static int[] AlertDialog = new int[] {
 					16842994,
@@ -6373,6 +7153,12 @@ namespace AplicativoXamarin.Droid
 			// aapt resource value: 0x1
 			public const int CoordinatorLayout_statusBarBackground = 1;
 			
+			public static int[] CustomWalletTheme = new int[] {
+					2130771971};
+			
+			// aapt resource value: 0x7F070564
+			public const int CustomWalletTheme_windowTransitionStyle = 2131166564;
+			
 			public static int[] DesignTheme = new int[] {
 					2130968639,
 					2130968640,
@@ -6592,6 +7378,90 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x1
 			public const int ListPopupWindow_android_dropDownVerticalOffset = 1;
+			
+			public static int[] LoadingImageView = new int[] {
+					2130771972,
+					2130771973,
+					2130771974};
+			
+			// aapt resource value: 0x2
+			public const int LoadingImageView_circleCrop = 2;
+			
+			// aapt resource value: 0x1
+			public const int LoadingImageView_imageAspectRatio = 1;
+			
+			// aapt resource value: 0x7F070568
+			public const int LoadingImageView_imageAspectRatioAdjust = 2131166568;
+			
+			public static int[] MapAttrs = new int[] {
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978,
+					2130771979,
+					2130771980,
+					2130771981,
+					2130771982,
+					2130771983,
+					2130771984,
+					2130771985,
+					2130771986,
+					2130771987,
+					2130771988,
+					2130771989,
+					2130771990,
+					2130771991};
+			
+			// aapt resource value: 0x16
+			public const int MapAttrs_ambientEnabled = 22;
+			
+			// aapt resource value: 0x1
+			public const int MapAttrs_cameraBearing = 1;
+			
+			// aapt resource value: 0x2
+			public const int MapAttrs_cameraTargetLat = 2;
+			
+			// aapt resource value: 0x3
+			public const int MapAttrs_cameraTargetLng = 3;
+			
+			// aapt resource value: 0x4
+			public const int MapAttrs_cameraTilt = 4;
+			
+			// aapt resource value: 0x5
+			public const int MapAttrs_cameraZoom = 5;
+			
+			// aapt resource value: 0x6
+			public const int MapAttrs_liteMode = 6;
+			
+			// aapt resource value: 0x7F070577
+			public const int MapAttrs_mapType = 2131166583;
+			
+			// aapt resource value: 0x7
+			public const int MapAttrs_uiCompass = 7;
+			
+			// aapt resource value: 0x15
+			public const int MapAttrs_uiMapToolbar = 21;
+			
+			// aapt resource value: 0x8
+			public const int MapAttrs_uiRotateGestures = 8;
+			
+			// aapt resource value: 0x9
+			public const int MapAttrs_uiScrollGestures = 9;
+			
+			// aapt resource value: 0x10
+			public const int MapAttrs_uiTiltGestures = 16;
+			
+			// aapt resource value: 0x11
+			public const int MapAttrs_uiZoomControls = 17;
+			
+			// aapt resource value: 0x12
+			public const int MapAttrs_uiZoomGestures = 18;
+			
+			// aapt resource value: 0x13
+			public const int MapAttrs_useViewLifecycle = 19;
+			
+			// aapt resource value: 0x14
+			public const int MapAttrs_zOrderOnTop = 20;
 			
 			public static int[] MediaRouteButton = new int[] {
 					16843072,
@@ -6968,6 +7838,20 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x16
 			public const int SearchView_voiceIcon = 22;
+			
+			public static int[] SignInButton = new int[] {
+					2130771992,
+					2130771993,
+					2130771994};
+			
+			// aapt resource value: 0x7F070588
+			public const int SignInButton_buttonSize = 2131166600;
+			
+			// aapt resource value: 0x1
+			public const int SignInButton_colorScheme = 1;
+			
+			// aapt resource value: 0x2
+			public const int SignInButton_scopeUris = 2;
 			
 			public static int[] SnackbarLayout = new int[] {
 					16843039,
@@ -7430,6 +8314,70 @@ namespace AplicativoXamarin.Droid
 			
 			// aapt resource value: 0x4
 			public const int View_theme = 4;
+			
+			public static int[] WalletFragmentOptions = new int[] {
+					2130771995,
+					2130771996,
+					2130771997,
+					2130771998};
+			
+			// aapt resource value: 0x7F070592
+			public const int WalletFragmentOptions_appTheme = 2131166610;
+			
+			// aapt resource value: 0x1
+			public const int WalletFragmentOptions_environment = 1;
+			
+			// aapt resource value: 0x3
+			public const int WalletFragmentOptions_fragmentMode = 3;
+			
+			// aapt resource value: 0x2
+			public const int WalletFragmentOptions_fragmentStyle = 2;
+			
+			public static int[] WalletFragmentStyle = new int[] {
+					2130771999,
+					2130772000,
+					2130772001,
+					2130772002,
+					2130772003,
+					2130772004,
+					2130772005,
+					2130772006,
+					2130772007,
+					2130772008,
+					2130772009};
+			
+			// aapt resource value: 0x3
+			public const int WalletFragmentStyle_buyButtonAppearance = 3;
+			
+			// aapt resource value: 0x7F070598
+			public const int WalletFragmentStyle_buyButtonHeight = 2131166616;
+			
+			// aapt resource value: 0x2
+			public const int WalletFragmentStyle_buyButtonText = 2;
+			
+			// aapt resource value: 0x1
+			public const int WalletFragmentStyle_buyButtonWidth = 1;
+			
+			// aapt resource value: 0x6
+			public const int WalletFragmentStyle_maskedWalletDetailsBackground = 6;
+			
+			// aapt resource value: 0x8
+			public const int WalletFragmentStyle_maskedWalletDetailsButtonBackground = 8;
+			
+			// aapt resource value: 0x7
+			public const int WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance = 7;
+			
+			// aapt resource value: 0x5
+			public const int WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance = 5;
+			
+			// aapt resource value: 0x10
+			public const int WalletFragmentStyle_maskedWalletDetailsLogoImageType = 16;
+			
+			// aapt resource value: 0x9
+			public const int WalletFragmentStyle_maskedWalletDetailsLogoTextColor = 9;
+			
+			// aapt resource value: 0x4
+			public const int WalletFragmentStyle_maskedWalletDetailsTextAppearance = 4;
 			
 			static Styleable()
 			{

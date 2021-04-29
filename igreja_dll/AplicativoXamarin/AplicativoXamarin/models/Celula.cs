@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AplicativoXamarin.models
 {
-    public abstract  class Celula 
+    public class Celula 
     {
         public int IdCelula { get; set; }
         public string Nome { get; set; }
@@ -17,6 +17,15 @@ namespace AplicativoXamarin.models
         public int Maximo_pessoa { get; set; }
         public virtual List<MinisterioCelula> Ministerios { get; set; }
         public virtual EnderecoCelula EnderecoCelula { get; set; }
+        public string HorarioCelula
+        { get
+            {
+                return Horario.Value.Hours.ToString()
+                + ":" + Horario.Value.Hours.ToString();
+            }
+        }
+
+
         public Celula() : base()
         {
             this.Maximo_pessoa = 50;

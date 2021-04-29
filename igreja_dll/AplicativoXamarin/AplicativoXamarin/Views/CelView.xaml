@@ -1,14 +1,97 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="AplicativoXamarin.Views.CelView"
              BackgroundColor="{StaticResource FontColor}"
-             Title="Celula"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Celula"
              >
-    
-    <StackLayout Padding="10" Orientation="Horizontal" BindingContext="{Binding Usuario}">
-        <Label Text="Celula do usuario: " TextColor="{StaticResource BackgroundColor}"/>
-        <Entry Text="{Binding Email, Mode=TwoWay}" ></Entry>
+
+    <StackLayout Padding="10" Orientation="Vertical" BindingContext="{Binding CelulaUsuario}">
+        <Label Text="Celula do usuario: " TextColor="{StaticResource AcentColor}"/>
+
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     BindingContext="{Binding Celula}">
+
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Id:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding IdCelula}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Nome:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding Nome}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Dia da semana:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding Dia_semana}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Horario:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding HorarioCelula}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Maximo de pessoas:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding Maximo_pessoa}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <Label Text="Endereco da celula:" TextColor="{StaticResource AcentColor}"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="País:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Pais}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Estado:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Estado}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Cidade:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Cidade}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Bairro:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Bairro}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Rua:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Rua}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Numero da casa:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Numero_casa}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Cep:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Cep}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Complemento:" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding EnderecoCelula.Complemento}" TextColor="{StaticResource AcentColor}"/>
+            </StackLayout>
+
+        </StackLayout>
+
+        <!--<maps:Map 
+    WidthRequest="320" 
+    HeightRequest="400"
+    x:Name="MyMap"
+    IsShowingUser="true"
+    MapType="Hybrid">
+        </maps:Map>-->
+
     </StackLayout>
 </ContentPage>

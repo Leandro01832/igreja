@@ -1,0 +1,213 @@
+﻿@model IEnumerable<business.classes.Abstrato.Celula>
+
+@{
+    ViewBag.Title = "Celulas";
+}
+
+<h2>Celulas</h2>
+
+<label style="background-color:cornflowerblue;">Celula para adolescentes</label>
+<label style="background-color:green;">Celula para adultos</label>
+<label style="background-color:lawngreen;">Celula para crianças</label>
+<label style="background-color:mediumpurple;">Celula para casados</label>
+<label style="background-color:coral;">Celula para jovens</label>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EnderecoCelula.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dia_semana)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maximo_pessoa)
+        </th>
+        <th></th>
+    </tr>
+
+    @Html.AntiForgeryToken()
+
+    @foreach (var item in Model.OfType<business.classes.Celulas.Celula_Adolescente>())
+    {
+
+        <tr style="background-color:cornflowerblue;">
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoCelula.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia_semana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+            </td>
+            <td>
+
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IdCelula })  ||
+                @using (Html.BeginForm("ParticiparCelula", "Home", new { Id = item.IdCelula }, FormMethod.Post, null))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Participar" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            </td>
+        </tr>
+    }
+
+
+    @foreach (var item in Model.OfType<business.classes.Celulas.Celula_Adulto>())
+    {
+        <tr style="background-color:green;">
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoCelula.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia_semana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+            </td>
+            <td>
+
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IdCelula })  ||
+                @using (Html.BeginForm("ParticiparCelula", "Home", new { Id = item.IdCelula }, FormMethod.Post, null))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Participar" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+
+            </td>
+        </tr>
+    }
+
+    @foreach (var item in Model.OfType<business.classes.Celulas.Celula_Crianca>())
+    {
+        <tr style="background-color:lawngreen;">
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoCelula.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia_semana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+            </td>
+            <td>
+
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IdCelula }) ||
+                @using (Html.BeginForm("ParticiparCelula", "Home", new { Id = item.IdCelula }, FormMethod.Post, null))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Participar" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+
+            </td>
+        </tr>
+    }
+
+    @foreach (var item in Model.OfType<business.classes.Celulas.Celula_Casado>())
+    {
+        <tr style="background-color:mediumpurple;">
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoCelula.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia_semana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+            </td>
+            <td>
+
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IdCelula })  ||
+                @using (Html.BeginForm("ParticiparCelula", "Home", new { Id = item.IdCelula }, FormMethod.Post, null))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Participar" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+
+            </td>
+        </tr>
+    }
+
+    @foreach (var item in Model.OfType<business.classes.Celulas.Celula_Jovem>())
+    {
+        <tr style="background-color:coral;">
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoCelula.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia_semana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+            </td>
+            <td>
+
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IdCelula }) ||
+                @using (Html.BeginForm("ParticiparCelula", "Home", new { Id = item.IdCelula }, FormMethod.Post, null))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Participar" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

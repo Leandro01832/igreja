@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.ViewLoginView"
+             BackgroundColor="{StaticResource FontColor}"
+             Title="Login"             
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             >    
+
+    <StackLayout Padding="10" Spacing="25" BindingContext="{Binding newLogin}">
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label HorizontalOptions="Center" VerticalOptions="Center"
+             TextColor="{StaticResource AcentColor}" Text="Login" FontSize="Large"
+                   FontAttributes="Bold"></Label>
+
+            <Image 
+              Source="ic_cadeado_branco.png"
+              WidthRequest="80"
+              HeightRequest="80"
+               HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+        </StackLayout>
+
+        <BoxView HeightRequest="3" Color="{StaticResource AcentColor}"></BoxView>       
+
+        <TableView>
+            <TableRoot>
+        <TableSection Title="Autenticação">
+            <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Usuario, Mode=TwoWay}"></EntryCell>
+            <ViewCell>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Senha: "></Label>
+                    <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Senha, Mode=TwoWay}"></Entry>
+                </StackLayout>
+            </ViewCell>
+
+        </TableSection>
+        </TableRoot>
+
+        </TableView>
+
+        <ActivityIndicator IsRunning="{Binding IsRunning}"></ActivityIndicator>
+        
+        <Button Text="Entrar" TextColor="{StaticResource MainColor}" Command="{Binding EntrarCommand}"/>
+       
+
+        <StackLayout Orientation="Horizontal">
+
+
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" VerticalOptions="Center">
+
+                <Label Text="Lembrar-me" TextColor="{StaticResource BackgroundColor}" FontSize="20"
+                   HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                <Switch HorizontalOptions="End" IsToggled="{Binding Lembrar_me, Mode=TwoWay}" VerticalOptions="Center"></Switch>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                <Label Text="Recuperar Senha" TextColor="{StaticResource BackgroundColor}" FontSize="20"
+                   HorizontalOptions="End" VerticalOptions="Center"></Label>
+
+            </StackLayout>           
+
+        </StackLayout>
+
+        <Button Text="Fazer Cadastro" TextColor="{StaticResource MainColor}" Command="{Binding FazerCadastroCommand}"/>
+
+    </StackLayout>
+</ContentPage>

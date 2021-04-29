@@ -1,0 +1,44 @@
+﻿@model business.classes.Abstrato.Ministerio
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Cadastrar</h2>
+<h4>Ministério</h4>
+<hr />
+
+
+@{
+    if (Model is business.classes.Ministerio.Lider_Celula)
+    { <div>@Html.Partial("_Lider_Celula", Model)</div>  }
+    if (Model is business.classes.Ministerio.Lider_Celula_Treinamento)
+    { <div>
+    @Html.Partial("_Lider_Celula_Treinamento", Model)
+    </div> }
+    if (Model is business.classes.Ministerio.Lider_Ministerio)
+    { <div>
+    @Html.Partial("_Lider_Ministerio", Model)
+</div> }
+    if (Model is business.classes.Ministerio.Lider_Ministerio_Treinamento)
+    { <div>
+    @Html.Partial("_Lider_Ministerio_Treinamento", Model)
+</div> }
+    if (Model is business.classes.Ministerio.Supervisor_Celula)
+    { <div>
+    @Html.Partial("_Supervisor_Celula", Model)
+</div> }
+    if (Model is business.classes.Ministerio.Supervisor_Celula_Treinamento)
+    { <div>
+    @Html.Partial("_Supervisor_Celula_Treinamento", Model)
+</div> }
+    if (Model is business.classes.Ministerio.Supervisor_Ministerio)
+    { <div>
+    @Html.Partial("_Supervisor_Ministerio", Model)
+</div> }
+    if (Model is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
+    { <div>
+    @Html.Partial("_Supervisor_Ministerio_Treinamento", Model)
+</div> }
+
+    }
