@@ -75,8 +75,8 @@
     <PackageReference Include="System.Net.Http">
       <Version>4.3.4</Version>
     </PackageReference>
-    <PackageReference Include="Xam.Plugin.Geolocator">
-      <Version>3.0.4</Version>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>4.0.1.5</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>1.8.1</Version>
@@ -97,6 +97,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\com.companyname.AplicativoXamarin-Signed.apk" />
+    <None Include="bin\Debug\com.companyname.AplicativoXamarin.apk" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -457,6 +459,87 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Accessibility.dll" />
+    <Content Include="bin\Debug\AplicativoXamarin.Android.dll" />
+    <Content Include="bin\Debug\AplicativoXamarin.Android.pdb" />
+    <Content Include="bin\Debug\FormsViewGroup.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\FormsViewGroup.pdb" />
+    <Content Include="bin\Debug\GalaSoft.MvvmLight.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\GalaSoft.MvvmLight.Extras.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\GalaSoft.MvvmLight.Platform.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\ImageCircle.Forms.Plugin.Abstractions.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\ImageCircle.Forms.Plugin.Android.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Mono.Android.pdb" />
+    <Content Include="bin\Debug\Mono.Security.pdb" />
+    <Content Include="bin\Debug\mscorlib.pdb" />
+    <Content Include="bin\Debug\Plugin.Geolocator.Abstractions.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Plugin.Geolocator.Abstractions.pdb" />
+    <Content Include="bin\Debug\Plugin.Geolocator.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Plugin.Permissions.Abstractions.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Plugin.Permissions.Abstractions.pdb" />
+    <Content Include="bin\Debug\Plugin.Permissions.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\SQLiteNetExtensions.pdb" />
+    <Content Include="bin\Debug\System.ComponentModel.Composition.pdb" />
+    <Content Include="bin\Debug\System.Configuration.dll" />
+    <Content Include="bin\Debug\System.Core.pdb" />
+    <Content Include="bin\Debug\System.Data.pdb" />
+    <Content Include="bin\Debug\System.Data.SqlXml.dll" />
+    <Content Include="bin\Debug\System.Deployment.dll" />
+    <Content Include="bin\Debug\System.Drawing.dll" />
+    <Content Include="bin\Debug\System.IO.Compression.FileSystem.pdb" />
+    <Content Include="bin\Debug\System.IO.Compression.pdb" />
+    <Content Include="bin\Debug\System.Net.Http.pdb" />
+    <Content Include="bin\Debug\System.Numerics.dll" />
+    <Content Include="bin\Debug\System.Numerics.pdb" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.pdb" />
+    <Content Include="bin\Debug\System.pdb" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Formatters.Soap.dll" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.pdb" />
+    <Content Include="bin\Debug\System.Security.dll" />
+    <Content Include="bin\Debug\System.ServiceModel.Internals.pdb" />
+    <Content Include="bin\Debug\System.Transactions.pdb" />
+    <Content Include="bin\Debug\System.Web.Services.pdb" />
+    <Content Include="bin\Debug\System.Windows.Forms.dll" />
+    <Content Include="bin\Debug\System.Xml.Linq.pdb" />
+    <Content Include="bin\Debug\System.Xml.pdb" />
+    <Content Include="bin\Debug\Xamarin.Forms.Core.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Xamarin.Forms.Core.pdb" />
+    <Content Include="bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Xamarin.Forms.Platform.Android.pdb" />
+    <Content Include="bin\Debug\Xamarin.Forms.Xaml.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Xamarin.Forms.Xaml.pdb" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="..\AplicativoXamarin\AplicativoXamarin.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

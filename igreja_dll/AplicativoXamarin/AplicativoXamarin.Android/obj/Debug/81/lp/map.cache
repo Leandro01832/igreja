@@ -7,9 +7,7 @@ ImageCircle.Forms.Plugin.Abstractions
 ImageCircle.Forms.Plugin.Android
 Newtonsoft.Json
 Plugin.CurrentActivity
-Plugin.Geolocator.Abstractions
-Plugin.Geolocator
-Plugin.Permissions.Abstractions
+Plugin.Media
 Plugin.Permissions
 SQLite-net
 SQLiteNetExtensions

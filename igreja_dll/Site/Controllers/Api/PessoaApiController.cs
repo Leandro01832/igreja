@@ -54,6 +54,7 @@ namespace Site.Controllers.Api
         }
 
         // GET: api/PessoaApi/5
+        [HttpGet]
         [ResponseType(typeof(Pessoa))]
         public IHttpActionResult GetPessoa(int id)
         {

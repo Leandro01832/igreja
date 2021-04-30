@@ -1,4 +1,5 @@
-﻿using AplicativoXamarin.Services;
+﻿using AplicativoXamarin.models;
+using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
 using System;
 
@@ -26,14 +27,42 @@ namespace AplicativoXamarin.Views
             base.OnAppearing();
             MessagingCenter.Subscribe<RegisterViewModel>(this, "Cadastrar",
               async (msg) =>
-              {
-                await Api.CadastrarPessoa(msg);
+              {                  
+                  if (!msg.Crianca && !msg.MembroAclamacao && !msg.MembroBatismo &&
+                  !msg.MembroReconciliacao && !msg.MembroTransferencia && !msg.Visitante)
+                  { await DisplayAlert("Erro", "Marque quem você é", "Ok"); return; }
+                  if (string.IsNullOrEmpty(msg.Email))
+                  { await DisplayAlert("Erro", "Digite seu E-mail", "Ok"); return; }
+                  if (string.IsNullOrEmpty(msg.Password))
+                  { await DisplayAlert("Erro", "Digite sua senha", "Ok"); return; }
+                  
+                  await Api.CadastrarPessoa(msg);
+                  
               });
 
-            MessagingCenter.Subscribe<RegisterViewModel>(this, "Cadastrado",
+            MessagingCenter.Subscribe<RegisterViewModel>(this, "SemCamera",
               async (msg) =>
               {
-                  await DisplayAlert("Confimação", "Você foi cadastrado com sucesso!!!", "Ok");
+                 await  DisplayAlert("Sem Camera", "Camera não disponível", "Ok");
+              });
+
+            MessagingCenter.Subscribe<Pessoa>(this, "Cadastrado",
+              async (msg) =>
+              {
+                  var main = MainViewModel.GetInstance();
+                  if(main.Register.file != null)
+                  {
+                    var  response2 = await Api.SetPhoto(msg.IdPessoa, main.Register.file.GetStream());
+                      if (response2)
+                      await DisplayAlert("Confimação", "Você foi cadastrado com sucesso!!!", "Ok");
+                      else
+                      await DisplayAlert("Confimação", " cadastrado com sucesso mas não foi enviado a foto!!!", "Ok");
+                      main.Register.file.Dispose();
+                  }
+                  else
+                  {
+                      await DisplayAlert("Confimação", " cadastrado com sucesso mas não foi enviado a foto!!!", "Ok");
+                  }
                   App.Current.MainPage = new ViewLoginView();
               });
 

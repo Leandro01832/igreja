@@ -46,6 +46,9 @@ namespace business.classes.Abstrato
         [Index("CODIGO", 2, IsUnique = true)]
         public int Codigo { get; set; }
 
+        [NotMapped]
+        public string password { get; set; }
+
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [Index("EMAIL", 2, IsUnique = true)]
         [MaxLength(80, ErrorMessage ="No maximo 80 caracteres!!!")]

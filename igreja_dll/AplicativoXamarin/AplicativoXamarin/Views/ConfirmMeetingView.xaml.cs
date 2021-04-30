@@ -29,7 +29,7 @@ namespace AplicativoXamarin.Views
 		}
 
 
-        protected override async void OnAppearing()
+        protected override  void OnAppearing()
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<Reuniao>(this, "ConfirmaReuniao",

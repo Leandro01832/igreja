@@ -2,95 +2,122 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AplicativoXamarin.Views.RegisterView"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Cadastrar"
              >
+        <ScrollView>
+        <StackLayout Orientation="Vertical"  BindingContext="{Binding Register}">
+        
+            <TableView>
+                <TableRoot>
 
-
-    <StackLayout Orientation="Vertical" BindingContext="{Binding Register}">
-        <TableView>
-            <TableRoot>
-
-                <TableSection Title="Identificação">
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand"
+                    <TableSection Title="Identificação">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding Crianca, Mode=TwoWay}" 
+                                <Switch HorizontalOptions="End" IsToggled="{Binding Crianca, Mode=TwoWay}" 
                             VerticalOptions="Center"></Switch>
-                        </StackLayout>
+                            </StackLayout>
 
-                    </ViewCell>
+                        </ViewCell>
 
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" 
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" 
                                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End"
+                                <Switch HorizontalOptions="End"
                             IsToggled="{Binding Visitante, Mode=TwoWay}"
                             VerticalOptions="Center"></Switch>
-                        </StackLayout>
-                    </ViewCell>
-
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao, Mode=TwoWay}"
-                    VerticalOptions="Center"></Switch>
-                        </StackLayout>
-                    </ViewCell>
-
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo, Mode=TwoWay}" 
-                    VerticalOptions="Center"></Switch>
-                        </StackLayout>
-                    </ViewCell>
-
-
-                    <ViewCell>
-                        <StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Você é um membro por reconciliação?" VerticalOptions="CenterAndExpand" 
-                                HorizontalOptions="CenterAndExpand" />
-                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao, Mode=TwoWay}" 
-                                VerticalOptions="Center"></Switch>
                             </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
+                        </ViewCell>
 
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia, Mode=TwoWay}" 
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao, Mode=TwoWay}"
                     VerticalOptions="Center"></Switch>
-                        </StackLayout>
-                    </ViewCell>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo, Mode=TwoWay}" 
+                    VerticalOptions="Center"></Switch>
+                            </StackLayout>
+                        </ViewCell>
+
+
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Você é um membro por reconciliação?" VerticalOptions="CenterAndExpand" 
+                                HorizontalOptions="CenterAndExpand" />
+                                    <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao, Mode=TwoWay}" 
+                                VerticalOptions="Center"></Switch>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia, Mode=TwoWay}" 
+                    VerticalOptions="Center"></Switch>
+                            </StackLayout>
+                        </ViewCell>
 
 
 
-                </TableSection>
+                    </TableSection>
 
-                <TableSection Title="Autenticação">
-                    <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Email, Mode=TwoWay}"></EntryCell>
-                    <ViewCell>
+                    <TableSection Title="Autenticação">
+                        <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Email, Mode=TwoWay}"></EntryCell>
+                        <ViewCell>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Senha: "></Label>
-                            <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Password, Mode=TwoWay}"></Entry>
-                        </StackLayout>
-                    </ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Senha: "></Label>
+                                <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Password, Mode=TwoWay}"></Entry>
+                            </StackLayout>
+                        </ViewCell>
 
-                </TableSection>
-            </TableRoot>
+                    </TableSection>
+                </TableRoot>
 
-        </TableView>
+            </TableView>
+        
+            <controls:CircleImage
+          Source="{Binding ImageSource}"
+          Aspect="AspectFill"
+          WidthRequest="200"
+          HeightRequest="200"
+          VerticalOptions="Center"
+          HorizontalOptions="Center">
+            </controls:CircleImage>
 
-        <Button Text="Cadastrar" Command="{Binding RegisterCommand}"></Button>
+        
 
-    </StackLayout>
+            <StackLayout Orientation="Horizontal">
+
+            <ActivityIndicator IsRunning="{Binding Aguarde}"></ActivityIndicator>
+
+            <Button Text="Cadastrar" Command="{Binding RegisterCommand}"></Button>
+                <Button
+          Text="Foto"
+          Command="{Binding TirarFotoCommand}"
+          TextColor="{StaticResource BackgroundColor}"
+          BackgroundColor="{StaticResource AcentColor}"
+          VerticalOptions="Center"
+          HorizontalOptions="FillAndExpand">
+                </Button>
+
+            </StackLayout>
+
+        </StackLayout>
+        </ScrollView>
 </ContentPage>

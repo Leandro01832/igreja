@@ -1,8 +1,10 @@
-﻿using System;
+﻿using business.classes.Abstrato;
+using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -36,6 +38,12 @@ namespace database.banco
         {
             ExecutarComandoSqlServer(modelo.Insert_padrao);
             addNaLista = "";
+
+            if(modelo is Pessoa)
+            {
+                var p = (Pessoa)modelo;
+                p.IdPessoa = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
+            }
         }
 
         public void Editar(modelocrud modelo)

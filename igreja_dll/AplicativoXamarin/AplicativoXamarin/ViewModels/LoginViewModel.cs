@@ -43,7 +43,7 @@ namespace AplicativoXamarin.ViewModels
                             var conteudoResultado = await resultado.Content.ReadAsStringAsync();
                             var resultadoLogin =
                             JsonConvert.DeserializeObject<Pessoa>(conteudoResultado);
-                            resultadoLogin.Password = Senha;
+                            resultadoLogin.password = Senha;
                             
 
                             var data = new DataAccess();
@@ -59,7 +59,7 @@ namespace AplicativoXamarin.ViewModels
                                     Email = resultadoLogin.Email,
                                     Lembrar_me = Lembrar_me,
                                     NomePessoa = resultadoLogin.NomePessoa,
-                                    Password = senha
+                                    password = senha
                                 };
                                 data.Insert(p);
                                 App.UserCurrent = p;
@@ -67,7 +67,7 @@ namespace AplicativoXamarin.ViewModels
                             else if (Lembrar_me && data.First() != null)
                             {
                                 if (data.First().Email != usuario || 
-                                data.First().Password != senha ||
+                                data.First().password != senha ||
                                 data.First().Lembrar_me != Lembrar_me)
                                 {
                                     var user = new Pessoa
@@ -81,7 +81,7 @@ namespace AplicativoXamarin.ViewModels
                                         Email = resultadoLogin.Email,
                                         Lembrar_me = lembrar_me,
                                         NomePessoa = resultadoLogin.NomePessoa,
-                                        Password = senha
+                                        password = senha
                                     };
                                     data.Update(user);
                                     App.UserCurrent = user;
@@ -145,7 +145,7 @@ namespace AplicativoXamarin.ViewModels
                     {
                         return "";
                     }
-                    return modelo.Password;
+                    return modelo.password;
                 }
             
             set

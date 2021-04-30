@@ -209,13 +209,19 @@
     <Compile Include="Classes\UserHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CelulaApiController.cs" />
+    <Compile Include="Controllers\Api\CriancaLgpdApiController.cs" />
     <Compile Include="Controllers\Api\FileUploadingController.cs" />
     <Compile Include="Controllers\Api\LoginApiController.cs" />
+    <Compile Include="Controllers\Api\MembroAclamacaoLgpdApiController.cs" />
+    <Compile Include="Controllers\Api\MembroBatismoLgpdApiController.cs" />
+    <Compile Include="Controllers\Api\MembroReconciliacaoLgpdApiController.cs" />
+    <Compile Include="Controllers\Api\MembroTransferenciaLgpdApiController.cs" />
     <Compile Include="Controllers\Api\MinisterioCelulaApiController.cs" />
     <Compile Include="Controllers\Api\PessoaApiController.cs" />
     <Compile Include="Controllers\Api\PessoaMinisterioApiController.cs" />
     <Compile Include="Controllers\Api\ReuniaoApiController.cs" />
     <Compile Include="Controllers\Api\ReuniaoPessoaApiController.cs" />
+    <Compile Include="Controllers\Api\VisitanteLgpdApiController.cs" />
     <Compile Include="Controllers\CelulaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -232,6 +238,7 @@
     <Compile Include="Models\Api\MinisterioCelulaApi.cs" />
     <Compile Include="Models\Api\PessoaApi.cs" />
     <Compile Include="Models\Api\PessoaMinisterioApi.cs" />
+    <Compile Include="Models\Api\PhotoRequest.cs" />
     <Compile Include="Models\Api\ReuniaoApi.cs" />
     <Compile Include="Models\Api\ReuniaoPessoaApi.cs" />
     <Compile Include="Models\Roteamento.cs" />

@@ -22,6 +22,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)models\Celula.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Chamada.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Endereco.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\EnderecoCelula.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Historico.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Interface\Iconfig.cs" />
@@ -30,9 +31,27 @@
     <Compile Include="$(MSBuildThisFileDirectory)models\MinisterioCelula.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Pessoa.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\PessoaMinisterio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\CriancaLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\MembroLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_BatismoLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_ReconciliacaoLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_TransferenciaLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\VisitanteLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Crianca.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Aclamacao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Batismo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Reconciliacao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Transferencia.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\PessoaDado.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\PessoaLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Visitante.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PhotoRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Reuniao.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\ReuniaoPessoa.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\SQLite\DataAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Telefone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ApiServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />

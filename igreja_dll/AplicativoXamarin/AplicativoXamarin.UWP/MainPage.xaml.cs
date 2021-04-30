@@ -19,6 +19,8 @@ namespace AplicativoXamarin.UWP
     {
         public MainPage()
         {
+            
+
             this.InitializeComponent();
             Xamarin.FormsMaps.Init("AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M");
             LoadApplication(new AplicativoXamarin.App());

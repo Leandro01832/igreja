@@ -11,9 +11,7 @@ D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\o
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\mscorlib.dll
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Newtonsoft.Json.dll
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Plugin.CurrentActivity.dll
-D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Plugin.Geolocator.Abstractions.dll
-D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Plugin.Geolocator.dll
-D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Plugin.Permissions.Abstractions.dll
+D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Plugin.Media.dll
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Plugin.Permissions.dll
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\SQLite-net.dll
 D:\codigo-github\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\SQLiteNetExtensions.dll
