@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using System.ComponentModel;
 using AplicativoXamarin.Views;
 using GalaSoft.MvvmLight.Command;
+using AplicativoXamarin.Views.Main;
 
 namespace AplicativoXamarin.ViewModels
 {

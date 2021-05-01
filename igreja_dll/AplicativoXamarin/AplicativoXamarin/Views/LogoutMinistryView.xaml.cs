@@ -1,6 +1,7 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
+using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace AplicativoXamarin.Views
             Api = new ApiServices();           
 		}
 
-        protected async override void OnAppearing()
+        protected  override void OnAppearing()
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<Ministerio>(this, "SairMinisterio",

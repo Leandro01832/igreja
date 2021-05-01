@@ -67,7 +67,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CellsMinistryView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\CellsMinistryView.xaml.cs">
       <DependentUpon>CellsMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -75,31 +75,31 @@
       <DependentUpon>CelView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmEnterCell.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmEnterCell.xaml.cs">
       <DependentUpon>ConfirmEnterCell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMeetingView.xaml.cs">
       <DependentUpon>ConfirmMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmMinistryView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMinistryView.xaml.cs">
       <DependentUpon>ConfirmMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\EnterCell.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Join\EnterCell.xaml.cs">
       <DependentUpon>EnterCell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\JoinMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Join\JoinMeetingView.xaml.cs">
       <DependentUpon>JoinMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\JoinMinistryView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Join\JoinMinistryView.xaml.cs">
       <DependentUpon>JoinMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ListMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\ListMeetingView.xaml.cs">
       <DependentUpon>ListMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -111,38 +111,38 @@
       <DependentUpon>LogoutMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetail.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetail.xaml.cs">
       <DependentUpon>MasterDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailDetail.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailDetail.xaml.cs">
       <DependentUpon>MasterDetailDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailMaster.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailMaster.xaml.cs">
       <DependentUpon>MasterDetailMaster.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPosts.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPosts.xaml.cs">
       <DependentUpon>MasterDetailPosts.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsDetail.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsDetail.xaml.cs">
       <DependentUpon>MasterDetailPostsDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsMaster.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsMaster.xaml.cs">
       <DependentUpon>MasterDetailPostsMaster.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsMenuItem.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MeetingView.xaml.cs">
       <DependentUpon>MeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MinistryListView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\MinistryListView.xaml.cs">
       <DependentUpon>MinistryListView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -154,15 +154,15 @@
       <DependentUpon>PageTeste.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\PeopleMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\PeopleMeetingView.xaml.cs">
       <DependentUpon>PeopleMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\PeopleMinistry.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\PeopleMinistry.xaml.cs">
       <DependentUpon>PeopleMinistry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -174,7 +174,7 @@
       <DependentUpon>View1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewLoginView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\ViewLoginView.xaml.cs">
       <DependentUpon>ViewLoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -184,15 +184,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetail.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailMaster.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailMaster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailDetail.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -204,11 +204,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MinistryListView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\MinistryListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ViewLoginView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\ViewLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -232,31 +232,31 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ListMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\ListMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\JoinMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Join\JoinMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\JoinMinistryView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Join\JoinMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmMinistryView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -274,57 +274,63 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPosts.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPosts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsMaster.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsMaster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsDetail.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PeopleMinistry.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\PeopleMinistry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CellsMinistryView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\CellsMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PeopleMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\PeopleMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EnterCell.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Join\EnterCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmEnterCell.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmEnterCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Main\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\List\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Confirm\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Join\" />
   </ItemGroup>
 </Project>

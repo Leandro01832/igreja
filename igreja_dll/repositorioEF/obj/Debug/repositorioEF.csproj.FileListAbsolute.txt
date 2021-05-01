@@ -39,14 +39,14 @@ D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\business.dll
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\EntityFramework.dll
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\EntityFramework.SqlServer.dll
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\MySql.Data.dll
+D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\Newtonsoft.Json.dll
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\business.pdb
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\business.dll.config
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\EntityFramework.xml
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\EntityFramework.SqlServer.xml
+D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\Newtonsoft.Json.xml
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csprojAssemblyReference.cache
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.CoreCompileInputs.cache
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.CopyComplete
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.dll
 D:\codigo-github\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.pdb
-D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\Newtonsoft.Json.dll
-D:\codigo-github\Igreja\igreja_dll\RepositorioEF\bin\Debug\Newtonsoft.Json.xml

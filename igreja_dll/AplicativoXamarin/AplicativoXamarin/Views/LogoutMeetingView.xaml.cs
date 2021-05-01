@@ -1,6 +1,7 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
+using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;

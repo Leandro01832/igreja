@@ -1,6 +1,6 @@
 ﻿using AplicativoXamarin.Views;
 using AplicativoXamarin.models;
-
+using AplicativoXamarin.Views.Main;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -31,7 +31,7 @@ namespace AplicativoXamarin
                 var main = MainViewModel.GetInstance();
                 main.LoadUser(user);
                 App.UserCurrent = user;
-                MainPage = new MasterDetail(user);
+                MainPage = new Views.Main.MasterDetail(user);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace AplicativoXamarin
                     var main = MainViewModel.GetInstance();
                     main.LoadUser(usuario);
 
-                    MainPage = new MasterDetail(usuario);
+                    MainPage = new Views.Main.MasterDetail(usuario);
                 });
         }
 

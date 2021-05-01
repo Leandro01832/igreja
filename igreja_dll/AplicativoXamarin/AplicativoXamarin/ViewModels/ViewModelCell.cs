@@ -74,6 +74,12 @@ namespace AplicativoXamarin.ViewModels
 
             });
 
+            ViewPeoples = new Command(() =>
+            {
+                //  App.Current.MainPage.Navigation.PushAsync(new m);
+
+            });
+
         }
 
         public async Task GetCelulas()

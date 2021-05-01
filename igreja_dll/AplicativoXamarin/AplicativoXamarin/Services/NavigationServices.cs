@@ -1,6 +1,9 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.models.SQLite;
 using AplicativoXamarin.Views;
+using AplicativoXamarin.Views.Join;
+using AplicativoXamarin.Views.List;
+using AplicativoXamarin.Views.Main;
 using System;
 using System.Collections.Generic;
 using System.Text;

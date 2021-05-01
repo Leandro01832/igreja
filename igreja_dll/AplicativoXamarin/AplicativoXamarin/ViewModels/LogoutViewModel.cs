@@ -1,5 +1,6 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.Views;
+using AplicativoXamarin.Views.List;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace AplicativoXamarin.ViewModels
             ViewPeopleMinistry = new Command(async () =>
             {
               await  GetPessoas(true);
-              await  App.Current.MainPage.Navigation.PushAsync(new PeopleMinistry(PessoasDoMinisterio));
+              await  App.Current.MainPage.Navigation.PushAsync(new Views.List.PeopleMinistry(PessoasDoMinisterio));
             });
 
             ViewPeopleMeeting = new Command(async () =>
@@ -69,7 +70,7 @@ namespace AplicativoXamarin.ViewModels
             ViewCellMinistry = new Command(async () =>
             {
                 await GetCell();
-                await App.Current.MainPage.Navigation.PushAsync(new CellsMinistryView(CelulasDoMinisterio));
+                await App.Current.MainPage.Navigation.PushAsync(new Views.List.CellsMinistryView(CelulasDoMinisterio));
             });
 
 
