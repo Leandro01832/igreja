@@ -42,6 +42,42 @@ namespace AplicativoXamarin.Services
             }           
         }
 
+        internal async void EntrarCelula(Celula msg)
+        {
+            HttpClient cliente = new HttpClient();
+
+            var id = App.UserCurrent.IdPessoa;
+
+            var resultado = await cliente.GetStringAsync(URL + "api/PessoaApi/" + id);
+            var p = JsonConvert.DeserializeObject<Pessoa>(resultado);
+
+            var cel = new Pessoa
+            {
+                Celula = p.Celula,
+                celula_ = msg.IdCelula,
+                Chamada = p.Chamada,
+                Codigo = p.Codigo,
+                Email = p.Email,
+                Falta = p.Falta,
+                Historico = p.Historico,
+                password = p.password,
+                IdPessoa = p.IdPessoa,
+                Img = p.Img,
+                Lembrar_me = p.Lembrar_me,
+                Ministerios = p.Ministerios,
+                NomePessoa = p.NomePessoa,
+                Reuniao = p.Reuniao
+            };
+
+            var request = JsonConvert.SerializeObject(cel);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var result = await cliente.PutAsync(URL + "api/PessoaApi/" + p.IdPessoa, body);
+
+            if (result.IsSuccessStatusCode)
+                MessagingCenter.Send<Celula>(msg, "SucessoEntrarCelula");
+            else
+                MessagingCenter.Send<ArgumentException>(new ArgumentException(), "FalhaEntrarCelula");
+        }
 
         public static async Task<Pessoa> GetPessoa()
         {
