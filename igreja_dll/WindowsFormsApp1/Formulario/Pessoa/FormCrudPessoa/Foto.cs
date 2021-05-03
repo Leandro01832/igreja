@@ -1,10 +1,12 @@
 ﻿using business.classes.Pessoas;
 using database;
+using database.banco;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,16 +40,15 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         {
             this.Text = "Foto da pessoa";
             this.Proximo.Location = new Point(900, 150);
-
-            if (modelo !=  null)
+            var p = (business.classes.Abstrato.Pessoa)modelo;
+            if (p.IdPessoa !=  0)
             {
                 this.Atualizar.Location = new Point(900, 250);
 
-                if (modelo is business.classes.Abstrato.Pessoa)
-                {
-                    var p = (business.classes.Abstrato.Pessoa)modelo;
-                    ptrb_foto.ImageLocation = p.Img;
-                }
+                if (modelo is business.classes.Abstrato.Pessoa && BDcomum.BancoEnbarcado)
+                ptrb_foto.ImageLocation = "http://www.igrejadeusbom.somee.com" + p.Img;
+                else
+                ptrb_foto.ImageLocation = p.Img;
             }
         }
 
@@ -66,9 +67,21 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
                         string imagem;
+                        ptrb_foto.SizeMode = PictureBoxSizeMode.Zoom;
+                        ptrb_foto.Image = Image.FromFile(dlg.FileName);
                         imagem = dlg.FileName;
                         ptrb_foto.ImageLocation = imagem;
                         p.Img = ptrb_foto.ImageLocation;
+
+
+                        // Converter em array
+                        Image minhaImagem = Image.FromFile(dlg.FileName);
+                        byte[] meuArrayBytes = ConverteImagemParaByteArray(minhaImagem);
+                        p.ImgArrayBytes = meuArrayBytes;                        
+
+                      //  SalvaArrayBytesEmArquivo(meuArrayBytes);
+                      //  ExibirArquivos();
+                      //  picImagem.Image = null;
                     }
                 }
                 catch (Exception ex)
@@ -99,6 +112,22 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private byte[] ConverteImagemParaByteArray(Image img)
+        {
+            try
+            {
+                using (MemoryStream mStream = new MemoryStream())
+                {
+                    img.Save(mStream, img.RawFormat);
+                    return mStream.ToArray();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

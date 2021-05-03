@@ -91,6 +91,7 @@
     <Compile Include="classes\PessoasLgpd\Membro_TransferenciaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\VisitanteLgpd.cs" />
     <Compile Include="classes\Pessoas\Crianca.cs" />
+    <Compile Include="classes\PhotoRequest.cs" />
     <Compile Include="classes\Reuniao.cs" />
     <Compile Include="classes\Endereco.cs" />
     <Compile Include="classes\Historico.cs" />

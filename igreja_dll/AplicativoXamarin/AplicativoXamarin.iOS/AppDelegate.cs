@@ -23,7 +23,7 @@ namespace AplicativoXamarin.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            Xamarin.FormsMaps.Init();
+            Xamarin.FormsGoogleMaps.Init("AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M");
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

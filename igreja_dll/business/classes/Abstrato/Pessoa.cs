@@ -10,6 +10,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -71,6 +73,10 @@ namespace business.classes.Abstrato
         
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
+
+        [NotMapped]
+        public byte[] ImgArrayBytes { get; set; }
+
         [JsonIgnore]
         private MudancaEstado MudancaEstado;
 
@@ -409,6 +415,22 @@ namespace business.classes.Abstrato
             MudancaEstado.MudarEstado(id, m);
         }
 
-        
+        public async Task<bool> EnviarFoto(PhotoRequest photoRequest)
+        {
+            
+
+            var request = JsonConvert.SerializeObject(photoRequest);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var urlSetfoto = "SetFoto";
+            var response = await client.PostAsync("" + urlSetfoto, body);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

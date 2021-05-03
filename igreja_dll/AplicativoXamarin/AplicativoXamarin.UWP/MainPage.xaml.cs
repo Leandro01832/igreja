@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 namespace AplicativoXamarin.UWP
 {
     public sealed partial class MainPage
@@ -22,7 +23,7 @@ namespace AplicativoXamarin.UWP
             
 
             this.InitializeComponent();
-            Xamarin.FormsMaps.Init("AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M");
+            Xamarin.FormsGoogleMaps.Init("AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M");
             LoadApplication(new AplicativoXamarin.App());
         }
     }

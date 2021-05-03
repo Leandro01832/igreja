@@ -4,9 +4,12 @@ using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
+using database.banco;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
@@ -529,7 +532,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void FinalizarCadastro_Click(object sender, EventArgs e)
+        private async void FinalizarCadastro_Click(object sender, EventArgs e)
         {
             FinalizarCadastro.Enabled = false;
             if (modelo is Celula)
@@ -571,7 +574,6 @@ namespace WindowsFormsApp1
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
                     p.AdicionarNaLista("ReuniaoPessoa", p, new Reuniao(), AddNaListaPessoaReunioes);
-
             }
 
             if (modelo is Reuniao)
@@ -583,6 +585,31 @@ namespace WindowsFormsApp1
             }
 
             modelo.salvar();
+
+            if(modelo is Pessoa && !BDcomum.BancoEnbarcado)
+            {
+                var p = (Pessoa)modelo;
+                {
+                    try
+                    {
+                        var photoRequest = new PhotoRequest
+                        {
+                            Id = p.IdPessoa,
+                            Array = p.ImgArrayBytes
+                        };
+                    var resultado =  await p.EnviarFoto(photoRequest);
+
+                        if(!resultado) MessageBox.Show("Foto não enviada.");
+                        else
+                        {
+                            p.Img = "/Content/Imagens/" + p.IdPessoa.ToString() + ".jpg";
+                            p.alterar(p.IdPessoa);
+                        }
+
+                    }
+                    catch { MessageBox.Show("Foto não enviada."); }
+                }
+            }
 
             MessageBox.Show("Cadastro realiado com sucesso.");
             this.Close();

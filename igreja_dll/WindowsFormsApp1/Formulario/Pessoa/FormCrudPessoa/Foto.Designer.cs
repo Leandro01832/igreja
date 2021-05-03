@@ -35,10 +35,12 @@
             // 
             // ptrb_foto
             // 
+            this.ptrb_foto.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ptrb_foto.Dock = System.Windows.Forms.DockStyle.Left;
             this.ptrb_foto.Location = new System.Drawing.Point(0, 0);
             this.ptrb_foto.Name = "ptrb_foto";
-            this.ptrb_foto.Size = new System.Drawing.Size(1139, 737);
+            this.ptrb_foto.Size = new System.Drawing.Size(720, 737);
+            this.ptrb_foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptrb_foto.TabIndex = 0;
             this.ptrb_foto.TabStop = false;
             // 

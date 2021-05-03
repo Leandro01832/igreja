@@ -1,5 +1,7 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.Services;
+using AplicativoXamarin.Views;
+using AplicativoXamarin.Views.List;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,7 @@ namespace AplicativoXamarin.ViewModels
         public ICommand ConfirmJoinCell { get; set; }
         public ICommand ViewMinistries { get; set; }
         public ICommand ViewPeoples { get; set; }
+        public ICommand Geolocation { get; set; }
 
         private Celula celulaSelecionado;
         public Celula CelulaSelecionado
@@ -70,14 +73,17 @@ namespace AplicativoXamarin.ViewModels
 
             ViewMinistries = new Command(() =>
             {
-              //  App.Current.MainPage.Navigation.PushAsync(new m);
-
+                MessagingCenter.Send<ViewModelCell>(this, "ViewMinistries");
             });
 
             ViewPeoples = new Command(() =>
             {
-                //  App.Current.MainPage.Navigation.PushAsync(new m);
+                MessagingCenter.Send<ViewModelCell>(this, "ViewPeoples");
+            });
 
+            Geolocation = new Command(() =>
+            {
+                MessagingCenter.Send<ViewModelCell>(this, "Geolocation");
             });
 
         }

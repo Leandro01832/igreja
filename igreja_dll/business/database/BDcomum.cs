@@ -19,6 +19,8 @@ namespace database.banco
         
         public static string addNaLista;
 
+        public static bool BancoEnbarcado = false;
+
         public  SqlConnection obterconexao()
         {
             try

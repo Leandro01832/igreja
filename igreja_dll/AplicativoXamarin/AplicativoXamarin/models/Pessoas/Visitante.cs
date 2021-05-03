@@ -1,10 +1,5 @@
 ﻿
 using System;
-using System.Windows.Forms;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-using System.Collections.Generic;
 
 namespace AplicativoXamarin.models.Pessoas
 {

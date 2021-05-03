@@ -1,17 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using AplicativoXamarin.models.Pessoas;
-using Newtonsoft.Json;
+﻿using AplicativoXamarin.models.Pessoas;
 using AplicativoXamarin.ViewModels;
+using Newtonsoft.Json;
 
 namespace AplicativoXamarin.models.PessoasLgpd
 {

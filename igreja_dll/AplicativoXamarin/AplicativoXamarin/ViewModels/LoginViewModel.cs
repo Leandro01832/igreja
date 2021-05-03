@@ -27,8 +27,6 @@ namespace AplicativoXamarin.ViewModels
         {
             Lembrar_me = true;
 
-            
-
             EntrarCommand = new Command(
                 async () =>
                 {

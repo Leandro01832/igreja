@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 
 namespace AplicativoXamarin.ViewModels
 {
@@ -67,35 +67,96 @@ namespace AplicativoXamarin.ViewModels
 
         internal void GetGeolocation()
         {
-            var position1 = new Position(-23.536937, -46.779427);
+            var position1 = new Position(-21.380965, -42.690077);
             var pin1 = new Pin
             {
                 Type = PinType.Place,
                 Position = position1,
-                Label = "Pin1",
-                Address = "Local Pino 01"
+                Label = "Igreja PIB Cataguases",
+                Address = "Rua Moreira Lima"
             };
             Pins.Add(pin1);
 
-            var position2 = new Position(-18.753730, -44.430406);
+            var position2 = new Position(-21.383045, -42.690513);
             var pin2 = new Pin
             {
                 Type = PinType.Place,
                 Position = position2,
-                Label = "Pin2",
-                Address = "Local Pino 02"
+                Label = "Casa do Leandro",
+                Address = "Rua Joaquim Augusto de Almeida",
+                 
             };
             Pins.Add(pin2);
 
-            var position3 = new Position(-12.971687, -38.475612);
+            var position3 = new Position(-21.383358, -42.706201);
             var pin3 = new Pin
             {
                 Type = PinType.Place,
                 Position = position3,
-                Label = "Pin3",
-                Address = "Local Pino 03"
+                Label = "Celula bairro Granjaria",
+                Address = "Granjaria"
             };
             Pins.Add(pin3);
+
+            var position4 = new Position(-21.374916, -42.690923);
+            var pin4 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position4,
+                Label = "Celula bairro Thome",
+                Address = "Thome"
+            };
+            Pins.Add(pin4);
+
+            var position5 = new Position(-21.366249, -42.674797);
+            var pin5 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position5,
+                Label = "Celula bairro Pampulha",
+                Address = "Pampulha"
+            };
+            Pins.Add(pin5);
+
+            var position6 = new Position(-21.262636, -42.681063);
+            var pin6 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position6,
+                Label = "Celula bairro Gloria",
+                Address = "Gloria"
+            };
+            Pins.Add(pin6);
+
+            var position7 = new Position(-21.262636, -42.681063);
+            var pin7 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position7,
+                Label = "Celula bairro Bom Pastor",
+                Address = "Bom Pastor"
+            };
+            Pins.Add(pin7);
+
+            var position8 = new Position(-21.391686, -42.681219);
+            var pin8 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position8,
+                Label = "Celula Vila Reis",
+                Address = "Vila Reis"
+            };
+            Pins.Add(pin8);
+
+            var position9 = new Position(-21.405012, -42.700488);
+            var pin9 = new Pin
+            {
+                Type = PinType.Place,
+                Position = position9,
+                Label = "Celula Paraiso",
+                Address = "Paraiso"
+            };
+            Pins.Add(pin9);
         }
 
         public void LoadUser(Pessoa user)

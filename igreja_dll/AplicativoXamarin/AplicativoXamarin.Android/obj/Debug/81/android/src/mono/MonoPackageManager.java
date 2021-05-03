@@ -116,6 +116,7 @@ class MonoPackageManager_Resources {
 		"ImageCircle.Forms.Plugin.Android.dll",
 		"Newtonsoft.Json.dll",
 		"Plugin.CurrentActivity.dll",
+		"Plugin.Geolocator.dll",
 		"Plugin.Media.dll",
 		"Plugin.Permissions.dll",
 		"SQLite-net.dll",
@@ -147,14 +148,15 @@ class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.v7.RecyclerView.dll",
 		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"Xamarin.Forms.Core.dll",
-		"Xamarin.Forms.Maps.Android.dll",
-		"Xamarin.Forms.Maps.dll",
+		"Xamarin.Forms.GoogleMaps.Android.dll",
+		"Xamarin.Forms.GoogleMaps.dll",
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Platform.dll",
 		"Xamarin.Forms.Xaml.dll",
 		"Xamarin.GooglePlayServices.Base.dll",
 		"Xamarin.GooglePlayServices.Basement.dll",
 		"Xamarin.GooglePlayServices.Maps.dll",
+		"Xamarin.GooglePlayServices.Tasks.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

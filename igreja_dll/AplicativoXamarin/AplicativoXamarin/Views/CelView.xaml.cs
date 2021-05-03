@@ -2,6 +2,7 @@
 using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
 using AplicativoXamarin.Views.Join;
+using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
 
 namespace AplicativoXamarin.Views
@@ -35,12 +36,7 @@ namespace AplicativoXamarin.Views
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CelulaUsuario.Celula = celula;
-            //mainViewModel.GetGeolocation();
-            //foreach (Pin item in mainViewModel.Pins)
-            //{
-            //    MyMap.Pins.Add(item);
-            //}
-           // Locator();
+           
 
             if (mainViewModel.CelulaUsuario.Celula == null)
             {
@@ -65,21 +61,43 @@ namespace AplicativoXamarin.Views
                 };
             }
         }
-        
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<ViewModelCell>(this, "Geolocation", (msg) =>
+            {
+                Navigation.PushAsync(new GeolocationView());
+
+            });
+
+            MessagingCenter.Subscribe<ViewModelCell>(this, "ViewPeoples", (msg) =>
+            {
+                Navigation.PushAsync(new PeoplesCellView());
+            });
+
+            MessagingCenter.Subscribe<ViewModelCell>(this, "ViewMinistries", (msg) =>
+            {
+                Navigation.PushAsync(new MinistriesCellView());
+
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<ViewModelCell>(this, "ViewMinistries");
+            MessagingCenter.Unsubscribe<ViewModelCell>(this, "ViewPeoples");
+            MessagingCenter.Unsubscribe<ViewModelCell>(this, "Geolocation");
+        }
+
 
         private async void Botao_Clicked(object sender, EventArgs e)
         {
            await Navigation.PushAsync(new EnterCell());
         }
 
-        //private async void Locator()
-        //{
-        //    var locator = CrossGeolocator.Current;
-        //    locator.DesiredAccuracy = 50;
-
-        //    var location = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
-        //    var position = new Position(location.Latitude, location.Longitude);
-        //    MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(.3)));
-        //}
+        
     }
 }

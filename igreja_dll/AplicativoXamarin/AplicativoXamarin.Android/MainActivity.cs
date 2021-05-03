@@ -17,11 +17,12 @@ using Plugin.Media;
 using Android.Graphics;
 using System.IO;
 using System.Threading.Tasks;
+using Plugin.CurrentActivity;
 
 [assembly: Xamarin.Forms.Dependency(typeof(MainActivity))]
 namespace AplicativoXamarin.Droid
 {
-    [Activity(Label = "AplicativoXamarin", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Igreja em Cataguases", Icon = "@drawable/icone_igreja", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
 
@@ -29,7 +30,9 @@ namespace AplicativoXamarin.Droid
         {
             Manifest.Permission.ReadExternalStorage,
             Manifest.Permission.WriteExternalStorage,
-            Manifest.Permission.Camera
+            Manifest.Permission.Camera,
+            Manifest.Permission.AccessFineLocation,
+            Manifest.Permission.AccessCoarseLocation
         };        
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -45,7 +48,7 @@ namespace AplicativoXamarin.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            Xamarin.FormsMaps.Init(this, savedInstanceState);
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
             LoadApplication(new App());
         }        
 

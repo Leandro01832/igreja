@@ -67,6 +67,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml.cs">
+      <DependentUpon>GeolocationView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\List\CellsMinistryView.xaml.cs">
       <DependentUpon>CellsMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,6 +105,14 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\List\ListMeetingView.xaml.cs">
       <DependentUpon>ListMeetingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\MinistriesCellView.xaml.cs">
+      <DependentUpon>MinistriesCellView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\PeoplesCellView.xaml.cs">
+      <DependentUpon>PeoplesCellView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LogoutMeetingView.xaml.cs">
@@ -329,8 +341,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\Main\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\List\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Confirm\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Join\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\MinistriesCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\PeoplesCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
