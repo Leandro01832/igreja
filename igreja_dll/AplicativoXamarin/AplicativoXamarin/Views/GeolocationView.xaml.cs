@@ -39,11 +39,8 @@ namespace AplicativoXamarin.Views
 
         private async void Locator()
         {
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
-
-            var location = await locator.GetPositionAsync();
-            var position = new Position(location.Latitude, location.Longitude);
+            var main = MainViewModel.GetInstance();
+           var position = await main.ExecuteLocator();
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(.3)));
         }
     }

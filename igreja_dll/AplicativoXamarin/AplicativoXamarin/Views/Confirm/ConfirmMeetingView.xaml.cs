@@ -49,7 +49,7 @@ namespace AplicativoXamarin.Views.Confirm
                 await  DisplayAlert("Reunião", "Parabens!!! Você esta participando desta reunião." +
                       " \n Identificação da reunião: " + msg2.IdReuniao.ToString(), "ok");
 
-                await  Navigation.PushAsync(new ListMeetingView());
+                  await Navigation.PopAsync();
               });
 
             MessagingCenter.Subscribe<ArgumentException>(this, "FalhaParticiparReuniao",

@@ -3,6 +3,7 @@ using AplicativoXamarin.models;
 using AplicativoXamarin.models.SQLite;
 using AplicativoXamarin.Services;
 using Newtonsoft.Json;
+using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +15,7 @@ using Xamarin.Forms.GoogleMaps;
 
 namespace AplicativoXamarin.ViewModels
 {
-   public class MainViewModel 
+   public class MainViewModel : BaseViewModel
     {
         #region properties
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
@@ -22,9 +23,22 @@ namespace AplicativoXamarin.ViewModels
         public RegisterViewModel Register { get; set; }
         public LoginViewModel newLogin { get; set; }
         public UserViewModel UsuarioLogado { get; set; }
-        public ViewModelCell CelulaUsuario { get; set; }
+        public ApiServices Api { get; set; }
 
+        
 
+        private bool aguarde;
+        public bool Aguarde
+        {
+            get { return aguarde; }
+            set
+            {
+                aguarde = value;
+                OnPropertyChanged();
+            }
+        }
+
+        
         #endregion
 
 
@@ -34,13 +48,12 @@ namespace AplicativoXamarin.ViewModels
         public MainViewModel()
         {
             instance = this;
-            
+            Api = new ApiServices();
             Pins = new ObservableCollection<Pin>();            
             Register = new RegisterViewModel();
             Menu = new ObservableCollection<MenuItemViewModel>();
             newLogin = new LoginViewModel();
             UsuarioLogado = new UserViewModel();
-            CelulaUsuario = new ViewModelCell();
 
             LoadMenu();
         }       
@@ -64,6 +77,29 @@ namespace AplicativoXamarin.ViewModels
         #endregion
 
         #region Methods 
+
+        internal async Task<Position> ExecuteLocator()
+        {
+            
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+            
+            var location = await locator.GetPositionAsync();
+            
+            var position = new Position(location.Latitude, location.Longitude);
+            
+            return position;
+            
+        }
+
+        internal async Task<Celula> GetCelula()
+        {
+            Aguarde = true;
+            var cel = await Api.GetCelulaUsuario();
+            Aguarde = false;
+
+            return cel;
+        }
 
         internal void GetGeolocation()
         {

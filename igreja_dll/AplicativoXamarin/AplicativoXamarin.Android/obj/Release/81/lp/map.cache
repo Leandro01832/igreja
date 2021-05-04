@@ -51,3 +51,6 @@ Xamarin.GooglePlayServices.Base
 Xamarin.GooglePlayServices.Basement
 Xamarin.GooglePlayServices.Maps
 Plugin.Media
+Xamarin.Forms.GoogleMaps.Android
+Xamarin.Forms.GoogleMaps
+Xamarin.GooglePlayServices.Tasks

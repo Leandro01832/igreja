@@ -40,7 +40,7 @@ namespace Site.Controllers.Api
             if(!response)
                 return BadRequest("Foto não enviada");
 
-            pessoa.Img = fullPath;
+            pessoa.Img = fullPath.Replace("~", "");
             db.Entry(pessoa).State = EntityState.Modified;
             db.Entry(pessoa.Chamada).State = EntityState.Modified;
             db.SaveChanges();

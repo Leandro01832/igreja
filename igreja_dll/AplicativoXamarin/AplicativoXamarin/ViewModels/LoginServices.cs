@@ -20,7 +20,7 @@ namespace AplicativoXamarin.ViewModels
         {
             using (var cliente = new HttpClient())
             {
-                cliente.BaseAddress = new Uri("http://igrejadeusbom.somee.com");
+                cliente.BaseAddress = new Uri("http://www.igrejadeusbom.somee.com");
                 var camposFormulario = new FormUrlEncodedContent(new[]
                 {
                         new KeyValuePair<string, string>("Email", login.email),

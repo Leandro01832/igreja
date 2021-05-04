@@ -1252,29 +1252,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {
-            "assetType": "native",
-            "rid": "win10-arm"
-          },
-          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {
-            "assetType": "native",
-            "rid": "win10-x64"
-          },
-          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {
-            "assetType": "native",
-            "rid": "win10-x86"
-          }
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -1314,12 +1291,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -2889,18 +2865,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "native": {
-          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -2940,12 +2904,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -4614,18 +4577,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "native": {
-          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -4665,12 +4616,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -6065,15 +6015,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -6113,12 +6054,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -7688,18 +7628,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "native": {
-          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -7739,12 +7667,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -9413,18 +9340,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "native": {
-          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -9464,12 +9379,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -11039,18 +10953,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "native": {
-          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -11090,12 +10992,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -12764,18 +12665,6 @@
           "lib/win8/_._": {}
         }
       },
-      "Win2D.uwp/1.20.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
-        },
-        "native": {
-          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
-        }
-      },
       "Xam.Plugin.Geolocator/4.5.0.6": {
         "type": "package",
         "dependencies": {
@@ -12815,12 +12704,11 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.12",
-          "NETStandard.Library": "2.0.1",
-          "Win2D.uwp": "1.20.0"
+          "NETStandard.Library": "2.0.1"
         },
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -20070,26 +19958,6 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "Win2D.uwp/1.20.0": {
-      "sha512": "sFyNT2EiV6vmEFMrkiJdSolaKNyOyk+kfjgvXN8XqUhdEPqBd2zPrFdl7SojNHQGm2Br6JLIBOdrj9fB1Qy4GA==",
-      "type": "package",
-      "path": "win2d.uwp/1.20.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Win2d.githash.txt",
-        "build/native/Win2D.uwp.targets",
-        "include/Microsoft.Graphics.Canvas.h",
-        "include/Microsoft.Graphics.Canvas.native.h",
-        "lib/uap10.0/Microsoft.Graphics.Canvas.winmd",
-        "lib/uap10.0/Microsoft.Graphics.Canvas.xml",
-        "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll",
-        "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll",
-        "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll",
-        "win2d.uwp.1.20.0.nupkg.sha512",
-        "win2d.uwp.nuspec"
-      ]
-    },
     "Xam.Plugin.Geolocator/4.5.0.6": {
       "sha512": "Ro7peBDxsDXPc7J7yLx0ekAcXIfVTAXj/rXiBKiTgZ4Lm7KZJIU8PXOCcI4JztzT3MQrL8Rmka48il/ix0pwoA==",
       "type": "package",
@@ -20192,10 +20060,10 @@
         "xam.plugins.forms.imagecircle.nuspec"
       ]
     },
-    "Xamarin.Forms/3.6.0.709228": {
-      "sha512": "mCxwzeGmLzT5/LosrRcPeJhLUgWDC5wPYtPci6vVsop7xj31xhWdSYDXFw3KRbVkjB72ovpNsqRWZdkXu40iCA==",
+    "Xamarin.Forms/3.6.0.220655": {
+      "sha512": "vpPeq+GpNGj9uAyHjzeaPtPPAHxajanj2ct7ZqQ1RXGUlthi/yK5nnmyv9L/IGQ3fzgU28PBID7yQL13P3bGig==",
       "type": "package",
-      "path": "xamarin.forms/3.6.0.709228",
+      "path": "xamarin.forms/3.6.0.220655",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -20353,7 +20221,7 @@
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.6.0.709228.nupkg.sha512",
+        "xamarin.forms.3.6.0.220655.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -20391,7 +20259,7 @@
       "Xam.Plugin.Geolocator >= 4.5.0.6",
       "Xam.Plugin.Media >= 4.0.1.5",
       "Xam.Plugins.Forms.ImageCircle >= 1.8.1",
-      "Xamarin.Forms >= 3.6.0.709228",
+      "Xamarin.Forms >= 3.6.0.220655",
       "Xamarin.Forms.GoogleMaps >= 3.3.0",
       "sqlite-net-pcl >= 1.7.335"
     ]
@@ -20479,7 +20347,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.6.0.709228, )"
+            "version": "[3.6.0.220655, )"
           },
           "Xamarin.Forms.GoogleMaps": {
             "target": "Package",

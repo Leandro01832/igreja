@@ -5,11 +5,18 @@
              BackgroundColor="{StaticResource FontColor}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             Title="Geolocalização"
              >
     <StackLayout>
-        <Label Text="Geolocalização"
+        <StackLayout Orientation="Horizontal">
+        <Label Text="Geolocalização das celulas"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+        <ActivityIndicator IsRunning="{Binding Aguarde}">
+        </ActivityIndicator>
+
+        </StackLayout>
 
         <maps:Map   x:Name="MyMap" WidthRequest="300" HeightRequest="400" IsShowingUser="true" MapType="Hybrid">
         </maps:Map>

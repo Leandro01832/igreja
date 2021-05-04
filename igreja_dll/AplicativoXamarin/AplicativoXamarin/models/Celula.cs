@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AplicativoXamarin.models
 {
-    public class Celula 
+    public class Celula : modelocrud
     {
         public int IdCelula { get; set; }
         public string Nome { get; set; }

@@ -41,8 +41,7 @@ namespace business.classes.Abstrato
 
         [Key]
         public int IdPessoa { get; set; }
-
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        
         public string NomePessoa { get; set; }
 
         [Index("CODIGO", 2, IsUnique = true)]
@@ -417,13 +416,11 @@ namespace business.classes.Abstrato
 
         public async Task<bool> EnviarFoto(PhotoRequest photoRequest)
         {
-            
-
             var request = JsonConvert.SerializeObject(photoRequest);
             var body = new StringContent(request, Encoding.UTF8, "application/json");
             var client = new HttpClient();
             var urlSetfoto = "SetFoto";
-            var response = await client.PostAsync("" + urlSetfoto, body);
+            var response = await client.PostAsync("http://www.igrejadeusbom.somee.com/" + urlSetfoto, body);
 
             if (!response.IsSuccessStatusCode)
             {

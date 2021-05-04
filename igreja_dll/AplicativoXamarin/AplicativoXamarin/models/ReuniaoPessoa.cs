@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AplicativoXamarin.models
 {
-    public class ReuniaoPessoa 
+    public class ReuniaoPessoa : modelocrud
     {
         public int IdReuniaoPessoa { get; set; }
         public int PessoaId { get; set; }

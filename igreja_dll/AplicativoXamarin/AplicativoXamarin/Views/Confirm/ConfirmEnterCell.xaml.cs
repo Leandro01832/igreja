@@ -40,7 +40,7 @@ namespace AplicativoXamarin.Views.Confirm
                  await DisplayAlert("Celula", "Parabens!!! Você esta participando desta celula." +
                        " \n Identificação da reunião: " + msg2.IdCelula.ToString(), "ok");
 
-                 await Navigation.PushAsync(new CelView(msg2));
+                 App.Current.MainPage = new CelView(msg2);
              });
 
             MessagingCenter.Subscribe<ArgumentException>(this, "FalhaEntrarCelula",

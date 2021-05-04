@@ -212,7 +212,7 @@
           "build/_._": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -569,7 +569,7 @@
           "build/_._": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -926,7 +926,7 @@
           "build/_._": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1283,7 +1283,7 @@
           "build/_._": {}
         }
       },
-      "Xamarin.Forms/3.6.0.709228": {
+      "Xamarin.Forms/3.6.0.220655": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1963,10 +1963,10 @@
         "xamarin.build.download.nuspec"
       ]
     },
-    "Xamarin.Forms/3.6.0.709228": {
-      "sha512": "mCxwzeGmLzT5/LosrRcPeJhLUgWDC5wPYtPci6vVsop7xj31xhWdSYDXFw3KRbVkjB72ovpNsqRWZdkXu40iCA==",
+    "Xamarin.Forms/3.6.0.220655": {
+      "sha512": "vpPeq+GpNGj9uAyHjzeaPtPPAHxajanj2ct7ZqQ1RXGUlthi/yK5nnmyv9L/IGQ3fzgU28PBID7yQL13P3bGig==",
       "type": "package",
-      "path": "xamarin.forms/3.6.0.709228",
+      "path": "xamarin.forms/3.6.0.220655",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2124,7 +2124,7 @@
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.6.0.709228.nupkg.sha512",
+        "xamarin.forms.3.6.0.220655.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -2172,7 +2172,7 @@
       "Xam.Plugin.Geolocator >= 4.5.0.6",
       "Xam.Plugin.Media >= 4.0.1.5",
       "Xam.Plugins.Forms.ImageCircle >= 1.8.1",
-      "Xamarin.Forms >= 3.6.0.709228",
+      "Xamarin.Forms >= 3.6.0.220655",
       "Xamarin.Forms.GoogleMaps >= 3.3.0",
       "sqlite-net-pcl >= 1.7.335"
     ]
@@ -2244,7 +2244,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.6.0.709228, )"
+            "version": "[3.6.0.220655, )"
           },
           "Xamarin.Forms.GoogleMaps": {
             "target": "Package",

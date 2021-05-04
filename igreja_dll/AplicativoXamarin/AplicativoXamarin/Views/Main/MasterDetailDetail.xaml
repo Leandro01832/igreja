@@ -8,10 +8,14 @@
              Title="Usuario">
 
 
-    <StackLayout BackgroundColor="{StaticResource MenuColor}" 
+    <StackLayout BackgroundColor="{StaticResource MenuColor}"
                  Padding="10"
                  Spacing="10"
-                 BindingContext="{Binding UsuarioLogado}">
+                 >
+    
+    <StackLayout BindingContext="{Binding UsuarioLogado}">
+
+        
 
         <controls:CircleImage Source="{Binding Foto}" Aspect="AspectFill"  WidthRequest="300" HeightRequest="300"
                HorizontalOptions="Center" VerticalOptions="Center">
@@ -32,10 +36,17 @@
             <Label Text="{Binding Codigo}" FontSize="Medium"
                VerticalOptions="Center" HorizontalOptions="Center"></Label>
         </StackLayout>
+
+
         
-        
+
+
     </StackLayout>
 
-    
-    
+    <ActivityIndicator IsRunning="{Binding Aguarde}"
+                            HorizontalOptions="Center" VerticalOptions="Center">
+    </ActivityIndicator>
+
+    </StackLayout>
+
 </ContentPage>

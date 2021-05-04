@@ -130,7 +130,7 @@ namespace Site.Controllers.Api
 
         private bool CriancaLgpdExists(int id)
         {
-            return db.Pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
         }
     }
 }

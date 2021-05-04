@@ -17,12 +17,14 @@ namespace AplicativoXamarin.ViewModels
 {
    public class ViewModelCell : BaseViewModel
     {
+        public ApiServices Api { get; set; }
+
         const string URL_GET_CELULAS = "http://www.igrejadeusbom.somee.com/api/CelulaApi";
         const string URL_GET_PESSOAS = "http://www.igrejadeusbom.somee.com/api/PessoaApi";
         const string URL_GET_MINISTERIOS = "http://www.igrejadeusbom.somee.com/api/MinisterioApi";
         const string URL_GET_MINISTERIOS_REST = "http://www.igrejadeusbom.somee.com/api/MinisterioCelulaApi/?$filter=" +
         "CelulaId eq ";
-        public Celula Celula { get; set; }
+        public Celula celula { get; set; }
 
         public ObservableCollection<Celula> Celulas { get; set; }
         public ObservableCollection<Ministerio> Ministerios { get; set; }
@@ -61,9 +63,12 @@ namespace AplicativoXamarin.ViewModels
 
         public ViewModelCell()
         {
+            Api = new ApiServices();
             Celulas = new ObservableCollection<Celula>();
             Ministerios = new ObservableCollection<Ministerio>();
             Pessoas = new ObservableCollection<Pessoa>();
+
+            GetCelula();
 
             ConfirmJoinCell = new Command(() =>
             {
@@ -86,6 +91,11 @@ namespace AplicativoXamarin.ViewModels
                 MessagingCenter.Send<ViewModelCell>(this, "Geolocation");
             });
 
+        }
+
+        private async void GetCelula()
+        {
+            celula = await Api.GetCelulaUsuario();
         }
 
         public async Task GetCelulas()
@@ -135,7 +145,7 @@ namespace AplicativoXamarin.ViewModels
                 var lista = JsonConvert.DeserializeObject<List<Pessoa>>(resultadoLista);
 
                 this.Pessoas.Clear();
-                foreach (var pes in lista.Where(i => i.celula_ == Celula.IdCelula))
+                foreach (var pes in lista.Where(i => i.celula_ == celula.IdCelula))
                 {
                     this.Pessoas.Add(new Pessoa
                     {

@@ -28,10 +28,11 @@ namespace AplicativoXamarin.Services
 
         internal async Task<Celula> GetCelulaUsuario()
         {
-            HttpClient cliente = new HttpClient();
+            
             var pessoa = await GetPessoa();
             if(pessoa.Celula != null)
             {
+                HttpClient cliente = new HttpClient();
                 var resultado = await cliente.GetStringAsync(URL_GET_CELULA_USUARIO + pessoa.celula_);
                 var cel = JsonConvert.DeserializeObject<Celula>(resultado);
                 return cel;
@@ -273,6 +274,64 @@ namespace AplicativoXamarin.Services
                     return JsonConvert.DeserializeObject<TRetorno>(response.Content.ReadAsStringAsync().Result);
                 }
             }
+        }
+
+        internal async Task<List<Pessoa>> RecuperarTodasPessoas()
+        {
+            HttpClient cliente = new HttpClient();
+            var resultadoLista = await cliente.GetStringAsync
+            (URL + "api/PessoaApi");
+            return JsonConvert.DeserializeObject<List<Pessoa>>(resultadoLista);
+        }
+
+        internal async Task ExcluirPessoa(int idVelhoEstado)
+        {
+            HttpClient cliente = new HttpClient();
+
+            var resposta = await cliente.DeleteAsync(URL + "api/PessoaApi/" + idVelhoEstado);
+        }
+
+        internal async Task<Pessoa> salvarPessoaMudancaEstado(modelocrud pessoa)
+        {
+            Pessoa p = (Pessoa)pessoa;
+            var request = JsonConvert.SerializeObject(p);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var urlSetfoto = "api/PessoaApi";
+            var response = await client.PostAsync(URL + urlSetfoto, body);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Pessoa pes = JsonConvert.DeserializeObject<Pessoa>(result);
+                return pes;
+            }
+            return null;
+        }
+
+        internal async Task salvarMudancaEstado(MudancaEstado mudanca)
+        {
+            var request = JsonConvert.SerializeObject(mudanca);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var urlSetfoto = "api/MudancaEstadoApi";
+            var response = await client.PostAsync(URL + urlSetfoto, body);
+        }
+
+        internal async Task<PessoaMinisterio> retornaPessoaMinsterio(int idPessoaMinisterio)
+        {
+            HttpClient cliente = new HttpClient();
+            var resultadoLista = await cliente.GetStringAsync
+            (URL + "api/PessoaMinisterioApi/" + idPessoaMinisterio);
+            return JsonConvert.DeserializeObject<PessoaMinisterio>(resultadoLista);
+        }
+
+        internal async Task<ReuniaoPessoa> retornaReuniaoPessoa(int idReuniaoPessoa)
+        {
+            HttpClient cliente = new HttpClient();
+            var resultadoLista = await cliente.GetStringAsync
+            (URL + "api/ReuniaoPessoaApi/" + idReuniaoPessoa);
+            return JsonConvert.DeserializeObject<ReuniaoPessoa>(resultadoLista);
         }
     }
 }

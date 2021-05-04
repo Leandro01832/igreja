@@ -32,7 +32,7 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(VisitanteLgpd))]
         public async Task<IHttpActionResult> GetVisitanteLgpd(int id)
         {
-            VisitanteLgpd visitanteLgpd = await db.Pessoas.FindAsync(id);
+            VisitanteLgpd visitanteLgpd = (VisitanteLgpd) await db.pessoas.FindAsync(id);
             if (visitanteLgpd == null)
             {
                 return NotFound();
@@ -107,13 +107,13 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(VisitanteLgpd))]
         public async Task<IHttpActionResult> DeleteVisitanteLgpd(int id)
         {
-            VisitanteLgpd visitanteLgpd = await db.Pessoas.FindAsync(id);
+            VisitanteLgpd visitanteLgpd = (VisitanteLgpd) await db.pessoas.FindAsync(id);
             if (visitanteLgpd == null)
             {
                 return NotFound();
             }
 
-            db.Pessoas.Remove(visitanteLgpd);
+            db.pessoas.Remove(visitanteLgpd);
             await db.SaveChangesAsync();
 
             return Ok(visitanteLgpd);
@@ -130,7 +130,7 @@ namespace Site.Controllers.Api
 
         private bool VisitanteLgpdExists(int id)
         {
-            return db.Pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
         }
     }
 }

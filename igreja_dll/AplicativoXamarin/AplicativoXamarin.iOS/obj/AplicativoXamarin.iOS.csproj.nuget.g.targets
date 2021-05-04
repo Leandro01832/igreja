@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)xamarin.google.ios.maps\3.5.0\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.google.ios.maps\3.5.0\build\Xamarin.Google.iOS.Maps.targets')" />
-    <Import Project="$(NuGetPackageRoot)xamarin.forms\3.6.0.709228\build\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\3.6.0.709228\build\Xamarin.Forms.targets')" />
+    <Import Project="$(NuGetPackageRoot)xamarin.forms\3.6.0.220655\build\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\3.6.0.220655\build\Xamarin.Forms.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.bcl.build\1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.bcl.build\1.0.21\build\Microsoft.Bcl.Build.targets')" />
   </ImportGroup>
 </Project>

@@ -3,7 +3,7 @@ using AplicativoXamarin.models;
 
 namespace AplicativoXamarin.models
 {
-   public class PessoaMinisterio 
+   public class PessoaMinisterio : modelocrud
     {
         public int IdPessoaMinisterio { get; set; }
         public int PessoaId { get; set; }

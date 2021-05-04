@@ -35,7 +35,7 @@ namespace AplicativoXamarin.Views
             MessagingCenter.Subscribe<Ministerio>(this, "SairMinisterio",
                async (msg) =>
                {
-                   if (await DisplayAlert("Confirmação", "Deseja realmente participar deste Ministério?", "SIM", "Cancelar"))
+                   if (await DisplayAlert("Confirmação", "Deseja realmente sair deste Ministério?", "SIM", "Cancelar"))
                    {
                        Api.SairMinisterio(msg);
                    }
@@ -48,7 +48,7 @@ namespace AplicativoXamarin.Views
                  await DisplayAlert("Ministerio", " Você não esta mais participando deste ministério." +
                          " \n Identificação do ministério: " + msg2.IdMinisterio.ToString(), "ok");
 
-                 await Navigation.PushAsync(new MinistryListView());
+                 await Navigation.PopAsync();
              });
 
             MessagingCenter.Subscribe<ArgumentException>(this, "FalhaSairMinisterio",

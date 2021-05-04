@@ -1,4 +1,6 @@
-﻿namespace AplicativoXamarin.models.Pessoas
+﻿using System;
+
+namespace AplicativoXamarin.models.Pessoas
 {
     public class Membro_Aclamacao : Membro
     {
@@ -8,5 +10,6 @@
         {
         }
 
+        
     }
 }

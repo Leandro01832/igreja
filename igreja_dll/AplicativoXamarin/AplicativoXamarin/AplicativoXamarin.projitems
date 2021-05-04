@@ -26,9 +26,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)models\EnderecoCelula.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Historico.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Interface\Iconfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Interface\IMudancaEstado.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Ministerio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\MinisterioCelula.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\modelocrud.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\MudancaEstado.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Pessoa.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\PessoaMinisterio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\CriancaLgpd.cs" />

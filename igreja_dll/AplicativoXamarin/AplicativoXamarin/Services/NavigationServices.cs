@@ -1,5 +1,6 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.models.SQLite;
+using AplicativoXamarin.ViewModels;
 using AplicativoXamarin.Views;
 using AplicativoXamarin.Views.Join;
 using AplicativoXamarin.Views.List;
@@ -23,7 +24,8 @@ namespace AplicativoXamarin.Services
             switch (pagename)
             {
                 case "CelView":
-                    var cel = await Api.GetCelulaUsuario();
+                    var main = MainViewModel.GetInstance();
+                    Celula cel = await main.GetCelula();
                     await App.Navigator.PushAsync(new CelView(cel));
 
                     break;

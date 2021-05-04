@@ -18,12 +18,14 @@ namespace AplicativoXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CelView : ContentPage
     {
+        public ViewModelCell viewmodel { get; set; }
+        Button botao;
 
         public CelView(Celula celula)
         {
             InitializeComponent();
-                        
-            var botao = new Button
+
+            botao = new Button
             {
                 Text = "Participar de uma celula",
                 WidthRequest = 200,
@@ -32,34 +34,15 @@ namespace AplicativoXamarin.Views
                 VerticalOptions = LayoutOptions.Center
             };
 
+            viewmodel = new ViewModelCell();
+            viewmodel.celula = celula;
+
+            BindingContext = viewmodel;            
+
+            
             botao.Clicked += Botao_Clicked;
-
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CelulaUsuario.Celula = celula;
-           
-
-            if (mainViewModel.CelulaUsuario.Celula == null)
-            {
-                this.Content = new ContentView
-                {
-                    Content = new StackLayout
-                    {
-                        Padding = 20,
-                        Spacing = 20,
-                        Children =
-                        {
-                            new Label
-                            {
-                                Text = "Você ainda não tem uma celula.",
-                                 FontSize = 24,
-                                 HorizontalOptions = LayoutOptions.Center,
-                                VerticalOptions = LayoutOptions.Center
-                            },
-                            botao
-                        }
-                    }
-                };
-            }
+            
+            
         }
 
         protected override void OnAppearing()
@@ -81,7 +64,14 @@ namespace AplicativoXamarin.Views
                 Navigation.PushAsync(new MinistriesCellView());
 
             });
+
+           
+
+            
+
         }
+
+        
 
         protected override void OnDisappearing()
         {

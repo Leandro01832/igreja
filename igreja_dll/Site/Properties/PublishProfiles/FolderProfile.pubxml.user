@@ -16,19 +16,19 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>04/30/2021 15:29:47</publishTime>
+      <publishTime>05/04/2021 11:01:10</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>04/30/2021 15:29:47</publishTime>
+      <publishTime>05/04/2021 11:01:10</publishTime>
     </File>
     <File Include="bin/business.dll">
-      <publishTime>04/30/2021 09:29:20</publishTime>
+      <publishTime>05/04/2021 11:00:35</publishTime>
     </File>
     <File Include="bin/business.dll.config">
       <publishTime>02/25/2021 14:49:40</publishTime>
     </File>
     <File Include="bin/business.pdb">
-      <publishTime>04/30/2021 09:29:20</publishTime>
+      <publishTime>05/04/2021 11:00:35</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -184,13 +184,13 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>11/28/2018 13:04:44</publishTime>
     </File>
     <File Include="bin/repositorioEF.dll">
-      <publishTime>04/30/2021 11:02:32</publishTime>
+      <publishTime>05/04/2021 11:00:36</publishTime>
     </File>
     <File Include="bin/repositorioEF.dll.config">
       <publishTime>02/25/2021 14:49:42</publishTime>
     </File>
     <File Include="bin/repositorioEF.pdb">
-      <publishTime>04/30/2021 11:02:32</publishTime>
+      <publishTime>05/04/2021 11:00:36</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>02/25/2021 14:49:41</publishTime>
@@ -340,10 +340,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>04/30/2021 15:29:40</publishTime>
+      <publishTime>05/04/2021 11:00:57</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>04/30/2021 15:29:40</publishTime>
+      <publishTime>05/04/2021 11:00:57</publishTime>
     </File>
     <File Include="bin/System.AppContext.dll">
       <publishTime>04/20/2021 13:48:45</publishTime>
@@ -760,7 +760,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:38</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/30/2021 15:29:41</publishTime>
+      <publishTime>05/04/2021 11:00:58</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -1150,7 +1150,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/22/2021 18:19:07</publishTime>
+      <publishTime>05/04/2021 11:00:37</publishTime>
     </File>
   </ItemGroup>
 </Project>
