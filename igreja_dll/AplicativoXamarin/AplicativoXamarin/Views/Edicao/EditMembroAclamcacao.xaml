@@ -4,7 +4,7 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="AplicativoXamarin.Views.Edicao.EditMembroAclamcacao">
 
-    <StackLayout>
+    <StackLayout Padding="20" Spacing="15">
         <StackLayout BindingContext="{Binding membro_Aclamacao}">
 
             <TableView>
@@ -39,18 +39,10 @@
 
                     </TableSection>
 
-                    <TableSection Title="Dados de visitante">
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Data da visita:" VerticalOptions="Center" 
-                                   HorizontalOptions="Center" />
-                                <DatePicker HorizontalOptions="End"
-                            Date="{Binding Data_visita}"
-                            VerticalOptions="Center"></DatePicker>
-                            </StackLayout>
-                        </ViewCell>
+                    <TableSection Title="Dados de membro por aclamação">
 
-                        <EntryCell Label="Condição religiosa:" Text="{Binding Condicao_religiosa}"></EntryCell>
+                        <EntryCell Label="Ano de batismo:" Keyboard="Numeric" Text="{Binding Data_batismo}"></EntryCell>
+                        <EntryCell Label="Denominação:" Text="{Binding Denominacao}"></EntryCell>
 
                     </TableSection>
 
@@ -88,7 +80,7 @@
         </controls:CircleImage>
 
         <Button Command="TakePicture" Text="Tirar foto"></Button>
-        <Button Command="UpdateDataVisitante" Text="Atualizar dados"></Button>
+        <Button Command="UpdateDataMembroAclamacao" Text="Atualizar dados"></Button>
 
     </StackLayout>
 

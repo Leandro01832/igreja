@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="AplicativoXamarin.Views.Edicao.EditMembroAclamcacaoLgpd">
+
+    <StackLayout Padding="20" Spacing="15">
+        <StackLayout BindingContext="{Binding membro_AclamacaoLgpd}">
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Dados de membro por aclamação LGPD">
+                        <EntryCell Label="Ano de batismo:" Keyboard="Numeric" Text="{Binding Data_batismo}"></EntryCell>
+                        <EntryCell Label="Denominação:" Text="{Binding Denominacao}"></EntryCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+
+        <controls:CircleImage
+          Source="{Binding ImageSource}"
+          Aspect="AspectFill"
+          WidthRequest="200"
+          HeightRequest="200"
+          VerticalOptions="Center"
+          HorizontalOptions="Center">
+        </controls:CircleImage>
+
+        <Button Command="TakePicture" Text="Tirar foto"></Button>
+        <Button Command="UpdateDataMembroAclamacaoLgpd" Text="Atualizar dados"></Button>
+    </StackLayout>
+</ContentPage>

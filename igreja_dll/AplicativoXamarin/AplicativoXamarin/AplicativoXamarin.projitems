@@ -79,24 +79,48 @@
       <DependentUpon>EditCrianca.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCriancaLgpd.xaml.cs">
+      <DependentUpon>EditCriancaLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacao.xaml.cs">
       <DependentUpon>EditMembroAclamcacao.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacaoLgpd.xaml.cs">
+      <DependentUpon>EditMembroAclamcacaoLgpd.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismo.xaml.cs">
       <DependentUpon>EditMembroBatismo.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismoLgpd.xaml.cs">
+      <DependentUpon>EditMembroBatismoLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacao.xaml.cs">
       <DependentUpon>EditMembroReconciliacao.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacaoLgpd.xaml.cs">
+      <DependentUpon>EditMembroReconciliacaoLgpd.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferencia.xaml.cs">
       <DependentUpon>EditMembroTransferencia.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferenciaLgpd.xaml.cs">
+      <DependentUpon>EditMembroTransferenciaLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitante.xaml.cs">
       <DependentUpon>EditVisitante.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitanteLgpd.xaml.cs">
+      <DependentUpon>EditVisitanteLgpd.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml.cs">
@@ -432,6 +456,42 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitanteLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCriancaLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacaoLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismoLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacaoLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferenciaLgpd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

@@ -1,5 +1,6 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.models.Pessoas;
+using AplicativoXamarin.models.PessoasLgpd;
 using AplicativoXamarin.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -31,6 +32,12 @@ namespace AplicativoXamarin.Views.Edicao
                 if (msg is Membro_Batismo) Navigation.PushAsync(new EditMembroBatismo());
                 if (msg is Membro_Reconciliacao) Navigation.PushAsync(new EditMembroReconciliacao());
                 if (msg is Membro_Transferencia) Navigation.PushAsync(new EditMembroTransferencia());
+                if (msg is VisitanteLgpd) Navigation.PushAsync(new EditVisitanteLgpd());
+                if (msg is CriancaLgpd) Navigation.PushAsync(new EditCriancaLgpd());
+                if (msg is Membro_AclamacaoLgpd) Navigation.PushAsync(new EditMembroAclamcacaoLgpd());
+                if (msg is Membro_BatismoLgpd) Navigation.PushAsync(new EditMembroBatismoLgpd());
+                if (msg is Membro_ReconciliacaoLgpd) Navigation.PushAsync(new EditMembroReconciliacaoLgpd());
+                if (msg is Membro_TransferenciaLgpd) Navigation.PushAsync(new EditMembroTransferenciaLgpd());
 
             });
 
