@@ -70,6 +70,35 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelEdicao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\ChooseClass.xaml.cs">
+      <DependentUpon>ChooseClass.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCrianca.xaml.cs">
+      <DependentUpon>EditCrianca.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacao.xaml.cs">
+      <DependentUpon>EditMembroAclamcacao.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismo.xaml.cs">
+      <DependentUpon>EditMembroBatismo.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacao.xaml.cs">
+      <DependentUpon>EditMembroReconciliacao.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferencia.xaml.cs">
+      <DependentUpon>EditMembroTransferencia.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitante.xaml.cs">
+      <DependentUpon>EditVisitante.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml.cs">
       <DependentUpon>GeolocationView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -361,6 +390,48 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\ChooseClass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitante.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCrianca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

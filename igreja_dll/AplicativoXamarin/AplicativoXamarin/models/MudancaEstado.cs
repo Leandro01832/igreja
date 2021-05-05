@@ -41,23 +41,7 @@ namespace AplicativoXamarin.models
             estado = p.GetType().Name;
             p = lista2.First(i => i.IdPessoa == idVelhoEstado);
 
-            excluirPessoaVelha(idVelhoEstado);
-
-            var minis = p.Ministerios;
-            if(minis != null)
-            foreach(var itemMinisterio in minis)
-            {
-                PessoaMinisterio item = await retornaPessoaMinsterio(itemMinisterio.IdPessoaMinisterio);
-                Api.ParticiparMinisterio(item.Ministerio);
-            }
-
-            var reu = p.Reuniao;
-            if (reu != null)
-            foreach (var itemReuniao in reu)
-            {
-                ReuniaoPessoa item = await retornaReuniaoPessoa(itemReuniao.IdReuniaoPessoa);
-                Api.ParticiparReuniao(item.Reuniao);
-            }
+            excluirPessoaVelha(idVelhoEstado);            
 
             var data = new DataAccess();
             var user = data.First();
@@ -417,9 +401,25 @@ namespace AplicativoXamarin.models
             }
 
             data.Update(user);
-            
 
-          var mudanca =  new MudancaEstado
+            var minis = p.Ministerios;
+            if (minis != null)
+                foreach (var itemMinisterio in minis)
+                {
+                    PessoaMinisterio item = await retornaPessoaMinsterio(itemMinisterio.IdPessoaMinisterio);
+                    Api.ParticiparMinisterio(item.Ministerio);
+                }
+
+            var reu = p.Reuniao;
+            if (reu != null)
+                foreach (var itemReuniao in reu)
+                {
+                    ReuniaoPessoa item = await retornaReuniaoPessoa(itemReuniao.IdReuniaoPessoa);
+                    Api.ParticiparReuniao(item.Reuniao);
+                }
+
+
+            var mudanca =  new MudancaEstado
             {
                 novoEstado = m.GetType().Name,
                 velhoEstado = estado,

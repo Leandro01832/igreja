@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.Edicao.ChooseClass">
+
+    <StackLayout>
+
+        <TableView>
+            <TableRoot>
+
+                <TableSection Title="Identificação">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Crianca}" 
+                            VerticalOptions="Center"></Switch>
+                        </StackLayout>
+
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End"
+                            IsToggled="{Binding Visitante}"
+                            VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao}"
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo}" 
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um membro por reconciliação?" VerticalOptions="CenterAndExpand" 
+                                HorizontalOptions="CenterAndExpand" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao}" 
+                                VerticalOptions="Center"></Switch>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia}" 
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+
+
+                </TableSection>
+
+                <TableSection Title="Autenticação">
+                    <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Email}"></EntryCell>
+                    <ViewCell>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Senha: "></Label>
+                            <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Password}"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+
+                </TableSection>
+            </TableRoot>
+
+        </TableView>
+
+
+        <Button Command="NextData" Text="Proximo"></Button>
+        
+    </StackLayout>
+</ContentPage>
