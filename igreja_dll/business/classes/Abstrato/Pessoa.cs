@@ -25,6 +25,7 @@ namespace business.classes.Abstrato
         {
             MudancaEstado = new MudancaEstado();
             AddNalista = new AddNalista();
+           
             //this.Chamada = new Chamada
             //{
             //    Data_inicio = DateTime.Now
@@ -41,7 +42,8 @@ namespace business.classes.Abstrato
 
         [Key]
         public int IdPessoa { get; set; }
-        
+
+
         public string NomePessoa { get; set; }
 
         [Index("CODIGO", 2, IsUnique = true)]
@@ -88,7 +90,7 @@ namespace business.classes.Abstrato
                 var numero = recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
                 Codigo = numero + 1;
             }
-            catch { Codigo = 1; }          
+            catch { Codigo = 1; }
             
             string celula = "";
             if (this.celula_ == null) celula = "null";

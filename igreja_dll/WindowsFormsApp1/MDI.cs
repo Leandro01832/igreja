@@ -15,7 +15,7 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public partial class MDI : Form
+    public partial class MDI : FormPadrao
     {
         private int childFormNumber = 1;
 

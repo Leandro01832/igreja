@@ -21,7 +21,7 @@ using FinalizarCadastro = WindowsFormsApp1.Formulario.Celula.FinalizarCadastro;
 
 namespace WindowsFormsApp1
 {
-    public partial class WFCrud : Form
+    public partial class WFCrud : FormPadrao
     {
         public WFCrud()
         {

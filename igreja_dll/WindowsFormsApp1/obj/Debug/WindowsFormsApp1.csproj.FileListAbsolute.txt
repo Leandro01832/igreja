@@ -302,3 +302,4 @@ D:\codigo-github\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.c
 D:\codigo-github\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 D:\codigo-github\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\codigo-github\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\codigo-github\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormPadrao.resources

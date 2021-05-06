@@ -9,7 +9,7 @@ using business.classes.Abstrato;
 
 namespace WindowsFormsApp1
 {
-    public partial class Pesquisar : Form
+    public partial class Pesquisar : FormPadrao
     {
         public Pesquisar()
         {

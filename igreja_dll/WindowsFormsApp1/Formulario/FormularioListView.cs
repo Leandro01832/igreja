@@ -16,13 +16,14 @@ using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Reuniao;
 using WindowsFormsApp1.ListViews;
 
+
 namespace WindowsFormsApp1.Formulario
 {
-    public partial class FormularioListView : Form
+    public partial class FormularioListView : FormPadrao
     {
         public FormularioListView()
         {
-
+           
         }
 
         List<modelocrud> lista;
@@ -263,6 +264,8 @@ namespace WindowsFormsApp1.Formulario
         
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
+          
+
             this.Size = new Size(700, 350);
 
             if(Modelo is MudancaEstado)
