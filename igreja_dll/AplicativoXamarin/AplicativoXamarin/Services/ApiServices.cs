@@ -1,4 +1,5 @@
 ﻿using AplicativoXamarin.models;
+using AplicativoXamarin.models.Pessoas;
 using AplicativoXamarin.models.PessoasLgpd;
 using AplicativoXamarin.ViewModels;
 using Newtonsoft.Json;
@@ -82,13 +83,43 @@ namespace AplicativoXamarin.Services
 
         public static async Task<Pessoa> GetPessoa()
         {
-            var login = new LoginServices();
-            var resultado = await login.FazerLogin
-            (new Login(App.UserCurrent.Email, App.UserCurrent.password, false));
-            var conteudoResultado = await resultado.Content.ReadAsStringAsync();
-            var resultadoLogin =
-            JsonConvert.DeserializeObject<Pessoa>(conteudoResultado);
-            return resultadoLogin;
+            HttpClient cliente = new HttpClient();
+            var resultado = await cliente.GetStringAsync(URL + "api/PessoaApi/" + App.UserCurrent.IdPessoa);            
+
+            var pessoadado = JsonConvert.DeserializeObject<PessoaDado>(resultado);
+            var pessoalgpd = JsonConvert.DeserializeObject<PessoaLgpd>(resultado);
+            
+
+            if (pessoadado.Endereco == null && pessoadado.Telefone == null && pessoadado.Cpf == null &&
+                pessoadado.Rg == null && pessoadado.Status == null && pessoadado.Estado_civil == null)
+            {
+                if (resultado.Contains("Nome_mae"))
+                    return JsonConvert.DeserializeObject<CriancaLgpd>(resultado);
+                if (resultado.Contains("Estado_transferencia"))
+                    return JsonConvert.DeserializeObject<Membro_TransferenciaLgpd>(resultado);
+                if (resultado.Contains("Data_reconciliacao"))
+                    return JsonConvert.DeserializeObject<Membro_ReconciliacaoLgpd>(resultado);
+                if (resultado.Contains("Denominacao"))
+                    return JsonConvert.DeserializeObject<Membro_AclamacaoLgpd>(resultado);
+                if (resultado.Contains("Data_visita"))
+                    return JsonConvert.DeserializeObject<VisitanteLgpd>(resultado);
+                else return JsonConvert.DeserializeObject<Membro_BatismoLgpd>(resultado);
+            }
+            else
+            {
+                if (resultado.Contains("Nome_mae"))
+                    return JsonConvert.DeserializeObject<Crianca>(resultado);
+                if (resultado.Contains("Estado_transferencia"))
+                    return JsonConvert.DeserializeObject<Membro_Transferencia>(resultado);
+                if (resultado.Contains("Data_reconciliacao"))
+                    return JsonConvert.DeserializeObject<Membro_Reconciliacao>(resultado);
+                if (resultado.Contains("Denominacao"))
+                    return JsonConvert.DeserializeObject<Membro_Aclamacao>(resultado);
+                if (resultado.Contains("Data_visita"))
+                    return JsonConvert.DeserializeObject<Visitante>(resultado);
+                else return JsonConvert.DeserializeObject<Membro_Batismo>(resultado);
+            }
+            
         }
 
         public async  Task  CadastrarPessoa(RegisterViewModel msg)

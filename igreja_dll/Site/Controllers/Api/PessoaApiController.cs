@@ -64,21 +64,7 @@ namespace Site.Controllers.Api
                 return NotFound();
             }
 
-            PessoaApi modelo = new PessoaApi
-            {
-                Celula = pessoa.Celula,
-                Chamada = pessoa.Chamada,
-                celula_ = pessoa.celula_,
-                Codigo = pessoa.Codigo,
-                Email = pessoa.Email,
-                Falta = pessoa.Falta,
-                Historico = pessoa.Historico,
-                Ministerios = pessoa.Ministerios,
-                Nome = pessoa.NomePessoa,
-                Reuniao = pessoa.Reuniao
-            };
-
-            return Ok(modelo);
+            return Ok(pessoa);
         }
 
         // PUT: api/PessoaApi/5

@@ -10,34 +10,54 @@ namespace AplicativoXamarin.Views.Edicao
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChooseClass : ContentPage
     {
-        public ViewModelEdicao viewmodel { get; set; }
 
         public ChooseClass()
         {
             InitializeComponent();
-            viewmodel = new ViewModelEdicao();
-
-            BindingContext = viewmodel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            MessagingCenter.Subscribe<modelocrud>(this, "Next", (msg) => {
+            MessagingCenter.Subscribe<ViewModelEdicao>(this, "Next", async (msg) => {
 
-                if (msg is Visitante) Navigation.PushAsync(new EditVisitante());
-                if (msg is Crianca) Navigation.PushAsync(new EditCrianca());
-                if (msg is Membro_Aclamacao) Navigation.PushAsync(new EditMembroAclamcacao());
-                if (msg is Membro_Batismo) Navigation.PushAsync(new EditMembroBatismo());
-                if (msg is Membro_Reconciliacao) Navigation.PushAsync(new EditMembroReconciliacao());
-                if (msg is Membro_Transferencia) Navigation.PushAsync(new EditMembroTransferencia());
-                if (msg is VisitanteLgpd) Navigation.PushAsync(new EditVisitanteLgpd());
-                if (msg is CriancaLgpd) Navigation.PushAsync(new EditCriancaLgpd());
-                if (msg is Membro_AclamacaoLgpd) Navigation.PushAsync(new EditMembroAclamcacaoLgpd());
-                if (msg is Membro_BatismoLgpd) Navigation.PushAsync(new EditMembroBatismoLgpd());
-                if (msg is Membro_ReconciliacaoLgpd) Navigation.PushAsync(new EditMembroReconciliacaoLgpd());
-                if (msg is Membro_TransferenciaLgpd) Navigation.PushAsync(new EditMembroTransferenciaLgpd());
+                modelocrud m = null;
+                
+                Pessoa p = await msg.GetPessoa();
+                
+
+                if (p is PessoaLgpd)
+                {
+                    if (msg.Visitante)           m = msg.visitante;
+                    if (msg.Crianca)             m = msg.crianca;
+                    if (msg.MembroAclamacao)     m = msg.membro_Aclamacao;
+                    if (msg.MembroBatismo)       m = msg.membro_Batismo;
+                    if (msg.MembroReconciliacao) m = msg.membro_Reconciliacao;
+                    if (msg.MembroTransferencia) m = msg.membro_Transferencia;
+                }
+                else if (p is PessoaDado)
+                {
+                    if (msg.Visitante)           m = msg.visitanteLgpd;
+                    if (msg.Crianca)             m = msg.criancaLgpd;
+                    if (msg.MembroAclamacao)     m = msg.membro_AclamacaoLgpd;
+                    if (msg.MembroBatismo)       m = msg.membro_BatismoLgpd;
+                    if (msg.MembroReconciliacao) m = msg.membro_ReconciliacaoLgpd;
+                    if (msg.MembroTransferencia) m = msg.membro_TransferenciaLgpd;
+                }
+
+                if (m is Visitante)                await Navigation.PushAsync(new EditVisitante());
+                if (m is Crianca)                  await Navigation.PushAsync(new EditCrianca());
+                if (m is Membro_Aclamacao)         await Navigation.PushAsync(new EditMembroAclamcacao());
+                if (m is Membro_Batismo)           await Navigation.PushAsync(new EditMembroBatismo());
+                if (m is Membro_Reconciliacao)     await Navigation.PushAsync(new EditMembroReconciliacao());
+                if (m is Membro_Transferencia)     await Navigation.PushAsync(new EditMembroTransferencia());
+                if (m is VisitanteLgpd)            await Navigation.PushAsync(new EditVisitanteLgpd());
+                if (m is CriancaLgpd)              await Navigation.PushAsync(new EditCriancaLgpd());
+                if (m is Membro_AclamacaoLgpd)     await Navigation.PushAsync(new EditMembroAclamcacaoLgpd());
+                if (m is Membro_BatismoLgpd)       await Navigation.PushAsync(new EditMembroBatismoLgpd());
+                if (m is Membro_ReconciliacaoLgpd) await Navigation.PushAsync(new EditMembroReconciliacaoLgpd());
+                if (m is Membro_TransferenciaLgpd) await Navigation.PushAsync(new EditMembroTransferenciaLgpd());
 
             });
 

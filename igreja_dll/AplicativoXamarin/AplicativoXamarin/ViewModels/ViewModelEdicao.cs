@@ -7,6 +7,7 @@ using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -14,9 +15,6 @@ namespace AplicativoXamarin.ViewModels
 {
    public class ViewModelEdicao : BaseViewModel
     {
-
-        public string Email { get; set; }
-        public string Password { get; set; }
         public bool Visitante { get; set; }
         public bool Crianca { get; set; }
         public bool MembroAclamacao { get; set; }
@@ -25,7 +23,16 @@ namespace AplicativoXamarin.ViewModels
         public bool MembroBatismo { get; set; }
 
         public ICommand TakePicture { get; set; }
-        public ICommand NextData { get; set; }
+        public ICommand NextDataCommand { get; set; }
+
+        internal async Task<Pessoa> GetPessoa()
+        {
+            Aguarde = true;
+            var p = await ApiServices.GetPessoa();
+            Aguarde = false;
+            return p;
+        }
+
         public ICommand UpdateDataVisitante { get; set; }
         public ICommand UpdateDataCrianca { get; set; }
         public ICommand UpdateDataMembroBatismo { get; set; }
@@ -67,49 +74,32 @@ namespace AplicativoXamarin.ViewModels
 
         public ViewModelEdicao()
         {
+            Visitante = true;
 
             visitante = new Visitante();
+            visitante.Data_nascimento = DateTime.Now;
+            visitante.Data_visita = DateTime.Now;
             crianca = new Crianca();
             membro_Aclamacao = new Membro_Aclamacao();
+            membro_Aclamacao.Data_nascimento = DateTime.Now;
             membro_Batismo = new Membro_Batismo();
+            membro_Batismo.Data_nascimento = DateTime.Now;
             membro_Reconciliacao = new Membro_Reconciliacao();
+            membro_Reconciliacao.Data_nascimento = DateTime.Now;
             membro_Transferencia = new Membro_Transferencia();
+            membro_Transferencia.Data_nascimento = DateTime.Now;
 
             visitanteLgpd = new VisitanteLgpd();
+            visitanteLgpd.Data_visita = DateTime.Now;
             criancaLgpd = new CriancaLgpd();
             membro_AclamacaoLgpd = new Membro_AclamacaoLgpd();
             membro_BatismoLgpd = new Membro_BatismoLgpd();
             membro_ReconciliacaoLgpd = new Membro_ReconciliacaoLgpd();
             membro_TransferenciaLgpd = new Membro_TransferenciaLgpd();
 
-            NextData = new Command(async () =>
+            NextDataCommand = new Command( () =>
             {
-
-                modelocrud m = null;
-
-                Pessoa p = await ApiServices.GetPessoa();
-
-                if (p is PessoaLgpd)
-                {
-                    if (Visitante) m = visitante;
-                    if (Crianca) m = crianca;
-                    if (MembroAclamacao) m = membro_Aclamacao;
-                    if (MembroBatismo) m = membro_Batismo;
-                    if (MembroReconciliacao) m = membro_Reconciliacao;
-                    if (MembroTransferencia) m = membro_Transferencia;
-                }
-                else if (p is PessoaDado)
-                {
-                    if (Visitante) m = visitanteLgpd;
-                    if (Crianca) m = criancaLgpd;
-                    if (MembroAclamacao) m = membro_AclamacaoLgpd;
-                    if (MembroBatismo) m = membro_BatismoLgpd;
-                    if (MembroReconciliacao) m = membro_ReconciliacaoLgpd;
-                    if (MembroTransferencia) m = membro_TransferenciaLgpd;
-                }
-
-
-                MessagingCenter.Send<modelocrud>(m, "Next");
+                MessagingCenter.Send<ViewModelEdicao>(this, "Next");
 
             });
 
@@ -124,7 +114,7 @@ namespace AplicativoXamarin.ViewModels
                     return;
                 }
 
-                file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                 {
                     Directory = "Photos",
                     Name = "Pessoa.jpg"

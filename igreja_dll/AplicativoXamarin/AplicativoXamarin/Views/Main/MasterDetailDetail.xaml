@@ -7,19 +7,21 @@
             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Usuario">
 
-
+    <ScrollView>
     <StackLayout BackgroundColor="{StaticResource MenuColor}"
                  Padding="10"
                  Spacing="10"
                  >
-    
-    <StackLayout BindingContext="{Binding UsuarioLogado}">
-
-        
 
         <controls:CircleImage Source="{Binding Foto}" Aspect="AspectFill"  WidthRequest="300" HeightRequest="300"
                HorizontalOptions="Center" VerticalOptions="Center">
         </controls:CircleImage>
+
+        <StackLayout BindingContext="{Binding UsuarioLogado}">
+
+        
+
+        
 
         <Label Text="Seja Bem Vindo!!!" FontSize="Medium" FontAttributes="Bold"
                VerticalOptions="Center" HorizontalOptions="Center">            
@@ -43,10 +45,14 @@
 
     </StackLayout>
 
+        <Button Text="Atualizar dados" Command="{Binding UpdateData}"></Button>
+        <Button Text="Atualizar foto" Command="{Binding UpdatePicture}"></Button>
+        <Button Text="Salvar foto" IsVisible="{Binding VisibleButton}" Command="{Binding SavePicture}"></Button>
+
     <ActivityIndicator IsRunning="{Binding Aguarde}"
                             HorizontalOptions="Center" VerticalOptions="Center">
     </ActivityIndicator>
 
     </StackLayout>
-
+    </ScrollView>
 </ContentPage>

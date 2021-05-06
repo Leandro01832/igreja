@@ -44,8 +44,6 @@ namespace Site.Controllers.Api
             db.Entry(pessoa).State = EntityState.Modified;
             db.Entry(pessoa.Chamada).State = EntityState.Modified;
             db.SaveChanges();
-            
-
             return Ok("foto enviada");
         }
 

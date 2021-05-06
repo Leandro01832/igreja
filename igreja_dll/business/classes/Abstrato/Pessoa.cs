@@ -25,10 +25,10 @@ namespace business.classes.Abstrato
         {
             MudancaEstado = new MudancaEstado();
             AddNalista = new AddNalista();
-            this.Chamada = new Chamada
-            {
-                Data_inicio = DateTime.Now
-            };
+            //this.Chamada = new Chamada
+            //{
+            //    Data_inicio = DateTime.Now
+            //};
         }
 
        

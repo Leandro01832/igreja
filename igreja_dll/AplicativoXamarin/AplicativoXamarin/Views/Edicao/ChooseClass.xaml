@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AplicativoXamarin.Views.Edicao.ChooseClass">
+             x:Class="AplicativoXamarin.Views.Edicao.ChooseClass"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             >
 
-    <StackLayout>
-
+    <StackLayout BindingContext="{Binding Editar}">
         <TableView>
             <TableRoot>
 
@@ -13,7 +14,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding Crianca}" 
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Crianca, Mode=TwoWay}" 
                             VerticalOptions="Center"></Switch>
                         </StackLayout>
 
@@ -24,7 +25,7 @@
                             <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" 
                                    HorizontalOptions="CenterAndExpand" />
                             <Switch HorizontalOptions="End"
-                            IsToggled="{Binding Visitante}"
+                            IsToggled="{Binding Visitante, Mode=TwoWay}"
                             VerticalOptions="Center"></Switch>
                         </StackLayout>
                     </ViewCell>
@@ -33,7 +34,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao}"
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao, Mode=TwoWay}"
                     VerticalOptions="Center"></Switch>
                         </StackLayout>
                     </ViewCell>
@@ -42,7 +43,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo}" 
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo, Mode=TwoWay}" 
                     VerticalOptions="Center"></Switch>
                         </StackLayout>
                     </ViewCell>
@@ -53,7 +54,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Você é um membro por reconciliação?" VerticalOptions="CenterAndExpand" 
                                 HorizontalOptions="CenterAndExpand" />
-                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao}" 
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao, Mode=TwoWay}" 
                                 VerticalOptions="Center"></Switch>
                             </StackLayout>
                         </StackLayout>
@@ -63,32 +64,21 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia}" 
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia, Mode=TwoWay}" 
                     VerticalOptions="Center"></Switch>
                         </StackLayout>
                     </ViewCell>
-
-
-
-                </TableSection>
-
-                <TableSection Title="Autenticação">
-                    <EntryCell Label="E-mail:" Keyboard="Email"  Text="{Binding Email}"></EntryCell>
-                    <ViewCell>
-
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Senha: "></Label>
-                            <Entry IsPassword="True" WidthRequest="270"  Text="{Binding Password}"></Entry>
-                        </StackLayout>
-                    </ViewCell>
-
                 </TableSection>
             </TableRoot>
 
         </TableView>
 
+        <StackLayout>
+            <ActivityIndicator IsRunning="{Binding Aguarde}"
+                            HorizontalOptions="Center" VerticalOptions="Center">
+            </ActivityIndicator>
+            <Button Text="Proximo" Command="{Binding NextDataCommand}" ></Button>
+        </StackLayout>
 
-        <Button Command="NextData" Text="Proximo"></Button>
-        
     </StackLayout>
 </ContentPage>

@@ -2,14 +2,18 @@
 using AplicativoXamarin.models;
 using AplicativoXamarin.models.SQLite;
 using AplicativoXamarin.Services;
+using AplicativoXamarin.Views.Edicao;
 using Newtonsoft.Json;
 using Plugin.Geolocator;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
@@ -22,10 +26,15 @@ namespace AplicativoXamarin.ViewModels
         public ObservableCollection<Pin> Pins { get; set; }
         public RegisterViewModel Register { get; set; }
         public LoginViewModel newLogin { get; set; }
+        public ViewModelEdicao Editar { get; set; }
         public UserViewModel UsuarioLogado { get; set; }
         public ApiServices Api { get; set; }
 
-        
+        public MediaFile file { get; set; }
+
+        public ICommand UpdateData { get; set; }
+        public ICommand UpdatePicture { get; set; }
+        public ICommand SavePicture { get; set; }
 
         private bool aguarde;
         public bool Aguarde
@@ -38,7 +47,18 @@ namespace AplicativoXamarin.ViewModels
             }
         }
 
-        
+        private bool visibleButton;
+        public bool VisibleButton
+        {
+            get { return visibleButton; }
+            set
+            {
+                visibleButton = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         #endregion
 
 
@@ -47,6 +67,9 @@ namespace AplicativoXamarin.ViewModels
 
         public MainViewModel()
         {
+            VisibleButton = false;
+            
+
             instance = this;
             Api = new ApiServices();
             Pins = new ObservableCollection<Pin>();            
@@ -54,6 +77,49 @@ namespace AplicativoXamarin.ViewModels
             Menu = new ObservableCollection<MenuItemViewModel>();
             newLogin = new LoginViewModel();
             UsuarioLogado = new UserViewModel();
+            Editar = new ViewModelEdicao();
+
+            UpdateData = new Command(() =>
+            {
+                MessagingCenter.Send<MainViewModel>(this, "Update");
+            });
+
+            SavePicture = new Command(async () =>
+            {
+                Aguarde = true;
+                await  Api.SetPhoto(App.UserCurrent.IdPessoa, file.GetStream());
+                Aguarde = false;
+                VisibleButton = false;
+            });
+
+            UpdatePicture = new Command( async () =>
+            {
+                Aguarde = true;
+                await CrossMedia.Current.Initialize();
+
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    MessagingCenter.Send<MainViewModel>(this, "SemCamera");
+                    return;
+                }
+
+                file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    Directory = "Photos",
+                    Name = "Pessoa.jpg"
+                });
+
+                if (file != null)
+                {
+                    VisibleButton = true;
+                    Foto = ImageSource.FromStream(() =>
+                    {
+                        var stream = file.GetStream();                        
+                        return stream;
+                    });
+                }
+                Aguarde = false;
+            });
 
             LoadMenu();
         }       
@@ -198,7 +264,7 @@ namespace AplicativoXamarin.ViewModels
         public void LoadUser(Pessoa user)
         {
             UsuarioLogado.Email = user.Email;
-            UsuarioLogado.Foto = user.Foto;
+            Foto = user.Foto;
             UsuarioLogado.Codigo = user.Codigo;
         }
 
@@ -255,6 +321,23 @@ namespace AplicativoXamarin.ViewModels
         }
 
         #endregion
+
+        private ImageSource foto;
+        public ImageSource Foto
+        {
+            set
+            {
+                if (foto != value)
+                {
+                    foto = value;
+                    OnPropertyChanged();
+                }
+            }
+            get
+            {
+                return foto;
+            }
+        }
 
 
     }
