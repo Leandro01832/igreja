@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AplicativoXamarin.Views.Edicao.ChooseClass"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Identificação"
              >
 
     <StackLayout BindingContext="{Binding Editar}">
@@ -64,7 +65,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
-                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferecia, Mode=TwoWay}" 
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferencia, Mode=TwoWay}" 
                     VerticalOptions="Center"></Switch>
                         </StackLayout>
                     </ViewCell>

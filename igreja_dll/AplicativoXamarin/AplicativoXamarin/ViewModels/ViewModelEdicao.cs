@@ -74,24 +74,36 @@ namespace AplicativoXamarin.ViewModels
 
         public ViewModelEdicao()
         {
-            Visitante = true;
-
             visitante = new Visitante();
             visitante.Data_nascimento = DateTime.Now;
             visitante.Data_visita = DateTime.Now;
+            visitante.Endereco = new Endereco();
+            visitante.Telefone = new Telefone();
             crianca = new Crianca();
+            crianca.Data_nascimento = DateTime.Now;
+            crianca.Endereco = new Endereco();
+            crianca.Telefone = new Telefone();
             membro_Aclamacao = new Membro_Aclamacao();
             membro_Aclamacao.Data_nascimento = DateTime.Now;
+            membro_Aclamacao.Endereco = new Endereco();
+            membro_Aclamacao.Telefone = new Telefone();
             membro_Batismo = new Membro_Batismo();
             membro_Batismo.Data_nascimento = DateTime.Now;
+            membro_Batismo.Endereco = new Endereco();
+            membro_Batismo.Telefone = new Telefone();
             membro_Reconciliacao = new Membro_Reconciliacao();
             membro_Reconciliacao.Data_nascimento = DateTime.Now;
+            membro_Reconciliacao.Endereco = new Endereco();
+            membro_Reconciliacao.Telefone = new Telefone();
             membro_Transferencia = new Membro_Transferencia();
             membro_Transferencia.Data_nascimento = DateTime.Now;
+            membro_Transferencia.Endereco = new Endereco();
+            membro_Transferencia.Telefone = new Telefone();
 
             visitanteLgpd = new VisitanteLgpd();
             visitanteLgpd.Data_visita = DateTime.Now;
             criancaLgpd = new CriancaLgpd();
+            crianca.Data_nascimento = DateTime.Now;
             membro_AclamacaoLgpd = new Membro_AclamacaoLgpd();
             membro_BatismoLgpd = new Membro_BatismoLgpd();
             membro_ReconciliacaoLgpd = new Membro_ReconciliacaoLgpd();

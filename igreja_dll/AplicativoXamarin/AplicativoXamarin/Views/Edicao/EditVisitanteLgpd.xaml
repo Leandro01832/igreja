@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             x:Class="AplicativoXamarin.Views.Edicao.EditVisitanteLgpd">
+             x:Class="AplicativoXamarin.Views.Edicao.EditVisitanteLgpd"
+             Title="Cadastro"
+             >
 
-    <StackLayout Padding="20" Spacing="15">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
         <StackLayout BindingContext="{Binding visitanteLgpd}">
             <TableView>
                 <TableRoot>
@@ -33,7 +36,10 @@
           HorizontalOptions="Center">
         </controls:CircleImage>
 
-        <Button Command="TakePicture" Text="Tirar foto"></Button>
-        <Button Command="UpdateDataVisitanteLgpd" Text="Atualizar dados"></Button>
+        <ActivityIndicator IsRunning="{Binding Aguarde}" ></ActivityIndicator>
+
+        <Button Command="{Binding TakePicture}" Text="Tirar foto"></Button>
+        <Button Command="{Binding UpdateDataVisitanteLgpd}" Text="Atualizar dados"></Button>
     </StackLayout>
+    </ScrollView>
 </ContentPage>

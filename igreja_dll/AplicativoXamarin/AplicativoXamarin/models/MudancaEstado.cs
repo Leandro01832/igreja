@@ -27,6 +27,7 @@ namespace AplicativoXamarin.models
         public MudancaEstado() :base()
         {
             this.DataMudanca = DateTime.Now;
+            Api = new ApiServices();
 
         }
 
@@ -37,9 +38,8 @@ namespace AplicativoXamarin.models
             List<Pessoa> lista2 = new List<Pessoa>();
             foreach (var item in lista)
             lista2.Add((Pessoa)item);
-            Pessoa p = lista2.First(i => i.IdPessoa == idVelhoEstado);
+            Pessoa p = await ApiServices.GetPessoa();
             estado = p.GetType().Name;
-            p = lista2.First(i => i.IdPessoa == idVelhoEstado);
 
             excluirPessoaVelha(idVelhoEstado);            
 
@@ -449,9 +449,9 @@ namespace AplicativoXamarin.models
           return  await Api.salvarPessoaMudancaEstado(pessoa);
         }
 
-        private async void excluirPessoaVelha(int idVelhoEstado)
+        private  void excluirPessoaVelha(int idVelhoEstado)
         {
-             await Api.ExcluirPessoa(idVelhoEstado);
+              Api.ExcluirPessoa(idVelhoEstado);
         }
 
         private async Task<List<Pessoa>> recuperarTodos()

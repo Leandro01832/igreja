@@ -2,32 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             x:Class="AplicativoXamarin.Views.Edicao.EditCriancaLgpd">
+             x:Class="AplicativoXamarin.Views.Edicao.EditCriancaLgpd"
+             Title="Cadastro"
+             >
 
-    <StackLayout Padding="20" Spacing="15">
-        <StackLayout BindingContext="{Binding criancaLgpd}">
-            <TableView>
-                <TableRoot>    
-                    <TableSection Title="Dados de criança LGPD">
-                        <EntryCell Label="Nome do pai:" Text="{Binding Nome_pai}"></EntryCell>
-                        <EntryCell Label="Nome da mãe:" Text="{Binding Nome_mae}"></EntryCell>
-                    </TableSection>                    
-                </TableRoot>
-            </TableView>
-        </StackLayout>
-        
-        <controls:CircleImage
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <StackLayout BindingContext="{Binding criancaLgpd}">
+                <TableView>
+                    <TableRoot>
+                        <TableSection Title="Dados de criança LGPD">
+                            <EntryCell Label="Nome do pai:" Text="{Binding Nome_pai}"></EntryCell>
+                            <EntryCell Label="Nome da mãe:" Text="{Binding Nome_mae}"></EntryCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+            </StackLayout>
+
+            <controls:CircleImage
           Source="{Binding ImageSource}"
           Aspect="AspectFill"
           WidthRequest="200"
           HeightRequest="200"
           VerticalOptions="Center"
           HorizontalOptions="Center">
-        </controls:CircleImage>
+            </controls:CircleImage>
 
-        <Button Command="TakePicture" Text="Tirar foto"></Button>
-        <Button Command="UpdateDataCriancaLgpd" Text="Atualizar dados"></Button>
+            <ActivityIndicator IsRunning="{Binding Aguarde}" ></ActivityIndicator>
 
-    </StackLayout>
+            <Button Command="{Binding TakePicture}" Text="Tirar foto"></Button>
+            <Button Command="{Binding UpdateDataCriancaLgpd}" Text="Atualizar dados"></Button>
 
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -312,10 +312,11 @@ namespace AplicativoXamarin.Services
             HttpClient cliente = new HttpClient();
             var resultadoLista = await cliente.GetStringAsync
             (URL + "api/PessoaApi");
-            return JsonConvert.DeserializeObject<List<Pessoa>>(resultadoLista);
+            var lista = JsonConvert.DeserializeObject<List<Pessoa>>(resultadoLista);
+            return lista;
         }
 
-        internal async Task ExcluirPessoa(int idVelhoEstado)
+        internal async void ExcluirPessoa(int idVelhoEstado)
         {
             HttpClient cliente = new HttpClient();
 

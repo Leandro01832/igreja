@@ -10,8 +10,12 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using repositorioEF;
 using RepositorioEF;
+using Site.Models;
 using Site.Models.Api;
 
 namespace Site.Controllers.Api
@@ -27,6 +31,7 @@ namespace Site.Controllers.Api
             var pessoas = db.pessoas.Include(p => p.Ministerios)
                 .Include(p => p.Reuniao)
                 .Include(p => p.Celula)
+                .Include(p => p.Historico)
                 .Include(p => p.Chamada);
 
             List<PessoaApi> lista = new List<PessoaApi>();
@@ -126,7 +131,14 @@ namespace Site.Controllers.Api
             {
                 return NotFound();
             }
+            if(pessoa is PessoaDado)
+            {
+                var p = (PessoaDado)pessoa;
+                db.endereco.Remove(p.Endereco);
+                db.telefone.Remove(p.Telefone);
+            }
 
+            db.Chamadas.Remove(pessoa.Chamada);
             db.pessoas.Remove(pessoa);
             db.SaveChanges();
 

@@ -2,12 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"             
-             x:Class="AplicativoXamarin.Views.Edicao.EditCrianca">
+             x:Class="AplicativoXamarin.Views.Edicao.EditCrianca"
+             Title="Cadastro"
+             >
 
-    <StackLayout Padding="20" Spacing="15">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="5">
         <StackLayout BindingContext="{Binding crianca}">
 
-            <TableView>
+            <TableView HeightRequest="1500">
                 <TableRoot>
 
                     <TableSection Title="Dados Pessoais">
@@ -40,11 +43,8 @@
                     </TableSection>
 
                     <TableSection Title="Dados de criança">
-                        
-
                         <EntryCell Label="Nome do pai:" Text="{Binding Nome_pai}"></EntryCell>
                         <EntryCell Label="Nome da mãe:" Text="{Binding Nome_mae}"></EntryCell>
-
                     </TableSection>
 
                     <TableSection Title="Endereço">
@@ -56,7 +56,6 @@
                         <EntryCell Label="Rua:" Text="{Binding Endereco.Rua}"></EntryCell>
                         <EntryCell Label="N° casa:" Keyboard="Numeric"  Text="{Binding Endereco.Numero_casa}"></EntryCell>
                         <EntryCell Label="Complemento:"   Text="{Binding Endereco.Complemento}"></EntryCell>
-
                     </TableSection>
 
                     <TableSection Title="Contatos">
@@ -80,9 +79,11 @@
           HorizontalOptions="Center">
         </controls:CircleImage>
 
-        <Button Command="TakePicture" Text="Tirar foto"></Button>
-        <Button Command="UpdateDataCrianca" Text="Atualizar dados"></Button>
+        <ActivityIndicator IsRunning="{Binding Aguarde}" ></ActivityIndicator>
+
+        <Button Command="{Binding TakePicture}" Text="Tirar foto"></Button>
+        <Button Command="{Binding UpdateDataCrianca}" Text="Atualizar dados"></Button>
 
     </StackLayout>
-
+    </ScrollView>
 </ContentPage>
