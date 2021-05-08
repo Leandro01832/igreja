@@ -211,6 +211,7 @@
     <Compile Include="Controllers\Api\CelulaApiController.cs" />
     <Compile Include="Controllers\Api\CriancaApiController.cs" />
     <Compile Include="Controllers\Api\CriancaLgpdApiController.cs" />
+    <Compile Include="Controllers\Api\EnderecoApiController.cs" />
     <Compile Include="Controllers\Api\FileUploadingController.cs" />
     <Compile Include="Controllers\Api\LoginApiController.cs" />
     <Compile Include="Controllers\Api\MembroAclamacaoApiController.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Controllers\Api\PessoaMinisterioApiController.cs" />
     <Compile Include="Controllers\Api\ReuniaoApiController.cs" />
     <Compile Include="Controllers\Api\ReuniaoPessoaApiController.cs" />
+    <Compile Include="Controllers\Api\TelefoneApiController.cs" />
     <Compile Include="Controllers\Api\VisitanteApiController.cs" />
     <Compile Include="Controllers\Api\VisitanteLgpdApiController.cs" />
     <Compile Include="Controllers\CelulaController.cs" />

@@ -29,7 +29,7 @@ namespace business.classes.PessoasLgpd
         public Membro_TransferenciaLgpd() : base()
         {
         }
-        
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);

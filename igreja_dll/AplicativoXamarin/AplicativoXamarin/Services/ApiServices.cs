@@ -282,31 +282,7 @@ namespace AplicativoXamarin.Services
             else
                 MessagingCenter.Send<ArgumentException>(new ArgumentException(), "FalhaSairReuniao");
         }
-
-
-        public TRetorno Post<TEnvio, TRetorno>(TEnvio data, Stream arquivo)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                var httpRequest = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Post,
-                    RequestUri = new Uri("")
-                };
-
-                var content = new MultipartFormDataContent();
-
-                content.Add(new StreamContent(arquivo), "file", "filename");
-
-                httpRequest.Content = content;
-
-                using (var response = httpClient.SendAsync(httpRequest).Result)
-                {
-                    return JsonConvert.DeserializeObject<TRetorno>(response.Content.ReadAsStringAsync().Result);
-                }
-            }
-        }
-
+        
         internal async Task<List<Pessoa>> RecuperarTodasPessoas()
         {
             HttpClient cliente = new HttpClient();
@@ -326,11 +302,73 @@ namespace AplicativoXamarin.Services
         internal async Task<Pessoa> salvarPessoaMudancaEstado(modelocrud pessoa)
         {
             Pessoa p = (Pessoa)pessoa;
-            var request = JsonConvert.SerializeObject(p);
-            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var json = "";
+            var UrlCadastrar = "";
+
+            if (p is CriancaLgpd)
+            { var cri = (CriancaLgpd)p; json = cri.ReturnJson(cri); UrlCadastrar = "CriancaCadastroApi"; }
+            if (p is VisitanteLgpd)
+            {
+                var v = (VisitanteLgpd)p;
+                json = v.ReturnJson(v);
+                UrlCadastrar = "VisitanteCadastroApi";
+            }
+
+            if (p is Membro_AclamacaoLgpd)
+            {
+                var cri = (Membro_AclamacaoLgpd)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "MembroAclamacaoCadastroApi";
+            }
+            if (p is Membro_BatismoLgpd)
+            {
+                var cri = (Membro_BatismoLgpd)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "MembroBatismoCadastroApi";
+            }
+            if (p is Membro_ReconciliacaoLgpd)
+            {
+                var cri = (Membro_ReconciliacaoLgpd)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "MembroReconciliacaoCadastroApi";
+            }
+            if (p is Membro_TransferenciaLgpd)
+            {
+                var cri = (Membro_TransferenciaLgpd)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "MembroTransferenciaCadastroApi";
+            }
+
+
+            if (p is Crianca)
+            { var cri = (Crianca)p; json = cri.ReturnJson(cri); UrlCadastrar = "api/CriancaApi"; }
+            if (p is Visitante)
+            {
+                var v = (Visitante)p;
+                json = v.ReturnJson(v);
+                UrlCadastrar = "api/VisitanteApi";
+            }
+
+            if (p is Membro_Aclamacao)
+            {
+                var cri = (Membro_Aclamacao)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "api/MembroAclamacaoApi";
+            }
+            if (p is Membro_Batismo)
+            {
+                var cri = (Membro_Batismo)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "api/MembroBatismoApi";
+            }
+            if (p is Membro_Reconciliacao)
+            {
+                var cri = (Membro_Reconciliacao)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "api/MembroReconciliacaoApi";
+            }
+            if (p is Membro_Transferencia)
+            {
+                var cri = (Membro_Transferencia)p; json = cri.ReturnJson(cri);
+                UrlCadastrar = "api/MembroTransferenciaApi";
+            }
+
+            var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            var urlSetfoto = "api/PessoaApi";
-            var response = await client.PostAsync(URL + urlSetfoto, body);
+            var response = await client.PostAsync(URL + UrlCadastrar, conteudo);
 
             if (response.IsSuccessStatusCode)
             {
@@ -341,13 +379,13 @@ namespace AplicativoXamarin.Services
             return null;
         }
 
-        internal async Task salvarMudancaEstado(MudancaEstado mudanca)
+        internal async void salvarMudancaEstado(MudancaEstado mudanca)
         {
             var request = JsonConvert.SerializeObject(mudanca);
             var body = new StringContent(request, Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            var urlSetfoto = "api/MudancaEstadoApi";
-            var response = await client.PostAsync(URL + urlSetfoto, body);
+            var urlSet = "api/MudancaEstadoApi";
+            var response = await client.PostAsync(URL + urlSet, body);
         }
 
         internal async Task<PessoaMinisterio> retornaPessoaMinsterio(int idPessoaMinisterio)
@@ -364,6 +402,24 @@ namespace AplicativoXamarin.Services
             var resultadoLista = await cliente.GetStringAsync
             (URL + "api/ReuniaoPessoaApi/" + idReuniaoPessoa);
             return JsonConvert.DeserializeObject<ReuniaoPessoa>(resultadoLista);
+        }
+
+        internal async void salvarEndereco(Endereco endereco)
+        {
+            var request = JsonConvert.SerializeObject(endereco);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var urlSet = "api/EnderecoApi";
+            var response = await client.PostAsync(URL + urlSet, body);
+        }
+
+        internal async void salvarTelefone(Telefone telefone)
+        {
+            var request = JsonConvert.SerializeObject(telefone);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var urlSet = "api/TelefoneApi";
+            var response = await client.PostAsync(URL + urlSet, body);
         }
     }
 }

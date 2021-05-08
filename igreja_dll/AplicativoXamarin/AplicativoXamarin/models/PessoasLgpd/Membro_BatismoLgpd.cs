@@ -21,5 +21,12 @@ namespace AplicativoXamarin.models.PessoasLgpd
 
             return j;
         }
+
+        internal string ReturnJson(Membro_BatismoLgpd msg)
+        {
+            var j = JsonConvert.SerializeObject(msg);
+
+            return j;
+        }
     }
 }

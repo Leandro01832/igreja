@@ -1,4 +1,5 @@
 ﻿using AplicativoXamarin.models.Pessoas;
+using Newtonsoft.Json;
 
 namespace AplicativoXamarin.models
 {
@@ -16,6 +17,19 @@ namespace AplicativoXamarin.models
 
         public Telefone()
         {
+        }
+
+        public string RetornaJson(Telefone tel)
+        {
+            var j = JsonConvert.SerializeObject(new Telefone
+            {
+                IdTelefone  = tel.IdTelefone,
+                Fone        = tel.Fone,
+                Celular     = tel.Celular,
+                Whatsapp    = tel.Whatsapp
+            });
+
+            return j;
         }
 
     }

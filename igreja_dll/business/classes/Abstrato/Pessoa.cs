@@ -24,17 +24,12 @@ namespace business.classes.Abstrato
         public Pessoa() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();
-           
-            //this.Chamada = new Chamada
-            //{
-            //    Data_inicio = DateTime.Now
-            //};
+            AddNalista = new AddNalista();            
         }
 
-       
+
         #region Properties
-            
+
         AddNalista AddNalista;
 
         [NotMapped]
@@ -99,7 +94,7 @@ namespace business.classes.Abstrato
                       Insert_padrao =
               "insert into Pessoa (NomePessoa, Email, Falta, celula_, Img, Codigo) " +
               $" values ( '{this.NomePessoa}', '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
-               this.Chamada.salvar() + " ";
+              new Chamada().salvar() + " ";
             
             return Insert_padrao;
         }

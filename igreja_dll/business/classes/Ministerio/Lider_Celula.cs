@@ -16,7 +16,7 @@ namespace business.classes.Ministerio
         public Lider_Celula() : base()
         {
         }
-        
+
         public override string salvar()
         {
             Insert_padrao = base.salvar();

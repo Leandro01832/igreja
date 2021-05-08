@@ -15,9 +15,6 @@ namespace business.classes
     public class Reuniao : modelocrud, IAddNalista
     {
 
-        private DateTime data_reuniao;
-        private string local_reuniao;
-
         [Key]
         public int IdReuniao { get; set; }
 

@@ -30,6 +30,11 @@ namespace AplicativoXamarin.models
         public Pessoa()
         {
             MudancaEstado = new MudancaEstado();
+            Chamada = new Chamada
+            {
+                Data_inicio = DateTime.Now,
+                Numero_chamada = 0
+            };
         }
 
         public string Img { get; set; }

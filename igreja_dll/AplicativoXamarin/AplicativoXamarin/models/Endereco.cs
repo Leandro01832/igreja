@@ -1,4 +1,5 @@
 ﻿using AplicativoXamarin.models.Pessoas;
+using Newtonsoft.Json;
 
 namespace AplicativoXamarin.models
 {
@@ -18,6 +19,24 @@ namespace AplicativoXamarin.models
 
         public Endereco()
         {
+        }
+
+        public string RetornaJson(Endereco end)
+        {
+            var j = JsonConvert.SerializeObject(new Endereco
+            {
+                IdEndereco = end.IdEndereco,
+                Pais = end.Pais,
+                Estado = end.Estado,
+                Cidade = end.Cidade,
+                Bairro = end.Bairro,
+                Rua = end.Rua,
+                Numero_casa = end.Numero_casa,
+                Cep = end.Cep,
+                Complemento = end.Complemento
+            });
+
+            return j;
         }
 
     }

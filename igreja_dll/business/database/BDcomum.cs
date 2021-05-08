@@ -23,15 +23,10 @@ namespace database.banco
 
         public  SqlConnection obterconexao()
         {
-            var conecta = "";
-            if (BancoEnbarcado)
-                conecta = conecta1;
-            else
-                conecta = conecta2;
 
             try
             {
-                SqlConnection conn = new SqlConnection(conecta);
+                SqlConnection conn = new SqlConnection(conecta2);
                 
                 return conn;
             }

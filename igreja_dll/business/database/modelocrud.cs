@@ -17,13 +17,12 @@ namespace database
 {
      public abstract class  modelocrud
     {
-
+        //construtor para Entity Framework
         public modelocrud()
         {
             this.bd = new BDcomum();
         }
 
-        
 
         private string insert_padrao;
         private string update_padrao;

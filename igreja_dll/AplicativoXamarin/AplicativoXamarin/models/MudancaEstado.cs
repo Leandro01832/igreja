@@ -5,12 +5,7 @@ using AplicativoXamarin.models.SQLite;
 using AplicativoXamarin.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AplicativoXamarin.models
 {
@@ -80,6 +75,10 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                    var pes = await salvar(membro);
+                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                     salvarEndereco(membro.Endereco);
+                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
 
@@ -114,6 +113,10 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(membro);
+                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    salvarEndereco(membro.Endereco);
+                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
 
@@ -149,6 +152,10 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(membro);
+                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    salvarEndereco(membro.Endereco);
+                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
 
@@ -186,6 +193,10 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(membro);
+                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    salvarEndereco(membro.Endereco);
+                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
 
@@ -219,6 +230,10 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(c);
+                    c.Endereco.IdEndereco = pes.IdPessoa;
+                    salvarEndereco(c.Endereco);
+                    c.Telefone.IdTelefone = pes.IdPessoa;
+                    salvarTelefone(c.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
 
@@ -252,6 +267,10 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(v);
+                    v.Endereco.IdEndereco = pes.IdPessoa;
+                    salvarEndereco(v.Endereco);
+                    v.Telefone.IdTelefone = pes.IdPessoa;
+                    salvarTelefone(v.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 } 
             }
@@ -429,6 +448,16 @@ namespace AplicativoXamarin.models
             salvarMudanca(mudanca);
         }
 
+        private void salvarTelefone(Telefone telefone)
+        {
+            Api.salvarTelefone(telefone);
+        }
+
+        private  void salvarEndereco(Endereco endereco)
+        {
+            Api.salvarEndereco(endereco);
+        }
+
         private async Task<ReuniaoPessoa> retornaReuniaoPessoa(int idReuniaoPessoa)
         {
             return await Api.retornaReuniaoPessoa(idReuniaoPessoa);
@@ -439,9 +468,9 @@ namespace AplicativoXamarin.models
            return  await Api.retornaPessoaMinsterio(idPessoaMinisterio);
         }
 
-        private async void salvarMudanca(MudancaEstado mudanca)
+        private void salvarMudanca(MudancaEstado mudanca)
         {
-            await Api.salvarMudancaEstado(mudanca);
+             Api.salvarMudancaEstado(mudanca);
         }
 
         private async Task<Pessoa> salvar(modelocrud pessoa)

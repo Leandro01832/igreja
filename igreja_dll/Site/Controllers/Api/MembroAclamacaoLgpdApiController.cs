@@ -76,6 +76,23 @@ namespace Site.Controllers.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [ResponseType(typeof(Membro_AclamacaoLgpd))]
+        [Route("MembroAclamacaoCadastroApi")]
+        public IHttpActionResult PostMembro_AclamacaoCadastro(Membro_AclamacaoLgpd membro)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                membro.salvar();
+            }
+            catch { return this.BadRequest("Usuario não cadastrado!!!"); }
+            return CreatedAtRoute("DefaultApi", new { id = membro.IdPessoa }, membro);
+        }
+
         // POST: api/MembroAclamacaoLgpdApi
         [ResponseType(typeof(Membro_AclamacaoLgpd))]
         public IHttpActionResult PostMembro_AclamacaoLgpd(Membro_AclamacaoLgpd membro)

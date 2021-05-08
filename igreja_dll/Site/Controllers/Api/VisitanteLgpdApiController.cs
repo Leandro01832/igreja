@@ -76,6 +76,23 @@ namespace Site.Controllers.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [ResponseType(typeof(VisitanteLgpd))]
+        [Route("VisitanteCadastroApi")]
+        public IHttpActionResult PostVisitanteCadastro(VisitanteLgpd visitante)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                visitante.salvar();
+            }
+            catch { return this.BadRequest("Usuario não cadastrado!!!"); }
+            return CreatedAtRoute("DefaultApi", new { id = visitante.IdPessoa }, visitante);
+        }
+
         // POST: api/VisitanteLgpdApi
         [ResponseType(typeof(VisitanteLgpd))]
         public IHttpActionResult PostVisitanteLgpd(VisitanteLgpd visitante)

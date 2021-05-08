@@ -26,7 +26,7 @@ namespace business.classes.Pessoas
 
         public Visitante() : base()
         {
-        }    
+        }
 
         public override string alterar(int id)
         {

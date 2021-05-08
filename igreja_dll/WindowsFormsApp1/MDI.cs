@@ -222,7 +222,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdultosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Adulto(),
+            var celula = new business.classes.Celulas.Celula_Adulto();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;            
@@ -304,7 +306,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaCriançasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Crianca(),
+            var celula = new business.classes.Celulas.Celula_Crianca();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -313,7 +317,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdolescentesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Adolescente(),
+            var celula = new business.classes.Celulas.Celula_Adolescente();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -322,7 +328,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaJovensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Jovem(),
+            var celula = new business.classes.Celulas.Celula_Jovem();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -331,7 +339,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaCasadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Casado(),
+            var celula = new business.classes.Celulas.Celula_Casado();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;

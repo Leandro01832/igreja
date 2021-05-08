@@ -10,6 +10,9 @@ namespace AplicativoXamarin.models.Pessoas
         {
         }
 
-        
+        internal string ReturnJson(Membro_Aclamacao cri)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

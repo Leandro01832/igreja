@@ -26,5 +26,12 @@ namespace AplicativoXamarin.models.PessoasLgpd
 
             return j;
         }
+
+        internal string ReturnJson(CriancaLgpd msg)
+        {
+            var j = JsonConvert.SerializeObject(msg);
+
+            return j;
+        }
     }
 }

@@ -76,6 +76,23 @@ namespace Site.Controllers.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [ResponseType(typeof(Membro_BatismoLgpd))]
+        [Route("MembroBatismoCadastroApi")]
+        public IHttpActionResult PostMembro_BatismoCadastro(Membro_BatismoLgpd membro)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                membro.salvar();
+            }
+            catch { return this.BadRequest("Usuario não cadastrado!!!"); }
+            return CreatedAtRoute("DefaultApi", new { id = membro.IdPessoa }, membro);
+        }
+
         // POST: api/MembroBatismoLgpdApi
         [ResponseType(typeof(Membro_BatismoLgpd))]
         public IHttpActionResult PostMembro_BatismoLgpd(Membro_BatismoLgpd membro)

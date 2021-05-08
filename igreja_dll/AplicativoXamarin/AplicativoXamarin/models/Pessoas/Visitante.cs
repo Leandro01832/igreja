@@ -11,7 +11,11 @@ namespace AplicativoXamarin.models.Pessoas
 
         public Visitante() : base()
         {
-        }    
+        }
 
+        internal string ReturnJson(Visitante v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

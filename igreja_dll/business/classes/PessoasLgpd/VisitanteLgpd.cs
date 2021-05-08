@@ -26,7 +26,7 @@ namespace business.classes.PessoasLgpd
 
         public VisitanteLgpd() : base()
         {
-        }   
+        }
 
         public override string alterar(int id)
         {

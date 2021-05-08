@@ -76,6 +76,23 @@ namespace Site.Controllers.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [ResponseType(typeof(CriancaLgpd))]
+        [Route("CriancaCadastroApi")]
+        public IHttpActionResult PostCriancaCadastro(CriancaLgpd crianca)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                crianca.salvar();
+            }
+            catch { return this.BadRequest("Usuario não cadastrado!!!"); }
+            return CreatedAtRoute("DefaultApi", new { id = crianca.IdPessoa }, crianca);
+        }
+
         // POST: api/CriancaLgpdApi
         [ResponseType(typeof(CriancaLgpd))]
         public IHttpActionResult PostCriancaLgpd(CriancaLgpd crianca)

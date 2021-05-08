@@ -62,7 +62,7 @@ namespace Site.Controllers.Api
             var user = await db.pessoas
             .Include(p => p.Ministerios)
             .Include(p => p.Celula)
-           // .Include(p => p.Chamada)
+            .Include(p => p.Chamada)
             .Include(p => p.Historico)
             .Include(p => p.Reuniao)
             .Include(x => x.Reuniao.Select(y => y.Pessoa))

@@ -1,4 +1,6 @@
-﻿namespace AplicativoXamarin.models.Pessoas
+﻿using System;
+
+namespace AplicativoXamarin.models.Pessoas
 {
     public class Membro_Transferencia : Membro
     {    
@@ -9,6 +11,10 @@
         public Membro_Transferencia() : base()
         {
         }
-        
+
+        internal string ReturnJson(Membro_Transferencia cri)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

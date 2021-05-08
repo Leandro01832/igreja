@@ -1,4 +1,6 @@
-﻿namespace AplicativoXamarin.models.Pessoas
+﻿using System;
+
+namespace AplicativoXamarin.models.Pessoas
 {
     public class Crianca : PessoaDado
     {
@@ -9,5 +11,9 @@
         {
         }
 
+        internal string ReturnJson(Crianca cri)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

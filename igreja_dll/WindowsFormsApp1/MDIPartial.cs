@@ -68,6 +68,8 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem19_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Visitante();
+            p2.Endereco = new business.classes.Endereco();
+            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -77,6 +79,8 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem25_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Crianca();
+            p2.Endereco = new business.classes.Endereco();
+            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -86,6 +90,8 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem21_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Aclamacao();
+            p2.Endereco = new business.classes.Endereco();
+            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -95,6 +101,8 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem22_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Batismo();
+            p2.Endereco = new business.classes.Endereco();
+            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -104,6 +112,8 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem23_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Reconciliacao();
+            p2.Endereco = new business.classes.Endereco();
+            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -113,6 +123,8 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem24_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Transferencia();
+            p2.Endereco = new business.classes.Endereco();
+            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -193,7 +205,9 @@ namespace WindowsFormsApp1
 
         private void membroPorAclamaçãoToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Pessoa p1 = new Membro_Aclamacao();
+            PessoaDado p1 = new Membro_Aclamacao();
+            p1.Endereco = new business.classes.Endereco();
+            p1.Telefone = new business.classes.Telefone();
             FrmMembroAclamacao m = new FrmMembroAclamacao(p1);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -211,7 +225,9 @@ namespace WindowsFormsApp1
 
         private void membroPorBatismoToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Pessoa p1 = new Membro_Batismo();
+            PessoaDado p1 = new Membro_Batismo();
+            p1.Endereco = new business.classes.Endereco();
+            p1.Telefone = new business.classes.Telefone();
             MembroBatismo m = new MembroBatismo(p1);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -229,7 +245,9 @@ namespace WindowsFormsApp1
 
         private void membroPorReconciliaçãoToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Pessoa p = new Membro_Reconciliacao();
+            PessoaDado p = new Membro_Reconciliacao();
+            p.Endereco = new business.classes.Endereco();
+            p.Telefone = new business.classes.Telefone();
             MembroReconciliacao m = new MembroReconciliacao(p);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -247,7 +265,9 @@ namespace WindowsFormsApp1
 
         private void membroPorTransferênciaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Pessoa p = new Membro_Transferencia();
+            PessoaDado p = new Membro_Transferencia();
+            p.Endereco = new business.classes.Endereco();
+            p.Telefone = new business.classes.Telefone();
             MembroTransferencia m = new MembroTransferencia(p);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -263,116 +283,116 @@ namespace WindowsFormsApp1
             m.Show();
         }
 
-        private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string tipo = "PessoaLgpd";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, tipo);
+            await ir.imprimir(null, tipo);
         }
 
-        private void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        private  async void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string tipo = "PessoaDado";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, tipo);
+           await ir.imprimir(null, tipo);
         }
 
-        private void toolStripMenuItem26_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new CriancaLgpd(), tipo);
+            await ir.imprimir(new CriancaLgpd(), tipo);
         }
 
-        private void toolStripMenuItem32_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem32_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new VisitanteLgpd(), tipo);
+            await ir.imprimir(new VisitanteLgpd(), tipo);
         }
 
-        private void toolStripMenuItem27_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem27_Click(object sender, EventArgs e)
         {
             string tipo = "MembroLgpd";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, tipo);
+            await ir.imprimir(null, tipo);
         }
 
-        private void toolStripMenuItem28_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem28_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_AclamacaoLgpd(), tipo);
+            await ir.imprimir(new Membro_AclamacaoLgpd(), tipo);
         }
 
-        private void toolStripMenuItem29_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem29_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_BatismoLgpd(), tipo);
+            await ir.imprimir(new Membro_BatismoLgpd(), tipo);
         }
 
-        private void toolStripMenuItem30_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem30_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_TransferenciaLgpd(), tipo);
+            await ir.imprimir(new Membro_TransferenciaLgpd(), tipo);
         }
 
-        private void toolStripMenuItem31_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem31_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_ReconciliacaoLgpd(), tipo);
+            await ir.imprimir(new Membro_ReconciliacaoLgpd(), tipo);
         }
 
-        private void toolStripMenuItem33_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem33_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Crianca(), tipo);
+            await ir.imprimir(new Crianca(), tipo);
         }
 
-        private void toolStripMenuItem39_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem39_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Visitante(), tipo);
+            await ir.imprimir(new Visitante(), tipo);
         }
 
-        private void toolStripMenuItem34_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem34_Click(object sender, EventArgs e)
         {
             string tipo = "Membro";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, tipo);
+            await ir.imprimir(null, tipo);
         }
 
-        private void toolStripMenuItem35_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem35_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_Aclamacao(), tipo);
+            await ir.imprimir(new Membro_Aclamacao(), tipo);
         }
 
-        private void toolStripMenuItem36_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem36_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_Batismo(), tipo);
+            await ir.imprimir(new Membro_Batismo(), tipo);
         }
 
-        private void toolStripMenuItem37_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem37_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_Transferencia(), tipo);
+            await ir.imprimir(new Membro_Transferencia(), tipo);
         }
 
-        private void toolStripMenuItem38_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem38_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new Membro_Reconciliacao(), tipo);
+           await ir.imprimir(new Membro_Reconciliacao(), tipo);
         }
 
     }
