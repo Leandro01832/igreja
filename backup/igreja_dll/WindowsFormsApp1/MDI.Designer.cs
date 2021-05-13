@@ -142,6 +142,7 @@
             this.chamadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mudançaDeEstadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.envioDeArquivosPServidorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,7 +171,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.envioDeArquivosPServidorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -1095,6 +1095,12 @@
             this.mudançaDeEstadoToolStripMenuItem1.Text = "Mudança de estado";
             this.mudançaDeEstadoToolStripMenuItem1.Click += new System.EventHandler(this.mudançaDeEstadoToolStripMenuItem1_Click);
             // 
+            // envioDeArquivosPServidorToolStripMenuItem
+            // 
+            this.envioDeArquivosPServidorToolStripMenuItem.Name = "envioDeArquivosPServidorToolStripMenuItem";
+            this.envioDeArquivosPServidorToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
+            this.envioDeArquivosPServidorToolStripMenuItem.Text = "envio de arquivos p/ servidor";
+            // 
             // viewMenu
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1318,13 +1324,6 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // envioDeArquivosPServidorToolStripMenuItem
-            // 
-            this.envioDeArquivosPServidorToolStripMenuItem.Name = "envioDeArquivosPServidorToolStripMenuItem";
-            this.envioDeArquivosPServidorToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
-            this.envioDeArquivosPServidorToolStripMenuItem.Text = "envio de arquivos p/ servidor";
-           // this.envioDeArquivosPServidorToolStripMenuItem.Click += new System.EventHandler(this.envioDeArquivosPServidorToolStripMenuItem_ClickAsync);
-            // 
             // MDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1336,6 +1335,7 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
             this.ForeColor = System.Drawing.Color.Maroon;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);

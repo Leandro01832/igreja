@@ -1,6 +1,7 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
+using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +29,13 @@ namespace AplicativoXamarin.Views
             Api = new ApiServices();           
 		}
 
-        protected async override void OnAppearing()
+        protected  override void OnAppearing()
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<Ministerio>(this, "SairMinisterio",
                async (msg) =>
                {
-                   if (await DisplayAlert("Confirmação", "Deseja realmente participar deste Ministério?", "SIM", "Cancelar"))
+                   if (await DisplayAlert("Confirmação", "Deseja realmente sair deste Ministério?", "SIM", "Cancelar"))
                    {
                        Api.SairMinisterio(msg);
                    }
@@ -47,7 +48,7 @@ namespace AplicativoXamarin.Views
                  await DisplayAlert("Ministerio", " Você não esta mais participando deste ministério." +
                          " \n Identificação do ministério: " + msg2.IdMinisterio.ToString(), "ok");
 
-                 await Navigation.PushAsync(new MinistryListView());
+                 await Navigation.PopAsync();
              });
 
             MessagingCenter.Subscribe<ArgumentException>(this, "FalhaSairMinisterio",

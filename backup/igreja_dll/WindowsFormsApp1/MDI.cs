@@ -15,7 +15,7 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public partial class MDI : Form
+    public partial class MDI : FormPadrao
     {
         private int childFormNumber = 1;
 
@@ -222,7 +222,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdultosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Adulto(),
+            var celula = new business.classes.Celulas.Celula_Adulto();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;            
@@ -304,7 +306,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaCriançasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Crianca(),
+            var celula = new business.classes.Celulas.Celula_Crianca();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -313,7 +317,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdolescentesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Adolescente(),
+            var celula = new business.classes.Celulas.Celula_Adolescente();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -322,7 +328,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaJovensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Jovem(),
+            var celula = new business.classes.Celulas.Celula_Jovem();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -331,7 +339,9 @@ namespace WindowsFormsApp1
 
         private void celulaParaCasadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoCelula dc = new DadoCelula(new business.classes.Celulas.Celula_Casado(),
+            var celula = new business.classes.Celulas.Celula_Casado();
+            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
             dc.Text = "Janela " + childFormNumber++;
@@ -348,104 +358,104 @@ namespace WindowsFormsApp1
 
         
 
-        private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
+        private async void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             string tipo = "Pessoa";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, tipo);
+            await ir.imprimir(null, tipo);
         }
 
-        private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
+        private async void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, "Celula");
+          await  ir.imprimir(null, "Celula");
         }
 
-        private void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Celulas.Celula_Adolescente(), "");
+          await  ir.imprimir(new business.classes.Celulas.Celula_Adolescente(), "");
         }
 
-        private void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Celulas.Celula_Adulto(), "");
+           await ir.imprimir(new business.classes.Celulas.Celula_Adulto(), "");
         }
 
-        private void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Celulas.Celula_Jovem(), "");
+           await ir.imprimir(new business.classes.Celulas.Celula_Jovem(), "");
         }
 
-        private void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Celulas.Celula_Crianca(), "");
+          await ir.imprimir(new business.classes.Celulas.Celula_Crianca(), "");
         }
 
-        private void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private  async void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Celulas.Celula_Casado(), "");
+          await  ir.imprimir(new business.classes.Celulas.Celula_Casado(), "");
         }
 
-        private void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(null, "Ministerio");
+          await  ir.imprimir(null, "Ministerio");
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Lider_Celula(), "");
+          await  ir.imprimir(new business.classes.Ministerio.Lider_Celula(), "");
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Lider_Celula_Treinamento(), "");
+          await  ir.imprimir(new business.classes.Ministerio.Lider_Celula_Treinamento(), "");
         }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Lider_Ministerio(), "");
+          await  ir.imprimir(new business.classes.Ministerio.Lider_Ministerio(), "");
         }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Lider_Ministerio_Treinamento(), "");
+            await ir.imprimir(new business.classes.Ministerio.Lider_Ministerio_Treinamento(), "");
         }
 
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Supervisor_Celula(), "");
+            await ir.imprimir(new business.classes.Ministerio.Supervisor_Celula(), "");
         }
 
-        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), "");
+            await ir.imprimir(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), "");
         }
 
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio(), "");
+            await ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio(), "");
         }
 
-        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), "");
+            await ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), "");
         }
 
-        private void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private  void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmReuniao frm = new FrmReuniao();
         }
@@ -464,11 +474,11 @@ namespace WindowsFormsApp1
             frm.Show();
         }
 
-        private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string tipo = "";
             ImprimirRelatorio ir = new ImprimirRelatorio();
-            ir.imprimir(new MudancaEstado(), tipo);
+           await ir.imprimir(new MudancaEstado(), tipo);
         }
 
         private async Task envioDeArquivosPServidorToolStripMenuItem_ClickAsync(object sender, EventArgs e)

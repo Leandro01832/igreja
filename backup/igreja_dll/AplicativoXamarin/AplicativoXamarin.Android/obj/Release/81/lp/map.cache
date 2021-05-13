@@ -40,3 +40,17 @@ Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 ImageCircle.Forms.Plugin.Abstractions
 ImageCircle.Forms.Plugin.Android
+Plugin.CurrentActivity
+Plugin.Geolocator.Abstractions
+Plugin.Geolocator
+Plugin.Permissions.Abstractions
+Plugin.Permissions
+Xamarin.Forms.Maps.Android
+Xamarin.Forms.Maps
+Xamarin.GooglePlayServices.Base
+Xamarin.GooglePlayServices.Basement
+Xamarin.GooglePlayServices.Maps
+Plugin.Media
+Xamarin.Forms.GoogleMaps.Android
+Xamarin.Forms.GoogleMaps
+Xamarin.GooglePlayServices.Tasks

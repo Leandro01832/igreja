@@ -1,5 +1,10 @@
-﻿using System;
+﻿using business.classes.Abstrato;
+using Ecommerce.Classes;
+using RepositorioEF;
+using Site.Models.Api;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -12,34 +17,34 @@ namespace Site.Controllers.Api
 {
     public class FileUploadingController : ApiController
     {
-        [Route("api/FileUploading/UploadFile")]
-        public async Task<string> UploadFileAsync()
+        private DB db = new DB();
+
+        [HttpPost]
+        [Route("SetFoto")]
+        public IHttpActionResult SetFoto(PhotoRequest people)
         {
-            var ctx = HttpContext.Current;
-            var root = ctx.Server.MapPath("~/Content/Imagens");
-            var provider = new MultipartFormDataStreamProvider(root);
+            db.Configuration.ProxyCreationEnabled = false;
 
-            try
-            {
-               await Request.Content.ReadAsMultipartAsync(provider);
+            var pessoa = db.pessoas.Find(people.Id);
 
-                foreach(var file in provider.FileData)
-                {
-                    var name = file.Headers.ContentDisposition.FileName;
-                    name = name.Trim('"');
+            if (pessoa == null)
+                return BadRequest("A pessoa não existe");
 
-                    var localFileName = file.LocalFileName;
-                    var filepath = Path.Combine(root, name);
+            var stream = new MemoryStream(people.Array);
 
-                    File.Move(localFileName, filepath);
-                }
-            }
-            catch (Exception ex)
-            {
-                return $"Erro: {ex.Message}";
-            }
+            var folder = "~/Content/Imagens";
+            var file = string.Format("{0}.jpg", people.Id);
+            var fullPath = string.Format("{0}/{1}", folder, file);
+            var response = FileHelpers.UploadPhoto(stream, folder, file);
 
-            return "Arquivo enviado!!!";
+            if(!response)
+                return BadRequest("Foto não enviada");
+
+            pessoa.Img = fullPath.Replace("~", "");
+            db.Entry(pessoa).State = EntityState.Modified;
+            db.Entry(pessoa.Chamada).State = EntityState.Modified;
+            db.SaveChanges();
+            return Ok("foto enviada");
         }
 
     }

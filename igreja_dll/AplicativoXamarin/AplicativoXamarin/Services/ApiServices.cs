@@ -305,6 +305,8 @@ namespace AplicativoXamarin.Services
             var json = "";
             var UrlCadastrar = "";
 
+            p.Email = App.UserCurrent.Email;
+
             if (p is CriancaLgpd)
             { var cri = (CriancaLgpd)p; json = cri.ReturnJson(cri); UrlCadastrar = "CriancaCadastroApi"; }
             if (p is VisitanteLgpd)

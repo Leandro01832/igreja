@@ -15,7 +15,7 @@ namespace business.database
 {
     class IgrejaDB : DbContext
     {
-        public IgrejaDB() : base("DefaultConnection")
+        public IgrejaDB() : base("Igreja")
         {
              Database.SetInitializer<IgrejaDB>(null);
         }

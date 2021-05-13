@@ -28,7 +28,7 @@ namespace business.classes.Pessoas
         public Membro_Transferencia() : base()
         {
         }
-        
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);

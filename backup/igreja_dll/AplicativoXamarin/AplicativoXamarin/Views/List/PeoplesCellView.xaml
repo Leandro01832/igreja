@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.List.PeoplesCellView">
+    
+        <StackLayout Padding="20" Spacing="20">
+            <Label Text="Lista de pessoas da celula"  VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+        </ActivityIndicator>
+        <ListView x:Name="listViewMinisterios" ItemsSource="{Binding Pessoas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>                            
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="ID: " FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                                <Label Text="{Binding IdPessoa}" FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                                <Label Text="Email: " FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                                <Label Text="{Binding Email}" FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                                <controls:CircleImage Source="{Binding Foto}" Aspect="AspectFill" 
+                                WidthRequest="120" HeightRequest="120" 
+                                HorizontalOptions="End" VerticalOptions="Center">
+                                </controls:CircleImage>
+
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

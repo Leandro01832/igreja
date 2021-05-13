@@ -31,8 +31,7 @@ namespace Site.Controllers.Api
             var pessoas = db.pessoas.Include(p => p.Ministerios)
                 .Include(p => p.Reuniao)
                 .Include(p => p.Celula)
-                .Include(p => p.Historico)
-                .Include(p => p.Chamada);
+                .Include(p => p.Historico);
 
             List<PessoaApi> lista = new List<PessoaApi>();
 
@@ -41,7 +40,6 @@ namespace Site.Controllers.Api
                 PessoaApi modelo = new PessoaApi
                 {
                     Celula = item.Celula,
-                    Chamada = item.Chamada,
                     celula_ = item.celula_,
                     Codigo = item.Codigo,
                     Email = item.Email,

@@ -1,5 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.AplicativoXamarin">
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
-    <application android:label="AplicativoXamarin.Android"></application>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Igreja.Igreja" android:installLocation="auto" android:versionCode="1" android:versionName="1.0">
+	<!--Mapas-->
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
+	<!--upload de imagens-->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="AplicativoXamarin.Android">
+		<uses-library android-name="org.apache.http.legacy" android:required="false" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M" />
+		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
+		</provider>
+	</application>
 </manifest>

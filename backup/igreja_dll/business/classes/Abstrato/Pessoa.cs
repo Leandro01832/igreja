@@ -10,6 +10,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -22,16 +24,12 @@ namespace business.classes.Abstrato
         public Pessoa() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();
-            this.Chamada = new Chamada
-            {
-                Data_inicio = DateTime.Now
-            };
+            AddNalista = new AddNalista();            
         }
 
-       
+
         #region Properties
-            
+
         AddNalista AddNalista;
 
         [NotMapped]
@@ -40,11 +38,14 @@ namespace business.classes.Abstrato
         [Key]
         public int IdPessoa { get; set; }
 
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+
         public string NomePessoa { get; set; }
 
         [Index("CODIGO", 2, IsUnique = true)]
         public int Codigo { get; set; }
+
+        [NotMapped]
+        public string password { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [Index("EMAIL", 2, IsUnique = true)]
@@ -68,6 +69,10 @@ namespace business.classes.Abstrato
         
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
+
+        [NotMapped]
+        public byte[] ImgArrayBytes { get; set; }
+
         [JsonIgnore]
         private MudancaEstado MudancaEstado;
 
@@ -80,7 +85,7 @@ namespace business.classes.Abstrato
                 var numero = recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
                 Codigo = numero + 1;
             }
-            catch { Codigo = 1; }          
+            catch { Codigo = 1; }
             
             string celula = "";
             if (this.celula_ == null) celula = "null";
@@ -89,7 +94,7 @@ namespace business.classes.Abstrato
                       Insert_padrao =
               "insert into Pessoa (NomePessoa, Email, Falta, celula_, Img, Codigo) " +
               $" values ( '{this.NomePessoa}', '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
-               this.Chamada.salvar() + " ";
+              new Chamada().salvar() + " ";
             
             return Insert_padrao;
         }
@@ -406,6 +411,20 @@ namespace business.classes.Abstrato
             MudancaEstado.MudarEstado(id, m);
         }
 
-        
+        public async Task<bool> EnviarFoto(PhotoRequest photoRequest)
+        {
+            var request = JsonConvert.SerializeObject(photoRequest);
+            var body = new StringContent(request, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var urlSetfoto = "SetFoto";
+            var response = await client.PostAsync("http://www.igrejadeusbom.somee.com/" + urlSetfoto, body);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

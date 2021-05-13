@@ -1,6 +1,7 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.Services;
 using AplicativoXamarin.ViewModels;
+using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace AplicativoXamarin.Views
             Api = new ApiServices();
 		}
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -40,7 +41,7 @@ namespace AplicativoXamarin.Views
             MessagingCenter.Subscribe<Reuniao>(this, "SucessoSairReuniao",
               async  (msg) => {
                   await  DisplayAlert("Confirmação", "Você agora não esta mais nesta reuniao", "Ok");
-                  await Navigation.PushAsync(new ListMeetingView());
+                  await Navigation.PopAsync();
                 });
 
             MessagingCenter.Subscribe<ArgumentException>(this, "FalhaSairReuniao",

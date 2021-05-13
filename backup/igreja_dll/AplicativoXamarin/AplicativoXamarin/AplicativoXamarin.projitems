@@ -22,17 +22,39 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)models\Celula.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Chamada.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Endereco.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\EnderecoCelula.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Historico.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Interface\Iconfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Interface\IMudancaEstado.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Ministerio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\MinisterioCelula.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\modelocrud.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\MudancaEstado.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Pessoa.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\PessoaMinisterio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\CriancaLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\MembroLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_BatismoLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_ReconciliacaoLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\Membro_TransferenciaLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PessoasLgpd\VisitanteLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Crianca.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Aclamacao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Batismo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Reconciliacao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Membro_Transferencia.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\PessoaDado.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\PessoaLgpd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Pessoas\Visitante.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\PhotoRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\Reuniao.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\ReuniaoPessoa.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\SQLite\DataAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\Telefone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ApiServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
@@ -47,7 +69,65 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MenuItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CellsMinistryView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelEdicao.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\ChooseClass.xaml.cs">
+      <DependentUpon>ChooseClass.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCrianca.xaml.cs">
+      <DependentUpon>EditCrianca.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCriancaLgpd.xaml.cs">
+      <DependentUpon>EditCriancaLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacao.xaml.cs">
+      <DependentUpon>EditMembroAclamcacao.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacaoLgpd.xaml.cs">
+      <DependentUpon>EditMembroAclamcacaoLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismo.xaml.cs">
+      <DependentUpon>EditMembroBatismo.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismoLgpd.xaml.cs">
+      <DependentUpon>EditMembroBatismoLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacao.xaml.cs">
+      <DependentUpon>EditMembroReconciliacao.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacaoLgpd.xaml.cs">
+      <DependentUpon>EditMembroReconciliacaoLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferencia.xaml.cs">
+      <DependentUpon>EditMembroTransferencia.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferenciaLgpd.xaml.cs">
+      <DependentUpon>EditMembroTransferenciaLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitante.xaml.cs">
+      <DependentUpon>EditVisitante.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitanteLgpd.xaml.cs">
+      <DependentUpon>EditVisitanteLgpd.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml.cs">
+      <DependentUpon>GeolocationView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\CellsMinistryView.xaml.cs">
       <DependentUpon>CellsMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -55,24 +135,40 @@
       <DependentUpon>CelView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmEnterCell.xaml.cs">
+      <DependentUpon>ConfirmEnterCell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMeetingView.xaml.cs">
       <DependentUpon>ConfirmMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ConfirmMinistryView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMinistryView.xaml.cs">
       <DependentUpon>ConfirmMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\JoinMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Join\EnterCell.xaml.cs">
+      <DependentUpon>EnterCell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Join\JoinMeetingView.xaml.cs">
       <DependentUpon>JoinMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\JoinMinistryView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Join\JoinMinistryView.xaml.cs">
       <DependentUpon>JoinMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ListMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\ListMeetingView.xaml.cs">
       <DependentUpon>ListMeetingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\MinistriesCellView.xaml.cs">
+      <DependentUpon>MinistriesCellView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\PeoplesCellView.xaml.cs">
+      <DependentUpon>PeoplesCellView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LogoutMeetingView.xaml.cs">
@@ -83,38 +179,38 @@
       <DependentUpon>LogoutMinistryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetail.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetail.xaml.cs">
       <DependentUpon>MasterDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailDetail.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailDetail.xaml.cs">
       <DependentUpon>MasterDetailDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailMaster.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailMaster.xaml.cs">
       <DependentUpon>MasterDetailMaster.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPosts.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPosts.xaml.cs">
       <DependentUpon>MasterDetailPosts.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsDetail.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsDetail.xaml.cs">
       <DependentUpon>MasterDetailPostsDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsMaster.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsMaster.xaml.cs">
       <DependentUpon>MasterDetailPostsMaster.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsMenuItem.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MeetingView.xaml.cs">
       <DependentUpon>MeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MinistryListView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\MinistryListView.xaml.cs">
       <DependentUpon>MinistryListView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -126,15 +222,15 @@
       <DependentUpon>PageTeste.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\PeopleMeetingView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\PeopleMeetingView.xaml.cs">
       <DependentUpon>PeopleMeetingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\PeopleMinistry.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\List\PeopleMinistry.xaml.cs">
       <DependentUpon>PeopleMinistry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -146,7 +242,7 @@
       <DependentUpon>View1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewLoginView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main\ViewLoginView.xaml.cs">
       <DependentUpon>ViewLoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -156,15 +252,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetail.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailMaster.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailMaster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailDetail.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -176,11 +272,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MinistryListView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\MinistryListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ViewLoginView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\ViewLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -204,31 +300,31 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ListMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\ListMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\JoinMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Join\JoinMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\JoinMinistryView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Join\JoinMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMeetingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfirmMinistryView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -246,43 +342,156 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RegisterView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPosts.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPosts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsMaster.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsMaster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MasterDetailPostsDetail.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main\MasterDetailPostsDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PeopleMinistry.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\PeopleMinistry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CellsMinistryView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\CellsMinistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PeopleMeetingView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\PeopleMeetingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Join\EnterCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Confirm\ConfirmEnterCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Main\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Confirm\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Join\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\MinistriesCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\List\PeoplesCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GeolocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\ChooseClass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitante.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCrianca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditVisitanteLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditCriancaLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroAclamcacaoLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroBatismoLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroReconciliacaoLgpd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Edicao\EditMembroTransferenciaLgpd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Logo" +
-        "utMinistryView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
+        "ws\\LogoutMinistryView.xaml")]
     public partial class LogoutMinistryView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

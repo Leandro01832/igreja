@@ -62,7 +62,7 @@ namespace Site.Controllers.Api
             var user = await db.pessoas
             .Include(p => p.Ministerios)
             .Include(p => p.Celula)
-           // .Include(p => p.Chamada)
+            .Include(p => p.Chamada)
             .Include(p => p.Historico)
             .Include(p => p.Reuniao)
             .Include(x => x.Reuniao.Select(y => y.Pessoa))
@@ -153,16 +153,16 @@ namespace Site.Controllers.Api
                 {
                     p.Email = email;
                     p.NomePessoa = " - ";
-                    p.salvar();
+                   // p.salvar();
                 }
-                catch { return this.BadRequest("Usuario cadastrado apenas em uma tabela!!!"); }
+                catch { return this.BadRequest("Usuario não cadastrado!!!"); }
 
 
                 var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(banco));
                 var user = new ApplicationUser { UserName = email, Email = email, Codigo = p.Codigo };
                 var result =  usermaneger.Create(user, password);
                 if (result.Succeeded)
-                {                    
+                {
                     return Ok();
                 }
 
@@ -173,6 +173,8 @@ namespace Site.Controllers.Api
             
             return this.BadRequest("Usuario não cadastrado! Dados incorretos!");
         }
+
+        
 
     }
 }

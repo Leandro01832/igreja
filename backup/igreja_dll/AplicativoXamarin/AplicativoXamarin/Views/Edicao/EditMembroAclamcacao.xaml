@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="AplicativoXamarin.Views.Edicao.EditMembroAclamcacao"
+             Title="Cadastro"
+             >
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <StackLayout BindingContext="{Binding membro_Aclamacao}">
+
+                <TableView HeightRequest="1500">
+                    <TableRoot>
+
+                        <TableSection Title="Dados Pessoais">
+
+                            <EntryCell Label="Nome:" Text="{Binding NomePessoa}"></EntryCell>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Data de nascimento:" VerticalOptions="Start" 
+                                   HorizontalOptions="Center" />
+                                    <DatePicker HorizontalOptions="End"
+                            Date="{Binding Data_nascimento}"
+                            VerticalOptions="Center"></DatePicker>
+                                </StackLayout>
+                            </ViewCell>
+                            <EntryCell Label="RG:" Text="{Binding Rg}"></EntryCell>
+                            <EntryCell Label="CPF:" Text="{Binding Cpf}"></EntryCell>
+                            <EntryCell Label="Estado Civil:" Text="{Binding Estado_civil}"></EntryCell>
+                            <EntryCell Label="Status:" Text="{Binding Status}"></EntryCell>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Sexo masculino:" VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand" />
+                                    <Switch HorizontalOptions="End"
+                            IsToggled="{Binding Sexo_masculino}"
+                            VerticalOptions="Center"></Switch>
+
+                                </StackLayout>
+                            </ViewCell>
+
+                        </TableSection>
+
+                        <TableSection Title="Dados de membro por aclamação">
+
+                            <EntryCell Label="Ano de batismo:" Keyboard="Numeric" Text="{Binding Data_batismo}"></EntryCell>
+                            <EntryCell Label="Denominação:" Text="{Binding Denominacao}"></EntryCell>
+
+                        </TableSection>
+
+                        <TableSection Title="Endereço">
+                            <EntryCell Label="CEP:" Keyboard="Numeric"  Text="{Binding Endereco.Cep}"></EntryCell>
+                            <EntryCell Label="País:" Text="{Binding Endereco.Pais}"></EntryCell>
+                            <EntryCell Label="Estado:" Text="{Binding Endereco.Estado}"></EntryCell>
+                            <EntryCell Label="Cidade:" Text="{Binding Endereco.Cidade}"></EntryCell>
+                            <EntryCell Label="Bairro:" Text="{Binding Endereco.Bairro}"></EntryCell>
+                            <EntryCell Label="Rua:" Text="{Binding Endereco.Rua}"></EntryCell>
+                            <EntryCell Label="N° casa:" Keyboard="Numeric"  Text="{Binding Endereco.Numero_casa}"></EntryCell>
+                            <EntryCell Label="Complemento:"   Text="{Binding Endereco.Complemento}"></EntryCell>
+
+                        </TableSection>
+
+                        <TableSection Title="Contatos">
+                            <EntryCell Label="Telefone:" Keyboard="Telephone"  Text="{Binding Telefone.Fone}"></EntryCell>
+                            <EntryCell Label="Celular:" Keyboard="Telephone"  Text="{Binding Telefone.Celular}"></EntryCell>
+                            <EntryCell Label="whatsapp:" Keyboard="Telephone"  Text="{Binding Telefone.Whatsapp}"></EntryCell>
+                        </TableSection>
+                    </TableRoot>
+
+                </TableView>
+
+            </StackLayout>
+
+
+            <controls:CircleImage
+          Source="{Binding ImageSource}"
+          Aspect="AspectFill"
+          WidthRequest="200"
+          HeightRequest="200"
+          VerticalOptions="Center"
+          HorizontalOptions="Center">
+            </controls:CircleImage>
+
+            <ActivityIndicator IsRunning="{Binding Aguarde}" ></ActivityIndicator>
+
+            <Button Command="{Binding TakePicture}" Text="Tirar foto"></Button>
+            <Button Command="{Binding UpdateDataMembroAclamacao}" Text="Atualizar dados"></Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

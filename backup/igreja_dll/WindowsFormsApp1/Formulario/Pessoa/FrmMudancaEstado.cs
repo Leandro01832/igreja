@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class FrmMudancaEstado : Form
+    public partial class FrmMudancaEstado : FormPadrao
     {
         public FrmMudancaEstado()
         {

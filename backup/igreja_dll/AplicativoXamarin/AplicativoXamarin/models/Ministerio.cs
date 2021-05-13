@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AplicativoXamarin.models
 {
-   public class Ministerio 
+   public class Ministerio : modelocrud
     {
         public int IdMinisterio { get; set; }        
         public string Nome { get; set; }        

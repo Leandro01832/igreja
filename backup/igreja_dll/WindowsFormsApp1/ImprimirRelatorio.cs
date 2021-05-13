@@ -8,21 +8,25 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
    public class ImprimirRelatorio
     {
 
-        public void imprimir(modelocrud modelo, string tipo)
+        public async Task  imprimir(modelocrud modelo, string tipo)
         {
          List<modelocrud> lista = new List<modelocrud>();
          PdfPTable table = null;
          var valorTipo = "";
          var porcentagem = "";
-         int totalPessoas = Pessoa.recuperarTodos().Count;
-         int totalMinisterios = Ministerio.recuperarTodosMinisterios().Count;
-         int totalCelulas = Celula.recuperarTodasCelulas().Count;
+         var ListaPessoas = await Task.Run(() => Pessoa.recuperarTodos());
+         int totalPessoas = ListaPessoas.Count;
+         var ListaMinisterios = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+         int totalMinisterios = ListaMinisterios.Count;
+         var ListaCelulas = await Task.Run(() => Celula.recuperarTodasCelulas());
+         int totalCelulas = ListaCelulas.Count;
 
          if (modelo != null)
             {
@@ -30,12 +34,15 @@ namespace WindowsFormsApp1
                 var i = 0;
                 foreach (var item in lista.ToList())
                 {
-
+                    Pessoa p = null;
+                    Ministerio m = null;
+                    Celula c = null;
+                    Reuniao r = null;
                     var id = 0;
-                    if (modelo is Pessoa) { var p = (Pessoa)modelo; id = p.IdPessoa; }
-                    if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.IdMinisterio; }
-                    if (modelo is Celula) { var p = (Celula)modelo; id = p.IdCelula; }
-                    if (modelo is Reuniao) { var p = (Reuniao)modelo; id = p.IdReuniao; }
+                    if (modelo is Pessoa) {  p = (Pessoa)item; id = p.IdPessoa; }
+                    if (modelo is Ministerio) {  m = (Ministerio)item; id = m.IdMinisterio; }
+                    if (modelo is Celula) {  c = (Celula)item; id = c.IdCelula; }
+                    if (modelo is Reuniao) {  r = (Reuniao)item; id = r.IdReuniao; }
 
                     lista[i] = item.recuperar(id)[0];
                     i++;
@@ -45,9 +52,10 @@ namespace WindowsFormsApp1
 
          if (modelo != null && modelo is Pessoa)
          {
-             var quant = modelo.recuperar(null).Count;
+                table = new PdfPTable(2);
+                var quant = modelo.recuperar(null).Count;
              decimal p = (quant / totalPessoas);
-             porcentagem = "A procentagem em ralação ao total de pessoas é "
+             porcentagem = "A procentagem em relação ao total de pessoas é "
                  + p.ToString("F2") + "%. Quantidade de registros é: "
                  + quant;
          }
@@ -56,7 +64,7 @@ namespace WindowsFormsApp1
          {
              var quant = modelo.recuperar(null).Count;
              decimal p = (quant / totalCelulas);
-             porcentagem = "A procentagem em ralação ao total de celulas é "
+             porcentagem = "A procentagem em relação ao total de celulas é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
                  + quant;
          }
@@ -65,7 +73,7 @@ namespace WindowsFormsApp1
          {
          var quant = modelo.recuperar(null).Count;
              decimal p = (quant / totalMinisterios);
-             porcentagem = "A procentagem em ralação ao total de ministérios é "
+             porcentagem = "A procentagem em relação ao total de ministérios é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
                  + quant;
          }

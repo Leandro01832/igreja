@@ -23,7 +23,7 @@ namespace business.classes.Pessoas
 
         public Membro_Reconciliacao() : base()
         {
-        } 
+        }
 
         public override string alterar(int id)
         {

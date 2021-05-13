@@ -27,8 +27,13 @@ namespace business.classes
 
         public virtual Pessoa Pessoa { get; set; }
 
+        
+
         public Chamada()
         {
+            Data_inicio = DateTime.Now;
+            Numero_chamada = 0;
+            
         }
 
         public override string alterar(int id)

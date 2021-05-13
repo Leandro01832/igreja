@@ -1,6 +1,10 @@
 ﻿using AplicativoXamarin.models;
 using AplicativoXamarin.models.SQLite;
+using AplicativoXamarin.ViewModels;
 using AplicativoXamarin.Views;
+using AplicativoXamarin.Views.Join;
+using AplicativoXamarin.Views.List;
+using AplicativoXamarin.Views.Main;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,14 +14,19 @@ namespace AplicativoXamarin.Services
 {
     public class NavigationServices
     {
+        public ApiServices Api { get; set; }
+
         public async Task Navigate(string pagename)
         {
             App.Master.IsPresented = false;
+            Api = new ApiServices();
 
             switch (pagename)
             {
-                case "Celula":
-                    await App.Navigator.PushAsync(new CelView());
+                case "CelView":
+                    var main = MainViewModel.GetInstance();
+                    Celula cel = await main.GetCelula();
+                    await App.Navigator.PushAsync(new CelView(cel));
 
                     break;
 

@@ -1,6 +1,6 @@
 ﻿using AplicativoXamarin.Views;
 using AplicativoXamarin.models;
-
+using AplicativoXamarin.Views.Main;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,6 +8,7 @@ using AplicativoXamarin.Infraestructure;
 using AplicativoXamarin.models.SQLite;
 using AplicativoXamarin.ViewModels;
 using Newtonsoft.Json;
+using AplicativoXamarin.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AplicativoXamarin
@@ -19,10 +20,11 @@ namespace AplicativoXamarin
         public static Pessoa UserCurrent { get; internal set; }
         
 
+
         public App()
         {
             InitializeComponent();
-           // MainPage = new TabbedPageView();
+
             var data = new DataAccess();
 
             var user = data.First();
@@ -30,8 +32,9 @@ namespace AplicativoXamarin
             {
                 var main = MainViewModel.GetInstance();
                 main.LoadUser(user);
+                
                 App.UserCurrent = user;
-                MainPage = new MasterDetail(user);
+                MainPage = new Views.Main.MasterDetail(user);
             }
             else
             {
@@ -41,15 +44,17 @@ namespace AplicativoXamarin
 
         
 
-        protected override void OnStart()
+        protected  override void OnStart()
         {
+            var main = MainViewModel.GetInstance();
+            
             MessagingCenter.Subscribe<Pessoa>(this, "SucessoLogin",
                 (usuario) =>
                 {
-                    var main = MainViewModel.GetInstance();
+                    
                     main.LoadUser(usuario);
 
-                    MainPage = new MasterDetail(usuario);
+                    MainPage = new Views.Main.MasterDetail(usuario);
                 });
         }
 

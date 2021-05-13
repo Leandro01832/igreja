@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMudancaEstado));
             this.label1 = new System.Windows.Forms.Label();
             this.radio_membrobatismo = new System.Windows.Forms.RadioButton();
             this.radio_membroreconciliacao = new System.Windows.Forms.RadioButton();
@@ -150,6 +151,7 @@
             this.Controls.Add(this.radio_membroreconciliacao);
             this.Controls.Add(this.radio_membrobatismo);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMudancaEstado";
             this.Text = "FrmMudancaEstado";
             this.Load += new System.EventHandler(this.FrmMudancaEstado_Load);

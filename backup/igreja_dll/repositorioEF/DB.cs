@@ -4,6 +4,7 @@ using business.classes.Celula;
 using business.classes.Celulas;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
+using business.classes.PessoasLgpd;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,6 +36,8 @@ namespace RepositorioEF
         public DbSet<PessoaMinisterio> PessoaMinisterio { get; set; }
         public DbSet<ReuniaoPessoa> ReuniaoPessoa { get; set; }
         public DbSet<MinisterioCelula> MinisterioCelula { get; set; }
+        
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -48,9 +51,6 @@ namespace RepositorioEF
             //  modelBuilder.Entity<Celula>().HasKey(c => c.Id).HasEntitySetName("Celulaid");
 
         }
-
-        public System.Data.Entity.DbSet<business.classes.Ministerio.Lider_Celula_Treinamento> Ministerios { get; set; }
-
-        public System.Data.Entity.DbSet<business.classes.Celulas.Celula_Adolescente> Celulas { get; set; }
+        
     }
 }

@@ -26,6 +26,7 @@ namespace Site.Controllers.Api
         public IQueryable<CelulaApi> Getcelula()
         {
             var celulas = db.celula
+                .Include(c => c.EnderecoCelula)
                 .Include(c => c.Pessoas)
                 .Include(c => c.Ministerios);
 

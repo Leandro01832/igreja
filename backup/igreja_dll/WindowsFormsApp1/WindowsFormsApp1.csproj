@@ -47,9 +47,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
@@ -74,6 +77,12 @@
     </Compile>
     <Compile Include="DdataGridViews\IPesquisar.cs" />
     <Compile Include="DdataGridViews\Pesquisar.cs" />
+    <Compile Include="FormPadrao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPadrao.Designer.cs">
+      <DependentUpon>FormPadrao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\Celula\MinisteriosCelula.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,6 +531,9 @@
     <Compile Include="WFCrudPartial.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="FormPadrao.resx">
+      <DependentUpon>FormPadrao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Celula\FrmCelula.resx">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </EmbeddedResource>
@@ -766,6 +778,7 @@
     <Content Include="bin\Debug\relatorio\relatorio.jpg" />
     <Content Include="bin\Debug\WindowsFormsApp1.exe" />
     <Content Include="bin\Debug\WindowsFormsApp1.pdb" />
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

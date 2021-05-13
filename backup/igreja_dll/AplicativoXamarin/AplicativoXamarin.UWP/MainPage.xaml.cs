@@ -13,14 +13,17 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 namespace AplicativoXamarin.UWP
 {
     public sealed partial class MainPage
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            
 
+            this.InitializeComponent();
+            Xamarin.FormsGoogleMaps.Init("AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M");
             LoadApplication(new AplicativoXamarin.App());
         }
     }

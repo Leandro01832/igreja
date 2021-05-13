@@ -53,6 +53,7 @@ namespace AplicativoXamarin.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                Xamarin.FormsGoogleMaps.Init("AIzaSyC3lAd_75nwJkIEcT78Ld9-oDPe6D7kt4M");
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

@@ -51,7 +51,7 @@ namespace AplicativoXamarin.Services
                     break;
 
                 case "MasterDetailPosts":
-                    await App.Navigator.PushAsync(new MasterDetailPosts());
+                    await App.Navigator.PushAsync(new PageTeste());
 
                     break;
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pesquisar));
             this.radio_pessoa = new System.Windows.Forms.RadioButton();
             this.radio_ministerio = new System.Windows.Forms.RadioButton();
             this.radio_celula = new System.Windows.Forms.RadioButton();
@@ -527,6 +528,7 @@
             this.Controls.Add(this.radio_celula);
             this.Controls.Add(this.radio_ministerio);
             this.Controls.Add(this.radio_pessoa);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pesquisar";
             this.Text = "Pesquisar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

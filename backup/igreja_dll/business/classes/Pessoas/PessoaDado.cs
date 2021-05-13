@@ -15,10 +15,7 @@ namespace business.classes.Pessoas
         public PessoaDado() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();
-            this.Endereco = new Endereco();
-            this.Telefone = new Telefone();
-           
+            AddNalista = new AddNalista();           
         }
 
         //propriedades
@@ -145,6 +142,7 @@ namespace business.classes.Pessoas
                     this.Rg = Convert.ToString(dr["Rg"]);
                     this.Cpf = Convert.ToString(dr["Cpf"]);
                     this.Status = Convert.ToString(dr["Status"]);
+                    this.Endereco = new Endereco();
                     this.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
                     this.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
                     this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
@@ -152,6 +150,7 @@ namespace business.classes.Pessoas
                     this.Endereco.Rua = Convert.ToString(dr["Rua"]);
                     this.Endereco.Cep = long.Parse(Convert.ToString(dr["Status"]));
                     this.Endereco.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
+                    this.Telefone = new Telefone();
                     this.Telefone.Fone = Convert.ToString(dr["Rua"]);
                     this.Telefone.Celular = Convert.ToString(dr["Celular"]);
                     this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);

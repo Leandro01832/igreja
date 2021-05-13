@@ -47,18 +47,6 @@ namespace business.classes.Abstrato
         AddNalista AddNalista;
         BuscaLista BuscaLista;
 
-        public Celula(int tipo)
-        {
-            if(tipo == 1)
-            {
-                this.Maximo_pessoa = 50;
-                EnderecoCelula = new EnderecoCelula();
-                AddNalista = new AddNalista();
-                BuscaLista = new BuscaLista();
-            }
-
-        }
-
         public Celula() : base()
         {
             this.Maximo_pessoa = 50;

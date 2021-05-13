@@ -30,6 +30,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidSupportedAbis />
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +64,7 @@
       <Version>5.4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>11.0.1</Version>
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.7.335</Version>
@@ -70,15 +75,26 @@
     <PackageReference Include="System.Net.Http">
       <Version>4.3.4</Version>
     </PackageReference>
-    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
-      <Version>1.8.1</Version>
+    <PackageReference Include="Xam.Plugin.Geolocator">
+      <Version>4.5.0.6</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>5.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.6.0.709228</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.GoogleMaps">
+      <Version>3.3.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
@@ -87,9 +103,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\Igreja.Igreja-Signed.apk" />
+    <None Include="bin\Debug\Igreja.Igreja.apk" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
@@ -396,6 +416,123 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_posts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\icon_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\icon_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\icon_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\icon_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\icon_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icone_igreja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Accessibility.dll" />
+    <Content Include="bin\Debug\AplicativoXamarin.Android.dll" />
+    <Content Include="bin\Debug\AplicativoXamarin.Android.pdb" />
+    <Content Include="bin\Debug\FormsViewGroup.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\FormsViewGroup.pdb" />
+    <Content Include="bin\Debug\GalaSoft.MvvmLight.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\GalaSoft.MvvmLight.Extras.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\GalaSoft.MvvmLight.Platform.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\ImageCircle.Forms.Plugin.Abstractions.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\ImageCircle.Forms.Plugin.Android.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Mono.Android.pdb" />
+    <Content Include="bin\Debug\Mono.Security.pdb" />
+    <Content Include="bin\Debug\mscorlib.pdb" />
+    <Content Include="bin\Debug\SQLiteNetExtensions.pdb" />
+    <Content Include="bin\Debug\System.ComponentModel.Composition.pdb" />
+    <Content Include="bin\Debug\System.Configuration.dll" />
+    <Content Include="bin\Debug\System.Core.pdb" />
+    <Content Include="bin\Debug\System.Data.pdb" />
+    <Content Include="bin\Debug\System.Data.SqlXml.dll" />
+    <Content Include="bin\Debug\System.Deployment.dll" />
+    <Content Include="bin\Debug\System.Drawing.dll" />
+    <Content Include="bin\Debug\System.IO.Compression.FileSystem.pdb" />
+    <Content Include="bin\Debug\System.IO.Compression.pdb" />
+    <Content Include="bin\Debug\System.Net.Http.pdb" />
+    <Content Include="bin\Debug\System.Numerics.dll" />
+    <Content Include="bin\Debug\System.Numerics.pdb" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.pdb" />
+    <Content Include="bin\Debug\System.pdb" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Formatters.Soap.dll" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.pdb" />
+    <Content Include="bin\Debug\System.Security.dll" />
+    <Content Include="bin\Debug\System.ServiceModel.Internals.pdb" />
+    <Content Include="bin\Debug\System.Transactions.pdb" />
+    <Content Include="bin\Debug\System.Web.Services.pdb" />
+    <Content Include="bin\Debug\System.Windows.Forms.dll" />
+    <Content Include="bin\Debug\System.Xml.Linq.pdb" />
+    <Content Include="bin\Debug\System.Xml.pdb" />
+    <Content Include="bin\Debug\Xamarin.Forms.Core.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Xamarin.Forms.Core.pdb" />
+    <Content Include="bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Xamarin.Forms.Platform.Android.pdb" />
+    <Content Include="bin\Debug\Xamarin.Forms.Xaml.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Xamarin.Forms.Xaml.pdb" />
   </ItemGroup>
   <Import Project="..\AplicativoXamarin\AplicativoXamarin.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
