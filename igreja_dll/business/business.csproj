@@ -67,6 +67,7 @@
     <Compile Include="classes\Intermediario\MinisterioCelula.cs" />
     <Compile Include="classes\Intermediario\PessoaMinisterio.cs" />
     <Compile Include="classes\Intermediario\ReuniaoPessoa.cs" />
+    <Compile Include="classes\IPesquisar.cs" />
     <Compile Include="classes\Pessoas\PessoaLgpd.cs" />
     <Compile Include="classes\AddNalista.cs" />
     <Compile Include="classes\BuscaLista.cs" />

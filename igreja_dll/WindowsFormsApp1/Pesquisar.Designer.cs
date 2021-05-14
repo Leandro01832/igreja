@@ -318,6 +318,7 @@
             this.txt_pesquisa_email.Size = new System.Drawing.Size(242, 22);
             this.txt_pesquisa_email.TabIndex = 22;
             this.txt_pesquisa_email.TextChanged += new System.EventHandler(this.txt_pesquisa_email_TextChanged);
+            this.txt_pesquisa_email.Leave += new System.EventHandler(this.txt_pesquisa_email_Leave);
             // 
             // label3
             // 
@@ -336,6 +337,7 @@
             this.txt_pesquisa_nome_pai.Size = new System.Drawing.Size(242, 22);
             this.txt_pesquisa_nome_pai.TabIndex = 24;
             this.txt_pesquisa_nome_pai.TextChanged += new System.EventHandler(this.txt_pesquisa_nome_pai_TextChanged);
+            this.txt_pesquisa_nome_pai.Leave += new System.EventHandler(this.txt_pesquisa_nome_pai_Leave);
             // 
             // label4
             // 
@@ -354,6 +356,7 @@
             this.txt_pesquisa_nome_mae.Size = new System.Drawing.Size(242, 22);
             this.txt_pesquisa_nome_mae.TabIndex = 26;
             this.txt_pesquisa_nome_mae.TextChanged += new System.EventHandler(this.txt_pesquisa_nome_mae_TextChanged);
+            this.txt_pesquisa_nome_mae.Leave += new System.EventHandler(this.txt_pesquisa_nome_mae_Leave);
             // 
             // label5
             // 
@@ -426,6 +429,7 @@
             this.txt_pesquisa_id_valor2.Size = new System.Drawing.Size(69, 22);
             this.txt_pesquisa_id_valor2.TabIndex = 35;
             this.txt_pesquisa_id_valor2.TextChanged += new System.EventHandler(this.txt_pesquisa_id_valor2_TextChanged);
+            this.txt_pesquisa_id_valor2.Leave += new System.EventHandler(this.txt_pesquisa_id_valor2_Leave);
             // 
             // label10
             // 

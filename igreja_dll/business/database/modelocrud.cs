@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace database
 {
-     public abstract class  modelocrud
+     public abstract class  modelocrud : IPesquisar
     {
         //construtor para Entity Framework
         public modelocrud()
@@ -58,7 +58,39 @@ namespace database
             }
         }
 
-        
+        public string PesquisarPorData(DateTime comecar, DateTime terminar, string campo)
+        {
+            return $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} ";
+        }
 
+        public string PesquisarPorData(DateTime apenasUmDia, string campo)
+        {
+            return $" {campo}=={apenasUmDia.ToString()} ";
+        }
+
+        public string PesquisarPorNumero(int comecar, int terminar, string campo)
+        {
+            return $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} ";
+        }
+
+        public string PesquisarPorNumero(int apenasUmNumero, string campo)
+        {
+            return $" {campo}=={apenasUmNumero.ToString()} ";
+        }
+
+        public string PesquisarPorTexto(string texto, string campo)
+        {
+            return $" {campo} like '{texto}' ";
+        }
+
+        public string PesquisarPorHorario(TimeSpan comecar, TimeSpan terminar, string campo)
+        {
+            return $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} ";
+        }
+
+        public string PesquisarPorHorario(TimeSpan apenasUmHorario, string campo)
+        {
+            return $" {campo}=={apenasUmHorario.ToString()} ";
+        }
     }
 }

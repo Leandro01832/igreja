@@ -412,91 +412,99 @@ namespace WindowsFormsApp1
             {
                 if (m is Pessoa)
                 {
-                    if (m is Visitante)
+                    if(m is PessoaDado)
                     {
-                        Visitante info = (Visitante)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_visita, info.Condicao_religiosa);
+                        if (m is Visitante)
+                        {
+                            Visitante info = (Visitante)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_visita, info.Condicao_religiosa);
+                        }
+
+                        if (m is Crianca)
+                        {
+                            Crianca info = (Crianca)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Nome_mae, info.Nome_pai);
+                        }
+
+                        if (m is Membro_Aclamacao)
+                        {
+                            Membro_Aclamacao info = (Membro_Aclamacao)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
+                        }
+
+                        if (m is Membro_Batismo)
+                        {
+                            Membro_Batismo info = (Membro_Batismo)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
+                        }
+
+                        if (m is Membro_Reconciliacao)
+                        {
+                            Membro_Reconciliacao info = (Membro_Reconciliacao)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
+                        }
+
+                        if (m is Membro_Transferencia)
+                        {
+                            Membro_Transferencia info = (Membro_Transferencia)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
+                            info.Nome_cidade_transferencia,
+                            info.Estado_transferencia, info.Nome_igreja_transferencia);
+                        }
                     }
 
-                    if ( m is VisitanteLgpd)
+                    if(m is PessoaLgpd)
                     {
-                        VisitanteLgpd info = (VisitanteLgpd)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_visita, info.Condicao_religiosa);
-                    }
+                        if (m is VisitanteLgpd)
+                        {
+                            VisitanteLgpd info = (VisitanteLgpd)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_visita, info.Condicao_religiosa);
+                        }
 
-                    if (m is Crianca)
-                    {
-                        Crianca info = (Crianca)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Nome_mae, info.Nome_pai);
-                    }
-                    if ( m is CriancaLgpd)
-                    {
-                        CriancaLgpd info = (CriancaLgpd)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Nome_mae, info.Nome_pai);
-                    }
+                        if (m is CriancaLgpd)
+                        {
+                            CriancaLgpd info = (CriancaLgpd)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Nome_mae, info.Nome_pai);
+                        }
 
-                    if ( m is Membro_Aclamacao)
-                    {
-                        Membro_Aclamacao info = (Membro_Aclamacao)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
-                    }
-                    if (m is Membro_AclamacaoLgpd)
-                    {
-                        Membro_AclamacaoLgpd info = (Membro_AclamacaoLgpd)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
-                    }
+                        if (m is Membro_AclamacaoLgpd)
+                        {
+                            Membro_AclamacaoLgpd info = (Membro_AclamacaoLgpd)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
+                        }
 
-                    if (m is Membro_Batismo)
-                    {
-                        Membro_Batismo info = (Membro_Batismo)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
-                    }
+                        if (m is Membro_BatismoLgpd)
+                        {
+                            Membro_BatismoLgpd info = (Membro_BatismoLgpd)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
+                        }
 
-                    if (m is Membro_BatismoLgpd)
-                    {
-                        Membro_BatismoLgpd info = (Membro_BatismoLgpd)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
-                    }
+                        if (m is Membro_ReconciliacaoLgpd)
+                        {
+                            Membro_ReconciliacaoLgpd info = (Membro_ReconciliacaoLgpd)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
+                        }
 
-                    if (m is Membro_Reconciliacao)
-                    {
-                        Membro_Reconciliacao info = (Membro_Reconciliacao)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
-                    }
-
-                    if ( m is Membro_ReconciliacaoLgpd)
-                    {
-                        Membro_ReconciliacaoLgpd info = (Membro_ReconciliacaoLgpd)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
-                    }
-
-                    if (m is Membro_Transferencia)
-                    {
-                        Membro_Transferencia info = (Membro_Transferencia)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
-                        info.Nome_cidade_transferencia,
-                        info.Estado_transferencia, info.Nome_igreja_transferencia);
-                    }
-
-                    if ( m is Membro_TransferenciaLgpd)
-                    {
-                        Membro_TransferenciaLgpd info = (Membro_TransferenciaLgpd)item;
-                        dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
-                        info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
-                        info.Nome_cidade_transferencia,
-                        info.Estado_transferencia, info.Nome_igreja_transferencia);
-                    }
+                        if (m is Membro_TransferenciaLgpd)
+                        {
+                            Membro_TransferenciaLgpd info = (Membro_TransferenciaLgpd)item;
+                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
+                            info.Nome_cidade_transferencia,
+                            info.Estado_transferencia, info.Nome_igreja_transferencia);
+                        }
+                    }                     
                 }
                 
                 if(m is Ministerio)

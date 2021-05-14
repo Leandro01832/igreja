@@ -1,4 +1,6 @@
-﻿using System;
+﻿using business.classes;
+using business.classes.Abstrato;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -155,7 +157,7 @@ namespace WindowsFormsApp1
 
         private void txt_pesquisa_ano_batismo_valor2_TextChanged(object sender, EventArgs e)
         {
-            if (comando != "") comando += " and ";
+            if (VerificaAnd()) comando += " and ";
             try
             {
                 var v = int.Parse(txt_pesquisa_ano_batismo_valor1.Text);
@@ -204,15 +206,16 @@ namespace WindowsFormsApp1
             if (check_pesquisa_email.Checked)
             {
                 MessageBox.Show("Digite um email parecido com o que lembra para ser feito a pesquisa.");
-                txt_pesquisa_email.Enabled = true;
-                if (comando != "") comando += " and ";
-                comando += $" Email like '@pesquisaEmail' ";
+                txt_pesquisa_email.Enabled = true;                
                 txt_pesquisa_email.Focus();
             }
         }
 
-        private void txt_pesquisa_email_TextChanged(object sender, EventArgs e)
+        private void txt_pesquisa_email_TextChanged(object sender, EventArgs e) { }
+        private void txt_pesquisa_email_Leave(object sender, EventArgs e)
         {
+            if (VerificaAnd()) comando += " and ";
+            comando += modelo.PesquisarPorTexto(txt_pesquisa_email.Text, "Email");
         }
 
         private void check_pesquisa_nome_pai_CheckedChanged(object sender, EventArgs e)
@@ -221,14 +224,15 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
                 txt_pesquisa_nome_pai.Enabled = true;
-                if (comando != "") comando += " and ";
-                comando += " Nome_pai like '@pesquisaNomePai' ";
                 txt_pesquisa_nome_pai.Focus();
             }
         }
 
-        private void txt_pesquisa_nome_pai_TextChanged(object sender, EventArgs e)
+        private void txt_pesquisa_nome_pai_TextChanged(object sender, EventArgs e) { }
+        private void txt_pesquisa_nome_pai_Leave(object sender, EventArgs e)
         {
+            if (VerificaAnd()) comando += " and ";
+            comando += modelo.PesquisarPorTexto(txt_pesquisa_nome_pai.Text, "Nome_pai");
         }
 
         private void check_pesquisa_nome_mae_CheckedChanged(object sender, EventArgs e)
@@ -237,15 +241,18 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
                 txt_pesquisa_nome_mae.Enabled = true;
-                if (comando != "") comando += " and ";
-                comando += " Nome_mae like '@pesquisaNomeMae' ";
+                if (VerificaAnd()) comando += " and ";
                 txt_pesquisa_nome_mae.Focus();
             }
         }
 
-        private void txt_pesquisa_nome_mae_TextChanged(object sender, EventArgs e)
+        private void txt_pesquisa_nome_mae_TextChanged(object sender, EventArgs e) { }
+        private void txt_pesquisa_nome_mae_Leave(object sender, EventArgs e)
         {
+            if (VerificaAnd()) comando += " and ";
+            comando += modelo.PesquisarPorTexto(txt_pesquisa_nome_pai.Text, "Nome_mae");
         }
+
 
         private void check_pesquisa_id_CheckedChanged(object sender, EventArgs e)
         {
@@ -254,19 +261,24 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 txt_pesquisa_id_valor1.Enabled = true;
                 txt_pesquisa_id_valor2.Enabled = true;
-                if (comando != "") comando += " and ";
-                comando += $" Id>='@pesquisaid1' " +
-                        $" and Id<='@pesquisaid2' ";
                 txt_pesquisa_id_valor1.Focus();
             }
         }
 
-        private void txt_pesquisa_id_valor1_TextChanged(object sender, EventArgs e)
+        private void txt_pesquisa_id_valor1_TextChanged(object sender, EventArgs e) { }       
+
+        private void txt_pesquisa_id_valor2_TextChanged(object sender, EventArgs e) { }
+
+        private void txt_pesquisa_id_valor2_Leave(object sender, EventArgs e)
         {
+            if (VerificaAnd()) comando += " and ";
             try
             {
                 var v = int.Parse(txt_pesquisa_id_valor1.Text);
                 var v2 = int.Parse(txt_pesquisa_id_valor2.Text);
+                string id = retornarStringId();
+
+                comando += modelo.PesquisarPorNumero(v, v2, id);
             }
             catch
             {
@@ -276,21 +288,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void txt_pesquisa_id_valor2_TextChanged(object sender, EventArgs e)
-        {
-            if (comando != "") comando += " and ";
-            try
-            {
-                var v = int.Parse(txt_pesquisa_id_valor1.Text);
-                var v2 = int.Parse(txt_pesquisa_id_valor2.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Informe um numero de identificação");
-                txt_pesquisa_id_valor1.Text = "";
-                txt_pesquisa_id_valor2.Text = "";
-            }
-        }
+        
 
         private void btn_todos_Click(object sender, EventArgs e)
         {
@@ -302,41 +300,72 @@ namespace WindowsFormsApp1
         {
             if (check_pesquisa_id.Checked)
             {
-                if (comando != "") comando += " and ";
-                comando += $" Id>={int.Parse(txt_pesquisa_id_valor1.Text)} " +
-                        $" and Id<={int.Parse(txt_pesquisa_id_valor2.Text)} ";
+                if (VerificaAnd()) comando += " and ";
+                string id = retornarStringId();
+                var v1 = int.Parse(txt_pesquisa_id_valor1.Text);
+                var v2 = int.Parse(txt_pesquisa_id_valor2.Text);
+                comando += modelo.PesquisarPorNumero(v1, v2, id);
             }
 
-            if (modelo is business.classes.Abstrato.Membro)
+            if (modelo is Membro)
             {
                 if (check_pesquisa_ano_batismo.Checked)
                 {
-                    if (comando != "") comando += " and ";
-                    comando += $" Databatismo>={int.Parse(txt_pesquisa_ano_batismo_valor1.Text)} " +
-                        $" and Databatismo<={int.Parse(txt_pesquisa_ano_batismo_valor2.Text)} ";
+                    if (VerificaAnd()) comando += " and ";
+                    var v1 = int.Parse(txt_pesquisa_ano_batismo_valor1.Text);
+                    var v2 = int.Parse(txt_pesquisa_ano_batismo_valor2.Text);
+                    comando += modelo.PesquisarPorNumero(v1, v2, "Databatismo");
                 }
             }
 
-            if (modelo is business.classes.Abstrato.Membro || modelo is business.classes.Pessoas.PessoaDado)
+            if (modelo is Pessoa)
             {
                 if (check_pesquisa_email.Checked)
                 {
-                    if (comando != "") comando += " and ";
-                    comando += $" Email like {txt_pesquisa_id_valor1.Text} ";
+                    if (VerificaAnd()) comando += " and ";
+                    comando += modelo.PesquisarPorTexto(txt_pesquisa_email.Text, "Email");
                 }
             }
 
-            if (modelo is business.classes.Abstrato.Celula || modelo is business.classes.Abstrato.Ministerio)
+            if (modelo is Celula || modelo is Ministerio)
             {
                 if (check_pesquisa_nome.Checked)
                 {
-                    if (comando != "") comando += " and ";
+                    if (VerificaAnd()) comando += " and ";
                     comando += $" Nome like {txt_pesquisa_nome.Text} ";
                 }
             }
 
 
             ModificaDataGridView(modelo, tipo, comando);
+        }
+
+        private string retornarStringId()
+        {
+            string id = "";
+            if (modelo is Pessoa)
+                id = "IdPessoa";
+            if (modelo is Celula)
+                id = "IdCelula";
+            if (modelo is Ministerio)
+                id = "IdMinisterio";
+            if (modelo is Reuniao)
+                id = "IdReuniao";
+            if (modelo is Historico)
+                id = "IdHistorico";
+            if (modelo is Chamada)
+                id = "IdChamada";
+            return id;
+        }
+
+        private bool VerificaAnd()
+        {
+            if (comando != "" && !comando[comando.Length - 1].Equals(" ")
+                && !comando[comando.Length - 2].Equals("d") && !comando[comando.Length - 3].Equals("n")
+                && !comando[comando.Length - 4].Equals("a"))
+                return true;
+
+            else return false;
         }
     }
 }

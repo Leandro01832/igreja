@@ -1,4 +1,5 @@
-﻿using database;
+﻿using business.classes.Pessoas;
+using database;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +12,7 @@ namespace WindowsFormsApp1.DdataGridViews
 {
    public class Pesquisar : modelocrud, IPesquisar
     {
+
         public List<modelocrud> BuscarPorRestricao(modelocrud modelo, string tipo, string comando)
         {
             var comand = "";
