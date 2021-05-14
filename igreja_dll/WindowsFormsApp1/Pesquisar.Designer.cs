@@ -46,28 +46,32 @@
             this.check_pesquisa_data_visita = new System.Windows.Forms.CheckBox();
             this.check_pesquisa_ano_batismo = new System.Windows.Forms.CheckBox();
             this.check_pesquisa_nome = new System.Windows.Forms.CheckBox();
-            this.txt_pesquisa_nome = new System.Windows.Forms.TextBox();
+            this.txt_pesquisa_texto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_todos = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_pesquisa_email = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_pesquisa_nome_pai = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_pesquisa_nome_mae = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_pesquisa_ano_batismo_valor1 = new System.Windows.Forms.TextBox();
-            this.txt_pesquisa_ano_batismo_valor2 = new System.Windows.Forms.TextBox();
+            this.txt_pesquisa_numero1 = new System.Windows.Forms.TextBox();
+            this.txt_pesquisa_numero2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_pesquisa_id_valor2 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_pesquisa_id_valor1 = new System.Windows.Forms.TextBox();
             this.radio_telefone = new System.Windows.Forms.RadioButton();
             this.radio_endereco = new System.Windows.Forms.RadioButton();
             this.radio_mudanca = new System.Windows.Forms.RadioButton();
+            this.mask_horario_valor1 = new System.Windows.Forms.MaskedTextBox();
+            this.mask_horario_valor2 = new System.Windows.Forms.MaskedTextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.mask_data_valor1 = new System.Windows.Forms.MaskedTextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.mask_data_valor2 = new System.Windows.Forms.MaskedTextBox();
+            this.check_horario_celula = new System.Windows.Forms.CheckBox();
+            this.check_horario_reuniao = new System.Windows.Forms.CheckBox();
+            this.check_horario_final_reuniao = new System.Windows.Forms.CheckBox();
+            this.check_data_mudanca_estado = new System.Windows.Forms.CheckBox();
+            this.txt_comando = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgdados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,7 +185,7 @@
             // 
             this.check_pesquisa_id.AutoSize = true;
             this.check_pesquisa_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_id.Location = new System.Drawing.Point(631, 24);
+            this.check_pesquisa_id.Location = new System.Drawing.Point(599, 20);
             this.check_pesquisa_id.Name = "check_pesquisa_id";
             this.check_pesquisa_id.Size = new System.Drawing.Size(175, 29);
             this.check_pesquisa_id.TabIndex = 9;
@@ -192,8 +196,9 @@
             // check_pesquisa_nome_mae
             // 
             this.check_pesquisa_nome_mae.AutoSize = true;
+            this.check_pesquisa_nome_mae.Enabled = false;
             this.check_pesquisa_nome_mae.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_nome_mae.Location = new System.Drawing.Point(631, 78);
+            this.check_pesquisa_nome_mae.Location = new System.Drawing.Point(599, 55);
             this.check_pesquisa_nome_mae.Name = "check_pesquisa_nome_mae";
             this.check_pesquisa_nome_mae.Size = new System.Drawing.Size(278, 29);
             this.check_pesquisa_nome_mae.TabIndex = 10;
@@ -204,8 +209,9 @@
             // check_pesquisa_nome_pai
             // 
             this.check_pesquisa_nome_pai.AutoSize = true;
+            this.check_pesquisa_nome_pai.Enabled = false;
             this.check_pesquisa_nome_pai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_nome_pai.Location = new System.Drawing.Point(631, 137);
+            this.check_pesquisa_nome_pai.Location = new System.Drawing.Point(599, 90);
             this.check_pesquisa_nome_pai.Name = "check_pesquisa_nome_pai";
             this.check_pesquisa_nome_pai.Size = new System.Drawing.Size(266, 29);
             this.check_pesquisa_nome_pai.TabIndex = 11;
@@ -216,8 +222,9 @@
             // check_pesquisa_email
             // 
             this.check_pesquisa_email.AutoSize = true;
+            this.check_pesquisa_email.Enabled = false;
             this.check_pesquisa_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_email.Location = new System.Drawing.Point(631, 196);
+            this.check_pesquisa_email.Location = new System.Drawing.Point(599, 131);
             this.check_pesquisa_email.Name = "check_pesquisa_email";
             this.check_pesquisa_email.Size = new System.Drawing.Size(205, 29);
             this.check_pesquisa_email.TabIndex = 12;
@@ -228,32 +235,33 @@
             // check_pesquisa_data_reuniao
             // 
             this.check_pesquisa_data_reuniao.AutoSize = true;
+            this.check_pesquisa_data_reuniao.Enabled = false;
             this.check_pesquisa_data_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_data_reuniao.Location = new System.Drawing.Point(960, 24);
+            this.check_pesquisa_data_reuniao.Location = new System.Drawing.Point(917, 24);
             this.check_pesquisa_data_reuniao.Name = "check_pesquisa_data_reuniao";
             this.check_pesquisa_data_reuniao.Size = new System.Drawing.Size(294, 29);
             this.check_pesquisa_data_reuniao.TabIndex = 13;
             this.check_pesquisa_data_reuniao.Text = "Pesquisar por data da reunião";
             this.check_pesquisa_data_reuniao.UseVisualStyleBackColor = true;
-            this.check_pesquisa_data_reuniao.CheckedChanged += new System.EventHandler(this.check_pesquisa_data_reuniao_CheckedChanged);
             // 
             // check_pesquisa_data_visita
             // 
             this.check_pesquisa_data_visita.AutoSize = true;
+            this.check_pesquisa_data_visita.Enabled = false;
             this.check_pesquisa_data_visita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_data_visita.Location = new System.Drawing.Point(960, 78);
+            this.check_pesquisa_data_visita.Location = new System.Drawing.Point(917, 55);
             this.check_pesquisa_data_visita.Name = "check_pesquisa_data_visita";
             this.check_pesquisa_data_visita.Size = new System.Drawing.Size(273, 29);
             this.check_pesquisa_data_visita.TabIndex = 14;
             this.check_pesquisa_data_visita.Text = "Pesquisar por data da visita";
             this.check_pesquisa_data_visita.UseVisualStyleBackColor = true;
-            this.check_pesquisa_data_visita.CheckedChanged += new System.EventHandler(this.check_pesquisa_data_visita_CheckedChanged);
             // 
             // check_pesquisa_ano_batismo
             // 
             this.check_pesquisa_ano_batismo.AutoSize = true;
+            this.check_pesquisa_ano_batismo.Enabled = false;
             this.check_pesquisa_ano_batismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_ano_batismo.Location = new System.Drawing.Point(960, 137);
+            this.check_pesquisa_ano_batismo.Location = new System.Drawing.Point(917, 119);
             this.check_pesquisa_ano_batismo.Name = "check_pesquisa_ano_batismo";
             this.check_pesquisa_ano_batismo.Size = new System.Drawing.Size(292, 29);
             this.check_pesquisa_ano_batismo.TabIndex = 17;
@@ -264,8 +272,9 @@
             // check_pesquisa_nome
             // 
             this.check_pesquisa_nome.AutoSize = true;
+            this.check_pesquisa_nome.Enabled = false;
             this.check_pesquisa_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_nome.Location = new System.Drawing.Point(960, 196);
+            this.check_pesquisa_nome.Location = new System.Drawing.Point(599, 166);
             this.check_pesquisa_nome.Name = "check_pesquisa_nome";
             this.check_pesquisa_nome.Size = new System.Drawing.Size(208, 29);
             this.check_pesquisa_nome.TabIndex = 18;
@@ -273,23 +282,22 @@
             this.check_pesquisa_nome.UseVisualStyleBackColor = true;
             this.check_pesquisa_nome.CheckedChanged += new System.EventHandler(this.check_pesquisa_nome_CheckedChanged);
             // 
-            // txt_pesquisa_nome
+            // txt_pesquisa_texto
             // 
-            this.txt_pesquisa_nome.Enabled = false;
-            this.txt_pesquisa_nome.Location = new System.Drawing.Point(1542, 31);
-            this.txt_pesquisa_nome.Name = "txt_pesquisa_nome";
-            this.txt_pesquisa_nome.Size = new System.Drawing.Size(242, 22);
-            this.txt_pesquisa_nome.TabIndex = 19;
-            this.txt_pesquisa_nome.TextChanged += new System.EventHandler(this.txt_pesquisa_nome_TextChanged);
+            this.txt_pesquisa_texto.Enabled = false;
+            this.txt_pesquisa_texto.Location = new System.Drawing.Point(1542, 31);
+            this.txt_pesquisa_texto.Name = "txt_pesquisa_texto";
+            this.txt_pesquisa_texto.Size = new System.Drawing.Size(242, 22);
+            this.txt_pesquisa_texto.TabIndex = 19;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1399, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 17);
+            this.label1.Size = new System.Drawing.Size(130, 17);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Pesquisar por nome";
+            this.label1.Text = "Pesquisar por texto";
             // 
             // btn_todos
             // 
@@ -301,94 +309,35 @@
             this.btn_todos.Text = "Todos os registros";
             this.btn_todos.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1399, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 17);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Pesquisar por email";
-            // 
-            // txt_pesquisa_email
-            // 
-            this.txt_pesquisa_email.Enabled = false;
-            this.txt_pesquisa_email.Location = new System.Drawing.Point(1542, 77);
-            this.txt_pesquisa_email.Name = "txt_pesquisa_email";
-            this.txt_pesquisa_email.Size = new System.Drawing.Size(242, 22);
-            this.txt_pesquisa_email.TabIndex = 22;
-            this.txt_pesquisa_email.TextChanged += new System.EventHandler(this.txt_pesquisa_email_TextChanged);
-            this.txt_pesquisa_email.Leave += new System.EventHandler(this.txt_pesquisa_email_Leave);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1354, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 17);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Pesquisar por nome do pai";
-            // 
-            // txt_pesquisa_nome_pai
-            // 
-            this.txt_pesquisa_nome_pai.Enabled = false;
-            this.txt_pesquisa_nome_pai.Location = new System.Drawing.Point(1542, 126);
-            this.txt_pesquisa_nome_pai.Name = "txt_pesquisa_nome_pai";
-            this.txt_pesquisa_nome_pai.Size = new System.Drawing.Size(242, 22);
-            this.txt_pesquisa_nome_pai.TabIndex = 24;
-            this.txt_pesquisa_nome_pai.TextChanged += new System.EventHandler(this.txt_pesquisa_nome_pai_TextChanged);
-            this.txt_pesquisa_nome_pai.Leave += new System.EventHandler(this.txt_pesquisa_nome_pai_Leave);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1354, 174);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(186, 17);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Pesquisar por nome do mãe";
-            // 
-            // txt_pesquisa_nome_mae
-            // 
-            this.txt_pesquisa_nome_mae.Enabled = false;
-            this.txt_pesquisa_nome_mae.Location = new System.Drawing.Point(1542, 169);
-            this.txt_pesquisa_nome_mae.Name = "txt_pesquisa_nome_mae";
-            this.txt_pesquisa_nome_mae.Size = new System.Drawing.Size(242, 22);
-            this.txt_pesquisa_nome_mae.TabIndex = 26;
-            this.txt_pesquisa_nome_mae.TextChanged += new System.EventHandler(this.txt_pesquisa_nome_mae_TextChanged);
-            this.txt_pesquisa_nome_mae.Leave += new System.EventHandler(this.txt_pesquisa_nome_mae_Leave);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1322, 226);
+            this.label5.Location = new System.Drawing.Point(1371, 84);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(197, 17);
+            this.label5.Size = new System.Drawing.Size(148, 17);
             this.label5.TabIndex = 29;
-            this.label5.Text = "Pesquisar por ano de batismo";
+            this.label5.Text = "Pesquisar por numero";
             // 
-            // txt_pesquisa_ano_batismo_valor1
+            // txt_pesquisa_numero1
             // 
-            this.txt_pesquisa_ano_batismo_valor1.Enabled = false;
-            this.txt_pesquisa_ano_batismo_valor1.Location = new System.Drawing.Point(1570, 221);
-            this.txt_pesquisa_ano_batismo_valor1.Name = "txt_pesquisa_ano_batismo_valor1";
-            this.txt_pesquisa_ano_batismo_valor1.Size = new System.Drawing.Size(69, 22);
-            this.txt_pesquisa_ano_batismo_valor1.TabIndex = 28;
-            this.txt_pesquisa_ano_batismo_valor1.TextChanged += new System.EventHandler(this.txt_pesquisa_ano_batismo_valor1_TextChanged);
+            this.txt_pesquisa_numero1.Enabled = false;
+            this.txt_pesquisa_numero1.Location = new System.Drawing.Point(1570, 79);
+            this.txt_pesquisa_numero1.Name = "txt_pesquisa_numero1";
+            this.txt_pesquisa_numero1.Size = new System.Drawing.Size(69, 22);
+            this.txt_pesquisa_numero1.TabIndex = 28;
             // 
-            // txt_pesquisa_ano_batismo_valor2
+            // txt_pesquisa_numero2
             // 
-            this.txt_pesquisa_ano_batismo_valor2.Enabled = false;
-            this.txt_pesquisa_ano_batismo_valor2.Location = new System.Drawing.Point(1715, 221);
-            this.txt_pesquisa_ano_batismo_valor2.Name = "txt_pesquisa_ano_batismo_valor2";
-            this.txt_pesquisa_ano_batismo_valor2.Size = new System.Drawing.Size(69, 22);
-            this.txt_pesquisa_ano_batismo_valor2.TabIndex = 30;
-            this.txt_pesquisa_ano_batismo_valor2.TextChanged += new System.EventHandler(this.txt_pesquisa_ano_batismo_valor2_TextChanged);
+            this.txt_pesquisa_numero2.Enabled = false;
+            this.txt_pesquisa_numero2.Location = new System.Drawing.Point(1715, 79);
+            this.txt_pesquisa_numero2.Name = "txt_pesquisa_numero2";
+            this.txt_pesquisa_numero2.Size = new System.Drawing.Size(69, 22);
+            this.txt_pesquisa_numero2.TabIndex = 30;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1538, 224);
+            this.label6.Location = new System.Drawing.Point(1538, 82);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 17);
             this.label6.TabIndex = 31;
@@ -397,57 +346,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1667, 226);
+            this.label7.Location = new System.Drawing.Point(1667, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 17);
             this.label7.TabIndex = 32;
             this.label7.Text = "Até";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1667, 286);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 17);
-            this.label8.TabIndex = 37;
-            this.label8.Text = "Até";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1538, 284);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 17);
-            this.label9.TabIndex = 36;
-            this.label9.Text = "De";
-            // 
-            // txt_pesquisa_id_valor2
-            // 
-            this.txt_pesquisa_id_valor2.Enabled = false;
-            this.txt_pesquisa_id_valor2.Location = new System.Drawing.Point(1715, 281);
-            this.txt_pesquisa_id_valor2.Name = "txt_pesquisa_id_valor2";
-            this.txt_pesquisa_id_valor2.Size = new System.Drawing.Size(69, 22);
-            this.txt_pesquisa_id_valor2.TabIndex = 35;
-            this.txt_pesquisa_id_valor2.TextChanged += new System.EventHandler(this.txt_pesquisa_id_valor2_TextChanged);
-            this.txt_pesquisa_id_valor2.Leave += new System.EventHandler(this.txt_pesquisa_id_valor2_Leave);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1408, 286);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 17);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Pesquisar por id";
-            // 
-            // txt_pesquisa_id_valor1
-            // 
-            this.txt_pesquisa_id_valor1.Enabled = false;
-            this.txt_pesquisa_id_valor1.Location = new System.Drawing.Point(1570, 281);
-            this.txt_pesquisa_id_valor1.Name = "txt_pesquisa_id_valor1";
-            this.txt_pesquisa_id_valor1.Size = new System.Drawing.Size(69, 22);
-            this.txt_pesquisa_id_valor1.TabIndex = 33;
-            this.txt_pesquisa_id_valor1.TextChanged += new System.EventHandler(this.txt_pesquisa_id_valor1_TextChanged);
             // 
             // radio_telefone
             // 
@@ -488,33 +391,205 @@
             this.radio_mudanca.UseVisualStyleBackColor = true;
             this.radio_mudanca.CheckedChanged += new System.EventHandler(this.radio_mudanca_CheckedChanged);
             // 
+            // mask_horario_valor1
+            // 
+            this.mask_horario_valor1.Enabled = false;
+            this.mask_horario_valor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mask_horario_valor1.Location = new System.Drawing.Point(1570, 131);
+            this.mask_horario_valor1.Mask = "00:00";
+            this.mask_horario_valor1.Name = "mask_horario_valor1";
+            this.mask_horario_valor1.Size = new System.Drawing.Size(69, 30);
+            this.mask_horario_valor1.TabIndex = 275;
+            this.mask_horario_valor1.ValidatingType = typeof(System.DateTime);
+            // 
+            // mask_horario_valor2
+            // 
+            this.mask_horario_valor2.Enabled = false;
+            this.mask_horario_valor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mask_horario_valor2.Location = new System.Drawing.Point(1715, 131);
+            this.mask_horario_valor2.Mask = "00:00";
+            this.mask_horario_valor2.Name = "mask_horario_valor2";
+            this.mask_horario_valor2.Size = new System.Drawing.Size(69, 30);
+            this.mask_horario_valor2.TabIndex = 276;
+            this.mask_horario_valor2.ValidatingType = typeof(System.DateTime);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1538, 141);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(26, 17);
+            this.label11.TabIndex = 277;
+            this.label11.Text = "De";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1667, 144);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 17);
+            this.label12.TabIndex = 278;
+            this.label12.Text = "Até";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1374, 141);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(145, 17);
+            this.label13.TabIndex = 279;
+            this.label13.Text = "Pesquisar por horario";
+            // 
+            // mask_data_valor1
+            // 
+            this.mask_data_valor1.BeepOnError = true;
+            this.mask_data_valor1.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.mask_data_valor1.Enabled = false;
+            this.mask_data_valor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mask_data_valor1.Location = new System.Drawing.Point(1539, 190);
+            this.mask_data_valor1.Margin = new System.Windows.Forms.Padding(4);
+            this.mask_data_valor1.Mask = "00/00/0000";
+            this.mask_data_valor1.Name = "mask_data_valor1";
+            this.mask_data_valor1.RejectInputOnFirstFailure = true;
+            this.mask_data_valor1.Size = new System.Drawing.Size(101, 29);
+            this.mask_data_valor1.TabIndex = 280;
+            this.mask_data_valor1.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(1361, 196);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(128, 17);
+            this.label14.TabIndex = 281;
+            this.label14.Text = "Pesquisar por data";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(1506, 196);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(26, 17);
+            this.label15.TabIndex = 282;
+            this.label15.Text = "De";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(1647, 196);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 17);
+            this.label16.TabIndex = 283;
+            this.label16.Text = "Até";
+            // 
+            // mask_data_valor2
+            // 
+            this.mask_data_valor2.BeepOnError = true;
+            this.mask_data_valor2.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.mask_data_valor2.Enabled = false;
+            this.mask_data_valor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mask_data_valor2.Location = new System.Drawing.Point(1683, 187);
+            this.mask_data_valor2.Margin = new System.Windows.Forms.Padding(4);
+            this.mask_data_valor2.Mask = "00/00/0000";
+            this.mask_data_valor2.Name = "mask_data_valor2";
+            this.mask_data_valor2.RejectInputOnFirstFailure = true;
+            this.mask_data_valor2.Size = new System.Drawing.Size(101, 29);
+            this.mask_data_valor2.TabIndex = 284;
+            this.mask_data_valor2.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
+            // check_horario_celula
+            // 
+            this.check_horario_celula.AutoSize = true;
+            this.check_horario_celula.Enabled = false;
+            this.check_horario_celula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_horario_celula.Location = new System.Drawing.Point(917, 158);
+            this.check_horario_celula.Name = "check_horario_celula";
+            this.check_horario_celula.Size = new System.Drawing.Size(302, 29);
+            this.check_horario_celula.TabIndex = 285;
+            this.check_horario_celula.Text = "Pesquisar por horario da celula";
+            this.check_horario_celula.UseVisualStyleBackColor = true;
+            this.check_horario_celula.CheckedChanged += new System.EventHandler(this.check_horario_celula_CheckedChanged);
+            // 
+            // check_horario_reuniao
+            // 
+            this.check_horario_reuniao.AutoSize = true;
+            this.check_horario_reuniao.Enabled = false;
+            this.check_horario_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_horario_reuniao.Location = new System.Drawing.Point(917, 193);
+            this.check_horario_reuniao.Name = "check_horario_reuniao";
+            this.check_horario_reuniao.Size = new System.Drawing.Size(392, 29);
+            this.check_horario_reuniao.TabIndex = 286;
+            this.check_horario_reuniao.Text = "Pesquisar por horario de inicio de reunião";
+            this.check_horario_reuniao.UseVisualStyleBackColor = true;
+            this.check_horario_reuniao.CheckedChanged += new System.EventHandler(this.check_horario_reuniao_CheckedChanged);
+            // 
+            // check_horario_final_reuniao
+            // 
+            this.check_horario_final_reuniao.AutoSize = true;
+            this.check_horario_final_reuniao.Enabled = false;
+            this.check_horario_final_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_horario_final_reuniao.Location = new System.Drawing.Point(917, 229);
+            this.check_horario_final_reuniao.Name = "check_horario_final_reuniao";
+            this.check_horario_final_reuniao.Size = new System.Drawing.Size(356, 29);
+            this.check_horario_final_reuniao.TabIndex = 287;
+            this.check_horario_final_reuniao.Text = "Pesquisar por horario final de reunião";
+            this.check_horario_final_reuniao.UseVisualStyleBackColor = true;
+            this.check_horario_final_reuniao.CheckedChanged += new System.EventHandler(this.check_horario_final_reuniao_CheckedChanged);
+            // 
+            // check_data_mudanca_estado
+            // 
+            this.check_data_mudanca_estado.AutoSize = true;
+            this.check_data_mudanca_estado.Enabled = false;
+            this.check_data_mudanca_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_data_mudanca_estado.Location = new System.Drawing.Point(917, 90);
+            this.check_data_mudanca_estado.Name = "check_data_mudanca_estado";
+            this.check_data_mudanca_estado.Size = new System.Drawing.Size(401, 29);
+            this.check_data_mudanca_estado.TabIndex = 288;
+            this.check_data_mudanca_estado.Text = "Pesquisar por data da mudança de estado";
+            this.check_data_mudanca_estado.UseVisualStyleBackColor = true;
+            this.check_data_mudanca_estado.CheckedChanged += new System.EventHandler(this.check_data_mudanca_estado_CheckedChanged);
+            // 
+            // txt_comando
+            // 
+            this.txt_comando.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_comando.Location = new System.Drawing.Point(1346, 482);
+            this.txt_comando.Multiline = true;
+            this.txt_comando.Name = "txt_comando";
+            this.txt_comando.Size = new System.Drawing.Size(415, 163);
+            this.txt_comando.TabIndex = 289;
+            this.txt_comando.Text = "comando";
+            // 
             // Pesquisar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1817, 819);
+            this.Controls.Add(this.txt_comando);
+            this.Controls.Add(this.check_data_mudanca_estado);
+            this.Controls.Add(this.check_horario_final_reuniao);
+            this.Controls.Add(this.check_horario_reuniao);
+            this.Controls.Add(this.check_horario_celula);
+            this.Controls.Add(this.mask_data_valor2);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.mask_data_valor1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.mask_horario_valor2);
+            this.Controls.Add(this.mask_horario_valor1);
             this.Controls.Add(this.radio_mudanca);
             this.Controls.Add(this.radio_endereco);
             this.Controls.Add(this.radio_telefone);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txt_pesquisa_id_valor2);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.txt_pesquisa_id_valor1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_pesquisa_ano_batismo_valor2);
+            this.Controls.Add(this.txt_pesquisa_numero2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txt_pesquisa_ano_batismo_valor1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txt_pesquisa_nome_mae);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_pesquisa_nome_pai);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_pesquisa_email);
+            this.Controls.Add(this.txt_pesquisa_numero1);
             this.Controls.Add(this.btn_todos);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_pesquisa_nome);
+            this.Controls.Add(this.txt_pesquisa_texto);
             this.Controls.Add(this.check_pesquisa_nome);
             this.Controls.Add(this.check_pesquisa_ano_batismo);
             this.Controls.Add(this.check_pesquisa_data_visita);
@@ -562,27 +637,31 @@
         private System.Windows.Forms.CheckBox check_pesquisa_data_visita;
         private System.Windows.Forms.CheckBox check_pesquisa_ano_batismo;
         private System.Windows.Forms.CheckBox check_pesquisa_nome;
-        private System.Windows.Forms.TextBox txt_pesquisa_nome;
+        private System.Windows.Forms.TextBox txt_pesquisa_texto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_todos;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_pesquisa_email;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_pesquisa_nome_pai;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_pesquisa_nome_mae;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_pesquisa_ano_batismo_valor1;
-        private System.Windows.Forms.TextBox txt_pesquisa_ano_batismo_valor2;
+        private System.Windows.Forms.TextBox txt_pesquisa_numero1;
+        private System.Windows.Forms.TextBox txt_pesquisa_numero2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_pesquisa_id_valor2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_pesquisa_id_valor1;
         private System.Windows.Forms.RadioButton radio_telefone;
         private System.Windows.Forms.RadioButton radio_endereco;
         private System.Windows.Forms.RadioButton radio_mudanca;
+        private System.Windows.Forms.MaskedTextBox mask_horario_valor1;
+        private System.Windows.Forms.MaskedTextBox mask_horario_valor2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox mask_data_valor1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.MaskedTextBox mask_data_valor2;
+        private System.Windows.Forms.CheckBox check_horario_celula;
+        private System.Windows.Forms.CheckBox check_horario_reuniao;
+        private System.Windows.Forms.CheckBox check_horario_final_reuniao;
+        private System.Windows.Forms.CheckBox check_data_mudanca_estado;
+        private System.Windows.Forms.TextBox txt_comando;
     }
 }

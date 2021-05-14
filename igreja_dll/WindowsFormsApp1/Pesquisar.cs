@@ -81,7 +81,7 @@ namespace WindowsFormsApp1
 
             foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
             {
-                var dado = (PessoaDado)item;
+                var dado = (Pessoa)item;
                 dgdados.Rows.Add(dado.IdPessoa, dado.Email, dado.celula_, dado.Falta, dado.Img);
             }   
         }
@@ -306,8 +306,7 @@ namespace WindowsFormsApp1
 
         private void Pesquisar_Load(object sender, EventArgs e)
         {
-            dgdados.Font = new Font("Arial", 18);
-            
+            dgdados.Font = new Font("Arial", 18);            
         }
 
         private void ModificaDataGridView(modelocrud m, string tipo, string comando)
