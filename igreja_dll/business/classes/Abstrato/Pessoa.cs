@@ -88,9 +88,9 @@ namespace business.classes.Abstrato
             try
             {
                 if (Pessoa.UltimoRegistro == 0)
-                Pessoa.UltimoRegistro = recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa + 1;
+                Pessoa.UltimoRegistro = recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
                 else Pessoa.UltimoRegistro++;
-                this.Codigo = Pessoa.UltimoRegistro;
+                this.Codigo = Pessoa.UltimoRegistro + 1;
             }
             catch { Codigo = 1; }
             

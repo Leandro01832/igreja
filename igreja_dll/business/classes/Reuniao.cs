@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -41,6 +42,9 @@ namespace business.classes
 
         [JsonIgnore]
         public virtual List<ReuniaoPessoa> Pessoas { get; set; }
+
+        [NotMapped]
+        public static int UltimoRegistro { get; set; }
 
         AddNalista AddNalista;
 

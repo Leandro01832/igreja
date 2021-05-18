@@ -2,6 +2,7 @@
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using System;
+using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
 
@@ -133,26 +134,38 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem10_Click_1(object sender, EventArgs e)
         {
-            FrmPessoa p = new FrmPessoa(null, "PessoaLgpd");
-            p.MdiParent = this;
-            p.Text = "Janela " + childFormNumber++;
-            p.Show();
+            if (listaPessoas != null)
+            {
+                FrmPessoa p = new FrmPessoa(null, "PessoaLgpd");
+                p.MdiParent = this;
+                p.Text = "Janela " + childFormNumber++;
+                p.Show(); 
+            }
         }
 
         private void pessoasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPessoa p = new FrmPessoa(null, "Pessoa");
-            p.MdiParent = this;
-            p.Text = "Janela " + childFormNumber++;
-            p.Show();
+            if (listaPessoas != null)
+            {
+                FrmPessoa p = new FrmPessoa(null, "Pessoa");
+                p.MdiParent = this;
+                p.Text = "Janela " + childFormNumber++;
+                p.Show();
+            }
+            else MessageBox.Show("Aguarde o processamento.");
+            
         }
 
         private void pessoaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            FrmPessoa p = new FrmPessoa(null, "PessoaDado");
-            p.MdiParent = this;
-            p.Text = "Janela " + childFormNumber++;
-            p.Show();
+            if (listaPessoas != null)
+            {
+                FrmPessoa p = new FrmPessoa(null, "PessoaDado");
+                p.MdiParent = this;
+                p.Text = "Janela " + childFormNumber++;
+                p.Show(); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void visitanteToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -173,18 +186,26 @@ namespace WindowsFormsApp1
 
         private void membroToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            FrmMembro m = new FrmMembro(null, "Membro");
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (listaPessoas != null)
+            {
+                FrmMembro m = new FrmMembro(null, "Membro");
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show(); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem12_Click_1(object sender, EventArgs e)
         {
-            FrmMembro m = new FrmMembro(null, "MembroLgpd");
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (listaPessoas != null)
+            {
+                FrmMembro m = new FrmMembro(null, "MembroLgpd");
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show(); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void criançaToolStripMenuItem1_Click_1(object sender, EventArgs e)

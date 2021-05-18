@@ -23,10 +23,7 @@ namespace WindowsFormsApp1
         #region IdentityRegistryNews
 
         DateTime date;
-        int UltimoRegistroPessoa;
-        int UltimoRegistroCelula;
-        int UltimoRegistroMinisterio;
-        int UltimoRegistroReuniao;
+        
         List<Pessoa> ListaPessoas;
         List<Ministerio> ListaMinisterios;
         List<Celula> ListaCelulas;
@@ -136,21 +133,7 @@ namespace WindowsFormsApp1
                 }
         }
 
-        private async void UltimoRegistro()
-        {
-            var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
-            var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
-            var lp = await Task.Run(() => Pessoa.recuperarTodos());
-            var lr = await Task.Run(() => new Reuniao().recuperar(null));
-            try{UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo;}
-            catch { UltimoRegistroPessoa = 0; }
-            try { UltimoRegistroReuniao = lr.OfType<Reuniao>().Last().IdReuniao; }
-            catch { UltimoRegistroReuniao = 0; }
-            try { UltimoRegistroMinisterio = lm.OfType<Ministerio>().Last().IdMinisterio; }
-            catch { UltimoRegistroMinisterio = 0; }
-            try { UltimoRegistroCelula = lc.OfType<Celula>().Last().IdCelula; }
-            catch { UltimoRegistroCelula = 0; }
-        }
+        
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {

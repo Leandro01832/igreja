@@ -18,15 +18,10 @@ namespace WindowsFormsApp1.Formulario.Reuniao
         {
             InitializeComponent();
         }
-
-        List<business.classes.Abstrato.Pessoa> lista;
+        
 
         private void PessoasReuniao_Load(object sender, EventArgs e)
         {
-            lista = new List<business.classes.Abstrato.Pessoa>();
-            lista = business.classes.Abstrato.Pessoa.recuperarTodos()
-            .OfType<business.classes.Abstrato.Pessoa>().ToList();
-
             var p = (business.classes.Reuniao)modelo;
 
             if(p.IdReuniao == 0)
@@ -37,7 +32,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
-                        var modelo = lista.First(m => m.IdPessoa == int.Parse(item));
+                        var modelo = listaPessoas.First(m => m.IdPessoa == int.Parse(item));
                         txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                     }
                 }
@@ -68,7 +63,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                 {
                     if (item != "")
                     {
-                        var modelo = lista.FirstOrDefault(m => m.Codigo == int.Parse(item));
+                        var modelo = listaPessoas.FirstOrDefault(m => m.Codigo == int.Parse(item));
                         try
                         {
                             AddNaListaReuniaoPessoas += modelo.IdPessoa.ToString() + ", ";
@@ -77,8 +72,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                         {
                             AddNaListaReuniaoPessoas = "";
                             txt_pessoas.Text = "";
-                            MessageBox.Show("Este formulario não esta atualizado." +
-                            " Para atualizar feche e abra novamente o formulario.");
+                            MessageBox.Show("Aguarde um pouco para que seja atualizado a lista de pessoas.");
                         }
                     }
 

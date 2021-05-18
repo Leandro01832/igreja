@@ -20,14 +20,11 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         {
             InitializeComponent();
         }
-        List<business.classes.Abstrato.Pessoa> lista;
+        
 
         private void DadoMinisterio_Load(object sender, EventArgs e)
         {
             this.Text = " - Dados de Ministério";
-            lista = new List<business.classes.Abstrato.Pessoa>();
-            lista = business.classes.Abstrato.Pessoa.recuperarTodos()
-            .OfType<business.classes.Abstrato.Pessoa>().ToList();
 
             if (modelo != null)
             {
@@ -47,23 +44,23 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void txt_proposito_TextChanged(object sender, EventArgs e)
         {
-            var m = (business.classes.Abstrato.Ministerio)modelo;
+            var m = (Ministerio)modelo;
             m.Proposito = txt_proposito.Text;
         }
 
         private void txt_ministro_TextChanged(object sender, EventArgs e)
         {
-            var m = (business.classes.Abstrato.Ministerio)modelo;
+            var m = (Ministerio)modelo;
             try
             {
-                var modelo = lista.First(i => i.Codigo == int.Parse(txt_ministro.Text));
+                var modelo = listaPessoas.First(i => i.Codigo == int.Parse(txt_ministro.Text));
                 m.Ministro_ = modelo.IdPessoa;
             }
             catch (Exception)
             {
                 m.Ministro_ = null;
                 txt_ministro.Text = "";
-                MessageBox.Show("Informe um numero de indentificação. Apenas digitos.");
+                MessageBox.Show("Informe um numero de indentificação. Apenas numeros.");
             }
         }
     }

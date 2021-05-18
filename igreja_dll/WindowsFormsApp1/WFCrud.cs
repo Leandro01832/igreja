@@ -6,6 +6,7 @@ using business.classes.PessoasLgpd;
 using database;
 using database.banco;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
@@ -59,6 +60,8 @@ namespace WindowsFormsApp1
         //botoes para select: Reuniao
         private Button dadoReuniao;
         private Button dadoReuniaoPessoas;
+
+        
 
 
         public modelocrud modelo { get; set; }

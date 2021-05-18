@@ -12,7 +12,6 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         {
             InitializeComponent();
         }
-        List<business.classes.Abstrato.Pessoa> lista;
 
         public PessoasCelulasMinisterio(Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
@@ -23,9 +22,6 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)
         {
             this.Text = " - Celulas e pessoas do ministério.";
-            lista = new List<business.classes.Abstrato.Pessoa>();
-            lista = business.classes.Abstrato.Pessoa.recuperarTodos()
-            .OfType<business.classes.Abstrato.Pessoa>().ToList();
 
             var ministerio = (Ministerio)modelo;
             if (ministerio.IdMinisterio == 0)
@@ -37,7 +33,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     {
                         if(item != "")
                         {
-                            var modelo = lista.First(m => m.IdPessoa == int.Parse(item));
+                            var modelo = listaPessoas.First(m => m.IdPessoa == int.Parse(item));
                             txt_pessoas.Text = modelo.Codigo.ToString() + ", ";
                         }                        
                     }
@@ -83,7 +79,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 {
                     int numero = int.Parse(item);
                     
-                    var modelo = lista.FirstOrDefault(i => i.Codigo == numero);
+                    var modelo = listaPessoas.FirstOrDefault(i => i.Codigo == numero);
                     try
                     {
                         AddNaListaMinisterioPessoas += modelo.IdPessoa.ToString() + ", ";

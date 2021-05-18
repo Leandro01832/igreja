@@ -142,7 +142,6 @@
             this.chamadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mudançaDeEstadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.envioDeArquivosPServidorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,8 +203,7 @@
             this.toolStripSeparator5,
             this.exitToolStripMenuItem,
             this.pesquisarToolStripMenuItem,
-            this.relatórioToolStripMenuItem,
-            this.envioDeArquivosPServidorToolStripMenuItem});
+            this.relatórioToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(94, 32);
@@ -223,7 +221,7 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.openToolStripMenuItem.Text = "&Abrir";
             // 
             // ministerioToolStripMenuItem1
@@ -502,7 +500,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(343, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(240, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -516,7 +514,7 @@
             this.toolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Black;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(346, 32);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 32);
             this.toolStripMenuItem1.Text = "Cadastar";
             // 
             // toolStripMenuItem18
@@ -773,18 +771,18 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(343, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(240, 6);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(343, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(240, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.exitToolStripMenuItem.Text = "Sai&r";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -792,7 +790,7 @@
             // 
             this.pesquisarToolStripMenuItem.Name = "pesquisarToolStripMenuItem";
             this.pesquisarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.pesquisarToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
+            this.pesquisarToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.pesquisarToolStripMenuItem.Text = "Pesquisar";
             this.pesquisarToolStripMenuItem.Click += new System.EventHandler(this.pesquisarToolStripMenuItem_Click);
             // 
@@ -807,7 +805,7 @@
             this.historicoToolStripMenuItem,
             this.mudançaDeEstadoToolStripMenuItem1});
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
-            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.relatórioToolStripMenuItem.Text = "Relatório";
             // 
             // pessoaToolStripMenuItem2
@@ -1094,12 +1092,6 @@
             this.mudançaDeEstadoToolStripMenuItem1.Size = new System.Drawing.Size(262, 32);
             this.mudançaDeEstadoToolStripMenuItem1.Text = "Mudança de estado";
             this.mudançaDeEstadoToolStripMenuItem1.Click += new System.EventHandler(this.mudançaDeEstadoToolStripMenuItem1_Click);
-            // 
-            // envioDeArquivosPServidorToolStripMenuItem
-            // 
-            this.envioDeArquivosPServidorToolStripMenuItem.Name = "envioDeArquivosPServidorToolStripMenuItem";
-            this.envioDeArquivosPServidorToolStripMenuItem.Size = new System.Drawing.Size(346, 32);
-            this.envioDeArquivosPServidorToolStripMenuItem.Text = "envio de arquivos p/ servidor";
             // 
             // viewMenu
             // 
@@ -1498,7 +1490,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem39;
         private System.Windows.Forms.ToolStripMenuItem mudançaDeEstadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mudançaDeEstadoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem envioDeArquivosPServidorToolStripMenuItem;
     }
 }
 

@@ -110,18 +110,26 @@ namespace WindowsFormsApp1
 
         private void ministerioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmMinisterio m = new FrmMinisterio();
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
+            if (listaMinisterios != null)
+            {
+                FrmMinisterio m = new FrmMinisterio();
+                m.MdiParent = this;
+                m.Text = "Janela " + childFormNumber++;
+                m.Show();
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void celulaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmCelula c = new FrmCelula();
-            c.MdiParent = this;
-            c.Text = "Janela " + childFormNumber++;
-            c.Show();
+            if (listaCelulas != null)
+            {
+                FrmCelula c = new FrmCelula();
+                c.MdiParent = this;
+                c.Text = "Janela " + childFormNumber++;
+                c.Show(); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void mininstérioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -457,13 +465,21 @@ namespace WindowsFormsApp1
 
         private  void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmReuniao frm = new FrmReuniao();
+            if (listaReuniao != null)
+            {
+                FrmReuniao frm = new FrmReuniao();
+                frm.MdiParent = this;
+                frm.Text = "Janela " + childFormNumber++;
+                frm.Show(); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void reuniãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DadoReuniao frm = new DadoReuniao(new Reuniao(), false, false, false);
             frm.MdiParent = this;
+            frm.Text = "Janela " + childFormNumber++;
             frm.Show();
         }
 
@@ -480,22 +496,6 @@ namespace WindowsFormsApp1
             ImprimirRelatorio ir = new ImprimirRelatorio();
            await ir.imprimir(new MudancaEstado(), tipo);
         }
-
-        private async Task envioDeArquivosPServidorToolStripMenuItem_ClickAsync(object sender, EventArgs e)
-        {
-            string StartDirectory = @"c:\Users\exampleuser\start";
-            string EndDirectory = @"c:\Users\exampleuser\end";
-
-            foreach (string filename in Directory.EnumerateFiles(StartDirectory))
-            {
-                using (FileStream SourceStream = File.Open(filename, FileMode.Open))
-                {
-                    using (FileStream DestinationStream = File.Create(EndDirectory + filename.Substring(filename.LastIndexOf('\\'))))
-                    {
-                        await SourceStream.CopyToAsync(DestinationStream);
-                    }
-                }
-            }
-        }
+        
     }
 }

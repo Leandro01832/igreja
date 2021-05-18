@@ -44,6 +44,9 @@ namespace business.classes.Abstrato
         [JsonIgnore]
         public virtual EnderecoCelula EnderecoCelula { get; set; }
 
+        [NotMapped]
+        public static int UltimoRegistro { get; set; }
+
         AddNalista AddNalista;
         BuscaLista BuscaLista;
 

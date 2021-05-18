@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.Formulario
         public FormularioListView(TodosListViews ListView)
         {
             this.Modelo = ListView.Modelo;
-            this.Tipo = ListView.Tipo;
+            this.Tipo = ListView.Tipo;            
 
             Mudanca = new Button();
             Mudanca.Location = new Point(570, 40);
@@ -285,93 +285,63 @@ namespace WindowsFormsApp1.Formulario
             {
                 if (Tipo == "Celula")
                 {
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => business.classes.Abstrato.Celula.recuperarTodasCelulas());
-                    form.Close();
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaCelulas)
+                    lista.Add(item);
+                    
+                    
                 }
                     
 
                 if (Tipo == "Ministerio")
                 {
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
-                    form.Close();
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaMinisterios)
+                        lista.Add(item);
                 }
                     
 
                 if (Tipo == "Pessoa")
                 {
                     Mudanca.Visible = true;
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
-                    form.Close();                    
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas)
+                        lista.Add(item);
                 }
 
                 if (Tipo == "PessoaDado")
                 {
                     Mudanca.Visible = true;
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
-                    form.Close();
-                    lista = lista.OfType<PessoaDado>().Select(m => (modelocrud)m).ToList();
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<PessoaDado>())
+                        lista.Add(item);
                 }
 
 
                 if (Tipo == "PessoaLgpd")
                 {
                     Mudanca.Visible = true;
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
-                    form.Close();
-                    lista = lista.OfType<PessoaLgpd>().Select(m => (modelocrud)m).ToList();
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<PessoaLgpd>())
+                        lista.Add(item);
                 }
 
 
                 if (Tipo == "MembroLgpd")
                 {
                     Mudanca.Visible = true;
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
-                    form.Close();
-                    lista = lista.OfType<MembroLgpd>().Select(m => (modelocrud)m).ToList();
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<MembroLgpd>())
+                        lista.Add(item);
                 }
 
 
                 if (Tipo == "Membro")
                 {
                     Mudanca.Visible = true;
-                    FormProgressBar form = new FormProgressBar();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Tipo}";
-                    form.Show();
-                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
-                    form.Close();
-                    lista = lista.OfType<Membro>().Select(m => (modelocrud)m).ToList();
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<Membro>())
+                        lista.Add(item);
                 }
 
             }
@@ -384,9 +354,6 @@ namespace WindowsFormsApp1.Formulario
                     ListView.Items.Add(v.ToString());
                 }
             }
-
-
-
         }
     }
 }

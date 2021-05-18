@@ -39,6 +39,9 @@ namespace business.classes.Abstrato
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public int Maximo_pessoa { get; set; }
 
+        [NotMapped]
+        public static int UltimoRegistro { get; set; }
+
         AddNalista AddNalista;
         public Ministerio() : base()
         {
