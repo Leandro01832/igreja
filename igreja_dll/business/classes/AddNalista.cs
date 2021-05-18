@@ -97,6 +97,7 @@ namespace business.classes
             if (dr.HasRows == false)
             {
                 AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
+                bd.obterconexao().Close();
                 return "";
             }
             else

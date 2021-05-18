@@ -53,18 +53,17 @@ namespace business.classes
                 Select_padrao += Select_padrao + $" where M.IdTelefone={id}";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -89,18 +88,37 @@ namespace business.classes
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
-                        this.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
-                        this.Fone = Convert.ToString(dr["Fone"]);
-                        this.Celular = Convert.ToString(dr["Celular"]);
-                        this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                        modelos.Add(this);
+                        Telefone tel = new Telefone();
+                        tel.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
+                        modelos.Add(tel);
                     }
 
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Telefone)m;
+                        var c = new Telefone();
+                        c = (Telefone)m.recuperar(cel.IdTelefone)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
 
                 catch (Exception ex)
@@ -108,7 +126,10 @@ namespace business.classes
                     MessageBox.Show(ex.Message);
 
                 }
-
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
                 return modelos;
             }
 

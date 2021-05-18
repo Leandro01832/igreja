@@ -55,19 +55,23 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from Membro_Transferencia as MT "
+            + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
+            + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
+                if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -89,17 +93,36 @@ namespace business.classes.Pessoas
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Membro_Transferencia mt = new Membro_Transferencia();
-                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        mt.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        mt.NomePessoa = Convert.ToString(dr["NomePessoa"]);                        
+                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));                   
                         modelos.Add(mt);
                     }
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Membro_Transferencia)m;
+                        var c = new Membro_Transferencia();
+                        c = (Membro_Transferencia)m.recuperar(cel.IdPessoa)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
                 catch (Exception ex)
                 {

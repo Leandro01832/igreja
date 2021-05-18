@@ -72,18 +72,17 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where M.IdMinisterio='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -94,6 +93,7 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                     this.Pessoas = new List<PessoaMinisterio>();
+                    bd.obterconexao().Close();
                     var listaPessoas = buscarPessoas(id);
                     if(listaPessoas != null)
                     foreach (var item in listaPessoas)
@@ -118,6 +118,8 @@ namespace business.classes.Abstrato
                 }
                 return modelos;
             }
+
+            bd.obterconexao().Close();
             return modelos;
         }
 

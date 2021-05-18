@@ -38,7 +38,7 @@ namespace database
         [NotMapped]
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
 
-        public BDcomum bd;       
+        public BDcomum bd;
 
         public abstract string salvar();
         public abstract string alterar( int id);

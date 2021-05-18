@@ -39,18 +39,22 @@ namespace business.classes.Celulas
             if (id != null) Select_padrao += $" where CA.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
+                base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from Celula_Adolescente as CA "
+                + " inner join Celula as C on CA.IdCelula=C.IdCelula ";
+                if (id != null) Select_padrao += $" where CA.IdCelula='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     modelos.Add(this);
@@ -68,6 +72,15 @@ namespace business.classes.Celulas
             }
             else
             {
+                bd.obterconexao().Open();
+                if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
@@ -79,6 +92,19 @@ namespace business.classes.Celulas
                     }
 
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Celula_Adolescente)m;
+                        var c = new Celula_Adolescente();
+                        c = (Celula_Adolescente)m.recuperar(cel.IdCelula)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
                 catch (Exception ex)
                 {

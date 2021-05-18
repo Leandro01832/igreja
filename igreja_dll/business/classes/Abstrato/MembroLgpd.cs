@@ -85,19 +85,21 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from MembroLgpd as P ";
+                if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -118,6 +120,7 @@ namespace business.classes.Abstrato
                 }
                 return modelos;
             }
+            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -168,49 +171,7 @@ namespace business.classes.Abstrato
             Task.WaitAll(t, t2, t3, t4);
 
             return t4.Result;
-        }        
-
-        //public modelocrud buscarMembro(int? id)
-        //{
-        //    Select_padrao = "select * from PessoaLgpd as P "
-        //    + " inner join MembroLgpd as M on P.Id=M.Id ";
-        //    if (id != null) Select_padrao += $" where P.Id='{id}'";
-
-        //    List<modelocrud> modelos = new List<modelocrud>();
-        //    var conecta = bd.obterconexao();
-        //    conecta.Open();
-        //    SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-        //    SqlDataReader dr = comando.ExecuteReader();
-        //    if (dr.HasRows == false)
-        //    {
-        //        bd.obterconexao().Close();
-        //        return null;
-        //    }
-
-        //    if (id != null)
-        //    {
-        //        try
-        //        {
-        //            dr.Read();
-        //            this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
-        //            this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
-        //            this.Motivo_desligamento = Convert.ToString(dr["Estado_civil"]);                   
-
-        //            dr.Close();
-        //        }
-
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            bd.obterconexao().Close();
-        //        }
-        //        return this;
-        //    }
-        //    return null;
-        //}
+        }  
         
     }
 }

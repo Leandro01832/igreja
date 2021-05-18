@@ -1,0 +1,16 @@
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\Tests.exe.config
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\Tests.exe
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\Tests.pdb
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\obj\Debug\Tests.exe
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\obj\Debug\Tests.pdb
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\business.dll
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\MySql.Data.dll
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\EntityFramework.dll
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\Newtonsoft.Json.dll
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\business.pdb
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\business.dll.config
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\EntityFramework.xml
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\bin\Debug\Newtonsoft.Json.xml
+D:\codigo-github\Igreja\igreja\igreja_dll\Tests\obj\Debug\Tests.csproj.CopyComplete

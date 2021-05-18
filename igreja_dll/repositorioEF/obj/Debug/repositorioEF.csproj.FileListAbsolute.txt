@@ -68,3 +68,5 @@ D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.
 D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.CopyComplete
 D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.dll
 D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.pdb
+D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.Migrations.Inicial.resources
+D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.GenerateResource.cache

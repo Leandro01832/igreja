@@ -1,5 +1,6 @@
 ﻿using business.classes.Pessoas;
 using database;
+using database.banco;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.DdataGridViews
 {
-   public class Pesquisar : modelocrud, IPesquisar
+   public class Pesquisar :  IPesquisar
     {
 
         public List<modelocrud> BuscarPorRestricao(modelocrud modelo, string tipo, string comando)
@@ -27,10 +28,10 @@ namespace WindowsFormsApp1.DdataGridViews
                 innerjoin = " inner join MembroLgpd as MEM  on M.Id=MEM.Id inner join PessoaLgpd as PL on MEM.Id=P.Id"
                     + " inner join Pessoa as P on PD.Id=P.Id";
 
-             if (modelo is business.classes.Pessoas.PessoaDado)
+             if (modelo is PessoaDado)
                 innerjoin = " inner join PessoaDado as PD on M.Id=P.Id inner join Pessoa as P on PD.Id=P.Id ";
 
-             if (modelo is business.classes.Pessoas.PessoaLgpd)
+             if (modelo is PessoaLgpd)
                 innerjoin = " inner join PessoaLgpd as PD on M.Id=P.Id inner join Pessoa as P on PD.Id=P.Id ";
 
             if (modelo != null)
@@ -42,18 +43,18 @@ namespace WindowsFormsApp1.DdataGridViews
             if (comando != "")
                 comand += $" where {comando} ";
 
-            SqlCommand c = new SqlCommand(comand, bd.obterconexao());
+            SqlCommand c = new SqlCommand(comand, new BDcomum().obterconexao());
             SqlDataAdapter objadp = new SqlDataAdapter(c);
             objadp.Fill(dtable);
 
             if (modelo == null && tipo == "Pessoa" ||
                 modelo == null && tipo == "PessoaLgpd" ||
-                modelo is business.classes.Pessoas.Visitante ||
-                modelo is business.classes.Pessoas.Crianca ||
-                modelo is business.classes.Pessoas.Membro_Aclamacao ||
-                modelo is business.classes.Pessoas.Membro_Batismo ||
-                modelo is business.classes.Pessoas.Membro_Reconciliacao ||
-                modelo is business.classes.Pessoas.Membro_Transferencia ||
+                modelo is Visitante ||
+                modelo is Crianca ||
+                modelo is Membro_Aclamacao ||
+                modelo is Membro_Batismo ||
+                modelo is Membro_Reconciliacao ||
+                modelo is Membro_Transferencia ||
                 modelo is business.classes.PessoasLgpd.VisitanteLgpd ||
                 modelo is business.classes.PessoasLgpd.CriancaLgpd ||
                 modelo is business.classes.PessoasLgpd.Membro_AclamacaoLgpd ||
@@ -146,24 +147,6 @@ namespace WindowsFormsApp1.DdataGridViews
         }
 
 
-        public override string alterar(int id)
-        {
-            throw new NotImplementedException();
-        }       
-
-        public override string excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override List<modelocrud> recuperar(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string salvar()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

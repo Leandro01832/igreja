@@ -79,19 +79,18 @@ namespace business.classes.Abstrato
             + " inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula ";
             if (id != null) Select_padrao += $" where C.IdCelula='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
+            List<modelocrud> modelos = new List<modelocrud>();            
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -112,6 +111,7 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                     this.Ministerios = new List<MinisterioCelula>();
+                    bd.obterconexao().Close();
                     var listaMinisterios = recuperarMinisterios(id);
                     if(listaMinisterios != null)
                     foreach (var item in listaMinisterios)
@@ -136,6 +136,7 @@ namespace business.classes.Abstrato
                 }
                 return modelos;
             }
+            bd.obterconexao().Close();
             return modelos;
         }
 

@@ -4,11 +4,9 @@ using business.classes.Pessoas;
 using database;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
@@ -21,10 +19,7 @@ namespace WindowsFormsApp1.Formulario
 {
     public partial class FormularioListView : FormPadrao
     {
-        public FormularioListView()
-        {
-           
-        }
+        public FormularioListView() { }
 
         List<modelocrud> lista;
 
@@ -79,7 +74,7 @@ namespace WindowsFormsApp1.Formulario
                 return;
             }
             Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-            Modelo = Modelo.recuperar(ListView.numero)[0];
+            // Modelo = Modelo.recuperar(ListView.numero)[0];
 
             FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
             frm.MdiParent = this.MdiParent;
@@ -104,7 +99,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewPessoa)
             {
                 Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , false, false, true);
@@ -115,7 +110,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewCelula)
             {
                 Modelo = lista.OfType<business.classes.Abstrato.Celula>().First(i => i.IdCelula == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 Celula.FinalizarCadastro dp =
             new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -127,7 +122,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewMinisterio)
             {
                 Modelo = lista.OfType<Ministerio>().First(i => i.IdMinisterio == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
                 false, false, true);
@@ -135,10 +130,10 @@ namespace WindowsFormsApp1.Formulario
                 dp.Show();
             }
 
-            if(ListView is ListViewReuniao)
+            if (ListView is ListViewReuniao)
             {
                 Modelo = lista.OfType<business.classes.Reuniao>().First(i => i.IdReuniao == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
                 frm.MdiParent = this.MdiParent;
@@ -148,17 +143,17 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewMudanca)
             {
                 Modelo = lista.OfType<MudancaEstado>().First(i => i.IdMudanca == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
             }
         }
-        
+
         private void botaoAtualizar_Click(object sender, EventArgs e)
         {
-            if(ListView.numero == 0)
+            if (ListView.numero == 0)
             {
                 MessageBox.Show("Escolha um item da lista.");
                 return;
@@ -166,7 +161,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewPessoa)
             {
                 Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , false, true, false);
@@ -177,7 +172,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewCelula)
             {
                 Modelo = lista.OfType<business.classes.Abstrato.Celula>().First(i => i.IdCelula == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 Celula.FinalizarCadastro dp =
             new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -189,7 +184,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewMinisterio)
             {
                 Modelo = lista.OfType<Ministerio>().First(i => i.IdMinisterio == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroMinisterio dp =
                 new FinalizarCadastroMinisterio((Ministerio)Modelo, false, true, false);
@@ -200,13 +195,13 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewReuniao)
             {
                 Modelo = lista.OfType<business.classes.Reuniao>().First(i => i.IdReuniao == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, true, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
             }
-        }        
+        }
 
         private void botaoExcluir_Click(object sender, EventArgs e)
         {
@@ -219,7 +214,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewPessoa)
             {
                 Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , true, false, false);
@@ -230,7 +225,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewCelula)
             {
                 Modelo = lista.OfType<business.classes.Abstrato.Celula>().First(i => i.IdCelula == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 Celula.FinalizarCadastro dp =
             new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
@@ -242,7 +237,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewMinisterio)
             {
                 Modelo = lista.OfType<Ministerio>().First(i => i.IdMinisterio == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroMinisterio dp =
             new FinalizarCadastroMinisterio((Ministerio)Modelo, true, false, false);
@@ -253,7 +248,7 @@ namespace WindowsFormsApp1.Formulario
             if (ListView is ListViewReuniao)
             {
                 Modelo = lista.OfType<business.classes.Reuniao>().First(i => i.IdReuniao == ListView.numero);
-                Modelo = Modelo.recuperar(ListView.numero)[0];
+
 
                 FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, true, false, false);
                 frm.MdiParent = this.MdiParent;
@@ -261,14 +256,13 @@ namespace WindowsFormsApp1.Formulario
             }
 
         }
-        
+
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
-          
-
             this.Size = new Size(700, 350);
+            ListView.Dock = DockStyle.Left;
 
-            if(Modelo is MudancaEstado)
+            if (Modelo is MudancaEstado)
             {
                 botaoAtualizar.Visible = false;
                 botaoDeletar.Visible = false;
@@ -277,54 +271,122 @@ namespace WindowsFormsApp1.Formulario
             lista = new List<modelocrud>();
             if (Modelo != null)
             {
+                FormProgressBar form = new FormProgressBar();
+                form.MdiParent = this.MdiParent;
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Text = $"Barra de processamento - {Modelo.GetType().Name}";
+                form.Show();
                 lista = await Task.Run(() => Modelo.recuperar(null));
-                if(Modelo is business.classes.Abstrato.Pessoa)
-                Mudanca.Visible = true;
-            }            
+                form.Close();
+                if (Modelo is business.classes.Abstrato.Pessoa)
+                    Mudanca.Visible = true;
+            }
             else
             {
                 if (Tipo == "Celula")
+                {
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
                     lista = await Task.Run(() => business.classes.Abstrato.Celula.recuperarTodasCelulas());
+                    form.Close();
+                }
+                    
 
                 if (Tipo == "Ministerio")
+                {
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
                     lista = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+                    form.Close();
+                }
+                    
 
                 if (Tipo == "Pessoa")
                 {
-                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
                     Mudanca.Visible = true;
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
+                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+                    form.Close();                    
                 }
 
                 if (Tipo == "PessoaDado")
                 {
+                    Mudanca.Visible = true;
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
+                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+                    form.Close();
                     lista = lista.OfType<PessoaDado>().Select(m => (modelocrud)m).ToList();
                 }
 
+
                 if (Tipo == "PessoaLgpd")
                 {
+                    Mudanca.Visible = true;
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
+                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+                    form.Close();
                     lista = lista.OfType<PessoaLgpd>().Select(m => (modelocrud)m).ToList();
                 }
 
+
                 if (Tipo == "MembroLgpd")
                 {
+                    Mudanca.Visible = true;
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
+                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+                    form.Close();
                     lista = lista.OfType<MembroLgpd>().Select(m => (modelocrud)m).ToList();
                 }
 
+
                 if (Tipo == "Membro")
                 {
+                    Mudanca.Visible = true;
+                    FormProgressBar form = new FormProgressBar();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Tipo}";
+                    form.Show();
+                    lista = await Task.Run(() => business.classes.Abstrato.Pessoa.recuperarTodos());
+                    form.Close();
                     lista = lista.OfType<Membro>().Select(m => (modelocrud)m).ToList();
                 }
 
             }
 
-
-            ListView.Dock = DockStyle.Left;
-
             if (lista != null)
+            {
+
                 foreach (var v in lista)
                 {
                     ListView.Items.Add(v.ToString());
                 }
+            }
+
+
+
         }
     }
 }

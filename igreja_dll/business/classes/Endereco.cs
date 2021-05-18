@@ -82,18 +82,17 @@ namespace business.classes
                 Select_padrao += $" where M.IdEndereco='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -123,28 +122,46 @@ namespace business.classes
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Endereco end = new Endereco();
-                        end.Pais = Convert.ToString(dr["Pais"]);
-                        end.Estado = Convert.ToString(dr["Estado"]);
-                        end.Cidade = Convert.ToString(dr["Cidade"]);
-                        end.Bairro = Convert.ToString(dr["Bairro"]);
-                        end.Complemento = Convert.ToString(dr["Complemento"]);
                         end.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
-                        end.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-                        end.Cep = long.Parse(Convert.ToString(dr["Cep"]));
                         modelos.Add(end);
                     }
 
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Endereco)m;
+                        var c = new Endereco();
+                        c = (Endereco)m.recuperar(cel.IdEndereco)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
                 }
                 return modelos;
             }

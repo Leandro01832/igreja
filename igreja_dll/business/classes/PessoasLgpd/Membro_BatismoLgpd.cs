@@ -44,6 +44,10 @@ namespace business.classes.PessoasLgpd
             List<modelocrud> modelos = new List<modelocrud>();
             var conecta = bd.obterconexao();
             conecta.Open();
+            Select_padrao = "select * from Membro_BatismoLgpd as MB "
+                + " inner join MembroLgpd as M on MB.IdPessoa=M.IdPessoa "
+                + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
+            if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
             SqlCommand comando = new SqlCommand(Select_padrao, conecta);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
@@ -54,6 +58,7 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
                 modelos.Add(this);
                 return modelos;
@@ -65,12 +70,23 @@ namespace business.classes.PessoasLgpd
                     while (dr.Read())
                     {
                         Membro_BatismoLgpd mb = new Membro_BatismoLgpd();
-                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        mb.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        mb.Email = Convert.ToString(dr["Email"]);                        
+                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));                     
                         modelos.Add(mb);
                     }
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Membro_BatismoLgpd)m;
+                        var c = new Membro_BatismoLgpd();
+                        c = (Membro_BatismoLgpd)m.recuperar(cel.IdPessoa)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
 
                 catch (Exception ex)

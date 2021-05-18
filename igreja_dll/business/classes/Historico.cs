@@ -61,18 +61,17 @@ namespace business.classes
                 Select_padrao += $" where M.IdHistorico='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -97,22 +96,44 @@ namespace business.classes
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Historico h = new Historico();
-                        h.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
                         h.IdHistorico = int.Parse(Convert.ToString(dr["IdHistorico"]));
-                        h.pessoaid = int.Parse(Convert.ToString(dr["pessoaid"]));
-                        h.Falta = int.Parse(Convert.ToString(dr["Falta"]));
                         modelos.Add(h);
                     }
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Historico)m;
+                        var c = new Historico();
+                        c = (Historico)m.recuperar(cel.IdHistorico)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
                 }
                 return modelos;
             }

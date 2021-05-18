@@ -436,18 +436,17 @@ namespace business.classes
             if(id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -475,26 +474,47 @@ namespace business.classes
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         MudancaEstado m = new MudancaEstado();
-                        m.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
                         m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
-                        m.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                        m.novoEstado = Convert.ToString(dr["novoEstado"]);
-                        m.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                         modelos.Add(m);
                     }
 
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (MudancaEstado)m;
+                        var c = new MudancaEstado();
+                        c = (MudancaEstado)m.recuperar(cel.IdMudanca)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
 
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
                 }
 
                 return modelos;

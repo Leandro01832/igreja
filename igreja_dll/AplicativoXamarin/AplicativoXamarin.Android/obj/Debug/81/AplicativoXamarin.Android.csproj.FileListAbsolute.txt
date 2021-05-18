@@ -615,8 +615,3 @@ D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.An
 D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.Android.pdb
 D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.pdb
 D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\bin\Debug\System.Windows.Forms.dll
-D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\GalaSoft.MvvmLight.dll.mdb
-D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\GalaSoft.MvvmLight.Extras.dll.mdb
-D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\GalaSoft.MvvmLight.Platform.dll.mdb
-D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\ImageCircle.Forms.Plugin.Abstractions.dll.mdb
-D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\81\linksrc\ImageCircle.Forms.Plugin.Android.dll.mdb

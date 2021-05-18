@@ -73,18 +73,17 @@ namespace business.classes
                 Select_padrao +=  $" where M.IdReuniao='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -117,20 +116,37 @@ namespace business.classes
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Reuniao r = new Reuniao();
-                        r.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
-                        r.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
-                        r.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
                         r.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
-                        r.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
                         modelos.Add(r);
                     }
 
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Reuniao)m;
+                        var c = new Reuniao();
+                        c = (Reuniao)m.recuperar(cel.IdReuniao)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
 
                 catch (Exception ex)

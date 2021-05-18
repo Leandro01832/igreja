@@ -21,12 +21,15 @@ namespace database.banco
 
         public static bool BancoEnbarcado = false;
 
+        private SqlConnection conn;
+
         public  SqlConnection obterconexao()
         {
 
             try
             {
-                SqlConnection conn = new SqlConnection(conecta2);
+                if(conn == null)
+                conn = new SqlConnection(conecta2);
                 
                 return conn;
             }

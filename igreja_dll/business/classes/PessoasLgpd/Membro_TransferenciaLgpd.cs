@@ -56,19 +56,23 @@ namespace business.classes.PessoasLgpd
             if (id != null) Select_padrao += $" where MT.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from Membro_TransferenciaLgpd as MT "
+           + " inner join MembroLgpd as M on MT.IdPessoa=M.IdPessoa "
+           + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
+                if (id != null) Select_padrao += $" where MT.IdPessoa='{id}' ";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -90,17 +94,36 @@ namespace business.classes.PessoasLgpd
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Membro_TransferenciaLgpd mt = new Membro_TransferenciaLgpd();
-                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        mt.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        mt.Email = Convert.ToString(dr["Email"]);                        
+                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));                       
                         modelos.Add(mt);
                     }
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Membro_TransferenciaLgpd)m;
+                        var c = new Membro_TransferenciaLgpd();
+                        c = (Membro_TransferenciaLgpd)m.recuperar(cel.IdPessoa)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
                 catch (Exception ex)
                 {

@@ -118,19 +118,23 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from PessoaDado as PD "
+        + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
+        + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
+                if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -148,10 +152,10 @@ namespace business.classes.Pessoas
                     this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                     this.Endereco.Estado = Convert.ToString(dr["Estado"]);
                     this.Endereco.Rua = Convert.ToString(dr["Rua"]);
-                    this.Endereco.Cep = long.Parse(Convert.ToString(dr["Status"]));
+                    this.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
                     this.Endereco.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
                     this.Telefone = new Telefone();
-                    this.Telefone.Fone = Convert.ToString(dr["Rua"]);
+                    this.Telefone.Fone = Convert.ToString(dr["Fone"]);
                     this.Telefone.Celular = Convert.ToString(dr["Celular"]);
                     this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
                     this.Telefone.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
@@ -170,6 +174,8 @@ namespace business.classes.Pessoas
                 }
                 return modelos;
             }
+            bd.obterconexao().Close();
+
             return modelos;
         }
 

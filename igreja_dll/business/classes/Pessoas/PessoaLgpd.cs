@@ -53,20 +53,22 @@ namespace business.classes.Pessoas
             Select_padrao = "select * from PessoaLgpd as PL ";
             if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
+            List<modelocrud> modelos = new List<modelocrud>();            
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from PessoaLgpd as PL ";
+                if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     modelos.Add(this);
@@ -82,6 +84,9 @@ namespace business.classes.Pessoas
                 }
                 return modelos;
             }
+
+            bd.obterconexao().Close();
+
             return modelos;
         }
     }

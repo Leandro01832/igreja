@@ -39,18 +39,22 @@ namespace business.classes.Celulas
             if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
+                base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from Celula_Casado as CC "
+                + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
+                if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     modelos.Add(this);
@@ -68,17 +72,37 @@ namespace business.classes.Celulas
             }
             else
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Celula_Casado c = new Celula_Casado();
                         c.IdCelula = int.Parse(dr["IdCelula"].ToString());
-                        c.Nome = Convert.ToString(dr["Nome"]);
                         modelos.Add(c);
                     }
 
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Celula_Casado)m;
+                        var c = new Celula_Casado();
+                        c = (Celula_Casado)m.recuperar(cel.IdCelula)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
                 catch (Exception ex)
                 {

@@ -53,19 +53,22 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                bd.obterconexao().Close();
-                return modelos;
-            }
 
             if (id != null)
             {
+                bd.obterconexao().Close();
                 base.recuperar(id);
+                bd.obterconexao().Open();
+                Select_padrao = "select * from Visitante as V "
+            + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     dr.Read();
@@ -89,23 +92,41 @@ namespace business.classes.Pessoas
             }
             else 
             {
+                bd.obterconexao().Open();
+                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr.HasRows == false)
+                {
+                    bd.obterconexao().Close();
+                    return modelos;
+                }
                 try
                 {
                     while (dr.Read())
                     {
                         Visitante v = new Visitante();
                         v.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        v.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                        v.NomePessoa = Convert.ToString(dr["NomePessoa"]);
                         modelos.Add(v);
                     }
                     dr.Close();
+
+                    //Recursividade
+                    bd.obterconexao().Close();
+                    List<modelocrud> lista = new List<modelocrud>();
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Visitante)m;
+                        var c = new Visitante();
+                        c = (Visitante)m.recuperar(cel.IdPessoa)[0];
+                        lista.Add(c);
+                    }
+                    modelos.Clear();
+                    modelos.AddRange(lista);
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-
                 }
                 finally
                 {
