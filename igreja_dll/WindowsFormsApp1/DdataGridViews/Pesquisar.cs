@@ -1,4 +1,6 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes;
+using business.classes.Abstrato;
+using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
@@ -13,6 +15,19 @@ namespace WindowsFormsApp1.DdataGridViews
 {
    public class Pesquisar :  IPesquisar
     {
+
+        public Pesquisar(List<Pessoa> Pessoas, List<Ministerio> Ministerios, List<Celula> Celulas, List<Reuniao> Reuniao)
+        {
+            this.Pessoas = Pessoas;
+            this.Ministerios = Ministerios;
+            this.Celulas = Celulas;
+            this.Reuniao = Reuniao;
+        }
+
+        public List<Pessoa> Pessoas { get; }
+        public List<Ministerio> Ministerios { get; }
+        public List<Celula> Celulas { get; }
+        public List<Reuniao> Reuniao { get; }
 
         public List<modelocrud> BuscarPorRestricao(modelocrud modelo, string tipo, string comando)
         {
@@ -63,12 +78,11 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.PessoasLgpd.Membro_TransferenciaLgpd)
             {
                 List<modelocrud> l = new List<modelocrud>();
-                var listaPessoa = business.classes.Abstrato.Pessoa.recuperarTodos()
-                    .OfType<business.classes.Abstrato.Pessoa>().ToList();
+                var listaPessoa = Pessoas.ToList();
                 var lista = new List<modelocrud>();
                 foreach(var itemlista in listaPessoa)
                 {
-                    lista.Add(itemlista.recuperar(itemlista.IdPessoa)[0]);
+                    lista.Add(itemlista);
                 }
 
                 foreach (var item in dtable.Select(""))
@@ -89,12 +103,11 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Ministerio.Supervisor_Ministerio_Treinamento)
             {
                 List<modelocrud> l = new List<modelocrud>();
-                var listaMinisterio = business.classes.Abstrato.Ministerio.recuperarTodosMinisterios()
-                    .OfType<business.classes.Abstrato.Ministerio>().ToList();
+                var listaMinisterio = Ministerios.ToList();
                 var lista = new List<modelocrud>();
                 foreach (var itemlista in listaMinisterio)
                 {
-                    lista.Add(itemlista.recuperar(itemlista.IdMinisterio)[0]);
+                    lista.Add(itemlista);
                 }
 
                 foreach (var item in dtable.Select(""))
@@ -113,8 +126,7 @@ namespace WindowsFormsApp1.DdataGridViews
                 modelo is business.classes.Celulas.Celula_Jovem)
             {
                 List<modelocrud> l = new List<modelocrud>();
-                var listaCelula = business.classes.Abstrato.Celula.recuperarTodasCelulas()
-                .OfType<business.classes.Abstrato.Celula>().ToList();
+                var listaCelula = Celulas.ToList();
                 var lista = new List<modelocrud>();
                 foreach (var itemlista in listaCelula)
                 {
@@ -123,22 +135,37 @@ namespace WindowsFormsApp1.DdataGridViews
 
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(lista.OfType<business.classes.Abstrato.Celula>()
-                        .First(i => i.IdCelula == int.Parse(item["IdCelula"].ToString())));
+                    l.Add(lista.OfType<Celula>().First(i => i.IdCelula == int.Parse(item["IdCelula"].ToString())));
                 }
                 return l;
             }
 
            
 
-            if (modelo is business.classes.Historico || modelo is business.classes.Reuniao ||
-                modelo is business.classes.Chamada || modelo is business.classes.MudancaEstado ||
-                modelo is business.classes.Endereco || modelo is business.classes.Telefone)
+            if (modelo is Historico || modelo is Reuniao ||
+                modelo is Chamada || modelo is   MudancaEstado ||
+                modelo is Endereco || modelo is  Telefone)
             {
                 List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(modelo.recuperar(int.Parse(item["Id"].ToString()))[0]);
+                    if (modelo is Historico)
+                    l.Add(modelo.recuperar(int.Parse(item["IdHistorico"].ToString()))[0]);
+
+                    if (modelo is Reuniao)
+                        l.Add(modelo.recuperar(int.Parse(item["IdReuniao"].ToString()))[0]);
+
+                    if (modelo is Chamada)
+                        l.Add(modelo.recuperar(int.Parse(item["IdChamada"].ToString()))[0]);
+
+                    if (modelo is MudancaEstado)
+                        l.Add(modelo.recuperar(int.Parse(item["IdMudanca"].ToString()))[0]);
+
+                    if (modelo is Endereco)
+                        l.Add(modelo.recuperar(int.Parse(item["IdEndereco"].ToString()))[0]);
+
+                    if (modelo is Telefone)
+                        l.Add(modelo.recuperar(int.Parse(item["IdTelefone"].ToString()))[0]);
                 }
                 return l;
             }
@@ -146,7 +173,5 @@ namespace WindowsFormsApp1.DdataGridViews
             return null;
         }
 
-
-        
     }
 }

@@ -22,9 +22,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        private int indicePessoa = 0;
-        private int indiceMinisterio = 0;
-        private int indiceCelula = 0;
 
         private bool verificarLista = true;
 

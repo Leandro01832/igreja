@@ -76,7 +76,7 @@ namespace WindowsFormsApp1.Formulario
                 return;
             }
             Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-            // Modelo = Modelo.recuperar(ListView.numero)[0];
+            
 
             FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
             frm.MdiParent = this.MdiParent;
@@ -357,6 +357,7 @@ namespace WindowsFormsApp1.Formulario
         // Atualizar lista
         private async void timer1_Tick(object sender, EventArgs e)
         {
+            if(listaPessoas != null)
             if(listaPessoas.Count != lista.Count)
             {
                 lista.Clear();
@@ -410,7 +411,8 @@ namespace WindowsFormsApp1.Formulario
                 }
             }
 
-            if(listaCelulas.Count != lista.Count)
+            if (listaCelulas != null)
+            if (listaCelulas.Count != lista.Count)
             {
                 lista.Clear();
                 ListView.Items.Clear();
@@ -426,7 +428,8 @@ namespace WindowsFormsApp1.Formulario
                 }
             }
 
-            if(listaMinisterios.Count != lista.Count)
+            if (listaMinisterios != null)
+            if (listaMinisterios.Count != lista.Count)
             {
                 lista.Clear();
                 ListView.Items.Clear();
@@ -440,7 +443,7 @@ namespace WindowsFormsApp1.Formulario
                 ListView.Items.Add(v.ToString());                
             }
 
-            if(quantidadeLista != lista.Count)
+            if(quantidadeLista != lista.Count && Modelo != null)
             {
                 lista.Clear();
                 ListView.Items.Clear();

@@ -85,12 +85,10 @@ namespace WindowsFormsApp1
         {
             if (modelo is Celula)
             {
-
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = Ministerio.recuperarTodosMinisterios()
-                        .OfType<Ministerio>().ToList();
+                    var listaMinisterio = listaMinisterios.ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {

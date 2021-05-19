@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     {
         public Pesquisar()
         {
-            pesquisa = new DdataGridViews.Pesquisar();
+            pesquisa = new DdataGridViews.Pesquisar(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
             modelo = null;
             
             InitializeComponent();

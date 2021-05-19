@@ -1,4 +1,5 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
 using System;
 using System.Collections;
 using System.Data;
@@ -25,7 +26,6 @@ namespace database.banco
 
         public  SqlConnection obterconexao()
         {
-
             try
             {
                 if(conn == null)
@@ -48,8 +48,126 @@ namespace database.banco
             if(modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
-                p.IdPessoa = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
+                p.IdPessoa = GetUltimoRegistroPessoa();
             }
+            else
+            if (modelo is Celula)
+            {
+                var p = (Celula)modelo;
+                p.IdCelula = GetUltimoRegistroCelula();
+            }
+            else
+            if (modelo is Ministerio)
+            {
+                var p = (Ministerio)modelo;
+                p.IdMinisterio = GetUltimoRegistroMinisterio();
+            }
+            else
+            if (modelo is Reuniao)
+            {
+                var p = (Reuniao)modelo;
+                p.IdReuniao = GetUltimoRegistroReuniao();
+            }
+        }
+
+        private int GetUltimoRegistroPessoa()
+        {
+            var Id = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = obterconexao())
+                {
+                    cmd = new SqlCommand("SELECT TOP(1) IdPessoa FROM Pessoa order by IdPessoa desc", con);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdPessoa"].ToString());
+                    dr.Close();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Id;
+        }
+
+        private int GetUltimoRegistroCelula()
+        {
+            var Id = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = obterconexao())
+                {
+                    cmd = new SqlCommand("SELECT TOP(1) IdCelula FROM Celula order by IdCelula desc", con);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdCelula"].ToString());
+                    dr.Close();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Id;
+        }
+
+        private int GetUltimoRegistroMinisterio()
+        {
+            var Id = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = obterconexao())
+                {
+                    cmd = new SqlCommand("SELECT TOP(1) IdMinisterio FROM Celula order by IdMinisterio desc", con);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdMinisterio"].ToString());
+                    dr.Close();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Id;
+        }
+
+        private int GetUltimoRegistroReuniao()
+        {
+            var Id = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = obterconexao())
+                {
+                    cmd = new SqlCommand("SELECT TOP(1) IdReuniao FROM Celula order by IdReuniao desc", con);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdReuniao"].ToString());
+                    dr.Close();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Id;
         }
 
         public void Editar(modelocrud modelo)

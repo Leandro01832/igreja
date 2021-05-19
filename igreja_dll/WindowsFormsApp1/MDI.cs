@@ -1,16 +1,10 @@
 ﻿using business.classes;
-using business.classes.Abstrato;
-using business.classes.Pessoas;
-using business.classes.PessoasLgpd;
 using System;
 using System.Drawing;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoa;
-using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
 using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
@@ -358,109 +352,177 @@ namespace WindowsFormsApp1
 
         private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pesquisar query = new Pesquisar();
-            query.MdiParent = this;
-            query.Text = "Janela " + childFormNumber++;
-            query.Show();
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                Pesquisar query = new Pesquisar();
+                query.MdiParent = this;
+                query.Text = "Janela " + childFormNumber++;
+                query.Show();
+            }
+            else MessageBox.Show("Aguarde o processamento.");            
         }
 
         
 
-        private async void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            string tipo = "Pessoa";
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            await ir.imprimir(null, tipo);
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                string tipo = "Pessoa";
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(null, tipo); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(null, "Celula");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(null, "Celula"); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(new business.classes.Celulas.Celula_Adolescente(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Celulas.Celula_Adolescente(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-           await ir.imprimir(new business.classes.Celulas.Celula_Adulto(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Celulas.Celula_Adulto(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-           await ir.imprimir(new business.classes.Celulas.Celula_Jovem(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Celulas.Celula_Jovem(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await ir.imprimir(new business.classes.Celulas.Celula_Crianca(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Celulas.Celula_Crianca(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private  async void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(new business.classes.Celulas.Celula_Casado(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Celulas.Celula_Casado(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(null, "Ministerio");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(null, "Ministerio"); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(new business.classes.Ministerio.Lider_Celula(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Lider_Celula(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(new business.classes.Ministerio.Lider_Celula_Treinamento(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Lider_Celula_Treinamento(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem4_Click(object sender, EventArgs e)
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-          await  ir.imprimir(new business.classes.Ministerio.Lider_Ministerio(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Lider_Ministerio(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem5_Click(object sender, EventArgs e)
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            await ir.imprimir(new business.classes.Ministerio.Lider_Ministerio_Treinamento(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Lider_Ministerio_Treinamento(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem6_Click(object sender, EventArgs e)
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            await ir.imprimir(new business.classes.Ministerio.Supervisor_Celula(), "");
+            if(listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Supervisor_Celula(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem7_Click(object sender, EventArgs e)
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            await ir.imprimir(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem8_Click(object sender, EventArgs e)
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            await ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
-        private async void toolStripMenuItem9_Click(object sender, EventArgs e)
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-            await ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), "");
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), ""); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private  void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -490,11 +552,15 @@ namespace WindowsFormsApp1
             frm.Show();
         }
 
-        private async void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            string tipo = "";
-            ImprimirRelatorio ir = new ImprimirRelatorio();
-           await ir.imprimir(new MudancaEstado(), tipo);
+            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            {
+                string tipo = "";
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(new MudancaEstado(), tipo); 
+            }
+            else MessageBox.Show("Aguarde o processamento.");
         }
         
     }

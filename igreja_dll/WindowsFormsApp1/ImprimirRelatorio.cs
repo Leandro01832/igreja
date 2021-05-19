@@ -14,46 +14,38 @@ namespace WindowsFormsApp1
 {
    public class ImprimirRelatorio
     {
+        public ImprimirRelatorio(List<Pessoa> Pessoas, List<Ministerio> Ministerios,
+            List<Celula> Celulas, List<Reuniao> Reuniao)
+        {
+            this.Pessoas = Pessoas;
+            this.Ministerios = Ministerios;
+            this.Celulas = Celulas;
+            this.Reuniao = Reuniao;
+        }
 
-        public async Task  imprimir(modelocrud modelo, string tipo)
+        public List<Pessoa> Pessoas { get; }
+        public List<Ministerio> Ministerios { get; }
+        public List<Celula> Celulas { get; }
+        public List<Reuniao> Reuniao { get; }
+
+        public void  imprimir(modelocrud modelo, string tipo)
         {
          List<modelocrud> lista = new List<modelocrud>();
          PdfPTable table = null;
          var valorTipo = "";
          var porcentagem = "";
-         var ListaPessoas = await Task.Run(() => Pessoa.recuperarTodos());
+         var ListaPessoas = Pessoas;
          int totalPessoas = ListaPessoas.Count;
-         var ListaMinisterios = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+         var ListaMinisterios = Ministerios;
          int totalMinisterios = ListaMinisterios.Count;
-         var ListaCelulas = await Task.Run(() => Celula.recuperarTodasCelulas());
+         var ListaCelulas = Celulas;
          int totalCelulas = ListaCelulas.Count;
 
-         if (modelo != null)
-            {
-                lista = modelo.recuperar(null);
-                var i = 0;
-                foreach (var item in lista.ToList())
-                {
-                    Pessoa p = null;
-                    Ministerio m = null;
-                    Celula c = null;
-                    Reuniao r = null;
-                    var id = 0;
-                    if (modelo is Pessoa) {  p = (Pessoa)item; id = p.IdPessoa; }
-                    if (modelo is Ministerio) {  m = (Ministerio)item; id = m.IdMinisterio; }
-                    if (modelo is Celula) {  c = (Celula)item; id = c.IdCelula; }
-                    if (modelo is Reuniao) {  r = (Reuniao)item; id = r.IdReuniao; }
-
-                    lista[i] = item.recuperar(id)[0];
-                    i++;
-                }
-            }
-             
-
          if (modelo != null && modelo is Pessoa)
-         {
+         {                
+                lista = modelo.recuperar(null);
                 table = new PdfPTable(2);
-                var quant = modelo.recuperar(null).Count;
+                var quant = lista.Count;
              decimal p = (quant / totalPessoas);
              porcentagem = "A procentagem em relação ao total de pessoas é "
                  + p.ToString("F2") + "%. Quantidade de registros é: "
@@ -62,7 +54,8 @@ namespace WindowsFormsApp1
 
          if (modelo != null && modelo is Celula)
          {
-             var quant = modelo.recuperar(null).Count;
+                lista = modelo.recuperar(null);
+                var quant = lista.Count;
              decimal p = (quant / totalCelulas);
              porcentagem = "A procentagem em relação ao total de celulas é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
@@ -71,9 +64,10 @@ namespace WindowsFormsApp1
 
          if (modelo != null && modelo is Ministerio)
          {
-         var quant = modelo.recuperar(null).Count;
-             decimal p = (quant / totalMinisterios);
-             porcentagem = "A procentagem em relação ao total de ministérios é "
+                lista = modelo.recuperar(null);
+                var quant = lista.Count;
+                decimal p = (quant / totalMinisterios);
+                porcentagem = "A procentagem em relação ao total de ministérios é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
                  + quant;
          }
@@ -85,62 +79,37 @@ namespace WindowsFormsApp1
 
          if (tipo == "Pessoa" && modelo == null)
          {
-             lista = Pessoa.recuperarTodos();
              table = new PdfPTable(2);
-                var i = 0;
-                foreach (var item in lista.OfType<Pessoa>().ToList())
-                {                    
-                    lista[i] = item.recuperar(item.IdPessoa)[0];
-                    i++;
-                }
-            }
+                foreach (var item in Pessoas)
+                lista.Add(item);
+         }
 
          if (tipo == "MembroLgpd" && modelo == null)
          {
-             lista = MembroLgpd.recuperarTodosMembros();
              table = new PdfPTable(2);
-                var i = 0;
-                foreach (var item in lista.OfType<Pessoa>().ToList())
-                {                    
-                    lista[i] = item.recuperar(item.IdPessoa)[0];
-                    i++;
-                }
+                foreach (var item in Pessoas.OfType<MembroLgpd>())
+                    lista.Add(item);
             }
 
          if (tipo == "Membro" && modelo == null)
          {
-             lista = Membro.recuperarTodosMembros();
              table = new PdfPTable(2);
-                var i = 0;
-                foreach (var item in lista.OfType<Pessoa>().ToList())
-                {                    
-                    lista[i] = item.recuperar(item.IdPessoa)[0];
-                    i++;
-                }
+                foreach (var item in Pessoas.OfType<Membro>())
+                    lista.Add(item);
             }
 
          if (tipo == "Ministerio" && modelo == null)
          {
-             lista = Ministerio.recuperarTodosMinisterios();
              table = new PdfPTable(2);
-                var i = 0;
-                foreach (var item in lista.OfType<Ministerio>().ToList())
-                {                   
-                    lista[i] = item.recuperar(item.IdMinisterio)[0];
-                    i++;
-                }
+                foreach (var item in Ministerios)
+                    lista.Add(item);
             }
 
          if (tipo == "Celula" && modelo == null)
          {
-             lista = Celula.recuperarTodasCelulas();
              table = new PdfPTable(2);
-                var i = 0;
-                foreach (var item in lista.OfType<Celula>().ToList())
-                {                    
-                    lista[i] = item.recuperar(item.IdCelula)[0];
-                    i++;
-                }
+                foreach (var item in Celulas)
+                    lista.Add(item);
          }
 
          if(modelo is MudancaEstado)
