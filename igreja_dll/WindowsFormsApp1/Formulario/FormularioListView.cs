@@ -22,6 +22,8 @@ namespace WindowsFormsApp1.Formulario
         public FormularioListView() { }
 
         List<modelocrud> lista;
+        bool atualizar = true;
+        int quantidadeLista { get; set; }
 
         public FormularioListView(TodosListViews ListView)
         {
@@ -271,15 +273,14 @@ namespace WindowsFormsApp1.Formulario
             lista = new List<modelocrud>();
             if (Modelo != null)
             {
-                FormProgressBar form = new FormProgressBar();
-                form.MdiParent = this.MdiParent;
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Text = $"Barra de processamento - {Modelo.GetType().Name}";
-                form.Show();
-                lista = await Task.Run(() => Modelo.recuperar(null));
-                form.Close();
+               var l = await AtualizarComProgressBar(Modelo);
+                quantidadeLista = l.Count;
+                
                 if (Modelo is business.classes.Abstrato.Pessoa)
                     Mudanca.Visible = true;
+
+                foreach (var item in l)
+                    lista.Add(item);
             }
             else
             {
@@ -288,8 +289,6 @@ namespace WindowsFormsApp1.Formulario
                     var modelos = new List<modelocrud>();
                     foreach (var item in listaCelulas)
                     lista.Add(item);
-                    
-                    
                 }
                     
 
@@ -349,11 +348,125 @@ namespace WindowsFormsApp1.Formulario
             if (lista != null)
             {
 
+                foreach (var v in lista)                
+                ListView.Items.Add(v.ToString());
+                
+            }
+        }
+
+        // Atualizar lista
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
+            if(listaPessoas.Count != lista.Count)
+            {
+                lista.Clear();
+                ListView.Items.Clear();
+                if (Tipo == "Pessoa")
+                {
+                    Mudanca.Visible = true;
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas)
+                        lista.Add(item);
+                }
+
+                if (Tipo == "PessoaDado")
+                {
+                    Mudanca.Visible = true;
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<PessoaDado>())
+                        lista.Add(item);
+                }
+
+
+                if (Tipo == "PessoaLgpd")
+                {
+                    Mudanca.Visible = true;
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<PessoaLgpd>())
+                        lista.Add(item);
+                }
+
+
+                if (Tipo == "MembroLgpd")
+                {
+                    Mudanca.Visible = true;
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<MembroLgpd>())
+                        lista.Add(item);
+                }
+
+
+                if (Tipo == "Membro")
+                {
+                    Mudanca.Visible = true;
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaPessoas.OfType<Membro>())
+                        lista.Add(item);
+                }
+
                 foreach (var v in lista)
                 {
                     ListView.Items.Add(v.ToString());
                 }
             }
+
+            if(listaCelulas.Count != lista.Count)
+            {
+                lista.Clear();
+                ListView.Items.Clear();
+                if (Tipo == "Celula")
+                {
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaCelulas)
+                        lista.Add(item);
+                }
+                foreach (var v in lista)
+                {
+                    ListView.Items.Add(v.ToString());
+                }
+            }
+
+            if(listaMinisterios.Count != lista.Count)
+            {
+                lista.Clear();
+                ListView.Items.Clear();
+                if (Tipo == "Ministerio")
+                {
+                    var modelos = new List<modelocrud>();
+                    foreach (var item in listaMinisterios)
+                        lista.Add(item);
+                }
+                foreach (var v in lista)
+                ListView.Items.Add(v.ToString());                
+            }
+
+            if(quantidadeLista != lista.Count)
+            {
+                lista.Clear();
+                ListView.Items.Clear();
+                FormProgressBar form = new FormProgressBar();
+                form.MdiParent = this.MdiParent;
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Text = $"Barra de processamento - {Modelo.GetType().Name}";
+                form.Show();
+                lista = await Task.Run(() => Modelo.recuperar(null));
+                quantidadeLista = lista.Count;
+                
+                form.Close();
+                if (Modelo is business.classes.Abstrato.Pessoa)
+                    Mudanca.Visible = true;
+                foreach (var v in lista)
+                    ListView.Items.Add(v.ToString());
+            }
+
+            if(Modelo != null && atualizar)
+            {
+                atualizar = false;                
+                var l = await AtualizarComModelo(Modelo);
+                quantidadeLista = l.Count;
+                atualizar = true;
+            }
+            
         }
     }
 }

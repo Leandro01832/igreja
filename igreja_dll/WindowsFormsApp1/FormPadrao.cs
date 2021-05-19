@@ -1,9 +1,13 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
+using database;
+using database.banco;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,14 +21,23 @@ namespace WindowsFormsApp1
         public FormPadrao()
         {
             InitializeComponent();
-        }        
+        }
+        private int indicePessoa = 0;
+        private int indiceMinisterio = 0;
+        private int indiceCelula = 0;
+
+        private bool verificarLista = true;
 
         public static List<Pessoa> listaPessoas;
         public static List<Ministerio> listaMinisterios;
         public static List<Celula> listaCelulas;
         public static List<Reuniao> listaReuniao;
 
-       private int ultimoRegistroPessoa;
+        public static List<modelocrud> listaAtualizadaPessoas;
+        public static List<modelocrud> listaAtualizadaMinisterios;
+        public static List<modelocrud> listaAtualizadaCelulas;
+
+        private int ultimoRegistroPessoa;
        private int ultimoRegistroCelula;
        private int ultimoRegistroMinisterio;
        private int ultimoRegistroReuniao;
@@ -48,9 +61,13 @@ namespace WindowsFormsApp1
             form.Text = "Barra de processamento - Processando dados";
             form.Show();
             var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
+            listaCelulas = lc.OfType<Celula>().ToList();
             var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
-            var lp = await Task.Run(() => Pessoa.recuperarTodos());
+            listaMinisterios = lm.OfType<Ministerio>().ToList();
             var lr = await Task.Run(() => new Reuniao().recuperar(null));
+            listaReuniao = lr.OfType<Reuniao>().ToList();
+            var lp = await Task.Run(() => Pessoa.recuperarTodos());
+            listaPessoas = lp.OfType<Pessoa>().ToList();
             form.Close();
             try { UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo; }
             catch { UltimoRegistroPessoa = 0; }
@@ -64,104 +81,173 @@ namespace WindowsFormsApp1
             Ministerio.UltimoRegistro = UltimoRegistroMinisterio;
             Celula.UltimoRegistro = UltimoRegistroCelula;
             Reuniao.UltimoRegistro = UltimoRegistroReuniao;
-            listaPessoas = lp.OfType<Pessoa>().ToList();
-            listaMinisterios = lm.OfType<Ministerio>().ToList();
-            listaCelulas = lc.OfType<Celula>().ToList();
-            listaReuniao = lr.OfType<Reuniao>().ToList();
-        }
-
-        public async void AtualizarListaPessoa()
-        {
-            FormProgressBar form = new FormProgressBar();
-            form.MdiParent = this.MdiParent;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Text = "Barra de processamento - Pessoas";
-            form.Show();
-            var lp = await Task.Run(() => Pessoa.recuperarTodos());
-            form.Close();
-            listaPessoas = lp.OfType<Pessoa>().ToList();
-            Pessoa.UltimoRegistro = listaPessoas.OrderBy(m => m.IdPessoa).Last().Codigo;
-        }        
-
-        public async void AtualizarListaMinisterio()
-        {
-            FormProgressBar form = new FormProgressBar();
-            form.MdiParent = this.MdiParent;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Text = "Barra de processamento - Ministérios";
-            form.Show();
-            var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
-            form.Close();
-             listaMinisterios = lm.OfType<Ministerio>().ToList();
-             Ministerio.UltimoRegistro = listaMinisterios.OrderBy(m => m.IdMinisterio).Last().IdMinisterio;
-        }
-
-        public async void AtualizarListaCelula()
-        {
-            FormProgressBar form = new FormProgressBar();
-            form.MdiParent = this.MdiParent;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Text = "Barra de processamento - Celulas";
-            form.Show();
-            var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
-            form.Close();
-            listaCelulas = lc.OfType<Celula>().ToList();
-            Ministerio.UltimoRegistro = listaCelulas.OrderBy(m => m.IdCelula).Last().IdCelula;
-        }
-
-        public async void AtualizarListaReuniao()
-        {
-            FormProgressBar form = new FormProgressBar();
-            form.MdiParent = this.MdiParent;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Text = "Barra de processamento - Celulas";
-            form.Show();
-            var lr = await Task.Run(() => new Reuniao().recuperar(null));
-            form.Close();
-            listaReuniao = lr.OfType<Reuniao>().ToList();
-            Reuniao.UltimoRegistro = listaReuniao.OrderBy(m => m.IdReuniao).Last().IdReuniao;
-        }
-
-        private void verifica()
-        {
-
-            try
-            {
-                if (listaPessoas != null)
-                    if (listaPessoas.OrderBy(m => m.IdPessoa).Last().Codigo < Pessoa.UltimoRegistro)
-                        AtualizarListaPessoa();
-            }
-            catch { }
-
-            try
-            {
-                if (listaMinisterios != null)
-                    if (listaMinisterios.OrderBy(m => m.IdMinisterio).Last().IdMinisterio < Ministerio.UltimoRegistro)
-                        AtualizarListaMinisterio();
-            }
-            catch { }
-
-            try
-            {
-                if (listaCelulas != null)
-                    if (listaCelulas.OrderBy(m => m.IdCelula).Last().IdCelula < Celula.UltimoRegistro)
-                        AtualizarListaCelula();
-            }
-            catch { }
-
-            try
-            {
-                if (listaReuniao != null)
-                    if (listaReuniao.OrderBy(m => m.IdReuniao).Last().IdReuniao < Reuniao.UltimoRegistro)
-                        AtualizarListaCelula();
-            }
-            catch { }
             
+            
+            
+        }
+
+        private async void verifica()
+        {
+            if (verificarLista)
+            {
+                verificarLista = false;
+                try
+                {
+                    if(listaMinisterios != null)
+                    if (GeTotalRegistrosMinisterios() != listaMinisterios.Count)
+                    {
+                        FormProgressBar form = new FormProgressBar();
+                        form.MdiParent = this.MdiParent;
+                        form.StartPosition = FormStartPosition.CenterScreen;
+                        form.Text = "Barra de processamento - Ministerios";
+                        form.Show();
+                        listaAtualizadaMinisterios = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+                        form.Close();
+                        listaMinisterios.Clear();
+                        var lista = listaAtualizadaMinisterios;
+                        foreach (var item in lista.OfType<Ministerio>())
+                        listaMinisterios.Add(item);
+                        
+                        Ministerio.UltimoRegistro = listaMinisterios.OrderBy(m => m.IdMinisterio).Last().IdMinisterio;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    if (listaCelulas != null)
+                    if (GeTotalRegistrosCelulas() != listaCelulas.Count)
+                    {
+                        FormProgressBar form = new FormProgressBar();
+                        form.MdiParent = this.MdiParent;
+                        form.StartPosition = FormStartPosition.CenterScreen;
+                        form.Text = "Barra de processamento - Celulas";
+                        form.Show();
+                        var listaAtualizadaCelulas = await Task.Run(() => Celula.recuperarTodasCelulas());
+                        form.Close();
+                        var lista = listaAtualizadaCelulas;
+                        foreach (var item in lista.OfType<Celula>())
+                        if (listaCelulas.FirstOrDefault(e => e.IdCelula == item.IdCelula) == null)
+                        listaCelulas.Add(item);
+                        
+                        Celula.UltimoRegistro = listaCelulas.OrderBy(m => m.IdCelula).Last().IdCelula;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    if (listaPessoas != null)
+                    if (GeTotalRegistrosPessoas() != listaPessoas.Count)
+                    {
+                        FormProgressBar form = new FormProgressBar();
+                        form.MdiParent = this.MdiParent;
+                        form.StartPosition = FormStartPosition.CenterScreen;
+                        form.Text = "Barra de processamento - Pessoas";
+                        form.Show();
+                        listaAtualizadaPessoas = await Task.Run(() => Pessoa.recuperarTodos());
+                        form.Close();
+                        var lista = listaAtualizadaPessoas;
+                        foreach (var item in lista.OfType<Pessoa>())
+                        {
+                            if (listaPessoas.FirstOrDefault(e => e.IdPessoa == item.IdPessoa) == null)
+                                listaPessoas.Add(item);
+                        }
+                        Pessoa.UltimoRegistro = listaPessoas.OrderBy(m => m.IdPessoa).Last().Codigo;
+                    }
+                }
+                catch { }
+                verificarLista = true;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             verifica();
+        }
+
+       public async Task<List<modelocrud>> AtualizarComModelo(modelocrud modelo)
+        {
+            var models = await Task.Run(() => modelo.recuperar(null));            
+            return models;
+        }
+
+        public async Task<List<modelocrud>> AtualizarComProgressBar(modelocrud modelo)
+        {
+            FormProgressBar form = new FormProgressBar();
+            form.MdiParent = this.MdiParent;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Text = $"Barra de processamento - {modelo.GetType().Name}";
+            form.Show();
+            var models = await Task.Run(() => modelo.recuperar(null));
+            form.Close();
+            return models;
+        }
+
+        private int GeTotalRegistrosPessoas()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = new SqlConnection(BDcomum.conecta2))
+                {
+                    cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
+                    con.Open();
+                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return _TotalRegistros;
+        }
+
+        private int GeTotalRegistrosCelulas()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = new SqlConnection(BDcomum.conecta2))
+                {
+                    cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
+                    con.Open();
+                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return _TotalRegistros;
+        }
+
+        private int GeTotalRegistrosMinisterios()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            try
+            {
+                using (con = new SqlConnection(BDcomum.conecta2))
+                {
+                    cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
+                    con.Open();
+                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return _TotalRegistros;
         }
     }
 }
