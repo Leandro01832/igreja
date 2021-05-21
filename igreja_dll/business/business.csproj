@@ -42,8 +42,8 @@
     <Reference Include="MySql.Data">
       <HintPath>..\database\conexao\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -60,31 +60,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Abstrato\Celula.cs" />
     <Compile Include="classes\Abstrato\EnderecoCelula.cs" />
+    <Compile Include="classes\Abstrato\Membro.cs" />
     <Compile Include="classes\Abstrato\MembroLgpd.cs" />
+    <Compile Include="classes\Abstrato\Ministerio.cs" />
     <Compile Include="classes\Abstrato\Pessoa.cs" />
+    <Compile Include="classes\AddNalista.cs" />
+    <Compile Include="classes\BuscaLista.cs" />
+    <Compile Include="classes\Celulas\Celula_Adolescente.cs" />
+    <Compile Include="classes\Celulas\Celula_Adulto.cs" />
+    <Compile Include="classes\Celulas\Celula_Casado.cs" />
+    <Compile Include="classes\Celulas\Celula_Crianca.cs" />
+    <Compile Include="classes\Celulas\Celula_Jovem.cs" />
+    <Compile Include="classes\Chamada.cs" />
     <Compile Include="classes\ConfiguraRota.cs" />
+    <Compile Include="classes\Endereco.cs" />
+    <Compile Include="classes\Historico.cs" />
+    <Compile Include="classes\IAddNalista.cs" />
+    <Compile Include="classes\IBuscaLista.cs" />
+    <Compile Include="classes\IMudancaEstado.cs" />
     <Compile Include="classes\Intermediario\MinisterioCelula.cs" />
     <Compile Include="classes\Intermediario\PessoaMinisterio.cs" />
     <Compile Include="classes\Intermediario\ReuniaoPessoa.cs" />
     <Compile Include="classes\IPesquisar.cs" />
-    <Compile Include="classes\Pessoas\PessoaLgpd.cs" />
-    <Compile Include="classes\AddNalista.cs" />
-    <Compile Include="classes\BuscaLista.cs" />
-    <Compile Include="classes\Celulas\Celula_Adolescente.cs" />
-    <Compile Include="classes\Celulas\Celula_Casado.cs" />
-    <Compile Include="classes\Celulas\Celula_Jovem.cs" />
-    <Compile Include="classes\Celulas\Celula_Adulto.cs" />
-    <Compile Include="classes\Celulas\Celula_Crianca.cs" />
-    <Compile Include="classes\IAddNalista.cs" />
-    <Compile Include="classes\IBuscaLista.cs" />
-    <Compile Include="classes\IMudancaEstado.cs" />
-    <Compile Include="classes\Ministerio\Lider_Ministerio_Treianmento.cs" />
+    <Compile Include="classes\Ministerio\Lider_Celula.cs" />
+    <Compile Include="classes\Ministerio\Lider_Celula_Treinamento.cs" />
     <Compile Include="classes\Ministerio\Lider_Ministerio.cs" />
-    <Compile Include="classes\Abstrato\Celula.cs" />
-    <Compile Include="classes\Chamada.cs" />
-    <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
+    <Compile Include="classes\Ministerio\Lider_Ministerio_Treianmento.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Celula.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Celula_Treinamento.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio.cs" />
+    <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
     <Compile Include="classes\MudancaEstado.cs" />
     <Compile Include="classes\PessoasLgpd\CriancaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
@@ -93,23 +100,16 @@
     <Compile Include="classes\PessoasLgpd\Membro_TransferenciaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\VisitanteLgpd.cs" />
     <Compile Include="classes\Pessoas\Crianca.cs" />
-    <Compile Include="classes\PhotoRequest.cs" />
-    <Compile Include="classes\Reuniao.cs" />
-    <Compile Include="classes\Endereco.cs" />
-    <Compile Include="classes\Historico.cs" />
-    <Compile Include="classes\Ministerio\Lider_Celula_Treinamento.cs" />
-    <Compile Include="classes\Abstrato\Membro.cs" />
     <Compile Include="classes\Pessoas\Membro_Aclamacao.cs" />
     <Compile Include="classes\Pessoas\Membro_Batismo.cs" />
     <Compile Include="classes\Pessoas\Membro_Reconciliacao.cs" />
     <Compile Include="classes\Pessoas\Membro_Transferencia.cs" />
-    <Compile Include="classes\Abstrato\Ministerio.cs" />
     <Compile Include="classes\Pessoas\PessoaDado.cs" />
-    <Compile Include="classes\Ministerio\Supervisor_Celula.cs" />
-    <Compile Include="classes\Ministerio\Supervisor_Celula_Treinamento.cs" />
-    <Compile Include="classes\Telefone.cs" />
+    <Compile Include="classes\Pessoas\PessoaLgpd.cs" />
     <Compile Include="classes\Pessoas\Visitante.cs" />
-    <Compile Include="classes\Ministerio\Lider_Celula.cs" />
+    <Compile Include="classes\PhotoRequest.cs" />
+    <Compile Include="classes\Reuniao.cs" />
+    <Compile Include="classes\Telefone.cs" />
     <Compile Include="contrato\Interface.cs" />
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

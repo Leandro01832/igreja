@@ -287,7 +287,7 @@ namespace WindowsFormsApp1.Formulario
                 if (Tipo == "Celula")
                 {
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaCelulas)
+                    foreach (var item in listaCelulas.OrderBy(p => p.IdCelula))
                     lista.Add(item);
                 }
                     
@@ -295,7 +295,7 @@ namespace WindowsFormsApp1.Formulario
                 if (Tipo == "Ministerio")
                 {
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaMinisterios)
+                    foreach (var item in listaMinisterios.OrderBy(p => p.IdMinisterio))
                         lista.Add(item);
                 }
                     
@@ -304,7 +304,7 @@ namespace WindowsFormsApp1.Formulario
                 {
                     Mudanca.Visible = true;
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas)
+                    foreach (var item in listaPessoas.OrderBy(p => p.IdPessoa))
                         lista.Add(item);
                 }
 
@@ -312,7 +312,7 @@ namespace WindowsFormsApp1.Formulario
                 {
                     Mudanca.Visible = true;
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<PessoaDado>())
+                    foreach (var item in listaPessoas.OfType<PessoaDado>().OrderBy(p => p.IdPessoa))
                         lista.Add(item);
                 }
 
@@ -321,7 +321,7 @@ namespace WindowsFormsApp1.Formulario
                 {
                     Mudanca.Visible = true;
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<PessoaLgpd>())
+                    foreach (var item in listaPessoas.OfType<PessoaLgpd>().OrderBy(p => p.IdPessoa))
                         lista.Add(item);
                 }
 
@@ -330,7 +330,7 @@ namespace WindowsFormsApp1.Formulario
                 {
                     Mudanca.Visible = true;
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<MembroLgpd>())
+                    foreach (var item in listaPessoas.OfType<MembroLgpd>().OrderBy(p => p.IdPessoa))
                         lista.Add(item);
                 }
 
@@ -339,11 +339,13 @@ namespace WindowsFormsApp1.Formulario
                 {
                     Mudanca.Visible = true;
                     var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<Membro>())
+                    foreach (var item in listaPessoas.OfType<Membro>().OrderBy(p => p.IdPessoa))
                         lista.Add(item);
                 }
 
             }
+
+            
 
             if (lista != null)
             {
@@ -358,7 +360,7 @@ namespace WindowsFormsApp1.Formulario
         private async void timer1_Tick(object sender, EventArgs e)
         {
             if(listaPessoas != null)
-            if(listaPessoas.Count != lista.Count)
+            if(listaPessoas.Count != lista.Count && ListView is ListViewPessoa && Modelo == null)
             {
                 lista.Clear();
                 ListView.Items.Clear();
@@ -412,7 +414,7 @@ namespace WindowsFormsApp1.Formulario
             }
 
             if (listaCelulas != null)
-            if (listaCelulas.Count != lista.Count)
+            if (listaCelulas.Count != lista.Count && ListView is ListViewCelula && Modelo == null)
             {
                 lista.Clear();
                 ListView.Items.Clear();
@@ -429,7 +431,7 @@ namespace WindowsFormsApp1.Formulario
             }
 
             if (listaMinisterios != null)
-            if (listaMinisterios.Count != lista.Count)
+            if (listaMinisterios.Count != lista.Count && ListView is ListViewMinisterio && Modelo == null)
             {
                 lista.Clear();
                 ListView.Items.Clear();

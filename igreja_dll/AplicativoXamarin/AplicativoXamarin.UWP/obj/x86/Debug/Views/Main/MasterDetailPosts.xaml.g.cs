@@ -17,10 +17,10 @@ namespace AplicativoXamarin.Views.Main {
         "ws\\Main\\MasterDetailPosts.xaml")]
     public partial class MasterDetailPosts : global::Xamarin.Forms.MasterDetailPage {
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::AplicativoXamarin.Views.Main.MasterDetailPostsMaster MasterPage;
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MasterDetailPosts));
             MasterPage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AplicativoXamarin.Views.Main.MasterDetailPostsMaster>(this, "MasterPage");

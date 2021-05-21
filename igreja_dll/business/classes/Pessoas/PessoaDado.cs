@@ -10,19 +10,19 @@ using System.Windows.Forms;
 namespace business.classes.Pessoas
 {
     [Table("PessoaDado")]
-    public abstract class PessoaDado : Pessoa 
+    public abstract class PessoaDado : Pessoa
     {
         public PessoaDado() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();           
+            AddNalista = new AddNalista();
         }
 
         //propriedades
         #region
 
         AddNalista AddNalista;
-        
+
 
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -54,9 +54,9 @@ namespace business.classes.Pessoas
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Status { get; set; }
-        
+
         public virtual Endereco Endereco { get; set; }
-        
+
         public virtual Telefone Telefone { get; set; }
 
         private MudancaEstado MudancaEstado;
@@ -64,7 +64,7 @@ namespace business.classes.Pessoas
         #endregion
 
         public override string salvar()
-        {            
+        {
             Telefone t = new Telefone(); t = this.Telefone;
             Endereco e = new Endereco(); e = this.Endereco;
 
@@ -79,7 +79,7 @@ namespace business.classes.Pessoas
             $" '{this.Status}', IDENT_CURRENT('Pessoa')) " +
             e.salvar() + " " +
             t.salvar() + " ";
-            
+
             return Insert_padrao;
         }
 
@@ -89,26 +89,26 @@ namespace business.classes.Pessoas
             Update_padrao += $"update PessoaDado set Estado_civil='{Estado_civil}', " +
             $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Status='{Status}', " +
             $" Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
-            $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +           
+            $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +
             $"  where IdPessoa='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
-            
+
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
             Delete_padrao = base.excluir(id);
-            Delete_padrao += 
+            Delete_padrao +=
             " delete Telefone from Telefone as T inner " +
             " join PessoaDado as PD on T.IdTelefone=PD.IdPessoa" +
             $" where P.Id='{id}' " +
             "delete Endereco from Endereco as E inner " +
             "join PessoaDado as PD on E.IdEndereco=PD.IdPessoa" +
-            $" where P.IdPessoa='{id}' " +                
-            $" delete PessoaDado from PessoaDado as PD where PD.IdPessoa='{id}' " ;
-            
+            $" where P.IdPessoa='{id}' " +
+            $" delete PessoaDado from PessoaDado as PD where PD.IdPessoa='{id}' ";
+
             return Delete_padrao;
-        }        
+        }
 
         public override List<modelocrud> recuperar(int? id)
         {
@@ -121,22 +121,23 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from PessoaDado as PD "
-        + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
-        + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
-                if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from PessoaDado as PD "
+            + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
+            + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
+                    if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.Data_nascimento = Convert.ToDateTime(dr["Data_nascimento"]);
                     this.Estado_civil = Convert.ToString(dr["Estado_civil"]);

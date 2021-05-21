@@ -85,15 +85,8 @@ namespace business.classes.Abstrato
 
         public override string salvar()
         {
-            try
-            {
-                var ultimoRegistro = 0;
-                if (Pessoa.UltimoRegistro == 0)
-                ultimoRegistro = recuperarTodos().OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().IdPessoa;
-                else ultimoRegistro = Pessoa.UltimoRegistro;
-                this.Codigo = ultimoRegistro + 1;
-            }
-            catch { Codigo = 1; }
+            var ultimoRegistro = bd.GetUltimoRegistroPessoa();
+            this.Codigo = ultimoRegistro + 1;
             
             string celula = "";
             if (this.celula_ == null) celula = "null";

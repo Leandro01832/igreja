@@ -13,17 +13,17 @@
 namespace AplicativoXamarin.Views.Main {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Main" +
-        "\\MasterDetail.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
+        "ws\\Main\\MasterDetail.xaml")]
     public partial class MasterDetail : global::Xamarin.Forms.MasterDetailPage {
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::AplicativoXamarin.Views.Main.MasterDetailMaster MasterPage;
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.NavigationPage Navigator;
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MasterDetail));
             MasterPage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::AplicativoXamarin.Views.Main.MasterDetailMaster>(this, "MasterPage");

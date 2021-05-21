@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
         public List<Celula> Celulas { get; }
         public List<Reuniao> Reuniao { get; }
 
-        public void  imprimir(modelocrud modelo, string tipo)
+        public void  imprimir(List<modelocrud> listamodelo, string tipo)
         {
          List<modelocrud> lista = new List<modelocrud>();
          PdfPTable table = null;
@@ -41,9 +41,10 @@ namespace WindowsFormsApp1
          var ListaCelulas = Celulas;
          int totalCelulas = ListaCelulas.Count;
 
-         if (modelo != null && modelo is Pessoa)
+            if (listamodelo != null)
+         if (listamodelo[0] != null && listamodelo[0] is Pessoa)
          {                
-                lista = modelo.recuperar(null);
+                lista = listamodelo;
                 table = new PdfPTable(2);
                 var quant = lista.Count;
              decimal p = (quant / totalPessoas);
@@ -52,9 +53,10 @@ namespace WindowsFormsApp1
                  + quant;
          }
 
-         if (modelo != null && modelo is Celula)
+            if (listamodelo != null)
+                if (listamodelo[0] != null && listamodelo[0] is Celula)
          {
-                lista = modelo.recuperar(null);
+                lista = listamodelo;
                 var quant = lista.Count;
              decimal p = (quant / totalCelulas);
              porcentagem = "A procentagem em relação ao total de celulas é "
@@ -62,9 +64,10 @@ namespace WindowsFormsApp1
                  + quant;
          }
 
-         if (modelo != null && modelo is Ministerio)
+            if (listamodelo != null)
+                if (listamodelo[0] != null && listamodelo[0] is Ministerio)
          {
-                lista = modelo.recuperar(null);
+                lista = listamodelo;
                 var quant = lista.Count;
                 decimal p = (quant / totalMinisterios);
                 porcentagem = "A procentagem em relação ao total de ministérios é "
@@ -72,53 +75,54 @@ namespace WindowsFormsApp1
                  + quant;
          }
 
-         if (modelo is Reuniao)
+            if (listamodelo != null)
+                if (listamodelo[0] is Reuniao)
              table = new PdfPTable(3);
 
          
 
-         if (tipo == "Pessoa" && modelo == null)
+         if (tipo == "Pessoa" && listamodelo == null)
          {
              table = new PdfPTable(2);
                 foreach (var item in Pessoas)
                 lista.Add(item);
          }
 
-         if (tipo == "MembroLgpd" && modelo == null)
+         if (tipo == "MembroLgpd" && listamodelo == null)
          {
              table = new PdfPTable(2);
                 foreach (var item in Pessoas.OfType<MembroLgpd>())
                     lista.Add(item);
             }
 
-         if (tipo == "Membro" && modelo == null)
+         if (tipo == "Membro" && listamodelo == null)
          {
              table = new PdfPTable(2);
                 foreach (var item in Pessoas.OfType<Membro>())
                     lista.Add(item);
             }
 
-         if (tipo == "Ministerio" && modelo == null)
+         if (tipo == "Ministerio" && listamodelo == null)
          {
              table = new PdfPTable(2);
                 foreach (var item in Ministerios)
                     lista.Add(item);
             }
 
-         if (tipo == "Celula" && modelo == null)
+         if (tipo == "Celula" && listamodelo == null)
          {
              table = new PdfPTable(2);
                 foreach (var item in Celulas)
                     lista.Add(item);
          }
 
-         if(modelo is MudancaEstado)
+         if(listamodelo[0] is MudancaEstado)
          table = new PdfPTable(4);
 
             if (tipo != "")
              valorTipo = tipo;
          else
-             valorTipo = modelo.GetType().Name;
+             valorTipo = listamodelo[0].GetType().Name;
 
          Document doc = new Document(PageSize.A4);
          doc.SetMargins(40, 40, 40, 80);
@@ -204,11 +208,6 @@ namespace WindowsFormsApp1
          doc.Close();
 
          System.Diagnostics.Process.Start(caminho);
-
-         
-
         }
-
-
     }
 }

@@ -72,16 +72,17 @@ namespace business.classes.Celulas
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Celula_Casado c = new Celula_Casado();
@@ -120,9 +121,9 @@ namespace business.classes.Celulas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Celula_Casado (IdCelula) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

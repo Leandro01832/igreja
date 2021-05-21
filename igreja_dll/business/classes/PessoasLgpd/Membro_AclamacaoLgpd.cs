@@ -30,7 +30,7 @@ namespace business.classes.PessoasLgpd
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_AclamacaoLgpd set Denominacao='{Denominacao}' " +
             $" where IdPessoa='{id}' " + BDcomum.addNaLista;
-            
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -53,22 +53,23 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Membro_AclamacaoLgpd as MA "
-           + " inner join MembroLgpd as M on MA.IdPessoa=M.IdPessoa "
-           + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa";
-                if (id != null) Select_padrao += $" where MA.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from Membro_AclamacaoLgpd as MA "
+               + " inner join MembroLgpd as M on MA.IdPessoa=M.IdPessoa "
+               + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa";
+                    if (id != null) Select_padrao += $" where MA.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.Denominacao = Convert.ToString(dr["Denominacao"]);
                     dr.Close();
@@ -88,16 +89,17 @@ namespace business.classes.PessoasLgpd
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Membro_AclamacaoLgpd ma = new Membro_AclamacaoLgpd();
@@ -139,9 +141,9 @@ namespace business.classes.PessoasLgpd
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Membro_aclamacaoLgpd (Denominacao, IdPessoa) " +
                 $" values ('{Denominacao}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

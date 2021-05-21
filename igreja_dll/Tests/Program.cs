@@ -1,6 +1,7 @@
 ﻿using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using database.banco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace Tests
 
        static string[] arr = new string[50];
        static string[] arr2 = new string[10];
+        static BDcomum bd = new BDcomum();
 
         static void Main(string[] args)
         {
             
+
             arr[0] = "Paulo"; arr[10] = "Sandra"; arr[20] = "Sebastião"; arr[30] = "Thais"; arr[40] = "Adriana";
             arr[1] = "Jorge"; arr[11] = "Jaco"; arr[21] = "Lucas"; arr[31] = "Pamela"; arr[41] = "Adriano";
             arr[2] = "Maria"; arr[12] = "Rubens"; arr[22] = "Alice"; arr[32] = "Nayara"; arr[42] = "Alex";
@@ -41,6 +44,27 @@ namespace Tests
             arr2[8] = "Menezes";
             arr2[9] = "Reimon";
 
+            //var pes = new VisitanteLgpd
+            // {
+            //     celula_ = null,
+            //     Chamada = new business.classes.Chamada
+            //     {
+            //         Data_inicio = DateTime.Now,
+            //         Numero_chamada = 0
+            //     },
+            //     Img = "",
+            //     Historico = new List<business.classes.Historico>(),
+            //     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
+            //     NomePessoa = arr[0] + " " + arr2[0],
+            //     Condicao_religiosa = " - ",
+            //     Data_visita = DateTime.Now,
+            //     Email = arr2[0].Replace(" ", "") + "1991" + "@gmail.com",
+            //     Falta = 0,
+            //     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>()
+            // };
+
+            // pes.salvar();
+
 
             CadastrarMembroReconciliacaoDadoTest();
             CadastrarMembroTransferenciaDadoTest();
@@ -55,6 +79,13 @@ namespace Tests
             CadastrarMembroAclamacaoLgpdTest();
             CadastrarCriancaLgpdTest();
             CadastrarVisitanteLgpdTest();
+
+            //var ValorEsperado = new BDcomum().GetUltimoRegistroPessoa();
+            //var valorObtido = pes.IdPessoa;
+            //if (valorObtido == ValorEsperado)
+            //    Console.WriteLine("Ok");
+            //else
+            //    Console.WriteLine("aconteceu um erro.");
 
             Console.ReadLine();
         }
@@ -540,7 +571,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");

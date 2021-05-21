@@ -12,7 +12,7 @@ namespace business.classes.Pessoas
 {
     [Table("Visitante")]
     public class Visitante : PessoaDado
-    {       
+    {
 
         [Display(Name = "Data da visita")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -31,10 +31,10 @@ namespace business.classes.Pessoas
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update Visitante set Data_visita='{Data_visita.ToString("yyyy-MM-dd")}', " + 
+            Update_padrao += $" update Visitante set Data_visita='{Data_visita.ToString("yyyy-MM-dd")}', " +
             $"Condicao_religiosa='{Condicao_religiosa}' " +
             $" where IdPessoa='{id}' " + BDcomum.addNaLista;
-            
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -56,21 +56,22 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Visitante as V "
-            + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from Visitante as V "
+                + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                    if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.Data_visita = Convert.ToDateTime(Convert.ToString(dr["Data_visita"]));
                     this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
@@ -90,18 +91,19 @@ namespace business.classes.Pessoas
 
                 return modelos;
             }
-            else 
+            else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Visitante v = new Visitante();
@@ -136,7 +138,7 @@ namespace business.classes.Pessoas
                 return modelos;
             }
         }
-        
+
         public override string salvar()
         {
             Insert_padrao = base.salvar();
@@ -145,8 +147,8 @@ namespace business.classes.Pessoas
             + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);
-            
-           return Insert_padrao;
+
+            return Insert_padrao;
         }
 
         public override string ToString()

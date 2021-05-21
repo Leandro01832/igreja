@@ -38,10 +38,10 @@ namespace business.classes.Pessoas
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Crianca set Nome_pai='{Nome_pai}', Nome_mae='{Nome_mae}' " +
                 $" where IdPessoa='{id}' " + BDcomum.addNaLista;
-            
+
             bd.Editar(this);
             return Update_padrao;
-        }      
+        }
 
         public override string excluir(int id)
         {
@@ -60,24 +60,25 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Crianca as C "
-             + " inner join PessoaDado as PD on C.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
-                    dr.Read();                    
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from Crianca as C "
+                 + " inner join PessoaDado as PD on C.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                    if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
+                    dr.Read();
                     this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
-                    this.Nome_pai = Convert.ToString(dr["Nome_pai"]);                    
+                    this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
                     dr.Close();
                     modelos.Add(this);
                 }
@@ -91,25 +92,26 @@ namespace business.classes.Pessoas
                 {
                     bd.obterconexao().Close();
                 }
-                
+
                 return modelos;
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Crianca crianca = new Crianca();
-                        crianca.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));                                          
+                        crianca.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         modelos.Add(crianca);
                     }
                     dr.Close();
@@ -145,9 +147,9 @@ namespace business.classes.Pessoas
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Crianca (Nome_pai, Nome_mae, IdPessoa) values" +
                 $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

@@ -34,7 +34,7 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        
+
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Batismo as MB "
@@ -43,7 +43,7 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+
 
             if (id != null)
             {
@@ -68,24 +68,25 @@ namespace business.classes.Pessoas
             }
             else
             {
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Membro_Batismo as MB "
-                + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
-                + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from Membro_Batismo as MB "
+                    + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
+                    + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                    if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Membro_Batismo mb = new Membro_Batismo();
-                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));                   
+                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         modelos.Add(mb);
                     }
                     dr.Close();
@@ -121,9 +122,9 @@ namespace business.classes.Pessoas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Membro_Batismo (IdPessoa) values (IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

@@ -48,16 +48,17 @@ namespace business.classes.Ministerio
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Lider_Ministerio_Treinamento m = new Lider_Ministerio_Treinamento();
@@ -98,7 +99,7 @@ namespace business.classes.Ministerio
             Insert_padrao += $" insert into Lider_Ministerio_Treinamento (IdMinisterio) values " +
             $" (IDENT_CURRENT('Ministerio'))" + BDcomum.addNaLista;
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

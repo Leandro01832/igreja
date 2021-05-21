@@ -1,7 +1,10 @@
 ﻿using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using database;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
@@ -302,6 +305,7 @@ namespace WindowsFormsApp1
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
+
         }
 
         private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,7 +321,7 @@ namespace WindowsFormsApp1
 
         private void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
                 string tipo = "PessoaDado";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
@@ -328,22 +332,30 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<CriancaLgpd>())
+                    lista.Add(item);
+
+                string tipo = "CriancaLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new CriancaLgpd(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem32_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<VisitanteLgpd>())
+                    lista.Add(item);
+
+                string tipo = "VisitanteLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new VisitanteLgpd(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
@@ -361,66 +373,90 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem28_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_AclamacaoLgpd>())
+                    lista.Add(item);
+                
+                string tipo = "Membro_AclamacaoLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_AclamacaoLgpd(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem29_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_BatismoLgpd>())
+                    lista.Add(item);
+
+                string tipo = "Membro_BatismoLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_BatismoLgpd(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem30_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_TransferenciaLgpd>())
+                    lista.Add(item);
+
+                string tipo = "Membro_TransferenciaLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_TransferenciaLgpd(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem31_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_ReconciliacaoLgpd>())
+                    lista.Add(item);
+
+                string tipo = "Membro_ReconciliacaoLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_ReconciliacaoLgpd(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem33_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Crianca>())
+                    lista.Add(item);
+
+                string tipo = "Crianca";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Crianca(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem39_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Visitante>())
+                    lista.Add(item);
+
+                string tipo = "Visitante";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Visitante(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
@@ -438,44 +474,60 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem35_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_Aclamacao>())
+                    lista.Add(item);
+
+                string tipo = "Membro_Aclamacao";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_Aclamacao(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem36_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_Batismo>())
+                    lista.Add(item);
+
+                string tipo = "Membro_Batismo";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_Batismo(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem37_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_Transferencia>())
+                    lista.Add(item);
+
+                string tipo = "Membro_Transferencia";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_Transferencia(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem38_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaPessoas != null)
             {
-                string tipo = "";
+                var lista = new List<modelocrud>();
+                foreach (var item in listaPessoas.OfType<Membro_Reconciliacao>())
+                    lista.Add(item);
+
+                string tipo = "Membro_Reconciliacao";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new Membro_Reconciliacao(), tipo); 
+                ir.imprimir(lista, tipo); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }

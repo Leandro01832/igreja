@@ -11,7 +11,7 @@ using database;
 namespace business.classes.Ministerio
 {
     [Table("Supervisor_Ministerio_Treinamento")]
-    public  class Supervisor_Ministerio_Treinamento : Abstrato.Ministerio
+    public class Supervisor_Ministerio_Treinamento : Abstrato.Ministerio
     {
         [Display(Name = "Máximo de celulas para supervisionar")]
         public int Maximo_celula { get; set; }
@@ -66,16 +66,17 @@ namespace business.classes.Ministerio
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Supervisor_Ministerio_Treinamento m = new Supervisor_Ministerio_Treinamento();
@@ -115,9 +116,9 @@ namespace business.classes.Ministerio
             Insert_padrao = base.salvar();
             Insert_padrao += $" insert into Supervisor_Ministerio_Treinamento " +
            $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), {Maximo_celula})" + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

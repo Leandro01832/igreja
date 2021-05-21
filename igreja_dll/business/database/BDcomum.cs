@@ -70,23 +70,23 @@ namespace database.banco
             }
         }
 
-        private int GetUltimoRegistroPessoa()
+        public int GetUltimoRegistroPessoa()
         {
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
             try
             {
-                using (con = obterconexao())
-                {
-                    cmd = new SqlCommand("SELECT TOP(1) IdPessoa FROM Pessoa order by IdPessoa desc", con);
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["IdPessoa"].ToString());
-                    dr.Close();
-                    con.Close();
-                }
+                con = obterconexao();
+                
+                cmd = new SqlCommand("SELECT TOP(1) IdPessoa FROM Pessoa order by IdPessoa desc", con);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Id = int.Parse(dr["IdPessoa"].ToString());
+                dr.Close();
+                con.Close();
+                
             }
             catch (Exception ex)
             {
@@ -95,23 +95,23 @@ namespace database.banco
             return Id;
         }
 
-        private int GetUltimoRegistroCelula()
+        public int GetUltimoRegistroCelula()
         {
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
             try
             {
-                using (con = obterconexao())
-                {
-                    cmd = new SqlCommand("SELECT TOP(1) IdCelula FROM Celula order by IdCelula desc", con);
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["IdCelula"].ToString());
-                    dr.Close();
-                    con.Close();
-                }
+                con = obterconexao();
+                
+                cmd = new SqlCommand("SELECT TOP(1) IdCelula FROM Celula order by IdCelula desc", con);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Id = int.Parse(dr["IdCelula"].ToString());
+                dr.Close();
+                con.Close();
+                
             }
             catch (Exception ex)
             {
@@ -120,23 +120,23 @@ namespace database.banco
             return Id;
         }
 
-        private int GetUltimoRegistroMinisterio()
+        public int GetUltimoRegistroMinisterio()
         {
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
             try
             {
-                using (con = obterconexao())
-                {
-                    cmd = new SqlCommand("SELECT TOP(1) IdMinisterio FROM Celula order by IdMinisterio desc", con);
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["IdMinisterio"].ToString());
-                    dr.Close();
-                    con.Close();
-                }
+                con = obterconexao();
+                
+                cmd = new SqlCommand("SELECT TOP(1) IdMinisterio FROM Celula order by IdMinisterio desc", con);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Id = int.Parse(dr["IdMinisterio"].ToString());
+                dr.Close();
+                con.Close();
+                
             }
             catch (Exception ex)
             {
@@ -145,23 +145,23 @@ namespace database.banco
             return Id;
         }
 
-        private int GetUltimoRegistroReuniao()
+        public int GetUltimoRegistroReuniao()
         {
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
             try
             {
-                using (con = obterconexao())
-                {
-                    cmd = new SqlCommand("SELECT TOP(1) IdReuniao FROM Celula order by IdReuniao desc", con);
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["IdReuniao"].ToString());
-                    dr.Close();
-                    con.Close();
-                }
+                con = obterconexao();
+                
+                cmd = new SqlCommand("SELECT TOP(1) IdReuniao FROM Celula order by IdReuniao desc", con);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Id = int.Parse(dr["IdReuniao"].ToString());
+                dr.Close();
+                con.Close();
+                
             }
             catch (Exception ex)
             {

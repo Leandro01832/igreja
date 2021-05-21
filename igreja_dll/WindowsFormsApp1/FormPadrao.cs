@@ -1,6 +1,9 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Celulas;
+using business.classes.Ministerio;
 using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
 using database.banco;
 using System;
@@ -24,6 +27,8 @@ namespace WindowsFormsApp1
         }
 
         private bool verificarLista = true;
+
+        private BDcomum bd = new BDcomum();
 
         public static List<Pessoa> listaPessoas;
         public static List<Ministerio> listaMinisterios;
@@ -98,7 +103,9 @@ namespace WindowsFormsApp1
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Ministerios";
                         form.Show();
-                        listaAtualizadaMinisterios = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+                        listaAtualizadaMinisterios = await Task.Run(() => 
+                        recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio(),
+                        listaMinisterios.OrderBy(i => i.IdMinisterio).Last().IdMinisterio + 1));
                         form.Close();
                         listaMinisterios.Clear();
                         var lista = listaAtualizadaMinisterios;
@@ -120,7 +127,9 @@ namespace WindowsFormsApp1
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Celulas";
                         form.Show();
-                        var listaAtualizadaCelulas = await Task.Run(() => Celula.recuperarTodasCelulas());
+                        var listaAtualizadaCelulas = await Task.Run(() => 
+                        recuperarRegistrosCelula(bd.GetUltimoRegistroCelula(),
+                        listaCelulas.OrderBy(i => i.IdCelula).Last().IdCelula + 1));
                         form.Close();
                         var lista = listaAtualizadaCelulas;
                         foreach (var item in lista.OfType<Celula>())
@@ -142,7 +151,8 @@ namespace WindowsFormsApp1
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Pessoas";
                         form.Show();
-                        listaAtualizadaPessoas = await Task.Run(() => Pessoa.recuperarTodos());
+                        listaAtualizadaPessoas = await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa(),
+                            listaPessoas.OrderBy(i => i.IdPessoa).Last().IdPessoa + 1));
                         form.Close();
                         var lista = listaAtualizadaPessoas;
                         foreach (var item in lista.OfType<Pessoa>())
@@ -156,6 +166,97 @@ namespace WindowsFormsApp1
                 catch { }
                 verificarLista = true;
             }
+        }
+
+        private List<modelocrud> recuperarRegistrosPessoa(int v1, int v2)
+        {
+            List<modelocrud> lista = new List<modelocrud>();
+            while (v2 <= v1)
+            {
+                var modelo = new Visitante().recuperar(v2);
+                var modelo2 = new Crianca().recuperar(v2);
+                var modelo3 = new Membro_Batismo().recuperar(v2);
+                var modelo4 = new Membro_Aclamacao().recuperar(v2);
+                var modelo5 = new Membro_Reconciliacao().recuperar(v2);
+                var modelo6 = new Membro_Transferencia().recuperar(v2);
+                var modelo7 = new VisitanteLgpd().recuperar(v2);
+                var modelo8 = new CriancaLgpd().recuperar(v2);
+                var modelo9 = new Membro_TransferenciaLgpd().recuperar(v2);
+                var modelo10 = new Membro_BatismoLgpd().recuperar(v2);
+                var modelo11 = new Membro_AclamacaoLgpd().recuperar(v2);
+                var modelo12 = new Membro_ReconciliacaoLgpd().recuperar(v2);
+
+                if (modelo.Count > 0) lista.Add((Visitante)modelo[0]);
+                if (modelo2.Count > 0) lista.Add((Crianca)modelo2[0]);
+                if (modelo3.Count > 0) lista.Add((Membro_Batismo)modelo3[0]);
+                if (modelo4.Count > 0) lista.Add((Membro_Aclamacao)modelo4[0]);
+                if (modelo5.Count > 0) lista.Add((Membro_Reconciliacao)modelo5[0]);
+                if (modelo6.Count > 0) lista.Add((Membro_Transferencia)modelo6[0]);
+                if (modelo7.Count > 0) lista.Add((VisitanteLgpd)modelo7[0]);
+                if (modelo8.Count > 0) lista.Add((CriancaLgpd)modelo8[0]);
+                if (modelo9.Count > 0) lista.Add((Membro_TransferenciaLgpd)modelo9[0]);
+                if (modelo10.Count > 0) lista.Add((Membro_BatismoLgpd)modelo10[0]);
+                if (modelo11.Count > 0) lista.Add((Membro_AclamacaoLgpd)modelo11[0]);
+                if (modelo12.Count > 0) lista.Add((Membro_ReconciliacaoLgpd)modelo12[0]);
+
+                v2++;
+            }
+            lista.AddRange(listaMinisterios);
+
+            return lista;
+        }
+
+        private List<modelocrud> recuperarRegistrosCelula(int v1, int v2)
+        {
+            List<modelocrud> lista = new List<modelocrud>();
+            while (v2 < v1)
+            {
+                var modelo = new Celula_Jovem().recuperar(v2);
+                var modelo2 = new Celula_Adolescente().recuperar(v2);
+                var modelo3 = new Celula_Casado().recuperar(v2);
+                var modelo4 = new Celula_Crianca().recuperar(v2);
+                var modelo5 = new Celula_Adulto().recuperar(v2);
+
+                if (modelo.Count > 0) lista.Add((Celula_Jovem)modelo[0]);
+                if (modelo2.Count > 0) lista.Add((Celula_Adolescente)modelo2[0]);
+                if (modelo3.Count > 0) lista.Add((Celula_Casado)modelo3[0]);
+                if (modelo4.Count > 0) lista.Add((Celula_Crianca)modelo4[0]);
+                if (modelo5.Count > 0) lista.Add((Celula_Adulto)modelo5[0]);
+
+                v2++;
+            }
+            lista.AddRange(listaCelulas);
+            return lista;
+        }
+
+        private List<modelocrud> recuperarRegistrosMinisterio(int v, int idMinisterio)
+        {
+            List<modelocrud> lista = new List<modelocrud>();
+            while (idMinisterio <= v)
+            {
+                var modelo = new Lider_Celula().recuperar(idMinisterio);
+                var modelo2 = new Lider_Celula_Treinamento().recuperar(idMinisterio);
+                var modelo3 = new Lider_Ministerio().recuperar(idMinisterio);
+                var modelo4 = new Lider_Ministerio_Treinamento().recuperar(idMinisterio);
+                var modelo5 = new Supervisor_Celula().recuperar(idMinisterio);
+                var modelo6 = new Supervisor_Celula_Treinamento().recuperar(idMinisterio);
+                var modelo7 = new Supervisor_Ministerio().recuperar(idMinisterio);
+                var modelo8 = new Supervisor_Ministerio_Treinamento().recuperar(idMinisterio);
+
+                if (modelo.Count > 0) lista.Add((Lider_Celula)modelo[0]);
+                if (modelo2.Count > 0) lista.Add((Lider_Celula_Treinamento)modelo2[0]);
+                if (modelo3.Count > 0) lista.Add((Lider_Ministerio)modelo3[0]);
+                if (modelo4.Count > 0) lista.Add((Lider_Ministerio_Treinamento)modelo4[0]);
+                if (modelo5.Count > 0) lista.Add((Supervisor_Celula)modelo5[0]);
+                if (modelo6.Count > 0) lista.Add((Supervisor_Celula_Treinamento)modelo6[0]);
+                if (modelo7.Count > 0) lista.Add((Supervisor_Ministerio)modelo7[0]);
+                if (modelo8.Count > 0) lista.Add((Supervisor_Ministerio_Treinamento)modelo8[0]);
+
+                idMinisterio++;
+            }
+            lista.AddRange(listaMinisterios);
+
+            return lista;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

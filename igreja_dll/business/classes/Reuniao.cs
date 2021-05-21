@@ -74,7 +74,7 @@ namespace business.classes
         {
             Select_padrao = "select * from Reuniao as M";
             if (id != null)
-                Select_padrao +=  $" where M.IdReuniao='{id}'";
+                Select_padrao += $" where M.IdReuniao='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
 
@@ -120,16 +120,17 @@ namespace business.classes
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Reuniao r = new Reuniao();
@@ -174,9 +175,9 @@ namespace business.classes
         " Horario_inicio, Horario_fim, Local_reuniao) values " +
         $" ('{Data_reuniao.ToString("yyyy-MM-dd")}', '{Horario_inicio.ToString()}', " +
         $" '{Horario_fim.ToString()}', '{Local_reuniao}')" + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

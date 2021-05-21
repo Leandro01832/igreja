@@ -1,6 +1,11 @@
 ﻿using business.classes;
+using business.classes.Celulas;
+using business.classes.Ministerio;
+using database;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celula;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
@@ -387,50 +392,70 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaCelulas != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaCelulas.OfType<Celula_Adolescente>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Celulas.Celula_Adolescente(), ""); 
+                ir.imprimir( lista, "Celula_Adolescente"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaCelulas != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaCelulas.OfType<Celula_Adulto>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Celulas.Celula_Adulto(), ""); 
+                ir.imprimir(lista, "Celula_Adulto"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaCelulas != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaCelulas.OfType<Celula_Jovem>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Celulas.Celula_Jovem(), ""); 
+                ir.imprimir(lista, "Celula_Jovem"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaCelulas != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaCelulas.OfType<Celula_Crianca>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Celulas.Celula_Crianca(), ""); 
+                ir.imprimir(lista, "Celula_Crianca"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaCelulas != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaCelulas.OfType<Celula_Casado>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Celulas.Celula_Casado(), ""); 
+                ir.imprimir(lista, "Celula_Casado"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
@@ -447,80 +472,112 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Lider_Celula>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Lider_Celula(), ""); 
+                ir.imprimir(lista, "Lider_Celula"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Lider_Celula_Treinamento>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Lider_Celula_Treinamento(), ""); 
+                ir.imprimir(lista, "Lider_Celula_Treinamento"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Lider_Ministerio>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Lider_Ministerio(), ""); 
+                ir.imprimir(lista, "Lider_Ministerio"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Lider_Ministerio_Treinamento>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Lider_Ministerio_Treinamento(), ""); 
+                ir.imprimir(lista, "Lider_Ministerio_Treinamento"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            if(listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if(listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Supervisor_Celula>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Supervisor_Celula(), ""); 
+                ir.imprimir(lista, "Supervisor_Celula"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Supervisor_Celula_Treinamento>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Supervisor_Celula_Treinamento(), ""); 
+                ir.imprimir(lista, "Supervisor_Celula_Treinamento"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Supervisor_Ministerio>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio(), ""); 
+                ir.imprimir(lista, "Supervisor_Ministerio"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
+            if (listaMinisterios != null)
             {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaMinisterios.OfType<Supervisor_Ministerio_Treinamento>())
+                    lista.Add(item);
+
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(), ""); 
+                ir.imprimir(lista, "Supervisor_Ministerio_Treinamento"); 
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
@@ -552,16 +609,39 @@ namespace WindowsFormsApp1
             frm.Show();
         }
 
-        private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
-            {
-                string tipo = "";
+                var lista = await AtualizarComProgressBar(new MudancaEstado());
+
+                string tipo = "MudancaEstado";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(new MudancaEstado(), tipo); 
+                ir.imprimir(lista, tipo); 
+        }
+
+        private void reuniãoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (listaReuniao != null)
+            {
+                var lista = new List<modelocrud>();
+                foreach (var item in listaReuniao)
+                    lista.Add(item);
+
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
+                ir.imprimir(lista, "Reuniao");
             }
             else MessageBox.Show("Aguarde o processamento.");
         }
-        
+
+        private void chamadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void historicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

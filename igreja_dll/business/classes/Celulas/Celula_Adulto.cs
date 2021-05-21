@@ -12,7 +12,7 @@ using database.banco;
 namespace business.classes.Celulas
 {
     [Table("Celula_Adulto")]
-   public class Celula_Adulto : Abstrato.Celula
+    public class Celula_Adulto : Abstrato.Celula
     {
         public Celula_Adulto() : base()
         {
@@ -72,16 +72,17 @@ namespace business.classes.Celulas
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Celula_Adulto c = new Celula_Adulto();
@@ -121,9 +122,9 @@ namespace business.classes.Celulas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into Celula_Adulto (IdCelula) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

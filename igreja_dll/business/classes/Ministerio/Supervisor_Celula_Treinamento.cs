@@ -12,7 +12,7 @@ namespace business.classes.Ministerio
 {
     [Table("Supervisor_Celula_Treinamento")]
     public class Supervisor_Celula_Treinamento : Abstrato.Ministerio
-    {              
+    {
 
         [Display(Name = "Máximo de celulas para supervisioar")]
         public int Maximo_celula { get; set; }
@@ -67,16 +67,17 @@ namespace business.classes.Ministerio
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Supervisor_Celula_Treinamento m = new Supervisor_Celula_Treinamento();
@@ -113,14 +114,14 @@ namespace business.classes.Ministerio
 
         public override string salvar()
         {
-           Insert_padrao = base.salvar();
-           Insert_padrao += $" insert into Supervisor_Celula_Treinamento " +
-          $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
-            
-           bd.SalvarModelo(this);
-           
-           return Insert_padrao;
-         
+            Insert_padrao = base.salvar();
+            Insert_padrao += $" insert into Supervisor_Celula_Treinamento " +
+           $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
+
+            bd.SalvarModelo(this);
+
+            return Insert_padrao;
+
         }
 
         public override string ToString()

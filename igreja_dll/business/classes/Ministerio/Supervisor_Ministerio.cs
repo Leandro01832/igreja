@@ -12,9 +12,9 @@ using database;
 namespace business.classes.Ministerio
 {
     [Table("Supervisor_Ministerio")]
-    public  class Supervisor_Ministerio : Abstrato.Ministerio
+    public class Supervisor_Ministerio : Abstrato.Ministerio
     {
-        
+
         [Display(Name = "Máximo de celulas para supervisioar")]
         public int Maximo_celula { get; set; }
 
@@ -26,7 +26,7 @@ namespace business.classes.Ministerio
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update  Supervisor_Ministerio set Maximo_celula='{Maximo_celula}' where IdMinisterio='{id}' " 
+            Update_padrao += $" update  Supervisor_Ministerio set Maximo_celula='{Maximo_celula}' where IdMinisterio='{id}' "
             + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
@@ -68,16 +68,17 @@ namespace business.classes.Ministerio
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Supervisor_Ministerio m = new Supervisor_Ministerio();
@@ -116,10 +117,10 @@ namespace business.classes.Ministerio
         {
             Insert_padrao = base.salvar();
             Insert_padrao += $" insert into Supervisor_Ministerio " +
-           $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;            
+           $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

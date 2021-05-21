@@ -22,7 +22,7 @@ namespace business.classes.Ministerio
             Insert_padrao = base.salvar();
             Insert_padrao += $" insert into Lider_Celula (IdMinisterio) values (IDENT_CURRENT('Ministerio')) " + BDcomum.addNaLista;
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 
@@ -41,16 +41,17 @@ namespace business.classes.Ministerio
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Lider_Celula m = new Lider_Celula();

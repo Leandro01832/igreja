@@ -13,14 +13,14 @@
 namespace AplicativoXamarin.Views.List {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\List" +
-        "\\MinistriesCellView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
+        "ws\\List\\MinistriesCellView.xaml")]
     public partial class MinistriesCellView : global::Xamarin.Forms.ContentPage {
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ListView listViewMinisterios;
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MinistriesCellView));
             listViewMinisterios = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "listViewMinisterios");

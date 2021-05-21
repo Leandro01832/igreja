@@ -37,10 +37,10 @@ namespace business.classes.PessoasLgpd
             Update_padrao = base.alterar(id);
             Update_padrao += $" update CriancaLgpd set Nome_pai='{Nome_pai}', Nome_mae='{Nome_mae}' " +
                 $" where IdPessoa='{id}' " + BDcomum.addNaLista;
-            
+
             bd.Editar(this);
             return Update_padrao;
-        }      
+        }
 
         public override string excluir(int id)
         {
@@ -59,24 +59,25 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from CriancaLgpd as C "
-             + " inner join PessoaLgpd as PL on C.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
-                if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
-                    dr.Read();                    
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from CriancaLgpd as C "
+                 + " inner join PessoaLgpd as PL on C.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
+                    if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
+                    dr.Read();
                     this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
-                    this.Nome_pai = Convert.ToString(dr["Nome_pai"]);                    
+                    this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
                     dr.Close();
                     modelos.Add(this);
                 }
@@ -90,21 +91,22 @@ namespace business.classes.PessoasLgpd
                 {
                     bd.obterconexao().Close();
                 }
-                
+
                 return modelos;
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         CriancaLgpd crianca = new CriancaLgpd();
@@ -144,9 +146,9 @@ namespace business.classes.PessoasLgpd
             Insert_padrao = base.salvar();
             Insert_padrao += " insert into CriancaLgpd (Nome_pai, Nome_mae, IdPessoa) values" +
                 $" ('{Nome_pai}', '{Nome_mae}', IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

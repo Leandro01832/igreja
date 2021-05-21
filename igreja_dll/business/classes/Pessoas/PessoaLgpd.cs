@@ -13,12 +13,12 @@ using System.Windows.Forms;
 namespace business.classes.Pessoas
 {
     [Table("PessoaLgpd")]
-    public abstract class PessoaLgpd : Pessoa 
+    public abstract class PessoaLgpd : Pessoa
     {
         public PessoaLgpd() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();            
+            AddNalista = new AddNalista();
         }
 
         AddNalista AddNalista;
@@ -28,8 +28,8 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into PessoaLgpd (IdPessoa) values (IDENT_CURRENT('Pessoa')) ";            
-            
+            Insert_padrao += " insert into PessoaLgpd (IdPessoa) values (IDENT_CURRENT('Pessoa')) ";
+
             return Insert_padrao;
         }
 
@@ -42,35 +42,36 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.IdPessoa='{id}' " 
-            + base.excluir(id);            
-            
+            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.IdPessoa='{id}' "
+            + base.excluir(id);
+
             return Delete_padrao;
-        }        
+        }
 
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from PessoaLgpd as PL ";
             if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();            
+            List<modelocrud> modelos = new List<modelocrud>();
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from PessoaLgpd as PL ";
-                if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from PessoaLgpd as PL ";
+                    if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     modelos.Add(this);
                 }
 

@@ -13,7 +13,7 @@ namespace business.classes.PessoasLgpd
 {
     [Table("VisitanteLgpd")]
     public class VisitanteLgpd : PessoaLgpd
-    {       
+    {
 
         [Display(Name = "Data da visita")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -31,10 +31,10 @@ namespace business.classes.PessoasLgpd
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
-            Update_padrao += $" update {this.GetType().Name} set Data_visita='{Data_visita.ToString("yyyy-MM-dd")}', " + 
+            Update_padrao += $" update {this.GetType().Name} set Data_visita='{Data_visita.ToString("yyyy-MM-dd")}', " +
             $"Condicao_religiosa='{Condicao_religiosa}' " +
             $" where IdPessoa='{id}' " + BDcomum.addNaLista;
-            
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -56,17 +56,18 @@ namespace business.classes.PessoasLgpd
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from VisitanteLgpd as V "
-            + " inner join PessoaLgpd as PL on V.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
-                if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
                 try
                 {
-                    
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from VisitanteLgpd as V "
+                + " inner join PessoaLgpd as PL on V.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
+                    if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+
+
                     if (dr.HasRows == false)
                     {
                         bd.obterconexao().Close();
@@ -92,7 +93,7 @@ namespace business.classes.PessoasLgpd
 
                 return modelos;
             }
-            else 
+            else
             {
                 try
                 {
@@ -134,7 +135,7 @@ namespace business.classes.PessoasLgpd
                 return modelos;
             }
         }
-        
+
         public override string salvar()
         {
             Insert_padrao = base.salvar();
@@ -143,8 +144,8 @@ namespace business.classes.PessoasLgpd
             + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);
-            
-           return Insert_padrao;
+
+            return Insert_padrao;
         }
 
         public override string ToString()

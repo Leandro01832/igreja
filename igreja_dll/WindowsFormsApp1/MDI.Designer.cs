@@ -594,7 +594,7 @@
             // 
             this.vIsitanteToolStripMenuItem.Name = "vIsitanteToolStripMenuItem";
             this.vIsitanteToolStripMenuItem.Size = new System.Drawing.Size(166, 32);
-            this.vIsitanteToolStripMenuItem.Text = "VIsitante";
+            this.vIsitanteToolStripMenuItem.Text = "Visitante";
             this.vIsitanteToolStripMenuItem.Click += new System.EventHandler(this.vIsitanteToolStripMenuItem_Click);
             // 
             // membroToolStripMenuItem
@@ -938,7 +938,7 @@
             // 
             this.toolStripMenuItem38.Name = "toolStripMenuItem38";
             this.toolStripMenuItem38.Size = new System.Drawing.Size(321, 32);
-            this.toolStripMenuItem38.Text = "Membro por reconciliacão";
+            this.toolStripMenuItem38.Text = "Membro por reconciliação";
             this.toolStripMenuItem38.Click += new System.EventHandler(this.toolStripMenuItem38_Click);
             // 
             // toolStripMenuItem39
@@ -1037,7 +1037,7 @@
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(639, 32);
-            this.toolStripMenuItem5.Text = "Ministério de lideranca de ministério em treianmento";
+            this.toolStripMenuItem5.Text = "Ministério de lideranca de ministério em treinanmento";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem6
@@ -1073,18 +1073,21 @@
             this.reuniãoToolStripMenuItem2.Name = "reuniãoToolStripMenuItem2";
             this.reuniãoToolStripMenuItem2.Size = new System.Drawing.Size(262, 32);
             this.reuniãoToolStripMenuItem2.Text = "Reunião";
+            this.reuniãoToolStripMenuItem2.Click += new System.EventHandler(this.reuniãoToolStripMenuItem2_Click);
             // 
             // chamadaToolStripMenuItem
             // 
             this.chamadaToolStripMenuItem.Name = "chamadaToolStripMenuItem";
             this.chamadaToolStripMenuItem.Size = new System.Drawing.Size(262, 32);
             this.chamadaToolStripMenuItem.Text = "Chamada";
+            this.chamadaToolStripMenuItem.Click += new System.EventHandler(this.chamadaToolStripMenuItem_Click);
             // 
             // historicoToolStripMenuItem
             // 
             this.historicoToolStripMenuItem.Name = "historicoToolStripMenuItem";
             this.historicoToolStripMenuItem.Size = new System.Drawing.Size(262, 32);
             this.historicoToolStripMenuItem.Text = "Historico";
+            this.historicoToolStripMenuItem.Click += new System.EventHandler(this.historicoToolStripMenuItem_Click);
             // 
             // mudançaDeEstadoToolStripMenuItem1
             // 

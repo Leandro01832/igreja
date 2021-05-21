@@ -13,11 +13,11 @@
 namespace AplicativoXamarin.Views.Edicao {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Edic" +
-        "ao\\EditCriancaLgpd.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
+        "ws\\Edicao\\EditCriancaLgpd.xaml")]
     public partial class EditCriancaLgpd : global::Xamarin.Forms.ContentPage {
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditCriancaLgpd));
         }

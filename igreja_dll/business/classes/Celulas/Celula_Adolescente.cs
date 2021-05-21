@@ -72,17 +72,17 @@ namespace business.classes.Celulas
             }
             else
             {
-                bd.obterconexao().Open();
-                if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Celula_Adolescente c = new Celula_Adolescente();
@@ -122,9 +122,9 @@ namespace business.classes.Celulas
         {
             Insert_padrao = base.salvar();
             Insert_padrao += "insert into Celula_Adolescente (IdCelula) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
+
             return Insert_padrao;
         }
 

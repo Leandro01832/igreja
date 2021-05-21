@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace business.classes.Pessoas
 {
-       [Table("Membro_Transferencia")]
+    [Table("Membro_Transferencia")]
     public class Membro_Transferencia : Membro
-    {    
+    {
         [Display(Name = "Nome da cidade onde morava")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_cidade_transferencia { get; set; }
@@ -35,7 +35,7 @@ namespace business.classes.Pessoas
             Update_padrao += $" update Membro_Transferencia set Nome_igreja_transferencia='{Nome_igreja_transferencia}', " +
             $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
             $"  where IdPessoa='{id}' " + BDcomum.addNaLista;
-            
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -58,26 +58,27 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Membro_Transferencia as MT "
-            + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
-            + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
-                if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Close();
+                    base.recuperar(id);
+                    bd.obterconexao().Open();
+                    Select_padrao = "select * from Membro_Transferencia as MT "
+                + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
+                + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
+                    if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                     this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
-                    this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);                    
+                    this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                     dr.Close();
                     modelos.Add(this);
                 }
@@ -93,20 +94,21 @@ namespace business.classes.Pessoas
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.obterconexao().Open();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        bd.obterconexao().Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Membro_Transferencia mt = new Membro_Transferencia();
-                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));                   
+                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
                         modelos.Add(mt);
                     }
                     dr.Close();
@@ -144,10 +146,10 @@ namespace business.classes.Pessoas
               " Estado_transferencia, Nome_igreja_transferencia, IdPessoa) " +
               $" values ('{Nome_cidade_transferencia}', '{Estado_transferencia}', '{Nome_igreja_transferencia}', " +
               " IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
-            
+
             bd.SalvarModelo(this);
-            
-            return Insert_padrao;            
+
+            return Insert_padrao;
         }
 
         public override string ToString()
