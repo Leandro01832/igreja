@@ -384,3 +384,5 @@ D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsForm
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProgressBar.resources
+D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProgressBar2.resources
+D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProcessamento.resources

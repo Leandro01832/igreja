@@ -132,47 +132,7 @@ namespace business.classes.Abstrato
             $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
             
             return Insert_padrao;
-        }
-
-        public static List<modelocrud> recuperarTodosMembros()
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                var m = new Membro_Aclamacao().recuperar(null);
-                if (m != null)
-                    lista.AddRange(m);
-                return lista;
-            });
-
-            Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
-            {
-                var m = new Membro_Batismo().recuperar(null);
-                if (m != null)
-                 task.Result.AddRange(m);
-                return task.Result;
-            });
-
-            Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
-            {
-                var m = new Membro_Reconciliacao().recuperar(null);
-                if (m != null)
-                    task.Result.AddRange(m);
-                return task.Result;
-            });
-
-            Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
-            {
-                var m = new Membro_Transferencia().recuperar(null);
-                if (m != null)
-                    task.Result.AddRange(m);
-                return task.Result;
-            });
-
-            Task.WaitAll(t, t2, t3, t4);
-
-            return t4.Result;
-        }  
+        }    
         
     }
 }

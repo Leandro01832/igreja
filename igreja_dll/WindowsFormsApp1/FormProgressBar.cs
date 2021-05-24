@@ -12,12 +12,24 @@ namespace WindowsFormsApp1
         public FormProgressBar()
         {
             InitializeComponent();
-            progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            
+            label1.Text = textoPorcentagem;
         }
 
         private void FormProgressBar_Load(object sender, EventArgs e)
         {
         }
-        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = textoPorcentagem;
+            var numero = textoPorcentagem.Replace("%", "");
+
+            if(int.Parse(numero) <= 100)
+            progressBar1.Value = int.Parse(numero);
+            else
+                progressBar1.Value = 100;
+
+        }
     }
 }

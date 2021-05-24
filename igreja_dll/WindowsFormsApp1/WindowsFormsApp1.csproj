@@ -83,11 +83,23 @@
     <Compile Include="FormPadrao.Designer.cs">
       <DependentUpon>FormPadrao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProcessamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProcessamento.Designer.cs">
+      <DependentUpon>FormProcessamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProgressBar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormProgressBar.Designer.cs">
       <DependentUpon>FormProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProgressBar2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProgressBar2.Designer.cs">
+      <DependentUpon>FormProgressBar2.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Celula\MinisteriosCelula.cs">
       <SubType>Form</SubType>
@@ -540,8 +552,14 @@
     <EmbeddedResource Include="FormPadrao.resx">
       <DependentUpon>FormPadrao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormProcessamento.resx">
+      <DependentUpon>FormProcessamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormProgressBar.resx">
       <DependentUpon>FormProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProgressBar2.resx">
+      <DependentUpon>FormProgressBar2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Celula\FrmCelula.resx">
       <DependentUpon>FrmCelula.cs</DependentUpon>

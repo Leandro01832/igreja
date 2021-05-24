@@ -137,38 +137,39 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem10_Click_1(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
+            if (listaPessoas.Count > 0)
             {
                 FrmPessoa p = new FrmPessoa(null, "PessoaLgpd");
                 p.MdiParent = this;
                 p.Text = "Janela " + childFormNumber++;
                 p.Show(); 
             }
+            else MessageBox.Show("Aguarde o processamento");
         }
 
         private void pessoasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
+            if (listaPessoas.Count > 0)
             {
                 FrmPessoa p = new FrmPessoa(null, "Pessoa");
                 p.MdiParent = this;
                 p.Text = "Janela " + childFormNumber++;
                 p.Show();
             }
-            else MessageBox.Show("Aguarde o processamento.");
+            else MessageBox.Show("Aguarde o processamento");
             
         }
 
         private void pessoaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
+            if (listaPessoas.Count > 0)
             {
                 FrmPessoa p = new FrmPessoa(null, "PessoaDado");
                 p.MdiParent = this;
                 p.Text = "Janela " + childFormNumber++;
                 p.Show(); 
             }
-            else MessageBox.Show("Aguarde o processamento.");
+            else MessageBox.Show("Aguarde o processamento");
         }
 
         private void visitanteToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -189,26 +190,26 @@ namespace WindowsFormsApp1
 
         private void membroToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
+            if (listaPessoas.Count > 0)
             {
                 FrmMembro m = new FrmMembro(null, "Membro");
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
-                m.Show(); 
+                m.Show();  
             }
-            else MessageBox.Show("Aguarde o processamento.");
+            else MessageBox.Show("Aguarde o processamento");
         }
 
         private void toolStripMenuItem12_Click_1(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
+            if (listaPessoas.Count > 0)
             {
                 FrmMembro m = new FrmMembro(null, "MembroLgpd");
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
-                m.Show(); 
+                m.Show();  
             }
-            else MessageBox.Show("Aguarde o processamento.");
+            else MessageBox.Show("Aguarde o processamento");
         }
 
         private void criançaToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -310,30 +311,20 @@ namespace WindowsFormsApp1
 
         private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
-            {
                 string tipo = "PessoaLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(null, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 string tipo = "PessoaDado";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(null, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<CriancaLgpd>())
                     lista.Add(item);
@@ -341,14 +332,10 @@ namespace WindowsFormsApp1
                 string tipo = "CriancaLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem32_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<VisitanteLgpd>())
                     lista.Add(item);
@@ -356,25 +343,17 @@ namespace WindowsFormsApp1
                 string tipo = "VisitanteLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem27_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
-            {
                 string tipo = "MembroLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(null, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem28_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_AclamacaoLgpd>())
                     lista.Add(item);
@@ -382,14 +361,10 @@ namespace WindowsFormsApp1
                 string tipo = "Membro_AclamacaoLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem29_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_BatismoLgpd>())
                     lista.Add(item);
@@ -397,14 +372,10 @@ namespace WindowsFormsApp1
                 string tipo = "Membro_BatismoLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem30_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_TransferenciaLgpd>())
                     lista.Add(item);
@@ -412,14 +383,10 @@ namespace WindowsFormsApp1
                 string tipo = "Membro_TransferenciaLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem31_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_ReconciliacaoLgpd>())
                     lista.Add(item);
@@ -427,14 +394,10 @@ namespace WindowsFormsApp1
                 string tipo = "Membro_ReconciliacaoLgpd";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem33_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Crianca>())
                     lista.Add(item);
@@ -442,14 +405,10 @@ namespace WindowsFormsApp1
                 string tipo = "Crianca";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem39_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Visitante>())
                     lista.Add(item);
@@ -457,40 +416,28 @@ namespace WindowsFormsApp1
                 string tipo = "Visitante";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem34_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null && listaReuniao != null && listaMinisterios != null && listaCelulas != null)
-            {
                 string tipo = "Membro";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(null, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem35_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_Aclamacao>())
-                    lista.Add(item);
+                lista.Add(item);
 
                 string tipo = "Membro_Aclamacao";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem36_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_Batismo>())
                     lista.Add(item);
@@ -498,14 +445,10 @@ namespace WindowsFormsApp1
                 string tipo = "Membro_Batismo";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem37_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_Transferencia>())
                     lista.Add(item);
@@ -513,23 +456,17 @@ namespace WindowsFormsApp1
                 string tipo = "Membro_Transferencia";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
         private void toolStripMenuItem38_Click(object sender, EventArgs e)
         {
-            if (listaPessoas != null)
-            {
                 var lista = new List<modelocrud>();
                 foreach (var item in listaPessoas.OfType<Membro_Reconciliacao>())
-                    lista.Add(item);
+                lista.Add(item);
 
                 string tipo = "Membro_Reconciliacao";
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
                 ir.imprimir(lista, tipo); 
-            }
-            else MessageBox.Show("Aguarde o processamento.");
         }
 
     }

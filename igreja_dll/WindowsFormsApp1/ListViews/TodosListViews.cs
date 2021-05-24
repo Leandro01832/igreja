@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.ListViews
         {
             this.Tipo = tipo;
             this.View = View.Tile;
-            this.Size = new System.Drawing.Size(500, 300);
+            this.Size = new System.Drawing.Size(600, 300);
             this.ItemSelectionChanged += TodosListViews_ItemSelectionChanged;
             this.Location = new System.Drawing.Point(50, 50);
             this.Font = new System.Drawing.Font("Arial", 15);

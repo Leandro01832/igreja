@@ -18,6 +18,7 @@ namespace business.classes.Abstrato
     [Table("Celula")]
     public abstract  class Celula : modelocrud, IAddNalista, IBuscaLista
     {
+        #region properties
         [Key]
         public int IdCelula { get; set; }
 
@@ -47,6 +48,13 @@ namespace business.classes.Abstrato
         [NotMapped]
         public static int UltimoRegistro { get; set; }
 
+        public static List<Celula_Adolescente> celulasAdolescente { get; set; }
+        public static List<Celula_Jovem> celulasJovem { get; set; }
+        public static List<Celula_Adulto> celulasAdulto { get; set; }
+        public static List<Celula_Crianca> celulasCrianca { get; set; }
+        public static List<Celula_Casado> celulasCasado { get; set; }
+        #endregion
+
         AddNalista AddNalista;
         BuscaLista BuscaLista;
 
@@ -56,15 +64,16 @@ namespace business.classes.Abstrato
             AddNalista = new AddNalista();
             BuscaLista = new BuscaLista();
         }
-        
+
+        #region Methods
         public override string alterar(int id)
         {
             Update_padrao = $"update Celula set Nome='{Nome}', Dia_semana='{Dia_semana}', " +
             $"Horario='{Horario.ToString()}', Maximo_pessoa='{Maximo_pessoa}' " +
             $"  where IdCelula='{id}' " + this.EnderecoCelula.alterar(id);
-            
+
             return Update_padrao;
-        }        
+        }
 
         public override string excluir(int id)
         {
@@ -72,7 +81,7 @@ namespace business.classes.Abstrato
                 + " delete EnderecoCelula from EnderecoCelula "
                 + " as E inner join Celula as C on E.IdEnderecoCelula=C.IdCelula"
                 + $" where C.IdCelula='{id}'";
-            
+
             return Delete_padrao;
         }
 
@@ -82,7 +91,7 @@ namespace business.classes.Abstrato
             + " inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula ";
             if (id != null) Select_padrao += $" where C.IdCelula='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();            
+            List<modelocrud> modelos = new List<modelocrud>();
 
             if (id != null)
             {
@@ -116,15 +125,15 @@ namespace business.classes.Abstrato
                     this.Ministerios = new List<MinisterioCelula>();
                     bd.obterconexao().Close();
                     var listaMinisterios = recuperarMinisterios(id);
-                    if(listaMinisterios != null)
-                    foreach (var item in listaMinisterios)
-                    this.Ministerios.Add((MinisterioCelula)item);
+                    if (listaMinisterios != null)
+                        foreach (var item in listaMinisterios)
+                            this.Ministerios.Add((MinisterioCelula)item);
 
                     this.Pessoas = new List<Pessoa>();
                     var listaPessoas = buscarPessoas(id);
                     if (listaPessoas != null)
-                    foreach (var item in listaPessoas)
-                    this.Pessoas.Add((Pessoa)item);
+                        foreach (var item in listaPessoas)
+                            this.Pessoas.Add((Pessoa)item);
 
                     modelos.Add(this);
                 }
@@ -148,50 +157,86 @@ namespace business.classes.Abstrato
             Insert_padrao = "insert into Celula (Nome, Dia_semana, Horario, Maximo_pessoa) " +
                 $" values  ('{Nome}', '{Dia_semana}', '{Horario}', '{Maximo_pessoa}') "
                 + this.EnderecoCelula.salvar();
-            
+
             return Insert_padrao;
-        }
+        } 
+        #endregion
 
         public static List<modelocrud> recuperarTodasCelulas()
         {
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-               var c = new Celula_Adolescente().recuperar(null);
-                if (c != null)
-                lista.AddRange(c);
+                if (celulasAdolescente == null)
+                {
+                    celulasAdolescente = new List<Celula_Adolescente>();
+                    var c = new Celula_Adolescente().recuperar(null);                    
+                    if(c != null)
+                    {
+                        lista.AddRange(c);
+                        celulasAdolescente.AddRange(c.OfType<Celula_Adolescente>());
+                    }                    
+                }                
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                var c = new Celula_Adulto().recuperar(null);
-                if (c != null)
-                task.Result.AddRange(c);
+                if (celulasAdulto == null)
+                {
+                    celulasAdulto = new List<Celula_Adulto>();
+                    var c = new Celula_Adulto().recuperar(null);
+                    if(c != null)
+                    {
+                        task.Result.AddRange(c);
+                        celulasAdulto.AddRange(c.OfType<Celula_Adulto>());
+                    }                    
+                }                
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                var c = new Celula_Casado().recuperar(null);
-                if (c != null)
-                    task.Result.AddRange(c);
+                if (celulasCasado == null)
+                {
+                    celulasCasado = new List<Celula_Casado>();
+                    var c = new Celula_Casado().recuperar(null);
+                    if(c != null)
+                    {
+                        task.Result.AddRange(c);
+                        celulasCasado.AddRange(c.OfType<Celula_Casado>());
+                    }                    
+                }                    
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                var c = new Celula_Crianca().recuperar(null);
-                if (c != null)
-                    task.Result.AddRange(c);
+                if (celulasCrianca == null)
+                {
+                    celulasCrianca = new List<Celula_Crianca>();
+                    var c = new Celula_Crianca().recuperar(null);
+                    if(c != null)
+                    {
+                        task.Result.AddRange(c);
+                        celulasCrianca.AddRange(c.OfType<Celula_Crianca>());
+                    }                    
+                }                    
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                var c = new Celula_Jovem().recuperar(null);
-                if (c != null)
-                    task.Result.AddRange(c);
+                if (celulasJovem == null)
+                {
+                    celulasJovem = new List<Celula_Jovem>();
+                    var c = new Celula_Jovem().recuperar(null);
+                    if(c != null)
+                    {
+                        task.Result.AddRange(c);
+                        celulasJovem.AddRange(c.OfType<Celula_Jovem>());
+                    }                    
+                }                    
                 return task.Result;
             });
 

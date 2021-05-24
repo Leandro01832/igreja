@@ -15,7 +15,9 @@ namespace Tests
 
        static string[] arr = new string[50];
        static string[] arr2 = new string[10];
-        static BDcomum bd = new BDcomum();
+        static Random randNum = new Random();
+        static int loop = 999;
+        
 
         static void Main(string[] args)
         {
@@ -44,27 +46,6 @@ namespace Tests
             arr2[8] = "Menezes";
             arr2[9] = "Reimon";
 
-            //var pes = new VisitanteLgpd
-            // {
-            //     celula_ = null,
-            //     Chamada = new business.classes.Chamada
-            //     {
-            //         Data_inicio = DateTime.Now,
-            //         Numero_chamada = 0
-            //     },
-            //     Img = "",
-            //     Historico = new List<business.classes.Historico>(),
-            //     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
-            //     NomePessoa = arr[0] + " " + arr2[0],
-            //     Condicao_religiosa = " - ",
-            //     Data_visita = DateTime.Now,
-            //     Email = arr2[0].Replace(" ", "") + "1991" + "@gmail.com",
-            //     Falta = 0,
-            //     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>()
-            // };
-
-            // pes.salvar();
-
 
             CadastrarMembroReconciliacaoDadoTest();
             CadastrarMembroTransferenciaDadoTest();
@@ -80,29 +61,21 @@ namespace Tests
             CadastrarCriancaLgpdTest();
             CadastrarVisitanteLgpdTest();
 
-            //var ValorEsperado = new BDcomum().GetUltimoRegistroPessoa();
-            //var valorObtido = pes.IdPessoa;
-            //if (valorObtido == ValorEsperado)
-            //    Console.WriteLine("Ok");
-            //else
-            //    Console.WriteLine("aconteceu um erro.");
-
             Console.ReadLine();
         }
 
         public static void CadastrarVisitanteDadoTest()
         {
             //Arranje - cenario
-            Pessoa pes = null;            
+            Pessoa pes = null;              
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
-                int ano = randNum.Next(0, 100);                
+                int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Visitante
@@ -121,7 +94,7 @@ namespace Tests
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
                     Data_visita = DateTime.Now,
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Endereco = new business.classes.Endereco
                     {
                         Bairro = "Vila",
@@ -154,7 +127,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -166,15 +139,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;           
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Crianca
@@ -191,7 +163,7 @@ namespace Tests
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Endereco = new business.classes.Endereco
                     {
                         Bairro = "Vila",
@@ -226,7 +198,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -238,15 +210,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_Aclamacao
@@ -263,7 +234,7 @@ namespace Tests
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Endereco = new business.classes.Endereco
                     {
                         Bairro = "Vila",
@@ -300,7 +271,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -312,15 +283,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_Batismo
@@ -337,7 +307,7 @@ namespace Tests
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Endereco = new business.classes.Endereco
                     {
                         Bairro = "Vila",
@@ -373,7 +343,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -385,15 +355,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_Transferencia
@@ -410,7 +379,7 @@ namespace Tests
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Endereco = new business.classes.Endereco
                     {
                         Bairro = "Vila",
@@ -450,7 +419,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -462,15 +431,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_Reconciliacao
@@ -487,7 +455,7 @@ namespace Tests
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Endereco = new business.classes.Endereco
                     {
                         Bairro = "Vila",
@@ -524,7 +492,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -536,15 +504,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;            
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new VisitanteLgpd
@@ -561,7 +528,7 @@ namespace Tests
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Condicao_religiosa = " - ",
                     Data_visita = DateTime.Now,
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Falta = 0,
                     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>()
                 };
@@ -571,7 +538,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = bd.GetUltimoRegistroPessoa();
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -583,15 +550,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new CriancaLgpd
@@ -606,7 +572,7 @@ namespace Tests
                     Historico = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Falta = 0,
                     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>(),
                     Nome_mae = " - ",
@@ -618,7 +584,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -630,14 +596,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
+            var num = randNum.Next(100000000, 900000000);
 
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_AclamacaoLgpd
@@ -652,7 +618,7 @@ namespace Tests
                     Historico = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Falta = 0,
                     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>(),
                     Data_batismo = 1991,
@@ -666,7 +632,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -678,15 +644,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_BatismoLgpd
@@ -701,7 +666,7 @@ namespace Tests
                     Historico = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Falta = 0,
                     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>(),
                     Data_batismo = 1991,
@@ -714,7 +679,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -726,15 +691,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_TransferenciaLgpd
@@ -749,6 +713,7 @@ namespace Tests
                     Historico = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Falta = 0,
                     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>(),
                     Data_batismo = 1991,
@@ -765,7 +730,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
@@ -777,15 +742,14 @@ namespace Tests
         {
             //Arranje - cenario
             Pessoa pes = null;
+            var num = randNum.Next(100000000, 900000000);
 
-            Random randNum = new Random();
-            var num = randNum.Next(800000000, 900000000);
-
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < loop; i++)
             {
                 int v1 = randNum.Next(0, 49);
                 int v2 = randNum.Next(0, 9);
                 int ano = randNum.Next(0, 100);
+                int numeroGrande = randNum.Next(0, 999999999);
                 long numero = (num * 100) + i;
 
                 pes = new Membro_ReconciliacaoLgpd
@@ -800,7 +764,7 @@ namespace Tests
                     Historico = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
-                    Email = arr2[v2].Replace(" ", "") + v1.ToString() + "@gmail.com",
+                    Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
                     Falta = 0,
                     Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>(),
                     Data_batismo = 1991,
@@ -814,7 +778,7 @@ namespace Tests
             }
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
+            var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
             var valorObtido = pes.IdPessoa;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");

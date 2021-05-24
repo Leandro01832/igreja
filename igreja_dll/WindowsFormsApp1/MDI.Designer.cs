@@ -170,6 +170,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.processamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -203,7 +204,8 @@
             this.toolStripSeparator5,
             this.exitToolStripMenuItem,
             this.pesquisarToolStripMenuItem,
-            this.relatórioToolStripMenuItem});
+            this.relatórioToolStripMenuItem,
+            this.processamentoToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(94, 32);
@@ -1319,6 +1321,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // processamentoToolStripMenuItem
+            // 
+            this.processamentoToolStripMenuItem.Name = "processamentoToolStripMenuItem";
+            this.processamentoToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
+            this.processamentoToolStripMenuItem.Text = "Processamento";
+            this.processamentoToolStripMenuItem.Click += new System.EventHandler(this.processamentoToolStripMenuItem_Click);
+            // 
             // MDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1493,6 +1502,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem39;
         private System.Windows.Forms.ToolStripMenuItem mudançaDeEstadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mudançaDeEstadoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem processamentoToolStripMenuItem;
     }
 }
 

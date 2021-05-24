@@ -20,7 +20,6 @@ namespace WindowsFormsApp1.Formulario
     public partial class FormularioListView : FormPadrao
     {
         public FormularioListView() { }
-
         List<modelocrud> lista;
         bool atualizar = true;
         int quantidadeLista { get; set; }
@@ -70,6 +69,7 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudancaEstado_Click(object sender, EventArgs e)
         {
+
             if (ListView.numero == 0)
             {
                 MessageBox.Show("Escolha um item da lista.");
@@ -87,7 +87,7 @@ namespace WindowsFormsApp1.Formulario
         private Button botaoDetalhes { get; }
         private Button botaoAtualizar { get; }
         private Button botaoDeletar { get; }
-        public modelocrud Modelo { get; set; }
+        private modelocrud Modelo { get; set; }
         public TodosListViews ListView { get; }
         public string Tipo { get; set; }
 
@@ -261,7 +261,7 @@ namespace WindowsFormsApp1.Formulario
 
         private async void FormularioListView_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(700, 350);
+            this.Size = new Size(900, 350);
             ListView.Dock = DockStyle.Left;
 
             if (Modelo is MudancaEstado)
@@ -273,11 +273,70 @@ namespace WindowsFormsApp1.Formulario
             lista = new List<modelocrud>();
             if (Modelo != null)
             {
-               var l = await AtualizarComProgressBar(Modelo);
-                quantidadeLista = l.Count;
-                
+                bool condicao = false;
+                var l = new List<modelocrud>();
+
                 if (Modelo is business.classes.Abstrato.Pessoa)
+                {
                     Mudanca.Visible = true;
+                    foreach (var m in listaPessoas)
+                    if (Modelo.GetType().Name == m.GetType().Name)
+                    {
+                        condicao = true;
+                        break;
+                    }
+
+                    if (listaPessoas.Count > 0 && condicao)
+                        foreach (var m in listaPessoas.Where(p => p.GetType().Name == Modelo.GetType().Name))
+                            l.Add(m);
+                    else
+                    l = await AtualizarComProgressBar(Modelo);
+                    quantidadeLista = l.Count; 
+                }
+
+                if (Modelo is business.classes.Abstrato.Celula)
+                {
+                    foreach (var m in listaCelulas)
+                        if (Modelo.GetType().Name == m.GetType().Name)
+                        {
+                            condicao = true;
+                            break;
+                        }
+
+                    if (listaCelulas.Count > 0 && condicao)
+                        foreach (var m in listaCelulas.Where(p => p.GetType().Name == Modelo.GetType().Name))
+                            l.Add(m);
+                    else
+                        l = await AtualizarComProgressBar(Modelo);
+                    quantidadeLista = l.Count;
+                }
+
+                if (Modelo is Ministerio)
+                {
+                    foreach (var m in listaMinisterios)
+                        if (Modelo.GetType().Name == m.GetType().Name)
+                        {
+                            condicao = true;
+                            break;
+                        }
+
+                    if (listaMinisterios.Count > 0 && condicao)
+                        foreach (var m in listaMinisterios.Where(p => p.GetType().Name == Modelo.GetType().Name))
+                            l.Add(m);
+                    else
+                        l = await AtualizarComProgressBar(Modelo);
+                    quantidadeLista = l.Count;
+                }
+
+                if (Modelo is business.classes.Reuniao)
+                {
+                    if (listaReuniao.Count > 0)
+                        foreach (var m in listaReuniao)
+                            l.Add(m);
+                    else
+                        l = await AtualizarComProgressBar(Modelo);
+                    quantidadeLista = l.Count;
+                }
 
                 foreach (var item in l)
                     lista.Add(item);
@@ -286,7 +345,6 @@ namespace WindowsFormsApp1.Formulario
             {
                 if (Tipo == "Celula")
                 {
-                    var modelos = new List<modelocrud>();
                     foreach (var item in listaCelulas.OrderBy(p => p.IdCelula))
                     lista.Add(item);
                 }
@@ -294,7 +352,6 @@ namespace WindowsFormsApp1.Formulario
 
                 if (Tipo == "Ministerio")
                 {
-                    var modelos = new List<modelocrud>();
                     foreach (var item in listaMinisterios.OrderBy(p => p.IdMinisterio))
                         lista.Add(item);
                 }
@@ -303,7 +360,6 @@ namespace WindowsFormsApp1.Formulario
                 if (Tipo == "Pessoa")
                 {
                     Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
                     foreach (var item in listaPessoas.OrderBy(p => p.IdPessoa))
                         lista.Add(item);
                 }
@@ -345,8 +401,6 @@ namespace WindowsFormsApp1.Formulario
 
             }
 
-            
-
             if (lista != null)
             {
 
@@ -362,6 +416,7 @@ namespace WindowsFormsApp1.Formulario
             if(listaPessoas != null)
             if(listaPessoas.Count != lista.Count && ListView is ListViewPessoa && Modelo == null)
             {
+                atualizar = false;
                 lista.Clear();
                 ListView.Items.Clear();
                 if (Tipo == "Pessoa")
@@ -416,6 +471,7 @@ namespace WindowsFormsApp1.Formulario
             if (listaCelulas != null)
             if (listaCelulas.Count != lista.Count && ListView is ListViewCelula && Modelo == null)
             {
+                atualizar = false;
                 lista.Clear();
                 ListView.Items.Clear();
                 if (Tipo == "Celula")
@@ -433,6 +489,7 @@ namespace WindowsFormsApp1.Formulario
             if (listaMinisterios != null)
             if (listaMinisterios.Count != lista.Count && ListView is ListViewMinisterio && Modelo == null)
             {
+                atualizar = false;
                 lista.Clear();
                 ListView.Items.Clear();
                 if (Tipo == "Ministerio")
@@ -443,35 +500,34 @@ namespace WindowsFormsApp1.Formulario
                 }
                 foreach (var v in lista)
                 ListView.Items.Add(v.ToString());                
-            }
+            }           
 
-            if(quantidadeLista != lista.Count && Modelo != null)
+            if (Modelo != null && atualizar)
             {
-                lista.Clear();
-                ListView.Items.Clear();
-                FormProgressBar form = new FormProgressBar();
-                form.MdiParent = this.MdiParent;
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Text = $"Barra de processamento - {Modelo.GetType().Name}";
-                form.Show();
-                lista = await Task.Run(() => Modelo.recuperar(null));
-                quantidadeLista = lista.Count;
-                
-                form.Close();
-                if (Modelo is business.classes.Abstrato.Pessoa)
-                    Mudanca.Visible = true;
-                foreach (var v in lista)
-                    ListView.Items.Add(v.ToString());
-            }
-
-            if(Modelo != null && atualizar)
-            {
-                atualizar = false;                
+                atualizar = false;
                 var l = await AtualizarComModelo(Modelo);
                 quantidadeLista = l.Count;
                 atualizar = true;
+
+                if (quantidadeLista != lista.Count)
+                {
+                    lista.Clear();
+                    ListView.Items.Clear();
+                    FormProgressBar2 form = new FormProgressBar2();
+                    form.MdiParent = this.MdiParent;
+                    form.StartPosition = FormStartPosition.CenterScreen;
+                    form.Text = $"Barra de processamento - {Modelo.GetType().Name}";
+                    form.Show();
+                    lista = await Task.Run(() => Modelo.recuperar(null));
+                    quantidadeLista = lista.Count;
+
+                    form.Close();
+                    if (Modelo is business.classes.Abstrato.Pessoa)
+                        Mudanca.Visible = true;
+                    foreach (var v in lista)
+                        ListView.Items.Add(v.ToString());
+                }
             }
-            
         }
     }
 }

@@ -20,6 +20,7 @@ namespace business.classes.Abstrato
     [Table("Ministerio")]
     public abstract class Ministerio : modelocrud, IAddNalista
     {
+        #region Properties
         [Key]
         public int IdMinisterio { get; set; }
 
@@ -29,7 +30,7 @@ namespace business.classes.Abstrato
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Proposito { get; set; }
         [JsonIgnore]
-        public virtual List<PessoaMinisterio> Pessoas { get; set;}
+        public virtual List<PessoaMinisterio> Pessoas { get; set; }
 
         public int? Ministro_ { get; set; }
         [JsonIgnore]
@@ -42,6 +43,16 @@ namespace business.classes.Abstrato
         [NotMapped]
         public static int UltimoRegistro { get; set; }
 
+        public static List<Lider_Celula> lideresCelula { get; set; }
+        public static List<Lider_Celula_Treinamento> LideresCelulaTreinamento { get; set; }
+        public static List<Lider_Ministerio> lideresMinisterio { get; set; }
+        public static List<Lider_Ministerio_Treinamento> lideresMinisterioTreinamento { get; set; }
+        public static List<Supervisor_Celula> supervisoresCelula { get; set; }
+        public static List<Supervisor_Celula_Treinamento> supervisoresCelulaTreinamento { get; set; }
+        public static List<Supervisor_Ministerio> supervisoresMinisterio { get; set; }
+        public static List<Supervisor_Ministerio_Treinamento> supervisoresMinisterioTreinamento { get; set; }
+        #endregion
+
         AddNalista AddNalista;
         public Ministerio() : base()
         {
@@ -49,6 +60,7 @@ namespace business.classes.Abstrato
             AddNalista = new AddNalista();
         }
 
+        #region Methods
         public override string alterar(int id)
         {
             string ministro = "";
@@ -58,14 +70,14 @@ namespace business.classes.Abstrato
             Update_padrao = $" update Ministerio set Nome='{Nome}', " +
             $" Proposito='{Proposito}', Ministro_={ministro} " +
             $"  where IdMinisterio='{id}' ";
-            
+
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
             Delete_padrao = $" delete from Ministerio where IdMinisterio='{id}' ";
-            
+
             return Delete_padrao;
         }
 
@@ -98,15 +110,15 @@ namespace business.classes.Abstrato
                     this.Pessoas = new List<PessoaMinisterio>();
                     bd.obterconexao().Close();
                     var listaPessoas = buscarPessoas(id);
-                    if(listaPessoas != null)
-                    foreach (var item in listaPessoas)
-                    this.Pessoas.Add((PessoaMinisterio)item);
+                    if (listaPessoas != null)
+                        foreach (var item in listaPessoas)
+                            this.Pessoas.Add((PessoaMinisterio)item);
 
                     this.Celulas = new List<MinisterioCelula>();
                     var listaCelulas = buscarCelulas(id);
                     if (listaCelulas != null)
-                    foreach (var item in listaCelulas)
-                    this.Celulas.Add((MinisterioCelula)item);
+                        foreach (var item in listaCelulas)
+                            this.Celulas.Add((MinisterioCelula)item);
 
                     modelos.Add(this);
                 }
@@ -134,75 +146,134 @@ namespace business.classes.Abstrato
 
             Insert_padrao = "insert into Ministerio (Nome, Proposito, Maximo_pessoa, Ministro_)" +
                 $" values ('{Nome}', '{Proposito}', '{Maximo_pessoa}', {ministro}) ";
-            
-            
+
+
             return Insert_padrao;
         }
+
+        #endregion
 
         public static List<modelocrud> recuperarTodosMinisterios()
         {
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                var m = new Lider_Celula().recuperar(null);
-                if (m != null)
-                lista.AddRange(m);
+                if (lideresCelula == null)
+                {
+                    lideresCelula = new List<Lider_Celula>();
+                    var m = new Lider_Celula().recuperar(null);
+                    if(m != null)
+                    {
+                        lista.AddRange(m);
+                        lideresCelula.AddRange(m.OfType<Lider_Celula>());
+                    }                    
+                }                
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                var m = new Lider_Celula_Treinamento().recuperar(null);
-                if (m != null)
-                task.Result.AddRange(m);
+                if (LideresCelulaTreinamento == null)
+                {
+                    LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
+                    var m = new Lider_Celula_Treinamento().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        LideresCelulaTreinamento.AddRange(m.OfType<Lider_Celula_Treinamento>());
+                    }                    
+                }                
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                var m = new Lider_Ministerio().recuperar(null);
-                if (m != null)
-                task.Result.AddRange(m);
+                if (lideresMinisterio == null)
+                {
+                    lideresMinisterio = new List<Lider_Ministerio>();
+                    var m = new Lider_Ministerio().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        lideresMinisterio.AddRange(m.OfType<Lider_Ministerio>());
+                    }                    
+                }                
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                var m = new Lider_Ministerio_Treinamento().recuperar(null);
-                if (m != null)
-                task.Result.AddRange(m);
+                if (lideresMinisterioTreinamento == null)
+                {
+                    lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
+                    var m = new Lider_Ministerio_Treinamento().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        lideresMinisterioTreinamento.AddRange(m.OfType<Lider_Ministerio_Treinamento>());
+                    }                    
+                }                
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                var m = new Supervisor_Celula().recuperar(null);
-                if (m != null)
-                task.Result.AddRange(m);
+                if (supervisoresCelula == null)
+                {
+                    supervisoresCelula = new List<Supervisor_Celula>();
+                    var m = new Supervisor_Celula().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        supervisoresCelula.AddRange(m.OfType<Supervisor_Celula>());
+                    }                    
+                }                
                 return task.Result;
             });
 
             Task<List<modelocrud>> t6 = t5.ContinueWith((task) =>
             {
-                var m = new Supervisor_Celula_Treinamento().recuperar(null);
-                if (m != null)
-                    task.Result.AddRange(m);
+                if (supervisoresCelulaTreinamento != null)
+                {
+                    supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
+                    var m = new Supervisor_Celula_Treinamento().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        supervisoresCelulaTreinamento.AddRange(m.OfType<Supervisor_Celula_Treinamento>());
+                    }                    
+                }                    
                 return task.Result;
             });
 
             Task<List<modelocrud>> t7 = t6.ContinueWith((task) =>
             {
-                var m = new Supervisor_Ministerio().recuperar(null);
-                if (m != null)
-                    task.Result.AddRange(m);
+                
+                if (supervisoresMinisterio == null)
+                {
+                    supervisoresMinisterio = new List<Supervisor_Ministerio>();
+                    var m = new Supervisor_Ministerio().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        supervisoresMinisterio.AddRange(m.OfType<Supervisor_Ministerio>());
+                    }                    
+                }                    
                 return task.Result;
             });
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
-                var m = new Supervisor_Ministerio_Treinamento().recuperar(null);
-                if (m != null)
-                    task.Result.AddRange(m);
+                if (supervisoresMinisterioTreinamento == null)
+                {
+                    supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
+                    var m = new Supervisor_Ministerio_Treinamento().recuperar(null);
+                    if(m != null)
+                    {
+                        task.Result.AddRange(m);
+                        supervisoresMinisterioTreinamento.AddRange(m.OfType<Supervisor_Ministerio_Treinamento>());
+                    }                    
+                }                    
                 return task.Result;
             });
 
