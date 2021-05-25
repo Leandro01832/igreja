@@ -409,6 +409,22 @@
     <Content Include="Views\Celula\_Celula_Crianca.cshtml" />
     <Content Include="Views\Celula\_Celula_Jovem.cshtml" />
     <Content Include="Views\Celula\_EnderecoCelula.cshtml" />
+    <Content Include="Views\Home\Editar.cshtml" />
+    <Content Include="Views\Home\NovoPerfil.cshtml" />
+    <Content Include="Views\Home\_MembroAclamacaoDado.cshtml" />
+    <Content Include="Views\Home\_MembroBatismoDado.cshtml" />
+    <Content Include="Views\Home\_MembroReconciliacaoDado.cshtml" />
+    <Content Include="Views\Home\_MembroTransferenciaDado.cshtml" />
+    <Content Include="Views\Home\_VisitanteDado.cshtml" />
+    <Content Include="Views\Home\_CriancaDado.cshtml" />
+    <Content Include="Views\Home\_MembroAclamacaoLgpd.cshtml" />
+    <Content Include="Views\Home\_MembroBatismoLgpd.cshtml" />
+    <Content Include="Views\Home\_MembroReconciliacaoLgpd.cshtml" />
+    <Content Include="Views\Home\_MembroTransferenciaLgpd.cshtml" />
+    <Content Include="Views\Home\_VisitanteLgpd.cshtml" />
+    <Content Include="Views\Home\_CriancaLgpd.cshtml" />
+    <Content Include="Views\Home\_Telefone.cshtml" />
+    <Content Include="Views\Home\_Endereco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

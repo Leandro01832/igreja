@@ -135,6 +135,15 @@ namespace Site.Controllers
             var user = users.FirstOrDefault(u => u.UserName == User.Identity.GetUserName());
             var pessoa = await banco.pessoas.FirstAsync(p => p.Email == user.Email);
 
+            var tipo = "";
+
+            if (pessoa is PessoaLgpd)
+                tipo = "PessoaLgpd";
+            else if (pessoa is PessoaDado)
+                tipo = "PessoaDado";
+
+            ViewBag.perfil = tipo;
+
             ViewBag.Message = "Site da igreja.";
             return View(pessoa);
         }
@@ -145,8 +154,9 @@ namespace Site.Controllers
         public ActionResult Perfil(int? id)
         {
             string email = User.Identity.GetUserName();
-            Pessoa pessoa =  banco.pessoas.First(c => c.Email == email);
-          
+            Pessoa pessoa =  banco.pessoas.Include(p => p.Chamada).First(c => c.Email == email);
+
+                    
 
                 if (Request.Files[0] != null)
                 {
@@ -160,11 +170,13 @@ namespace Site.Controllers
                         pic = string.Format("{0}/{1}", folder, file);
                         pessoa.Img = pic;
                     }
-                }
 
                 banco.Entry(pessoa).State = EntityState.Modified;
                 banco.Entry(pessoa.Chamada).State = EntityState.Modified;
                 banco.SaveChanges();
+            }
+
+                
 
                 return View("Perfil", pessoa);
         }
@@ -179,6 +191,196 @@ namespace Site.Controllers
         {
             ViewBag.Message = "Contatos da igreja.";
             return View();
+        }
+        
+        [Authorize]
+        public ActionResult Editar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Editar(RegisterViewModel model)
+        {
+            var user =  User.Identity.GetUserName();
+            var pessoa = await banco.pessoas.FirstAsync(p => p.Email == user);
+
+            var view = "";
+
+            if (pessoa is PessoaLgpd)
+            {
+                if (model.MembroAclamacao) view = "MembroAclamacaoDado";
+                if (model.MembroBatismo) view = "MembroBatismoDado";
+                if (model.MembroReconciliacao) view = "MembroReconciliacaoDado";
+                if (model.MembroTransferencia) view = "MembroTransferenciaDado";
+                if (model.Visitante) view = "VisitanteDado";
+                if (model.Crianca) view = "CriancaDado";
+            }
+            else if (pessoa is PessoaDado)
+            {
+                if (model.MembroAclamacao) view = "MembroAclamacaoLgpd";
+                if (model.MembroBatismo) view = "MembroBatismoLgpd";
+                if (model.MembroReconciliacao) view = "MembroReconciliacaoLgpd";
+                if (model.MembroTransferencia) view = "MembroTransferenciaLgpd";
+                if (model.Visitante) view = "VisitanteLgpd";
+                if (model.Crianca) view = "CriancaLgpd";
+            }
+
+            ViewBag.view = view;
+
+            ViewBag.celula_ = new SelectList(banco.celula.ToList(), "IdCelula", "Nome");
+
+            return View("NovoPerfil");
+        }
+
+        [Authorize]
+        public ActionResult NovoPerfil()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Crianca(Crianca pes)
+        {
+           var result =  await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else  return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CriancaLgpd(CriancaLgpd pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroAclamacao(Membro_Aclamacao pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroAclamacaoLgpd(Membro_AclamacaoLgpd pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Visitante(Visitante pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> VisitanteLgpd(VisitanteLgpd pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroReconciliacao(Membro_Reconciliacao pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroReconciliacaoLgpd(Membro_ReconciliacaoLgpd pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroTransferencia(Membro_Transferencia pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroTransferenciaLgpd(Membro_TransferenciaLgpd pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroBatismo(Membro_Batismo pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MembroBatismoLgpd(Membro_BatismoLgpd pes)
+        {
+            var result = await NovoPerfil(pes);
+            if (result) return View("Perfil");
+            else return View(pes);
+        }
+
+        public async Task<bool> NovoPerfil(Pessoa pes)
+        {
+            var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var users = usermaneger.Users.ToList();
+            var user = users.FirstOrDefault(u => u.UserName == User.Identity.GetUserName());
+            var pessoa = await banco.pessoas.FirstAsync(p => p.Email == user.Email);
+            try
+            {
+                pes.MudarEstado(pessoa.IdPessoa, pes);
+                var tipo = "";
+
+                if (pes is PessoaLgpd)
+                    tipo = "PessoaLgpd";
+                else if (pes is PessoaDado)
+                    tipo = "PessoaDado";
+
+                ViewBag.perfil = tipo;
+                return true;
+            }
+            catch { return false; }             
         }
 
     }

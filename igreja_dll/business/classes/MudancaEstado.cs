@@ -33,11 +33,31 @@ namespace business.classes
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
-            var lista = Pessoa.recuperarTodos();
-            List<Pessoa> lista2 = new List<Pessoa>();
-            foreach (var item in lista)
-            lista2.Add((Pessoa)item);
-            Pessoa p = lista2.First(i => i.IdPessoa == idVelhoEstado);
+            var p1 = new Visitante().recuperar(idVelhoEstado);
+            var p2 = new VisitanteLgpd().recuperar(idVelhoEstado);
+            var p3 = new Crianca().recuperar(idVelhoEstado);
+            var p4 = new CriancaLgpd().recuperar(idVelhoEstado);
+            var p5 = new Membro_Aclamacao().recuperar(idVelhoEstado);
+            var p6 = new Membro_AclamacaoLgpd().recuperar(idVelhoEstado);
+            var p7 = new Membro_Batismo().recuperar(idVelhoEstado);
+            var p8 = new Membro_BatismoLgpd().recuperar(idVelhoEstado);
+            var p9 = new Membro_Reconciliacao().recuperar(idVelhoEstado);
+            var p10 = new Membro_ReconciliacaoLgpd().recuperar(idVelhoEstado);
+            var p11 = new Membro_Transferencia().recuperar(idVelhoEstado);
+            var p12 = new Membro_TransferenciaLgpd().recuperar(idVelhoEstado);
+            Pessoa p = null;
+            if (p1.Count > 0) p = (Pessoa) p1[0];
+            if (p2.Count > 0) p = (Pessoa) p2[0];
+            if (p3.Count > 0) p = (Pessoa) p3[0];
+            if (p4.Count > 0) p = (Pessoa) p4[0];
+            if (p5.Count > 0) p = (Pessoa) p5[0];
+            if (p6.Count > 0) p = (Pessoa) p6[0];
+            if (p7.Count > 0) p = (Pessoa) p7[0];
+            if (p8.Count > 0) p = (Pessoa) p8[0];
+            if (p9.Count > 0) p = (Pessoa) p9[0];
+            if (p10.Count > 0) p = (Pessoa) p10[0];
+            if (p11.Count > 0) p = (Pessoa) p11[0];
+            if (p12.Count > 0) p = (Pessoa) p12[0];
             estado = p.GetType().Name;
             p = (Pessoa)p.recuperar(p.IdPessoa)[0];
 

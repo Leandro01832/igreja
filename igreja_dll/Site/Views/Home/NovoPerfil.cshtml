@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "NovoPerfil";
+
+    string view = ViewBag.view;
+}
+
+<h2>Novo Perfil</h2>
+
+@{
+    if (view == "MembroAclamacaoDado")
+    {
+        @Html.Partial("_MembroAclamacaoDado");
+    }
+    else if (view == "MembroBatismoDado")
+    {
+        @Html.Partial("_MembroBatismoDado");
+    }
+    else if (view == "MembroReconciliacaoDado")
+    {
+        @Html.Partial("_MembroReconciliacaoDado");
+    }
+    else if (view == "MembroTransferenciaDado")
+    {
+        @Html.Partial("_MembroTransferenciaDado");
+    }
+    else if (view == "VisitanteDado")
+    {
+        @Html.Partial("_VisitanteDado");
+    }
+    else if (view == "CriancaDado")
+    {
+        @Html.Partial("_CriancaDado");
+    }
+    else if (view == "MembroAclamacaoLgpd")
+    {
+        @Html.Partial("_MembroAclamacaoLgpd");
+    }
+    else if (view == "MembroBatismoLgpd")
+    {
+        @Html.Partial("_MembroBatismoLgpd");
+    }
+    else if (view == "MembroReconciliacaoLgpd")
+    {
+        @Html.Partial("_MembroReconciliacaoLgpd");
+    }
+    else if (view == "MembroTransferenciaLgpd")
+    {
+        @Html.Partial("_MembroTransferenciaLgpd");
+    }
+    else if (view == "VisitanteLgpd")
+    {
+        @Html.Partial("_VisitanteLgpd");
+    }
+    else if (view == "CriancaLgpd")
+    {
+        @Html.Partial("_CriancaLgpd");
+    }
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

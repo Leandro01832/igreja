@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.DdataGridViews
 {
-   public class Pesquisar :  IPesquisar
+    public class Pesquisar : IPesquisar
     {
 
         public Pesquisar(List<Pessoa> Pessoas, List<Ministerio> Ministerios, List<Celula> Celulas, List<Reuniao> Reuniao)
@@ -33,7 +33,7 @@ namespace WindowsFormsApp1.DdataGridViews
         {
             var comand = "";
             var innerjoin = "";
-            DataTable dtable = new DataTable();            
+            DataTable dtable = new DataTable();
 
             if (modelo is business.classes.Abstrato.Membro)
                 innerjoin = " inner join Membro as MEM  on M.Id=MEM.Id inner join PessoaDado as PD on MEM.Id=P.Id"
@@ -43,10 +43,10 @@ namespace WindowsFormsApp1.DdataGridViews
                 innerjoin = " inner join MembroLgpd as MEM  on M.Id=MEM.Id inner join PessoaLgpd as PL on MEM.Id=P.Id"
                     + " inner join Pessoa as P on PD.Id=P.Id";
 
-             if (modelo is PessoaDado)
+            if (modelo is PessoaDado)
                 innerjoin = " inner join PessoaDado as PD on M.Id=P.Id inner join Pessoa as P on PD.Id=P.Id ";
 
-             if (modelo is PessoaLgpd)
+            if (modelo is PessoaLgpd)
                 innerjoin = " inner join PessoaLgpd as PD on M.Id=P.Id inner join Pessoa as P on PD.Id=P.Id ";
 
             if (modelo != null)
@@ -80,15 +80,19 @@ namespace WindowsFormsApp1.DdataGridViews
                 List<modelocrud> l = new List<modelocrud>();
                 var listaPessoa = Pessoas.ToList();
                 var lista = new List<modelocrud>();
-                foreach(var itemlista in listaPessoa)
+                foreach (var itemlista in listaPessoa)
                 {
                     lista.Add(itemlista);
                 }
 
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(lista.OfType<business.classes.Abstrato.Pessoa>()
-                     .First(i => i.IdPessoa == int.Parse(item["IdPessoa"].ToString())));
+                    try
+                    {
+                        l.Add(lista.OfType<business.classes.Abstrato.Pessoa>()
+                        .First(i => i.IdPessoa == int.Parse(item["IdPessoa"].ToString())));
+                    }
+                    catch { }
                 }
                 return l;
             }
@@ -112,8 +116,12 @@ namespace WindowsFormsApp1.DdataGridViews
 
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(lista.OfType<business.classes.Abstrato.Ministerio>()
-                        .First(i => i.IdMinisterio == int.Parse(item["IdMinisterio"].ToString())));
+                    try
+                    {
+                        l.Add(lista.OfType<business.classes.Abstrato.Ministerio>()
+                                        .First(i => i.IdMinisterio == int.Parse(item["IdMinisterio"].ToString())));
+                    }
+                    catch { }
                 }
                 return l;
             }
@@ -135,37 +143,83 @@ namespace WindowsFormsApp1.DdataGridViews
 
                 foreach (var item in dtable.Select(""))
                 {
-                    l.Add(lista.OfType<Celula>().First(i => i.IdCelula == int.Parse(item["IdCelula"].ToString())));
+                    try
+                    {
+                        l.Add(lista.OfType<Celula>().First(i => i.IdCelula == int.Parse(item["IdCelula"].ToString())));
+                    }
+                    catch { }
                 }
                 return l;
             }
 
-           
+
 
             if (modelo is Historico || modelo is Reuniao ||
-                modelo is Chamada || modelo is   MudancaEstado ||
-                modelo is Endereco || modelo is  Telefone)
+                modelo is Chamada || modelo is MudancaEstado ||
+                modelo is Endereco || modelo is Telefone)
             {
                 List<modelocrud> l = new List<modelocrud>();
                 foreach (var item in dtable.Select(""))
                 {
+
                     if (modelo is Historico)
-                    l.Add(modelo.recuperar(int.Parse(item["IdHistorico"].ToString()))[0]);
+                    {
+                        try
+                        {
+                            l.Add(modelo.recuperar(int.Parse(item["IdHistorico"].ToString()))[0]);
+                        }
+                        catch { }
+                    }
+
 
                     if (modelo is Reuniao)
-                        l.Add(modelo.recuperar(int.Parse(item["IdReuniao"].ToString()))[0]);
+                    {
+                        try
+                        {
+                            l.Add(modelo.recuperar(int.Parse(item["IdReuniao"].ToString()))[0]);
+                        }
+                        catch { }
+                    }
+
 
                     if (modelo is Chamada)
-                        l.Add(modelo.recuperar(int.Parse(item["IdChamada"].ToString()))[0]);
+                    {
+                        try
+                        {
+                            l.Add(modelo.recuperar(int.Parse(item["IdChamada"].ToString()))[0]);
+                        }
+                        catch { }
+                    }
+
 
                     if (modelo is MudancaEstado)
-                        l.Add(modelo.recuperar(int.Parse(item["IdMudanca"].ToString()))[0]);
+                    {
+                        try
+                        {
+                            l.Add(modelo.recuperar(int.Parse(item["IdMudanca"].ToString()))[0]);
+                        }
+                        catch { }
+                    }
+
 
                     if (modelo is Endereco)
-                        l.Add(modelo.recuperar(int.Parse(item["IdEndereco"].ToString()))[0]);
+                    {
+                        try
+                        {
+                            l.Add(modelo.recuperar(int.Parse(item["IdEndereco"].ToString()))[0]);
+                        }
+                        catch { }
+                    }
+
 
                     if (modelo is Telefone)
-                        l.Add(modelo.recuperar(int.Parse(item["IdTelefone"].ToString()))[0]);
+                    {
+                        try
+                        {
+                            l.Add(modelo.recuperar(int.Parse(item["IdTelefone"].ToString()))[0]);
+                        }
+                        catch { }
+                    }
                 }
                 return l;
             }

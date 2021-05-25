@@ -6,6 +6,13 @@ using business.classes.PessoasLgpd;
 using business.classes.Pessoas;
 using business.classes.Ministerio;
 using business.classes.Abstrato;
+using System.Collections.Generic;
+using System.Linq;
+using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.FormularioMinisterio;
+using WindowsFormsApp1.Formulario.Celula;
+using business.classes;
+using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
@@ -17,6 +24,8 @@ namespace WindowsFormsApp1
             modelo = null;
             
             InitializeComponent();
+            modelocrud.Restricoes = new Dictionary<int, string>();
+            
         }
 
        DdataGridViews.Pesquisar pesquisa;
@@ -202,7 +211,7 @@ namespace WindowsFormsApp1
                 tipo = "Ministerio";
                 check_pesquisa_nome.Enabled = true;
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("IdMinisterio", "Id");
                 dgdados.Columns.Add("Nome", "Nome");
                 dgdados.Columns.Add("Maximo_pessoa", "Maximo de pessoas");
                 dgdados.Columns.Add("Ministro_", "Ministro");
@@ -224,7 +233,7 @@ namespace WindowsFormsApp1
                 tipo = "Celula";
                 check_pesquisa_nome.Enabled = true;
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("IdCelula", "Id");
                 dgdados.Columns.Add("Nome", "Nome");
                 dgdados.Columns.Add("Maximo_pessoa", "Maximo de pessoas");
                 dgdados.Columns.Add("Dia_semana", "Dia da semana");
@@ -242,7 +251,7 @@ namespace WindowsFormsApp1
             if (Chamada)
             {
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("IdChamada", "Id");
                 dgdados.Columns.Add("Data_inicio", "Data de início");
                 dgdados.Columns.Add("Numero_chamada", "numero da chamada");
                 dgdados.Columns[1].Width = 300;
@@ -252,7 +261,7 @@ namespace WindowsFormsApp1
             if (Reuniao)
             {
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("IdReuniao", "Id");
                 dgdados.Columns.Add("Data_reuniao", "Data da reunião");
                 dgdados.Columns.Add("Horario_inicio", "Horário que inicia");
                 dgdados.Columns.Add("Horario_fim", "Horário que termina");
@@ -263,7 +272,7 @@ namespace WindowsFormsApp1
             if (Historico)
             {
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
+                dgdados.Columns.Add("IdHistorico", "Id");
                 dgdados.Columns.Add("Data_inicio", "Data de inicio do semestre");
                 dgdados.Columns.Add("Falta", "Faltas");
                 dgdados.Columns.Add("pessoaid", "Identificação da pessoa");
@@ -561,6 +570,84 @@ namespace WindowsFormsApp1
             }
         }
 
-        
+        private void txt_comando_TextChanged(object sender, EventArgs e)
+        {
+            
+        }        
+
+        private void txt_numeros_restricao_TextChanged(object sender, EventArgs e)
+        {
+            var arr = txt_numeros_restricao.Text.Replace(" ", "").Split(',');
+            foreach (var item in arr)
+            {
+                try
+                {
+                    var num = int.Parse(item);
+                    if (modelocrud.Restricoes.Keys.Where(k => k == num).ToList().Count == 0)
+                        modelocrud.Restricoes.Remove(num);
+                }
+                catch { MessageBox.Show("Informe um numero de restrição."); }
+            }
+            txt_comando.Text = "";
+            txt_numeros_restricao.Text = "";
+            for (var i = 0; i < modelocrud.Restricoes.Count; i++)
+            {
+                txt_comando.Text += modelocrud.Restricoes.Values.ToList()[i] +
+                    modelocrud.Restricoes.Keys.ToList()[i] + " \n";
+                txt_numeros_restricao.Text += i + ", ";
+            }
+        }
+
+        private void dgdados_SelectionChanged(object sender, EventArgs e)
+        {
+            var id = dgdados.CurrentRow.Cells[0];
+            var value = int.Parse(id.Value.ToString());
+
+            if(modelo != null)
+            {
+                 if(modelo is Pessoa)
+                {
+                   var Modelo = listaPessoas.First(i => i.Codigo == value);
+
+
+                    FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
+                    , false, false, true);
+                    fc.MdiParent = this.MdiParent;
+                    fc.Show();
+                } 
+
+                 if(modelo is Ministerio)
+                {
+                   var Modelo = listaMinisterios.First(i => i.IdMinisterio == value);
+
+
+                    FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
+                    false, false, true);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+
+                 if(modelo is Celula)
+                {
+                   var Modelo = listaCelulas.First(i => i.IdCelula == value);
+
+
+                    FinalizarCadastro dp =
+                new FinalizarCadastro((Celula)Modelo, false, false, true);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+
+                if (modelo is Reuniao)
+                {
+                   var Modelo = listaReuniao.First(i => i.IdReuniao == value);
+
+
+                    FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+            }
+        }
     }
 }

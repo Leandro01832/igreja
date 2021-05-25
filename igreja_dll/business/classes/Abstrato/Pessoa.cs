@@ -65,7 +65,7 @@ namespace business.classes.Abstrato
         [Key]
         public int IdPessoa { get; set; }
 
-
+        [Display(Name ="Nome completo")]
         public string NomePessoa { get; set; }
         
         [Index("CODIGO", 2, IsUnique = true)]

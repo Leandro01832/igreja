@@ -3,7 +3,9 @@ using business.classes.Abstrato;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using database;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -143,8 +145,8 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito pesquisa.");
-                txt_pesquisa_texto.Enabled = true;
-                txt_pesquisa_texto.Focus();
+                txt_numeros_restricao.Enabled = true;
+                txt_numeros_restricao.Focus();
             }
         }
 
@@ -183,8 +185,8 @@ namespace WindowsFormsApp1
             if (check_pesquisa_email.Checked)
             {
                 MessageBox.Show("Digite um email parecido com o que lembra para ser feito a pesquisa.");
-                txt_pesquisa_texto.Enabled = true;
-                txt_pesquisa_texto.Focus();
+                txt_numeros_restricao.Enabled = true;
+                txt_numeros_restricao.Focus();
             }
         }
 
@@ -193,8 +195,8 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome_pai.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
-                txt_pesquisa_texto.Enabled = true;
-                txt_pesquisa_texto.Focus();
+                txt_numeros_restricao.Enabled = true;
+                txt_numeros_restricao.Focus();
             }
         }
 
@@ -203,8 +205,8 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome_mae.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
-                txt_pesquisa_texto.Enabled = true;
-                txt_pesquisa_texto.Focus();
+                txt_numeros_restricao.Enabled = true;
+                txt_numeros_restricao.Focus();
             }
         }
 
@@ -246,10 +248,16 @@ namespace WindowsFormsApp1
         private void btn_todos_Click(object sender, EventArgs e)
         {
             comando = "";
+            modelocrud.Restricoes.Clear();
             ModificaDataGridView(modelo, tipo, comando);
         }
 
         private void btn_pesquisar_Click(object sender, EventArgs e)
+        {
+            ModificaDataGridView(modelo, tipo, comando);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             if (check_horario_final_reuniao.Checked)
             {
@@ -302,19 +310,19 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome_mae.Checked)
             {
                 if (VerificaAnd()) comando += " and ";
-                comando += modelo.PesquisarPorTexto(txt_pesquisa_texto.Text, "Nome_mae");
+                comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Nome_mae");
             }
 
             if (check_pesquisa_nome_pai.Checked)
             {
                 if (VerificaAnd()) comando += " and ";
-                comando += modelo.PesquisarPorTexto(txt_pesquisa_texto.Text, "Nome_pai");
+                comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Nome_pai");
             }
 
             if (check_pesquisa_email.Checked)
             {
                 if (VerificaAnd()) comando += " and ";
-                comando += modelo.PesquisarPorTexto(txt_pesquisa_texto.Text, "Email");
+                comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Email");
             }
 
             if (check_pesquisa_data_reuniao.Checked)
@@ -406,13 +414,13 @@ namespace WindowsFormsApp1
                 if (check_pesquisa_email.Checked)
                 {
                     if (VerificaAnd()) comando += " and ";
-                    comando += modelo.PesquisarPorTexto(txt_pesquisa_texto.Text, "Email");
+                    comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Email");
                 }
 
                 if (check_pesquisa_nome.Checked)
                 {
                     if (VerificaAnd()) comando += " and ";
-                    comando += modelo.PesquisarPorTexto(txt_pesquisa_texto.Text, "NomePessoa");
+                    comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "NomePessoa");
                 }
             }
 
@@ -421,125 +429,21 @@ namespace WindowsFormsApp1
                 if (check_pesquisa_nome.Checked)
                 {
                     if (VerificaAnd()) comando += " and ";
-                    comando += modelo.PesquisarPorTexto(txt_pesquisa_texto.Text, "Nome");
+                    comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Nome");
                 }
             }
 
-
-            ModificaDataGridView(modelo, tipo, comando);
-            escreverComando();
+            txt_comando.Text = "";
+            txt_numeros_restricao.Text = "";
+            for (var i = 0; i < modelocrud.Restricoes.Count; i++)
+            {
+                txt_comando.Text += modelocrud.Restricoes.Values.ToList()[i] +
+                    modelocrud.Restricoes.Keys.ToList()[i] + " \n";
+                txt_numeros_restricao.Text += i + ", ";
+            }
         }
 
-        private void escreverComando()
-        {
-            var tabela = "";
 
-            if (modelo is Pessoa)
-            {
-                tabela = "Pessoa";
-
-                if (modelo is PessoaDado)
-                {
-                    if (modelo is Visitante)
-                        tabela = "Pessoa";
-
-                    if (modelo is Crianca)
-                        tabela = "Crianca";
-
-                    if (modelo is Membro_Aclamacao)
-                        tabela = "Membro_Aclamacao";
-
-                    if (modelo is Membro_Batismo)
-                        tabela = "Membro_Batismo";
-
-                    if (modelo is Membro_Reconciliacao)
-                        tabela = "Membro_Reconciliacao";
-
-                    if (modelo is Membro_Transferencia)
-                        tabela = "Membro_Transferencia";
-                }
-
-                if (modelo is PessoaLgpd)
-                {
-                    if (modelo is VisitanteLgpd)
-                        tabela = "VisitanteLgpd";
-
-                    if (modelo is CriancaLgpd)
-                        tabela = "CriancaLgpd";
-
-                    if (modelo is Membro_AclamacaoLgpd)
-                        tabela = "Membro_AclamacaoLgpd";
-
-                    if (modelo is Membro_BatismoLgpd)
-                        tabela = "Membro_BatismoLgpd";
-
-                    if (modelo is Membro_ReconciliacaoLgpd)
-                        tabela = "Membro_ReconciliacaoLgpd";
-
-                    if (modelo is Membro_TransferenciaLgpd)
-                        tabela = "Membro_TransferenciaLgpd";
-                }
-
-            }
-            if (modelo is Celula)
-            {
-                tabela = "Celula";
-
-                if (modelo is business.classes.Celulas.Celula_Adolescente)
-                    tabela = "Celula_Adolescente";
-
-                if (modelo is business.classes.Celulas.Celula_Adulto)
-                    tabela = "Celula_Adulto";
-
-                if (modelo is business.classes.Celulas.Celula_Casado)
-                    tabela = "Celula_Casado";
-
-                if (modelo is business.classes.Celulas.Celula_Jovem)
-                    tabela = "Celula_Jovem";
-
-                if (modelo is business.classes.Celulas.Celula_Crianca)
-                    tabela = "Celula_Crianca";
-            }
-
-            if (modelo is Ministerio)
-            {
-                tabela = "Ministerio";
-                if (modelo is Supervisor_Celula)
-                    tabela = "Supervisor_Celula";
-
-                if (modelo is Supervisor_Celula_Treinamento)
-                    tabela = "Supervisor_Celula_Treinamento";
-
-                if (modelo is Supervisor_Ministerio)
-                    tabela = "Supervisor_Ministerio";
-
-                if (modelo is Supervisor_Ministerio_Treinamento)
-                    tabela = "Supervisor_Ministerio_Treinamento";
-
-                if (modelo is Lider_Celula)
-                    tabela = "Lider_Celula";
-
-                if (modelo is Lider_Celula_Treinamento)
-                    tabela = "Lider_Celula_Treinamento";
-
-                if (modelo is Lider_Ministerio)
-                    tabela = "Lider_Ministerio";
-
-                if (modelo is Lider_Ministerio_Treinamento)
-                    tabela = "Lider_Ministerio_Treinamento";
-            }
-            if (modelo is Reuniao)
-                tabela = "Reuniao";
-            if (modelo is Historico)
-                tabela = "Historico";
-            if (modelo is Chamada)
-                tabela = "Chamada";
-
-
-            txt_comando.Text = $"Selecionado os registros da tabela {tabela}";
-            if (comando != "")
-                txt_comando.Text += $" onde {comando}";
-        }
 
         private string retornarStringId()
         {

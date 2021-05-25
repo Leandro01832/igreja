@@ -37,6 +37,8 @@ namespace database
         public string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
         [NotMapped]
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
+        [NotMapped]
+        public static IDictionary<int, string> Restricoes { get; set; }
 
         public BDcomum bd;
 
@@ -60,37 +62,58 @@ namespace database
 
         public string PesquisarPorData(DateTime comecar, DateTime terminar, string campo)
         {
-            return $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} ";
+            var rest = $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} " +
+            $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;
         }
 
         public string PesquisarPorData(DateTime apenasUmDia, string campo)
         {
-            return $" {campo}=={apenasUmDia.ToString()} ";
+            var rest = $" {campo}=={apenasUmDia.ToString()} " +
+            $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;
         }
 
         public string PesquisarPorNumero(int comecar, int terminar, string campo)
         {
-            return $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} ";
+            var rest = $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} " +
+            $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;
         }
 
         public string PesquisarPorNumero(int apenasUmNumero, string campo)
         {
-            return $" {campo}=={apenasUmNumero.ToString()} ";
+            var rest = $" {campo}=={apenasUmNumero.ToString()} " +
+            $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;
         }
 
         public string PesquisarPorTexto(string texto, string campo)
         {
-            return $" {campo} like '{texto}' ";
+            var rest = $" {campo} like '{texto}' " +
+            $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;
         }
 
         public string PesquisarPorHorario(TimeSpan comecar, TimeSpan terminar, string campo)
         {
-            return $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} ";
+            var rest = $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} " +
+                $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;         
         }
 
         public string PesquisarPorHorario(TimeSpan apenasUmHorario, string campo)
         {
-            return $" {campo}=={apenasUmHorario.ToString()} ";
+            var rest = $" {campo}=={apenasUmHorario.ToString()} " +
+            $"{modelocrud.Restricoes.Count + 1} ";
+            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
+            return rest;
         }
     }
 }
