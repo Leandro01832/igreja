@@ -14,6 +14,7 @@ using business.classes.PessoasLgpd;
 using Site.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using database.banco;
 
 namespace Site.Controllers.Api
 {
@@ -102,21 +103,18 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-                crianca.salvar();
-            }
-            catch { return this.BadRequest("Usuario não cadastrado!!!"); }
+            var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
+            var Cod = ultimoRegistro + 1;
 
             var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(banco));
-            var user = new ApplicationUser { UserName = crianca.Email, Email = crianca.Email, Codigo = crianca.Codigo };
+            var user = new ApplicationUser { UserName = crianca.Email, Email = crianca.Email, Codigo = Cod };
             var result = usermaneger.Create(user, crianca.password);
             if (!result.Succeeded)
             {
-                crianca.excluir(crianca.IdPessoa);
                 return this.BadRequest("Usuario não cadastrado!!!");
             }
-
+            crianca.Codigo = Cod;
+            crianca.salvar();
             return CreatedAtRoute("DefaultApi", new { id = crianca.IdPessoa }, crianca);
         }
 

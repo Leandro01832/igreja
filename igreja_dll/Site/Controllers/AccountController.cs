@@ -9,6 +9,7 @@ using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
+using database.banco;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -180,6 +181,7 @@ namespace Site.Controllers
                 {
                     p.Email = model.Email;
                     p.NomePessoa = " - ";
+                    p.Codigo = new BDcomum().GetUltimoRegistroPessoa() + 1;
                     p.salvar();
                 }
                 catch { return View(model); }

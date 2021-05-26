@@ -111,9 +111,6 @@ namespace business.classes.Abstrato
         #region Methods
         public override string salvar()
         {
-            var ultimoRegistro = bd.GetUltimoRegistroPessoa();
-            this.Codigo = ultimoRegistro + 1;
-
             string celula = "";
             if (this.celula_ == null) celula = "null";
             else celula = this.celula_.ToString();

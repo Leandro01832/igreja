@@ -576,6 +576,9 @@ namespace WindowsFormsApp1
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
                     p.AdicionarNaLista("ReuniaoPessoa", p, new Reuniao(), AddNaListaPessoaReunioes);
+
+                var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
+                p.Codigo = ultimoRegistro + 1;
             }
 
             if (modelo is Reuniao)
