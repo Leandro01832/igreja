@@ -202,43 +202,44 @@ namespace Site.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar(RegisterViewModel model)
+        public ActionResult Editar(RegisterViewModel model)
         {
             var user =  User.Identity.GetUserName();
-            var pessoa = await banco.pessoas.FirstAsync(p => p.Email == user);
+            var pessoa =  banco.pessoas.Include(i => i.Chamada).First(i => i.Email == user);            
 
-            var view = "";
+            Pessoa p = null;
 
             if (pessoa is PessoaLgpd)
             {
-                if (model.MembroAclamacao) view = "MembroAclamacaoDado";
-                if (model.MembroBatismo) view = "MembroBatismoDado";
-                if (model.MembroReconciliacao) view = "MembroReconciliacaoDado";
-                if (model.MembroTransferencia) view = "MembroTransferenciaDado";
-                if (model.Visitante) view = "VisitanteDado";
-                if (model.Crianca) view = "CriancaDado";
+                if (model.MembroAclamacao) p = new Membro_Aclamacao();
+                if (model.MembroBatismo) p = new Membro_Batismo();
+                if (model.MembroReconciliacao) p = new Membro_Reconciliacao();
+                if (model.MembroTransferencia) p = new Membro_Transferencia();
+                if (model.Visitante) p = new Visitante();
+                if (model.Crianca) p = new Crianca();
             }
             else if (pessoa is PessoaDado)
             {
-                if (model.MembroAclamacao) view = "MembroAclamacaoLgpd";
-                if (model.MembroBatismo) view = "MembroBatismoLgpd";
-                if (model.MembroReconciliacao) view = "MembroReconciliacaoLgpd";
-                if (model.MembroTransferencia) view = "MembroTransferenciaLgpd";
-                if (model.Visitante) view = "VisitanteLgpd";
-                if (model.Crianca) view = "CriancaLgpd";
+                if (model.MembroAclamacao) p = new Membro_AclamacaoLgpd();
+                if (model.MembroBatismo) p = new Membro_BatismoLgpd();
+                if (model.MembroReconciliacao) p = new Membro_ReconciliacaoLgpd();
+                if (model.MembroTransferencia) p = new Membro_TransferenciaLgpd();
+                if (model.Visitante) p = new VisitanteLgpd();
+                if (model.Crianca) p = new CriancaLgpd();
             }
 
-            ViewBag.view = view;
+            
+
 
             ViewBag.celula_ = new SelectList(banco.celula.ToList(), "IdCelula", "Nome");
 
-            return View("NovoPerfil");
+            return View("CadastrarPerfil", p);
         }
 
         [Authorize]
-        public ActionResult NovoPerfil()
+        public ActionResult CadastrarPerfil(Pessoa p)
         {
-            return View();
+            return View(p);
         }
 
         [HttpPost]
@@ -247,7 +248,7 @@ namespace Site.Controllers
         public async Task<ActionResult> Crianca(Crianca pes)
         {
            var result =  await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else  return View(pes);
         }
 
@@ -257,7 +258,7 @@ namespace Site.Controllers
         public async Task<ActionResult> CriancaLgpd(CriancaLgpd pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -267,7 +268,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroAclamacao(Membro_Aclamacao pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -277,7 +278,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroAclamacaoLgpd(Membro_AclamacaoLgpd pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -287,7 +288,7 @@ namespace Site.Controllers
         public async Task<ActionResult> Visitante(Visitante pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -297,7 +298,7 @@ namespace Site.Controllers
         public async Task<ActionResult> VisitanteLgpd(VisitanteLgpd pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -307,7 +308,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroReconciliacao(Membro_Reconciliacao pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -317,7 +318,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroReconciliacaoLgpd(Membro_ReconciliacaoLgpd pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -327,7 +328,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroTransferencia(Membro_Transferencia pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -337,7 +338,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroTransferenciaLgpd(Membro_TransferenciaLgpd pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -347,7 +348,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroBatismo(Membro_Batismo pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -357,7 +358,7 @@ namespace Site.Controllers
         public async Task<ActionResult> MembroBatismoLgpd(Membro_BatismoLgpd pes)
         {
             var result = await NovoPerfil(pes);
-            if (result) return View("Perfil");
+            if (result) return View("Perfil", pes);
             else return View(pes);
         }
 
@@ -369,6 +370,11 @@ namespace Site.Controllers
             var pessoa = await banco.pessoas.FirstAsync(p => p.Email == user.Email);
             try
             {
+                pes.Chamada = new Chamada();
+                pes.Chamada.Data_inicio = pessoa.Chamada.Data_inicio;
+                pes.Chamada.Numero_chamada = pessoa.Chamada.Numero_chamada;
+                pes.Email = pessoa.Email;
+
                 pes.MudarEstado(pessoa.IdPessoa, pes);
                 var tipo = "";
 

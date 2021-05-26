@@ -410,7 +410,7 @@
     <Content Include="Views\Celula\_Celula_Jovem.cshtml" />
     <Content Include="Views\Celula\_EnderecoCelula.cshtml" />
     <Content Include="Views\Home\Editar.cshtml" />
-    <Content Include="Views\Home\NovoPerfil.cshtml" />
+    <Content Include="Views\Home\CadastrarPerfil.cshtml" />
     <Content Include="Views\Home\_MembroAclamacaoDado.cshtml" />
     <Content Include="Views\Home\_MembroBatismoDado.cshtml" />
     <Content Include="Views\Home\_MembroReconciliacaoDado.cshtml" />

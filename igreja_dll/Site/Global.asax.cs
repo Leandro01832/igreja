@@ -47,11 +47,21 @@ namespace Site
         {
             banco.pessoas.Add(new VisitanteLgpd
             {
-                Email = "leandroleanleo@gmail.com",
-                NomePessoa = "Leandro Luis da Silva",
+                celula_ = null,
+                Chamada = new business.classes.Chamada
+                {
+                    Data_inicio = DateTime.Now,
+                    Numero_chamada = 0
+                },
+                Img = "",
+                Historico = new List<business.classes.Historico>(),
+                Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                NomePessoa = "",
                 Condicao_religiosa = " - ",
-                Data_visita = DateTime.Now
-                 
+                Data_visita = DateTime.Now,
+                Email = "leandroleanleo@gmail.com",
+                Falta = 0,
+                Reuniao = new List<business.classes.Intermediario.ReuniaoPessoa>()
             });
             await banco.SaveChangesAsync();
         }

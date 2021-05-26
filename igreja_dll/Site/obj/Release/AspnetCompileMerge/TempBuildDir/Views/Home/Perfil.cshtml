@@ -2,9 +2,14 @@
 
 @{
     ViewBag.Title = "Perfil";
+    string texto = "";
+    if (ViewBag.perfil == "PessoaLgpd")
+    { texto = "Editar perfil para dados completos"; }
+    else
+    { texto = "Editar perfil para perfil Lgpd"; }
 }
 
-<h2>Perfil</h2>
+<h2>Perfil - @ViewBag.perfil - @Html.ActionLink(texto, "Editar", new { id = Model.IdPessoa })</h2>
 
 <h4>@Model.NomePessoa</h4>
 

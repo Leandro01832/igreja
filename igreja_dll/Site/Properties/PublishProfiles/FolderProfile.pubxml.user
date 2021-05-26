@@ -16,19 +16,19 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>05/08/2021 22:08:31</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>05/20/2021 10:59:35</publishTime>
+      <publishTime>05/26/2021 08:22:50</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>05/20/2021 10:59:35</publishTime>
+      <publishTime>05/26/2021 08:22:50</publishTime>
     </File>
     <File Include="bin/business.dll">
-      <publishTime>05/20/2021 10:53:45</publishTime>
+      <publishTime>05/25/2021 19:23:22</publishTime>
     </File>
     <File Include="bin/business.dll.config">
       <publishTime>05/08/2021 22:12:21</publishTime>
     </File>
     <File Include="bin/business.pdb">
-      <publishTime>05/20/2021 10:53:45</publishTime>
+      <publishTime>05/25/2021 19:23:22</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -184,13 +184,13 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>11/28/2018 13:04:44</publishTime>
     </File>
     <File Include="bin/repositorioEF.dll">
-      <publishTime>05/20/2021 10:53:46</publishTime>
+      <publishTime>05/25/2021 19:23:23</publishTime>
     </File>
     <File Include="bin/repositorioEF.dll.config">
       <publishTime>05/15/2021 11:18:01</publishTime>
     </File>
     <File Include="bin/repositorioEF.pdb">
-      <publishTime>05/20/2021 10:53:46</publishTime>
+      <publishTime>05/25/2021 19:23:23</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -340,10 +340,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>05/20/2021 10:59:27</publishTime>
+      <publishTime>05/26/2021 08:22:34</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>05/20/2021 10:59:27</publishTime>
+      <publishTime>05/26/2021 08:22:34</publishTime>
     </File>
     <File Include="bin/System.AppContext.dll">
       <publishTime>04/20/2021 13:48:45</publishTime>
@@ -736,7 +736,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
     <File Include="Content/Imagens/1.jpg">
-      <publishTime>04/18/2021 11:07:33</publishTime>
+      <publishTime>05/25/2021 14:09:31</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -760,7 +760,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>02/25/2021 14:49:38</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/20/2021 10:59:28</publishTime>
+      <publishTime>05/26/2021 08:22:36</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/25/2021 14:49:37</publishTime>
@@ -1026,23 +1026,74 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
     <File Include="Views/Home/About.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
+    <File Include="Views/Home/CadastrarPerfil.cshtml">
+      <publishTime>05/25/2021 22:11:33</publishTime>
+    </File>
     <File Include="Views/Home/Celulas.cshtml">
       <publishTime>04/22/2021 15:37:48</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
     </File>
+    <File Include="Views/Home/Editar.cshtml">
+      <publishTime>05/25/2021 17:36:57</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>02/25/2021 14:49:37</publishTime>
+      <publishTime>05/25/2021 19:30:18</publishTime>
     </File>
     <File Include="Views/Home/Ministerios.cshtml">
       <publishTime>04/26/2021 14:43:37</publishTime>
     </File>
+    <File Include="Views/Home/NovoPerfil.cshtml">
+      <publishTime>05/25/2021 17:59:43</publishTime>
+    </File>
     <File Include="Views/Home/Perfil.cshtml">
-      <publishTime>04/18/2021 00:08:31</publishTime>
+      <publishTime>05/25/2021 17:34:18</publishTime>
     </File>
     <File Include="Views/Home/Reunioes.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
+    </File>
+    <File Include="Views/Home/_CriancaDado.cshtml">
+      <publishTime>05/26/2021 08:19:19</publishTime>
+    </File>
+    <File Include="Views/Home/_CriancaLgpd.cshtml">
+      <publishTime>05/26/2021 08:21:39</publishTime>
+    </File>
+    <File Include="Views/Home/_Endereco.cshtml">
+      <publishTime>05/25/2021 16:35:55</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroAclamacaoDado.cshtml">
+      <publishTime>05/26/2021 08:21:39</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroAclamacaoLgpd.cshtml">
+      <publishTime>05/26/2021 08:21:39</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroBatismoDado.cshtml">
+      <publishTime>05/26/2021 08:21:39</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroBatismoLgpd.cshtml">
+      <publishTime>05/26/2021 08:20:46</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroReconciliacaoDado.cshtml">
+      <publishTime>05/26/2021 08:20:23</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroReconciliacaoLgpd.cshtml">
+      <publishTime>05/26/2021 08:20:23</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroTransferenciaDado.cshtml">
+      <publishTime>05/26/2021 08:20:23</publishTime>
+    </File>
+    <File Include="Views/Home/_MembroTransferenciaLgpd.cshtml">
+      <publishTime>05/26/2021 08:20:23</publishTime>
+    </File>
+    <File Include="Views/Home/_Telefone.cshtml">
+      <publishTime>05/25/2021 16:29:18</publishTime>
+    </File>
+    <File Include="Views/Home/_VisitanteDado.cshtml">
+      <publishTime>05/25/2021 22:02:01</publishTime>
+    </File>
+    <File Include="Views/Home/_VisitanteLgpd.cshtml">
+      <publishTime>05/26/2021 08:20:23</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>02/25/2021 14:49:37</publishTime>
