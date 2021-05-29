@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+
 
 namespace business.classes
 {
@@ -58,15 +58,15 @@ namespace business.classes
                 Select_padrao +=  $" where C.IdChamada='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -79,13 +79,12 @@ namespace business.classes
                     dr.Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 modelos.Add(this);
@@ -93,12 +92,11 @@ namespace business.classes
             }
             else
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -113,7 +111,6 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -126,13 +123,12 @@ namespace business.classes
                     modelos.AddRange(lista);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 return modelos;

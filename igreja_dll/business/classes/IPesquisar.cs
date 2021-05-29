@@ -1,4 +1,5 @@
-﻿using System;
+﻿using database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,13 @@ namespace business.classes
 {
    public interface IPesquisar
     {
-        string PesquisarPorData(DateTime comecar, DateTime terminar, string campo);
-        string PesquisarPorData(DateTime apenasUmDia, string campo);
-        string PesquisarPorNumero(int comecar, int terminar, string campo);
-        string PesquisarPorNumero(int apenasUmNumero, string campo);
-        string PesquisarPorTexto(string texto, string campo);
-        string PesquisarPorHorario(TimeSpan comecar, TimeSpan terminar, string campo);   
-        string PesquisarPorHorario(TimeSpan apenasUmHorario, string campo);   
+        List<modelocrud> PesquisarPorData   (List<modelocrud> modelos, DateTime comecar, DateTime terminar, string campo);
+        List<modelocrud> PesquisarPorData   (List<modelocrud> modelos, DateTime apenasUmDia, string campo);
+        List<modelocrud> PesquisarPorNumero (List<modelocrud> modelos, int comecar, int terminar, string campo);
+        List<modelocrud> PesquisarPorNumero (List<modelocrud> modelos, int apenasUmNumero, string campo);
+        List<modelocrud> PesquisarPorTexto  (List<modelocrud> modelos, string texto, string campo);
+        List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos, TimeSpan comecar, TimeSpan terminar, string campo);
+        List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos,  TimeSpan apenasUmHorario, string campo);   
 
     }                 
 }

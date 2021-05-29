@@ -75,8 +75,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DdataGridViews\IPesquisar.cs" />
-    <Compile Include="DdataGridViews\Pesquisar.cs" />
     <Compile Include="FormPadrao.cs">
       <SubType>Form</SubType>
     </Compile>

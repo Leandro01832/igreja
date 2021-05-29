@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
@@ -25,7 +25,7 @@ namespace business.classes
         public DateTime DataMudanca { get; set; }
         public int CodigoPessoa { get; set; }
 
-        public MudancaEstado() :base()
+        public MudancaEstado() : base()
         {
             this.DataMudanca = DateTime.Now;
         }
@@ -46,18 +46,18 @@ namespace business.classes
             var p11 = new Membro_Transferencia().recuperar(idVelhoEstado);
             var p12 = new Membro_TransferenciaLgpd().recuperar(idVelhoEstado);
             Pessoa p = null;
-            if (p1.Count > 0) p = (Pessoa) p1[0];
-            if (p2.Count > 0) p = (Pessoa) p2[0];
-            if (p3.Count > 0) p = (Pessoa) p3[0];
-            if (p4.Count > 0) p = (Pessoa) p4[0];
-            if (p5.Count > 0) p = (Pessoa) p5[0];
-            if (p6.Count > 0) p = (Pessoa) p6[0];
-            if (p7.Count > 0) p = (Pessoa) p7[0];
-            if (p8.Count > 0) p = (Pessoa) p8[0];
-            if (p9.Count > 0) p = (Pessoa) p9[0];
-            if (p10.Count > 0) p = (Pessoa) p10[0];
-            if (p11.Count > 0) p = (Pessoa) p11[0];
-            if (p12.Count > 0) p = (Pessoa) p12[0];
+            if (p1.Count > 0) p = (Pessoa)p1[0];
+            if (p2.Count > 0) p = (Pessoa)p2[0];
+            if (p3.Count > 0) p = (Pessoa)p3[0];
+            if (p4.Count > 0) p = (Pessoa)p4[0];
+            if (p5.Count > 0) p = (Pessoa)p5[0];
+            if (p6.Count > 0) p = (Pessoa)p6[0];
+            if (p7.Count > 0) p = (Pessoa)p7[0];
+            if (p8.Count > 0) p = (Pessoa)p8[0];
+            if (p9.Count > 0) p = (Pessoa)p9[0];
+            if (p10.Count > 0) p = (Pessoa)p10[0];
+            if (p11.Count > 0) p = (Pessoa)p11[0];
+            if (p12.Count > 0) p = (Pessoa)p12[0];
             estado = p.GetType().Name;
             p = (Pessoa)p.recuperar(p.IdPessoa)[0];
 
@@ -65,21 +65,21 @@ namespace business.classes
 
             var addMinisterios = "";
             var minis = p.Ministerios;
-            if(minis != null)
-            foreach(var itemMinisterio in minis)
-            addMinisterios += itemMinisterio.Ministerio.IdMinisterio.ToString() + ", ";
             if (minis != null)
-            if(minis.Count != 0)
-            p.AdicionarNaLista("PessoaMinsterio", p, minis[0], addMinisterios);
+                foreach (var itemMinisterio in minis)
+                    addMinisterios += itemMinisterio.Ministerio.IdMinisterio.ToString() + ", ";
+            if (minis != null)
+                if (minis.Count != 0)
+                    p.AdicionarNaLista("PessoaMinsterio", p, minis[0], addMinisterios);
 
             var addReunioes = "";
             var reu = p.Reuniao;
             if (reu != null)
-            foreach (var itemReuniao in reu)
-            addReunioes += itemReuniao.Reuniao.IdReuniao.ToString() + ", ";
+                foreach (var itemReuniao in reu)
+                    addReunioes += itemReuniao.Reuniao.IdReuniao.ToString() + ", ";
             if (reu != null)
-            if(reu.Count != 0)
-            p.AdicionarNaLista("ReuniaoPessoa", p, reu[0], addReunioes);
+                if (reu.Count != 0)
+                    p.AdicionarNaLista("ReuniaoPessoa", p, reu[0], addReunioes);
 
             if (m is PessoaDado)
             {
@@ -282,7 +282,7 @@ namespace business.classes
                         Codigo = pd.Codigo
                     };
                     v.salvar();
-                } 
+                }
             }
 
             if (m is PessoaLgpd)
@@ -437,7 +437,7 @@ namespace business.classes
             Update_padrao = $"update MudancaEstado set velhoEstado='{velhoEstado}', " +
            $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', CodigoPessoa='{CodigoPessoa}' " +
            $"  where IdMudanca='{id}' ";
-            
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -445,30 +445,33 @@ namespace business.classes
         public override string excluir(int id)
         {
             Delete_padrao = $"delete from MudancaEstado as M where M.IdMudanca='{id}'";
-            
+
             bd.Excluir(this);
             return Delete_padrao;
-        }        
+        }
 
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from MudancaEstado ";
-            if(id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
+            if (id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.abrirconexao();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao();
+                        return modelos;
+                    }
+
                     dr.Read();
 
                     this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
@@ -481,12 +484,11 @@ namespace business.classes
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
 
                 modelos.Add(this);
@@ -494,16 +496,18 @@ namespace business.classes
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    bd.abrirconexao();
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         MudancaEstado m = new MudancaEstado();
@@ -514,7 +518,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -529,12 +533,11 @@ namespace business.classes
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
 
                 return modelos;
@@ -546,7 +549,7 @@ namespace business.classes
         {
             Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, CodigoPessoa) " +
                 $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString("yyyy-MM-dd")}', '{CodigoPessoa}')";
-            
+
             bd.SalvarModelo(this);
             return Insert_padrao;
         }

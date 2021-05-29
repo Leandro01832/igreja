@@ -1,5 +1,6 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Pessoas;
 using database.banco;
 using System;
 using System.Collections;
@@ -37,8 +38,6 @@ namespace database
         public string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
         [NotMapped]
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
-        [NotMapped]
-        public static IDictionary<int, string> Restricoes { get; set; }
 
         public BDcomum bd;
 
@@ -60,60 +59,120 @@ namespace database
             }
         }
 
-        public string PesquisarPorData(DateTime comecar, DateTime terminar, string campo)
+        public void TratarExcessao(Exception ex)
         {
-            var rest = $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} " +
-            $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;
+                if (ex.Message.Contains("instância"))
+                {
+                    MessageBox.Show("Você não esta conectado." + ex.Message);
+                    BDcomum.podeAbrir = false;
+                }
+            else
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        public string PesquisarPorData(DateTime apenasUmDia, string campo)
+        public List<modelocrud> PesquisarPorData(List<modelocrud> modelos,DateTime comecar, DateTime terminar, string campo)
         {
-            var rest = $" {campo}=={apenasUmDia.ToString()} " +
-            $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;
+            List<modelocrud> q = null;
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "Data_reuniao")
+                q = modelos.OfType<Reuniao>().Where(i => i.Data_reuniao >= comecar && i.Data_reuniao <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<PessoaDado>().ToList().Count > 0 && campo == "Data_nascimento")
+                q = modelos.OfType<PessoaDado>().Where(i => i.Data_nascimento >= comecar && i.Data_nascimento <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<MudancaEstado>().ToList().Count > 0 && campo == "DataMudanca")
+                q = modelos.OfType<MudancaEstado>().Where(i => i.DataMudanca >= comecar && i.DataMudanca <= terminar).Cast<modelocrud>().ToList();
+            return q;
         }
 
-        public string PesquisarPorNumero(int comecar, int terminar, string campo)
+        public List<modelocrud> PesquisarPorData(List<modelocrud> modelos,DateTime apenasUmDia, string campo)
         {
-            var rest = $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} " +
-            $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;
+            List<modelocrud> q = null;
+            return q;
         }
 
-        public string PesquisarPorNumero(int apenasUmNumero, string campo)
+        public List<modelocrud> PesquisarPorNumero(List<modelocrud> modelos,int comecar, int terminar, string campo)
         {
-            var rest = $" {campo}=={apenasUmNumero.ToString()} " +
-            $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;
+            List<modelocrud> q = null;
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "IdReuniao")
+                q = modelos.OfType<Reuniao>().Where(i => i.IdReuniao >= comecar && i.IdReuniao <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Pessoa>().ToList().Count > 0 && campo == "IdPessoa")
+                q = modelos.OfType<Pessoa>().Where(i => i.IdPessoa >= comecar && i.IdPessoa <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Celula>().ToList().Count > 0 && campo == "IdCelula")
+                q = modelos.OfType<Celula>().Where(i => i.IdCelula >= comecar && i.IdCelula <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Ministerio>().ToList().Count > 0 && campo == "IdMinisterio")
+                q = modelos.OfType<Ministerio>().Where(i => i.IdMinisterio >= comecar && i.IdMinisterio <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Membro>().ToList().Count > 0 && campo == "Data_batismo")
+                q = modelos.OfType<Membro>().Where(i => i.Data_batismo >= comecar && i.Data_batismo <= terminar).Cast<modelocrud>().ToList();
+            return q;
         }
 
-        public string PesquisarPorTexto(string texto, string campo)
+        public List<modelocrud> PesquisarPorNumero(List<modelocrud> modelos,int apenasUmNumero, string campo)
         {
-            var rest = $" {campo} like '{texto}' " +
-            $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;
+            List<modelocrud> q = null;
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "IdReuniao")
+                q = modelos.OfType<Reuniao>().Where(i => i.IdReuniao >= apenasUmNumero).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Pessoa>().ToList().Count > 0 && campo == "IdPessoa")
+                q = modelos.OfType<Pessoa>().Where(i => i.IdPessoa >= apenasUmNumero).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Celula>().ToList().Count > 0 && campo == "IdCelula")
+                q = modelos.OfType<Celula>().Where(i => i.IdCelula >= apenasUmNumero).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Ministerio>().ToList().Count > 0 && campo == "IdMinisterio")
+                q = modelos.OfType<Ministerio>().Where(i => i.IdMinisterio >= apenasUmNumero).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Membro>().ToList().Count > 0 && campo == "Data_batismo")
+                q = modelos.OfType<Membro>().Where(i => i.Data_batismo >= apenasUmNumero).Cast<modelocrud>().ToList();
+            return q;
         }
 
-        public string PesquisarPorHorario(TimeSpan comecar, TimeSpan terminar, string campo)
+        public List<modelocrud> PesquisarPorTexto(List<modelocrud> modelos, string texto, string campo)
         {
-            var rest = $" {campo}>={comecar.ToString()} and {campo}<={terminar.ToString()} " +
-                $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;         
+            List<modelocrud> q = null;
+            if (modelos.OfType<Pessoa>().ToList().Count > 0 && campo == "NomePessoa")
+                q = modelos.OfType<Pessoa>().Where(p => p.NomePessoa.Contains(texto)).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Celula>().ToList().Count > 0 && campo == "Nome")
+                q = modelos.OfType<Celula>().Where(p => p.Nome.Contains(texto)).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Ministerio>().ToList().Count > 0 && campo == "Nome")
+                q = modelos.OfType<Ministerio>().Where(p => p.Nome.Contains(texto)).Cast<modelocrud>().ToList();
+            return q;
         }
 
-        public string PesquisarPorHorario(TimeSpan apenasUmHorario, string campo)
+        public List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos, TimeSpan comecar, TimeSpan terminar, string campo)
         {
-            var rest = $" {campo}=={apenasUmHorario.ToString()} " +
-            $"{modelocrud.Restricoes.Count + 1} ";
-            modelocrud.Restricoes.Add(modelocrud.Restricoes.Count + 1, rest);
-            return rest;
+            List<modelocrud> q = null;
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "Horario_fim")
+            q = modelos.OfType<Reuniao>().Where(i => i.Horario_fim >= comecar && i.Horario_fim <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "Horario_inicio")
+            q = modelos.OfType<Reuniao>().Where(i => i.Horario_inicio >= comecar && i.Horario_inicio <= terminar).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Celula>().ToList().Count > 0 && campo == "Horario")
+            q = modelos.OfType<Celula>().Where(i => i.Horario >= comecar && i.Horario <= terminar).Cast<modelocrud>().ToList();
+
+            return q;         
+        }
+
+        public List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos, TimeSpan apenasUmHorario, string campo)
+        {
+            List<modelocrud> q = null;
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "Horario_fim")
+            q = modelos.OfType<Reuniao>().Where(i => i.Horario_fim == apenasUmHorario).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Reuniao>().ToList().Count > 0 && campo == "Horario_inicio")
+                q = modelos.OfType<Reuniao>().Where(i => i.Horario_inicio == apenasUmHorario).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Celula>().ToList().Count > 0 && campo == "Horario_inicio")
+                q = modelos.OfType<Celula>().Where(i => i.Horario == apenasUmHorario).Cast<modelocrud>().ToList();
+            return q;
         }
     }
 }

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Collections;
-using System.Windows.Forms;
+
 using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
@@ -17,13 +17,13 @@ using business.classes.Pessoas;
 namespace business.classes
 {
     [Table("Historico")]
-   public class Historico : modelocrud
-    {       
+    public class Historico : modelocrud
+    {
 
         [Key]
         public int IdHistorico { get; set; }
 
-        public DateTime Data_inicio{get; set; }
+        public DateTime Data_inicio { get; set; }
 
         public int pessoaid { get; set; }
 
@@ -41,7 +41,7 @@ namespace business.classes
             Update_padrao = $"update Historico set Data_inicio={Data_inicio.ToString()}, " +
             $"pessoaid={pessoaid}, Falta={Falta} " +
             $"  where IdHistorico={id} ";
-            
+
             bd.Editar(this);
             return Update_padrao;
         }
@@ -49,7 +49,7 @@ namespace business.classes
         public override string excluir(int id)
         {
             Delete_padrao = $"delete from Historico where IdHistorico='{id}' ";
-            
+
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -60,20 +60,20 @@ namespace business.classes
             if (id != null)
                 Select_padrao += $" where M.IdHistorico='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            List<modelocrud> modelos = new List<modelocrud>();           
 
             if (id != null)
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
                     this.IdHistorico = int.Parse(Convert.ToString(dr["IdHistorico"]));
@@ -82,13 +82,12 @@ namespace business.classes
                     dr.Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 modelos.Add(this);
@@ -96,12 +95,11 @@ namespace business.classes
             }
             else
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -115,7 +113,6 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -127,13 +124,12 @@ namespace business.classes
                     modelos.Clear();
                     modelos.AddRange(lista);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
                 return modelos;
             }
@@ -145,7 +141,7 @@ namespace business.classes
             Insert_padrao =
         $"insert into Historico (Data_inicio, pessoaid, Falta) " +
         $"values ({Data_inicio.ToString()}, {pessoaid}, {Falta})";
-            
+
             bd.SalvarModelo(this);
             return Insert_padrao;
         }

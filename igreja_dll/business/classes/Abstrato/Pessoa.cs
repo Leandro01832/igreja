@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using System.Windows.Forms;
+
 
 namespace business.classes.Abstrato
 {
@@ -155,19 +155,18 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
-                try
-                {
+                
                     dr.Read();
                     this.Img = Convert.ToString(dr["Img"]);
                     this.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
@@ -183,22 +182,21 @@ namespace business.classes.Abstrato
                         this.celula_ = int.Parse(dr["celula_"].ToString());
 
                     dr.Close();
-
-                    this.Ministerios = new List<PessoaMinisterio>();
-                    bd.obterconexao().Close();
+                this.Ministerios = new List<PessoaMinisterio>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
                         foreach (var item in listaMinisterios)
                         {
                             this.Ministerios.Add((PessoaMinisterio)item);
                         }
-                    this.Reuniao = new List<ReuniaoPessoa>();
+                    this.Reuniao = new List<ReuniaoPessoa>();                
                     var listaReunioes = recuperarReuniao(id);
                     if (listaReunioes != null)
                         foreach (var item in listaReunioes)
                         {
                             this.Reuniao.Add((ReuniaoPessoa)item);
                         }
+
                     this.Historico = new List<Historico>();
                     var listaHistoricos = recuperarHistorico(id);
                     if (listaHistoricos != null)
@@ -206,22 +204,9 @@ namespace business.classes.Abstrato
                         {
                             this.Historico.Add((Historico)item);
                         }
-
-                    modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
+                modelos.Add(this);
                 return modelos;
             }
-
-            bd.obterconexao().Close();
             return modelos;
         } 
         #endregion
@@ -422,25 +407,21 @@ namespace business.classes.Abstrato
                 $" on mipe.PessoaId=p.IdPessoa where mipe.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(select, conecta);
+            
+            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
             }
-
-            var lista = new PessoaMinisterio().recuperar(null).OfType<PessoaMinisterio>().ToList();
-
+            
             while (dr.Read())
             {
-               var m = lista.First(i =>  i.MinisterioId == int.Parse(Convert.ToString(dr["MinisterioId"])));
+               var m = new PessoaMinisterio().recuperar(int.Parse(Convert.ToString(dr["MinisterioId"])))[0];
                 modelos.Add(m);
             }
             dr.Close();
-            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -451,26 +432,21 @@ namespace business.classes.Abstrato
                 $" on PERE.PessoaId=P.IdPessoa where PERE.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(select, conecta);
+            
+            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
             }
 
-            var lista = new ReuniaoPessoa().recuperar(null).OfType<ReuniaoPessoa>().ToList();
-
             while (dr.Read())
             {
-                var r = lista.First(i => i.ReuniaoId == int.Parse(Convert.ToString(dr["ReuniaoId"])));
+                var r = new ReuniaoPessoa().recuperar(int.Parse(Convert.ToString(dr["ReuniaoId"])))[0];
                 modelos.Add(r);
             }
             dr.Close();
-
-            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -481,13 +457,12 @@ namespace business.classes.Abstrato
                 $" on P.IdPessoa=H.pessoaid where P.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(select, conecta);
+            
+            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
             }
 
@@ -501,8 +476,6 @@ namespace business.classes.Abstrato
                 modelos.Add(h);
             }
             dr.Close();
-
-            bd.obterconexao().Close();
             return modelos;
         }
         

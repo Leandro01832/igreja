@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace business.classes
 {
@@ -21,13 +21,13 @@ namespace business.classes
                 $" where {nomeDaChave}='{id}' ";
 
             List<int> modelos = new List<int>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            
+            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
+                bd.fecharconexao();
                 return modelos;
             }
 
@@ -50,13 +50,13 @@ namespace business.classes
                 dr.Close();                
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             finally
             {
-                bd.obterconexao().Close();
+                bd.fecharconexao();
             }
             return modelos;
         }

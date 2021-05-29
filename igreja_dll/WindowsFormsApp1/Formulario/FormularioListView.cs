@@ -291,7 +291,11 @@ namespace WindowsFormsApp1.Formulario
                             l.Add(m);
                     else
                     l = await AtualizarComProgressBar(Modelo);
-                    quantidadeLista = l.Count; 
+                    if (l != null)
+                        quantidadeLista = l.Count;
+                    else
+                        foreach (var i in listaPessoas.Where(i => i.GetType().Name == Modelo.GetType().Name))
+                            l.Add(i);
                 }
 
                 if (Modelo is business.classes.Abstrato.Celula)
@@ -309,6 +313,11 @@ namespace WindowsFormsApp1.Formulario
                     else
                         l = await AtualizarComProgressBar(Modelo);
                     quantidadeLista = l.Count;
+                    if (l != null)
+                        quantidadeLista = l.Count;
+                    else
+                        foreach (var i in listaCelulas.Where(i => i.GetType().Name == Modelo.GetType().Name))
+                            l.Add(i);
                 }
 
                 if (Modelo is Ministerio)
@@ -326,6 +335,11 @@ namespace WindowsFormsApp1.Formulario
                     else
                         l = await AtualizarComProgressBar(Modelo);
                     quantidadeLista = l.Count;
+                    if (l != null)
+                        quantidadeLista = l.Count;
+                    else
+                        foreach (var i in listaMinisterios.Where(i => i.GetType().Name == Modelo.GetType().Name))
+                            l.Add(i);
                 }
 
                 if (Modelo is business.classes.Reuniao)
@@ -336,8 +350,14 @@ namespace WindowsFormsApp1.Formulario
                     else
                         l = await AtualizarComProgressBar(Modelo);
                     quantidadeLista = l.Count;
+                    if (l != null)
+                        quantidadeLista = l.Count;
+                    else
+                        foreach (var i in listaReuniao.Where(i => i.GetType().Name == Modelo.GetType().Name))
+                            l.Add(i);
                 }
 
+                if(l != null)
                 foreach (var item in l)
                     lista.Add(item);
             }

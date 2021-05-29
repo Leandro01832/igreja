@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using System.ComponentModel.DataAnnotations;
 using database.banco;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,7 +16,7 @@ using business.classes.Pessoas;
 
 namespace business.classes
 {
-    
+
     public class Endereco : modelocrud
     {
         [Key, ForeignKey("Pessoa")]
@@ -57,7 +57,7 @@ namespace business.classes
             Insert_padrao =
         $"insert into Endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
         $" IdEndereco) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
-        $" '{Cep}', '{Complemento}', IDENT_CURRENT('Pessoa'))";            
+        $" '{Cep}', '{Complemento}', IDENT_CURRENT('Pessoa'))";
             return Insert_padrao;
         }
 
@@ -65,13 +65,13 @@ namespace business.classes
         {
             Update_padrao = $"update Endereco set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
             $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
-            $"  where IdEndereco='{id}' ";            
+            $"  where IdEndereco='{id}' ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Endereco where IdEndereco='{id}' ";            
+            Delete_padrao = $"delete from Endereco where IdEndereco='{id}' ";
             return Delete_padrao;
         }
 
@@ -82,19 +82,20 @@ namespace business.classes
                 Select_padrao += $" where M.IdEndereco='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.Pais = Convert.ToString(dr["Pais"]);
                     this.Estado = Convert.ToString(dr["Estado"]);
@@ -108,13 +109,12 @@ namespace business.classes
                     dr.Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 modelos.Add(this);
@@ -122,16 +122,16 @@ namespace business.classes
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Endereco end = new Endereco();
@@ -142,7 +142,6 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -155,13 +154,13 @@ namespace business.classes
                     modelos.AddRange(lista);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
                 return modelos;
             }

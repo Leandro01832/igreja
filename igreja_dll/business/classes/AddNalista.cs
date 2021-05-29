@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using business.classes.Abstrato;
 using database;
 using database.banco;
@@ -89,15 +89,15 @@ namespace business.classes
             verificaModelos(modeloQRecebe, modeloQPreenche);
 
             Select_padrao = $"select * from {NomeTabela} where {recebe}Id='{IdModelo}'";
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            
+            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
 
             if (dr.HasRows == false)
             {
+                dr.Close();
                 AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
-                bd.obterconexao().Close();
+                bd.fecharconexao();
                 return "";
             }
             else
@@ -129,13 +129,13 @@ namespace business.classes
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
                 return valores;
             }

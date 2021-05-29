@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace business.classes.Pessoas
 {
@@ -52,42 +52,24 @@ namespace business.classes.Pessoas
         {
             Select_padrao = "select * from PessoaLgpd as PL ";
             if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
-
             List<modelocrud> modelos = new List<modelocrud>();
-
+            
             if (id != null)
             {
-                try
-                {
-                    bd.obterconexao().Close();
-                    base.recuperar(id);
-                    bd.obterconexao().Open();
+                base.recuperar(id);
                     Select_padrao = "select * from PessoaLgpd as PL ";
                     if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
                     SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
-                        bd.obterconexao().Close();
+                        dr.Close();                        
                         return modelos;
                     }
-
-                    modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
+                dr.Close();
+                modelos.Add(this);
                 return modelos;
             }
-
-            bd.obterconexao().Close();
-
             return modelos;
         }
     }

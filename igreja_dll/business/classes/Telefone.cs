@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Collections;
-using System.Windows.Forms;
+
 using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
@@ -16,11 +16,11 @@ using business.classes.Pessoas;
 
 namespace business.classes
 {
-       
+
     public class Telefone : modelocrud
     {
         [Key, ForeignKey("Pessoa")]
-        public int IdTelefone {  get; set; }
+        public int IdTelefone { get; set; }
         public virtual PessoaDado Pessoa { get; set; }
 
         public string Fone { get; set; }
@@ -36,13 +36,13 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Telefone set Fone='{Fone}', Celular='{Celular}', " +
-            $"Whatsapp='{Whatsapp}' where IdTelefone='{id}' ";            
+            $"Whatsapp='{Whatsapp}' where IdTelefone='{id}' ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Telefone where IdTelefone='{id}' ";            
+            Delete_padrao = $"delete from Telefone where IdTelefone='{id}' ";
             return Delete_padrao;
         }
 
@@ -53,19 +53,20 @@ namespace business.classes
                 Select_padrao += Select_padrao + $" where M.IdTelefone={id}";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
                     this.Fone = Convert.ToString(dr["Fone"]);
@@ -74,13 +75,12 @@ namespace business.classes
                     dr.Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 modelos.Add(this);
@@ -88,16 +88,16 @@ namespace business.classes
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Telefone tel = new Telefone();
@@ -108,7 +108,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -121,14 +121,12 @@ namespace business.classes
                     modelos.AddRange(lista);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
                 return modelos;
             }
@@ -139,7 +137,7 @@ namespace business.classes
         {
             Insert_padrao =
         $" insert into Telefone (Fone, Celular, Whatsapp, IdTelefone) " +
-        $" values ('{Fone}', '{Celular}', '{Whatsapp}', IDENT_CURRENT('Pessoa')) ";            
+        $" values ('{Fone}', '{Celular}', '{Whatsapp}', IDENT_CURRENT('Pessoa')) ";
             return Insert_padrao;
         }
 

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Windows.Forms;
+
 
 namespace business.classes.Intermediario
 {
@@ -38,15 +38,14 @@ namespace business.classes.Intermediario
             if (id != null) Select_padrao += $" where RP.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-
+            
             if (id != null)
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -58,26 +57,23 @@ namespace business.classes.Intermediario
                     modelos.Add(this);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 return modelos;
             }
             else
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -100,13 +96,12 @@ namespace business.classes.Intermediario
                     }
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
                 return modelos;
             }

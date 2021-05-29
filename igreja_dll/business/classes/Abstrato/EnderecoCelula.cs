@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+
 
 namespace business.classes.Celula
 {
@@ -79,12 +79,11 @@ namespace business.classes.Celula
 
             if (id != null)
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -102,13 +101,12 @@ namespace business.classes.Celula
                     dr.Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 modelos.Add(this);
@@ -116,12 +114,11 @@ namespace business.classes.Celula
             }
             else
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
                 try
@@ -143,14 +140,12 @@ namespace business.classes.Celula
                     dr.Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 return modelos;

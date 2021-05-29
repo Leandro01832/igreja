@@ -8,11 +8,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace business.classes.Intermediario
 {
-   public class MinisterioCelula : modelocrud
+    public class MinisterioCelula : modelocrud
     {
         [Key]
         public int IdMinisterioCelula { get; set; }
@@ -39,19 +39,19 @@ namespace business.classes.Intermediario
             if (id != null) Select_padrao += $" where MC.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-
+            
             if (id != null)
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
                     this.CelulaId = int.Parse(Convert.ToString(dr["CelulaId"]));
@@ -59,30 +59,28 @@ namespace business.classes.Intermediario
                     modelos.Add(this);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
 
                 return modelos;
             }
             else
             {
-                bd.obterconexao().Open();
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         MinisterioCelula pm = new MinisterioCelula();
@@ -94,20 +92,19 @@ namespace business.classes.Intermediario
 
                     var celulas = Abstrato.Celula.recuperarTodasCelulas().OfType<Abstrato.Celula>().ToList();
                     var ministerios = Abstrato.Ministerio.recuperarTodosMinisterios().OfType<Abstrato.Ministerio>().ToList();
-                    foreach(var item in modelos.OfType<MinisterioCelula>().ToList())
+                    foreach (var item in modelos.OfType<MinisterioCelula>().ToList())
                     {
                         item.Celula = celulas.First(i => i.IdCelula == item.CelulaId);
                         item.Ministerio = ministerios.First(i => i.IdMinisterio == item.MinisterioId);
                     }
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
                 }
                 return modelos;
             }

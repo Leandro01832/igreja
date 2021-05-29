@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using database;
@@ -85,43 +85,27 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-
+            
             if (id != null)
             {
-                bd.obterconexao().Close();
                 base.recuperar(id);
-                bd.obterconexao().Open();
                 Select_padrao = "select * from Membro as P ";
                 if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
-                try
-                {
                     dr.Read();
                     this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
                     this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
                     this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
                     dr.Close();
-                    modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
-                return modelos;
+                modelos.Add(this);
+                
             }
-
-            bd.obterconexao().Close();
             return modelos;
         }
 

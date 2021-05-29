@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using business.classes.Abstrato;
 using System;
-using System.Windows.Forms;
+
 using database;
 
 namespace business.classes.Ministerio
@@ -44,38 +44,51 @@ namespace business.classes.Ministerio
             Select_padrao = "select * from Supervisor_Ministerio as SM inner join Ministerio as MI on SM.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where SM.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Supervisor_Ministerio as SM inner join Ministerio as MI on SM.IdMinisterio=MI.IdMinisterio ";
-                if (id != null) Select_padrao += $" where SM.IdMinisterio='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
+                try
                 {
-                    bd.obterconexao().Close();
-                    return modelos;
+                    bd.abrirconexao();
+                    base.recuperar(id);
+                    Select_padrao = "select * from Supervisor_Ministerio as SM inner join Ministerio as MI on SM.IdMinisterio=MI.IdMinisterio ";
+                    if (id != null) Select_padrao += $" where SM.IdMinisterio='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao();
+                        return modelos;
+                    }
+                    dr.Read();
+                    this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
+                    dr.Close();
+                    modelos.Add(this);
                 }
-                dr.Read();
-                this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
-                dr.Close();
-                modelos.Add(this);
-                bd.obterconexao().Close();
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                }
+                finally
+                {
+                    bd.fecharconexao();
+                }
+                
                 return modelos;
             }
             else
             {
                 try
                 {
-                    bd.obterconexao().Open();
+                    bd.abrirconexao();
                     SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
-                        bd.obterconexao().Close();
+                        dr.Close();
+                        bd.fecharconexao();
                         return modelos;
                     }
 
@@ -88,7 +101,7 @@ namespace business.classes.Ministerio
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -103,11 +116,11 @@ namespace business.classes.Ministerio
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
                 return modelos;
             }

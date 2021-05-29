@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+
 
 namespace business.classes.Pessoas
 {
@@ -118,14 +118,10 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-
+            
             if (id != null)
             {
-                try
-                {
-                    bd.obterconexao().Close();
                     base.recuperar(id);
-                    bd.obterconexao().Open();
                     Select_padrao = "select * from PessoaDado as PD "
             + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
             + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
@@ -134,7 +130,7 @@ namespace business.classes.Pessoas
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
-                        bd.obterconexao().Close();
+                        dr.Close();
                         return modelos;
                     }
 
@@ -163,20 +159,8 @@ namespace business.classes.Pessoas
 
                     dr.Close();
                     modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
                 return modelos;
             }
-            bd.obterconexao().Close();
-
             return modelos;
         }
 

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
+
 
 namespace database.banco
 {
@@ -19,6 +19,7 @@ namespace database.banco
       
         
         public static string addNaLista;
+        public static bool podeAbrir = true;
 
         public static bool BancoEnbarcado = false;
 
@@ -26,18 +27,29 @@ namespace database.banco
 
         public  SqlConnection obterconexao()
         {
-            try
-            {
-                if(conn == null)
+            if(conn == null)
                 conn = new SqlConnection(conecta2);
-                
-                return conn;
-            }
-            catch (Exception ex)
+
+            if (conn.State == ConnectionState.Open && !podeAbrir || conn.State == ConnectionState.Closed && !podeAbrir)
             {
-                MessageBox.Show("Você não esta conectado. " + ex.Message);
-                return null;
+                conn.Dispose();
             }
+
+            return conn;            
+        }
+
+        public void fecharconexao()
+        {
+            var conexao = obterconexao();
+            if (conexao.State == ConnectionState.Open)
+                conexao.Close();
+        }
+
+        public void abrirconexao()
+        {
+            var conexao = obterconexao();
+            if (conexao.State == ConnectionState.Closed && podeAbrir)
+                conexao.Open();
         }
 
         public void SalvarModelo(modelocrud modelo)
@@ -88,9 +100,9 @@ namespace database.banco
                 con.Close();
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             return Id;
         }
@@ -113,9 +125,9 @@ namespace database.banco
                 con.Close();
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             return Id;
         }
@@ -138,9 +150,9 @@ namespace database.banco
                 con.Close();
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             return Id;
         }
@@ -163,9 +175,9 @@ namespace database.banco
                 con.Close();
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             return Id;
         }
@@ -191,9 +203,9 @@ namespace database.banco
             {
                 comando.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             finally
             {

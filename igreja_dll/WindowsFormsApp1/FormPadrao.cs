@@ -48,6 +48,7 @@ namespace WindowsFormsApp1
         public static List<Ministerio> listaMinisterios;
         public static List<Celula> listaCelulas;
         public static List<Reuniao> listaReuniao;
+        public static List<MudancaEstado> listaMudancaEstado;
 
         public static List<modelocrud> listaAtualizadaPessoas;
         public static List<modelocrud> listaAtualizadaMinisterios;
@@ -76,35 +77,44 @@ namespace WindowsFormsApp1
             listaMinisterios = new List<Ministerio>();
             listaCelulas = new List<Celula>();
             listaReuniao = new List<Reuniao>();
+            listaMudancaEstado = new List<MudancaEstado>();
             FormProgressBar form = new FormProgressBar();
             //  form.MdiParent = this.MdiParent;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Text = "Barra de processamento - Processando dados";
-            form.Show();
-            var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
+            
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Text = "Barra de processamento - Processando dados";
+                form.Show();
+                var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
 
-            var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+                var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
 
-            var lr = await Task.Run(() => new Reuniao().recuperar(null));
-            listaReuniao = lr.OfType<Reuniao>().ToList();
-            var lp = await Task.Run(() => Pessoa.recuperarTodos());
+                var lme = await Task.Run(() => new MudancaEstado().recuperar(null));
+                listaMudancaEstado = lme.OfType<MudancaEstado>().ToList();
+
+                var lr = await Task.Run(() => new Reuniao().recuperar(null));
+                listaReuniao = lr.OfType<Reuniao>().ToList();
+                var lp = await Task.Run(() => Pessoa.recuperarTodos());
+
 
             form.Close();
+
             try { UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo; }
-            catch { UltimoRegistroPessoa = 0; }
-            try { UltimoRegistroReuniao = lr.OfType<Reuniao>().OrderBy(m => m.IdReuniao).Last().IdReuniao; }
-            catch { UltimoRegistroReuniao = 0; }
-            try { UltimoRegistroMinisterio = lm.OfType<Ministerio>().OrderBy(m => m.IdMinisterio).Last().IdMinisterio; }
-            catch { UltimoRegistroMinisterio = 0; }
-            try { UltimoRegistroCelula = lc.OfType<Celula>().OrderBy(m => m.IdCelula).Last().IdCelula; }
-            catch { UltimoRegistroCelula = 0; }
-            Pessoa.UltimoRegistro = UltimoRegistroPessoa;
-            Ministerio.UltimoRegistro = UltimoRegistroMinisterio;
-            Celula.UltimoRegistro = UltimoRegistroCelula;
-            Reuniao.UltimoRegistro = UltimoRegistroReuniao;
+                catch { UltimoRegistroPessoa = 0; }
+                try { UltimoRegistroReuniao = lr.OfType<Reuniao>().OrderBy(m => m.IdReuniao).Last().IdReuniao; }
+                catch { UltimoRegistroReuniao = 0; }
+                try { UltimoRegistroMinisterio = lm.OfType<Ministerio>().OrderBy(m => m.IdMinisterio).Last().IdMinisterio; }
+                catch { UltimoRegistroMinisterio = 0; }
+                try { UltimoRegistroCelula = lc.OfType<Celula>().OrderBy(m => m.IdCelula).Last().IdCelula; }
+                catch { UltimoRegistroCelula = 0; }
+                Pessoa.UltimoRegistro = UltimoRegistroPessoa;
+                Ministerio.UltimoRegistro = UltimoRegistroMinisterio;
+                Celula.UltimoRegistro = UltimoRegistroCelula;
+                Reuniao.UltimoRegistro = UltimoRegistroReuniao;
 
-            podeVerificar = true;
+                podeVerificar = true;
+            
 
+            
         }
 
         private async void verifica()

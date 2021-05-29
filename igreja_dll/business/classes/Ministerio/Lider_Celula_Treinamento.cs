@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace business.classes.Ministerio
 {
@@ -35,24 +35,36 @@ namespace business.classes.Ministerio
                 " as LCT inner join Ministerio as MI on LCT.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where LCT.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                modelos.Add(this);
+                try
+                {
+                    base.recuperar(id);
+                    modelos.Add(this);
+                }
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                }
+                finally
+                {
+                    bd.fecharconexao();
+                }
                 return modelos;
             }
             else
             {
                 try
                 {
-                    bd.obterconexao().Open();
+                    bd.abrirconexao();
                     SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
-                        bd.obterconexao().Close();
+                        dr.Close();
+                        bd.fecharconexao();
                         return modelos;
                     }
 
@@ -65,7 +77,7 @@ namespace business.classes.Ministerio
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -80,11 +92,11 @@ namespace business.classes.Ministerio
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
                 return modelos;
             }

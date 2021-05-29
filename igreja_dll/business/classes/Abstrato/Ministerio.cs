@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
@@ -87,19 +87,16 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where M.IdMinisterio='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-
+            
             if (id != null)
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
-                try
-                {
                     dr.Read();
                     this.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
                     this.Nome = Convert.ToString(dr["Nome"]);
@@ -107,8 +104,7 @@ namespace business.classes.Abstrato
                     this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
                     dr.Close();
 
-                    this.Pessoas = new List<PessoaMinisterio>();
-                    bd.obterconexao().Close();
+                this.Pessoas = new List<PessoaMinisterio>();
                     var listaPessoas = buscarPessoas(id);
                     if (listaPessoas != null)
                         foreach (var item in listaPessoas)
@@ -119,22 +115,10 @@ namespace business.classes.Abstrato
                     if (listaCelulas != null)
                         foreach (var item in listaCelulas)
                             this.Celulas.Add((MinisterioCelula)item);
-
-                    modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
+                    
+                modelos.Add(this);
                 return modelos;
             }
-
-            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -290,25 +274,21 @@ namespace business.classes.Abstrato
                 + $" where PEMI.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            
+            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
             }
 
-            var lista = new PessoaMinisterio().recuperar(null).OfType<PessoaMinisterio>().ToList();
-
             while (dr.Read())
             {
-                var m = lista.First(i => i.PessoaId == int.Parse(Convert.ToString(dr["PessoaId"])));                
+                var m = new PessoaMinisterio().recuperar(int.Parse(Convert.ToString(dr["PessoaId"])))[0];                
                 modelos.Add(m);
             }
             dr.Close();
-            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -320,25 +300,21 @@ namespace business.classes.Abstrato
                 + $" where MICE.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            
+            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
-            }
-
-            var lista = new MinisterioCelula().recuperar(null).OfType<MinisterioCelula>().ToList();
+            }            
 
             while (dr.Read())
             {
-                var m = lista.First(i => i.CelulaId == int.Parse(Convert.ToString(dr["CelulaId"])));
+                var m = new MinisterioCelula().recuperar(int.Parse(Convert.ToString(dr["CelulaId"])))[0];
                 modelos.Add(m);
             }
             dr.Close();
-            bd.obterconexao().Close();
             return modelos;
         }
         

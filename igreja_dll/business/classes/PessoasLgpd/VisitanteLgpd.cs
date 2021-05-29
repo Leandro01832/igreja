@@ -1,6 +1,6 @@
 ﻿using database.banco;
 using System;
-using System.Windows.Forms;
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
@@ -53,24 +53,24 @@ namespace business.classes.PessoasLgpd
             if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
             if (id != null)
             {
                 try
                 {
-                    bd.obterconexao().Close();
+                    bd.abrirconexao();
                     base.recuperar(id);
-                    bd.obterconexao().Open();
                     Select_padrao = "select * from VisitanteLgpd as V "
                 + " inner join PessoaLgpd as PL on V.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
                     if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
                     SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                     SqlDataReader dr = comando.ExecuteReader();
 
-
                     if (dr.HasRows == false)
                     {
-                        bd.obterconexao().Close();
+                        dr.Close();
+                        bd.fecharconexao();
                         return modelos;
                     }
                     dr.Read();
@@ -84,11 +84,11 @@ namespace business.classes.PessoasLgpd
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
 
                 return modelos;
@@ -97,9 +97,16 @@ namespace business.classes.PessoasLgpd
             {
                 try
                 {
-                    bd.obterconexao().Open();
+                    bd.abrirconexao();
                     SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                     SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao();
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         VisitanteLgpd v = new VisitanteLgpd();
@@ -109,7 +116,7 @@ namespace business.classes.PessoasLgpd
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -124,12 +131,11 @@ namespace business.classes.PessoasLgpd
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
 
                 return modelos;

@@ -1,6 +1,8 @@
 ﻿using business.classes.Celula;
 using business.classes.Celulas;
 using business.classes.Intermediario;
+using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
 using database.banco;
 using Newtonsoft.Json;
@@ -11,7 +13,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace business.classes.Abstrato
 {
@@ -95,16 +97,14 @@ namespace business.classes.Abstrato
 
             if (id != null)
             {
-                bd.obterconexao().Open();
                 SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
-                    bd.obterconexao().Close();
+                    dr.Close();
                     return modelos;
                 }
-                try
-                {
+                
                     dr.Read();
                     this.IdCelula = int.Parse(dr["IdCelula"].ToString());
                     this.Nome = Convert.ToString(dr["Nome"]);
@@ -121,9 +121,8 @@ namespace business.classes.Abstrato
                     this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
                     this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
                     dr.Close();
-
-                    this.Ministerios = new List<MinisterioCelula>();
-                    bd.obterconexao().Close();
+                
+                this.Ministerios = new List<MinisterioCelula>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
                         foreach (var item in listaMinisterios)
@@ -134,21 +133,11 @@ namespace business.classes.Abstrato
                     if (listaPessoas != null)
                         foreach (var item in listaPessoas)
                             this.Pessoas.Add((Pessoa)item);
+                    
 
-                    modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    bd.obterconexao().Close();
-                }
+                modelos.Add(this);
                 return modelos;
             }
-            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -252,25 +241,21 @@ namespace business.classes.Abstrato
                 $" on mice.CelulaId=c.IdCelula where mice.CelulaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(select, conecta);
+            
+            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
             }
 
-            var lista = new MinisterioCelula().recuperar(null).OfType<MinisterioCelula>().ToList();
-
             while (dr.Read())
             {
-                var m = lista.First(i => i.MinisterioId == int.Parse(Convert.ToString(dr["MinisterioId"])));
+                var m = new MinisterioCelula().recuperar(int.Parse(Convert.ToString(dr["MinisterioId"])))[0];
                 modelos.Add(m);
             }
             dr.Close();
-            bd.obterconexao().Close();
             return modelos;
         }
 
@@ -281,25 +266,45 @@ namespace business.classes.Abstrato
                 + $" where P.celula_='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            var conecta = bd.obterconexao();
-            conecta.Open();
-            SqlCommand comando = new SqlCommand(Select_padrao, conecta);
+            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
-                bd.obterconexao().Close();
+                dr.Close();
                 return modelos;
             }
 
-            var lista = Pessoa.recuperarTodos().OfType<Pessoa>().ToList();
-
             while (dr.Read())
             {
-                var m = lista.First(i => i.IdPessoa == int.Parse(Convert.ToString(dr["IdPessoa"])));
-                modelos.Add(m);
+                var p1 = new Visitante().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p2 = new VisitanteLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p3 = new Crianca().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p4 = new CriancaLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p5 = new Membro_Aclamacao().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p6 = new Membro_AclamacaoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p7 = new Membro_Batismo().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p8 = new Membro_BatismoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p9 = new Membro_Reconciliacao().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p10 = new Membro_ReconciliacaoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p11 = new Membro_Transferencia().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                var p12 = new Membro_TransferenciaLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                Pessoa p = null;
+                if (p1.Count > 0) p = (Pessoa)p1[0];
+                if (p2.Count > 0) p = (Pessoa)p2[0];
+                if (p3.Count > 0) p = (Pessoa)p3[0];
+                if (p4.Count > 0) p = (Pessoa)p4[0];
+                if (p5.Count > 0) p = (Pessoa)p5[0];
+                if (p6.Count > 0) p = (Pessoa)p6[0];
+                if (p7.Count > 0) p = (Pessoa)p7[0];
+                if (p8.Count > 0) p = (Pessoa)p8[0];
+                if (p9.Count > 0) p = (Pessoa)p9[0];
+                if (p10.Count > 0) p = (Pessoa)p10[0];
+                if (p11.Count > 0) p = (Pessoa)p11[0];
+                if (p12.Count > 0) p = (Pessoa)p12[0];
+                if(p != null)
+                modelos.Add(p);
             }
             dr.Close();
-            bd.obterconexao().Close();
             return modelos;
         }
 

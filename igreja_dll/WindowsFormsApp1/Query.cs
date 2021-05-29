@@ -1,10 +1,8 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Ministerio;
-using business.classes.Pessoas;
-using business.classes.PessoasLgpd;
 using database;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,122 +10,6 @@ namespace WindowsFormsApp1
 {
     public partial class Pesquisar
     {
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox1.Text == "Visitante")
-            {
-                modelo = new business.classes.Pessoas.Visitante();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Criança")
-            {
-                modelo = new business.classes.Pessoas.Crianca();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Membro por aclamação")
-            {
-                modelo = new business.classes.Pessoas.Membro_Aclamacao();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Membro por batismo")
-            {
-                modelo = new business.classes.Pessoas.Membro_Batismo();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Membro por reconciliação")
-            {
-                modelo = new business.classes.Pessoas.Membro_Reconciliacao();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Membro por trandferência")
-            {
-                modelo = new business.classes.Pessoas.Membro_Transferencia();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Lider de celula")
-            {
-                modelo = new business.classes.Ministerio.Lider_Celula();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Lider em treinamento de celula")
-            {
-                modelo = new business.classes.Ministerio.Lider_Celula_Treinamento();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Lider de ministério")
-            {
-                modelo = new business.classes.Ministerio.Lider_Ministerio();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Lider em treinamento de ministério")
-            {
-                modelo = new business.classes.Ministerio.Lider_Ministerio_Treinamento();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Supervisor de celula")
-            {
-                modelo = new business.classes.Ministerio.Supervisor_Celula();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Supervisor em treinamento de celula")
-            {
-                modelo = new business.classes.Ministerio.Supervisor_Celula_Treinamento();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Supervisor de ministério")
-            {
-                modelo = new business.classes.Ministerio.Supervisor_Ministerio();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Supervisor em treinamento de ministério")
-            {
-                modelo = new business.classes.Ministerio.Supervisor_Ministerio_Treinamento();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Celula para adolescentes")
-            {
-                modelo = new business.classes.Celulas.Celula_Adolescente();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Celula para adultos")
-            {
-                modelo = new business.classes.Celulas.Celula_Adulto();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Celula para jovens")
-            {
-                modelo = new business.classes.Celulas.Celula_Jovem();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Celula para crianças")
-            {
-                modelo = new business.classes.Celulas.Celula_Crianca();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-
-            if (comboBox1.Text == "Celula para casados")
-            {
-                modelo = new business.classes.Celulas.Celula_Casado();
-                ModificaDataGridView(modelo, tipo, comando);
-            }
-        }
 
         private void check_pesquisa_ano_batismo_CheckedChanged(object sender, EventArgs e)
         {
@@ -247,26 +129,34 @@ namespace WindowsFormsApp1
 
         private void btn_todos_Click(object sender, EventArgs e)
         {
-            comando = "";
-            modelocrud.Restricoes.Clear();
-            ModificaDataGridView(modelo, tipo, comando);
+            List<modelocrud> lista = new List<modelocrud>();
+            if (modelo is MudancaEstado)
+                lista.AddRange(listaMudancaEstado);
+            if (modelo is Ministerio)
+                lista.AddRange(listaMinisterios);
+            if (modelo is Celula)
+                lista.AddRange(listaCelulas);
+            if (modelo is Pessoa)
+                lista.AddRange(listaPessoas);
+            if (modelo is Reuniao)
+                lista.AddRange(listaReuniao);
+            ModificaDataGridView(modelo, tipo, lista);
         }
 
         private void btn_pesquisar_Click(object sender, EventArgs e)
         {
-            ModificaDataGridView(modelo, tipo, comando);
+            ModificaDataGridView(modelo, tipo, Resultado);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (check_horario_final_reuniao.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 try
                 {
                     var v1 = TimeSpan.Parse(mask_horario_valor1.Text);
                     var v2 = TimeSpan.Parse(mask_horario_valor2.Text);
-                    comando += modelo.PesquisarPorHorario(v1, v2, "Horario_fim");
+                    Resultado = modelo.PesquisarPorHorario(Resultado, v2, "Horario_fim");
                 }
                 catch
                 {
@@ -277,12 +167,11 @@ namespace WindowsFormsApp1
 
             if (check_horario_reuniao.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 try
                 {
                     var v1 = TimeSpan.Parse(mask_horario_valor1.Text);
                     var v2 = TimeSpan.Parse(mask_horario_valor2.Text);
-                    comando += modelo.PesquisarPorHorario(v1, v2, "Horario_inicio");
+                    Resultado = modelo.PesquisarPorHorario(Resultado, v1, v2, "Horario_inicio");
                 }
                 catch
                 {
@@ -293,12 +182,11 @@ namespace WindowsFormsApp1
 
             if (check_horario_celula.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 try
                 {
                     var v1 = TimeSpan.Parse(mask_horario_valor1.Text);
                     var v2 = TimeSpan.Parse(mask_horario_valor2.Text);
-                    comando += modelo.PesquisarPorHorario(v1, v2, "Horario");
+                    Resultado = modelo.PesquisarPorHorario(Resultado,v1, v2, "Horario");
                 }
                 catch
                 {
@@ -309,30 +197,26 @@ namespace WindowsFormsApp1
 
             if (check_pesquisa_nome_mae.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
-                comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Nome_mae");
+                Resultado = modelo.PesquisarPorTexto(Resultado,txt_numeros_restricao.Text, "Nome_mae");
             }
 
             if (check_pesquisa_nome_pai.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
-                comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Nome_pai");
+                Resultado= modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Nome_pai");
             }
 
             if (check_pesquisa_email.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
-                comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Email");
+                Resultado= modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Email");
             }
 
             if (check_pesquisa_data_reuniao.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 try
                 {
                     var v1 = Convert.ToDateTime(mask_data_valor1.Text);
                     var v2 = Convert.ToDateTime(mask_data_valor2.Text);
-                    comando += modelo.PesquisarPorData(v1, v2, "Data_reuniao");
+                    Resultado = modelo.PesquisarPorData(Resultado, v1, v2, "Data_reuniao");
                 }
                 catch
                 {
@@ -343,12 +227,11 @@ namespace WindowsFormsApp1
 
             if (check_pesquisa_data_visita.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 try
                 {
                     var v1 = Convert.ToDateTime(mask_data_valor1.Text);
                     var v2 = Convert.ToDateTime(mask_data_valor2.Text);
-                    comando += modelo.PesquisarPorData(v1, v2, "Data_visita");
+                    Resultado = modelo.PesquisarPorData(Resultado, v1, v2, "Data_visita");
                 }
                 catch
                 {
@@ -359,12 +242,11 @@ namespace WindowsFormsApp1
 
             if (check_data_mudanca_estado.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 try
                 {
                     var v1 = Convert.ToDateTime(mask_data_valor1.Text);
                     var v2 = Convert.ToDateTime(mask_data_valor2.Text);
-                    comando += modelo.PesquisarPorData(v1, v2, "DataMudanca");
+                    Resultado = modelo.PesquisarPorData(Resultado, v1, v2, "DataMudanca");
                 }
                 catch
                 {
@@ -375,13 +257,12 @@ namespace WindowsFormsApp1
 
             if (check_pesquisa_id.Checked)
             {
-                if (VerificaAnd()) comando += " and ";
                 string id = retornarStringId();
                 try
                 {
                     var v1 = int.Parse(txt_pesquisa_numero1.Text);
                     var v2 = int.Parse(txt_pesquisa_numero2.Text);
-                    comando += modelo.PesquisarPorNumero(v1, v2, id);
+                    Resultado = modelo.PesquisarPorNumero(Resultado, v1, v2, id);
                 }
                 catch
                 {
@@ -394,12 +275,11 @@ namespace WindowsFormsApp1
             {
                 if (check_pesquisa_ano_batismo.Checked)
                 {
-                    if (VerificaAnd()) comando += " and ";
                     try
                     {
                         var v1 = int.Parse(txt_pesquisa_numero1.Text);
                         var v2 = int.Parse(txt_pesquisa_numero2.Text);
-                        comando += modelo.PesquisarPorNumero(v1, v2, "Databatismo");
+                        Resultado = modelo.PesquisarPorNumero(Resultado, v1, v2, "Databatismo");
                     }
                     catch
                     {
@@ -413,14 +293,12 @@ namespace WindowsFormsApp1
             {
                 if (check_pesquisa_email.Checked)
                 {
-                    if (VerificaAnd()) comando += " and ";
-                    comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Email");
+                    Resultado = modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Email");
                 }
 
                 if (check_pesquisa_nome.Checked)
                 {
-                    if (VerificaAnd()) comando += " and ";
-                    comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "NomePessoa");
+                    Resultado = modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "NomePessoa");
                 }
             }
 
@@ -428,22 +306,10 @@ namespace WindowsFormsApp1
             {
                 if (check_pesquisa_nome.Checked)
                 {
-                    if (VerificaAnd()) comando += " and ";
-                    comando += modelo.PesquisarPorTexto(txt_numeros_restricao.Text, "Nome");
+                    Resultado = modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Nome");
                 }
             }
-
-            txt_comando.Text = "";
-            txt_numeros_restricao.Text = "";
-            for (var i = 0; i < modelocrud.Restricoes.Count; i++)
-            {
-                txt_comando.Text += modelocrud.Restricoes.Values.ToList()[i] +
-                    modelocrud.Restricoes.Keys.ToList()[i] + " \n";
-                txt_numeros_restricao.Text += i + ", ";
-            }
         }
-
-
 
         private string retornarStringId()
         {
@@ -462,15 +328,6 @@ namespace WindowsFormsApp1
                 id = "IdChamada";
             return id;
         }
-
-        private bool VerificaAnd()
-        {
-            if (comando != "" && !comando[comando.Length - 1].Equals(" ")
-                && !comando[comando.Length - 2].Equals("d") && !comando[comando.Length - 3].Equals("n")
-                && !comando[comando.Length - 4].Equals("a"))
-                return true;
-
-            else return false;
-        }
+        
     }
 }

@@ -13,6 +13,7 @@ using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Celula;
 using business.classes;
 using WindowsFormsApp1.Formulario.Reuniao;
+using business.classes.Celulas;
 
 namespace WindowsFormsApp1
 {
@@ -20,28 +21,23 @@ namespace WindowsFormsApp1
     {
         public Pesquisar()
         {
-            pesquisa = new DdataGridViews.Pesquisar(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-            modelo = null;
-            
-            InitializeComponent();
-            modelocrud.Restricoes = new Dictionary<int, string>();
-            
+            modelo = null;            
+            InitializeComponent();            
         }
-
-       DdataGridViews.Pesquisar pesquisa;
+        
         modelocrud modelo;
-        string comando = "";
         string tipo = "";
+        List<modelocrud> Resultado;
 
         private void radio_mudanca_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.MudancaEstado();
-            FormataDataGrid(false, false, false, false, false, false, false, false, true);
+            modelo = new MudancaEstado();
+            FormataDataGrid(false, false, false, false, true);
             if (radio_reuniao.Checked)
                 MessageBox.Show("Você esta vendo informações de mudança de estado.");
 
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
+            foreach (var item in listaMudancaEstado)
             {
                 var dado = (business.classes.MudancaEstado)item;
                 dgdados.Rows.Add(dado.IdMudanca, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
@@ -49,46 +45,15 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void radio_endereco_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.Endereco();
-            FormataDataGrid(false, false, false, false, false, false, false, true, false);
-            if (radio_reuniao.Checked)
-                MessageBox.Show("Você esta vendo informações de Endereço.");
-
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
-            {
-                var dado = (business.classes.Endereco)item;
-                dgdados.Rows.Add(dado.IdEndereco, dado.Pais, dado.Estado, dado.Cidade,
-                dado.Bairro, dado.Rua, dado.Numero_casa, dado.Cep);
-            }
-        }
-
-        private void radio_telefone_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.Telefone();
-            FormataDataGrid(false, false, false, false, false, false, true, false, false);
-            if (radio_reuniao.Checked)
-                MessageBox.Show("Você esta vendo informações de Telefone.");
-
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
-            {
-                var dado = (business.classes.Telefone)item;
-                dgdados.Rows.Add(dado.IdTelefone, dado.Fone, dado.Celular, dado.Whatsapp);
-            }
-        }
-
         private void radio_pessoa_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            comando = "";
-            FormataDataGrid(true, false, false, false, false, false, false, false, false);
+            modelo = new Visitante();
+            FormataDataGrid(true, false, false, false, false);
             if (radio_pessoa.Checked)
                 MessageBox.Show("Você esta vendo informações de pessoa.");
 
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
+            foreach (var item in listaPessoas)
             {
                 var dado = (Pessoa)item;
                 dgdados.Rows.Add(dado.IdPessoa, dado.Email, dado.celula_, dado.Falta, dado.Img);
@@ -98,12 +63,12 @@ namespace WindowsFormsApp1
         private void radio_ministerio_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            comando = "";
-            FormataDataGrid(false, true, false, false, false, false, false, false, false);
+            modelo = new Lider_Celula();
+            FormataDataGrid(false, true, false, false, false);
             if (radio_ministerio.Checked)
                 MessageBox.Show("Você esta vendo informações de ministério.");
 
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
+            foreach (var item in listaMinisterios)
             {
                 var dado = (Ministerio)item;
                 dgdados.Rows.Add(dado.IdMinisterio, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
@@ -113,65 +78,34 @@ namespace WindowsFormsApp1
         private void radio_celula_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            comando = "";
-            FormataDataGrid(false, false, true, false, false, false, false, false, false);
+            modelo = new Celula_Adolescente();
+            FormataDataGrid(false, false, true, false, false);
             if (radio_celula.Checked)
                 MessageBox.Show("Você esta vendo informações de celula.");
 
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
+            foreach (var item in listaCelulas)
             {                
                 var dado = (Celula)item;
                 dgdados.Rows.Add(dado.IdCelula, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
             }
         }
 
-        private void radio_chamada_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.Chamada();
-            FormataDataGrid(false, false, false, true, false, false, false, false, false);
-            if (radio_chamada.Checked)
-                MessageBox.Show("Você esta vendo informações de chamada.");
-
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, tipo, comando))
-            {
-                var dado = (business.classes.Chamada)item;
-                dgdados.Rows.Add(dado.IdChamada, dado.Data_inicio, dado.Numero_chamada);
-            }
-        }
-
         private void radio_reuniao_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.Reuniao();
-            FormataDataGrid(false, false, false, false, true, false, false, false, false);
+            modelo = new Reuniao();
+            FormataDataGrid(false, false, false, true, false);
             if (radio_reuniao.Checked)
                 MessageBox.Show("Você esta vendo informações de reunião.");
 
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
+            foreach (var item in listaReuniao)
             {
-                var dado = (business.classes.Reuniao)item;
+                var dado = item;
                 dgdados.Rows.Add(dado.IdReuniao, dado.Data_reuniao, dado.Horario_fim, dado.Horario_inicio);
             }
-        }
+        }      
 
-        private void radio_historico_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox1.Text = "Escolha o tipo se necessário.";
-            modelo = new business.classes.Historico();
-            FormataDataGrid(false, false, false, false, false, true, false, false, false);
-            if (radio_historico.Checked)
-                MessageBox.Show("Você esta vendo informações de histórico.");
-
-            foreach (var item in pesquisa.BuscarPorRestricao(modelo, "", ""))
-            {
-                var dado = (business.classes.Historico)item;
-                dgdados.Rows.Add(dado.IdHistorico, dado.Data_inicio, dado.Falta, dado.pessoaid);
-            }
-        }       
-
-        private void FormataDataGrid(bool Pessoa, bool Ministerio,
-        bool Celula, bool Chamada, bool Reuniao, bool Historico, bool Telefone, bool Endereco,  bool Mudanca)
+        private void FormataDataGrid(bool Pessoa, bool Ministerio, bool Celula, bool Reuniao, bool Mudanca)
         {
             comboBox1.Text = "";
             comboBox1.Items.Clear();
@@ -203,6 +137,13 @@ namespace WindowsFormsApp1
                 comboBox1.Items.Add("Membro por batismo");
                 comboBox1.Items.Add("Membro por reconciliação");
                 comboBox1.Items.Add("Membro por trandferência");
+
+                comboBox1.Items.Add("Visitante Lgpd");
+                comboBox1.Items.Add("Criança Lgpd");
+                comboBox1.Items.Add("Membro por aclamação Lgpd");
+                comboBox1.Items.Add("Membro por batismo Lgpd");
+                comboBox1.Items.Add("Membro por reconciliação Lgpd");
+                comboBox1.Items.Add("Membro por trandferência Lgpd");
 
             }
 
@@ -248,16 +189,6 @@ namespace WindowsFormsApp1
                 comboBox1.Items.Add("Celula para casados");
             }
 
-            if (Chamada)
-            {
-                dgdados.Columns.Clear();
-                dgdados.Columns.Add("IdChamada", "Id");
-                dgdados.Columns.Add("Data_inicio", "Data de início");
-                dgdados.Columns.Add("Numero_chamada", "numero da chamada");
-                dgdados.Columns[1].Width = 300;
-                dgdados.Columns[2].Width = 300;
-            }
-
             if (Reuniao)
             {
                 dgdados.Columns.Clear();
@@ -267,39 +198,6 @@ namespace WindowsFormsApp1
                 dgdados.Columns.Add("Horario_fim", "Horário que termina");
                 dgdados.Columns[1].Width = 300;
                 dgdados.Columns[2].Width = 300;
-            }
-
-            if (Historico)
-            {
-                dgdados.Columns.Clear();
-                dgdados.Columns.Add("IdHistorico", "Id");
-                dgdados.Columns.Add("Data_inicio", "Data de inicio do semestre");
-                dgdados.Columns.Add("Falta", "Faltas");
-                dgdados.Columns.Add("pessoaid", "Identificação da pessoa");
-                dgdados.Columns[1].Width = 400;
-                dgdados.Columns[3].Width = 400;
-            }
-
-            if (Telefone)
-            {
-                dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
-                dgdados.Columns.Add("Fone", "Fone");
-                dgdados.Columns.Add("Celular", "Celular");
-                dgdados.Columns.Add("Whatsapp", "Whatsapp");
-            }
-
-            if (Endereco)
-            {
-                dgdados.Columns.Clear();
-                dgdados.Columns.Add("Id", "Id");
-                dgdados.Columns.Add("Pais", "País");
-                dgdados.Columns.Add("Estado", "Estado");
-                dgdados.Columns.Add("Cidade", "Cidade");
-                dgdados.Columns.Add("Bairro", "Bairro");
-                dgdados.Columns.Add("Rua", "Rua");
-                dgdados.Columns.Add("Numero_casa", "Numero da casa");
-                dgdados.Columns.Add("Cep", "Cep");
             }
 
             if (Mudanca)
@@ -318,42 +216,42 @@ namespace WindowsFormsApp1
             dgdados.Font = new Font("Arial", 18);            
         }
 
-        private void ModificaDataGridView(modelocrud m, string tipo, string comando)
+        private void ModificaDataGridView(modelocrud m, string tipo, List<modelocrud> models)
         {
             if(m == null && tipo == "Pessoa" || m == null && tipo == "PessoaLgpd")
             {
-                FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                FormataDataGrid(true, false, false, false, false);
             }
 
             if (m == null && tipo == "Ministerio")
             {
-                FormataDataGrid(false, true, false, false, false, false, false, false, false);
+                FormataDataGrid(false, true, false, false, false);
             }
 
             if (m == null && tipo == "Celula")
             {
-                FormataDataGrid(false, false, true, false, false, false, false, false, false);
+                FormataDataGrid(false, false, true, false, false);
             }
             
             if (m is Pessoa)
             {
                 if (m is Visitante || m is VisitanteLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false);
                     dgdados.Columns.Add("Data_visita", "Data da visita");
                     dgdados.Columns.Add("Condicao_religiosa", "Condição religiosa");
                 }
 
                 if (m is Crianca || m is CriancaLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false);
                     dgdados.Columns.Add("Nome_mae", "Nome da mãe");
                     dgdados.Columns.Add("Nome_pai", "Nome do pai");
                 }
 
                 if (m is Membro_Aclamacao || m is Membro_AclamacaoLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
@@ -362,7 +260,7 @@ namespace WindowsFormsApp1
 
                 if (m is Membro_Batismo || m is Membro_BatismoLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
@@ -370,7 +268,7 @@ namespace WindowsFormsApp1
 
                 if (m is Membro_Reconciliacao ||  m is Membro_ReconciliacaoLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
@@ -379,7 +277,7 @@ namespace WindowsFormsApp1
 
                 if (m is Membro_Transferencia || m is Membro_TransferenciaLgpd)
                 {
-                    FormataDataGrid(true, false, false, false, false, false, false, false, false);
+                    FormataDataGrid(true, false, false, false, false);
                     dgdados.Columns.Add("Data_batismo", "ano do batismo");
                     dgdados.Columns.Add("Desligamento", "Desligamento");
                     dgdados.Columns.Add("Motivo_desligamento", "Motivo do desligamento");
@@ -393,30 +291,30 @@ namespace WindowsFormsApp1
             {
                 if(m is Supervisor_Celula)
                 {
-                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
 
                 if (m is Supervisor_Celula_Treinamento)
                 {
-                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
 
                 if (m is Supervisor_Ministerio)
                 {
-                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
 
                 if (m is Supervisor_Ministerio_Treinamento)
                 {
-                    FormataDataGrid(false, true, false, false, false, false, false, false, false);
+                    FormataDataGrid(false, true, false, false, false);
                     dgdados.Columns.Add("Maximo_celula", "máximo de celulas supervisionadas");
                 }
             }
 
-            foreach (var item in pesquisa.BuscarPorRestricao(m, tipo, comando))
+            foreach (var item in models)
             {
                 if (m is Pessoa)
                 {
@@ -557,13 +455,11 @@ namespace WindowsFormsApp1
 
                 if(m is Celula)
                 {
-                    if(m is business.classes.Celulas.Celula_Adolescente ||
-                        m is business.classes.Celulas.Celula_Adulto ||
-                        m is business.classes.Celulas.Celula_Casado ||
-                        m is business.classes.Celulas.Celula_Jovem ||
-                        m is business.classes.Celulas.Celula_Crianca)
+                    if(m is  Celula_Adolescente ||  m is Celula_Adulto ||
+                        m is Celula_Casado ||  m is Celula_Jovem ||
+                        m is Celula_Crianca)
                     {
-                        business.classes.Celulas.Celula_Crianca info = (business.classes.Celulas.Celula_Crianca)item;
+                        Celula_Crianca info = (Celula_Crianca)item;
                         dgdados.Rows.Add(info.IdCelula, info.Nome, info.Maximo_pessoa, info.Dia_semana, info.Horario);
                     }
                 }
@@ -577,25 +473,6 @@ namespace WindowsFormsApp1
 
         private void txt_numeros_restricao_TextChanged(object sender, EventArgs e)
         {
-            var arr = txt_numeros_restricao.Text.Replace(" ", "").Split(',');
-            foreach (var item in arr)
-            {
-                try
-                {
-                    var num = int.Parse(item);
-                    if (modelocrud.Restricoes.Keys.Where(k => k == num).ToList().Count == 0)
-                        modelocrud.Restricoes.Remove(num);
-                }
-                catch { MessageBox.Show("Informe um numero de restrição."); }
-            }
-            txt_comando.Text = "";
-            txt_numeros_restricao.Text = "";
-            for (var i = 0; i < modelocrud.Restricoes.Count; i++)
-            {
-                txt_comando.Text += modelocrud.Restricoes.Values.ToList()[i] +
-                    modelocrud.Restricoes.Keys.ToList()[i] + " \n";
-                txt_numeros_restricao.Text += i + ", ";
-            }
         }
 
         private void dgdados_SelectionChanged(object sender, EventArgs e)
@@ -607,46 +484,237 @@ namespace WindowsFormsApp1
             {
                  if(modelo is Pessoa)
                 {
-                   var Modelo = listaPessoas.First(i => i.Codigo == value);
-
-
-                    FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
+                   var Modelo = listaPessoas.FirstOrDefault(i => i.Codigo == value);
+                    if(Modelo != null)
+                    {
+                        FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
                     , false, false, true);
-                    fc.MdiParent = this.MdiParent;
-                    fc.Show();
+                        fc.MdiParent = this.MdiParent;
+                        fc.Show();
+                    }                    
                 } 
 
                  if(modelo is Ministerio)
                 {
-                   var Modelo = listaMinisterios.First(i => i.IdMinisterio == value);
-
-
-                    FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
+                   var Modelo = listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
+                    if(Modelo != null)
+                    {
+                        FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
                     false, false, true);
-                    dp.MdiParent = this.MdiParent;
-                    dp.Show();
+                        dp.MdiParent = this.MdiParent;
+                        dp.Show();
+                    }                    
                 }
 
                  if(modelo is Celula)
                 {
-                   var Modelo = listaCelulas.First(i => i.IdCelula == value);
-
-
-                    FinalizarCadastro dp =
+                   var Modelo = listaCelulas.FirstOrDefault(i => i.IdCelula == value);
+                    if(Modelo != null)
+                    {
+                        FinalizarCadastro dp =
                 new FinalizarCadastro((Celula)Modelo, false, false, true);
-                    dp.MdiParent = this.MdiParent;
-                    dp.Show();
+                        dp.MdiParent = this.MdiParent;
+                        dp.Show();
+                    }                    
                 }
 
                 if (modelo is Reuniao)
                 {
-                   var Modelo = listaReuniao.First(i => i.IdReuniao == value);
-
-
-                    FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                   var Modelo = listaReuniao.FirstOrDefault(i => i.IdReuniao == value);
+                    if(Modelo != null)
+                    {
+                        FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
+                        frm.MdiParent = this.MdiParent;
+                        frm.Show();
+                    }                    
                 }
+            }
+
+            else if(tipo == "Pessoa")
+            {
+                var Modelo = listaPessoas.FirstOrDefault(i => i.Codigo == value);
+                if (Modelo != null)
+                {
+                    FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
+                , false, false, true);
+                    fc.MdiParent = this.MdiParent;
+                    fc.Show();
+                }
+            }
+            else if(tipo == "Ministerio")
+            {
+                var Modelo = listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
+                if (Modelo != null)
+                {
+                    FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
+                false, false, true);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+            }
+            else if(tipo == "Celula")
+            {
+                var Modelo = listaCelulas.FirstOrDefault(i => i.IdCelula == value);
+                if (Modelo != null)
+                {
+                    FinalizarCadastro dp =
+                     new FinalizarCadastro((Celula)Modelo, false, false, true);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "Visitante Lgpd")
+            {
+                modelo = new VisitanteLgpd();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<VisitanteLgpd>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Criança Lgpd")
+            {
+                modelo = new CriancaLgpd();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<CriancaLgpd>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por aclamação Lgpd")
+            {
+                modelo = new Membro_AclamacaoLgpd();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_AclamacaoLgpd>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por batismo Lgpd")
+            {
+                modelo = new Membro_BatismoLgpd();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_BatismoLgpd>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por reconciliação Lgpd")
+            {
+                modelo = new Membro_ReconciliacaoLgpd();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_ReconciliacaoLgpd>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por trandferência Lgpd")
+            {
+                modelo = new Membro_TransferenciaLgpd();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_TransferenciaLgpd>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Visitante")
+            {
+                modelo = new Visitante();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Visitante>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Criança")
+            {
+                modelo = new Crianca();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Crianca>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por aclamação")
+            {
+                modelo = new Membro_Aclamacao();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_Aclamacao>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por batismo")
+            {
+                modelo = new Membro_Batismo();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_Batismo>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por reconciliação")
+            {
+                modelo = new Membro_Reconciliacao();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_Reconciliacao>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Membro por trandferência")
+            {
+                modelo = new Membro_Transferencia();
+                ModificaDataGridView(modelo, tipo, listaPessoas.OfType<Membro_Transferencia>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Lider de celula")
+            {
+                modelo = new Lider_Celula();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Lider_Celula>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Lider em treinamento de celula")
+            {
+                modelo = new Lider_Celula_Treinamento();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Lider_Celula_Treinamento>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Lider de ministério")
+            {
+                modelo = new Lider_Ministerio();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Lider_Ministerio>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Lider em treinamento de ministério")
+            {
+                modelo = new Lider_Ministerio_Treinamento();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Lider_Ministerio_Treinamento>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Supervisor de celula")
+            {
+                modelo = new Supervisor_Celula();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Supervisor_Celula>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Supervisor em treinamento de celula")
+            {
+                modelo = new Supervisor_Celula_Treinamento();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Supervisor_Celula_Treinamento>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Supervisor de ministério")
+            {
+                modelo = new Supervisor_Ministerio();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Supervisor_Ministerio>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Supervisor em treinamento de ministério")
+            {
+                modelo = new Supervisor_Ministerio_Treinamento();
+                ModificaDataGridView(modelo, tipo, listaMinisterios.OfType<Supervisor_Ministerio_Treinamento>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Celula para adolescentes")
+            {
+                modelo = new business.classes.Celulas.Celula_Adolescente();
+                ModificaDataGridView(modelo, tipo, listaCelulas.OfType<business.classes.Celulas.Celula_Adolescente>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Celula para adultos")
+            {
+                modelo = new business.classes.Celulas.Celula_Adulto();
+                ModificaDataGridView(modelo, tipo, listaCelulas.OfType<business.classes.Celulas.Celula_Adulto>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Celula para jovens")
+            {
+                modelo = new business.classes.Celulas.Celula_Jovem();
+                ModificaDataGridView(modelo, tipo, listaCelulas.OfType<business.classes.Celulas.Celula_Jovem>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Celula para crianças")
+            {
+                modelo = new business.classes.Celulas.Celula_Crianca();
+                ModificaDataGridView(modelo, tipo, listaCelulas.OfType<business.classes.Celulas.Celula_Crianca>().Cast<modelocrud>().ToList());
+            }
+
+            if (comboBox1.Text == "Celula para casados")
+            {
+                modelo = new business.classes.Celulas.Celula_Casado();
+                ModificaDataGridView(modelo, tipo, listaCelulas.OfType<business.classes.Celulas.Celula_Casado>().Cast<modelocrud>().ToList());
             }
         }
     }

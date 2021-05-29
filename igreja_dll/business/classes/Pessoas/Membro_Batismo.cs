@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+
 using database;
 using business.classes.Abstrato;
+using System.Windows.Forms;
 
 namespace business.classes.Pessoas
 {
@@ -43,34 +44,15 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            
 
 
             if (id != null)
             {
-                bd.obterconexao().Close();
-                base.recuperar(id);
-                bd.obterconexao().Open();
-                Select_padrao = "select * from Membro_Batismo as MB "
-                + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
-                + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    bd.obterconexao().Close();
-                    return modelos;
-                }
-                modelos.Add(this);
-
-                bd.obterconexao().Close();
-                return modelos;
-            }
-            else
-            {
                 try
                 {
-                    bd.obterconexao().Open();
+                    bd.abrirconexao();
+                    base.recuperar(id);
                     Select_padrao = "select * from Membro_Batismo as MB "
                     + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                     + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
@@ -79,7 +61,38 @@ namespace business.classes.Pessoas
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
-                        bd.obterconexao().Close();
+                        dr.Close();
+                        bd.fecharconexao();
+                        return modelos;
+                    }
+                    dr.Close();
+                    modelos.Add(this);
+                }
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                }
+                finally
+                {
+                    bd.fecharconexao();
+                }                
+                return modelos;
+            }
+            else
+            {
+                try
+                {
+                    bd.abrirconexao();
+                    Select_padrao = "select * from Membro_Batismo as MB "
+                    + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
+                    + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                    if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
+                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao();
                         return modelos;
                     }
 
@@ -92,7 +105,7 @@ namespace business.classes.Pessoas
                     dr.Close();
 
                     //Recursividade
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -107,11 +120,11 @@ namespace business.classes.Pessoas
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    TratarExcessao(ex);
                 }
                 finally
                 {
-                    bd.obterconexao().Close();
+                    bd.fecharconexao();
                 }
 
                 return modelos;
