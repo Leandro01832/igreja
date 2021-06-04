@@ -46,6 +46,36 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 
         private void btn_proximo_Click(object sender, EventArgs e)
         {
+            if (radio_membrobatismo.Checked)
+                ModeloNovo = new Membro_BatismoLgpd();
+            if (radio_membrobatismo.Checked && AlterarPTodoDado.Checked)
+                ModeloNovo = new Membro_Batismo();
+
+            if (radio_membroreconciliacao.Checked)
+                ModeloNovo = new Membro_ReconciliacaoLgpd();
+            if (radio_membroreconciliacao.Checked && AlterarPTodoDado.Checked)
+                ModeloNovo = new Membro_Reconciliacao();
+
+            if (radio_membroaclamacao.Checked)
+                ModeloNovo = new Membro_AclamacaoLgpd();
+            if (radio_membroaclamacao.Checked && AlterarPTodoDado.Checked)
+                ModeloNovo = new Membro_Aclamacao();
+
+            if (radio_membrotransferencia.Checked)
+                ModeloNovo = new Membro_TransferenciaLgpd();
+            if (radio_membrotransferencia.Checked && AlterarPTodoDado.Checked)
+                ModeloNovo = new Membro_Transferencia();
+
+            if (radio_visitante.Checked)
+                ModeloNovo = new VisitanteLgpd();
+            if (radio_visitante.Checked && AlterarPTodoDado.Checked)
+                ModeloNovo = new Visitante();
+
+            if (radio_crianca.Checked)
+                ModeloNovo = new CriancaLgpd();
+            if (radio_crianca.Checked && AlterarPTodoDado.Checked)
+                ModeloNovo = new Crianca();
+
             if (!AlterarPTodoDado.Checked)
             {
                 if (ModeloNovo is Crianca || ModeloNovo is CriancaLgpd)
@@ -85,63 +115,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa
                     frm.Show();
                 } 
             }
-
             else
             {
                 DadoPessoal frm = new DadoPessoal(false, false, false, Modelo, ModeloNovo);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
             }
-
-
-        }
-
-        private void radio_crianca_CheckedChanged(object sender, EventArgs e)
-        {       
-            if (radio_crianca.Checked )
-                ModeloNovo = new CriancaLgpd();
-            if (radio_crianca.Checked && AlterarPTodoDado.Checked)
-                ModeloNovo = new Crianca();
-        }
-
-        private void radio_visitante_CheckedChanged(object sender, EventArgs e)
-        {    
-            if (radio_visitante.Checked)
-                ModeloNovo = new VisitanteLgpd();
-            if (radio_visitante.Checked && AlterarPTodoDado.Checked)
-                ModeloNovo = new Visitante();
-        }
-
-        private void radio_membrotransferencia_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radio_membrotransferencia.Checked)
-                ModeloNovo = new Membro_TransferenciaLgpd();
-            if (radio_membrotransferencia.Checked && AlterarPTodoDado.Checked)
-                ModeloNovo = new Membro_Transferencia();
-        }
-
-        private void radio_membroaclamacao_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radio_membroaclamacao.Checked)
-                ModeloNovo = new Membro_AclamacaoLgpd();
-            if (radio_membroaclamacao.Checked && AlterarPTodoDado.Checked)
-                ModeloNovo = new Membro_Aclamacao();
-        }
-
-        private void radio_membroreconciliacao_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radio_membroreconciliacao.Checked)
-                ModeloNovo = new Membro_ReconciliacaoLgpd();
-            if (radio_membroreconciliacao.Checked && AlterarPTodoDado.Checked)
-                ModeloNovo = new Membro_Reconciliacao();
-        }
-
-        private void radio_membrobatismo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radio_membrobatismo.Checked)
-                ModeloNovo = new Membro_BatismoLgpd();
-            if (radio_membrobatismo.Checked && AlterarPTodoDado.Checked)
-                ModeloNovo = new Membro_Batismo();
         }
     }
 }

@@ -112,7 +112,7 @@ namespace business.classes
                         Sexo_masculino = pd.Sexo_masculino,
                         Telefone = pd.Telefone,
                         Status = pd.Status,
-                        Codigo = pd.Codigo
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -145,7 +145,7 @@ namespace business.classes
                         Sexo_masculino = pd.Sexo_masculino,
                         Telefone = pd.Telefone,
                         Status = pd.Status,
-                        Codigo = pd.Codigo
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -179,7 +179,7 @@ namespace business.classes
                         Sexo_masculino = pd.Sexo_masculino,
                         Telefone = pd.Telefone,
                         Status = pd.Status,
-                        Codigo = pd.Codigo
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -215,7 +215,7 @@ namespace business.classes
                         Sexo_masculino = pd.Sexo_masculino,
                         Telefone = pd.Telefone,
                         Status = pd.Status,
-                        Codigo = pd.Codigo
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -247,7 +247,7 @@ namespace business.classes
                         Sexo_masculino = pd.Sexo_masculino,
                         Telefone = pd.Telefone,
                         Status = pd.Status,
-                        Codigo = pd.Codigo
+                        Codigo = p.Codigo
                     };
                     c.salvar();
                 }
@@ -279,7 +279,7 @@ namespace business.classes
                         Sexo_masculino = pd.Sexo_masculino,
                         Telefone = pd.Telefone,
                         Status = pd.Status,
-                        Codigo = pd.Codigo
+                        Codigo = p.Codigo
                     };
                     v.salvar();
                 }
@@ -290,22 +290,22 @@ namespace business.classes
                 if (m is Membro_AclamacaoLgpd)
                 {
                     var modelo = (Membro_AclamacaoLgpd)m;
-                    var pd = (PessoaLgpd)p;
+                    var pd = p;
                     Membro_AclamacaoLgpd membro = new Membro_AclamacaoLgpd
                     {
                         Data_batismo = modelo.Data_batismo,
                         Desligamento = modelo.Desligamento,
                         Motivo_desligamento = modelo.Motivo_desligamento,
                         Denominacao = modelo.Denominacao,
-                        celula_ = pd.celula_,
-                        Chamada = pd.Chamada,
-                        Email = pd.Email,
-                        Falta = pd.Falta,
-                        Historico = pd.Historico,
-                        Img = pd.Img,
-                        Reuniao = pd.Reuniao,
-                        Ministerios = pd.Ministerios,
-                        Codigo = pd.Codigo
+                        celula_ = p.celula_,
+                        Chamada = p.Chamada,
+                        Email = p.Email,
+                        Falta = p.Falta,
+                        Historico = p.Historico,
+                        Img = p.Img,
+                        Reuniao = p.Reuniao,
+                        Ministerios = p.Ministerios,
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -313,21 +313,21 @@ namespace business.classes
                 if (m is Membro_BatismoLgpd)
                 {
                     var modelo = (Membro_BatismoLgpd)m;
-                    var pd = (PessoaLgpd)p;
+                    var pd = p;
                     Membro_BatismoLgpd membro = new Membro_BatismoLgpd
                     {
                         Data_batismo = modelo.Data_batismo,
                         Desligamento = modelo.Desligamento,
                         Motivo_desligamento = modelo.Motivo_desligamento,
-                        celula_ = pd.celula_,
-                        Chamada = pd.Chamada,
-                        Email = pd.Email,
-                        Falta = pd.Falta,
-                        Historico = pd.Historico,
-                        Img = pd.Img,
-                        Reuniao = pd.Reuniao,
-                        Ministerios = pd.Ministerios,
-                        Codigo = pd.Codigo
+                        celula_ = p.celula_,
+                        Chamada = p.Chamada,
+                        Email = p.Email,
+                        Falta = p.Falta,
+                        Historico = p.Historico,
+                        Img = p.Img,
+                        Reuniao = p.Reuniao,
+                        Ministerios = p.Ministerios,
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -335,22 +335,22 @@ namespace business.classes
                 if (m is Membro_ReconciliacaoLgpd)
                 {
                     var modelo = (Membro_ReconciliacaoLgpd)m;
-                    var pd = (PessoaLgpd)p;
+                    var pd = p;
                     Membro_ReconciliacaoLgpd membro = new Membro_ReconciliacaoLgpd
                     {
                         Data_batismo = modelo.Data_batismo,
                         Desligamento = modelo.Desligamento,
                         Motivo_desligamento = modelo.Motivo_desligamento,
                         Data_reconciliacao = modelo.Data_reconciliacao,
-                        celula_ = pd.celula_,
-                        Chamada = pd.Chamada,
-                        Email = pd.Email,
-                        Falta = pd.Falta,
-                        Historico = pd.Historico,
-                        Img = pd.Img,
-                        Reuniao = pd.Reuniao,
-                        Ministerios = pd.Ministerios,
-                        Codigo = pd.Codigo
+                        celula_ = p.celula_,
+                        Chamada = p.Chamada,
+                        Email = p.Email,
+                        Falta = p.Falta,
+                        Historico = p.Historico,
+                        Img = p.Img,
+                        Reuniao = p.Reuniao,
+                        Ministerios = p.Ministerios,
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -358,7 +358,7 @@ namespace business.classes
                 if (m is Membro_TransferenciaLgpd)
                 {
                     var modelo = (Membro_TransferenciaLgpd)m;
-                    var pd = (PessoaLgpd)p;
+                    var pd = p;
                     Membro_TransferenciaLgpd membro = new Membro_TransferenciaLgpd
                     {
                         Data_batismo = modelo.Data_batismo,
@@ -367,15 +367,15 @@ namespace business.classes
                         Estado_transferencia = modelo.Estado_transferencia,
                         Nome_cidade_transferencia = modelo.Nome_cidade_transferencia,
                         Nome_igreja_transferencia = modelo.Nome_igreja_transferencia,
-                        celula_ = pd.celula_,
-                        Chamada = pd.Chamada,
-                        Email = pd.Email,
-                        Falta = pd.Falta,
-                        Historico = pd.Historico,
-                        Img = pd.Img,
-                        Reuniao = pd.Reuniao,
-                        Ministerios = pd.Ministerios,
-                        Codigo = pd.Codigo
+                        celula_ = p.celula_,
+                        Chamada = p.Chamada,
+                        Email = p.Email,
+                        Falta = p.Falta,
+                        Historico = p.Historico,
+                        Img = p.Img,
+                        Reuniao = p.Reuniao,
+                        Ministerios = p.Ministerios,
+                        Codigo = p.Codigo
                     };
                     membro.salvar();
                 }
@@ -383,20 +383,20 @@ namespace business.classes
                 if (m is CriancaLgpd)
                 {
                     var modelo = (CriancaLgpd)m;
-                    var pd = (PessoaLgpd)p;
+                    var pd = p;
                     CriancaLgpd c = new CriancaLgpd
                     {
                         Nome_mae = modelo.Nome_mae,
                         Nome_pai = modelo.Nome_pai,
-                        celula_ = pd.celula_,
-                        Chamada = pd.Chamada,
-                        Email = pd.Email,
-                        Falta = pd.Falta,
-                        Historico = pd.Historico,
-                        Img = pd.Img,
-                        Reuniao = pd.Reuniao,
-                        Ministerios = pd.Ministerios,
-                        Codigo = pd.Codigo
+                        celula_ = p.celula_,
+                        Chamada = p.Chamada,
+                        Email = p.Email,
+                        Falta = p.Falta,
+                        Historico = p.Historico,
+                        Img = p.Img,
+                        Reuniao = p.Reuniao,
+                        Ministerios = p.Ministerios,
+                        Codigo = p.Codigo
                     };
                     c.salvar();
                 }
@@ -404,20 +404,20 @@ namespace business.classes
                 if (m is VisitanteLgpd)
                 {
                     var modelo = (VisitanteLgpd)m;
-                    var pd = (PessoaLgpd)p;
+                    var pd = p;
                     VisitanteLgpd v = new VisitanteLgpd
                     {
                         Condicao_religiosa = modelo.Condicao_religiosa,
                         Data_visita = modelo.Data_visita,
-                        celula_ = pd.celula_,
-                        Chamada = pd.Chamada,
-                        Email = pd.Email,
-                        Falta = pd.Falta,
-                        Historico = pd.Historico,
-                        Img = pd.Img,
-                        Reuniao = pd.Reuniao,
-                        Ministerios = pd.Ministerios,
-                        Codigo = pd.Codigo
+                        celula_ = p.celula_,
+                        Chamada = p.Chamada,
+                        Email = p.Email,
+                        Falta = p.Falta,
+                        Historico = p.Historico,
+                        Img = p.Img,
+                        Reuniao = p.Reuniao,
+                        Ministerios = p.Ministerios,
+                        Codigo = p.Codigo
                     };
                     v.salvar();
                 }
@@ -456,19 +456,19 @@ namespace business.classes
             if (id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -488,7 +488,7 @@ namespace business.classes
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
 
                 modelos.Add(this);
@@ -498,13 +498,13 @@ namespace business.classes
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -518,7 +518,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -537,7 +537,7 @@ namespace business.classes
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;

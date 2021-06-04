@@ -97,15 +97,16 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = base.excluir(id);
-            Delete_padrao +=
+            
+            Delete_padrao =
             " delete Telefone from Telefone as T inner " +
             " join PessoaDado as PD on T.IdTelefone=PD.IdPessoa" +
-            $" where P.Id='{id}' " +
+            $" where PD.IdPessoa='{id}' " +
             "delete Endereco from Endereco as E inner " +
             "join PessoaDado as PD on E.IdEndereco=PD.IdPessoa" +
-            $" where P.IdPessoa='{id}' " +
+            $" where PD.IdPessoa='{id}' " +
             $" delete PessoaDado from PessoaDado as PD where PD.IdPessoa='{id}' ";
+            Delete_padrao += base.excluir(id);
 
             return Delete_padrao;
         }
@@ -118,23 +119,25 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
-                    base.recuperar(id);
+                    
                     Select_padrao = "select * from PessoaDado as PD "
             + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
             + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
                     if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
-
-                    dr.Read();
+                base.recuperar(id);
+                dr.Read();
                     this.Data_nascimento = Convert.ToDateTime(dr["Data_nascimento"]);
                     this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
                     this.Sexo_masculino = Convert.ToBoolean(dr["Sexo_masculino"]);
@@ -159,8 +162,10 @@ namespace business.classes.Pessoas
 
                     dr.Close();
                     modelos.Add(this);
+                bd.fecharconexao(conexao);
                 return modelos;
             }
+            bd.fecharconexao(conexao);
             return modelos;
         }
 

@@ -17,17 +17,20 @@ namespace business.classes
 
         public List<int> buscarLista(modelocrud TipoDaLista, modelocrud Ligacao, string nomeDaChave, int id)
         {
-            Select_padrao = $"select * from {tipolista} as M inner join {Ligacao} as L on M.Id{tipolista}=L.Id{ligacao} " +
+            verificaModelos(TipoDaLista, Ligacao);
+
+            Select_padrao = $"select * from {tipolista} as M inner join {ligacao} as L on L.Id{ligacao}={nomeDaChave}" +
                 $" where {nomeDaChave}='{id}' ";
 
             List<int> modelos = new List<int>();
+            var conexao = bd.obterconexao();
             
-            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
-                bd.fecharconexao();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
 
@@ -50,13 +53,13 @@ namespace business.classes
                 dr.Close();                
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                TratarExcessao(ex);
             }
             finally
             {
-                bd.fecharconexao();
+                bd.fecharconexao(conexao);
             }
             return modelos;
         }

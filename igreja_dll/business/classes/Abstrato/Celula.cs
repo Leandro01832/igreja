@@ -94,10 +94,11 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where C.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
@@ -121,7 +122,8 @@ namespace business.classes.Abstrato
                     this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
                     this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
                     dr.Close();
-                
+
+                bd.fecharconexao(conexao);
                 this.Ministerios = new List<MinisterioCelula>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
@@ -133,7 +135,8 @@ namespace business.classes.Abstrato
                     if (listaPessoas != null)
                         foreach (var item in listaPessoas)
                             this.Pessoas.Add((Pessoa)item);
-                    
+
+                
 
                 modelos.Add(this);
                 return modelos;
@@ -234,60 +237,82 @@ namespace business.classes.Abstrato
             return t5.Result;
         }
         
-        public List<modelocrud> recuperarMinisterios(int? id)
+        private List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
                 " MinisterioCelula as mice on m.IdMinisterio=mice.MinisterioId  inner join Celula as c" +
                 $" on mice.CelulaId=c.IdCelula where mice.CelulaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            List<MinisterioCelula> lista = new List<MinisterioCelula>();
+            var conexao = bd.obterconexao();
             
-            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
 
             while (dr.Read())
             {
-                var m = new MinisterioCelula().recuperar(int.Parse(Convert.ToString(dr["MinisterioId"])))[0];
-                modelos.Add(m);
+                var m = new MinisterioCelula { IdMinisterioCelula = int.Parse(Convert.ToString(dr["IdMinisterioCelula"])) };
+                lista.Add(m);
             }
             dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach (var item in lista)
+                modelos.Add(new MinisterioCelula().recuperar(item.IdMinisterioCelula)[0]);
+            
+
             return modelos;
         }
 
-        public List<modelocrud> buscarPessoas(int? id)
+        private List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
                 + " inner join Celula as C on C.IdCelula=P.celula_ "
                 + $" where P.celula_='{id}' ";
 
+            var conexao = bd.obterconexao();
+
             List<modelocrud> modelos = new List<modelocrud>();
-            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+            List<int> lista = new List<int>();
+
+            
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
 
             while (dr.Read())
             {
-                var p1 = new Visitante().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p2 = new VisitanteLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p3 = new Crianca().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p4 = new CriancaLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p5 = new Membro_Aclamacao().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p6 = new Membro_AclamacaoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p7 = new Membro_Batismo().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p8 = new Membro_BatismoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p9 = new Membro_Reconciliacao().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p10 = new Membro_ReconciliacaoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p11 = new Membro_Transferencia().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p12 = new Membro_TransferenciaLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
+                lista.Add(int.Parse(Convert.ToString(dr["IdPessoa"])));                
+            }
+            dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach(var item in lista)
+            {
+                var p1 = new Visitante().recuperar(item);
+                var p2 = new VisitanteLgpd().recuperar(item);
+                var p3 = new Crianca().recuperar(item);
+                var p4 = new CriancaLgpd().recuperar(item);
+                var p5 = new Membro_Aclamacao().recuperar(item);
+                var p6 = new Membro_AclamacaoLgpd().recuperar(item);
+                var p7 = new Membro_Batismo().recuperar(item);
+                var p8 = new Membro_BatismoLgpd().recuperar(item);
+                var p9 = new Membro_Reconciliacao().recuperar(item);
+                var p10 = new Membro_ReconciliacaoLgpd().recuperar(item);
+                var p11 = new Membro_Transferencia().recuperar(item);
+                var p12 = new Membro_TransferenciaLgpd().recuperar(item);
                 Pessoa p = null;
                 if (p1.Count > 0) p = (Pessoa)p1[0];
                 if (p2.Count > 0) p = (Pessoa)p2[0];
@@ -301,10 +326,10 @@ namespace business.classes.Abstrato
                 if (p10.Count > 0) p = (Pessoa)p10[0];
                 if (p11.Count > 0) p = (Pessoa)p11[0];
                 if (p12.Count > 0) p = (Pessoa)p12[0];
-                if(p != null)
-                modelos.Add(p);
+                if (p != null)
+                    modelos.Add(p);
             }
-            dr.Close();
+
             return modelos;
         }
 

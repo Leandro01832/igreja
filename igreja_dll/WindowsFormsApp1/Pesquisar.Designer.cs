@@ -44,8 +44,6 @@
             this.check_pesquisa_data_visita = new System.Windows.Forms.CheckBox();
             this.check_pesquisa_ano_batismo = new System.Windows.Forms.CheckBox();
             this.check_pesquisa_nome = new System.Windows.Forms.CheckBox();
-            this.txt_numeros_restricao = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_todos = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_pesquisa_numero1 = new System.Windows.Forms.TextBox();
@@ -67,8 +65,9 @@
             this.check_horario_reuniao = new System.Windows.Forms.CheckBox();
             this.check_horario_final_reuniao = new System.Windows.Forms.CheckBox();
             this.check_data_mudanca_estado = new System.Windows.Forms.CheckBox();
-            this.txt_comando = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.txt_pesquisa_texto = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgdados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,12 +146,13 @@
             // btn_pesquisar
             // 
             this.btn_pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pesquisar.Location = new System.Drawing.Point(1631, 738);
+            this.btn_pesquisar.Location = new System.Drawing.Point(1617, 664);
             this.btn_pesquisar.Name = "btn_pesquisar";
             this.btn_pesquisar.Size = new System.Drawing.Size(163, 60);
             this.btn_pesquisar.TabIndex = 8;
             this.btn_pesquisar.Text = "Pesquisar";
             this.btn_pesquisar.UseVisualStyleBackColor = true;
+            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
             // 
             // check_pesquisa_id
             // 
@@ -255,39 +255,21 @@
             this.check_pesquisa_nome.UseVisualStyleBackColor = true;
             this.check_pesquisa_nome.CheckedChanged += new System.EventHandler(this.check_pesquisa_nome_CheckedChanged);
             // 
-            // txt_numeros_restricao
-            // 
-            this.txt_numeros_restricao.Enabled = false;
-            this.txt_numeros_restricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_numeros_restricao.Location = new System.Drawing.Point(1310, 676);
-            this.txt_numeros_restricao.Name = "txt_numeros_restricao";
-            this.txt_numeros_restricao.Size = new System.Drawing.Size(495, 28);
-            this.txt_numeros_restricao.TabIndex = 19;
-            this.txt_numeros_restricao.TextChanged += new System.EventHandler(this.txt_numeros_restricao_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1307, 641);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 17);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Numeros das restrições";
-            // 
             // btn_todos
             // 
             this.btn_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_todos.Location = new System.Drawing.Point(1346, 738);
+            this.btn_todos.Location = new System.Drawing.Point(1332, 664);
             this.btn_todos.Name = "btn_todos";
             this.btn_todos.Size = new System.Drawing.Size(245, 60);
             this.btn_todos.TabIndex = 21;
             this.btn_todos.Text = "Todos os registros";
             this.btn_todos.UseVisualStyleBackColor = true;
+            this.btn_todos.Click += new System.EventHandler(this.btn_todos_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1371, 60);
+            this.label5.Location = new System.Drawing.Point(1367, 323);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 17);
             this.label5.TabIndex = 29;
@@ -296,7 +278,7 @@
             // txt_pesquisa_numero1
             // 
             this.txt_pesquisa_numero1.Enabled = false;
-            this.txt_pesquisa_numero1.Location = new System.Drawing.Point(1570, 55);
+            this.txt_pesquisa_numero1.Location = new System.Drawing.Point(1566, 318);
             this.txt_pesquisa_numero1.Name = "txt_pesquisa_numero1";
             this.txt_pesquisa_numero1.Size = new System.Drawing.Size(69, 22);
             this.txt_pesquisa_numero1.TabIndex = 28;
@@ -304,7 +286,7 @@
             // txt_pesquisa_numero2
             // 
             this.txt_pesquisa_numero2.Enabled = false;
-            this.txt_pesquisa_numero2.Location = new System.Drawing.Point(1715, 55);
+            this.txt_pesquisa_numero2.Location = new System.Drawing.Point(1711, 318);
             this.txt_pesquisa_numero2.Name = "txt_pesquisa_numero2";
             this.txt_pesquisa_numero2.Size = new System.Drawing.Size(69, 22);
             this.txt_pesquisa_numero2.TabIndex = 30;
@@ -312,7 +294,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1538, 58);
+            this.label6.Location = new System.Drawing.Point(1534, 321);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 17);
             this.label6.TabIndex = 31;
@@ -321,7 +303,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1667, 60);
+            this.label7.Location = new System.Drawing.Point(1663, 323);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 17);
             this.label7.TabIndex = 32;
@@ -344,7 +326,7 @@
             // 
             this.mask_horario_valor1.Enabled = false;
             this.mask_horario_valor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mask_horario_valor1.Location = new System.Drawing.Point(1570, 107);
+            this.mask_horario_valor1.Location = new System.Drawing.Point(1566, 370);
             this.mask_horario_valor1.Mask = "00:00";
             this.mask_horario_valor1.Name = "mask_horario_valor1";
             this.mask_horario_valor1.Size = new System.Drawing.Size(69, 30);
@@ -355,7 +337,7 @@
             // 
             this.mask_horario_valor2.Enabled = false;
             this.mask_horario_valor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mask_horario_valor2.Location = new System.Drawing.Point(1715, 107);
+            this.mask_horario_valor2.Location = new System.Drawing.Point(1711, 370);
             this.mask_horario_valor2.Mask = "00:00";
             this.mask_horario_valor2.Name = "mask_horario_valor2";
             this.mask_horario_valor2.Size = new System.Drawing.Size(69, 30);
@@ -365,7 +347,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1538, 117);
+            this.label11.Location = new System.Drawing.Point(1534, 380);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(26, 17);
             this.label11.TabIndex = 277;
@@ -374,7 +356,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1667, 120);
+            this.label12.Location = new System.Drawing.Point(1663, 383);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 17);
             this.label12.TabIndex = 278;
@@ -383,7 +365,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1374, 117);
+            this.label13.Location = new System.Drawing.Point(1370, 380);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(145, 17);
             this.label13.TabIndex = 279;
@@ -395,7 +377,7 @@
             this.mask_data_valor1.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.mask_data_valor1.Enabled = false;
             this.mask_data_valor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mask_data_valor1.Location = new System.Drawing.Point(1539, 166);
+            this.mask_data_valor1.Location = new System.Drawing.Point(1535, 429);
             this.mask_data_valor1.Margin = new System.Windows.Forms.Padding(4);
             this.mask_data_valor1.Mask = "00/00/0000";
             this.mask_data_valor1.Name = "mask_data_valor1";
@@ -407,7 +389,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1361, 172);
+            this.label14.Location = new System.Drawing.Point(1357, 435);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(128, 17);
             this.label14.TabIndex = 281;
@@ -416,7 +398,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1506, 172);
+            this.label15.Location = new System.Drawing.Point(1502, 435);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(26, 17);
             this.label15.TabIndex = 282;
@@ -425,7 +407,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1647, 172);
+            this.label16.Location = new System.Drawing.Point(1643, 435);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 17);
             this.label16.TabIndex = 283;
@@ -437,7 +419,7 @@
             this.mask_data_valor2.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.mask_data_valor2.Enabled = false;
             this.mask_data_valor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mask_data_valor2.Location = new System.Drawing.Point(1683, 163);
+            this.mask_data_valor2.Location = new System.Drawing.Point(1679, 426);
             this.mask_data_valor2.Margin = new System.Windows.Forms.Padding(4);
             this.mask_data_valor2.Mask = "00/00/0000";
             this.mask_data_valor2.Name = "mask_data_valor2";
@@ -498,21 +480,9 @@
             this.check_data_mudanca_estado.UseVisualStyleBackColor = true;
             this.check_data_mudanca_estado.CheckedChanged += new System.EventHandler(this.check_data_mudanca_estado_CheckedChanged);
             // 
-            // txt_comando
-            // 
-            this.txt_comando.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_comando.Location = new System.Drawing.Point(1310, 305);
-            this.txt_comando.Multiline = true;
-            this.txt_comando.Name = "txt_comando";
-            this.txt_comando.ReadOnly = true;
-            this.txt_comando.Size = new System.Drawing.Size(504, 322);
-            this.txt_comando.TabIndex = 289;
-            this.txt_comando.Text = "Restrições";
-            this.txt_comando.TextChanged += new System.EventHandler(this.txt_comando_TextChanged);
-            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(1670, 233);
+            this.btnAdd.Location = new System.Drawing.Point(1666, 496);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(114, 46);
             this.btnAdd.TabIndex = 290;
@@ -520,13 +490,32 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // txt_pesquisa_texto
+            // 
+            this.txt_pesquisa_texto.Enabled = false;
+            this.txt_pesquisa_texto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pesquisa_texto.Location = new System.Drawing.Point(1535, 275);
+            this.txt_pesquisa_texto.Name = "txt_pesquisa_texto";
+            this.txt_pesquisa_texto.Size = new System.Drawing.Size(245, 28);
+            this.txt_pesquisa_texto.TabIndex = 291;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1367, 283);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 17);
+            this.label2.TabIndex = 292;
+            this.label2.Text = "Pesquisar por texto";
+            // 
             // Pesquisar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1817, 819);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txt_pesquisa_texto);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txt_comando);
             this.Controls.Add(this.check_data_mudanca_estado);
             this.Controls.Add(this.check_horario_final_reuniao);
             this.Controls.Add(this.check_horario_reuniao);
@@ -548,8 +537,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_pesquisa_numero1);
             this.Controls.Add(this.btn_todos);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_numeros_restricao);
             this.Controls.Add(this.check_pesquisa_nome);
             this.Controls.Add(this.check_pesquisa_ano_batismo);
             this.Controls.Add(this.check_pesquisa_data_visita);
@@ -593,8 +580,6 @@
         private System.Windows.Forms.CheckBox check_pesquisa_data_visita;
         private System.Windows.Forms.CheckBox check_pesquisa_ano_batismo;
         private System.Windows.Forms.CheckBox check_pesquisa_nome;
-        private System.Windows.Forms.TextBox txt_numeros_restricao;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_todos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_pesquisa_numero1;
@@ -616,7 +601,8 @@
         private System.Windows.Forms.CheckBox check_horario_reuniao;
         private System.Windows.Forms.CheckBox check_horario_final_reuniao;
         private System.Windows.Forms.CheckBox check_data_mudanca_estado;
-        private System.Windows.Forms.TextBox txt_comando;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txt_pesquisa_texto;
+        private System.Windows.Forms.Label label2;
     }
 }

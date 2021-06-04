@@ -36,19 +36,22 @@ namespace business.classes.Intermediario
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from MinisterioCelula as MC ";
-            if (id != null) Select_padrao += $" where MC.Id='{id}'";
+            if (id != null) Select_padrao += $" where MC.IdMinisterioCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -65,6 +68,7 @@ namespace business.classes.Intermediario
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;
@@ -73,29 +77,30 @@ namespace business.classes.Intermediario
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
+                    List<MinisterioCelula> lista = new List<MinisterioCelula>();
                     while (dr.Read())
                     {
                         MinisterioCelula pm = new MinisterioCelula();
-                        pm.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
-                        pm.CelulaId = int.Parse(Convert.ToString(dr["CelulaId"]));
-                        modelos.Add(pm);
+                        pm.IdMinisterioCelula = int.Parse(Convert.ToString(dr["IdMinisterioCelula"]));
+                        lista.Add(pm);
                     }
                     dr.Close();
 
-                    var celulas = Abstrato.Celula.recuperarTodasCelulas().OfType<Abstrato.Celula>().ToList();
-                    var ministerios = Abstrato.Ministerio.recuperarTodosMinisterios().OfType<Abstrato.Ministerio>().ToList();
-                    foreach (var item in modelos.OfType<MinisterioCelula>().ToList())
+                    bd.fecharconexao(conexao);
+                    //recursividade
+                    foreach (var item in lista.OfType<MinisterioCelula>().ToList())
                     {
-                        item.Celula = celulas.First(i => i.IdCelula == item.CelulaId);
-                        item.Ministerio = ministerios.First(i => i.IdMinisterio == item.MinisterioId);
+                        modelos.Add(new MinisterioCelula().recuperar(item.IdMinisterioCelula)[0]);
                     }
                 }
 
@@ -105,6 +110,7 @@ namespace business.classes.Intermediario
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

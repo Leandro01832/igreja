@@ -33,28 +33,44 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     {
                         if(item != "")
                         {
-                            var modelo = listaPessoas.First(m => m.IdPessoa == int.Parse(item));
-                            txt_pessoas.Text = modelo.Codigo.ToString() + ", ";
+                            var modelo = listaPessoas.First(m => m.Codigo == int.Parse(item));
+                            txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                         }                        
                     }
-
                 }
-
-                txt_celulas.Text = AddNaListaMinisterioCelulas;
+                if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
+                {
+                    var arr = AddNaListaMinisterioCelulas.Replace(" ", "").Split(',');
+                    foreach (var item in arr)
+                    {
+                        if (item != "")
+                        {
+                            var modelo = listaCelulas.First(m => m.IdCelula == int.Parse(item));
+                            txt_celulas.Text += modelo.IdCelula.ToString() + ", ";
+                        }
+                    }
+                }
             }
 
-            else if (modelo != null)
+            else 
             {
                 var mini = (Ministerio)modelo;
                 var celulas = mini.Celulas;
                 if (celulas != null)
                     foreach (var item in celulas)
-                        txt_celulas.Text += item.Celula.IdCelula.ToString() + ", ";
+                    {
+                        var celula = listaCelulas.First(i => i.IdCelula == item.CelulaId);
+                        txt_celulas.Text += celula.IdCelula.ToString() + ", ";
+                    }
+                        
 
                 var pessoas = mini.Pessoas;
                 if (pessoas != null)
                     foreach (var item in pessoas)
-                        txt_pessoas.Text += item.Pessoa.Codigo.ToString() + ", ";
+                    {
+                        var pes = listaPessoas.First(i => i.IdPessoa == item.PessoaId);
+                        txt_pessoas.Text += pes.Codigo.ToString() + ", ";
+                    }                        
             }
 
         }

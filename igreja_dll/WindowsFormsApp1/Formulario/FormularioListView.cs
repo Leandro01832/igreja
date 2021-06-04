@@ -20,12 +20,11 @@ namespace WindowsFormsApp1.Formulario
     public partial class FormularioListView : FormPadrao
     {
         public FormularioListView() { }
-        List<modelocrud> lista;
         bool atualizar = true;
-        int quantidadeLista { get; set; }
 
-        public FormularioListView(TodosListViews ListView)
+        public FormularioListView(TodosListViews ListBox)
         {
+            ListView = ListBox;
             this.Modelo = ListView.Modelo;
             this.Tipo = ListView.Tipo;            
 
@@ -58,13 +57,57 @@ namespace WindowsFormsApp1.Formulario
             botaoDetalhes.Click += BotaoDetalhes_Click;
             botaoDetalhes.Dock = DockStyle.Right;
 
+            botaoAtualizarLista = new Button();
+            botaoAtualizarLista.Location = new Point(570, 360);
+            botaoAtualizarLista.Size = new Size(100, 50);
+            botaoAtualizarLista.Text = "Atualizar lista";
+            botaoAtualizarLista.Click += BotaoAtualizarLista_Click;
+            botaoAtualizarLista.Dock = DockStyle.Right;
+
+            botaoAtualizarLista.Enabled = atualizar;
+            botaoDetalhes.Enabled =       atualizar;
+            botaoAtualizar.Enabled =      atualizar;
+            botaoDeletar.Enabled =        atualizar;
+            Mudanca.Enabled =             atualizar;
+
             Controls.Add(ListView);
             Controls.Add(botaoDetalhes);
             Controls.Add(botaoAtualizar);
             Controls.Add(botaoDeletar);
             Controls.Add(Mudanca);
+            Controls.Add(botaoAtualizarLista);
             this.ListView = ListView;
             InitializeComponent();
+        }
+
+        private async void BotaoAtualizarLista_Click(object sender, EventArgs e)
+        {
+            if (listaPessoas.Count > 0 && ListView is ListViewPessoa && Modelo == null)
+            {
+                if (Tipo == "Pessoa")
+                    ListView.DataSource = listaPessoas.OfType<business.classes.Abstrato.Pessoa>().ToList();
+
+                if (Tipo == "PessoaDado")
+                    ListView.DataSource = listaPessoas.OfType<PessoaDado>().ToList();
+
+                if (Tipo == "PessoaLgpd")
+                    ListView.DataSource = listaPessoas.OfType<PessoaLgpd>().ToList();
+
+                if (Tipo == "MembroLgpd")
+                    ListView.DataSource = listaPessoas.OfType<MembroLgpd>().ToList();
+
+                if (Tipo == "Membro")
+                    ListView.DataSource = listaPessoas.OfType<Membro>().ToList();
+            }
+
+            if (listaCelulas.Count > 0 && ListView is ListViewCelula && Modelo == null)
+            ListView.DataSource = listaCelulas;            
+
+            if (listaMinisterios.Count > 0 && ListView is ListViewMinisterio && Modelo == null)
+            ListView.DataSource = listaMinisterios;            
+
+            if (Modelo != null && atualizar)
+            ListView.DataSource = await AtualizarComModelo(Modelo);                  
         }
 
         private void MudancaEstado_Click(object sender, EventArgs e)
@@ -75,9 +118,7 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-            
-
+            Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
             FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
             frm.MdiParent = this.MdiParent;
             frm.Show();
@@ -87,6 +128,7 @@ namespace WindowsFormsApp1.Formulario
         private Button botaoDetalhes { get; }
         private Button botaoAtualizar { get; }
         private Button botaoDeletar { get; }
+        private Button botaoAtualizarLista { get; }
         private modelocrud Modelo { get; set; }
         public TodosListViews ListView { get; }
         public string Tipo { get; set; }
@@ -100,20 +142,16 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-
-
-                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
-                , false, false, true);
+                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
+                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo,
+                 false, false, true);
                 fc.MdiParent = this.MdiParent;
                 fc.Show();
             }
 
             if (ListView is ListViewCelula)
             {
-                Modelo = lista.OfType<business.classes.Abstrato.Celula>().First(i => i.IdCelula == ListView.numero);
-
-
+                Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
                 Celula.FinalizarCadastro dp =
             new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
             , false, false, true);
@@ -123,9 +161,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = lista.OfType<Ministerio>().First(i => i.IdMinisterio == ListView.numero);
-
-
+                Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
                 FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
                 false, false, true);
                 dp.MdiParent = this.MdiParent;
@@ -134,9 +170,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewReuniao)
             {
-                Modelo = lista.OfType<business.classes.Reuniao>().First(i => i.IdReuniao == ListView.numero);
-
-
+                Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
                 FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -144,9 +178,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMudanca)
             {
-                Modelo = lista.OfType<MudancaEstado>().First(i => i.IdMudanca == ListView.numero);
-
-
+                Modelo = listaMudancaEstado.First(i => i.IdMudanca == ListView.numero);
                 DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -162,9 +194,7 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-
-
+                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
                 FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , false, true, false);
                 fc.MdiParent = this.MdiParent;
@@ -173,9 +203,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = lista.OfType<business.classes.Abstrato.Celula>().First(i => i.IdCelula == ListView.numero);
-
-
+                Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
                 Celula.FinalizarCadastro dp =
             new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
             , false, true, false);
@@ -185,9 +213,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = lista.OfType<Ministerio>().First(i => i.IdMinisterio == ListView.numero);
-
-
+                Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
                 FinalizarCadastroMinisterio dp =
                 new FinalizarCadastroMinisterio((Ministerio)Modelo, false, true, false);
                 dp.MdiParent = this.MdiParent;
@@ -196,9 +222,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewReuniao)
             {
-                Modelo = lista.OfType<business.classes.Reuniao>().First(i => i.IdReuniao == ListView.numero);
-
-
+                Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
                 FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, true, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -215,9 +239,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewPessoa)
             {
-                Modelo = lista.OfType<business.classes.Abstrato.Pessoa>().First(i => i.Codigo == ListView.numero);
-
-
+                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
                 FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
                 , true, false, false);
                 fc.MdiParent = this.MdiParent;
@@ -226,9 +248,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewCelula)
             {
-                Modelo = lista.OfType<business.classes.Abstrato.Celula>().First(i => i.IdCelula == ListView.numero);
-
-
+                Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
                 Celula.FinalizarCadastro dp =
             new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
             , true, false, false);
@@ -238,9 +258,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = lista.OfType<Ministerio>().First(i => i.IdMinisterio == ListView.numero);
-
-
+                Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
                 FinalizarCadastroMinisterio dp =
             new FinalizarCadastroMinisterio((Ministerio)Modelo, true, false, false);
                 dp.MdiParent = this.MdiParent;
@@ -249,9 +267,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewReuniao)
             {
-                Modelo = lista.OfType<business.classes.Reuniao>().First(i => i.IdReuniao == ListView.numero);
-
-
+                Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
                 FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, true, false, false);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -269,33 +285,33 @@ namespace WindowsFormsApp1.Formulario
                 botaoAtualizar.Visible = false;
                 botaoDeletar.Visible = false;
             }
-
-            lista = new List<modelocrud>();
+            
             if (Modelo != null)
             {
                 bool condicao = false;
-                var l = new List<modelocrud>();
+                atualizar = false;
+                botaoAtualizarLista.Enabled = atualizar;
+                botaoDetalhes.Enabled = atualizar;
+                botaoAtualizar.Enabled = atualizar;
+                botaoDeletar.Enabled = atualizar;
+                Mudanca.Enabled = atualizar;
+
 
                 if (Modelo is business.classes.Abstrato.Pessoa)
                 {
                     Mudanca.Visible = true;
                     foreach (var m in listaPessoas)
-                    if (Modelo.GetType().Name == m.GetType().Name)
-                    {
-                        condicao = true;
-                        break;
-                    }
+                        if (Modelo.GetType().Name == m.GetType().Name)
+                        {
+                            condicao = true;
+                            break;
+                        }
 
                     if (listaPessoas.Count > 0 && condicao)
-                        foreach (var m in listaPessoas.Where(p => p.GetType().Name == Modelo.GetType().Name))
-                            l.Add(m);
+                        ListView.DataSource = listaPessoas.Where(p => p.GetType().Name == Modelo.GetType().Name)
+                            .OrderBy(p => p.Codigo).ToList();
                     else
-                    l = await AtualizarComProgressBar(Modelo);
-                    if (l != null)
-                        quantidadeLista = l.Count;
-                    else
-                        foreach (var i in listaPessoas.Where(i => i.GetType().Name == Modelo.GetType().Name))
-                            l.Add(i);
+                        ListView.DataSource = await AtualizarComProgressBar(Modelo);
                 }
 
                 if (Modelo is business.classes.Abstrato.Celula)
@@ -308,16 +324,10 @@ namespace WindowsFormsApp1.Formulario
                         }
 
                     if (listaCelulas.Count > 0 && condicao)
-                        foreach (var m in listaCelulas.Where(p => p.GetType().Name == Modelo.GetType().Name))
-                            l.Add(m);
+                        ListView.DataSource = listaCelulas.Where(p => p.GetType().Name == Modelo.GetType().Name)
+                            .OrderBy(p => p.IdCelula).ToList();
                     else
-                        l = await AtualizarComProgressBar(Modelo);
-                    quantidadeLista = l.Count;
-                    if (l != null)
-                        quantidadeLista = l.Count;
-                    else
-                        foreach (var i in listaCelulas.Where(i => i.GetType().Name == Modelo.GetType().Name))
-                            l.Add(i);
+                        ListView.DataSource = await AtualizarComProgressBar(Modelo);
                 }
 
                 if (Modelo is Ministerio)
@@ -330,224 +340,70 @@ namespace WindowsFormsApp1.Formulario
                         }
 
                     if (listaMinisterios.Count > 0 && condicao)
-                        foreach (var m in listaMinisterios.Where(p => p.GetType().Name == Modelo.GetType().Name))
-                            l.Add(m);
+                        ListView.DataSource = listaMinisterios.Where(p => p.GetType().Name == Modelo.GetType().Name)
+                            .OrderBy(p => p.IdMinisterio).ToList();
                     else
-                        l = await AtualizarComProgressBar(Modelo);
-                    quantidadeLista = l.Count;
-                    if (l != null)
-                        quantidadeLista = l.Count;
-                    else
-                        foreach (var i in listaMinisterios.Where(i => i.GetType().Name == Modelo.GetType().Name))
-                            l.Add(i);
+                        ListView.DataSource = await AtualizarComProgressBar(Modelo);
                 }
 
                 if (Modelo is business.classes.Reuniao)
                 {
                     if (listaReuniao.Count > 0)
-                        foreach (var m in listaReuniao)
-                            l.Add(m);
+                        ListView.DataSource = listaReuniao.OrderBy(p => p.IdReuniao).ToList();
                     else
-                        l = await AtualizarComProgressBar(Modelo);
-                    quantidadeLista = l.Count;
-                    if (l != null)
-                        quantidadeLista = l.Count;
-                    else
-                        foreach (var i in listaReuniao.Where(i => i.GetType().Name == Modelo.GetType().Name))
-                            l.Add(i);
+                        ListView.DataSource = await AtualizarComProgressBar(Modelo);
                 }
 
-                if(l != null)
-                foreach (var item in l)
-                    lista.Add(item);
+                if (Modelo is MudancaEstado)
+                {
+                    if (listaReuniao.Count > 0)
+                        ListView.DataSource = listaMudancaEstado.OrderBy(p => p.IdMudanca).ToList();
+                    else
+                        ListView.DataSource = await AtualizarComProgressBar(Modelo);
+                }
             }
-            else
+            else 
+            if (Tipo == "Celula" || Tipo == "Ministerio")
             {
                 if (Tipo == "Celula")
-                {
-                    foreach (var item in listaCelulas.OrderBy(p => p.IdCelula))
-                    lista.Add(item);
-                }
-                    
+                ListView.DataSource = listaCelulas.OrderBy(p => p.IdCelula).ToList();
 
-                if (Tipo == "Ministerio")
-                {
-                    foreach (var item in listaMinisterios.OrderBy(p => p.IdMinisterio))
-                        lista.Add(item);
-                }
-                    
-
+                if (Tipo == "Ministerio")                
+                 ListView.DataSource = listaMinisterios.OrderBy(p => p.IdMinisterio).ToList();                
+            }
+            else 
+            if(Tipo == "Pessoa" || Tipo == "PessoaDado" || Tipo == "PessoaLgpd" 
+            || Tipo == "MembroLgpd" || Tipo == "Membro")
+            {
+                Mudanca.Visible = true;
                 if (Tipo == "Pessoa")
-                {
-                    Mudanca.Visible = true;
-                    foreach (var item in listaPessoas.OrderBy(p => p.IdPessoa))
-                        lista.Add(item);
-                }
+                ListView.DataSource = listaPessoas.OrderBy(p => p.IdPessoa).ToList();                
 
                 if (Tipo == "PessoaDado")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<PessoaDado>().OrderBy(p => p.IdPessoa))
-                        lista.Add(item);
-                }
-
+                ListView.DataSource = listaPessoas.OfType<PessoaDado>().OrderBy(p => p.Codigo).ToList();
 
                 if (Tipo == "PessoaLgpd")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<PessoaLgpd>().OrderBy(p => p.IdPessoa))
-                        lista.Add(item);
-                }
-
+                ListView.DataSource = listaPessoas.OfType<PessoaLgpd>().OrderBy(p => p.Codigo).ToList();
 
                 if (Tipo == "MembroLgpd")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<MembroLgpd>().OrderBy(p => p.IdPessoa))
-                        lista.Add(item);
-                }
-
+                ListView.DataSource = listaPessoas.OfType<MembroLgpd>().OrderBy(p => p.Codigo).ToList();
 
                 if (Tipo == "Membro")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<Membro>().OrderBy(p => p.IdPessoa))
-                        lista.Add(item);
-                }
-
+                ListView.DataSource = listaPessoas.OfType<Membro>().OrderBy(p => p.Codigo).ToList();
             }
 
-            if (lista != null)
-            {
+            atualizar = true;
+            botaoAtualizarLista.Enabled = atualizar;
+            botaoDetalhes.Enabled = atualizar;
+            botaoAtualizar.Enabled = atualizar;
+            botaoDeletar.Enabled = atualizar;
+            Mudanca.Enabled = atualizar;
 
-                foreach (var v in lista)                
-                ListView.Items.Add(v.ToString());
-                
-            }
         }
 
         // Atualizar lista
-        private async void timer1_Tick(object sender, EventArgs e)
-        {
-            if(listaPessoas != null)
-            if(listaPessoas.Count != lista.Count && ListView is ListViewPessoa && Modelo == null)
-            {
-                atualizar = false;
-                lista.Clear();
-                ListView.Items.Clear();
-                if (Tipo == "Pessoa")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas)
-                        lista.Add(item);
-                }
-
-                if (Tipo == "PessoaDado")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<PessoaDado>())
-                        lista.Add(item);
-                }
-
-
-                if (Tipo == "PessoaLgpd")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<PessoaLgpd>())
-                        lista.Add(item);
-                }
-
-
-                if (Tipo == "MembroLgpd")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<MembroLgpd>())
-                        lista.Add(item);
-                }
-
-
-                if (Tipo == "Membro")
-                {
-                    Mudanca.Visible = true;
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaPessoas.OfType<Membro>())
-                        lista.Add(item);
-                }
-
-                foreach (var v in lista)
-                {
-                    ListView.Items.Add(v.ToString());
-                }
-            }
-
-            if (listaCelulas != null)
-            if (listaCelulas.Count != lista.Count && ListView is ListViewCelula && Modelo == null)
-            {
-                atualizar = false;
-                lista.Clear();
-                ListView.Items.Clear();
-                if (Tipo == "Celula")
-                {
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaCelulas)
-                        lista.Add(item);
-                }
-                foreach (var v in lista)
-                {
-                    ListView.Items.Add(v.ToString());
-                }
-            }
-
-            if (listaMinisterios != null)
-            if (listaMinisterios.Count != lista.Count && ListView is ListViewMinisterio && Modelo == null)
-            {
-                atualizar = false;
-                lista.Clear();
-                ListView.Items.Clear();
-                if (Tipo == "Ministerio")
-                {
-                    var modelos = new List<modelocrud>();
-                    foreach (var item in listaMinisterios)
-                        lista.Add(item);
-                }
-                foreach (var v in lista)
-                ListView.Items.Add(v.ToString());                
-            }           
-
-            if (Modelo != null && atualizar)
-            {
-                atualizar = false;
-                var l = await AtualizarComModelo(Modelo);
-                quantidadeLista = l.Count;
-                atualizar = true;
-
-                if (quantidadeLista != lista.Count)
-                {
-                    lista.Clear();
-                    ListView.Items.Clear();
-                    FormProgressBar2 form = new FormProgressBar2();
-                    form.MdiParent = this.MdiParent;
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.Text = $"Barra de processamento - {Modelo.GetType().Name}";
-                    form.Show();
-                    lista = await Task.Run(() => Modelo.recuperar(null));
-                    quantidadeLista = lista.Count;
-
-                    form.Close();
-                    if (Modelo is business.classes.Abstrato.Pessoa)
-                        Mudanca.Visible = true;
-                    foreach (var v in lista)
-                        ListView.Items.Add(v.ToString());
-                }
-            }
+        private void timer1_Tick(object sender, EventArgs e)
+        {           
         }
     }
 }

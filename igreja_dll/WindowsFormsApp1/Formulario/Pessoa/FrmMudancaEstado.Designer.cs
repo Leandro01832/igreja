@@ -60,7 +60,6 @@
             this.radio_membrobatismo.TabStop = true;
             this.radio_membrobatismo.Text = "Membro por batismo";
             this.radio_membrobatismo.UseVisualStyleBackColor = true;
-            this.radio_membrobatismo.CheckedChanged += new System.EventHandler(this.radio_membrobatismo_CheckedChanged);
             // 
             // radio_membroreconciliacao
             // 
@@ -73,7 +72,6 @@
             this.radio_membroreconciliacao.TabStop = true;
             this.radio_membroreconciliacao.Text = "Membro por reconciliação";
             this.radio_membroreconciliacao.UseVisualStyleBackColor = true;
-            this.radio_membroreconciliacao.CheckedChanged += new System.EventHandler(this.radio_membroreconciliacao_CheckedChanged);
             // 
             // radio_membroaclamacao
             // 
@@ -86,7 +84,6 @@
             this.radio_membroaclamacao.TabStop = true;
             this.radio_membroaclamacao.Text = "Membro por Aclamação";
             this.radio_membroaclamacao.UseVisualStyleBackColor = true;
-            this.radio_membroaclamacao.CheckedChanged += new System.EventHandler(this.radio_membroaclamacao_CheckedChanged);
             // 
             // radio_membrotransferencia
             // 
@@ -99,7 +96,6 @@
             this.radio_membrotransferencia.TabStop = true;
             this.radio_membrotransferencia.Text = "Membro por transferência";
             this.radio_membrotransferencia.UseVisualStyleBackColor = true;
-            this.radio_membrotransferencia.CheckedChanged += new System.EventHandler(this.radio_membrotransferencia_CheckedChanged);
             // 
             // radio_visitante
             // 
@@ -112,7 +108,6 @@
             this.radio_visitante.TabStop = true;
             this.radio_visitante.Text = "Visitante";
             this.radio_visitante.UseVisualStyleBackColor = true;
-            this.radio_visitante.CheckedChanged += new System.EventHandler(this.radio_visitante_CheckedChanged);
             // 
             // radio_crianca
             // 
@@ -125,7 +120,6 @@
             this.radio_crianca.TabStop = true;
             this.radio_crianca.Text = "Criança";
             this.radio_crianca.UseVisualStyleBackColor = true;
-            this.radio_crianca.CheckedChanged += new System.EventHandler(this.radio_crianca_CheckedChanged);
             // 
             // btn_proximo
             // 

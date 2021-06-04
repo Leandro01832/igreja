@@ -7,8 +7,6 @@ namespace WindowsFormsApp1.Formulario
 {
     public partial class FormCrudPessoa : WFCrud
     {
-        private modelocrud modeloNovo;
-        private modelocrud modeloVelho;
         private Button MudarEstado;
 
         public FormCrudPessoa()
@@ -19,10 +17,6 @@ namespace WindowsFormsApp1.Formulario
         public FormCrudPessoa(modelocrud modelo, modelocrud modeloNovo)
             : base(modelo, modeloNovo)
         {
-
-            this.modeloVelho = modelo;
-            this.modeloNovo = modeloNovo;
-
             this.MudarEstado = new Button();
             this.MudarEstado.Location = new System.Drawing.Point(570, 140);
             this.MudarEstado.Size = new System.Drawing.Size(100, 50);
@@ -41,6 +35,7 @@ namespace WindowsFormsApp1.Formulario
             if(this is FinalizarCadastroPessoa)
             {
                 Proximo.Visible = false;
+
                 this.MudarEstado = new Button();
                 this.MudarEstado.Location = new System.Drawing.Point(570, 140);
                 this.MudarEstado.Size = new System.Drawing.Size(100, 50);
@@ -56,7 +51,7 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
-            var m = (business.classes.Abstrato.Pessoa)modeloVelho;
+            var m = (business.classes.Abstrato.Pessoa)ModeloVelho;
             var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
             p.MudarEstado(m.IdPessoa, ModeloNovo);
 

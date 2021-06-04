@@ -41,6 +41,7 @@ namespace WindowsFormsApp1
 
         private bool verificarLista = true;
         private bool podeVerificar = false;
+        private bool calcular = true;
 
         private BDcomum bd = new BDcomum();
 
@@ -78,9 +79,9 @@ namespace WindowsFormsApp1
             listaCelulas = new List<Celula>();
             listaReuniao = new List<Reuniao>();
             listaMudancaEstado = new List<MudancaEstado>();
-            FormProgressBar form = new FormProgressBar();
-            //  form.MdiParent = this.MdiParent;
-            
+            using (FormProgressBar form = new FormProgressBar())
+            {  //  form.MdiParent = this.MdiParent;
+
                 form.StartPosition = FormStartPosition.CenterScreen;
                 form.Text = "Barra de processamento - Processando dados";
                 form.Show();
@@ -95,10 +96,7 @@ namespace WindowsFormsApp1
                 listaReuniao = lr.OfType<Reuniao>().ToList();
                 var lp = await Task.Run(() => Pessoa.recuperarTodos());
 
-
-            form.Close();
-
-            try { UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo; }
+                try { UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo; }
                 catch { UltimoRegistroPessoa = 0; }
                 try { UltimoRegistroReuniao = lr.OfType<Reuniao>().OrderBy(m => m.IdReuniao).Last().IdReuniao; }
                 catch { UltimoRegistroReuniao = 0; }
@@ -106,6 +104,11 @@ namespace WindowsFormsApp1
                 catch { UltimoRegistroMinisterio = 0; }
                 try { UltimoRegistroCelula = lc.OfType<Celula>().OrderBy(m => m.IdCelula).Last().IdCelula; }
                 catch { UltimoRegistroCelula = 0; }
+
+                form.Close();
+            }
+
+            
                 Pessoa.UltimoRegistro = UltimoRegistroPessoa;
                 Ministerio.UltimoRegistro = UltimoRegistroMinisterio;
                 Celula.UltimoRegistro = UltimoRegistroCelula;
@@ -223,7 +226,7 @@ namespace WindowsFormsApp1
                 listaCelulas.AddRange(Celula.celulasJovem);
             #endregion
 
-            if (verificarLista && podeVerificar)
+            if (verificarLista && podeVerificar && BDcomum.podeAbrir)
             {
                 verificarLista = false;
                 try
@@ -231,15 +234,18 @@ namespace WindowsFormsApp1
                     if (listaMinisterios != null)
                         if (GeTotalRegistrosMinisterios() != listaMinisterios.Count)
                         {
-                            FormProgressBar form = new FormProgressBar();
-                            form.MdiParent = this.MdiParent;
-                            form.StartPosition = FormStartPosition.CenterScreen;
-                            form.Text = "Barra de processamento - Ministerios";
-                            form.Show();
-                            listaAtualizadaMinisterios = await Task.Run(() =>
-                            recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio(),
-                            listaMinisterios.OrderBy(i => i.IdMinisterio).Last().IdMinisterio + 1));
-                            form.Close();
+                            using (FormProgressBar form = new FormProgressBar())
+                            {
+                                form.MdiParent = this.MdiParent;
+                                form.StartPosition = FormStartPosition.CenterScreen;
+                                form.Text = "Barra de processamento - Ministerios";
+                                form.Show();
+
+                                listaAtualizadaMinisterios = await Task.Run(() =>
+                                recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio(),
+                                listaMinisterios.OrderBy(i => i.IdMinisterio).Last().IdMinisterio + 1));
+                                form.Close();
+                            }
                             listaMinisterios.Clear();
                             var lista = listaAtualizadaMinisterios;
                             foreach (var item in lista.OfType<Ministerio>())
@@ -255,15 +261,17 @@ namespace WindowsFormsApp1
                     if (listaCelulas != null)
                         if (GeTotalRegistrosCelulas() != listaCelulas.Count)
                         {
-                            FormProgressBar form = new FormProgressBar();
-                            form.MdiParent = this.MdiParent;
-                            form.StartPosition = FormStartPosition.CenterScreen;
-                            form.Text = "Barra de processamento - Celulas";
-                            form.Show();
-                            var listaAtualizadaCelulas = await Task.Run(() =>
-                            recuperarRegistrosCelula(bd.GetUltimoRegistroCelula(),
-                            listaCelulas.OrderBy(i => i.IdCelula).Last().IdCelula + 1));
-                            form.Close();
+                            using (FormProgressBar form = new FormProgressBar())
+                            {
+                                form.MdiParent = this.MdiParent;
+                                form.StartPosition = FormStartPosition.CenterScreen;
+                                form.Text = "Barra de processamento - Celulas";
+                                form.Show();
+                                var listaAtualizadaCelulas = await Task.Run(() =>
+                                recuperarRegistrosCelula(bd.GetUltimoRegistroCelula(),
+                                listaCelulas.OrderBy(i => i.IdCelula).Last().IdCelula + 1));
+                                form.Close();
+                            }
                             var lista = listaAtualizadaCelulas;
                             foreach (var item in lista.OfType<Celula>())
                                 if (listaCelulas.FirstOrDefault(e => e.IdCelula == item.IdCelula) == null)
@@ -279,14 +287,16 @@ namespace WindowsFormsApp1
                     if (listaPessoas != null)
                         if (GeTotalRegistrosPessoas() != listaPessoas.Count)
                         {
-                            FormProgressBar form = new FormProgressBar();
-                            form.MdiParent = this.MdiParent;
-                            form.StartPosition = FormStartPosition.CenterScreen;
-                            form.Text = "Barra de processamento - Pessoas";
-                            form.Show();
-                            listaAtualizadaPessoas = await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa(),
-                            listaPessoas.OrderBy(i => i.IdPessoa).Last().IdPessoa + 1));
-                            form.Close();
+                            using (FormProgressBar form = new FormProgressBar())
+                            {
+                                form.MdiParent = this.MdiParent;
+                                form.StartPosition = FormStartPosition.CenterScreen;
+                                form.Text = "Barra de processamento - Pessoas";
+                                form.Show();
+                                listaAtualizadaPessoas = await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa(),
+                                listaPessoas.OrderBy(i => i.IdPessoa).Last().IdPessoa + 1));
+                                form.Close();
+                            }
                             var lista = listaAtualizadaPessoas;
                             foreach (var item in lista.OfType<Pessoa>())
                             {
@@ -305,25 +315,26 @@ namespace WindowsFormsApp1
 
         private async void CalcularPorcentagem()
         {
-            try
+            if (calcular)
             {
-                var totalRegistros = await Task.Run(() =>
-               {
-                   return GeTotalRegistrosPessoas() + GeTotalRegistrosCelulas() +
-       GeTotalRegistrosMinisterios() + GeTotalRegistrosReunioes();
-               });
-
-                var quantidadeCarregada = await Task.Run(() =>
+                try
                 {
-                    return listaPessoas.Count + listaCelulas.Count + listaMinisterios.Count + listaReuniao.Count;
-                });
+                    var totalRegistros = await Task.Run(() =>
+                   {
+                       return GeTotalRegistrosPessoas() + GeTotalRegistrosCelulas() +
+                        GeTotalRegistrosMinisterios() + GeTotalRegistrosReunioes() +
+                        GeTotalRegistrosMudancaEstado();
+                   });
 
-                var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
-                textoPorcentagem = porcentagem.ToString() + "%";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao fazer calculo de porcentagem" + ex.Message);
+                    var quantidadeCarregada = await Task.Run(() =>
+                    {
+                        return listaPessoas.Count + listaCelulas.Count + listaMinisterios.Count + listaReuniao.Count;
+                    });
+
+                    var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
+                    textoPorcentagem = porcentagem.ToString() + "%";
+                }
+                catch { MessageBox.Show("Erro ao fazer calculo de porcentagem. Verifique sua conexão!!!"); calcular = false; } 
             }
         }
 
@@ -421,6 +432,7 @@ namespace WindowsFormsApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
             verifica();
+
             if (Pessoa.visitantesLgpd != null ||
             listaPessoas.Where(p => p.GetType().Name == new VisitanteLgpd().GetType().Name).ToList().Count > 0)
                 carregandoVisitanteLgpd = true;
@@ -533,6 +545,8 @@ namespace WindowsFormsApp1
 
             if (modelo is Reuniao && listaReuniao.Count == 0) condicao = true;
 
+            if (modelo is MudancaEstado && listaMudancaEstado.Count == 0) condicao = true;
+
             if (condicao)
             {
                 FormProgressBar2 form = new FormProgressBar2();
@@ -543,18 +557,21 @@ namespace WindowsFormsApp1
                 var models = await Task.Run(() => modelo.recuperar(null));
 
                 if (modelo is Pessoa && listaPessoas.Where(m => m.GetType().Name == modelo.GetType().Name).ToList().Count == 0)
-                    listaPessoas.AddRange(models.OfType<Pessoa>().ToList());
+                    listaPessoas.AddRange(models.OfType<Pessoa>().OrderBy(p => p.Codigo).ToList());
 
                 if (modelo is Ministerio && listaMinisterios.Where(m => m.GetType().Name == modelo.GetType().Name).ToList().Count == 0)
-                    listaMinisterios.AddRange(models.OfType<Ministerio>().ToList());
+                    listaMinisterios.AddRange(models.OfType<Ministerio>().OrderBy(p => p.IdMinisterio).ToList());
 
                 if (modelo is Celula && listaCelulas.Where(m => m.GetType().Name == modelo.GetType().Name).ToList().Count == 0)
-                    listaCelulas.AddRange(models.OfType<Celula>().ToList());
+                    listaCelulas.AddRange(models.OfType<Celula>().OrderBy(p => p.IdCelula).ToList());
 
                 if (modelo is Reuniao)
-                    listaReuniao.AddRange(models.OfType<Reuniao>().ToList());
+                    listaReuniao.AddRange(models.OfType<Reuniao>().OrderBy(p => p.IdReuniao).ToList());
 
-                form.Close();
+                if (modelo is MudancaEstado)
+                    listaMudancaEstado.AddRange(models.OfType<MudancaEstado>().OrderBy(p => p.IdMudanca).ToList());
+
+                form.Dispose();
                 return models;
             }
             return null;
@@ -565,20 +582,25 @@ namespace WindowsFormsApp1
             var _TotalRegistros = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (BDcomum.podeAbrir)
             {
-                using (con = new SqlConnection(BDcomum.conecta2))
+                try
                 {
-                    cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
-                    con.Open();
-                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                    con.Close();
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
+            
             return _TotalRegistros;
         }
 
@@ -587,19 +609,22 @@ namespace WindowsFormsApp1
             var _TotalRegistros = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (BDcomum.podeAbrir)
             {
-                using (con = new SqlConnection(BDcomum.conecta2))
+                try
                 {
-                    cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
-                    con.Open();
-                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                    con.Close();
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } 
             }
             return _TotalRegistros;
         }
@@ -609,19 +634,22 @@ namespace WindowsFormsApp1
             var _TotalRegistros = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (BDcomum.podeAbrir)
             {
-                using (con = new SqlConnection(BDcomum.conecta2))
+                try
                 {
-                    cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
-                    con.Open();
-                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                    con.Close();
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } 
             }
             return _TotalRegistros;
         }
@@ -631,19 +659,47 @@ namespace WindowsFormsApp1
             var _TotalRegistros = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (BDcomum.podeAbrir)
             {
-                using (con = new SqlConnection(BDcomum.conecta2))
+                try
                 {
-                    cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
-                    con.Open();
-                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                    con.Close();
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } 
             }
-            catch (Exception ex)
+            return _TotalRegistros;
+        }
+
+        private int GeTotalRegistrosMudancaEstado()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM MudancaEstado", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             return _TotalRegistros;
         }

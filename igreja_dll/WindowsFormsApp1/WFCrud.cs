@@ -478,40 +478,35 @@ namespace WindowsFormsApp1
 
         private void DadoMinisterioPessoas_Click(object sender, EventArgs e)
         {
-            PessoasCelulasMinisterio pcm = new PessoasCelulasMinisterio((Ministerio)modelo
-            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            PessoasCelulasMinisterio pcm = new PessoasCelulasMinisterio((Ministerio)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             pcm.MdiParent = this.MdiParent;
             pcm.Show();
         }
 
         private void DadoMinistro_Click(object sender, EventArgs e)
         {
-            DadoMinisterio rmp = new DadoMinisterio((Ministerio)modelo
-            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            DadoMinisterio rmp = new DadoMinisterio((Ministerio)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             rmp.MdiParent = this.MdiParent;
             rmp.Show();
         }
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((Pessoa)modelo
-            , condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            ReunioesMinisteriosPessoa rmp = new ReunioesMinisteriosPessoa((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             rmp.MdiParent = this.MdiParent;
             rmp.Show();
         }
 
         private void DadoContato_Click(object sender, EventArgs e)
         {
-            Contato dp = new Contato((PessoaDado)modelo,
-            condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+            Contato dp = new Contato((PessoaDado)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
         }
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
-            Endereco dp = new Endereco((PessoaDado)modelo,
-            condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+            Endereco dp = new Endereco((PessoaDado)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
         }
@@ -520,15 +515,13 @@ namespace WindowsFormsApp1
         {
             if (modelo is PessoaDado)
             {
-                DadoPessoal dp = new DadoPessoal((PessoaDado)modelo,
-                condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+                DadoPessoal dp = new DadoPessoal((PessoaDado)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 dp.MdiParent = this.MdiParent;
                 dp.Show();
             }
             if (modelo is PessoaLgpd)
             {
-                DadoPessoalLgpd dp = new DadoPessoalLgpd((PessoaLgpd)modelo,
-               condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+                DadoPessoalLgpd dp = new DadoPessoalLgpd((PessoaLgpd)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 dp.MdiParent = this.MdiParent;
                 dp.Show();
             }

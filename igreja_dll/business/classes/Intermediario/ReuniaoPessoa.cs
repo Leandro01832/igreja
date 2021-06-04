@@ -35,17 +35,20 @@ namespace business.classes.Intermediario
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from ReuniaoPessoa as RP ";
-            if (id != null) Select_padrao += $" where RP.Id='{id}'";
+            if (id != null) Select_padrao += $" where RP.IdReuniaoPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
@@ -63,36 +66,38 @@ namespace business.classes.Intermediario
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;
             }
             else
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
                 {
+                    List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
                     while (dr.Read())
                     {
                         ReuniaoPessoa pm = new ReuniaoPessoa();
-                        pm.ReuniaoId = int.Parse(Convert.ToString(dr["ReuniaoId"]));
-                        pm.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
-                        modelos.Add(pm);
+                        pm.IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"]));
+                        lista.Add(pm);
                     }
                     dr.Close();
 
-                    var pessoas = Pessoa.recuperarTodos().OfType<Pessoa>().ToList();
-                    var reunioes = new Reuniao().recuperar(null).OfType<Reuniao>().ToList();
-                    foreach (var item in modelos.OfType<ReuniaoPessoa>().ToList())
+                    bd.fecharconexao(conexao);
+                    //recursividade
+                    foreach (var item in lista.OfType<ReuniaoPessoa>().ToList())
                     {
-                        item.Pessoa = pessoas.First(i => i.IdPessoa == item.PessoaId);
-                        item.Reuniao = reunioes.First(i => i.IdReuniao == item.ReuniaoId);
+                        modelos.Add(new ReuniaoPessoa().recuperar(item.IdReuniaoPessoa)[0]);
                     }
                 }
 
@@ -102,6 +107,7 @@ namespace business.classes.Intermediario
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

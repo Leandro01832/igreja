@@ -44,27 +44,28 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
 
             if (id != null)
             {
                 try
                 {
-                    bd.abrirconexao();
-                    base.recuperar(id);
+                    
+                    
                     Select_padrao = "select * from Membro_Batismo as MB "
                     + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                     + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
                     if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
+                    base.recuperar(id);
                     dr.Close();
                     modelos.Add(this);
                 }
@@ -74,7 +75,7 @@ namespace business.classes.Pessoas
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }                
                 return modelos;
             }
@@ -82,17 +83,17 @@ namespace business.classes.Pessoas
             {
                 try
                 {
-                    bd.abrirconexao();
+                    
                     Select_padrao = "select * from Membro_Batismo as MB "
                     + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                     + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
                     if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -105,7 +106,7 @@ namespace business.classes.Pessoas
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -124,7 +125,7 @@ namespace business.classes.Pessoas
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;

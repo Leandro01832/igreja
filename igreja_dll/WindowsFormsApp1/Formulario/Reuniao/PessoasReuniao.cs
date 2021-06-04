@@ -32,19 +32,27 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
-                        var modelo = listaPessoas.First(m => m.IdPessoa == int.Parse(item));
-                        txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
+                        if(item != "")
+                        {
+                            var modelo = listaPessoas.First(m => m.Codigo == int.Parse(item));
+                            txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
+                        }
+                        
                     }
                 }
                     
             }
-            else if (p != null)
+            else 
             {
                 var reuniao = (business.classes.Reuniao)modelo;
                 var pessoas = reuniao.Pessoas;
                 if (pessoas != null)
                 foreach (var item in pessoas)
-                txt_pessoas.Text += item.Pessoa.Codigo + ", ";
+                {
+                        var pes = listaPessoas.First(i => i.IdPessoa == item.PessoaId);
+                        txt_pessoas.Text += pes.Codigo + ", ";
+                }
+                
             }
         }
 

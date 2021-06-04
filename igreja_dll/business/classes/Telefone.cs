@@ -53,13 +53,13 @@ namespace business.classes
                 Select_padrao += Select_padrao + $" where M.IdTelefone={id}";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
@@ -90,7 +90,7 @@ namespace business.classes
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
@@ -108,7 +108,8 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
+
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {

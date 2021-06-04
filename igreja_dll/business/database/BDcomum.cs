@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-
+using System.Windows.Forms;
 
 namespace database.banco
 {
@@ -16,40 +16,46 @@ namespace database.banco
         static string path = Directory.GetCurrentDirectory();
         public static string conecta1 = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
         public static string conecta2 = $@"Data Source=database-igreja.mssql.somee.com;packet size=4096;user id=lls01833_SQLLogin_1;pwd=tsobwjtsix;data source=database-igreja.mssql.somee.com;persist security info=False;initial catalog=database-igreja";
-      
-        
+
+
         public static string addNaLista;
         public static bool podeAbrir = true;
-
         public static bool BancoEnbarcado = false;
 
-        private SqlConnection conn;
+        //  private SqlConnection conn;
 
-        public  SqlConnection obterconexao()
+        public SqlConnection obterconexao()
         {
-            if(conn == null)
-                conn = new SqlConnection(conecta2);
-
-            if (conn.State == ConnectionState.Open && !podeAbrir || conn.State == ConnectionState.Closed && !podeAbrir)
+            SqlConnection conn = null;
+            if (podeAbrir)
             {
-                conn.Dispose();
+                conn = new SqlConnection(conecta2);
+                try { conn.Open(); }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("instância"))
+                    {
+                        MessageBox.Show("Você não esta conectado." + ex.Message);
+                        podeAbrir = false;
+                    }
+                    
+                }
+            }
+            if (!podeAbrir)
+            {
+                return null;
             }
 
-            return conn;            
+            return conn;
         }
 
-        public void fecharconexao()
+        public void fecharconexao(SqlConnection conexao)
         {
-            var conexao = obterconexao();
+            if (conexao != null) 
             if (conexao.State == ConnectionState.Open)
-                conexao.Close();
-        }
-
-        public void abrirconexao()
-        {
-            var conexao = obterconexao();
-            if (conexao.State == ConnectionState.Closed && podeAbrir)
-                conexao.Open();
+            {
+                conexao.Dispose();
+            }
         }
 
         public void SalvarModelo(modelocrud modelo)
@@ -57,7 +63,7 @@ namespace database.banco
             ExecutarComandoSqlServer(modelo.Insert_padrao);
             addNaLista = "";
 
-            if(modelo is Pessoa)
+            if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
                 p.IdPessoa = GetUltimoRegistroPessoa();
@@ -87,22 +93,25 @@ namespace database.banco
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (podeAbrir)
             {
-                con = obterconexao();
-                
-                cmd = new SqlCommand("SELECT TOP(1) IdPessoa FROM Pessoa order by IdPessoa desc", con);
-                con.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                dr.Read();
-                Id = int.Parse(dr["IdPessoa"].ToString());
-                dr.Close();
-                con.Close();
-                
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    con = obterconexao();
+
+                    cmd = new SqlCommand("SELECT TOP(1) IdPessoa FROM Pessoa order by IdPessoa desc", con);
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdPessoa"].ToString());
+                    dr.Close();
+                    fecharconexao(con);
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
             return Id;
         }
@@ -112,22 +121,24 @@ namespace database.banco
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (podeAbrir)
             {
-                con = obterconexao();
-                
-                cmd = new SqlCommand("SELECT TOP(1) IdCelula FROM Celula order by IdCelula desc", con);
-                con.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                dr.Read();
-                Id = int.Parse(dr["IdCelula"].ToString());
-                dr.Close();
-                con.Close();
-                
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    con = obterconexao();
+
+                    cmd = new SqlCommand("SELECT TOP(1) IdCelula FROM Celula order by IdCelula desc", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdCelula"].ToString());
+                    dr.Close();
+                    fecharconexao(con);
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
             return Id;
         }
@@ -137,22 +148,24 @@ namespace database.banco
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (podeAbrir)
             {
-                con = obterconexao();
-                
-                cmd = new SqlCommand("SELECT TOP(1) IdMinisterio FROM Celula order by IdMinisterio desc", con);
-                con.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                dr.Read();
-                Id = int.Parse(dr["IdMinisterio"].ToString());
-                dr.Close();
-                con.Close();
-                
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    con = obterconexao();
+
+                    cmd = new SqlCommand("SELECT TOP(1) IdMinisterio FROM Ministerio order by IdMinisterio desc", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdMinisterio"].ToString());
+                    dr.Close();
+                    fecharconexao(con);
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
             return Id;
         }
@@ -162,22 +175,24 @@ namespace database.banco
             var Id = 0;
             SqlConnection con;
             SqlCommand cmd;
-            try
+            if (podeAbrir)
             {
-                con = obterconexao();
-                
-                cmd = new SqlCommand("SELECT TOP(1) IdReuniao FROM Celula order by IdReuniao desc", con);
-                con.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                dr.Read();
-                Id = int.Parse(dr["IdReuniao"].ToString());
-                dr.Close();
-                con.Close();
-                
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    con = obterconexao();
+
+                    cmd = new SqlCommand("SELECT TOP(1) IdReuniao FROM Reuniao order by IdReuniao desc", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["IdReuniao"].ToString());
+                    dr.Close();
+                    fecharconexao(con);
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
             return Id;
         }
@@ -196,20 +211,19 @@ namespace database.banco
         private void ExecutarComandoSqlServer(string sql)
         {
             var conecta = obterconexao();
-            conecta.Open();
             SqlCommand comando = new SqlCommand(sql, conecta);
 
             try
             {
                 comando.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Erro: " + ex.Message);
             }
             finally
             {
-                obterconexao().Close();
+                fecharconexao(conecta);
             }
 
         }

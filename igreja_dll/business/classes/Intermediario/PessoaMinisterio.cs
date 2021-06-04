@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace business.classes.Intermediario
 {
     [Table("PessoaMinisterio")]
-   public class PessoaMinisterio : modelocrud
+    public class PessoaMinisterio : modelocrud
     {
         [Key]
         public int IdPessoaMinisterio { get; set; }
@@ -39,21 +39,25 @@ namespace business.classes.Intermediario
         public override List<modelocrud> recuperar(int? id)
         {
             Select_padrao = "select * from PessoaMinisterio as PM ";
-            if (id != null) Select_padrao += $" where PM.Id='{id}'";
+            if (id != null) Select_padrao += $" where PM.IdPessoaMinisterio='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    return modelos;
-                }
                 try
                 {
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return modelos;
+                    }
+
                     dr.Read();
                     this.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
                     this.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
@@ -67,36 +71,39 @@ namespace business.classes.Intermediario
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;
             }
             else
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
                 {
+                    List<modelocrud> lista = new List<modelocrud>();
                     while (dr.Read())
                     {
                         PessoaMinisterio pm = new PessoaMinisterio();
-                        pm.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
-                        pm.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
-                        modelos.Add(pm);
+                        pm.IdPessoaMinisterio = int.Parse(Convert.ToString(dr["IdPessoaMinisterio"]));
+                        lista.Add(pm);
                     }
                     dr.Close();
 
-                    var pessoas = Pessoa.recuperarTodos().OfType<Pessoa>().ToList();
-                    var ministerios = Abstrato.Ministerio.recuperarTodosMinisterios().OfType<Abstrato.Ministerio>().ToList();
-                    foreach (var item in modelos.OfType<PessoaMinisterio>().ToList())
+                    bd.fecharconexao(conexao);
+                    // recursividade                    
+                    foreach (var item in lista.OfType<PessoaMinisterio>())
                     {
-                        item.Pessoa = pessoas.First(i => i.IdPessoa == item.PessoaId);
-                        item.Ministerio = ministerios.First(i => i.IdMinisterio == item.MinisterioId);
+                        var pessoaMinisterio = new PessoaMinisterio().recuperar(item.IdPessoaMinisterio)[0];
+                        modelos.Add(pessoaMinisterio);
                     }
                 }
 
@@ -106,6 +113,7 @@ namespace business.classes.Intermediario
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

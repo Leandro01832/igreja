@@ -82,13 +82,13 @@ namespace business.classes
                 Select_padrao += $" where M.IdEndereco='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
@@ -124,7 +124,7 @@ namespace business.classes
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
@@ -160,7 +160,7 @@ namespace business.classes
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

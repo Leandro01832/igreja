@@ -58,25 +58,24 @@ namespace business.classes.Pessoas
             if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    bd.abrirconexao();
-                    base.recuperar(id);
                     Select_padrao = "select * from Crianca as C "
                  + " inner join PessoaDado as PD on C.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
                     if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
+                    base.recuperar(id);
 
                     dr.Read();
                     this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
@@ -91,7 +90,7 @@ namespace business.classes.Pessoas
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;
@@ -100,13 +99,13 @@ namespace business.classes.Pessoas
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -119,7 +118,7 @@ namespace business.classes.Pessoas
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -138,7 +137,7 @@ namespace business.classes.Pessoas
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

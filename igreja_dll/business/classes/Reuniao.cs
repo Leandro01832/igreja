@@ -18,6 +18,7 @@ namespace business.classes
     public class Reuniao : modelocrud, IAddNalista
     {
 
+        #region Properties
         [Key]
         public int IdReuniao { get; set; }
 
@@ -46,7 +47,8 @@ namespace business.classes
         public virtual List<ReuniaoPessoa> Pessoas { get; set; }
 
         [NotMapped]
-        public static int UltimoRegistro { get; set; }
+        public static int UltimoRegistro { get; set; } 
+        #endregion
 
         AddNalista AddNalista;
 
@@ -79,19 +81,19 @@ namespace business.classes
                 Select_padrao += $" where M.IdReuniao='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -104,6 +106,7 @@ namespace business.classes
                     modelos.Add(this);
                     dr.Close();
 
+                    bd.fecharconexao(conexao);
                     this.Pessoas = new List<ReuniaoPessoa>();
                     var listaPessoas = recuperarPessoas(id);
                     if (listaPessoas != null)
@@ -111,6 +114,8 @@ namespace business.classes
                         {
                             this.Pessoas.Add((ReuniaoPessoa)item);
                         }
+
+                    
                 }
 
                 catch (Exception ex)
@@ -119,7 +124,7 @@ namespace business.classes
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }
@@ -127,13 +132,13 @@ namespace business.classes
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -147,7 +152,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -166,7 +171,7 @@ namespace business.classes
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;
@@ -187,53 +192,38 @@ namespace business.classes
             return Insert_padrao;
         }
 
-        public List<modelocrud> recuperarPessoas(int? id)
+        private List<modelocrud> recuperarPessoas(int? id)
         {
             var select = "select * from Pessoa as P inner join " +
                 " ReuniaoPessoa as PERE on P.IdPessoa=PERE.PessoaId  inner join Reuniao as R" +
                 $" on PERE.ReuniaoId=R.IdReuniao where PERE.ReuniaoId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
+            var conexao = bd.obterconexao();
+
             
-            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
-
+            
             while (dr.Read())
             {
-                var p1 = new Visitante().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p2 = new VisitanteLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p3 = new Crianca().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p4 = new CriancaLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p5 = new Membro_Aclamacao().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p6 = new Membro_AclamacaoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p7 = new Membro_Batismo().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p8 = new Membro_BatismoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p9 = new Membro_Reconciliacao().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p10 = new Membro_ReconciliacaoLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p11 = new Membro_Transferencia().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                var p12 = new Membro_TransferenciaLgpd().recuperar(int.Parse(Convert.ToString(dr["IdPessoa"])));
-                Pessoa p = null;
-                if (p1.Count > 0) p = (Pessoa)p1[0];
-                if (p2.Count > 0) p = (Pessoa)p2[0];
-                if (p3.Count > 0) p = (Pessoa)p3[0];
-                if (p4.Count > 0) p = (Pessoa)p4[0];
-                if (p5.Count > 0) p = (Pessoa)p5[0];
-                if (p6.Count > 0) p = (Pessoa)p6[0];
-                if (p7.Count > 0) p = (Pessoa)p7[0];
-                if (p8.Count > 0) p = (Pessoa)p8[0];
-                if (p9.Count > 0) p = (Pessoa)p9[0];
-                if (p10.Count > 0) p = (Pessoa)p10[0];
-                if (p11.Count > 0) p = (Pessoa)p11[0];
-                if (p12.Count > 0) p = (Pessoa)p12[0];
-                if (p != null)
-                modelos.Add(p);
+                lista.Add(new ReuniaoPessoa { IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"])) });                
             }
-            dr.Close();            
+            dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach(var item in lista)
+            {
+                    modelos.Add(new ReuniaoPessoa().recuperar(item.IdReuniaoPessoa)[0]);
+            }
+
             return modelos;
         }
 

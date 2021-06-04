@@ -3,10 +3,11 @@ using business.classes.PessoasLgpd;
 using database;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoa
 {
-    public partial class CadastroMembroAclamacao : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class CadastroMembroAclamacao : Formulario.FormCrudPessoa
     {
 
         public CadastroMembroAclamacao(modelocrud modelo, modelocrud modeloNovo)

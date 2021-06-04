@@ -155,11 +155,11 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
@@ -182,6 +182,8 @@ namespace business.classes.Abstrato
                         this.celula_ = int.Parse(dr["celula_"].ToString());
 
                     dr.Close();
+
+                bd.fecharconexao(conexao);
                 this.Ministerios = new List<PessoaMinisterio>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
@@ -205,6 +207,7 @@ namespace business.classes.Abstrato
                             this.Historico.Add((Historico)item);
                         }
                 modelos.Add(this);
+                
                 return modelos;
             }
             return modelos;
@@ -400,69 +403,87 @@ namespace business.classes.Abstrato
             return  t12.Result;
         }       
 
-        public List<modelocrud> recuperarMinisterios(int? id)
+        private List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
                 " PessoaMinisterio as mipe on m.IdMinisterio=mipe.MinisterioId  inner join Pessoa as p" + 
                 $" on mipe.PessoaId=p.IdPessoa where mipe.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            List<PessoaMinisterio> lista = new List<PessoaMinisterio>();
+            var conexao = bd.obterconexao();
             
-            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
             
             while (dr.Read())
             {
-               var m = new PessoaMinisterio().recuperar(int.Parse(Convert.ToString(dr["MinisterioId"])))[0];
-                modelos.Add(m);
+               var m = new PessoaMinisterio { IdPessoaMinisterio = int.Parse(Convert.ToString(dr["MinisterioId"])) };
+                lista.Add(m);
             }
             dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach (var item in lista)
+                modelos.Add(new PessoaMinisterio().recuperar(item.IdPessoaMinisterio)[0]);
+
             return modelos;
         }
 
-        public List<modelocrud> recuperarReuniao(int? id)
+        private List<modelocrud> recuperarReuniao(int? id)
         {
             var select = "select * from Reuniao as R inner join " +
                 " ReuniaoPessoa as PERE on R.IdReuniao=PERE.ReuniaoId  inner join Pessoa as P" +
                 $" on PERE.PessoaId=P.IdPessoa where PERE.PessoaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
+            var conexao = bd.obterconexao();
             
-            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
 
             while (dr.Read())
             {
-                var r = new ReuniaoPessoa().recuperar(int.Parse(Convert.ToString(dr["ReuniaoId"])))[0];
-                modelos.Add(r);
+                var r = new ReuniaoPessoa { IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"])) };
+                lista.Add(r);
             }
             dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach(var item in lista)
+            modelos.Add(new ReuniaoPessoa().recuperar(item.IdReuniaoPessoa)[0]);
+
             return modelos;
         }
 
-        public List<modelocrud> recuperarHistorico(int? id)
+        private List<modelocrud> recuperarHistorico(int? id)
         {
             var select = "select * from Historico as H " +
                 " inner join Pessoa as P" +
                 $" on P.IdPessoa=H.pessoaid where P.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            var conexao = bd.obterconexao();
             
-            SqlCommand comando = new SqlCommand(select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
 
@@ -476,6 +497,8 @@ namespace business.classes.Abstrato
                 modelos.Add(h);
             }
             dr.Close();
+            bd.fecharconexao(conexao);
+
             return modelos;
         }
         

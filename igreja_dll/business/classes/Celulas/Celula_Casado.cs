@@ -39,26 +39,25 @@ namespace business.classes.Celulas
             if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    bd.abrirconexao();
-                    base.recuperar(id);
                     Select_padrao = "select * from Celula_Casado as CC "
                     + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
                     if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
-
+                    dr.Close();
+                    base.recuperar(id);
                     modelos.Add(this);
                 }
 
@@ -68,7 +67,7 @@ namespace business.classes.Celulas
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }
@@ -76,13 +75,13 @@ namespace business.classes.Celulas
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -96,7 +95,7 @@ namespace business.classes.Celulas
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -114,7 +113,7 @@ namespace business.classes.Celulas
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

@@ -63,12 +63,12 @@ namespace database
         {
                 if (ex.Message.Contains("instância"))
                 {
-                    MessageBox.Show("Você não esta conectado." + ex.Message);
                     BDcomum.podeAbrir = false;
                 }
             else
             {
-                MessageBox.Show(ex.Message);
+                if (ex.Message.Contains("reader"))
+                    MessageBox.Show( "A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
             }
         }
 
@@ -135,6 +135,15 @@ namespace database
         public List<modelocrud> PesquisarPorTexto(List<modelocrud> modelos, string texto, string campo)
         {
             List<modelocrud> q = null;
+            if (modelos.OfType<Crianca>().ToList().Count > 0 && campo == "Nome_pai")
+                q = modelos.OfType<Crianca>().Where(p => p.Nome_pai.Contains(texto)).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Crianca>().ToList().Count > 0 && campo == "Nome_mae")
+                q = modelos.OfType<Crianca>().Where(p => p.Nome_mae.Contains(texto)).Cast<modelocrud>().ToList();
+
+            if (modelos.OfType<Pessoa>().ToList().Count > 0 && campo == "Email")
+                q = modelos.OfType<Pessoa>().Where(p => p.Email.Contains(texto)).Cast<modelocrud>().ToList();
+
             if (modelos.OfType<Pessoa>().ToList().Count > 0 && campo == "NomePessoa")
                 q = modelos.OfType<Pessoa>().Where(p => p.NomePessoa.Contains(texto)).Cast<modelocrud>().ToList();
 

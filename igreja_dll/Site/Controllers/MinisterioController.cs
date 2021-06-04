@@ -25,6 +25,7 @@ namespace Site.Controllers
         }
 
         // GET: Ministerio/Details/5
+        [AllowAnonymous]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)

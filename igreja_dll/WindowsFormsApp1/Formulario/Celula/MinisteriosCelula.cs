@@ -42,6 +42,13 @@ namespace WindowsFormsApp1.Formulario.Celula
                 {
                     lbl_pessoas.Text += numero.ToString() + ", ";
                 }
+
+                var minis = c.Ministerios;
+                foreach(var item in minis)
+                {
+                    var m = listaMinisterios.First(i => i.IdMinisterio == item.MinisterioId);
+                    txt_ministerio.Text += m.IdMinisterio.ToString() + ", ";
+                }
             }
            
         }

@@ -35,12 +35,21 @@ namespace business.classes.Ministerio
                 " as LCT inner join Ministerio as MI on LCT.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where LCT.IdMinisterio='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return modelos;
+                    }
+                    dr.Close();
                     base.recuperar(id);
                     modelos.Add(this);
                 }
@@ -50,7 +59,7 @@ namespace business.classes.Ministerio
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }
@@ -58,13 +67,13 @@ namespace business.classes.Ministerio
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -77,7 +86,7 @@ namespace business.classes.Ministerio
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -96,7 +105,7 @@ namespace business.classes.Ministerio
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

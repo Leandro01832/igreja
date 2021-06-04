@@ -87,17 +87,18 @@ namespace business.classes
         private string VerificaLista(string NomeTabela, modelocrud modeloQRecebe, modelocrud modeloQPreenche, string numeros)
         {
             verificaModelos(modeloQRecebe, modeloQPreenche);
+            var conexao = bd.obterconexao();
 
             Select_padrao = $"select * from {NomeTabela} where {recebe}Id='{IdModelo}'";
             
-            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
             SqlDataReader dr = comando.ExecuteReader();
 
             if (dr.HasRows == false)
             {
                 dr.Close();
                 AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
-                bd.fecharconexao();
+                bd.fecharconexao(conexao);
                 return "";
             }
             else
@@ -106,7 +107,7 @@ namespace business.classes
                 var valor = "";
                 var dadosBanco = "";
                 try
-                {
+                {                    
                     while (dr.Read())
                     {
                        valor = Convert.ToString(dr[preenche +"Id"]);
@@ -135,7 +136,7 @@ namespace business.classes
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return valores;
             }

@@ -20,6 +20,13 @@ namespace WindowsFormsApp1
                 txt_pesquisa_numero2.Enabled = true;
                 txt_pesquisa_numero1.Focus();
             }
+            else
+            {
+                txt_pesquisa_numero1.Text = "";
+                txt_pesquisa_numero2.Text = "";
+                txt_pesquisa_numero1.Enabled = false;
+                txt_pesquisa_numero2.Enabled = false;
+            }
         }
 
         private void check_pesquisa_nome_CheckedChanged(object sender, EventArgs e)
@@ -27,8 +34,13 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito pesquisa.");
-                txt_numeros_restricao.Enabled = true;
-                txt_numeros_restricao.Focus();
+                txt_pesquisa_texto.Enabled = true;
+                txt_pesquisa_texto.Focus();
+            }
+            else
+            {
+                txt_pesquisa_texto.Enabled = false;
+                txt_pesquisa_texto.Text = "";
             }
         }
 
@@ -40,6 +52,13 @@ namespace WindowsFormsApp1
                 mask_data_valor1.Enabled = true;
                 mask_data_valor2.Enabled = true;
             }
+            else
+            {
+                mask_data_valor1.Enabled = false;
+                mask_data_valor2.Enabled = false;
+                mask_data_valor1.Text = "";
+                mask_data_valor2.Text = "";
+            }
         }
 
         private void check_pesquisa_data_reuniao_CheckedChanged(object sender, EventArgs e)
@@ -49,6 +68,13 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_data_valor1.Enabled = true;
                 mask_data_valor2.Enabled = true;
+            }
+            else
+            {
+                mask_data_valor1.Enabled = false;
+                mask_data_valor2.Enabled = false;
+                mask_data_valor1.Text = "";
+                mask_data_valor2.Text = "";
             }
         }
 
@@ -60,6 +86,13 @@ namespace WindowsFormsApp1
                 mask_data_valor1.Enabled = true;
                 mask_data_valor2.Enabled = true;
             }
+            else
+            {
+                mask_data_valor1.Enabled = false;
+                mask_data_valor2.Enabled = false;
+                mask_data_valor1.Text = "";
+                mask_data_valor2.Text = "";
+            }
         }
 
         private void check_pesquisa_email_CheckedChanged(object sender, EventArgs e)
@@ -67,8 +100,13 @@ namespace WindowsFormsApp1
             if (check_pesquisa_email.Checked)
             {
                 MessageBox.Show("Digite um email parecido com o que lembra para ser feito a pesquisa.");
-                txt_numeros_restricao.Enabled = true;
-                txt_numeros_restricao.Focus();
+                txt_pesquisa_texto.Enabled = true;
+                txt_pesquisa_texto.Focus();
+            }
+            else
+            {
+                txt_pesquisa_texto.Enabled = false;
+                txt_pesquisa_texto.Text = "";
             }
         }
 
@@ -77,8 +115,13 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome_pai.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
-                txt_numeros_restricao.Enabled = true;
-                txt_numeros_restricao.Focus();
+                txt_pesquisa_texto.Enabled = true;
+                txt_pesquisa_texto.Focus();
+            }
+            else
+            {
+                txt_pesquisa_texto.Enabled = false;
+                txt_pesquisa_texto.Text = "";
             }
         }
 
@@ -87,8 +130,13 @@ namespace WindowsFormsApp1
             if (check_pesquisa_nome_mae.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
-                txt_numeros_restricao.Enabled = true;
-                txt_numeros_restricao.Focus();
+                txt_pesquisa_texto.Enabled = true;
+                txt_pesquisa_texto.Focus();
+            }
+            else
+            {
+                txt_pesquisa_texto.Enabled = false;
+                txt_pesquisa_texto.Text = "";
             }
         }
 
@@ -101,51 +149,67 @@ namespace WindowsFormsApp1
                 txt_pesquisa_numero2.Enabled = true;
                 txt_pesquisa_numero1.Focus();
             }
+            else
+            {
+                txt_pesquisa_numero1.Text = "";
+                txt_pesquisa_numero2.Text = "";
+                txt_pesquisa_numero1.Enabled = false;
+                txt_pesquisa_numero2.Enabled = false;
+            }
         }
 
         private void check_horario_celula_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
-            mask_horario_valor1.Enabled = true;
-            mask_horario_valor2.Enabled = true;
-            mask_horario_valor1.Focus();
+            if (check_horario_celula.Checked)
+            {
+                MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
+                mask_horario_valor1.Enabled = true;
+                mask_horario_valor2.Enabled = true;
+                mask_horario_valor1.Focus(); 
+            }
+            else
+            {
+                mask_horario_valor1.Text = "";
+                mask_horario_valor2.Text = "";
+                mask_horario_valor1.Enabled = false;
+                mask_horario_valor2.Enabled = false;
+            }
         }
 
         private void check_horario_reuniao_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
-            mask_horario_valor1.Enabled = true;
-            mask_horario_valor2.Enabled = true;
-            mask_horario_valor1.Focus();
+            if (check_horario_reuniao.Checked)
+            {
+                MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
+                mask_horario_valor1.Enabled = true;
+                mask_horario_valor2.Enabled = true;
+                mask_horario_valor1.Focus(); 
+            }
+            else
+            {
+                mask_horario_valor1.Text = "";
+                mask_horario_valor2.Text = "";
+                mask_horario_valor1.Enabled = false;
+                mask_horario_valor2.Enabled = false;
+            }
         }
 
         private void check_horario_final_reuniao_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
-            mask_horario_valor1.Enabled = true;
-            mask_horario_valor2.Enabled = true;
-            mask_horario_valor1.Focus();
-        }
-
-        private void btn_todos_Click(object sender, EventArgs e)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            if (modelo is MudancaEstado)
-                lista.AddRange(listaMudancaEstado);
-            if (modelo is Ministerio)
-                lista.AddRange(listaMinisterios);
-            if (modelo is Celula)
-                lista.AddRange(listaCelulas);
-            if (modelo is Pessoa)
-                lista.AddRange(listaPessoas);
-            if (modelo is Reuniao)
-                lista.AddRange(listaReuniao);
-            ModificaDataGridView(modelo, tipo, lista);
-        }
-
-        private void btn_pesquisar_Click(object sender, EventArgs e)
-        {
-            ModificaDataGridView(modelo, tipo, Resultado);
+            if (check_horario_final_reuniao.Checked)
+            {
+                MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
+                mask_horario_valor1.Enabled = true;
+                mask_horario_valor2.Enabled = true;
+                mask_horario_valor1.Focus(); 
+            }
+            else
+            {
+                mask_horario_valor1.Text = "";
+                mask_horario_valor2.Text = "";
+                mask_horario_valor1.Enabled = false;
+                mask_horario_valor2.Enabled = false;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -156,7 +220,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = TimeSpan.Parse(mask_horario_valor1.Text);
                     var v2 = TimeSpan.Parse(mask_horario_valor2.Text);
-                    Resultado = modelo.PesquisarPorHorario(Resultado, v2, "Horario_fim");
+                    Resultado = Resultado[0].PesquisarPorHorario(Resultado, v2, "Horario_fim");
                 }
                 catch
                 {
@@ -171,7 +235,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = TimeSpan.Parse(mask_horario_valor1.Text);
                     var v2 = TimeSpan.Parse(mask_horario_valor2.Text);
-                    Resultado = modelo.PesquisarPorHorario(Resultado, v1, v2, "Horario_inicio");
+                    Resultado = Resultado[0].PesquisarPorHorario(Resultado, v1, v2, "Horario_inicio");
                 }
                 catch
                 {
@@ -186,7 +250,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = TimeSpan.Parse(mask_horario_valor1.Text);
                     var v2 = TimeSpan.Parse(mask_horario_valor2.Text);
-                    Resultado = modelo.PesquisarPorHorario(Resultado,v1, v2, "Horario");
+                    Resultado = Resultado[0].PesquisarPorHorario(Resultado,v1, v2, "Horario");
                 }
                 catch
                 {
@@ -197,17 +261,17 @@ namespace WindowsFormsApp1
 
             if (check_pesquisa_nome_mae.Checked)
             {
-                Resultado = modelo.PesquisarPorTexto(Resultado,txt_numeros_restricao.Text, "Nome_mae");
+                Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Nome_mae");
             }
 
             if (check_pesquisa_nome_pai.Checked)
             {
-                Resultado= modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Nome_pai");
+                Resultado= Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Nome_pai");
             }
 
             if (check_pesquisa_email.Checked)
             {
-                Resultado= modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Email");
+                Resultado= Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Email");
             }
 
             if (check_pesquisa_data_reuniao.Checked)
@@ -216,7 +280,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = Convert.ToDateTime(mask_data_valor1.Text);
                     var v2 = Convert.ToDateTime(mask_data_valor2.Text);
-                    Resultado = modelo.PesquisarPorData(Resultado, v1, v2, "Data_reuniao");
+                    Resultado = Resultado[0].PesquisarPorData(Resultado, v1, v2, "Data_reuniao");
                 }
                 catch
                 {
@@ -231,7 +295,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = Convert.ToDateTime(mask_data_valor1.Text);
                     var v2 = Convert.ToDateTime(mask_data_valor2.Text);
-                    Resultado = modelo.PesquisarPorData(Resultado, v1, v2, "Data_visita");
+                    Resultado = Resultado[0].PesquisarPorData(Resultado, v1, v2, "Data_visita");
                 }
                 catch
                 {
@@ -246,7 +310,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = Convert.ToDateTime(mask_data_valor1.Text);
                     var v2 = Convert.ToDateTime(mask_data_valor2.Text);
-                    Resultado = modelo.PesquisarPorData(Resultado, v1, v2, "DataMudanca");
+                    Resultado = Resultado[0].PesquisarPorData(Resultado, v1, v2, "DataMudanca");
                 }
                 catch
                 {
@@ -262,7 +326,7 @@ namespace WindowsFormsApp1
                 {
                     var v1 = int.Parse(txt_pesquisa_numero1.Text);
                     var v2 = int.Parse(txt_pesquisa_numero2.Text);
-                    Resultado = modelo.PesquisarPorNumero(Resultado, v1, v2, id);
+                    Resultado = Resultado[0].PesquisarPorNumero(Resultado, v1, v2, id);
                 }
                 catch
                 {
@@ -279,7 +343,7 @@ namespace WindowsFormsApp1
                     {
                         var v1 = int.Parse(txt_pesquisa_numero1.Text);
                         var v2 = int.Parse(txt_pesquisa_numero2.Text);
-                        Resultado = modelo.PesquisarPorNumero(Resultado, v1, v2, "Databatismo");
+                        Resultado = Resultado[0].PesquisarPorNumero(Resultado, v1, v2, "Databatismo");
                     }
                     catch
                     {
@@ -293,12 +357,12 @@ namespace WindowsFormsApp1
             {
                 if (check_pesquisa_email.Checked)
                 {
-                    Resultado = modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Email");
+                    Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Email");
                 }
 
                 if (check_pesquisa_nome.Checked)
                 {
-                    Resultado = modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "NomePessoa");
+                    Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "NomePessoa");
                 }
             }
 
@@ -306,7 +370,7 @@ namespace WindowsFormsApp1
             {
                 if (check_pesquisa_nome.Checked)
                 {
-                    Resultado = modelo.PesquisarPorTexto(Resultado, txt_numeros_restricao.Text, "Nome");
+                    Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Nome");
                 }
             }
         }
@@ -314,18 +378,16 @@ namespace WindowsFormsApp1
         private string retornarStringId()
         {
             string id = "";
-            if (modelo is Pessoa)
+            if (Resultado[0] is Pessoa)
                 id = "IdPessoa";
-            if (modelo is Celula)
+            if (Resultado[0] is Celula)
                 id = "IdCelula";
-            if (modelo is Ministerio)
+            if (Resultado[0] is Ministerio)
                 id = "IdMinisterio";
-            if (modelo is Reuniao)
+            if (Resultado[0] is Reuniao)
                 id = "IdReuniao";
-            if (modelo is Historico)
-                id = "IdHistorico";
-            if (modelo is Chamada)
-                id = "IdChamada";
+            if (Resultado[0] is MudancaEstado)
+                id = "IdMudanca";
             return id;
         }
         

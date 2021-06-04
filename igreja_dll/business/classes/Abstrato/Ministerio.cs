@@ -87,10 +87,11 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where M.IdMinisterio='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
@@ -104,6 +105,8 @@ namespace business.classes.Abstrato
                     this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
                     dr.Close();
 
+                bd.fecharconexao(conexao);
+
                 this.Pessoas = new List<PessoaMinisterio>();
                     var listaPessoas = buscarPessoas(id);
                     if (listaPessoas != null)
@@ -115,6 +118,8 @@ namespace business.classes.Abstrato
                     if (listaCelulas != null)
                         foreach (var item in listaCelulas)
                             this.Celulas.Add((MinisterioCelula)item);
+
+                
                     
                 modelos.Add(this);
                 return modelos;
@@ -266,7 +271,7 @@ namespace business.classes.Abstrato
             return t8.Result;
         }        
 
-        public List<modelocrud> buscarPessoas(int? id)
+        private List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
                 + " inner join PessoaMinisterio as PEMI on P.IdPessoa=PEMI.PessoaId"
@@ -274,25 +279,33 @@ namespace business.classes.Abstrato
                 + $" where PEMI.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
-            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+            List<PessoaMinisterio> lista = new List<PessoaMinisterio>();
+            var conexao = bd.obterconexao();
+                        
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }
-
+            
             while (dr.Read())
             {
-                var m = new PessoaMinisterio().recuperar(int.Parse(Convert.ToString(dr["PessoaId"])))[0];                
-                modelos.Add(m);
+                var m = new PessoaMinisterio { IdPessoaMinisterio = int.Parse(Convert.ToString(dr["IdPessoaMinisterio"])) };                
+                lista.Add(m);
             }
             dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach (var item in lista)
+                modelos.Add(new PessoaMinisterio().recuperar(item.IdPessoaMinisterio)[0]);
+
             return modelos;
         }
 
-        public List<modelocrud> buscarCelulas(int? id)
+        private List<modelocrud> buscarCelulas(int? id)
         {
             Select_padrao = "select * from Celula as C "
                 + " inner join MinisterioCelula as MICE on C.IdCelula=MICE.CelulaId"
@@ -300,21 +313,29 @@ namespace business.classes.Abstrato
                 + $" where MICE.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            List<MinisterioCelula> lista = new List<MinisterioCelula>();
+            var conexao = bd.obterconexao();
             
-            SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
             {
                 dr.Close();
+                bd.fecharconexao(conexao);
                 return modelos;
             }            
 
             while (dr.Read())
             {
-                var m = new MinisterioCelula().recuperar(int.Parse(Convert.ToString(dr["CelulaId"])))[0];
-                modelos.Add(m);
+                var m = new MinisterioCelula { IdMinisterioCelula = int.Parse(Convert.ToString(dr["CelulaId"])) };
+                lista.Add(m);
             }
             dr.Close();
+            bd.fecharconexao(conexao);
+
+            foreach (var item in lista)
+                modelos.Add(new MinisterioCelula().recuperar(item.IdMinisterioCelula)[0]);
+
             return modelos;
         }
         

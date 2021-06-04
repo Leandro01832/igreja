@@ -76,14 +76,16 @@ namespace business.classes.Celula
                 Select_padrao += $" where M.IdEnderecoCelula={id}";
 
             List<modelocrud> modelos = new List<modelocrud>();
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
@@ -107,6 +109,7 @@ namespace business.classes.Celula
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 modelos.Add(this);
@@ -114,11 +117,12 @@ namespace business.classes.Celula
             }
             else
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
@@ -146,6 +150,7 @@ namespace business.classes.Celula
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 return modelos;

@@ -39,15 +39,13 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Chamada set Data_inicio={Data_inicio.ToString()},"
-               + $" Numero_chamada={Numero_chamada} where IdChamada={id} ";
-            
+               + $" Numero_chamada={Numero_chamada} where IdChamada={id} ";            
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Chamada where IdChamada={id} ";
-            
+            Delete_padrao = $"delete from Chamada where IdChamada={id} ";            
             return Delete_padrao;
         }
 
@@ -58,15 +56,16 @@ namespace business.classes
                 Select_padrao +=  $" where C.IdChamada='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
@@ -85,6 +84,7 @@ namespace business.classes
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 modelos.Add(this);
@@ -92,11 +92,12 @@ namespace business.classes
             }
             else
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
                 try
@@ -129,8 +130,8 @@ namespace business.classes
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
-
                 return modelos;
             }
 
@@ -140,11 +141,8 @@ namespace business.classes
         {            
             Insert_padrao = $"insert into Chamada "
             + " (Data_inicio, Numero_chamada, IdChamada) values"
-            + $" ('{DateTime.Now.ToString("yyyy-MM-dd")}', '{Numero_chamada.ToString()}', IDENT_CURRENT('Pessoa'))";
-            
+            + $" ('{DateTime.Now.ToString("yyyy-MM-dd")}', '{Numero_chamada.ToString()}', IDENT_CURRENT('Pessoa'))";            
             return Insert_padrao;
-        }       
-
-        
+        }              
     }
 }

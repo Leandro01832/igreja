@@ -25,6 +25,7 @@ namespace business.classes.Abstrato
 
         [Display(Name = "Ano de batismo")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        // Verificar se propriedade fica nesta classe abstrata. provavelmente não.
         public int Data_batismo
         {
             get
@@ -85,27 +86,31 @@ namespace business.classes.Abstrato
             if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
-                base.recuperar(id);
                 Select_padrao = "select * from MembroLgpd as P ";
                 if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
                 {
                     dr.Close();
+                    bd.fecharconexao(conexao);
                     return modelos;
                 }
-                    dr.Read();
+                base.recuperar(id);
+                dr.Read();
                     this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
                     this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
                     this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
                     dr.Close();
                     modelos.Add(this);
+                bd.fecharconexao(conexao);
                 return modelos;
             }
+            bd.fecharconexao(conexao);
             return modelos;
         }
 

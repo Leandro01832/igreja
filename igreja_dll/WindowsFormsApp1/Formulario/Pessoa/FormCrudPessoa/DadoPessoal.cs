@@ -32,6 +32,13 @@ namespace WindowsFormsApp1.Formulario.Pessoa
         {
             this.Text = "Daddos pessoais.";
 
+            if (ModeloNovo != null)
+            {
+                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                p.Telefone = new business.classes.Telefone();
+                p.Endereco = new business.classes.Endereco();                
+            }
+
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;

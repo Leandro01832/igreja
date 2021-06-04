@@ -60,17 +60,19 @@ namespace business.classes
             if (id != null)
                 Select_padrao += $" where M.IdHistorico='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();           
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -88,6 +90,7 @@ namespace business.classes
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
 
                 modelos.Add(this);
@@ -95,15 +98,17 @@ namespace business.classes
             }
             else
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return modelos;
+                    }
+
                     while (dr.Read())
                     {
                         Historico h = new Historico();
@@ -130,6 +135,7 @@ namespace business.classes
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

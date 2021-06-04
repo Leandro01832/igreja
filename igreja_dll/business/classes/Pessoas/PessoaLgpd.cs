@@ -53,23 +53,28 @@ namespace business.classes.Pessoas
             Select_padrao = "select * from PessoaLgpd as PL ";
             if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
+
             if (id != null)
             {
-                base.recuperar(id);
+                
                     Select_padrao = "select * from PessoaLgpd as PL ";
                     if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
-                        dr.Close();                        
-                        return modelos;
+                        dr.Close();
+                    bd.fecharconexao(conexao);
+                    return modelos;
                     }
+                base.recuperar(id);
                 dr.Close();
                 modelos.Add(this);
+                bd.fecharconexao(conexao);
                 return modelos;
             }
+            bd.fecharconexao(conexao);
             return modelos;
         }
     }

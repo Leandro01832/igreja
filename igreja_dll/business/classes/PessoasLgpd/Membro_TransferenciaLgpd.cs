@@ -56,27 +56,27 @@ namespace business.classes.PessoasLgpd
             if (id != null) Select_padrao += $" where MT.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
-            
+            var conexao = bd.obterconexao();
 
             if (id != null)
             {
                 try
                 {
-                    bd.abrirconexao();
-                    base.recuperar(id);
+                    
+                    
                     Select_padrao = "select * from Membro_TransferenciaLgpd as MT "
                + " inner join MembroLgpd as M on MT.IdPessoa=M.IdPessoa "
                + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
                     if (id != null) Select_padrao += $" where MT.IdPessoa='{id}' ";
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
-
+                    base.recuperar(id);
                     dr.Read();
                     this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                     this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
@@ -90,7 +90,7 @@ namespace business.classes.PessoasLgpd
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }
@@ -98,13 +98,13 @@ namespace business.classes.PessoasLgpd
             {
                 try
                 {
-                    bd.abrirconexao();
-                    SqlCommand comando = new SqlCommand(Select_padrao, bd.obterconexao());
+                    
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        bd.fecharconexao();
+                        bd.fecharconexao(conexao);
                         return modelos;
                     }
 
@@ -117,7 +117,7 @@ namespace business.classes.PessoasLgpd
                     dr.Close();
 
                     //Recursividade
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                     List<modelocrud> lista = new List<modelocrud>();
                     foreach (var m in modelos)
                     {
@@ -135,7 +135,7 @@ namespace business.classes.PessoasLgpd
                 }
                 finally
                 {
-                    bd.fecharconexao();
+                    bd.fecharconexao(conexao);
                 }
                 return modelos;
             }

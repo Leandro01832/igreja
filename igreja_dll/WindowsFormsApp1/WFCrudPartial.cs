@@ -33,8 +33,7 @@ namespace WindowsFormsApp1
         {
             if (modelo is Crianca || modelo is CriancaLgpd)
             {
-                CadastroCrianca c = new CadastroCrianca((Pessoa)modelo, condicaoAtualizar,
-                condicaoDeletar, condicaoDetalhes);
+                CadastroCrianca c = new CadastroCrianca((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
@@ -42,7 +41,7 @@ namespace WindowsFormsApp1
             if (modelo is Visitante || modelo is VisitanteLgpd)
             {
                 CadastroVisitante c =
-                new CadastroVisitante((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                new CadastroVisitante((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
@@ -50,7 +49,7 @@ namespace WindowsFormsApp1
             if (modelo is Membro_Aclamacao || modelo is Membro_AclamacaoLgpd)
             {
                 CadastroMembroAclamacao c =
-                new CadastroMembroAclamacao((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                new CadastroMembroAclamacao((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
@@ -58,7 +57,7 @@ namespace WindowsFormsApp1
             if (modelo is Membro_Batismo || modelo is Membro_BatismoLgpd)
             {
                 CadastroMembroBatismo c =
-                new CadastroMembroBatismo((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                new CadastroMembroBatismo((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
@@ -66,7 +65,7 @@ namespace WindowsFormsApp1
             if (modelo is Membro_Reconciliacao || modelo is Membro_ReconciliacaoLgpd)
             {
                 CadastroMembroReconciliacao c =
-                new CadastroMembroReconciliacao((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                new CadastroMembroReconciliacao((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
@@ -74,7 +73,7 @@ namespace WindowsFormsApp1
             if (modelo is Membro_Transferencia || modelo is Membro_TransferenciaLgpd)
             {
                 CadastroMembroTransferencia c =
-                new CadastroMembroTransferencia((Pessoa)modelo, condicaoAtualizar, condicaoDeletar, condicaoDetalhes);
+                new CadastroMembroTransferencia((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
                 c.MdiParent = this.MdiParent;
                 c.Show();
             }
