@@ -15,8 +15,20 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         public PessoasCelulasMinisterio(Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
-        {
+        {            
             InitializeComponent();
+            txt_pessoas.Leave += Txt_pessoas_Leave;
+            txt_celulas.Leave += Txt_celulas_Leave;
+        }
+
+        private void Txt_celulas_Leave(object sender, EventArgs e)
+        {
+            AddNaListaMinisterioCelulas = txt_celulas.Text;
+        }
+
+        private void Txt_pessoas_Leave(object sender, EventArgs e)
+        {
+            AddNaListaMinisterioPessoas = txt_pessoas.Text;
         }
 
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)
@@ -77,24 +89,16 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void txt_pessoas_TextChanged(object sender, EventArgs e)
         {
-        }
-
-        private void txt_celulas_TextChanged(object sender, EventArgs e)
-        {
-            AddNaListaMinisterioCelulas = txt_celulas.Text;
-        }
-
-        private void txt_pessoas_Leave(object sender, EventArgs e)
-        {
             AddNaListaMinisterioPessoas = "";
             var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
 
+            if(arr[arr.Length -1] == "")
             foreach (var item in arr)
             {
                 try
                 {
                     int numero = int.Parse(item);
-                    
+
                     var modelo = listaPessoas.FirstOrDefault(i => i.Codigo == numero);
                     try
                     {
@@ -104,21 +108,57 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     {
                         AddNaListaMinisterioPessoas = "";
                         txt_pessoas.Text = "";
-                        MessageBox.Show("Este formulario não esta atualizado." +
-                        " Para atualizar feche e abra novamente o formulario.");
+                        MessageBox.Show("Aguarde o processamento.");
                     }
                 }
                 catch
                 {
-                    if(item != "")
+                    if (item != "")
                     {
                         AddNaListaMinisterioPessoas = "";
                         txt_pessoas.Text = "";
                         txt_pessoas.Focus();
                         MessageBox.Show("Informe numeros de identificação de pessoas.");
-                    }                    
+                    }
                 }
             }
         }
+
+        private void txt_celulas_TextChanged(object sender, EventArgs e)
+        {
+            AddNaListaMinisterioCelulas = "";
+            var arr = txt_celulas.Text.Replace(" ", "").Split(',');
+
+            if (arr[arr.Length - 1] == "")
+            foreach (var item in arr)
+            {
+                try
+                {
+                    int numero = int.Parse(item);
+
+                    var modelo = listaCelulas.FirstOrDefault(i => i.IdCelula == numero);
+                    try
+                    {
+                        AddNaListaMinisterioCelulas += modelo.IdCelula.ToString() + ", ";
+                    }
+                    catch
+                    {
+                        AddNaListaMinisterioCelulas = "";
+                        txt_celulas.Text = "";
+                        MessageBox.Show("Aguarde o processamento.");
+                    }
+                }
+                catch
+                {
+                    if (item != "")
+                    {
+                        AddNaListaMinisterioCelulas = "";
+                        txt_celulas.Text = "";
+                        txt_celulas.Focus();
+                        MessageBox.Show("Informe numeros de identificação de celulas.");
+                    }
+                }
+            }
+        }        
     }
 }

@@ -1,4 +1,5 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database.banco;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Pessoa;
 
 namespace WindowsFormsApp1
 {
@@ -35,38 +37,44 @@ namespace WindowsFormsApp1
             statusVisitanteLgpd = new Label();
             statusVisitanteLgpd.Text = "Status de processamento de Visitante Lgpd: ";
             statusVisitanteLgpd.Location = new Point(5, 50);
-            statusVisitanteLgpd.Width = 350;
-            statusVisitanteLgpd.Height = 50;
+            statusVisitanteLgpd.Width = 550;
+            statusVisitanteLgpd.Height = 65;
+            statusVisitanteLgpd.Font = new System.Drawing.Font("Arial", 15);
 
             statusCriancaLgpd = new Label();
             statusCriancaLgpd.Text = "Status de processamento de Criança Lgpd: ";
-            statusCriancaLgpd.Location = new Point(5, 100);
-            statusCriancaLgpd.Width = 350;
-            statusCriancaLgpd.Height = 50;
+            statusCriancaLgpd.Location = new Point(5, 115);
+            statusCriancaLgpd.Width = 550;
+            statusCriancaLgpd.Height = 65;
+            statusCriancaLgpd.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroBatismoLgpd = new Label();
             statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: ";
-            statusMembroBatismoLgpd.Location = new Point(5, 150);
-            statusMembroBatismoLgpd.Width = 350;
-            statusMembroBatismoLgpd.Height = 50;
+            statusMembroBatismoLgpd.Location = new Point(5, 180);
+            statusMembroBatismoLgpd.Width = 550;
+            statusMembroBatismoLgpd.Height = 65;
+            statusMembroBatismoLgpd.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroTransferenciaLgpd = new Label();
             statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: ";
-            statusMembroTransferenciaLgpd.Location = new Point(5, 200);
-            statusMembroTransferenciaLgpd.Width = 350;
-            statusMembroTransferenciaLgpd.Height = 50;
+            statusMembroTransferenciaLgpd.Location = new Point(5, 245);
+            statusMembroTransferenciaLgpd.Width = 550;
+            statusMembroTransferenciaLgpd.Height = 65;
+            statusMembroTransferenciaLgpd.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroAclamacaoLgpd = new Label();
             statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: ";
-            statusMembroAclamacaoLgpd.Location = new Point(5, 250);
-            statusMembroAclamacaoLgpd.Width = 350;
-            statusMembroAclamacaoLgpd.Height = 50;
+            statusMembroAclamacaoLgpd.Location = new Point(5, 310);
+            statusMembroAclamacaoLgpd.Width = 550;
+            statusMembroAclamacaoLgpd.Height = 65;
+            statusMembroAclamacaoLgpd.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroReconciliacaoLgpd = new Label();
             statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: ";
-            statusMembroReconciliacaoLgpd.Location = new Point(5, 300);
-            statusMembroReconciliacaoLgpd.Width = 350;
-            statusMembroReconciliacaoLgpd.Height = 50;
+            statusMembroReconciliacaoLgpd.Location = new Point(5, 375);
+            statusMembroReconciliacaoLgpd.Width = 550;
+            statusMembroReconciliacaoLgpd.Height = 65;
+            statusMembroReconciliacaoLgpd.Font = new System.Drawing.Font("Arial", 15);
 
 
             //////////////////////////////////////////////////////////////////////////////////////
@@ -76,39 +84,45 @@ namespace WindowsFormsApp1
 
             statusVisitante = new Label();
             statusVisitante.Text = "Status de processamento de Visitante: ";
-            statusVisitante.Location = new Point(380, 50);
-            statusVisitante.Width = 350;
-            statusVisitante.Height = 50;
+            statusVisitante.Location = new Point(680, 50);
+            statusVisitante.Width = 550;
+            statusVisitante.Height = 65;
+            statusVisitante.Font = new System.Drawing.Font("Arial", 15);
 
             statusCrianca = new Label();
             statusCrianca.Text = "Status de processamento de Criança: ";
-            statusCrianca.Location = new Point(380, 100);
-            statusCrianca.Width = 350;
-            statusCrianca.Height = 50;
+            statusCrianca.Location = new Point(680, 115);
+            statusCrianca.Width = 550;
+            statusCrianca.Height = 65;
+            statusCrianca.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroBatismo = new Label();
             statusMembroBatismo.Text = "Status de processamento de Membro por Batismo: ";
-            statusMembroBatismo.Location = new Point(380, 150);
-            statusMembroBatismo.Width = 350;
-            statusMembroBatismo.Height = 50;
+            statusMembroBatismo.Location = new Point(680, 180);
+            statusMembroBatismo.Width = 550;
+            statusMembroBatismo.Height = 65;
+            statusMembroBatismo.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroTransferencia = new Label();
             statusMembroTransferencia.Text = "Status de processamento de Membro por Transferência: ";
-            statusMembroTransferencia.Location = new Point(380, 200);
-            statusMembroTransferencia.Width = 350;
-            statusMembroTransferencia.Height = 50;
+            statusMembroTransferencia.Location = new Point(680, 245);
+            statusMembroTransferencia.Width = 550;
+            statusMembroTransferencia.Height = 65;
+            statusMembroTransferencia.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroAclamacao = new Label();
             statusMembroAclamacao.Text = "Status de processamento de Membro por aclamação: ";
-            statusMembroAclamacao.Location = new Point(380, 250);
-            statusMembroAclamacao.Width = 350;
-            statusMembroAclamacao.Height = 50;
+            statusMembroAclamacao.Location = new Point(680, 310);
+            statusMembroAclamacao.Width = 550;
+            statusMembroAclamacao.Height = 65;
+            statusMembroAclamacao.Font = new System.Drawing.Font("Arial", 15);
 
             statusMembroReconciliacao = new Label();
             statusMembroReconciliacao.Text = "Status de processamento de Membro por reconciliação: ";
-            statusMembroReconciliacao.Location = new Point(380, 300);
-            statusMembroReconciliacao.Width = 350;
-            statusMembroReconciliacao.Height = 50;
+            statusMembroReconciliacao.Location = new Point(680, 375);
+            statusMembroReconciliacao.Width = 550;
+            statusMembroReconciliacao.Height = 65;
+            statusMembroReconciliacao.Font = new System.Drawing.Font("Arial", 15);
 
             this.Controls.Add(statusVisitanteLgpd);
             this.Controls.Add(statusCriancaLgpd);
@@ -128,7 +142,7 @@ namespace WindowsFormsApp1
 
         private void FormProcessamento_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -213,6 +227,34 @@ namespace WindowsFormsApp1
 
                 verifica = true;
             }
+        }
+
+        private void btn_processa_pessoa_Click(object sender, EventArgs e)
+        {
+            if (Pessoa.criancas == null)
+            { var form = new FrmCrianca(new Crianca()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança"; form.Show(); }
+            if (Pessoa.visitantes == null)
+            { var form = new FrmVisitante(new Visitante()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante"; form.Show(); }
+            if (Pessoa.membros_Aclamacao == null)
+            { var form = new FrmMembroAclamacao(new Membro_Aclamacao()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação"; form.Show(); }
+            if (Pessoa.membros_Batismo == null)
+            { var form = new MembroBatismo(new Membro_Batismo()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo"; form.Show(); }
+            if (Pessoa.membros_Reconciliacao == null)
+            { var form = new MembroReconciliacao(new Membro_Reconciliacao()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação"; form.Show(); }
+            if (Pessoa.membros_Transferencia == null)
+            { var form = new MembroTransferencia(new Membro_Transferencia()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferencia"; form.Show(); }
+            if (Pessoa.criancasLgpd == null)
+            { var form = new FrmCrianca(new CriancaLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança Lgpd"; form.Show(); }
+            if (Pessoa.visitantesLgpd == null)
+            { var form = new FrmVisitante(new VisitanteLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante Lgpd"; form.Show(); }
+            if (Pessoa.membros_AclamacaoLgpd == null)
+            { var form = new FrmMembroAclamacao(new Membro_AclamacaoLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação Lgpd"; form.Show(); }
+            if (Pessoa.membros_BatismoLgpd == null)
+            { var form = new MembroBatismo(new Membro_BatismoLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo Lgpd"; form.Show(); }
+            if (Pessoa.membros_ReconciliacaoLgpd == null)
+            { var form = new MembroReconciliacao(new Membro_ReconciliacaoLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação Lgpd"; form.Show(); }
+            if (Pessoa.membros_TransferenciaLgpd == null)
+            { var form = new MembroTransferencia(new Membro_TransferenciaLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferência Lgpd"; form.Show(); }
         }
     }
 }

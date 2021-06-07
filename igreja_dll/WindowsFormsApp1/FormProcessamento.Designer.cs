@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_processa_pessoa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -38,11 +39,23 @@
             this.timer1.Interval = 30000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btn_processa_pessoa
+            // 
+            this.btn_processa_pessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_processa_pessoa.Location = new System.Drawing.Point(82, 576);
+            this.btn_processa_pessoa.Name = "btn_processa_pessoa";
+            this.btn_processa_pessoa.Size = new System.Drawing.Size(340, 43);
+            this.btn_processa_pessoa.TabIndex = 0;
+            this.btn_processa_pessoa.Text = "processar todos os dados de pessoas";
+            this.btn_processa_pessoa.UseVisualStyleBackColor = true;
+            this.btn_processa_pessoa.Click += new System.EventHandler(this.btn_processa_pessoa_Click);
+            // 
             // FormProcessamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1393, 655);
+            this.Controls.Add(this.btn_processa_pessoa);
             this.Name = "FormProcessamento";
             this.Text = "FormProcessamento";
             this.Load += new System.EventHandler(this.FormProcessamento_Load);
@@ -53,5 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btn_processa_pessoa;
     }
 }

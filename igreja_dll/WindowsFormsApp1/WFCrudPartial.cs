@@ -123,9 +123,9 @@ namespace WindowsFormsApp1
 
             }
 
-            if (modelo is business.classes.Reuniao)
+            if (modelo is Reuniao)
             {
-                var p = (business.classes.Reuniao)modelo;
+                var p = (Reuniao)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
                     p.RemoverDaLista("ReuniaoPessoa", p, new Visitante(), AddNaListaReuniaoPessoas);
 
@@ -144,10 +144,50 @@ namespace WindowsFormsApp1
         private void Deletar_Click(object sender, EventArgs e)
         {
             var id = 0;
-            if(modelo is Pessoa) { var p = (Pessoa)modelo; id = p.IdPessoa; }
-            if(modelo is Ministerio) { var p = (Ministerio)modelo; id = p.IdMinisterio; }
-            if(modelo is Celula) { var p = (Celula)modelo; id = p.IdCelula; }
-            if(modelo is Reuniao) { var p = (Reuniao)modelo; id = p.IdReuniao; }
+            if(modelo is Pessoa)
+            {                
+                var p = (Pessoa)modelo; id = p.IdPessoa;
+                var models = modelo.recuperar(id);
+                if(models.Count == 0)
+                {
+                    MessageBox.Show("Você já apagou este registro");
+                    return;
+                }
+                listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa  == id));
+            }
+            if(modelo is Ministerio)
+            {
+                var p = (Ministerio)modelo; id = p.IdMinisterio;
+                var models = modelo.recuperar(id);
+                if (models.Count == 0)
+                {
+                    MessageBox.Show("Você já apagou este registro");
+                    return;
+                }
+                listaMinisterios.Remove(listaMinisterios.First(i => i.IdMinisterio == id));
+            }
+            if(modelo is Celula)
+            {
+                var p = (Celula)modelo; id = p.IdCelula;
+                var models = modelo.recuperar(id);
+                if (models.Count == 0)
+                {
+                    MessageBox.Show("Você já apagou este registro");
+                    return;
+                }
+                listaCelulas.Remove(listaCelulas.First(i => i.IdCelula == id));
+            }
+            if(modelo is Reuniao)
+            {
+                var p = (Reuniao)modelo; id = p.IdReuniao;
+                var models = modelo.recuperar(id);
+                if (models.Count == 0)
+                {
+                    MessageBox.Show("Você já apagou este registro");
+                    return;
+                }
+                listaReuniao.Remove(listaReuniao.First(i => i.IdReuniao == id));
+            }
 
             modelo.excluir(id);
             MessageBox.Show("Informação removida do banco de dados com sucesso.");

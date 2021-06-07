@@ -118,10 +118,14 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
-            FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+            try
+            {
+                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
+                FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+            }
+            catch {  }
         }
 
         private Button Mudanca { get; }
@@ -142,46 +146,66 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
-                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo,
-                 false, false, true);
-                fc.MdiParent = this.MdiParent;
-                fc.Show();
+                try
+                {
+                    Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
+                    FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo,
+                     false, false, true);
+                    fc.MdiParent = this.MdiParent;
+                    fc.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewCelula)
             {
-                Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
-                Celula.FinalizarCadastro dp =
-            new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
-            , false, false, true);
-                dp.MdiParent = this.MdiParent;
-                dp.Show();
+                try
+                {
+                    Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
+                    Celula.FinalizarCadastro dp =
+                new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
+                , false, false, true);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
-                FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
-                false, false, true);
-                dp.MdiParent = this.MdiParent;
-                dp.Show();
+                try
+                {
+                    Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
+                    FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
+                    false, false, true);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewReuniao)
             {
-                Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
-                FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                try
+                {
+                    Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
+                    FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewMudanca)
             {
-                Modelo = listaMudancaEstado.First(i => i.IdMudanca == ListView.numero);
-                DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                try
+                {
+                    Modelo = listaMudancaEstado.First(i => i.IdMudanca == ListView.numero);
+                    DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                catch {  }
             }
         }
 
@@ -194,38 +218,54 @@ namespace WindowsFormsApp1.Formulario
             }
             if (ListView is ListViewPessoa)
             {
-                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
-                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
-                , false, true, false);
-                fc.MdiParent = this.MdiParent;
-                fc.Show();
+                try
+                {
+                    Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
+                    FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
+                    , false, true, false);
+                    fc.MdiParent = this.MdiParent;
+                    fc.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewCelula)
             {
-                Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
-                Celula.FinalizarCadastro dp =
-            new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
-            , false, true, false);
-                dp.MdiParent = this.MdiParent;
-                dp.Show();
+                try
+                {
+                    Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
+                    Celula.FinalizarCadastro dp =
+                new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
+                , false, true, false);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
-                FinalizarCadastroMinisterio dp =
-                new FinalizarCadastroMinisterio((Ministerio)Modelo, false, true, false);
-                dp.MdiParent = this.MdiParent;
-                dp.Show();
+                try
+                {
+                    Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
+                    FinalizarCadastroMinisterio dp =
+                    new FinalizarCadastroMinisterio((Ministerio)Modelo, false, true, false);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewReuniao)
             {
-                Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
-                FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, true, false);
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                try
+                {
+                    Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
+                    FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, true, false);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                catch {  }
             }
         }
 
@@ -239,38 +279,54 @@ namespace WindowsFormsApp1.Formulario
 
             if (ListView is ListViewPessoa)
             {
-                Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
-                FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
-                , true, false, false);
-                fc.MdiParent = this.MdiParent;
-                fc.Show();
+                try
+                {
+                    Modelo = listaPessoas.First(i => i.Codigo == ListView.numero);
+                    FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((business.classes.Abstrato.Pessoa)Modelo
+                    , true, false, false);
+                    fc.MdiParent = this.MdiParent;
+                    fc.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewCelula)
             {
-                Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
-                Celula.FinalizarCadastro dp =
-            new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
-            , true, false, false);
-                dp.MdiParent = this.MdiParent;
-                dp.Show();
+                try
+                {
+                    Modelo = listaCelulas.First(i => i.IdCelula == ListView.numero);
+                    Celula.FinalizarCadastro dp =
+                new Celula.FinalizarCadastro((business.classes.Abstrato.Celula)Modelo
+                , true, false, false);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewMinisterio)
             {
-                Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
-                FinalizarCadastroMinisterio dp =
-            new FinalizarCadastroMinisterio((Ministerio)Modelo, true, false, false);
-                dp.MdiParent = this.MdiParent;
-                dp.Show();
+                try
+                {
+                    Modelo = listaMinisterios.First(i => i.IdMinisterio == ListView.numero);
+                    FinalizarCadastroMinisterio dp =
+                new FinalizarCadastroMinisterio((Ministerio)Modelo, true, false, false);
+                    dp.MdiParent = this.MdiParent;
+                    dp.Show();
+                }
+                catch {  }
             }
 
             if (ListView is ListViewReuniao)
             {
-                Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
-                FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, true, false, false);
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                try
+                {
+                    Modelo = listaReuniao.First(i => i.IdReuniao == ListView.numero);
+                    FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, true, false, false);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                catch {  }
             }
 
         }

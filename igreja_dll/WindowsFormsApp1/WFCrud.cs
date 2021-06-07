@@ -1,5 +1,6 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Celulas;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
@@ -104,6 +105,8 @@ namespace WindowsFormsApp1
             condicaoDeletar = deletar;
             condicaoAtualizar = atualizar;
             condicaoDetalhes = detalhes;
+
+            this.FormClosing += WFCrud_FormClosing;
 
             this.modelo = modelo;
             InfoForm = new Label();
@@ -393,6 +396,105 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void WFCrud_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (condicaoAtualizar || condicaoDetalhes)
+            {
+                if(modelo is Pessoa)
+                {
+                    Pessoa pes = null;
+                    var p = (Pessoa) modelo;
+                    if (p is Visitante)
+                        pes = (Visitante) new Visitante().recuperar(p.IdPessoa)[0];
+                    if (p is Crianca)
+                        pes = (Crianca)new Crianca().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_Batismo)
+                        pes = (Membro_Batismo)new Membro_Batismo().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_Aclamacao)
+                        pes = (Membro_Aclamacao)new Membro_Aclamacao().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_Transferencia)
+                        pes = (Membro_Transferencia)new Membro_Transferencia().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_Reconciliacao)
+                        pes = (Membro_Reconciliacao)new Membro_Reconciliacao().recuperar(p.IdPessoa)[0];
+
+                    if (p is VisitanteLgpd)
+                        pes = (VisitanteLgpd)new VisitanteLgpd().recuperar(p.IdPessoa)[0];
+                    if (p is CriancaLgpd)
+                        pes = (CriancaLgpd)new CriancaLgpd().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_BatismoLgpd)
+                        pes = (Membro_BatismoLgpd)new Membro_BatismoLgpd().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_AclamacaoLgpd)
+                        pes = (Membro_AclamacaoLgpd)new Membro_AclamacaoLgpd().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_TransferenciaLgpd)
+                        pes = (Membro_TransferenciaLgpd)new Membro_TransferenciaLgpd().recuperar(p.IdPessoa)[0];
+                    if (p is Membro_ReconciliacaoLgpd)
+                        pes = (Membro_ReconciliacaoLgpd)new Membro_ReconciliacaoLgpd().recuperar(p.IdPessoa)[0];
+
+                    listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa == p.IdPessoa));
+                    listaPessoas.Add(pes);                    
+                }
+
+                if(modelo is Ministerio)
+                {
+                    Ministerio minis = null;
+                    var m = (Ministerio)modelo;
+                    if (m is Lider_Celula)
+                        minis = (Lider_Celula) new Lider_Celula().recuperar(m.IdMinisterio)[0];
+                    if (m is Lider_Celula_Treinamento)
+                        minis = (Lider_Celula_Treinamento)new Lider_Celula_Treinamento().recuperar(m.IdMinisterio)[0];
+                    if (m is Lider_Ministerio)
+                        minis = (Lider_Ministerio)new Lider_Ministerio().recuperar(m.IdMinisterio)[0];
+                    if (m is Lider_Ministerio_Treinamento)
+                        minis = (Lider_Ministerio_Treinamento)new Lider_Ministerio_Treinamento().recuperar(m.IdMinisterio)[0];
+                    if (m is Supervisor_Celula)
+                        minis = (Supervisor_Celula)new Supervisor_Celula().recuperar(m.IdMinisterio)[0];
+                    if (m is Supervisor_Celula_Treinamento)
+                        minis = (Supervisor_Celula_Treinamento)new Supervisor_Celula_Treinamento().recuperar(m.IdMinisterio)[0];
+                    if (m is Supervisor_Ministerio)
+                        minis = (Supervisor_Ministerio)new Supervisor_Ministerio().recuperar(m.IdMinisterio)[0];
+                    if (m is Supervisor_Ministerio_Treinamento)
+                        minis = (Supervisor_Ministerio_Treinamento)new Supervisor_Ministerio_Treinamento().recuperar(m.IdMinisterio)[0];
+
+                    listaMinisterios.Remove(listaMinisterios.First(i => i.IdMinisterio == m.IdMinisterio));
+                    listaMinisterios.Add(minis);
+                }
+
+                if(modelo is Celula)
+                {
+                    Celula cel = null;
+                    var c = (Celula)modelo;
+
+                    if (c is Celula_Adolescente)
+                        cel = (Celula_Adolescente) new Celula_Adolescente().recuperar(c.IdCelula)[0];
+
+                    if (c is Celula_Casado)
+                        cel = (Celula_Casado)new Celula_Casado().recuperar(c.IdCelula)[0];
+
+                    if (c is Celula_Jovem)
+                        cel = (Celula_Jovem)new Celula_Jovem().recuperar(c.IdCelula)[0];
+
+                    if (c is Celula_Crianca)
+                        cel = (Celula_Crianca)new Celula_Crianca().recuperar(c.IdCelula)[0];
+
+                    if (c is Celula_Adulto)
+                        cel = (Celula_Adulto)new Celula_Adulto().recuperar(c.IdCelula)[0];
+
+                    listaCelulas.Remove(listaCelulas.First(i => i.IdCelula == c.IdCelula));
+                    listaCelulas.Add(cel);
+                }
+
+                if(modelo is Reuniao)
+                {
+                    var r = (Reuniao)modelo;
+                    var reu = (Reuniao) r.recuperar(r.IdReuniao)[0];
+                    listaReuniao.Remove(r);
+                    listaReuniao.Add(reu);
+                }
+            }
+
+            this.Dispose();
+        }
+
         private void DadoReuniao_Click(object sender, EventArgs e)
         {
             DadoReuniao frm = new DadoReuniao(modelo, CondicaoDeletar, CondicaoAtualizar, CondicaoDetalhes);
@@ -584,7 +686,22 @@ namespace WindowsFormsApp1
 
             modelo.salvar();
 
-            if(modelo is Pessoa && !BDcomum.BancoEnbarcado)
+            if (modelo is Pessoa && listaPessoas.Count > 0)
+                listaPessoas.Add((Pessoa)modelo);
+
+            if (modelo is Reuniao && listaReuniao.Count > 0)
+                listaReuniao.Add((Reuniao)modelo);
+
+            if (modelo is Ministerio && listaMinisterios.Count > 0)
+                listaMinisterios.Add((Ministerio)modelo);
+
+            if (modelo is Celula && listaCelulas.Count > 0)
+                listaCelulas.Add((Celula)modelo);
+
+            if (modelo is MudancaEstado && listaMudancaEstado.Count > 0)
+                listaMudancaEstado.Add((MudancaEstado)modelo);
+
+            if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
             {
                 var p = (Pessoa)modelo;
                 {

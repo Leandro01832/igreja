@@ -16,6 +16,7 @@ namespace Tests
        static string[] arr = new string[50];
        static string[] arr2 = new string[10];
         static Random randNum = new Random();
+       private static BDcomum  bd = new BDcomum();
         static int loop = 999;
         
 
@@ -80,6 +81,7 @@ namespace Tests
 
                 pes = new Visitante
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -151,6 +153,7 @@ namespace Tests
 
                 pes = new Crianca
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -222,6 +225,7 @@ namespace Tests
 
                 pes = new Membro_Aclamacao
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -295,6 +299,7 @@ namespace Tests
 
                 pes = new Membro_Batismo
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -367,6 +372,7 @@ namespace Tests
 
                 pes = new Membro_Transferencia
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -443,6 +449,7 @@ namespace Tests
 
                 pes = new Membro_Reconciliacao
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -516,6 +523,7 @@ namespace Tests
 
                 pes = new VisitanteLgpd
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -562,6 +570,7 @@ namespace Tests
 
                 pes = new CriancaLgpd
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -608,6 +617,7 @@ namespace Tests
 
                 pes = new Membro_AclamacaoLgpd
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -656,6 +666,7 @@ namespace Tests
 
                 pes = new Membro_BatismoLgpd
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -703,6 +714,7 @@ namespace Tests
 
                 pes = new Membro_TransferenciaLgpd
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {
@@ -754,6 +766,7 @@ namespace Tests
 
                 pes = new Membro_ReconciliacaoLgpd
                 {
+                    Codigo = bd.GetUltimoRegistroPessoa() + 1,
                     celula_ = null,
                     Chamada = new business.classes.Chamada
                     {

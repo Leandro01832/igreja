@@ -1,5 +1,6 @@
 ﻿using database;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Pessoa;
 
@@ -54,6 +55,10 @@ namespace WindowsFormsApp1.Formulario
             var m = (business.classes.Abstrato.Pessoa)ModeloVelho;
             var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
             p.MudarEstado(m.IdPessoa, ModeloNovo);
+            
+             listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa == m.IdPessoa));
+             listaPessoas.Add(listaPessoas.First(i => i.IdPessoa == p.IdPessoa));
+            
 
             MessageBox.Show("Mudança realizada com sucesso!!!");
         }

@@ -20,8 +20,14 @@ namespace WindowsFormsApp1.Formulario.Celula
         public MinisteriosCelula(business.classes.Abstrato.Celula p,
             bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
-        {
+        {            
             InitializeComponent();
+            txt_ministerio.Leave += Txt_ministerio_Leave;
+        }
+
+        private void Txt_ministerio_Leave(object sender, EventArgs e)
+        {
+            AddNaListaCelulaMinisterios = txt_ministerio.Text;
         }
 
         private void MinisteriosCelula_Load(object sender, EventArgs e)
@@ -33,8 +39,7 @@ namespace WindowsFormsApp1.Formulario.Celula
             {
                 txt_ministerio.Text = AddNaListaCelulaMinisterios;
             }
-
-            if(c.IdCelula != 0)
+            else
             {
                 var lista = c.buscarLista(new business.classes.Pessoas.Crianca(), c, "celula_", c.IdCelula);
                 if (lista != null) lbl_pessoas.Text = "Pessoas: ";
@@ -55,7 +60,39 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         private void txt_ministerio_TextChanged(object sender, EventArgs e)
         {
-            AddNaListaCelulaMinisterios = txt_ministerio.Text;         
+            AddNaListaCelulaMinisterios = "";
+            var arr = txt_ministerio.Text.Replace(" ", "").Split(',');
+
+            if (arr[arr.Length - 1] == "")
+            foreach (var item in arr)
+            {
+                try
+                {
+                    int numero = int.Parse(item);
+
+                    var modelo = listaMinisterios.FirstOrDefault(i => i.IdMinisterio == numero);
+                    try
+                    {
+                        AddNaListaCelulaMinisterios += modelo.IdMinisterio.ToString() + ", ";
+                    }
+                    catch
+                    {
+                        AddNaListaCelulaMinisterios = "";
+                        txt_ministerio.Text = "";
+                        MessageBox.Show("Aguarde o processamento.");
+                    }
+                }
+                catch
+                {
+                    if (item != "")
+                    {
+                        AddNaListaCelulaMinisterios = "";
+                        txt_ministerio.Text = "";
+                        txt_ministerio.Focus();
+                        MessageBox.Show("Informe numeros de identificação de ministérios.");
+                    }
+                }
+            }
         }
 
     }

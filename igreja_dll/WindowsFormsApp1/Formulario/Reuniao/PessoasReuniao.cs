@@ -16,9 +16,15 @@ namespace WindowsFormsApp1.Formulario.Reuniao
         public PessoasReuniao(modelocrud modelo, bool deletar, bool atualizar, bool detalhes)
         : base(modelo, deletar, atualizar, detalhes)
         {
+            
             InitializeComponent();
+            txt_pessoas.Leave += Txt_pessoas_Leave;
         }
-        
+
+        private void Txt_pessoas_Leave(object sender, EventArgs e)
+        {
+            AddNaListaReuniaoPessoas = txt_pessoas.Text;
+        }
 
         private void PessoasReuniao_Load(object sender, EventArgs e)
         {
@@ -57,14 +63,11 @@ namespace WindowsFormsApp1.Formulario.Reuniao
         }
 
         private void txt_pessoas_TextChanged(object sender, EventArgs e)
-        {            
-        }
-
-        private void txt_pessoas_Leave(object sender, EventArgs e)
         {
             AddNaListaReuniaoPessoas = "";
             var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
 
+            if (arr[arr.Length - 1] == "")
             foreach (var item in arr)
             {
                 try
@@ -85,10 +88,12 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     }
 
                 }
-                catch {
+                catch
+                {
                     AddNaListaReuniaoPessoas = "";
                     txt_pessoas.Text = "";
-                    MessageBox.Show("Informe numeros de identificação de pessoas."); }
+                    MessageBox.Show("Informe numeros de identificação de pessoas.");
+                }
             }
         }
     }
