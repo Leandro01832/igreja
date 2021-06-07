@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Pessoa;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
@@ -109,6 +110,14 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                         MessageBox.Show("Informe numeros de identificação de pessoas.");
                 }
             }
+        }
+
+        private void listapessoas_Click(object sender, EventArgs e)
+        {
+            FrmPessoa form = new FrmPessoa(null, "Pessoa");
+            form.MdiParent = this.MdiParent;
+            form.Text = "Lista de Pessoas";
+            form.Show();
         }
     }
 }

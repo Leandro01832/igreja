@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.FormularioMinisterio;
 
 namespace WindowsFormsApp1.Formulario.Celula
 {
@@ -109,5 +110,12 @@ namespace WindowsFormsApp1.Formulario.Celula
                 }
         }
 
+        private void ListaMinisterios_Click(object sender, EventArgs e)
+        {
+            FrmMinisterio form = new FrmMinisterio();
+            form.MdiParent = this.MdiParent;
+            form.Text = "lista de ministérios";
+            form.Show();
+        }
     }
 }

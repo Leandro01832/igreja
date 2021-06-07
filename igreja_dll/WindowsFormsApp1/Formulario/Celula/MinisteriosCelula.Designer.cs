@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_ministerio = new System.Windows.Forms.TextBox();
             this.lbl_pessoas = new System.Windows.Forms.Label();
+            this.ListaMinisterios = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,11 +62,23 @@
             this.lbl_pessoas.Size = new System.Drawing.Size(0, 25);
             this.lbl_pessoas.TabIndex = 3;
             // 
+            // ListaMinisterios
+            // 
+            this.ListaMinisterios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListaMinisterios.Location = new System.Drawing.Point(140, 188);
+            this.ListaMinisterios.Name = "ListaMinisterios";
+            this.ListaMinisterios.Size = new System.Drawing.Size(262, 35);
+            this.ListaMinisterios.TabIndex = 4;
+            this.ListaMinisterios.Text = "Abrir Lista de Ministérios";
+            this.ListaMinisterios.UseVisualStyleBackColor = true;
+            this.ListaMinisterios.Click += new System.EventHandler(this.ListaMinisterios_Click);
+            // 
             // MinisteriosCelula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ListaMinisterios);
             this.Controls.Add(this.lbl_pessoas);
             this.Controls.Add(this.txt_ministerio);
             this.Controls.Add(this.label1);
@@ -82,5 +95,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_ministerio;
         private System.Windows.Forms.Label lbl_pessoas;
+        private System.Windows.Forms.Button ListaMinisterios;
     }
 }

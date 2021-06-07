@@ -32,6 +32,8 @@
             this.txt_pessoas = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.listapessoas = new System.Windows.Forms.Button();
+            this.listacelulas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_celulas
@@ -72,11 +74,35 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Pessoas do ministério";
             // 
+            // listapessoas
+            // 
+            this.listapessoas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listapessoas.Location = new System.Drawing.Point(252, 179);
+            this.listapessoas.Name = "listapessoas";
+            this.listapessoas.Size = new System.Drawing.Size(227, 42);
+            this.listapessoas.TabIndex = 8;
+            this.listapessoas.Text = "Abrir lista de pessoas";
+            this.listapessoas.UseVisualStyleBackColor = true;
+            this.listapessoas.Click += new System.EventHandler(this.listapessoas_Click);
+            // 
+            // listacelulas
+            // 
+            this.listacelulas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listacelulas.Location = new System.Drawing.Point(252, 295);
+            this.listacelulas.Name = "listacelulas";
+            this.listacelulas.Size = new System.Drawing.Size(227, 42);
+            this.listacelulas.TabIndex = 9;
+            this.listacelulas.Text = "Abrir lista de celulas";
+            this.listacelulas.UseVisualStyleBackColor = true;
+            this.listacelulas.Click += new System.EventHandler(this.listacelulas_Click);
+            // 
             // PessoasCelulasMinisterio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 477);
+            this.Controls.Add(this.listacelulas);
+            this.Controls.Add(this.listapessoas);
             this.Controls.Add(this.txt_celulas);
             this.Controls.Add(this.txt_pessoas);
             this.Controls.Add(this.label2);
@@ -95,5 +121,7 @@
         private System.Windows.Forms.TextBox txt_pessoas;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button listapessoas;
+        private System.Windows.Forms.Button listacelulas;
     }
 }

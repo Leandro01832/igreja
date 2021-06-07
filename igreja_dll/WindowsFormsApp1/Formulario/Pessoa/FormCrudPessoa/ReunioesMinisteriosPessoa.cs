@@ -3,6 +3,9 @@ using database;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Celula;
+using WindowsFormsApp1.Formulario.FormularioMinisterio;
+using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 {
@@ -211,6 +214,30 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 txt_celula.Text = "";
                 MessageBox.Show("Informe um numero de identificação de celula.");
             }
+        }
+
+        private void listareuniao_Click(object sender, EventArgs e)
+        {
+            FrmReuniao form = new FrmReuniao();
+            form.MdiParent = this.MdiParent;
+            form.Text = "lista de reuniões";
+            form.Show();
+        }
+
+        private void listaministerios_Click(object sender, EventArgs e)
+        {
+            FrmMinisterio form = new FrmMinisterio();
+            form.MdiParent = this.MdiParent;
+            form.Text = "lista de ministérios";
+            form.Show();
+        }
+
+        private void listacelulas_Click(object sender, EventArgs e)
+        {
+            FrmCelula form = new FrmCelula();
+            form.MdiParent = this.MdiParent;
+            form.Text = "Lista de Celulas";
+            form.Show();
         }
     }
 }

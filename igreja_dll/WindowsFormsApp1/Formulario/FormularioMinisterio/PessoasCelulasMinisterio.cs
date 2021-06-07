@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Celula;
+using WindowsFormsApp1.Formulario.Pessoa;
 
 namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
@@ -188,6 +190,22 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                         }
                     }
                 }
+        }
+
+        private void listapessoas_Click(object sender, EventArgs e)
+        {
+            FrmPessoa form = new FrmPessoa(null, "Pessoa");
+            form.MdiParent = this.MdiParent;
+            form.Text = "Lista de Pessoas";
+            form.Show();
+        }
+
+        private void listacelulas_Click(object sender, EventArgs e)
+        {
+            FrmCelula form = new FrmCelula();
+            form.MdiParent = this.MdiParent;
+            form.Text = "Lista de Celulas";
+            form.Show();
         }
     }
 }
