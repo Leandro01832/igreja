@@ -105,13 +105,13 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 foreach (var item in arr)
                 {
                     if (item != "")
-                    {
-                        int numero = int.Parse(item);
+                    {                        
                         try
                         {
-                            var modelo = listaPessoas.FirstOrDefault(i => i.Codigo == numero);
+                            int numero = int.Parse(item);
                             try
                             {
+                                var modelo = listaPessoas.FirstOrDefault(i => i.Codigo == numero);
                                 AddNaListaMinisterioPessoas += modelo.IdPessoa.ToString() + ", ";
                             }
                             catch
