@@ -67,6 +67,15 @@ namespace WindowsFormsApp1.Formulario.Reuniao
             AddNaListaReuniaoPessoas = "";
             var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
 
+            try { int teste = int.Parse(arr[0]); }
+            catch
+            {
+                AddNaListaReuniaoPessoas = "";
+                txt_pessoas.Text = "";
+                txt_pessoas.Focus();
+                MessageBox.Show("Informe numeros de identificação de pessoas.");
+            }
+
             if (arr[arr.Length - 1] == "")
             foreach (var item in arr)
             {
@@ -74,25 +83,30 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                 {
                     if (item != "")
                     {
-                        var modelo = listaPessoas.FirstOrDefault(m => m.Codigo == int.Parse(item));
+                            int teste = int.Parse(item);
+                            
                         try
                         {
-                            AddNaListaReuniaoPessoas += modelo.IdPessoa.ToString() + ", ";
+                                var modelo = listaPessoas.First(m => m.Codigo == int.Parse(item));
+                                AddNaListaReuniaoPessoas += modelo.IdPessoa.ToString() + ", ";
                         }
                         catch
                         {
                             AddNaListaReuniaoPessoas = "";
-                            txt_pessoas.Text = "";
-                            MessageBox.Show("Aguarde um pouco para que seja atualizado a lista de pessoas.");
+                                var numero = GeTotalRegistrosPessoas();
+                                if (numero != listaPessoas.Count)
+                                    MessageBox.Show("Aguarde o processamento.");
+                                else
+                                    MessageBox.Show("Este registro não existe no banco de dados");
                         }
                     }
 
                 }
                 catch
                 {
-                    AddNaListaReuniaoPessoas = "";
-                    txt_pessoas.Text = "";
-                    MessageBox.Show("Informe numeros de identificação de pessoas.");
+                        txt_pessoas.Text = "";
+                        AddNaListaReuniaoPessoas = "";
+                        MessageBox.Show("Informe numeros de identificação de pessoas.");
                 }
             }
         }

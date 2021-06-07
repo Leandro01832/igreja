@@ -548,7 +548,7 @@ namespace WindowsFormsApp1
             return null;
         }
 
-        private int GeTotalRegistrosPessoas()
+        public int GeTotalRegistrosPessoas()
         {
             var _TotalRegistros = 0;
             SqlConnection con;
@@ -575,7 +575,7 @@ namespace WindowsFormsApp1
             return _TotalRegistros;
         }
 
-        private int GeTotalRegistrosCelulas()
+        public int GeTotalRegistrosCelulas()
         {
             var _TotalRegistros = 0;
             SqlConnection con;
@@ -600,7 +600,7 @@ namespace WindowsFormsApp1
             return _TotalRegistros;
         }
 
-        private int GeTotalRegistrosMinisterios()
+        public int GeTotalRegistrosMinisterios()
         {
             var _TotalRegistros = 0;
             SqlConnection con;
@@ -625,7 +625,7 @@ namespace WindowsFormsApp1
             return _TotalRegistros;
         }
 
-        private int GeTotalRegistrosReunioes()
+        public int GeTotalRegistrosReunioes()
         {
             var _TotalRegistros = 0;
             SqlConnection con;
@@ -650,7 +650,7 @@ namespace WindowsFormsApp1
             return _TotalRegistros;
         }
 
-        private int GeTotalRegistrosMudancaEstado()
+        public int GeTotalRegistrosMudancaEstado()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

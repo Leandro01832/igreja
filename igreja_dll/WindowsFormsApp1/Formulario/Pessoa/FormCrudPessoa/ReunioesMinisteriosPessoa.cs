@@ -1,4 +1,4 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes.Celulas;
 using database;
 using System;
 using System.Linq;
@@ -24,6 +24,40 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
+            txt_ministerios.Leave += Txt_ministerios_Leave;
+            txt_reunioes.Leave += Txt_reunioes_Leave;
+            txt_celula.Leave += Txt_celula_Leave;
+        }
+
+        private void Txt_celula_Leave(object sender, EventArgs e)
+        {
+            var p = (business.classes.Abstrato.Pessoa)modelo;
+            bool condicao = false;
+
+            try
+            {
+                if (new Celula_Adolescente().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
+                if (new Celula_Adulto().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
+                if (new Celula_Jovem().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
+                if (new Celula_Crianca().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
+                if (new Celula_Casado().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
+            }
+            catch { p.celula_ = null; }
+
+            if (condicao)
+                p.celula_ = int.Parse(txt_celula.Text);
+            else
+                p.celula_ = null;
+        }
+
+        private void Txt_reunioes_Leave(object sender, EventArgs e)
+        {
+            AddNaListaPessoaReunioes = txt_reunioes.Text;
+        }
+
+        private void Txt_ministerios_Leave(object sender, EventArgs e)
+        {
+            AddNaListaPessoaMinsterios = txt_ministerios.Text;
         }
 
         private void ReunioesMinisteriosPessoa_Load(object sender, EventArgs e)
@@ -69,14 +103,44 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             try
             {
                 var arr = txt_reunioes.Text.Replace(" ", "").Split(',');
-                foreach (var valor in arr)
+
+                try { int teste = int.Parse(arr[0]); }
+                catch
                 {
-                    if (valor != "") { int v = int.Parse(valor); }
+                    AddNaListaPessoaReunioes = "";
+                    txt_reunioes.Text = "";
+                    txt_reunioes.Focus();
+                    MessageBox.Show("Informe numeros de identificação de reuniões.");
                 }
-                AddNaListaPessoaReunioes = txt_reunioes.Text;
+
+                if (arr[arr.Length - 1] == "")
+                foreach (var valor in arr)
+                {                        
+                    if (valor != "")
+                    {
+                            int teste = int.Parse(valor);
+                            try
+                            {
+                                var v = listaReuniao.First(i => i.IdReuniao == int.Parse(valor));
+                                AddNaListaPessoaReunioes = v.IdReuniao.ToString() + ", ";
+                            }
+                            catch (Exception)
+                            {
+                                AddNaListaPessoaReunioes = "";
+                                txt_reunioes.Text = "";
+                                var numero = GeTotalRegistrosReunioes();
+                                if(numero != listaReuniao.Count)
+                                MessageBox.Show("Aguarde o processamento.");
+                                else
+                                MessageBox.Show("Este registro não existe no banco de dados");
+                            }
+                    }
+                }
+                
             }
             catch (Exception)
             {
+                AddNaListaPessoaReunioes = "";
                 txt_reunioes.Text = "";
                 MessageBox.Show("Informe numeros de identificação de reuniões.");
             }
@@ -88,21 +152,46 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
             {
                 AddNaListaPessoaMinsterios = "";
                 var arr = txt_ministerios.Text.Replace(" ", "").Split(',');
+
+                try { int teste = int.Parse(arr[0]); }
+                catch
+                {
+                    AddNaListaPessoaMinsterios = "";
+                    txt_ministerios.Text = "";
+                    txt_ministerios.Focus();
+                    MessageBox.Show("Informe numeros de identificação de ministérios.");
+                }
+
+                if (arr[arr.Length - 1] == "")
                 foreach (var valor in arr)
                 {
                     if (valor != "")
                     {
-                        int v = int.Parse(valor);
+                            int teste = int.Parse(valor);
+                            try
+                            {
+                                var v = listaMinisterios.First(i => i.IdMinisterio == int.Parse(valor));
+                                AddNaListaPessoaMinsterios += v.IdMinisterio.ToString() + ", ";
+                            }
+                            catch (Exception)
+                            {
+                                AddNaListaPessoaMinsterios = "";
+                                var numero = GeTotalRegistrosMinisterios();
+                                if (numero != listaMinisterios.Count)
+                                    MessageBox.Show("Aguarde o processamento.");
+                                else
+                                    MessageBox.Show("Este registro não existe no banco de dados");
+                            }
                     }
 
                 }
-                AddNaListaPessoaMinsterios = txt_ministerios.Text;
+                
             }
             catch (Exception)
             {
                 AddNaListaPessoaMinsterios = "";
                 txt_ministerios.Text = "";
-                MessageBox.Show("Informe numeros de identificação de ministerios.");
+                MessageBox.Show("Informe numeros de identificação de ministérios.");
             }
         }
 
