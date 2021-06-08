@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -22,7 +23,25 @@ namespace database.banco
         public static bool podeAbrir = true;
         public static bool BancoEnbarcado = false;
 
-        //  private SqlConnection conn;
+        public bool TestarConexao()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    WebProxy wp = new WebProxy();
+                    client.Proxy = wp;
+                    using (var stream = client.OpenRead("http://www.google.com"))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public SqlConnection obterconexao()
         {
@@ -43,7 +62,21 @@ namespace database.banco
             }
             if (!podeAbrir)
             {
-                return null;
+                if (TestarConexao())
+                {
+                    podeAbrir = true;
+                    conn = new SqlConnection(conecta2);
+                    try { conn.Open(); }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message.Contains("instância"))
+                        {
+                            MessageBox.Show("Você não esta conectado." + ex.Message);
+                            podeAbrir = false;
+                        }
+
+                    }
+                }
             }
 
             return conn;
@@ -110,7 +143,7 @@ namespace database.banco
                 }
                 catch (Exception)
                 {
-                    throw;
+                    podeAbrir = false;
                 } 
             }
             return Id;
@@ -137,7 +170,7 @@ namespace database.banco
                 }
                 catch (Exception)
                 {
-                    throw;
+                    podeAbrir = false;
                 } 
             }
             return Id;
@@ -164,7 +197,7 @@ namespace database.banco
                 }
                 catch (Exception)
                 {
-                    throw;
+                    podeAbrir = false;
                 } 
             }
             return Id;
@@ -191,7 +224,7 @@ namespace database.banco
                 }
                 catch (Exception)
                 {
-                    throw;
+                    podeAbrir = false;
                 } 
             }
             return Id;
