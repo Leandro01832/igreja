@@ -41,82 +41,88 @@ namespace business.classes.Celulas
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    Select_padrao = "select * from Celula_Casado as CC "
-                    + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
-                    if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+                        Select_padrao = "select * from Celula_Casado as CC "
+                        + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
+                        if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        base.recuperar(id);
+                        modelos.Add(this);
                     }
-                    dr.Close();
-                    base.recuperar(id);
-                    modelos.Add(this);
-                }
 
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Celula_Casado c = new Celula_Casado();
+                            c.IdCelula = int.Parse(dr["IdCelula"].ToString());
+                            modelos.Add(c);
+                        }
+
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Celula_Casado)m;
+                            var c = new Celula_Casado();
+                            c = (Celula_Casado)m.recuperar(cel.IdCelula)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
-
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Celula_Casado c = new Celula_Casado();
-                        c.IdCelula = int.Parse(dr["IdCelula"].ToString());
-                        modelos.Add(c);
+                        TratarExcessao(ex);
                     }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Celula_Casado)m;
-                        var c = new Celula_Casado();
-                        c = (Celula_Casado)m.recuperar(cel.IdCelula)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                business.classes.Abstrato.Celula.celulasCasado = null;
+            return modelos;
         }
 
         public override string salvar()

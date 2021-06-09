@@ -226,7 +226,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {                        
                         lista.AddRange(p);
-                        visitantesLgpd.AddRange(p.OfType<VisitanteLgpd>().ToList());
+                        if (visitantesLgpd != null)
+                            visitantesLgpd.AddRange(p.OfType<VisitanteLgpd>().ToList());
                     }                    
                 }
                 return lista;
@@ -241,7 +242,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        criancasLgpd.AddRange(p.OfType<CriancaLgpd>().ToList());
+                        if (criancasLgpd != null)
+                            criancasLgpd.AddRange(p.OfType<CriancaLgpd>().ToList());
                     }                   
                 }
                  return task.Result;
@@ -256,7 +258,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        membros_AclamacaoLgpd.AddRange(p.OfType<Membro_AclamacaoLgpd>().ToList());
+                        if (membros_AclamacaoLgpd != null)
+                            membros_AclamacaoLgpd.AddRange(p.OfType<Membro_AclamacaoLgpd>().ToList());
                     }                    
                 }                
                     return task.Result;
@@ -270,8 +273,9 @@ namespace business.classes.Abstrato
                     var p = new Membro_ReconciliacaoLgpd().recuperar(null);
                     if (p != null)
                     {
-                        task.Result.AddRange(p);                        
-                        membros_ReconciliacaoLgpd.AddRange(p.OfType<Membro_ReconciliacaoLgpd>().ToList()); 
+                        task.Result.AddRange(p);
+                        if (membros_ReconciliacaoLgpd != null)
+                            membros_ReconciliacaoLgpd.AddRange(p.OfType<Membro_ReconciliacaoLgpd>().ToList()); 
                     }                        
                 }
                     return task.Result;
@@ -285,8 +289,9 @@ namespace business.classes.Abstrato
                     var p = new Membro_BatismoLgpd().recuperar(null);
                     if (p != null)
                     {
-                        task.Result.AddRange(p);              
-                        membros_BatismoLgpd.AddRange(p.OfType<Membro_BatismoLgpd>().ToList()); 
+                        task.Result.AddRange(p);
+                        if (membros_BatismoLgpd != null)
+                            membros_BatismoLgpd.AddRange(p.OfType<Membro_BatismoLgpd>().ToList()); 
                     }                        
                 }
                     return task.Result;
@@ -301,7 +306,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        membros_TransferenciaLgpd.AddRange(p.OfType<Membro_TransferenciaLgpd>().ToList());
+                        if (membros_TransferenciaLgpd != null)
+                            membros_TransferenciaLgpd.AddRange(p.OfType<Membro_TransferenciaLgpd>().ToList());
                     }                    
                 }
                     return task.Result;
@@ -316,7 +322,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        visitantes.AddRange(p.OfType<Visitante>().ToList());
+                        if (visitantes != null)
+                            visitantes.AddRange(p.OfType<Visitante>().ToList());
                     }                    
                 }                    
                 return task.Result;
@@ -332,7 +339,8 @@ namespace business.classes.Abstrato
                     if(p  != null)
                     {
                         task.Result.AddRange(p);
-                        criancas.AddRange(p.OfType<Crianca>().ToList());
+                        if (criancas != null)
+                            criancas.AddRange(p.OfType<Crianca>().ToList());
                     }                    
                 }                   
                 return task.Result;
@@ -347,7 +355,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        membros_Aclamacao.AddRange(p.OfType<Membro_Aclamacao>().ToList());
+                        if (membros_Aclamacao != null)
+                            membros_Aclamacao.AddRange(p.OfType<Membro_Aclamacao>().ToList());
                     }                    
                 }                    
                 return task.Result;
@@ -362,7 +371,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        membros_Reconciliacao.AddRange(p.OfType<Membro_Reconciliacao>().ToList());
+                        if (membros_Reconciliacao != null)
+                            membros_Reconciliacao.AddRange(p.OfType<Membro_Reconciliacao>().ToList());
                     }                    
                 }                    
                 return task.Result;
@@ -377,7 +387,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        membros_Batismo.AddRange(p.OfType<Membro_Batismo>().ToList());
+                        if (membros_Batismo != null)
+                            membros_Batismo.AddRange(p.OfType<Membro_Batismo>().ToList());
                     }                    
                 }                    
                 return task.Result;
@@ -392,7 +403,8 @@ namespace business.classes.Abstrato
                     if(p != null)
                     {
                         task.Result.AddRange(p);
-                        membros_Transferencia.AddRange(p.OfType<Membro_Transferencia>().ToList());
+                        if (membros_Transferencia != null)
+                            membros_Transferencia.AddRange(p.OfType<Membro_Transferencia>().ToList());
                     }                    
                 }                    
                 return task.Result;

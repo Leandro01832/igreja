@@ -166,6 +166,7 @@ namespace business.classes.Abstrato
                     if(c != null)
                     {
                         lista.AddRange(c);
+                        if(celulasAdolescente != null)
                         celulasAdolescente.AddRange(c.OfType<Celula_Adolescente>());
                     }                    
                 }                
@@ -181,7 +182,8 @@ namespace business.classes.Abstrato
                     if(c != null)
                     {
                         task.Result.AddRange(c);
-                        celulasAdulto.AddRange(c.OfType<Celula_Adulto>());
+                        if (celulasAdulto != null)
+                            celulasAdulto.AddRange(c.OfType<Celula_Adulto>());
                     }                    
                 }                
                 return task.Result;
@@ -196,7 +198,8 @@ namespace business.classes.Abstrato
                     if(c != null)
                     {
                         task.Result.AddRange(c);
-                        celulasCasado.AddRange(c.OfType<Celula_Casado>());
+                        if (celulasCasado != null)
+                            celulasCasado.AddRange(c.OfType<Celula_Casado>());
                     }                    
                 }                    
                 return task.Result;
@@ -211,7 +214,8 @@ namespace business.classes.Abstrato
                     if(c != null)
                     {
                         task.Result.AddRange(c);
-                        celulasCrianca.AddRange(c.OfType<Celula_Crianca>());
+                        if (celulasCrianca != null)
+                            celulasCrianca.AddRange(c.OfType<Celula_Crianca>());
                     }                    
                 }                    
                 return task.Result;
@@ -226,7 +230,8 @@ namespace business.classes.Abstrato
                     if(c != null)
                     {
                         task.Result.AddRange(c);
-                        celulasJovem.AddRange(c.OfType<Celula_Jovem>());
+                        if (celulasJovem != null)
+                            celulasJovem.AddRange(c.OfType<Celula_Jovem>());
                     }                    
                 }                    
                 return task.Result;

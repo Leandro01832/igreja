@@ -30,10 +30,14 @@ namespace WindowsFormsApp1
         Label statusMembroAclamacao;
         Label statusMembroReconciliacao;
 
+        BDcomum bd;
+
         bool verifica = true;
 
         public FormProcessamento()
         {
+            bd = new BDcomum();           
+
             statusVisitanteLgpd = new Label();
             statusVisitanteLgpd.Text = "Status de processamento de Visitante Lgpd: ";
             statusVisitanteLgpd.Location = new Point(5, 50);
@@ -138,6 +142,8 @@ namespace WindowsFormsApp1
             this.Controls.Add(statusMembroReconciliacao);
 
             InitializeComponent();
+            btn_processo_inicial.Enabled = bd.TestarConexao();
+            btn_processa_pessoa.Enabled = bd.TestarConexao();
         }
 
         private void FormProcessamento_Load(object sender, EventArgs e)
@@ -147,6 +153,10 @@ namespace WindowsFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            this.Text = "Processamento: " + textoPorcentagem;
+
+            btn_processo_inicial.Enabled = bd.TestarConexao() && int.Parse(textoPorcentagem.Replace("%", "")) < 100;
+            btn_processa_pessoa.Enabled = bd.TestarConexao();
             if (verifica)
             {
                 verifica = false;
@@ -255,6 +265,11 @@ namespace WindowsFormsApp1
             { var form = new MembroReconciliacao(new Membro_ReconciliacaoLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação Lgpd"; form.Show(); }
             if (Pessoa.membros_TransferenciaLgpd == null)
             { var form = new MembroTransferencia(new Membro_TransferenciaLgpd()); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferência Lgpd"; form.Show(); }
+        }
+
+        private void btn_processo_inicial_Click(object sender, EventArgs e)
+        {
+            UltimoRegistro();
         }
     }
 }

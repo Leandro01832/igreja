@@ -46,85 +46,91 @@ namespace business.classes.Ministerio
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    
-                    Select_padrao = "select * from Supervisor_Ministerio as SM inner join Ministerio as MI on SM.IdMinisterio=MI.IdMinisterio ";
-                    if (id != null) Select_padrao += $" where SM.IdMinisterio='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+
+
+                        Select_padrao = "select * from Supervisor_Ministerio as SM inner join Ministerio as MI on SM.IdMinisterio=MI.IdMinisterio ";
+                        if (id != null) Select_padrao += $" where SM.IdMinisterio='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
+                        dr.Read();
+                        this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        modelos.Add(this);
                     }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
-                    dr.Close();
-                    modelos.Add(this);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Supervisor_Ministerio m = new Supervisor_Ministerio();
+                            m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+                            modelos.Add(m);
+                        }
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Supervisor_Ministerio)m;
+                            var c = new Supervisor_Ministerio();
+                            c = (Supervisor_Ministerio)m.recuperar(cel.IdMinisterio)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Supervisor_Ministerio m = new Supervisor_Ministerio();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
+                        TratarExcessao(ex);
                     }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Supervisor_Ministerio)m;
-                        var c = new Supervisor_Ministerio();
-                        c = (Supervisor_Ministerio)m.recuperar(cel.IdMinisterio)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Abstrato.Ministerio.supervisoresMinisterio = null;
+            return modelos;
         }
 
         public override string salvar()

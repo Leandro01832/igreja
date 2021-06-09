@@ -46,90 +46,95 @@ namespace business.classes.Pessoas
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    
-                    Select_padrao = "select * from Membro_Batismo as MB "
-                    + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
-                    + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                    if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+
+
+                        Select_padrao = "select * from Membro_Batismo as MB "
+                        + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
+                        + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                        if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        modelos.Add(this);
                     }
-                    base.recuperar(id);
-                    dr.Close();
-                    modelos.Add(this);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }                
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    Select_padrao = "select * from Membro_Batismo as MB "
-                    + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
-                    + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                    if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        Select_padrao = "select * from Membro_Batismo as MB "
+                        + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
+                        + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                        if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Membro_Batismo mb = new Membro_Batismo();
+                            mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                            modelos.Add(mb);
+                        }
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Membro_Batismo)m;
+                            var c = new Membro_Batismo();
+                            c = (Membro_Batismo)m.recuperar(cel.IdPessoa)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Membro_Batismo mb = new Membro_Batismo();
-                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(mb);
+                        TratarExcessao(ex);
                     }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Membro_Batismo)m;
-                        var c = new Membro_Batismo();
-                        c = (Membro_Batismo)m.recuperar(cel.IdPessoa)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
 
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Pessoa.membros_Batismo = null;
+            return modelos;
         }
 
         public override string salvar()

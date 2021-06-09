@@ -37,78 +37,84 @@ namespace business.classes.Ministerio
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        base.recuperar(id);
+                        modelos.Add(this);
                     }
-                    dr.Close();
-                    base.recuperar(id);
-                    modelos.Add(this);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Lider_Celula_Treinamento m = new Lider_Celula_Treinamento();
+                            m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+                            modelos.Add(m);
+                        }
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Lider_Celula_Treinamento)m;
+                            var c = new Lider_Celula_Treinamento();
+                            c = (Lider_Celula_Treinamento)m.recuperar(cel.IdMinisterio)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Lider_Celula_Treinamento m = new Lider_Celula_Treinamento();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
+                        TratarExcessao(ex);
                     }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Lider_Celula_Treinamento)m;
-                        var c = new Lider_Celula_Treinamento();
-                        c = (Lider_Celula_Treinamento)m.recuperar(cel.IdMinisterio)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Abstrato.Ministerio.LideresCelulaTreinamento = null;
+            return modelos;
         }
 
         public override string excluir(int id)

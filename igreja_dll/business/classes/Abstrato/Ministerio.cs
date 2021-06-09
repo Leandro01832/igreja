@@ -154,7 +154,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         lista.AddRange(m);
-                        lideresCelula.AddRange(m.OfType<Lider_Celula>());
+                        if (lideresCelula != null)
+                            lideresCelula.AddRange(m.OfType<Lider_Celula>());
                     }                    
                 }                
                 return lista;
@@ -169,7 +170,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        LideresCelulaTreinamento.AddRange(m.OfType<Lider_Celula_Treinamento>());
+                        if (LideresCelulaTreinamento != null)
+                            LideresCelulaTreinamento.AddRange(m.OfType<Lider_Celula_Treinamento>());
                     }                    
                 }                
                 return task.Result;
@@ -184,7 +186,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        lideresMinisterio.AddRange(m.OfType<Lider_Ministerio>());
+                        if (lideresMinisterio != null)
+                            lideresMinisterio.AddRange(m.OfType<Lider_Ministerio>());
                     }                    
                 }                
                 return task.Result;
@@ -199,7 +202,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        lideresMinisterioTreinamento.AddRange(m.OfType<Lider_Ministerio_Treinamento>());
+                        if (lideresMinisterioTreinamento != null)
+                            lideresMinisterioTreinamento.AddRange(m.OfType<Lider_Ministerio_Treinamento>());
                     }                    
                 }                
                 return task.Result;
@@ -214,7 +218,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        supervisoresCelula.AddRange(m.OfType<Supervisor_Celula>());
+                        if (supervisoresCelula != null)
+                            supervisoresCelula.AddRange(m.OfType<Supervisor_Celula>());
                     }                    
                 }                
                 return task.Result;
@@ -229,7 +234,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        supervisoresCelulaTreinamento.AddRange(m.OfType<Supervisor_Celula_Treinamento>());
+                        if (supervisoresCelulaTreinamento != null)
+                            supervisoresCelulaTreinamento.AddRange(m.OfType<Supervisor_Celula_Treinamento>());
                     }                    
                 }                    
                 return task.Result;
@@ -245,7 +251,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        supervisoresMinisterio.AddRange(m.OfType<Supervisor_Ministerio>());
+                        if (supervisoresMinisterio != null)
+                            supervisoresMinisterio.AddRange(m.OfType<Supervisor_Ministerio>());
                     }                    
                 }                    
                 return task.Result;
@@ -260,7 +267,8 @@ namespace business.classes.Abstrato
                     if(m != null)
                     {
                         task.Result.AddRange(m);
-                        supervisoresMinisterioTreinamento.AddRange(m.OfType<Supervisor_Ministerio_Treinamento>());
+                        if (supervisoresMinisterioTreinamento != null)
+                            supervisoresMinisterioTreinamento.AddRange(m.OfType<Supervisor_Ministerio_Treinamento>());
                     }                    
                 }                    
                 return task.Result;

@@ -61,15 +61,18 @@ namespace database
 
         public void TratarExcessao(Exception ex)
         {
-                if (ex.Message.Contains("instância"))
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            else
+            if (ex.Message.Contains("instância"))
             {
-                if (ex.Message.Contains("reader"))
-                    MessageBox.Show( "A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
+                BDcomum.podeAbrir = false;
             }
+            else if (ex.Message.Contains("reader"))
+            {
+
+                MessageBox.Show("A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
+            }
+            else if(!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não esta respondendo")
+                && !ex.Message.Contains("índice estava fora do intervalo"))
+                MessageBox.Show(ex.Message);
         }
 
         public List<modelocrud> PesquisarPorData(List<modelocrud> modelos,DateTime comecar, DateTime terminar, string campo)

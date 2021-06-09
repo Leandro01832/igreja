@@ -48,13 +48,16 @@ namespace database.banco
             SqlConnection conn = null;
             if (podeAbrir)
             {
-                conn = new SqlConnection(conecta2);
-                try { conn.Open(); }
+                try
+                {
+                 conn = new SqlConnection(conecta2);
+                 conn.Open();
+                }
                 catch (Exception ex)
                 {
                     if (ex.Message.Contains("instância"))
                     {
-                        MessageBox.Show("Você não esta conectado." + ex.Message);
+                        conn = null;
                         podeAbrir = false;
                     }
                     

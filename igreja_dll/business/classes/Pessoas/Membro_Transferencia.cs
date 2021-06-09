@@ -57,87 +57,93 @@ namespace business.classes.Pessoas
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    
-                    Select_padrao = "select * from Membro_Transferencia as MT "
-                + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
-                + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
-                    if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
-                    }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
-                    this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
-                    this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
-                    dr.Close();
-                    modelos.Add(this);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
-                    }
 
-                    while (dr.Read())
-                    {
-                        Membro_Transferencia mt = new Membro_Transferencia();
-                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(mt);
-                    }
-                    dr.Close();
 
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Membro_Transferencia)m;
-                        var c = new Membro_Transferencia();
-                        c = (Membro_Transferencia)m.recuperar(cel.IdPessoa)[0];
-                        lista.Add(c);
+                        Select_padrao = "select * from Membro_Transferencia as MT "
+                    + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
+                    + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
+                        if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
+                        dr.Read();
+                        this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
+                        this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
+                        this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
+                        dr.Close();
+                        modelos.Add(this);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
+                    catch (Exception ex)
+                    {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
                 }
-                catch (Exception ex)
+                else
                 {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Membro_Transferencia mt = new Membro_Transferencia();
+                            mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                            modelos.Add(mt);
+                        }
+                        dr.Close();
+
+                        //Recursividade
+                        bd.fecharconexao(conexao);
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Membro_Transferencia)m;
+                            var c = new Membro_Transferencia();
+                            c = (Membro_Transferencia)m.recuperar(cel.IdPessoa)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
+                    }
+                    catch (Exception ex)
+                    {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Pessoa.membros_Transferencia = null;
+            return modelos;
 
         }
 

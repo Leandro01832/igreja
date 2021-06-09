@@ -54,90 +54,96 @@ namespace business.classes.Pessoas
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    
-                    Select_padrao = "select * from Visitante as V "
-                + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                    if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+
+
+                        Select_padrao = "select * from Visitante as V "
+                    + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+                        if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
+                        dr.Read();
+                        this.Data_visita = Convert.ToDateTime(Convert.ToString(dr["Data_visita"]));
+                        this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
+
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        modelos.Add(this);
                     }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Data_visita = Convert.ToDateTime(Convert.ToString(dr["Data_visita"]));
-                    this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
 
-                    dr.Close();
-                    modelos.Add(this);
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Visitante v = new Visitante();
+                            v.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                            modelos.Add(v);
+                        }
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Visitante)m;
+                            var c = new Visitante();
+                            c = (Visitante)m.recuperar(cel.IdPessoa)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Visitante v = new Visitante();
-                        v.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(v);
+                        TratarExcessao(ex);
                     }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Visitante)m;
-                        var c = new Visitante();
-                        c = (Visitante)m.recuperar(cel.IdPessoa)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
 
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Pessoa.visitantes = null;
+            return modelos;
         }
 
         public override string salvar()

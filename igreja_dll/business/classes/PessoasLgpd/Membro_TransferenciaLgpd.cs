@@ -58,88 +58,93 @@ namespace business.classes.PessoasLgpd
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    
-                    Select_padrao = "select * from Membro_TransferenciaLgpd as MT "
-               + " inner join MembroLgpd as M on MT.IdPessoa=M.IdPessoa "
-               + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
-                    if (id != null) Select_padrao += $" where MT.IdPessoa='{id}' ";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+
+
+                        Select_padrao = "select * from Membro_TransferenciaLgpd as MT "
+                   + " inner join MembroLgpd as M on MT.IdPessoa=M.IdPessoa "
+                   + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
+                        if (id != null) Select_padrao += $" where MT.IdPessoa='{id}' ";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
+                        dr.Read();
+                        this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
+                        this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
+                        this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        modelos.Add(this);
                     }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
-                    this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
-                    this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
-                    dr.Close();
-                    modelos.Add(this);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Membro_TransferenciaLgpd mt = new Membro_TransferenciaLgpd();
+                            mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                            modelos.Add(mt);
+                        }
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Membro_TransferenciaLgpd)m;
+                            var c = new Membro_TransferenciaLgpd();
+                            c = (Membro_TransferenciaLgpd)m.recuperar(cel.IdPessoa)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
-
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Membro_TransferenciaLgpd mt = new Membro_TransferenciaLgpd();
-                        mt.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(mt);
+                        TratarExcessao(ex);
                     }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Membro_TransferenciaLgpd)m;
-                        var c = new Membro_TransferenciaLgpd();
-                        c = (Membro_TransferenciaLgpd)m.recuperar(cel.IdPessoa)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
+                    return modelos;
+                } 
             }
-
+            if (id == null)
+                Pessoa.membros_TransferenciaLgpd = null;
+            return modelos;
         }
 
         public override string salvar()

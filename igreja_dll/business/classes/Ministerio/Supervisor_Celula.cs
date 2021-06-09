@@ -44,82 +44,88 @@ namespace business.classes.Ministerio
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    Select_padrao = "select * from Supervisor_Celula as SC inner join Ministerio as MI on SC.IdMinisterio=MI.IdMinisterio ";
-                    if (id != null) Select_padrao += $" where SC.IdMinisterio='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+                        Select_padrao = "select * from Supervisor_Celula as SC inner join Ministerio as MI on SC.IdMinisterio=MI.IdMinisterio ";
+                        if (id != null) Select_padrao += $" where SC.IdMinisterio='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
+                        dr.Read();
+                        this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        modelos.Add(this);
                     }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
-                    dr.Close();
-                    modelos.Add(this);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }                
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Supervisor_Celula m = new Supervisor_Celula();
+                            m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+                            modelos.Add(m);
+                        }
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Supervisor_Celula)m;
+                            var c = new Supervisor_Celula();
+                            c = (Supervisor_Celula)m.recuperar(cel.IdMinisterio)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Supervisor_Celula m = new Supervisor_Celula();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
+                        TratarExcessao(ex);
                     }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Supervisor_Celula)m;
-                        var c = new Supervisor_Celula();
-                        c = (Supervisor_Celula)m.recuperar(cel.IdMinisterio)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Abstrato.Ministerio.supervisoresCelula = null;
+            return modelos;
         }
 
         public override string salvar()

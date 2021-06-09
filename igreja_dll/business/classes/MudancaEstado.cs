@@ -458,91 +458,95 @@ namespace business.classes
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        dr.Read();
+
+                        this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                        this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                        this.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
+                        this.novoEstado = Convert.ToString(dr["novoEstado"]);
+                        this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
                     }
 
-                    dr.Read();
-
-                    this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                    this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                    this.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
-                    this.novoEstado = Convert.ToString(dr["novoEstado"]);
-                    this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                modelos.Add(this);
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+
+                    modelos.Add(this);
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            MudancaEstado m = new MudancaEstado();
+                            m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
+                            modelos.Add(m);
+                        }
+
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (MudancaEstado)m;
+                            var c = new MudancaEstado();
+                            c = (MudancaEstado)m.recuperar(cel.IdMudanca)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        MudancaEstado m = new MudancaEstado();
-                        m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
-                        modelos.Add(m);
+                        TratarExcessao(ex);
                     }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (MudancaEstado)m;
-                        var c = new MudancaEstado();
-                        c = (MudancaEstado)m.recuperar(cel.IdMudanca)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
 
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return modelos;
+                    return modelos;
+                } 
             }
 
+            return modelos;
         }
 
         public override string salvar()

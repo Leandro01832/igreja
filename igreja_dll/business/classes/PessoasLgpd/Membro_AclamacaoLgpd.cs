@@ -52,90 +52,96 @@ namespace business.classes.PessoasLgpd
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if (conexao != null)
             {
-                try
+                if (id != null)
                 {
-                    
-                    
-                    Select_padrao = "select * from Membro_AclamacaoLgpd as MA "
-               + " inner join MembroLgpd as M on MA.IdPessoa=M.IdPessoa "
-               + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa";
-                    if (id != null) Select_padrao += $" where MA.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    try
                     {
+
+
+                        Select_padrao = "select * from Membro_AclamacaoLgpd as MA "
+                   + " inner join MembroLgpd as M on MA.IdPessoa=M.IdPessoa "
+                   + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa";
+                        if (id != null) Select_padrao += $" where MA.IdPessoa='{id}'";
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+                        base.recuperar(id);
+                        dr.Read();
+                        this.Denominacao = Convert.ToString(dr["Denominacao"]);
                         dr.Close();
-                        bd.fecharconexao(conexao);
-                        return modelos;
+                        modelos.Add(this);
                     }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Denominacao = Convert.ToString(dr["Denominacao"]);
-                    dr.Close();
-                    modelos.Add(this);
-                }
 
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return modelos;
-            }
-            else
-            {
-                try
-                {
-                    
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
+                    catch (Exception ex)
                     {
+                        TratarExcessao(ex);
+                    }
+                    finally
+                    {
+                        bd.fecharconexao(conexao);
+                    }
+
+                    return modelos;
+                }
+                else
+                {
+                    try
+                    {
+
+                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                        SqlDataReader dr = comando.ExecuteReader();
+                        if (dr.HasRows == false)
+                        {
+                            dr.Close();
+                            bd.fecharconexao(conexao);
+                            return modelos;
+                        }
+
+                        while (dr.Read())
+                        {
+                            Membro_AclamacaoLgpd ma = new Membro_AclamacaoLgpd();
+                            ma.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                            modelos.Add(ma);
+                        }
+
                         dr.Close();
+
+                        //Recursividade
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        List<modelocrud> lista = new List<modelocrud>();
+                        foreach (var m in modelos)
+                        {
+                            var cel = (Membro_AclamacaoLgpd)m;
+                            var c = new Membro_AclamacaoLgpd();
+                            c = (Membro_AclamacaoLgpd)m.recuperar(cel.IdPessoa)[0];
+                            lista.Add(c);
+                        }
+                        modelos.Clear();
+                        modelos.AddRange(lista);
                     }
 
-                    while (dr.Read())
+                    catch (Exception ex)
                     {
-                        Membro_AclamacaoLgpd ma = new Membro_AclamacaoLgpd();
-                        ma.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(ma);
+                        TratarExcessao(ex);
                     }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-                    List<modelocrud> lista = new List<modelocrud>();
-                    foreach (var m in modelos)
+                    finally
                     {
-                        var cel = (Membro_AclamacaoLgpd)m;
-                        var c = new Membro_AclamacaoLgpd();
-                        c = (Membro_AclamacaoLgpd)m.recuperar(cel.IdPessoa)[0];
-                        lista.Add(c);
+                        bd.fecharconexao(conexao);
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
-                }
 
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return modelos;
+                    return modelos;
+                } 
             }
+            if (id == null)
+                Pessoa.membros_AclamacaoLgpd = null;
+            return modelos;
         }
 
         public override string salvar()
