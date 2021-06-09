@@ -56,8 +56,9 @@ namespace WindowsFormsApp1.Formulario
             var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
             p.MudarEstado(m.IdPessoa, ModeloNovo);
             
+
              listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa == m.IdPessoa));
-             listaPessoas.Add(listaPessoas.First(i => i.IdPessoa == p.IdPessoa));
+             listaPessoas.Add(p);
             
 
             MessageBox.Show("Mudança realizada com sucesso!!!");
