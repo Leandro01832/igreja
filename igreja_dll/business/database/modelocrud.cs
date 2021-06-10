@@ -1,5 +1,7 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Celulas;
+using business.classes.Ministerio;
 using business.classes.Pessoas;
 using database.banco;
 using System;
@@ -73,6 +75,38 @@ namespace database
             else if(!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não esta respondendo")
                 && !ex.Message.Contains("índice estava fora do intervalo"))
                 MessageBox.Show(ex.Message);
+
+            else if(ex.Message.Contains("transporte") && ex.Message.Contains("servidor não esta respondendo"))
+            {
+                if (this.GetType().Name == "Visitante"           ) Pessoa.visitantes                = null;
+                if (this.GetType().Name == "Crianca"             ) Pessoa.criancas                  = null;
+                if (this.GetType().Name == "Membro_Aclamacao"    ) Pessoa.membros_Aclamacao         = null;
+                if (this.GetType().Name == "Membro_Batismo"      ) Pessoa.membros_Batismo           = null;
+                if (this.GetType().Name == "Membro_Reconciliacao") Pessoa.membros_Reconciliacao     = null;
+                if (this.GetType().Name == "Membro_Transferencia") Pessoa.membros_Transferencia     = null;
+
+                if (this.GetType().Name == "VisitanteLgpd"           ) Pessoa.visitantesLgpd            = null;
+                if (this.GetType().Name == "CriancaLgpd"             ) Pessoa.criancasLgpd              = null;
+                if (this.GetType().Name == "Membro_AclamacaoLgpd"    ) Pessoa.membros_AclamacaoLgpd     = null;
+                if (this.GetType().Name == "Membro_BatismoLgpd"      ) Pessoa.membros_BatismoLgpd       = null;
+                if (this.GetType().Name == "Membro_ReconciliacaoLgpd") Pessoa.membros_ReconciliacaoLgpd = null;
+                if (this.GetType().Name == "Membro_TransferenciaLgpd") Pessoa.membros_TransferenciaLgpd = null;
+
+                if (this.GetType().Name == "Lider_Celula") Ministerio.lideresCelula = null;
+                if (this.GetType().Name == "Lider_Celula_Treinamento") Ministerio.LideresCelulaTreinamento = null;
+                if (this.GetType().Name == "Lider_Ministerio") Ministerio.lideresMinisterio = null;
+                if (this.GetType().Name == "Lider_Ministerio_Treinamento") Ministerio.lideresMinisterioTreinamento = null;
+                if (this.GetType().Name == "Supervisor_Celula") Ministerio.supervisoresCelula = null;
+                if (this.GetType().Name == "Supervisor_Celula_Treinamento") Ministerio.supervisoresCelulaTreinamento = null;
+                if (this.GetType().Name == "Supervisor_Ministerio") Ministerio.supervisoresMinisterio = null;
+                if (this.GetType().Name == "Supervisor_Ministerio_Treinamento") Ministerio.supervisoresMinisterioTreinamento = null;
+
+                if (this.GetType().Name == "Celula_Adolescente") Celula.celulasAdolescente = null;
+                if (this.GetType().Name == "Celula_Adulto") Celula.celulasAdulto = null;
+                if (this.GetType().Name == "Celula_Casado") Celula.celulasCasado = null;
+                if (this.GetType().Name == "Celula_Crianca") Celula.celulasCrianca = null;
+                if (this.GetType().Name == "Celula_Jovem") Celula.celulasJovem = null;
+            }
         }
 
         public List<modelocrud> PesquisarPorData(List<modelocrud> modelos,DateTime comecar, DateTime terminar, string campo)

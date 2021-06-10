@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
    public class ImprimirRelatorio
     {
         public ImprimirRelatorio(List<Pessoa> Pessoas, List<Ministerio> Ministerios,
-            List<Celula> Celulas, List<Reuniao> Reuniao)
+            List<Celula> Celulas, List<Reuniao> Reuniao, List<MudancaEstado> MudancaEstado)
         {
             this.Pessoas = Pessoas;
             this.Ministerios = Ministerios;
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
         public List<Celula> Celulas { get; }
         public List<Reuniao> Reuniao { get; }
 
-        public void  imprimir(List<modelocrud> listamodelo, string tipo)
+        public void  imprimir(Type Tipo)
         {
          List<modelocrud> lista = new List<modelocrud>();
          PdfPTable table = null;
@@ -40,89 +40,82 @@ namespace WindowsFormsApp1
          int totalMinisterios = ListaMinisterios.Count;
          var ListaCelulas = Celulas;
          int totalCelulas = ListaCelulas.Count;
-
-            if (listamodelo != null)
-         if (listamodelo[0] != null && listamodelo[0] is Pessoa)
+            
+         if (Tipo == typeof(Pessoa))
          {                
-                lista = listamodelo;
                 table = new PdfPTable(2);
-                var quant = lista.Count;
+                var quant = Pessoas.Count;
              decimal p = (quant / totalPessoas);
              porcentagem = "A procentagem em relação ao total de pessoas é "
                  + p.ToString("F2") + "%. Quantidade de registros é: "
                  + quant;
          }
-
-            if (listamodelo != null)
-                if (listamodelo[0] != null && listamodelo[0] is Celula)
+         
+         if (Tipo == typeof(Celula))
          {
-                lista = listamodelo;
-                var quant = lista.Count;
+                var quant = Celulas.Count;
              decimal p = (quant / totalCelulas);
              porcentagem = "A procentagem em relação ao total de celulas é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
                  + quant;
          }
-
-            if (listamodelo != null)
-                if (listamodelo[0] != null && listamodelo[0] is Ministerio)
+         
+         if (Tipo == typeof(Ministerio))
          {
-                lista = listamodelo;
-                var quant = lista.Count;
+                var quant = Ministerios.Count;
                 decimal p = (quant / totalMinisterios);
                 porcentagem = "A procentagem em relação ao total de ministérios é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
                  + quant;
          }
-
-            if (listamodelo != null)
-                if (listamodelo[0] is Reuniao)
+         
+                if (Tipo == typeof(Reuniao))
              table = new PdfPTable(3);
 
          
 
-         if (tipo == "Pessoa" && listamodelo == null)
+         if (Tipo == typeof(Pessoa))
          {
              table = new PdfPTable(2);
                 foreach (var item in Pessoas)
                 lista.Add(item);
          }
 
-         if (tipo == "MembroLgpd" && listamodelo == null)
+         if (Tipo == typeof(MembroLgpd))
          {
              table = new PdfPTable(2);
                 foreach (var item in Pessoas.OfType<MembroLgpd>())
                     lista.Add(item);
             }
 
-         if (tipo == "Membro" && listamodelo == null)
+         if (Tipo == typeof(Membro))
          {
              table = new PdfPTable(2);
                 foreach (var item in Pessoas.OfType<Membro>())
                     lista.Add(item);
             }
 
-         if (tipo == "Ministerio" && listamodelo == null)
+         if (Tipo == typeof(Ministerio))
          {
              table = new PdfPTable(2);
                 foreach (var item in Ministerios)
                     lista.Add(item);
             }
 
-         if (tipo == "Celula" && listamodelo == null)
+         if (Tipo == typeof(Celula))
          {
              table = new PdfPTable(2);
                 foreach (var item in Celulas)
                     lista.Add(item);
          }
 
-         if(listamodelo[0] is MudancaEstado)
+         if(Tipo == typeof(MudancaEstado))
          table = new PdfPTable(4);
 
-            if (tipo != "")
-             valorTipo = tipo;
+            if (Tipo.IsAbstract)
+             valorTipo = Tipo.GetType().Name;
          else
-             valorTipo = listamodelo[0].GetType().Name;
+             valorTipo = Tipo.GetType().Name;
 
          Document doc = new Document(PageSize.A4);
          doc.SetMargins(40, 40, 40, 80);

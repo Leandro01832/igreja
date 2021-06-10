@@ -194,7 +194,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void listapessoas_Click(object sender, EventArgs e)
         {
-            FrmPessoa form = new FrmPessoa(null, "Pessoa");
+            FrmPessoa form = new FrmPessoa(typeof(business.classes.Abstrato.Pessoa));
             form.MdiParent = this.MdiParent;
             form.Text = "Lista de Pessoas";
             form.Show();

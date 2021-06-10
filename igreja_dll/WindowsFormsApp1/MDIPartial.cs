@@ -139,7 +139,7 @@ namespace WindowsFormsApp1
         {
             if (listaPessoas.Count > 0)
             {
-                FrmPessoa p = new FrmPessoa(null, "PessoaLgpd");
+                FrmPessoa p = new FrmPessoa(typeof(PessoaLgpd));
                 p.MdiParent = this;
                 p.Text = "Janela " + childFormNumber++;
                 p.Show(); 
@@ -151,7 +151,7 @@ namespace WindowsFormsApp1
         {
             if (listaPessoas.Count > 0)
             {
-                FrmPessoa p = new FrmPessoa(null, "Pessoa");
+                FrmPessoa p = new FrmPessoa(typeof(Pessoa));
                 p.MdiParent = this;
                 p.Text = "Janela " + childFormNumber++;
                 p.Show();
@@ -164,7 +164,7 @@ namespace WindowsFormsApp1
         {
             if (listaPessoas.Count > 0)
             {
-                FrmPessoa p = new FrmPessoa(null, "PessoaDado");
+                FrmPessoa p = new FrmPessoa(typeof(PessoaDado));
                 p.MdiParent = this;
                 p.Text = "Janela " + childFormNumber++;
                 p.Show(); 
@@ -174,7 +174,7 @@ namespace WindowsFormsApp1
 
         private void visitanteToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            FrmVisitante m = new FrmVisitante(new Visitante());
+            FrmVisitante m = new FrmVisitante(typeof(Visitante));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -182,7 +182,7 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem11_Click_1(object sender, EventArgs e)
         {
-            FrmVisitante m = new FrmVisitante(new VisitanteLgpd());
+            FrmVisitante m = new FrmVisitante(typeof(VisitanteLgpd));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -192,7 +192,7 @@ namespace WindowsFormsApp1
         {
             if (listaPessoas.Count > 0)
             {
-                FrmMembro m = new FrmMembro(null, "Membro");
+                FrmMembro m = new FrmMembro(typeof(Membro));
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();  
@@ -204,7 +204,7 @@ namespace WindowsFormsApp1
         {
             if (listaPessoas.Count > 0)
             {
-                FrmMembro m = new FrmMembro(null, "MembroLgpd");
+                FrmMembro m = new FrmMembro(typeof(MembroLgpd));
                 m.MdiParent = this;
                 m.Text = "Janela " + childFormNumber++;
                 m.Show();  
@@ -214,7 +214,7 @@ namespace WindowsFormsApp1
 
         private void criançaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            FrmCrianca m = new FrmCrianca(new Crianca());
+            FrmCrianca m = new FrmCrianca(typeof(Crianca));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -222,7 +222,7 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem17_Click_1(object sender, EventArgs e)
         {
-            FrmCrianca m = new FrmCrianca(new CriancaLgpd());
+            FrmCrianca m = new FrmCrianca(typeof(CriancaLgpd));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -230,10 +230,7 @@ namespace WindowsFormsApp1
 
         private void membroPorAclamaçãoToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Membro_Aclamacao();
-            p1.Endereco = new business.classes.Endereco();
-            p1.Telefone = new business.classes.Telefone();
-            FrmMembroAclamacao m = new FrmMembroAclamacao(p1);
+            FrmMembroAclamacao m = new FrmMembroAclamacao(typeof(Membro_Aclamacao));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -241,8 +238,7 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem13_Click_1(object sender, EventArgs e)
         {
-            Pessoa p1 = new Membro_AclamacaoLgpd();
-            FrmMembroAclamacao m = new FrmMembroAclamacao(p1);
+            FrmMembroAclamacao m = new FrmMembroAclamacao(typeof(Membro_AclamacaoLgpd));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -250,10 +246,7 @@ namespace WindowsFormsApp1
 
         private void membroPorBatismoToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            PessoaDado p1 = new Membro_Batismo();
-            p1.Endereco = new business.classes.Endereco();
-            p1.Telefone = new business.classes.Telefone();
-            MembroBatismo m = new MembroBatismo(p1);
+            MembroBatismo m = new MembroBatismo(typeof(Membro_Batismo));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -261,8 +254,7 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem14_Click_1(object sender, EventArgs e)
         {
-            Pessoa p1 = new Membro_BatismoLgpd();
-            MembroBatismo m = new MembroBatismo(p1);
+            MembroBatismo m = new MembroBatismo(typeof(Membro_BatismoLgpd));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -270,10 +262,7 @@ namespace WindowsFormsApp1
 
         private void membroPorReconciliaçãoToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            PessoaDado p = new Membro_Reconciliacao();
-            p.Endereco = new business.classes.Endereco();
-            p.Telefone = new business.classes.Telefone();
-            MembroReconciliacao m = new MembroReconciliacao(p);
+            MembroReconciliacao m = new MembroReconciliacao(typeof(Membro_Reconciliacao));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -281,8 +270,7 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem15_Click_1(object sender, EventArgs e)
         {
-            Pessoa p = new Membro_ReconciliacaoLgpd();
-            MembroReconciliacao m = new MembroReconciliacao(p);
+            MembroReconciliacao m = new MembroReconciliacao(typeof(Membro_ReconciliacaoLgpd));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -290,10 +278,7 @@ namespace WindowsFormsApp1
 
         private void membroPorTransferênciaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            PessoaDado p = new Membro_Transferencia();
-            p.Endereco = new business.classes.Endereco();
-            p.Telefone = new business.classes.Telefone();
-            MembroTransferencia m = new MembroTransferencia(p);
+            MembroTransferencia m = new MembroTransferencia(typeof(Membro_Transferencia));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -301,8 +286,7 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem16_Click_1(object sender, EventArgs e)
         {
-            Pessoa p = new Membro_TransferenciaLgpd();
-            MembroTransferencia m = new MembroTransferencia(p);
+            MembroTransferencia m = new MembroTransferencia(typeof(Membro_TransferenciaLgpd));
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
             m.Show();
@@ -311,162 +295,114 @@ namespace WindowsFormsApp1
 
         private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                string tipo = "PessoaLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(PessoaLgpd)); 
         }
 
         private void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                string tipo = "PessoaDado";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(PessoaDado)); 
         }
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<CriancaLgpd>())
-                    lista.Add(item);
-
-                string tipo = "CriancaLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(CriancaLgpd)); 
         }
 
         private void toolStripMenuItem32_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<VisitanteLgpd>())
-                    lista.Add(item);
-
-                string tipo = "VisitanteLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(VisitanteLgpd)); 
         }
 
         private void toolStripMenuItem27_Click(object sender, EventArgs e)
         {
-                string tipo = "MembroLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(MembroLgpd)); 
         }
 
         private void toolStripMenuItem28_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_AclamacaoLgpd>())
-                    lista.Add(item);
-                
-                string tipo = "Membro_AclamacaoLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_AclamacaoLgpd)); 
         }
 
         private void toolStripMenuItem29_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_BatismoLgpd>())
-                    lista.Add(item);
-
-                string tipo = "Membro_BatismoLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_BatismoLgpd)); 
         }
 
         private void toolStripMenuItem30_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_TransferenciaLgpd>())
-                    lista.Add(item);
-
-                string tipo = "Membro_TransferenciaLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_TransferenciaLgpd)); 
         }
 
         private void toolStripMenuItem31_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_ReconciliacaoLgpd>())
-                    lista.Add(item);
-
-                string tipo = "Membro_ReconciliacaoLgpd";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_ReconciliacaoLgpd)); 
         }
 
         private void toolStripMenuItem33_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Crianca>())
-                    lista.Add(item);
-
-                string tipo = "Crianca";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Crianca)); 
         }
 
         private void toolStripMenuItem39_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Visitante>())
-                    lista.Add(item);
-
-                string tipo = "Visitante";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Visitante)); 
         }
 
         private void toolStripMenuItem34_Click(object sender, EventArgs e)
         {
-                string tipo = "Membro";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro)); 
         }
 
         private void toolStripMenuItem35_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_Aclamacao>())
-                lista.Add(item);
-
-                string tipo = "Membro_Aclamacao";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_Aclamacao)); 
         }
 
         private void toolStripMenuItem36_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_Batismo>())
-                    lista.Add(item);
-
-                string tipo = "Membro_Batismo";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_Batismo)); 
         }
 
         private void toolStripMenuItem37_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_Transferencia>())
-                    lista.Add(item);
-
-                string tipo = "Membro_Transferencia";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_Transferencia)); 
         }
 
         private void toolStripMenuItem38_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaPessoas.OfType<Membro_Reconciliacao>())
-                lista.Add(item);
-
-                string tipo = "Membro_Reconciliacao";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Membro_Reconciliacao)); 
         }
 
     }

@@ -303,14 +303,17 @@ namespace WindowsFormsApp1
 
         private void CalcularPorcentagem()
         {
+            var erro = 0;
             if (calcular)
             {
                 try
                 {
-                    var totalRegistros = 
-                       GeTotalRegistrosPessoas() + GeTotalRegistrosCelulas() +
-                        GeTotalRegistrosMinisterios() + GeTotalRegistrosReunioes() +
-                        GeTotalRegistrosMudancaEstado();
+                    var pessoas = GeTotalRegistrosPessoas();
+                    var celulas = GeTotalRegistrosCelulas();
+                    var ministerios = GeTotalRegistrosMinisterios();
+                    var reunioes = GeTotalRegistrosReunioes();
+                    var mudancas = GeTotalRegistrosMudancaEstado();
+                    var totalRegistros = pessoas + celulas + ministerios + reunioes + mudancas;
                    
 
                     var quantidadeCarregada = 
@@ -320,7 +323,14 @@ namespace WindowsFormsApp1
                     var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
                     textoPorcentagem = porcentagem.ToString() + "%";
                 }
-                catch { MessageBox.Show("Erro ao fazer calculo de porcentagem. Verifique sua conexão!!!"); calcular = false; }
+                catch
+                {
+                    erro++;
+                    if(erro  == 1)
+                    MessageBox.Show("Erro ao fazer calculo de porcentagem. Verifique sua conexão!!!");
+                    calcular = false;                    
+                    return;
+                }
             }
         }
 
@@ -579,7 +589,7 @@ namespace WindowsFormsApp1
                         con.Close();
                     }
                 }
-                catch { }
+                catch { calcular = false; }
             }
 
 
@@ -603,7 +613,7 @@ namespace WindowsFormsApp1
                         con.Close();
                     }
                 }
-                catch { }
+                catch { calcular = false; }
             }
             return _TotalRegistros;
         }
@@ -625,7 +635,7 @@ namespace WindowsFormsApp1
                         con.Close();
                     }
                 }
-                catch { }
+                catch { calcular = false; }
             }
             return _TotalRegistros;
         }
@@ -647,7 +657,7 @@ namespace WindowsFormsApp1
                         con.Close();
                     }
                 }
-                catch { }
+                catch { calcular = false; }
             }
             return _TotalRegistros;
         }
@@ -669,7 +679,7 @@ namespace WindowsFormsApp1
                         con.Close();
                     }
                 }
-                catch { }
+                catch { calcular = false; }
             }
             return _TotalRegistros;
         }

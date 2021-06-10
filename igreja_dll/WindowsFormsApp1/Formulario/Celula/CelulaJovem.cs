@@ -14,9 +14,7 @@ namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class CelulaJovem : FormularioListView
     {
-        public CelulaJovem() : base(
-            new ListViewCelulaJovem
-            (new Celula_Jovem(), ""))
+        public CelulaJovem() : base(new ListViewCelulaJovem(typeof(Celula_Jovem)))
         {
             InitializeComponent();
         }

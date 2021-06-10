@@ -8,7 +8,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
     {
         public LiderMinisterio() : base(
          new ListViewLiderMinisterio
-         (new Lider_Ministerio(), ""))
+         (typeof(Lider_Ministerio)))
         {
             InitializeComponent();
         }

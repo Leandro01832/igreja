@@ -14,9 +14,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class LiderCelula : FormularioListView
     {
-        public LiderCelula() : base(
-         new ListViewLiderCelula
-         (new Lider_Celula(), ""))
+        public LiderCelula() : base( new ListViewLiderCelula (typeof(Lider_Celula)))
         {
             InitializeComponent();
         }

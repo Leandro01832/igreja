@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     {
         
 
-        public FrmCrianca(modelocrud modelo) : base(new ListViewCrianca(modelo, ""))
+        public FrmCrianca(Type Tipo) : base(new ListViewCrianca(Tipo))
         {
             
             InitializeComponent();

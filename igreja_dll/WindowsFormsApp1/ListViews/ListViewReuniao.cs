@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.ListViews
 {
     public class ListViewReuniao : TodosListViews
     {
-        public ListViewReuniao(modelocrud modelo, string tipo) : base(modelo, tipo)
+        public ListViewReuniao(Type Tipo) : base(Tipo)
         {
         }
     }

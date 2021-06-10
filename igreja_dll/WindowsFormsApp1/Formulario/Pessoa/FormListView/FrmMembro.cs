@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
     public partial class FrmMembro : FormularioListView
     {
 
-        public FrmMembro(modelocrud modelo, string tipo) : base(new ListViewMembro(modelo, tipo))
+        public FrmMembro(Type Tipo) : base(new ListViewMembro(Tipo))
         {
             InitializeComponent();
         }

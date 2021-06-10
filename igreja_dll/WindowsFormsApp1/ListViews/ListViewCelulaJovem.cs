@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewCelulaJovem : ListViewCelula
     {
-        public ListViewCelulaJovem(modelocrud modelo, string tipo) : base(modelo, tipo)
+        public ListViewCelulaJovem(Type Tipo) : base(Tipo)
         {
 
         }

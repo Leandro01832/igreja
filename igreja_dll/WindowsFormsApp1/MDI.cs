@@ -1,4 +1,5 @@
 ﻿using business.classes;
+using business.classes.Abstrato;
 using business.classes.Celulas;
 using business.classes.Ministerio;
 using database;
@@ -367,151 +368,127 @@ namespace WindowsFormsApp1
 
         private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                string tipo = "Pessoa";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, tipo); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Pessoa)); 
         }
 
         private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, "Celula"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Celula)); 
         }
 
         private void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaCelulas.OfType<Celula_Adolescente>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir( lista, "Celula_Adolescente"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Celula_Adolescente)); 
         }
 
         private void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaCelulas.OfType<Celula_Adulto>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Celula_Adulto"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Celula_Adulto)); 
         }
 
         private void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaCelulas.OfType<Celula_Jovem>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Celula_Jovem"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Celula_Jovem)); 
         }
 
         private void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaCelulas.OfType<Celula_Crianca>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Celula_Crianca"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Celula_Crianca)); 
         }
 
         private void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaCelulas.OfType<Celula_Casado>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Celula_Casado"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Celula_Casado)); 
         }
 
         private void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(null, "Ministerio"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Ministerio)); 
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Lider_Celula>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Lider_Celula"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Lider_Celula)); 
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Lider_Celula_Treinamento>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Lider_Celula_Treinamento"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Lider_Celula_Treinamento)); 
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Lider_Ministerio>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Lider_Ministerio"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Lider_Ministerio)); 
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Lider_Ministerio_Treinamento>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Lider_Ministerio_Treinamento"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Lider_Ministerio_Treinamento)); 
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Supervisor_Celula>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Supervisor_Celula"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Supervisor_Celula)); 
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Supervisor_Celula_Treinamento>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Supervisor_Celula_Treinamento"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Supervisor_Celula_Treinamento)); 
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Supervisor_Ministerio>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Supervisor_Ministerio"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Supervisor_Ministerio)); 
         }
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaMinisterios.OfType<Supervisor_Ministerio_Treinamento>())
-                    lista.Add(item);
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Supervisor_Ministerio_Treinamento"); 
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Supervisor_Ministerio_Treinamento)); 
         }
 
         private  void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -540,20 +517,17 @@ namespace WindowsFormsApp1
         private async void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
                 var lista = await AtualizarComProgressBar(new MudancaEstado());
-
-                string tipo = "MudancaEstado";
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, tipo); 
+            
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(MudancaEstado)); 
         }
 
         private void reuniãoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                var lista = new List<modelocrud>();
-                foreach (var item in listaReuniao)
-                    lista.Add(item);
-
-                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas, listaReuniao);
-                ir.imprimir(lista, "Reuniao");
+                ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
+                    listaReuniao, listaMudancaEstado);
+                ir.imprimir(typeof(Reuniao));
         }
 
         private void chamadaToolStripMenuItem_Click(object sender, EventArgs e)

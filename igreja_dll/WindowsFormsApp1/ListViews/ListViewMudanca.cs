@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.ListViews
 {
     public class ListViewMudanca : TodosListViews
     {
-        public ListViewMudanca(modelocrud modelo, string tipo) : base(modelo, tipo)
+        public ListViewMudanca(Type Tipo) : base(Tipo)
         {
         }
     }

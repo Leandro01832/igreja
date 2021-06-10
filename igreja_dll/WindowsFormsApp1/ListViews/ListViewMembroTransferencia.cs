@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewMembroTransferencia : ListViewPessoa
     {
-        public ListViewMembroTransferencia(modelocrud modelo, string tipo) : base(modelo, tipo)
+        public ListViewMembroTransferencia(Type Tipo) : base(Tipo)
         {
 
         }

@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewSupervisorCelula : ListViewMinisterio
     {
-        public ListViewSupervisorCelula(modelocrud modelo, string tipo) : base(modelo, tipo)
+        public ListViewSupervisorCelula(Type Tipo) : base(Tipo)
         {
 
         }

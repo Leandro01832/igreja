@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 {
     public partial class FrmReuniao : FormularioListView
     {
-        public FrmReuniao() :base(new ListViewReuniao(new business.classes.Reuniao(), ""))
+        public FrmReuniao() :base(new ListViewReuniao(typeof(business.classes.Reuniao)))
         {
             InitializeComponent();
         }

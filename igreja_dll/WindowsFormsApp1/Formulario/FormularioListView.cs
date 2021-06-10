@@ -25,8 +25,8 @@ namespace WindowsFormsApp1.Formulario
         public FormularioListView(TodosListViews ListBox)
         {
             ListView = ListBox;
-            this.Modelo = ListView.Modelo;
-            this.Tipo = ListView.Tipo;            
+          //  this.Modelo = ListView.Modelo;
+          //  this.Tipo = ListView.Tipo;            
 
             Mudanca = new Button();
             Mudanca.Location = new Point(570, 40);

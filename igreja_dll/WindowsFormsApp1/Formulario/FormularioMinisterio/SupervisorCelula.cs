@@ -7,7 +7,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
     public partial class SupervisorCelula : FormularioListView
     {
         public SupervisorCelula() : base(
-        new ListViewSupervisorCelula(new Supervisor_Celula(), ""))
+        new ListViewSupervisorCelula(typeof(Supervisor_Celula)))
         {
             InitializeComponent();
         }

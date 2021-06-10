@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
     {
         public LiderCelulaTreinamento() : base(
          new ListViewLiderCelulaTtreinamento
-         (new Lider_Celula_Treinamento(), ""))
+         (typeof(Lider_Celula_Treinamento)))
         {
             InitializeComponent();
         }

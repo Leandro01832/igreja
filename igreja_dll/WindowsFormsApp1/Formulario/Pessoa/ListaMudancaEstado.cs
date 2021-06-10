@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa
 {
     public partial class ListaMudancaEstado : FormularioListView
     {
-        public ListaMudancaEstado() : base(new ListViewMudanca(new MudancaEstado(), ""))
+        public ListaMudancaEstado() : base(new ListViewMudanca(typeof(MudancaEstado)))
         {
             InitializeComponent();
         }

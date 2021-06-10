@@ -10,10 +10,9 @@ namespace WindowsFormsApp1.ListViews
     public class TodosListViews : ListBox
     {
         public int numero;
-        public modelocrud Modelo { get; set; }
-        public string Tipo { get; set; }
+        public Type Tipo { get; set; }
 
-        public  TodosListViews(modelocrud modelo, string tipo)
+        public  TodosListViews(Type tipo)
         {
             this.Tipo = tipo;
            // this.View = View.Tile;
@@ -22,7 +21,6 @@ namespace WindowsFormsApp1.ListViews
             this.SelectedValueChanged += TodosListViews_SelectedValueChanged;
             this.Location = new System.Drawing.Point(50, 50);
             this.Font = new System.Drawing.Font("Arial", 15);
-            Modelo = modelo;
         }
 
         private void TodosListViews_SelectedValueChanged(object sender, EventArgs e)

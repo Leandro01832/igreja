@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.ListViews
 {
     class ListViewMinisterio : TodosListViews
     {
-        public ListViewMinisterio(modelocrud modelo, string tipo) : base(modelo, tipo)
+        public ListViewMinisterio(Type Tipo) : base(Tipo)
         {
 
         }
