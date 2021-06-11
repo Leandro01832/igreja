@@ -514,10 +514,8 @@ namespace WindowsFormsApp1
             frm.Show();
         }
 
-        private async void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                var lista = await AtualizarComProgressBar(new MudancaEstado());
-            
+        private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {            
                 ImprimirRelatorio ir = new ImprimirRelatorio(listaPessoas, listaMinisterios, listaCelulas,
                     listaReuniao, listaMudancaEstado);
                 ir.imprimir(typeof(MudancaEstado)); 

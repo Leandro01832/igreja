@@ -335,7 +335,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo is Membro)
+            if (tipo == typeof(Membro))
             {
                 if (check_pesquisa_ano_batismo.Checked)
                 {
@@ -353,7 +353,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo is Pessoa)
+            if (tipo == typeof(Pessoa))
             {
                 if (check_pesquisa_email.Checked)
                 {
@@ -366,7 +366,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo is Celula || modelo is Ministerio)
+            if (tipo == typeof(Celula) || tipo == typeof(Ministerio))
             {
                 if (check_pesquisa_nome.Checked)
                 {

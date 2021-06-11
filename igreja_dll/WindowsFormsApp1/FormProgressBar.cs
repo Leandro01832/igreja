@@ -4,6 +4,7 @@ using database.banco;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -20,16 +21,15 @@ namespace WindowsFormsApp1
         {
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void ProgressBar_Tick(object sender, EventArgs e)
         {
             label1.Text = textoPorcentagem;
             var numero = textoPorcentagem.Replace("%", "");
 
-            if(int.Parse(numero) <= 100)
-            progressBar1.Value = int.Parse(numero);
+            if (int.Parse(numero) <= 100)
+                progressBar1.Value = int.Parse(numero);
             else
                 progressBar1.Value = 100;
-
         }
     }
 }

@@ -1,18 +1,16 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Pessoas;
-using database;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-   public class ImprimirRelatorio
+    public class ImprimirRelatorio
     {
         public ImprimirRelatorio(List<Pessoa> Pessoas, List<Ministerio> Ministerios,
             List<Celula> Celulas, List<Reuniao> Reuniao, List<MudancaEstado> MudancaEstado)
@@ -21,168 +19,199 @@ namespace WindowsFormsApp1
             this.Ministerios = Ministerios;
             this.Celulas = Celulas;
             this.Reuniao = Reuniao;
+            this.MudancaEstado = MudancaEstado;
         }
 
         public List<Pessoa> Pessoas { get; }
         public List<Ministerio> Ministerios { get; }
         public List<Celula> Celulas { get; }
         public List<Reuniao> Reuniao { get; }
+        public List<MudancaEstado> MudancaEstado { get; }
 
-        public void  imprimir(Type Tipo)
+        public void imprimir(Type Tipo)
         {
-         List<modelocrud> lista = new List<modelocrud>();
-         PdfPTable table = null;
-         var valorTipo = "";
-         var porcentagem = "";
-         var ListaPessoas = Pessoas;
-         int totalPessoas = ListaPessoas.Count;
-         var ListaMinisterios = Ministerios;
-         int totalMinisterios = ListaMinisterios.Count;
-         var ListaCelulas = Celulas;
-         int totalCelulas = ListaCelulas.Count;
-            
-         if (Tipo == typeof(Pessoa))
-         {                
+            PdfPTable table = null;
+            var valorTipo = "";
+            var porcentagem = "";
+            int totalPessoas = Pessoas.Count;
+            int totalMinisterios = Ministerios.Count;
+            int totalCelulas = Celulas.Count;
+
+            if (Tipo.IsSubclassOf(typeof(Pessoa)))
+            {
                 table = new PdfPTable(2);
-                var quant = Pessoas.Count;
-             decimal p = (quant / totalPessoas);
-             porcentagem = "A procentagem em relação ao total de pessoas é "
-                 + p.ToString("F2") + "%. Quantidade de registros é: "
-                 + quant;
-         }
-         
-         if (Tipo == typeof(Celula))
-         {
-                var quant = Celulas.Count;
-             decimal p = (quant / totalCelulas);
-             porcentagem = "A procentagem em relação ao total de celulas é "
-                 + p.ToString("f2") + "%. Quantidade de registros é: "
-                 + quant;
-         }
-         
-         if (Tipo == typeof(Ministerio))
-         {
-                var quant = Ministerios.Count;
+                var quant = Pessoas.Where(i =>  i.GetType().Name == Tipo.GetType().Name).ToList().Count;
+                decimal p = (quant / totalPessoas);
+                porcentagem = "A procentagem em relação ao total de pessoas é "
+                    + p.ToString("F2") + "%. Quantidade de registros é: "
+                    + quant;
+            }
+
+            if (Tipo.IsSubclassOf(typeof(Celula)))
+            {
+                var quant = Celulas.Where(i => i.GetType().Name == Tipo.GetType().Name).ToList().Count;
+                decimal p = (quant / totalCelulas);
+                porcentagem = "A procentagem em relação ao total de celulas é "
+                    + p.ToString("f2") + "%. Quantidade de registros é: "
+                    + quant;
+            }
+
+            if (Tipo.IsSubclassOf(typeof(Ministerio)))
+            {
+                var quant = Ministerios.Where(i => i.GetType().Name == Tipo.GetType().Name).ToList().Count;
                 decimal p = (quant / totalMinisterios);
                 porcentagem = "A procentagem em relação ao total de ministérios é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
                  + quant;
-         }
-         
-                if (Tipo == typeof(Reuniao))
-             table = new PdfPTable(3);
-
-         
-
-         if (Tipo == typeof(Pessoa))
-         {
-             table = new PdfPTable(2);
-                foreach (var item in Pessoas)
-                lista.Add(item);
-         }
-
-         if (Tipo == typeof(MembroLgpd))
-         {
-             table = new PdfPTable(2);
-                foreach (var item in Pessoas.OfType<MembroLgpd>())
-                    lista.Add(item);
             }
 
-         if (Tipo == typeof(Membro))
-         {
-             table = new PdfPTable(2);
-                foreach (var item in Pessoas.OfType<Membro>())
-                    lista.Add(item);
-            }
+            if (Tipo == typeof(Reuniao)) table = new PdfPTable(3);
 
-         if (Tipo == typeof(Ministerio))
-         {
-             table = new PdfPTable(2);
-                foreach (var item in Ministerios)
-                    lista.Add(item);
-            }
+            if (Tipo.IsSubclassOf(typeof(Pessoa))) table = new PdfPTable(2);
 
-         if (Tipo == typeof(Celula))
-         {
-             table = new PdfPTable(2);
-                foreach (var item in Celulas)
-                    lista.Add(item);
-         }
+            if (Tipo == typeof(Ministerio)) table = new PdfPTable(2);
 
-         if(Tipo == typeof(MudancaEstado))
-         table = new PdfPTable(4);
+            if (Tipo == typeof(Celula)) table = new PdfPTable(2);
+
+            if (Tipo == typeof(MudancaEstado)) table = new PdfPTable(4);
 
             if (Tipo.IsAbstract)
-             valorTipo = Tipo.GetType().Name;
-         else
-             valorTipo = Tipo.GetType().Name;
+                valorTipo = Tipo.GetType().Name;
+            else
+                valorTipo = Tipo.GetType().Name;
 
-         Document doc = new Document(PageSize.A4);
-         doc.SetMargins(40, 40, 40, 80);
+            Document doc = new Document(PageSize.A4);
+            doc.SetMargins(40, 40, 40, 80);
 
-         string path = Directory.GetCurrentDirectory();
+            string path = Directory.GetCurrentDirectory();
 
-         string caminho = path + @"\relatorio\" + "relatorio-" + valorTipo + "-" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
+            string caminho = path + @"\relatorio\" + "relatorio-" + valorTipo + "-" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
 
-         PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
 
-         doc.Open();
+            doc.Open();
 
-         Paragraph titulo = new Paragraph();
-         titulo.Font = new Font(Font.FontFamily.COURIER, 40);
-         titulo.Alignment = Element.ALIGN_CENTER;
-         titulo.Add("Relatório \n\n");
-         doc.Add(titulo);
-
-
-
-         Paragraph paragrafo = new Paragraph("", new Font(Font.NORMAL, 12));
-         string conteudo = "Este é um relatório do dia " + DateTime.Now.ToString("dd/MM/yyyy") +
-         " cujo o conteudo é referente a " + valorTipo + $". {porcentagem} \n\n";
-
-         paragrafo.Add(conteudo);
-         doc.Add(paragrafo);
+            Paragraph titulo = new Paragraph();
+            titulo.Font = new Font(Font.FontFamily.COURIER, 40);
+            titulo.Alignment = Element.ALIGN_CENTER;
+            titulo.Add("Relatório \n\n");
+            doc.Add(titulo);
 
 
 
-         foreach (var item in lista.OfType<Reuniao>())
-         {
-             table.AddCell("Id: " + item.IdReuniao.ToString());
-             table.AddCell("Data da reunião: " + item.Data_reuniao.ToString());
-         }
+            Paragraph paragrafo = new Paragraph("", new Font(Font.NORMAL, 12));
+            string conteudo = "Este é um relatório do dia " + DateTime.Now.ToString("dd/MM/yyyy") +
+            " cujo o conteudo é referente a " + valorTipo + $". {porcentagem} \n\n";
 
-         foreach (var item in lista.OfType<PessoaDado>())
-         {
-             table.AddCell("ID: " + item.Codigo.ToString());
-             table.AddCell("Nome: " + item.NomePessoa.ToString());
-         }
+            paragrafo.Add(conteudo);
+            doc.Add(paragrafo);
 
-            foreach (var item in lista.OfType<PessoaLgpd>().ToList())
+
+            if(Tipo == typeof(Reuniao))
+            foreach (var item in Reuniao)
             {
-                table.AddCell("ID: " + item.Codigo.ToString());
-                table.AddCell("Email: " + item.Email.ToString());
+                table.AddCell("Id: " + item.IdReuniao.ToString());
+                table.AddCell("Data da reunião: " + item.Data_reuniao.ToString());
+                table.AddCell("Horario de inicio: " + item.Horario_inicio.ToString());
             }
 
-            foreach (var item in lista.OfType<Ministerio>())
-         {
-             table.AddCell("Id: " + item.IdMinisterio.ToString());
-             table.AddCell("Data da reunião: " + item.Nome.ToString());
-         }
 
-         foreach (var item in lista.OfType<Celula>())
-         {
-             table.AddCell("Id: " + item.IdCelula.ToString());
-             table.AddCell("Data da reunião: " + item.Nome.ToString());
-         }
+            if (Tipo == typeof(Pessoa))
+            {
+                foreach (var item in Pessoas)
+                {
+                    table.AddCell("ID: " + item.Codigo.ToString());
+                    if(Tipo.IsSubclassOf(typeof(PessoaDado)))
+                    table.AddCell("Nome: " + item.NomePessoa.ToString());
+                    if (Tipo.IsSubclassOf(typeof(PessoaLgpd)))
+                        table.AddCell("Email: " + item.Email.ToString());
+                }
+            }
+            else if (Tipo.IsSubclassOf(typeof(Pessoa)))
+            {
+                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                {
+                    table.AddCell("ID: " + item.Codigo.ToString());
+                    if (Tipo.IsSubclassOf(typeof(PessoaDado)))
+                        table.AddCell("Nome: " + item.NomePessoa.ToString());
+                    if (Tipo.IsSubclassOf(typeof(PessoaLgpd)))
+                        table.AddCell("Email: " + item.Email.ToString());
+                }
+            }
 
-         foreach (var item in lista.OfType<Historico>())
-         {
-             table.AddCell("Data de inicio: " + item.Data_inicio.ToString());
-             table.AddCell("Data final: " + item.Data_inicio.AddDays(60).ToString());
-             table.AddCell("Faltas: " + item.Falta.ToString());
-         }
+            if (Tipo == typeof(PessoaDado))
+            {
+                foreach (var item in Pessoas.OfType<PessoaDado>())
+                {
+                    table.AddCell("ID: " + item.Codigo.ToString());
+                    table.AddCell("Nome: " + item.NomePessoa.ToString());
+                } 
+            }
+            else if (Tipo.IsSubclassOf(typeof(PessoaDado)))
+            {
+                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                {
+                    table.AddCell("ID: " + item.Codigo.ToString());
+                    table.AddCell("Nome: " + item.NomePessoa.ToString());
+                }
+            }
 
-            foreach (var item in lista.OfType<MudancaEstado>())
+
+            if (Tipo == typeof(PessoaLgpd))
+            {
+                foreach (var item in Pessoas.OfType<PessoaLgpd>().ToList())
+                {
+                    table.AddCell("ID: " + item.Codigo.ToString());
+                    table.AddCell("Email: " + item.Email.ToString());
+                } 
+            }
+            else if (Tipo.IsSubclassOf(typeof(PessoaLgpd)))
+            {
+                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                {
+                    table.AddCell("ID: " + item.Codigo.ToString());
+                    table.AddCell("Email: " + item.Email.ToString());
+                }
+            }
+
+
+            if (Tipo == typeof(Ministerio))
+            {
+                foreach (var item in Ministerios)
+                {
+                    table.AddCell("Id: " + item.IdMinisterio.ToString());
+                    table.AddCell("Nome do ministério: " + item.Nome.ToString());
+                } 
+            }
+            else if (Tipo.IsSubclassOf(typeof(Ministerio)))
+            {
+                foreach (var item in Ministerios.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                {
+                    table.AddCell("Id: " + item.IdMinisterio.ToString());
+                    table.AddCell("Nome do ministério: " + item.Nome.ToString());
+                }
+            }
+
+
+            if (Tipo == typeof(Celula))
+            {
+                foreach (var item in Celulas)
+                {
+                    table.AddCell("Id: " + item.IdCelula.ToString());
+                    table.AddCell("Nome da celula: " + item.Nome.ToString());
+                } 
+            }
+            else if (Tipo.IsSubclassOf(typeof(Celula)))
+            {
+                foreach (var item in Celulas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                {
+                    table.AddCell("Id: " + item.IdCelula.ToString());
+                    table.AddCell("Nome da celula: " + item.Nome.ToString());
+                }
+            }
+
+            if (Tipo == typeof(MudancaEstado))
+            foreach (var item in MudancaEstado.OfType<MudancaEstado>())
             {
                 table.AddCell("Data da mudança: " + item.DataMudanca.ToString("dd/MM/yyyy"));
                 table.AddCell("antigo estado: " + item.velhoEstado);
@@ -192,15 +221,15 @@ namespace WindowsFormsApp1
 
             doc.Add(table);
 
-         string caminhoImg =
-         "http://www.clickfamilia.org.br/oikos2015/wp-content/uploads/2019/07/what-is-family-ministry-lead-300x225.jpg";
-         Image img = Image.GetInstance(caminhoImg);
+            string caminhoImg =
+            "http://www.clickfamilia.org.br/oikos2015/wp-content/uploads/2019/07/what-is-family-ministry-lead-300x225.jpg";
+            Image img = Image.GetInstance(caminhoImg);
 
-         doc.Add(img);
+            doc.Add(img);
 
-         doc.Close();
+            doc.Close();
 
-         System.Diagnostics.Process.Start(caminho);
+            System.Diagnostics.Process.Start(caminho);
         }
     }
 }

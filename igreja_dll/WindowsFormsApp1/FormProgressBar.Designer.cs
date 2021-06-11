@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProgressBar));
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ProgressBar = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // progressBar1
@@ -52,11 +52,11 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
-            // timer1
+            // ProgressBar
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 60000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.ProgressBar.Enabled = true;
+            this.ProgressBar.Interval = 60000;
+            this.ProgressBar.Tick += new System.EventHandler(this.ProgressBar_Tick);
             // 
             // FormProgressBar
             // 
@@ -77,6 +77,6 @@
 
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer ProgressBar;
     }
 }

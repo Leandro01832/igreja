@@ -35,7 +35,7 @@
             // timerPadrao
             // 
             this.timerPadrao.Enabled = true;
-            this.timerPadrao.Interval = 10000;
+            this.timerPadrao.Interval = 30000;
             this.timerPadrao.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormPadrao

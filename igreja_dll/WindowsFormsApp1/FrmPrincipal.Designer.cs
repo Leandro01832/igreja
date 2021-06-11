@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lbl_horario = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Principal = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -110,11 +110,11 @@
             this.lbl_horario.Size = new System.Drawing.Size(0, 29);
             this.lbl_horario.TabIndex = 8;
             // 
-            // timer1
+            // Principal
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Principal.Enabled = true;
+            this.Principal.Interval = 1000;
+            this.Principal.Tick += new System.EventHandler(this.Principal_Tick);
             // 
             // notifyIcon
             // 
@@ -155,7 +155,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label lbl_horario;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer Principal;
         private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }

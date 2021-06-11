@@ -28,16 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioListView));
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormularioListView
             // 
@@ -45,7 +37,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsMdiContainer = false;
             this.Name = "FormularioListView";
             this.Text = "FormularioListView";
             this.Load += new System.EventHandler(this.FormularioListView_Load);
@@ -54,7 +45,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -59,22 +59,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-            var date2 = DateTime.Now.AddMilliseconds(timer1.Interval);
-            lbl_horario.Text = date2.ToString("HH:mm:ss");
-
-            var timer = new TimeSpan(date.Hour, date.Minute + 1, date.Second);
-
-            if (date2.Minute > timer.Minutes && notifica)
-            {
-                timer = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute + 1, DateTime.Now.Second);
-                Notificar();                
-            }
-
-        }
-
         private void notifyIcon_Click(object sender, EventArgs e)
         {
             notifyIcon.ShowBalloonTip(10, "Info", "Este é seu programa sistema igreja.", ToolTipIcon.Info);
@@ -141,6 +125,20 @@ namespace WindowsFormsApp1
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             UltimoRegistro();
+        }
+
+        private void Principal_Tick(object sender, EventArgs e)
+        {
+            var date2 = DateTime.Now.AddMilliseconds(Principal.Interval);
+            lbl_horario.Text = date2.ToString("HH:mm:ss");
+
+            var timer = new TimeSpan(date.Hour, date.Minute + 1, date.Second);
+
+            if (date2.Minute > timer.Minutes && notifica)
+            {
+                timer = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute + 1, DateTime.Now.Second);
+                Notificar();
+            }
         }
     }
 }
