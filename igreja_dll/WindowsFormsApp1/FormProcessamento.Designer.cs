@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerProcessamento = new System.Windows.Forms.Timer(this.components);
             this.btn_processa_pessoa = new System.Windows.Forms.Button();
             this.btn_processo_inicial = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // timer1
+            // timerProcessamento
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 30000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerProcessamento.Enabled = true;
+            this.timerProcessamento.Interval = 30000;
+            this.timerProcessamento.Tick += new System.EventHandler(this.timerProcessamento_Tick);
             // 
             // btn_processa_pessoa
             // 
@@ -78,7 +78,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerProcessamento;
         private System.Windows.Forms.Button btn_processa_pessoa;
         private System.Windows.Forms.Button btn_processo_inicial;
     }

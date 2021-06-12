@@ -124,6 +124,7 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                 bd.fecharconexao(conexao);
+                Dados_Relacionados = true;
                 this.Ministerios = new List<MinisterioCelula>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
@@ -139,6 +140,7 @@ namespace business.classes.Abstrato
                 
 
                 modelos.Add(this);
+                Dados_Relacionados = false;
                 return modelos;
             }
             return modelos;

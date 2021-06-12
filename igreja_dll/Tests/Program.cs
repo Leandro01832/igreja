@@ -63,25 +63,24 @@ namespace Tests
             //CadastrarCriancaLgpdTest();
             //CadastrarVisitanteLgpdTest();
 
-            
 
-            Type t = typeof(PessoaDado);
-            modelocrud modelo = null;
 
-            if (t.IsAbstract)
-            {
-                Console.WriteLine("sim é abstrato");
+            //Type t = typeof(PessoaDado);
+            //modelocrud modelo = null;
 
-                if(t == typeof(Pessoa)) Console.WriteLine("sim é uma pessoa");
-            }
-            else
-            {
-                Console.WriteLine("sim é derivado");
-                if (t == typeof(Visitante)) modelo = new Visitante();
+            //if (t.IsAbstract)
+            //{
+            //    Console.WriteLine("sim é abstrato");
 
-                if(modelo is Visitante) Console.WriteLine("sim é um visitante");
-            }
-                
+            //    if(t == typeof(Pessoa)) Console.WriteLine("sim é uma pessoa");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("sim é derivado");
+            //    if (t == typeof(Visitante)) modelo = new Visitante();
+
+            //    if(modelo is Visitante) Console.WriteLine("sim é um visitante");
+            //}              
 
             Console.ReadLine();
         }

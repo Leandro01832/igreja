@@ -106,7 +106,7 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                 bd.fecharconexao(conexao);
-
+                Dados_Relacionados = true;
                 this.Pessoas = new List<PessoaMinisterio>();
                     var listaPessoas = buscarPessoas(id);
                     if (listaPessoas != null)
@@ -122,6 +122,7 @@ namespace business.classes.Abstrato
                 
                     
                 modelos.Add(this);
+                Dados_Relacionados = false;
                 return modelos;
             }
             return modelos;

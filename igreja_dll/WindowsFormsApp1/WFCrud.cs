@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
         private Button dadoReuniao;
         private Button dadoReuniaoPessoas;
 
-        
+
 
 
         public modelocrud modelo { get; set; }
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
         private static string addNaListaPessoaMinsterios;
         private static string addNaListaPessoaReunioes;
         private static string addNaListaReuniaoPessoas;
-        
+
 
         public WFCrud(modelocrud modelo, bool deletar, bool atualizar, bool detalhes)
         {
@@ -311,11 +311,11 @@ namespace WindowsFormsApp1
                     InfoForm.Text = "Identificação: " + p.IdReuniao.ToString() + " - ";
                 }
 
-            }            
+            }
 
             if (modelo is Pessoa && this is FinalizarCadastroPessoa)
             {
-                dadoPessoal.Visible = true;                
+                dadoPessoal.Visible = true;
                 dadoClasse.Visible = true;
                 dadoMinisteriosPessoa.Visible = true;
                 dadoFoto.Visible = true;
@@ -361,7 +361,7 @@ namespace WindowsFormsApp1
             {
                 Proximo.Visible = false;
                 FinalizarCadastro.Visible = true;
-            }                
+            }
 
             if (condicaoAtualizar)
                 Atualizar.Visible = true;
@@ -372,9 +372,9 @@ namespace WindowsFormsApp1
 
             if (CondicaoDetalhes)
             {
-                foreach(var item in this.Controls)
+                foreach (var item in this.Controls)
                 {
-                    if(item is TextBox)
+                    if (item is TextBox)
                     {
                         var t = (TextBox)item;
                         t.ReadOnly = true;
@@ -384,7 +384,7 @@ namespace WindowsFormsApp1
                         var t = (MaskedTextBox)item;
                         t.ReadOnly = true;
                     }
-                    
+
                     if (item is Button && !(this is FinalizarCadastroMinisterio) &&
                         !(this is FinalizarCadastroPessoa) && !(this is FinalizarCadastro) &&
                         !(this is FinalizarCadastroReuniao))
@@ -398,14 +398,40 @@ namespace WindowsFormsApp1
 
         private void WFCrud_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (condicaoAtualizar || condicaoDetalhes)
+            bool deletar = false;
+
+            if (CondicaoDeletar)
             {
-                if(modelo is Pessoa)
+                if (modelo is Pessoa)
+                {
+                    var p = (Pessoa)modelo;
+                    if (modelo.recuperar(p.IdPessoa).Count > 0) deletar = true;
+                }
+                if(modelo is Ministerio)
+                {
+                    var p = (Ministerio)modelo;
+                    if (modelo.recuperar(p.IdMinisterio).Count > 0) deletar = true;
+                }
+                if (modelo is Celula)
+                {
+                    var p = (Celula)modelo;
+                    if (modelo.recuperar(p.IdCelula).Count > 0) deletar = true;
+                }
+                if (modelo is Reuniao)
+                {
+                    var p = (Reuniao)modelo;
+                    if (modelo.recuperar(p.IdReuniao).Count > 0) deletar = true;
+                }
+            }
+
+            if (condicaoAtualizar || condicaoDetalhes || deletar)
+            {
+                if (modelo is Pessoa)
                 {
                     Pessoa pes = null;
-                    var p = (Pessoa) modelo;
+                    var p = (Pessoa)modelo;
                     if (p is Visitante)
-                        pes = (Visitante) new Visitante().recuperar(p.IdPessoa)[0];
+                        pes = (Visitante)new Visitante().recuperar(p.IdPessoa)[0];
                     if (p is Crianca)
                         pes = (Crianca)new Crianca().recuperar(p.IdPessoa)[0];
                     if (p is Membro_Batismo)
@@ -431,15 +457,15 @@ namespace WindowsFormsApp1
                         pes = (Membro_ReconciliacaoLgpd)new Membro_ReconciliacaoLgpd().recuperar(p.IdPessoa)[0];
 
                     listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa == p.IdPessoa));
-                    listaPessoas.Add(pes);                    
+                    listaPessoas.Add(pes);
                 }
 
-                if(modelo is Ministerio)
+                if (modelo is Ministerio)
                 {
                     Ministerio minis = null;
                     var m = (Ministerio)modelo;
                     if (m is Lider_Celula)
-                        minis = (Lider_Celula) new Lider_Celula().recuperar(m.IdMinisterio)[0];
+                        minis = (Lider_Celula)new Lider_Celula().recuperar(m.IdMinisterio)[0];
                     if (m is Lider_Celula_Treinamento)
                         minis = (Lider_Celula_Treinamento)new Lider_Celula_Treinamento().recuperar(m.IdMinisterio)[0];
                     if (m is Lider_Ministerio)
@@ -459,13 +485,13 @@ namespace WindowsFormsApp1
                     listaMinisterios.Add(minis);
                 }
 
-                if(modelo is Celula)
+                if (modelo is Celula)
                 {
                     Celula cel = null;
                     var c = (Celula)modelo;
 
                     if (c is Celula_Adolescente)
-                        cel = (Celula_Adolescente) new Celula_Adolescente().recuperar(c.IdCelula)[0];
+                        cel = (Celula_Adolescente)new Celula_Adolescente().recuperar(c.IdCelula)[0];
 
                     if (c is Celula_Casado)
                         cel = (Celula_Casado)new Celula_Casado().recuperar(c.IdCelula)[0];
@@ -483,10 +509,10 @@ namespace WindowsFormsApp1
                     listaCelulas.Add(cel);
                 }
 
-                if(modelo is Reuniao)
+                if (modelo is Reuniao)
                 {
                     var r = (Reuniao)modelo;
-                    var reu = (Reuniao) r.recuperar(r.IdReuniao)[0];
+                    var reu = (Reuniao)r.recuperar(r.IdReuniao)[0];
                     listaReuniao.Remove(r);
                     listaReuniao.Add(reu);
                 }
@@ -680,8 +706,8 @@ namespace WindowsFormsApp1
             {
                 var p = (Reuniao)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                p.AdicionarNaLista("ReuniaoPessoa", p, new Visitante(),
-                AddNaListaReuniaoPessoas);
+                    p.AdicionarNaLista("ReuniaoPessoa", p, new Visitante(),
+                    AddNaListaReuniaoPessoas);
             }
 
             modelo.salvar();
@@ -712,9 +738,9 @@ namespace WindowsFormsApp1
                             Id = p.IdPessoa,
                             Array = p.ImgArrayBytes
                         };
-                    var resultado =  await p.EnviarFoto(photoRequest);
+                        var resultado = await p.EnviarFoto(photoRequest);
 
-                        if(!resultado) MessageBox.Show("Foto não enviada.");
+                        if (!resultado) MessageBox.Show("Foto não enviada.");
                         else
                         {
                             p.Img = "/Content/Imagens/" + p.IdPessoa.ToString() + ".jpg";

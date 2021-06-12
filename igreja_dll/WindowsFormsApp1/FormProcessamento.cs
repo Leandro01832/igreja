@@ -15,7 +15,7 @@ using WindowsFormsApp1.Formulario.Pessoa;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormProcessamento : FormPadrao
+    public partial class FormProcessamento :  FormPadrao
     {
         Label statusVisitanteLgpd;
         Label statusCriancaLgpd;
@@ -151,7 +151,40 @@ namespace WindowsFormsApp1
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void btn_processa_pessoa_Click(object sender, EventArgs e)
+        {
+            if (Pessoa.criancas == null)
+            { var form = new FrmCrianca(typeof(Crianca)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança"; form.Show(); }
+            if (Pessoa.visitantes == null)
+            { var form = new FrmVisitante(typeof(Visitante)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante"; form.Show(); }
+            if (Pessoa.membros_Aclamacao == null)
+            { var form = new FrmMembroAclamacao(typeof(Membro_Aclamacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação"; form.Show(); }
+            if (Pessoa.membros_Batismo == null)
+            { var form = new MembroBatismo(typeof(Membro_Batismo)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo"; form.Show(); }
+            if (Pessoa.membros_Reconciliacao == null)
+            { var form = new MembroReconciliacao(typeof(Membro_Reconciliacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação"; form.Show(); }
+            if (Pessoa.membros_Transferencia == null)
+            { var form = new MembroTransferencia(typeof(Membro_Transferencia)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferencia"; form.Show(); }
+            if (Pessoa.criancasLgpd == null)
+            { var form = new FrmCrianca(typeof(CriancaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança Lgpd"; form.Show(); }
+            if (Pessoa.visitantesLgpd == null)
+            { var form = new FrmVisitante(typeof(VisitanteLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante Lgpd"; form.Show(); }
+            if (Pessoa.membros_AclamacaoLgpd == null)
+            { var form = new FrmMembroAclamacao(typeof(Membro_AclamacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação Lgpd"; form.Show(); }
+            if (Pessoa.membros_BatismoLgpd == null)
+            { var form = new MembroBatismo(typeof(Membro_BatismoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo Lgpd"; form.Show(); }
+            if (Pessoa.membros_ReconciliacaoLgpd == null)
+            { var form = new MembroReconciliacao(typeof(Membro_ReconciliacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação Lgpd"; form.Show(); }
+            if (Pessoa.membros_TransferenciaLgpd == null)
+            { var form = new MembroTransferencia(typeof(Membro_TransferenciaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferência Lgpd"; form.Show(); }
+        }
+
+        private void btn_processo_inicial_Click(object sender, EventArgs e)
+        {
+            UltimoRegistro();
+        }
+
+        private void timerProcessamento_Tick(object sender, EventArgs e)
         {
             this.Text = "Processamento: " + textoPorcentagem;
 
@@ -237,39 +270,6 @@ namespace WindowsFormsApp1
 
                 verifica = true;
             }
-        }
-
-        private void btn_processa_pessoa_Click(object sender, EventArgs e)
-        {
-            if (Pessoa.criancas == null)
-            { var form = new FrmCrianca(typeof(Crianca)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança"; form.Show(); }
-            if (Pessoa.visitantes == null)
-            { var form = new FrmVisitante(typeof(Visitante)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante"; form.Show(); }
-            if (Pessoa.membros_Aclamacao == null)
-            { var form = new FrmMembroAclamacao(typeof(Membro_Aclamacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação"; form.Show(); }
-            if (Pessoa.membros_Batismo == null)
-            { var form = new MembroBatismo(typeof(Membro_Batismo)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo"; form.Show(); }
-            if (Pessoa.membros_Reconciliacao == null)
-            { var form = new MembroReconciliacao(typeof(Membro_Reconciliacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação"; form.Show(); }
-            if (Pessoa.membros_Transferencia == null)
-            { var form = new MembroTransferencia(typeof(Membro_Transferencia)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferencia"; form.Show(); }
-            if (Pessoa.criancasLgpd == null)
-            { var form = new FrmCrianca(typeof(CriancaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança Lgpd"; form.Show(); }
-            if (Pessoa.visitantesLgpd == null)
-            { var form = new FrmVisitante(typeof(VisitanteLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante Lgpd"; form.Show(); }
-            if (Pessoa.membros_AclamacaoLgpd == null)
-            { var form = new FrmMembroAclamacao(typeof(Membro_AclamacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação Lgpd"; form.Show(); }
-            if (Pessoa.membros_BatismoLgpd == null)
-            { var form = new MembroBatismo(typeof(Membro_BatismoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo Lgpd"; form.Show(); }
-            if (Pessoa.membros_ReconciliacaoLgpd == null)
-            { var form = new MembroReconciliacao(typeof(Membro_ReconciliacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação Lgpd"; form.Show(); }
-            if (Pessoa.membros_TransferenciaLgpd == null)
-            { var form = new MembroTransferencia(typeof(Membro_TransferenciaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferência Lgpd"; form.Show(); }
-        }
-
-        private void btn_processo_inicial_Click(object sender, EventArgs e)
-        {
-            UltimoRegistro();
         }
     }
 }

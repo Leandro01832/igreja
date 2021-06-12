@@ -52,6 +52,7 @@ namespace database.banco
                 {
                  conn = new SqlConnection(conecta2);
                  conn.Open();
+                 modelocrud.Erro_Conexao = false;
                 }
                 catch (Exception ex)
                 {
@@ -59,9 +60,10 @@ namespace database.banco
                     {
                         conn = null;
                         podeAbrir = false;
+                        modelocrud.Erro_Conexao = true;
                     }
                     
-                }
+                }                
             }
             if (!podeAbrir)
             {

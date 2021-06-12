@@ -42,7 +42,8 @@ namespace WindowsFormsApp1
         private bool verificarLista = true;
         private bool podeVerificar = false;
         private bool calcular = true;
-        FormProgressBar form;
+        private bool executar = true;
+        
 
         private BDcomum bd = new BDcomum();
 
@@ -67,7 +68,7 @@ namespace WindowsFormsApp1
         private void FormPadrao_Load(object sender, EventArgs e)
         {
             this.Icon = new Icon("D:\\Downloads\\favicon.ico");
-            form = new FormProgressBar();
+            
             
         }
 
@@ -79,21 +80,28 @@ namespace WindowsFormsApp1
             listaReuniao = new List<Reuniao>();
             listaMudancaEstado = new List<MudancaEstado>();
 
+            FormProgressBar form = new FormProgressBar();
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Text = "Barra de processamento - Processando dados";
             form.Show();
 
 
             var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
+            ExecutarVerificacoes();
 
             var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
+            ExecutarVerificacoes();
 
             var lme = await Task.Run(() => new MudancaEstado().recuperar(null));
             listaMudancaEstado = lme.OfType<MudancaEstado>().ToList();
+            ExecutarVerificacoes();
 
             var lr = await Task.Run(() => new Reuniao().recuperar(null));
             listaReuniao = lr.OfType<Reuniao>().ToList();
+            ExecutarVerificacoes();
+
             var lp = await Task.Run(() => Pessoa.recuperarTodos());
+            ExecutarVerificacoes();
 
             try { UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo; }
             catch { UltimoRegistroPessoa = 0; }
@@ -132,109 +140,7 @@ namespace WindowsFormsApp1
 
         private async void verifica()
         {
-            #region verificacoes
-            if (Pessoa.visitantesLgpd != null
-            && listaPessoas.Where(m => m.GetType().Name == new VisitanteLgpd().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.visitantesLgpd);
-
-
-            if (Pessoa.visitantes != null
-            && listaPessoas.Where(m => m.GetType().Name == new Visitante().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.visitantes);
-
-            if (Pessoa.criancas != null
-            && listaPessoas.Where(m => m.GetType().Name == new Crianca().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.criancas);
-
-            if (Pessoa.criancasLgpd != null
-            && listaPessoas.Where(m => m.GetType().Name == new CriancaLgpd().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.criancasLgpd);
-
-            if (Pessoa.membros_Aclamacao != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_Aclamacao().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_Aclamacao);
-
-            if (Pessoa.membros_AclamacaoLgpd != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_AclamacaoLgpd);
-
-            if (Pessoa.membros_Batismo != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_Batismo().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_Batismo);
-
-            if (Pessoa.membros_BatismoLgpd != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_BatismoLgpd().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_BatismoLgpd);
-
-            if (Pessoa.membros_Reconciliacao != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_Reconciliacao().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_Reconciliacao);
-
-            if (Pessoa.membros_ReconciliacaoLgpd != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_ReconciliacaoLgpd);
-
-            if (Pessoa.membros_Transferencia != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_Transferencia().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_Transferencia);
-
-            if (Pessoa.membros_TransferenciaLgpd != null
-            && listaPessoas.Where(m => m.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name).ToList().Count == 0)
-                listaPessoas.AddRange(Pessoa.membros_TransferenciaLgpd);
-
-            if (Ministerio.lideresCelula != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Celula().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.lideresCelula);
-
-            if (Ministerio.LideresCelulaTreinamento != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Celula_Treinamento().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.LideresCelulaTreinamento);
-
-            if (Ministerio.lideresMinisterio != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Ministerio().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.lideresMinisterio);
-
-            if (Ministerio.lideresMinisterioTreinamento != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Ministerio_Treinamento().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.lideresMinisterioTreinamento);
-
-            if (Ministerio.supervisoresCelula != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Celula().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.supervisoresCelula);
-
-            if (Ministerio.supervisoresCelulaTreinamento != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Celula_Treinamento().GetType().Name).ToList().Count == 0)
-
-                listaMinisterios.AddRange(Ministerio.supervisoresCelulaTreinamento);
-
-            if (Ministerio.supervisoresMinisterio != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Ministerio().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.supervisoresMinisterio);
-
-            if (Ministerio.supervisoresMinisterioTreinamento != null
-            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Ministerio_Treinamento().GetType().Name).ToList().Count == 0)
-                listaMinisterios.AddRange(Ministerio.supervisoresMinisterioTreinamento);
-
-            if (Celula.celulasAdolescente != null
-            && listaCelulas.Where(m => m.GetType().Name == new Celula_Adolescente().GetType().Name).ToList().Count == 0)
-                listaCelulas.AddRange(Celula.celulasAdolescente);
-
-            if (Celula.celulasAdulto != null
-            && listaCelulas.Where(m => m.GetType().Name == new Celula_Adulto().GetType().Name).ToList().Count == 0)
-                listaCelulas.AddRange(Celula.celulasAdulto);
-
-            if (Celula.celulasCasado != null
-            && listaCelulas.Where(m => m.GetType().Name == new Celula_Casado().GetType().Name).ToList().Count == 0)
-                listaCelulas.AddRange(Celula.celulasCasado);
-
-            if (Celula.celulasCrianca != null
-            && listaCelulas.Where(m => m.GetType().Name == new Celula_Crianca().GetType().Name).ToList().Count == 0)
-                listaCelulas.AddRange(Celula.celulasCrianca);
-
-            if (Celula.celulasJovem != null
-            && listaCelulas.Where(m => m.GetType().Name == new Celula_Jovem().GetType().Name).ToList().Count == 0)
-                listaCelulas.AddRange(Celula.celulasJovem);
-            #endregion
+            
 
             if (verificarLista && podeVerificar && BDcomum.podeAbrir)
             {
@@ -299,7 +205,7 @@ namespace WindowsFormsApp1
                 verificarLista = true;
             }
 
-            CalcularPorcentagem();
+            
         }
 
         private void CalcularPorcentagem()
@@ -427,44 +333,62 @@ namespace WindowsFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            verifica();
+            if (executar)
+            {
+                executar = false;
+                verifica();
 
-            if (Pessoa.visitantesLgpd != null ||
-            listaPessoas.Where(p => p.GetType().Name == new VisitanteLgpd().GetType().Name).ToList().Count > 0)
-                carregandoVisitanteLgpd = true;
-            if (Pessoa.criancasLgpd != null ||
-            listaPessoas.Where(p => p.GetType().Name == new CriancaLgpd().GetType().Name).ToList().Count > 0)
-                carregandoCriancaLgpd = true;
-            if (Pessoa.membros_BatismoLgpd != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name).ToList().Count > 0)
-                carregandoMembroBatismoLgpd = true;
-            if (Pessoa.membros_ReconciliacaoLgpd != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name).ToList().Count > 0)
-                carregandoMembroReconciliacaoLgpd = true;
-            if (Pessoa.membros_TransferenciaLgpd != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name).ToList().Count > 0)
-                carregandoMembroTransferenciaLgpd = true;
-            if (Pessoa.membros_AclamacaoLgpd != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name).ToList().Count > 0)
-                carregandoMembroAclamacaoLgpd = true;
-            if (Pessoa.visitantes != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Visitante().GetType().Name).ToList().Count > 0)
-                carregandoVisitante = true;
-            if (Pessoa.criancas != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Crianca().GetType().Name).ToList().Count > 0)
-                carregandoCrianca = true;
-            if (Pessoa.membros_Batismo != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_Batismo().GetType().Name).ToList().Count > 0)
-                carregandoMembroBatismo = true;
-            if (Pessoa.membros_Reconciliacao != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name).ToList().Count > 0)
-                carregandoMembroReconciliacao = true;
-            if (Pessoa.membros_Transferencia != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_Transferencia().GetType().Name).ToList().Count > 0)
-                carregandoMembroTransferencia = true;
-            if (Pessoa.membros_Aclamacao != null ||
-            listaPessoas.Where(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name).ToList().Count > 0)
-                carregandoMembroAclamacao = true;
+                if (Pessoa.visitantesLgpd != null ||
+                listaPessoas.Where(p => p.GetType().Name == new VisitanteLgpd().GetType().Name).ToList().Count > 0)
+                    carregandoVisitanteLgpd = true;
+                else carregandoVisitanteLgpd = false;
+                if (Pessoa.criancasLgpd != null ||
+                listaPessoas.Where(p => p.GetType().Name == new CriancaLgpd().GetType().Name).ToList().Count > 0)
+                    carregandoCriancaLgpd = true;
+                else carregandoCriancaLgpd = false;
+                if (Pessoa.membros_BatismoLgpd != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name).ToList().Count > 0)
+                    carregandoMembroBatismoLgpd = true;
+                else carregandoMembroBatismoLgpd = false;
+                if (Pessoa.membros_ReconciliacaoLgpd != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name).ToList().Count > 0)
+                    carregandoMembroReconciliacaoLgpd = true;
+                else carregandoMembroReconciliacaoLgpd = false;
+                if (Pessoa.membros_TransferenciaLgpd != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name).ToList().Count > 0)
+                    carregandoMembroTransferenciaLgpd = true;
+                else carregandoMembroTransferenciaLgpd = false;
+                if (Pessoa.membros_AclamacaoLgpd != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name).ToList().Count > 0)
+                    carregandoMembroAclamacaoLgpd = true;
+                else carregandoMembroAclamacaoLgpd = false;
+                if (Pessoa.visitantes != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Visitante().GetType().Name).ToList().Count > 0)
+                    carregandoVisitante = true;
+                else carregandoVisitante = false;
+                if (Pessoa.criancas != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Crianca().GetType().Name).ToList().Count > 0)
+                    carregandoCrianca = true;
+                else carregandoCrianca = false;
+                if (Pessoa.membros_Batismo != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_Batismo().GetType().Name).ToList().Count > 0)
+                    carregandoMembroBatismo = true;
+                else carregandoMembroBatismo = false;
+                if (Pessoa.membros_Reconciliacao != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name).ToList().Count > 0)
+                    carregandoMembroReconciliacao = true;
+                else carregandoMembroReconciliacao = false;
+                if (Pessoa.membros_Transferencia != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_Transferencia().GetType().Name).ToList().Count > 0)
+                    carregandoMembroTransferencia = true;
+                else carregandoMembroTransferencia = false;
+                if (Pessoa.membros_Aclamacao != null ||
+                listaPessoas.Where(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name).ToList().Count > 0)
+                    carregandoMembroAclamacao = true;
+                else carregandoMembroAclamacao = false;
+
+                executar = true;
+            }
         }
 
         public async Task<List<modelocrud>> AtualizarComModelo(Type Tipo)
@@ -554,25 +478,140 @@ namespace WindowsFormsApp1
                 form.Show();
                 var models = await Task.Run(() => modelo.recuperar(null));
 
-                if (Tipo.IsSubclassOf(typeof(Pessoa)) && listaPessoas.Where(m => m.GetType().Name == Tipo.GetType().Name).ToList().Count == 0)
+                if (Tipo.IsSubclassOf(typeof(Pessoa)) && !modelocrud.Erro_Conexao
+                    && listaPessoas.Where(m => m.GetType().Name == Tipo.GetType().Name).ToList().Count == 0)
                     listaPessoas.AddRange(models.OfType<Pessoa>().OrderBy(p => p.Codigo).ToList());
 
-                if (Tipo.IsSubclassOf(typeof(Ministerio)) && listaMinisterios.Where(m => m.GetType().Name == Tipo.GetType().Name).ToList().Count == 0)
+                if (Tipo.IsSubclassOf(typeof(Ministerio)) && !modelocrud.Erro_Conexao
+                    && listaMinisterios.Where(m => m.GetType().Name == Tipo.GetType().Name).ToList().Count == 0)
                     listaMinisterios.AddRange(models.OfType<Ministerio>().OrderBy(p => p.IdMinisterio).ToList());
 
-                if (Tipo.IsSubclassOf(typeof(Celula)) && listaCelulas.Where(m => m.GetType().Name == Tipo.GetType().Name).ToList().Count == 0)
+                if (Tipo.IsSubclassOf(typeof(Celula)) && !modelocrud.Erro_Conexao
+                    && listaCelulas.Where(m => m.GetType().Name == Tipo.GetType().Name).ToList().Count == 0)
                     listaCelulas.AddRange(models.OfType<Celula>().OrderBy(p => p.IdCelula).ToList());
 
-                if (Tipo == typeof(Reuniao))
+                if (Tipo == typeof(Reuniao) && !modelocrud.Erro_Conexao)
                     listaReuniao.AddRange(models.OfType<Reuniao>().OrderBy(p => p.IdReuniao).ToList());
 
-                if (Tipo == typeof(MudancaEstado))
+                if (Tipo == typeof(MudancaEstado) && !modelocrud.Erro_Conexao)
                     listaMudancaEstado.AddRange(models.OfType<MudancaEstado>().OrderBy(p => p.IdMudanca).ToList());
 
                 form.Dispose();
+                ExecutarVerificacoes();
+
+               if(!modelocrud.Erro_Conexao)
                 return models;
             }
             return null;
+        }
+
+        private void ExecutarVerificacoes()
+        {
+            #region verificacoes
+            if (Pessoa.visitantesLgpd != null
+            && listaPessoas.Where(m => m.GetType().Name == new VisitanteLgpd().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.visitantesLgpd);
+
+
+            if (Pessoa.visitantes != null
+            && listaPessoas.Where(m => m.GetType().Name == new Visitante().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.visitantes);
+
+            if (Pessoa.criancas != null
+            && listaPessoas.Where(m => m.GetType().Name == new Crianca().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.criancas);
+
+            if (Pessoa.criancasLgpd != null
+            && listaPessoas.Where(m => m.GetType().Name == new CriancaLgpd().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.criancasLgpd);
+
+            if (Pessoa.membros_Aclamacao != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_Aclamacao().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_Aclamacao);
+
+            if (Pessoa.membros_AclamacaoLgpd != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_AclamacaoLgpd);
+
+            if (Pessoa.membros_Batismo != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_Batismo().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_Batismo);
+
+            if (Pessoa.membros_BatismoLgpd != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_BatismoLgpd().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_BatismoLgpd);
+
+            if (Pessoa.membros_Reconciliacao != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_Reconciliacao().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_Reconciliacao);
+
+            if (Pessoa.membros_ReconciliacaoLgpd != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_ReconciliacaoLgpd);
+
+            if (Pessoa.membros_Transferencia != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_Transferencia().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_Transferencia);
+
+            if (Pessoa.membros_TransferenciaLgpd != null
+            && listaPessoas.Where(m => m.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name).ToList().Count == 0)
+                listaPessoas.AddRange(Pessoa.membros_TransferenciaLgpd);
+
+            if (Ministerio.lideresCelula != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Celula().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.lideresCelula);
+
+            if (Ministerio.LideresCelulaTreinamento != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Celula_Treinamento().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.LideresCelulaTreinamento);
+
+            if (Ministerio.lideresMinisterio != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Ministerio().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.lideresMinisterio);
+
+            if (Ministerio.lideresMinisterioTreinamento != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Lider_Ministerio_Treinamento().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.lideresMinisterioTreinamento);
+
+            if (Ministerio.supervisoresCelula != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Celula().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.supervisoresCelula);
+
+            if (Ministerio.supervisoresCelulaTreinamento != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Celula_Treinamento().GetType().Name).ToList().Count == 0)
+
+                listaMinisterios.AddRange(Ministerio.supervisoresCelulaTreinamento);
+
+            if (Ministerio.supervisoresMinisterio != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Ministerio().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.supervisoresMinisterio);
+
+            if (Ministerio.supervisoresMinisterioTreinamento != null
+            && listaMinisterios.Where(m => m.GetType().Name == new Supervisor_Ministerio_Treinamento().GetType().Name).ToList().Count == 0)
+                listaMinisterios.AddRange(Ministerio.supervisoresMinisterioTreinamento);
+
+            if (Celula.celulasAdolescente != null
+            && listaCelulas.Where(m => m.GetType().Name == new Celula_Adolescente().GetType().Name).ToList().Count == 0)
+                listaCelulas.AddRange(Celula.celulasAdolescente);
+
+            if (Celula.celulasAdulto != null
+            && listaCelulas.Where(m => m.GetType().Name == new Celula_Adulto().GetType().Name).ToList().Count == 0)
+                listaCelulas.AddRange(Celula.celulasAdulto);
+
+            if (Celula.celulasCasado != null
+            && listaCelulas.Where(m => m.GetType().Name == new Celula_Casado().GetType().Name).ToList().Count == 0)
+                listaCelulas.AddRange(Celula.celulasCasado);
+
+            if (Celula.celulasCrianca != null
+            && listaCelulas.Where(m => m.GetType().Name == new Celula_Crianca().GetType().Name).ToList().Count == 0)
+                listaCelulas.AddRange(Celula.celulasCrianca);
+
+            if (Celula.celulasJovem != null
+            && listaCelulas.Where(m => m.GetType().Name == new Celula_Jovem().GetType().Name).ToList().Count == 0)
+                listaCelulas.AddRange(Celula.celulasJovem);
+            #endregion
+
+            CalcularPorcentagem();
         }
 
         public int GeTotalRegistrosPessoas()

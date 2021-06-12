@@ -3,6 +3,7 @@ using business.classes.Abstrato;
 using business.classes.Celulas;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database.banco;
 using System;
 using System.Collections;
@@ -24,6 +25,7 @@ namespace database
         public modelocrud()
         {
             this.bd = new BDcomum();
+            Erro_Conexao = false;
         }
 
 
@@ -31,6 +33,10 @@ namespace database
         private string update_padrao;
         private string delete_padrao;
         private string select_padrao;
+        private bool dados_Relacionados;
+
+        [NotMapped]
+        public static bool Erro_Conexao;
         
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
@@ -40,6 +46,9 @@ namespace database
         public string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
         [NotMapped]
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
+        [NotMapped]
+        public bool Dados_Relacionados { get => dados_Relacionados; set => dados_Relacionados = value; }
+        
 
         public BDcomum bd;
 
@@ -69,43 +78,49 @@ namespace database
             }
             else if (ex.Message.Contains("reader"))
             {
-
                 MessageBox.Show("A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
             }
-            else if(!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não esta respondendo")
-                && !ex.Message.Contains("índice estava fora do intervalo"))
+            else if(!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não está respondendo")
+                && !ex.Message.Contains("índice estava fora do intervalo")
+                && !ex.Message.Contains("não foi inicializada")
+                && !ex.Message.Contains("conexão é fechada"))
                 MessageBox.Show(ex.Message);
 
-            else if(ex.Message.Contains("transporte") && ex.Message.Contains("servidor não esta respondendo"))
+            else if(ex.Message.Contains("transporte") || ex.Message.Contains("servidor não está respondendo")
+                || ex.Message.Contains("índice estava fora do intervalo")
+                || ex.Message.Contains("não foi inicializada")
+                || ex.Message.Contains("conexão é fechada"))
             {
-              //  if (this.GetType().Name == "Visitante"           ) Pessoa.visitantes                = null;
-              //  if (this.GetType().Name == "Crianca"             ) Pessoa.criancas                  = null;
-              //  if (this.GetType().Name == "Membro_Aclamacao"    ) Pessoa.membros_Aclamacao         = null;
-              //  if (this.GetType().Name == "Membro_Batismo"      ) Pessoa.membros_Batismo           = null;
-              //  if (this.GetType().Name == "Membro_Reconciliacao") Pessoa.membros_Reconciliacao     = null;
-              //  if (this.GetType().Name == "Membro_Transferencia") Pessoa.membros_Transferencia     = null;
-              //
-              //  if (this.GetType().Name == "VisitanteLgpd"           ) Pessoa.visitantesLgpd            = null;
-              //  if (this.GetType().Name == "CriancaLgpd"             ) Pessoa.criancasLgpd              = null;
-              //  if (this.GetType().Name == "Membro_AclamacaoLgpd"    ) Pessoa.membros_AclamacaoLgpd     = null;
-              //  if (this.GetType().Name == "Membro_BatismoLgpd"      ) Pessoa.membros_BatismoLgpd       = null;
-              //  if (this.GetType().Name == "Membro_ReconciliacaoLgpd") Pessoa.membros_ReconciliacaoLgpd = null;
-              //  if (this.GetType().Name == "Membro_TransferenciaLgpd") Pessoa.membros_TransferenciaLgpd = null;
-              //
-              //  if (this.GetType().Name == "Lider_Celula") Ministerio.lideresCelula = null;
-              //  if (this.GetType().Name == "Lider_Celula_Treinamento") Ministerio.LideresCelulaTreinamento = null;
-              //  if (this.GetType().Name == "Lider_Ministerio") Ministerio.lideresMinisterio = null;
-              //  if (this.GetType().Name == "Lider_Ministerio_Treinamento") Ministerio.lideresMinisterioTreinamento = null;
-              //  if (this.GetType().Name == "Supervisor_Celula") Ministerio.supervisoresCelula = null;
-              //  if (this.GetType().Name == "Supervisor_Celula_Treinamento") Ministerio.supervisoresCelulaTreinamento = null;
-              //  if (this.GetType().Name == "Supervisor_Ministerio") Ministerio.supervisoresMinisterio = null;
-              //  if (this.GetType().Name == "Supervisor_Ministerio_Treinamento") Ministerio.supervisoresMinisterioTreinamento = null;
-              //
-              //  if (this.GetType().Name == "Celula_Adolescente") Celula.celulasAdolescente = null;
-              //  if (this.GetType().Name == "Celula_Adulto") Celula.celulasAdulto = null;
-              //  if (this.GetType().Name == "Celula_Casado") Celula.celulasCasado = null;
-              //  if (this.GetType().Name == "Celula_Crianca") Celula.celulasCrianca = null;
-              //  if (this.GetType().Name == "Celula_Jovem") Celula.celulasJovem = null;
+                Erro_Conexao = true;
+
+                if (this is Visitante                         && !Dados_Relacionados) Pessoa.visitantes                = null;
+                if (this is Crianca                           && !Dados_Relacionados) Pessoa.criancas                  = null;
+                if (this is Membro_Aclamacao                  && !Dados_Relacionados) Pessoa.membros_Aclamacao         = null;
+                if (this is Membro_Batismo                    && !Dados_Relacionados) Pessoa.membros_Batismo           = null;
+                if (this is Membro_Reconciliacao              && !Dados_Relacionados) Pessoa.membros_Reconciliacao     = null;
+                if (this is Membro_Transferencia              && !Dados_Relacionados) Pessoa.membros_Transferencia     = null;
+                                                              
+                if (this is VisitanteLgpd                     && !Dados_Relacionados) Pessoa.visitantesLgpd            = null;
+                if (this is CriancaLgpd                       && !Dados_Relacionados) Pessoa.criancasLgpd              = null;
+                if (this is Membro_AclamacaoLgpd              && !Dados_Relacionados) Pessoa.membros_AclamacaoLgpd     = null;
+                if (this is Membro_BatismoLgpd                && !Dados_Relacionados) Pessoa.membros_BatismoLgpd       = null;
+                if (this is Membro_ReconciliacaoLgpd          && !Dados_Relacionados) Pessoa.membros_ReconciliacaoLgpd = null;
+                if (this is Membro_TransferenciaLgpd          && !Dados_Relacionados) Pessoa.membros_TransferenciaLgpd = null;
+                                                              
+                if (this is Lider_Celula                      && !Dados_Relacionados) Ministerio.lideresCelula                     = null;
+                if (this is Lider_Celula_Treinamento          && !Dados_Relacionados) Ministerio.LideresCelulaTreinamento          = null;
+                if (this is Lider_Ministerio                  && !Dados_Relacionados) Ministerio.lideresMinisterio                 = null;
+                if (this is Lider_Ministerio_Treinamento      && !Dados_Relacionados) Ministerio.lideresMinisterioTreinamento      = null;
+                if (this is Supervisor_Celula                 && !Dados_Relacionados) Ministerio.supervisoresCelula                = null;
+                if (this is Supervisor_Celula_Treinamento     && !Dados_Relacionados) Ministerio.supervisoresCelulaTreinamento     = null;
+                if (this is Supervisor_Ministerio             && !Dados_Relacionados) Ministerio.supervisoresMinisterio            = null;
+                if (this is Supervisor_Ministerio_Treinamento && !Dados_Relacionados) Ministerio.supervisoresMinisterioTreinamento = null;
+                          
+                if (this is Celula_Adolescente                && !Dados_Relacionados) Celula.celulasAdolescente       = null;
+                if (this is Celula_Adulto                     && !Dados_Relacionados) Celula.celulasAdulto            = null;
+                if (this is Celula_Casado                     && !Dados_Relacionados) Celula.celulasCasado            = null;
+                if (this is Celula_Crianca                    && !Dados_Relacionados) Celula.celulasCrianca           = null;
+                if (this is Celula_Jovem                      && !Dados_Relacionados) Celula.celulasJovem             = null;
             }
         }
 

@@ -184,6 +184,7 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                 bd.fecharconexao(conexao);
+                Dados_Relacionados = true;
                 this.Ministerios = new List<PessoaMinisterio>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
@@ -207,7 +208,7 @@ namespace business.classes.Abstrato
                             this.Historico.Add((Historico)item);
                         }
                 modelos.Add(this);
-                
+                Dados_Relacionados = false;
                 return modelos;
             }
             return modelos;

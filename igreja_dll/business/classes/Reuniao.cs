@@ -109,6 +109,7 @@ namespace business.classes
                         dr.Close();
 
                         bd.fecharconexao(conexao);
+                        Dados_Relacionados = true;
                         this.Pessoas = new List<ReuniaoPessoa>();
                         var listaPessoas = recuperarPessoas(id);
                         if (listaPessoas != null)
@@ -116,7 +117,7 @@ namespace business.classes
                             {
                                 this.Pessoas.Add((ReuniaoPessoa)item);
                             }
-
+                        Dados_Relacionados = false;
 
                     }
 

@@ -454,11 +454,6 @@ namespace WindowsFormsApp1.Formulario
             botaoDeletar.Enabled = atualizar;
             Mudanca.Enabled = atualizar;
 
-        }
-
-        // Atualizar lista
-        private void timer1_Tick(object sender, EventArgs e)
-        {           
-        }
+        }        
     }
 }
