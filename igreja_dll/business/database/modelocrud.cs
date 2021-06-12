@@ -37,7 +37,10 @@ namespace database
 
         [NotMapped]
         public static bool Erro_Conexao;
-        
+
+        [NotMapped]
+        public modelocrud ModeloErro { get; set; }
+
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
         [NotMapped]
@@ -93,34 +96,41 @@ namespace database
             {
                 Erro_Conexao = true;
 
-                if (this is Visitante                         && !Dados_Relacionados) Pessoa.visitantes                = null;
-                if (this is Crianca                           && !Dados_Relacionados) Pessoa.criancas                  = null;
-                if (this is Membro_Aclamacao                  && !Dados_Relacionados) Pessoa.membros_Aclamacao         = null;
-                if (this is Membro_Batismo                    && !Dados_Relacionados) Pessoa.membros_Batismo           = null;
-                if (this is Membro_Reconciliacao              && !Dados_Relacionados) Pessoa.membros_Reconciliacao     = null;
-                if (this is Membro_Transferencia              && !Dados_Relacionados) Pessoa.membros_Transferencia     = null;
-                                                              
-                if (this is VisitanteLgpd                     && !Dados_Relacionados) Pessoa.visitantesLgpd            = null;
-                if (this is CriancaLgpd                       && !Dados_Relacionados) Pessoa.criancasLgpd              = null;
-                if (this is Membro_AclamacaoLgpd              && !Dados_Relacionados) Pessoa.membros_AclamacaoLgpd     = null;
-                if (this is Membro_BatismoLgpd                && !Dados_Relacionados) Pessoa.membros_BatismoLgpd       = null;
-                if (this is Membro_ReconciliacaoLgpd          && !Dados_Relacionados) Pessoa.membros_ReconciliacaoLgpd = null;
-                if (this is Membro_TransferenciaLgpd          && !Dados_Relacionados) Pessoa.membros_TransferenciaLgpd = null;
-                                                              
-                if (this is Lider_Celula                      && !Dados_Relacionados) Ministerio.lideresCelula                     = null;
-                if (this is Lider_Celula_Treinamento          && !Dados_Relacionados) Ministerio.LideresCelulaTreinamento          = null;
-                if (this is Lider_Ministerio                  && !Dados_Relacionados) Ministerio.lideresMinisterio                 = null;
-                if (this is Lider_Ministerio_Treinamento      && !Dados_Relacionados) Ministerio.lideresMinisterioTreinamento      = null;
-                if (this is Supervisor_Celula                 && !Dados_Relacionados) Ministerio.supervisoresCelula                = null;
-                if (this is Supervisor_Celula_Treinamento     && !Dados_Relacionados) Ministerio.supervisoresCelulaTreinamento     = null;
-                if (this is Supervisor_Ministerio             && !Dados_Relacionados) Ministerio.supervisoresMinisterio            = null;
-                if (this is Supervisor_Ministerio_Treinamento && !Dados_Relacionados) Ministerio.supervisoresMinisterioTreinamento = null;
-                          
-                if (this is Celula_Adolescente                && !Dados_Relacionados) Celula.celulasAdolescente       = null;
-                if (this is Celula_Adulto                     && !Dados_Relacionados) Celula.celulasAdulto            = null;
-                if (this is Celula_Casado                     && !Dados_Relacionados) Celula.celulasCasado            = null;
-                if (this is Celula_Crianca                    && !Dados_Relacionados) Celula.celulasCrianca           = null;
-                if (this is Celula_Jovem                      && !Dados_Relacionados) Celula.celulasJovem             = null;
+                modelocrud erro = null;
+
+                if (Dados_Relacionados)                
+                    erro = ModeloErro;
+                else
+                    erro = this;
+
+                if (erro is Visitante) Pessoa.visitantes = null;
+                if (erro is Crianca) Pessoa.criancas = null;
+                if (erro is Membro_Aclamacao) Pessoa.membros_Aclamacao = null;
+                if (erro is Membro_Batismo) Pessoa.membros_Batismo = null;
+                if (erro is Membro_Reconciliacao) Pessoa.membros_Reconciliacao = null;
+                if (erro is Membro_Transferencia) Pessoa.membros_Transferencia = null;
+                    
+                if (erro is VisitanteLgpd) Pessoa.visitantesLgpd = null;
+                if (erro is CriancaLgpd) Pessoa.criancasLgpd = null;
+                if (erro is Membro_AclamacaoLgpd) Pessoa.membros_AclamacaoLgpd = null;
+                if (erro is Membro_BatismoLgpd) Pessoa.membros_BatismoLgpd = null;
+                if (erro is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = null;
+                if (erro is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = null;
+                    
+                if (erro is Lider_Celula) Ministerio.lideresCelula = null;
+                if (erro is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = null;
+                if (erro is Lider_Ministerio) Ministerio.lideresMinisterio = null;
+                if (erro is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = null;
+                if (erro is Supervisor_Celula) Ministerio.supervisoresCelula = null;
+                if (erro is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = null;
+                if (erro is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = null;
+                if (erro is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = null;
+                    
+                if (erro is Celula_Adolescente) Celula.celulasAdolescente = null;
+                if (erro is Celula_Adulto) Celula.celulasAdulto = null;
+                if (erro is Celula_Casado) Celula.celulasCasado = null;
+                if (erro is Celula_Crianca) Celula.celulasCrianca = null;
+                if (erro is Celula_Jovem) Celula.celulasJovem = null;
             }
         }
 

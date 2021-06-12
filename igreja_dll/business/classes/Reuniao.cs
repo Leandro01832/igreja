@@ -110,6 +110,7 @@ namespace business.classes
 
                         bd.fecharconexao(conexao);
                         Dados_Relacionados = true;
+                        ModeloErro = this;
                         this.Pessoas = new List<ReuniaoPessoa>();
                         var listaPessoas = recuperarPessoas(id);
                         if (listaPessoas != null)

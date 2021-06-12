@@ -185,6 +185,7 @@ namespace business.classes.Abstrato
 
                 bd.fecharconexao(conexao);
                 Dados_Relacionados = true;
+                ModeloErro = this;
                 this.Ministerios = new List<PessoaMinisterio>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)

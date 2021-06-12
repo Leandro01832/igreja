@@ -107,6 +107,7 @@ namespace business.classes.Abstrato
 
                 bd.fecharconexao(conexao);
                 Dados_Relacionados = true;
+                ModeloErro = this;
                 this.Pessoas = new List<PessoaMinisterio>();
                     var listaPessoas = buscarPessoas(id);
                     if (listaPessoas != null)
