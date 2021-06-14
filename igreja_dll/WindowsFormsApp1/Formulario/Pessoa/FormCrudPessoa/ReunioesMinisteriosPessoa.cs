@@ -39,11 +39,11 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 
             try
             {
-                if (new Celula_Adolescente().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
-                if (new Celula_Adulto().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
-                if (new Celula_Jovem().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
-                if (new Celula_Crianca().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
-                if (new Celula_Casado().recuperar(int.Parse(txt_celula.Text)).Count > 0) condicao = true;
+                if (new Celula_Adolescente().recuperar(int.Parse(txt_celula.Text))) condicao = true;
+                if (new Celula_Adulto().recuperar(int.Parse(txt_celula.Text))) condicao = true;
+                if (new Celula_Jovem().recuperar(int.Parse(txt_celula.Text))) condicao = true;
+                if (new Celula_Crianca().recuperar(int.Parse(txt_celula.Text))) condicao = true;
+                if (new Celula_Casado().recuperar(int.Parse(txt_celula.Text))) condicao = true;
             }
             catch { p.celula_ = null; }
 
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 if (ministerios != null)
                     foreach (var item in ministerios)
                     {
-                        var mini = listaMinisterios.First(i => i.IdMinisterio == item.MinisterioId);
+                        var mini = business.classes.Abstrato.Ministerio.listaMinisterios.First(i => i.IdMinisterio == item.MinisterioId);
                         txt_ministerios.Text += mini.IdMinisterio.ToString() + ", ";
                     }
 
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 if (reunioes != null)
                     foreach (var item in reunioes)
                     {
-                        var reu = listaReuniao.First(i => i.IdReuniao == item.ReuniaoId);
+                        var reu = business.classes.Reuniao.Reunioes.First(i => i.IdReuniao == item.ReuniaoId);
                         txt_reunioes.Text += reu.IdReuniao.ToString() + ", ";
                     }
                         
@@ -124,7 +124,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                             int teste = int.Parse(valor);
                             try
                             {
-                                var v = listaReuniao.First(i => i.IdReuniao == int.Parse(valor));
+                                var v = business.classes.Reuniao.Reunioes.First(i => i.IdReuniao == int.Parse(valor));
                                 AddNaListaPessoaReunioes = v.IdReuniao.ToString() + ", ";
                             }
                             catch (Exception)
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                                 AddNaListaPessoaReunioes = "";
                                 txt_reunioes.Text = "";
                                 var numero = GeTotalRegistrosReunioes();
-                                if(numero != listaReuniao.Count)
+                                if(numero != business.classes.Reuniao.Reunioes.Count)
                                 MessageBox.Show("Aguarde o processamento.");
                                 else
                                 MessageBox.Show("Este registro não existe no banco de dados");
@@ -173,14 +173,14 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                             int teste = int.Parse(valor);
                             try
                             {
-                                var v = listaMinisterios.First(i => i.IdMinisterio == int.Parse(valor));
+                                var v = business.classes.Abstrato.Ministerio.listaMinisterios.First(i => i.IdMinisterio == int.Parse(valor));
                                 AddNaListaPessoaMinsterios += v.IdMinisterio.ToString() + ", ";
                             }
                             catch (Exception)
                             {
                                 AddNaListaPessoaMinsterios = "";
                                 var numero = GeTotalRegistrosMinisterios();
-                                if (numero != listaMinisterios.Count)
+                                if (numero != business.classes.Abstrato.Ministerio.listaMinisterios.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");

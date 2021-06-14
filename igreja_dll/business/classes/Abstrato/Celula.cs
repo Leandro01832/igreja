@@ -50,6 +50,7 @@ namespace business.classes.Abstrato
         [NotMapped]
         public static int UltimoRegistro { get; set; }
 
+        public static List<Celula> listaCelulas = new List<Celula>();
         public static List<Celula_Adolescente> celulasAdolescente { get; set; }
         public static List<Celula_Jovem> celulasJovem { get; set; }
         public static List<Celula_Adulto> celulasAdulto { get; set; }
@@ -87,7 +88,7 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Celula as C "
             + " inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula ";
@@ -103,7 +104,7 @@ namespace business.classes.Abstrato
                 if (dr.HasRows == false)
                 {
                     dr.Close();
-                    return modelos;
+                    return false;
                 }
                 
                     dr.Read();
@@ -124,8 +125,6 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                 bd.fecharconexao(conexao);
-                Dados_Relacionados = true;
-                ModeloErro = this;
                 this.Ministerios = new List<MinisterioCelula>();
                     var listaMinisterios = recuperarMinisterios(id);
                     if (listaMinisterios != null)
@@ -141,10 +140,9 @@ namespace business.classes.Abstrato
                 
 
                 modelos.Add(this);
-                Dados_Relacionados = false;
-                return modelos;
+                return true;
             }
-            return modelos;
+            return false;
         }
 
         public override string salvar()
@@ -162,81 +160,36 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (celulasAdolescente == null)
-                {
-                    celulasAdolescente = new List<Celula_Adolescente>();
-                    var c = new Celula_Adolescente().recuperar(null);                    
-                    if(c != null)
-                    {
-                        lista.AddRange(c);
-                        if(celulasAdolescente != null)
-                        celulasAdolescente.AddRange(c.OfType<Celula_Adolescente>());
-                    }                    
-                }                
+                if (celulasAdolescente == null && new Celula_Adolescente().recuperar(null) && celulasAdolescente != null)
+                { lista.AddRange(celulasAdolescente); listaCelulas.AddRange(celulasAdolescente); }
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (celulasAdulto == null)
-                {
-                    celulasAdulto = new List<Celula_Adulto>();
-                    var c = new Celula_Adulto().recuperar(null);
-                    if(c != null)
-                    {
-                        task.Result.AddRange(c);
-                        if (celulasAdulto != null)
-                            celulasAdulto.AddRange(c.OfType<Celula_Adulto>());
-                    }                    
-                }                
+                if (celulasAdulto == null && new Celula_Adulto().recuperar(null) && celulasAdulto != null)
+                { task.Result.AddRange(celulasAdulto); listaCelulas.AddRange(celulasAdulto); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (celulasCasado == null)
-                {
-                    celulasCasado = new List<Celula_Casado>();
-                    var c = new Celula_Casado().recuperar(null);
-                    if(c != null)
-                    {
-                        task.Result.AddRange(c);
-                        if (celulasCasado != null)
-                            celulasCasado.AddRange(c.OfType<Celula_Casado>());
-                    }                    
-                }                    
+                if (celulasCasado == null && new Celula_Casado().recuperar(null) && celulasCasado != null)
+                { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCasado); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (celulasCrianca == null)
-                {
-                    celulasCrianca = new List<Celula_Crianca>();
-                    var c = new Celula_Crianca().recuperar(null);
-                    if(c != null)
-                    {
-                        task.Result.AddRange(c);
-                        if (celulasCrianca != null)
-                            celulasCrianca.AddRange(c.OfType<Celula_Crianca>());
-                    }                    
-                }                    
+                if (celulasCrianca == null && new Celula_Crianca().recuperar(null) && celulasCrianca != null)
+                { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCrianca); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (celulasJovem == null)
-                {
-                    celulasJovem = new List<Celula_Jovem>();
-                    var c = new Celula_Jovem().recuperar(null);
-                    if(c != null)
-                    {
-                        task.Result.AddRange(c);
-                        if (celulasJovem != null)
-                            celulasJovem.AddRange(c.OfType<Celula_Jovem>());
-                    }                    
-                }                    
+                if (celulasJovem == null && new Celula_Jovem().recuperar(null) && celulasJovem != null)
+                {  task.Result.AddRange(celulasJovem); listaCelulas.AddRange(celulasJovem); }
                 return task.Result;
             });
 
@@ -273,8 +226,11 @@ namespace business.classes.Abstrato
             bd.fecharconexao(conexao);
 
             foreach (var item in lista)
-                modelos.Add(new MinisterioCelula().recuperar(item.IdMinisterioCelula)[0]);
-            
+            {
+                var model = new MinisterioCelula();
+                if(model.recuperar(item.IdMinisterioCelula))
+                modelos.Add(model);
+            }           
 
             return modelos;
         }
@@ -309,31 +265,31 @@ namespace business.classes.Abstrato
 
             foreach(var item in lista)
             {
-                var p1 = new Visitante().recuperar(item);
-                var p2 = new VisitanteLgpd().recuperar(item);
-                var p3 = new Crianca().recuperar(item);
-                var p4 = new CriancaLgpd().recuperar(item);
-                var p5 = new Membro_Aclamacao().recuperar(item);
-                var p6 = new Membro_AclamacaoLgpd().recuperar(item);
-                var p7 = new Membro_Batismo().recuperar(item);
-                var p8 = new Membro_BatismoLgpd().recuperar(item);
-                var p9 = new Membro_Reconciliacao().recuperar(item);
-                var p10 = new Membro_ReconciliacaoLgpd().recuperar(item);
-                var p11 = new Membro_Transferencia().recuperar(item);
-                var p12 = new Membro_TransferenciaLgpd().recuperar(item);
+                var model1 = new Visitante();                var p1 = model1.recuperar(item);
+                var model2  = new VisitanteLgpd()            ;  var p2 =   model2   .recuperar(item);
+                var model3  = new Crianca()                  ;  var p3 =   model3   .recuperar(item);
+                var model4  = new CriancaLgpd()              ;  var p4 =   model4   .recuperar(item);
+                var model5  = new Membro_Aclamacao()         ;  var p5 =   model5   .recuperar(item);
+                var model6  = new Membro_AclamacaoLgpd()     ;  var p6 =   model6   .recuperar(item);
+                var model7  = new Membro_Batismo()           ;  var p7 =   model7   .recuperar(item);
+                var model8  = new Membro_BatismoLgpd()       ;  var p8 =   model8   .recuperar(item);
+                var model9  = new Membro_Reconciliacao()     ;  var p9 =   model9   .recuperar(item);
+                var model10 = new Membro_ReconciliacaoLgpd() ;  var p10 =  model10  .recuperar(item);
+                var model11 = new Membro_Transferencia()     ;  var p11 =  model11  .recuperar(item);
+                var model12 = new Membro_TransferenciaLgpd();   var p12 =  model12.recuperar(item);
                 Pessoa p = null;
-                if (p1.Count > 0) p = (Pessoa)p1[0];
-                if (p2.Count > 0) p = (Pessoa)p2[0];
-                if (p3.Count > 0) p = (Pessoa)p3[0];
-                if (p4.Count > 0) p = (Pessoa)p4[0];
-                if (p5.Count > 0) p = (Pessoa)p5[0];
-                if (p6.Count > 0) p = (Pessoa)p6[0];
-                if (p7.Count > 0) p = (Pessoa)p7[0];
-                if (p8.Count > 0) p = (Pessoa)p8[0];
-                if (p9.Count > 0) p = (Pessoa)p9[0];
-                if (p10.Count > 0) p = (Pessoa)p10[0];
-                if (p11.Count > 0) p = (Pessoa)p11[0];
-                if (p12.Count > 0) p = (Pessoa)p12[0];
+                if (p1) p =  model1 ;
+                if (p2) p =  model2 ;
+                if (p3) p =  model3 ;
+                if (p4) p =  model4 ;
+                if (p5) p =  model5 ;
+                if (p6) p =  model6 ;
+                if (p7) p =  model7 ;
+                if (p8) p =  model8 ;
+                if (p9) p =  model9 ;
+                if (p10) p = model10;
+                if (p11) p = model11;
+                if (p12) p = model12;
                 if (p != null)
                     modelos.Add(p);
             }

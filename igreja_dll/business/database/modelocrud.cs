@@ -33,13 +33,10 @@ namespace database
         private string update_padrao;
         private string delete_padrao;
         private string select_padrao;
-        private bool dados_Relacionados;
 
         [NotMapped]
         public static bool Erro_Conexao;
-
-        [NotMapped]
-        public modelocrud ModeloErro { get; set; }
+        
 
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
@@ -49,8 +46,6 @@ namespace database
         public string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
         [NotMapped]
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
-        [NotMapped]
-        public bool Dados_Relacionados { get => dados_Relacionados; set => dados_Relacionados = value; }
         
 
         public BDcomum bd;
@@ -58,7 +53,7 @@ namespace database
         public abstract string salvar();
         public abstract string alterar( int id);
         public abstract string excluir(int id);
-        public abstract List<modelocrud> recuperar(int? id);
+        public abstract bool recuperar(int? id);
 
         public bool retornoDados(SqlDataReader dr, string pesquisa)
         {
@@ -96,41 +91,34 @@ namespace database
             {
                 Erro_Conexao = true;
 
-                modelocrud erro = null;
-
-                if (Dados_Relacionados)                
-                    erro = ModeloErro;
-                else
-                    erro = this;
-
-                if (erro is Visitante) Pessoa.visitantes = null;
-                if (erro is Crianca) Pessoa.criancas = null;
-                if (erro is Membro_Aclamacao) Pessoa.membros_Aclamacao = null;
-                if (erro is Membro_Batismo) Pessoa.membros_Batismo = null;
-                if (erro is Membro_Reconciliacao) Pessoa.membros_Reconciliacao = null;
-                if (erro is Membro_Transferencia) Pessoa.membros_Transferencia = null;
+                //if (erro is Visitante) Pessoa.visitantes = null;
+                //if (erro is Crianca) Pessoa.criancas = null;
+                //if (erro is Membro_Aclamacao) Pessoa.membros_Aclamacao = null;
+                //if (erro is Membro_Batismo) Pessoa.membros_Batismo = null;
+                //if (erro is Membro_Reconciliacao) Pessoa.membros_Reconciliacao = null;
+                //if (erro is Membro_Transferencia) Pessoa.membros_Transferencia = null;
                     
-                if (erro is VisitanteLgpd) Pessoa.visitantesLgpd = null;
-                if (erro is CriancaLgpd) Pessoa.criancasLgpd = null;
-                if (erro is Membro_AclamacaoLgpd) Pessoa.membros_AclamacaoLgpd = null;
-                if (erro is Membro_BatismoLgpd) Pessoa.membros_BatismoLgpd = null;
-                if (erro is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = null;
-                if (erro is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = null;
+                //if (erro is VisitanteLgpd) Pessoa.visitantesLgpd = null;
+                //if (erro is CriancaLgpd) Pessoa.criancasLgpd = null;
+                //if (erro is Membro_AclamacaoLgpd) Pessoa.membros_AclamacaoLgpd = null;
+                //if (erro is Membro_BatismoLgpd) Pessoa.membros_BatismoLgpd = null;
+                //if (erro is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = null;
+                //if (erro is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = null;
                     
-                if (erro is Lider_Celula) Ministerio.lideresCelula = null;
-                if (erro is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = null;
-                if (erro is Lider_Ministerio) Ministerio.lideresMinisterio = null;
-                if (erro is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = null;
-                if (erro is Supervisor_Celula) Ministerio.supervisoresCelula = null;
-                if (erro is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = null;
-                if (erro is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = null;
-                if (erro is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = null;
+                //if (erro is Lider_Celula) Ministerio.lideresCelula = null;
+                //if (erro is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = null;
+                //if (erro is Lider_Ministerio) Ministerio.lideresMinisterio = null;
+                //if (erro is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = null;
+                //if (erro is Supervisor_Celula) Ministerio.supervisoresCelula = null;
+                //if (erro is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = null;
+                //if (erro is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = null;
+                //if (erro is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = null;
                     
-                if (erro is Celula_Adolescente) Celula.celulasAdolescente = null;
-                if (erro is Celula_Adulto) Celula.celulasAdulto = null;
-                if (erro is Celula_Casado) Celula.celulasCasado = null;
-                if (erro is Celula_Crianca) Celula.celulasCrianca = null;
-                if (erro is Celula_Jovem) Celula.celulasJovem = null;
+                //if (erro is Celula_Adolescente) Celula.celulasAdolescente = null;
+                //if (erro is Celula_Adulto) Celula.celulasAdulto = null;
+                //if (erro is Celula_Casado) Celula.celulasCasado = null;
+                //if (erro is Celula_Crianca) Celula.celulasCrianca = null;
+                //if (erro is Celula_Jovem) Celula.celulasJovem = null;
             }
         }
 

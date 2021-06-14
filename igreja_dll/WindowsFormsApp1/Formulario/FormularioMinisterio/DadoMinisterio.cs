@@ -53,7 +53,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             var m = (Ministerio)modelo;
             try
             {
-                var modelo = listaPessoas.First(i => i.Codigo == int.Parse(txt_ministro.Text));
+                var modelo = business.classes.Abstrato.Pessoa.listaPessoas.First(i => i.Codigo == int.Parse(txt_ministro.Text));
                 m.Ministro_ = modelo.IdPessoa;
             }
             catch (Exception)

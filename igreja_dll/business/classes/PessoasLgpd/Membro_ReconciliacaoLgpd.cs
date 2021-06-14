@@ -42,14 +42,14 @@ namespace business.classes.PessoasLgpd
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Membro_ReconciliacaoLgpd as MR "
             + " inner join MembroLgpd as M on MR.IdPessoa=M.IdPessoa "
             + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where MR.IdPessoa='{id}' ";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -58,8 +58,6 @@ namespace business.classes.PessoasLgpd
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Membro_ReconciliacaoLgpd as MR "
                     + " inner join MembroLgpd as M on MR.IdPessoa=M.IdPessoa "
                     + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
@@ -70,39 +68,39 @@ namespace business.classes.PessoasLgpd
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
                         this.Data_reconciliacao = int.Parse(dr["Data_reconciliacao"].ToString());
                         dr.Close();
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
                     try
                     {
-
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Membro_ReconciliacaoLgpd mr = new Membro_ReconciliacaoLgpd();
@@ -114,31 +112,35 @@ namespace business.classes.PessoasLgpd
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        membros_ReconciliacaoLgpd = new List<Membro_ReconciliacaoLgpd>();
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_ReconciliacaoLgpd)m;
                             var c = new Membro_ReconciliacaoLgpd();
-                            c = (Membro_ReconciliacaoLgpd)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                membros_ReconciliacaoLgpd.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                membros_ReconciliacaoLgpd = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.membros_ReconciliacaoLgpd = null;
-            return modelos;
+                membros_ReconciliacaoLgpd = null;
+            return false;
         }
 
         public override string salvar()

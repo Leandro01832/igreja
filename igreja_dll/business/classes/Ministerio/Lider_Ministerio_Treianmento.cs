@@ -33,11 +33,11 @@ namespace business.classes.Ministerio
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Lider_Ministerio_Treinamento as LMT inner join Ministerio as MI on LMT.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where LMT.IdMinisterio='{id}'";
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -52,21 +52,21 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         dr.Close();
                         base.recuperar(id);
-                        modelos.Add(this);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -79,9 +79,10 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Lider_Ministerio_Treinamento m = new Lider_Ministerio_Treinamento();
@@ -92,32 +93,36 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
                         foreach (var m in modelos)
                         {
                             var cel = (Lider_Ministerio_Treinamento)m;
                             var c = new Lider_Ministerio_Treinamento();
-                            c = (Lider_Ministerio_Treinamento)m.recuperar(cel.IdMinisterio)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdMinisterio))
+                                lideresMinisterioTreinamento.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                lideresMinisterioTreinamento = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Abstrato.Ministerio.lideresMinisterioTreinamento = null;
-            return modelos;
+                lideresMinisterioTreinamento = null;
+            return false;
         }
 
         public override string salvar()

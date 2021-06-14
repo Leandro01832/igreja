@@ -43,14 +43,13 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Reconciliacao as MR "
             + " inner join Membro as M on MR.IdPessoa=M.IdPessoa "
             + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where MR.IdPessoa='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -71,24 +70,24 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
                         this.Data_reconciliacao = int.Parse(dr["Data_reconciliacao"].ToString());
                         dr.Close();
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -101,9 +100,10 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Membro_Reconciliacao mr = new Membro_Reconciliacao();
@@ -115,31 +115,35 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        membros_Reconciliacao = new List<Membro_Reconciliacao>();
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_Reconciliacao)m;
                             var c = new Membro_Reconciliacao();
-                            c = (Membro_Reconciliacao)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                membros_Reconciliacao.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                membros_Reconciliacao = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.membros_Reconciliacao = null;
-            return modelos;
+               membros_Reconciliacao = null;
+            return false;
         }
 
         public override string salvar()

@@ -32,13 +32,13 @@ namespace business.classes.Celulas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Celula_Casado as CC "
                 + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
             if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -56,22 +56,22 @@ namespace business.classes.Celulas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         dr.Close();
                         base.recuperar(id);
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -84,9 +84,10 @@ namespace business.classes.Celulas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Celula_Casado c = new Celula_Casado();
@@ -98,31 +99,36 @@ namespace business.classes.Celulas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
+                        celulasCasado = new List<Celula_Casado>();
                         List<modelocrud> lista = new List<modelocrud>();
                         foreach (var m in modelos)
                         {
                             var cel = (Celula_Casado)m;
                             var c = new Celula_Casado();
-                            c = (Celula_Casado)m.recuperar(cel.IdCelula)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdCelula))
+                                celulasCasado.Add(c); //não deu erro de conexao
+                            else
+                            {
+                                celulasCasado = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                business.classes.Abstrato.Celula.celulasCasado = null;
-            return modelos;
+                celulasCasado = null;
+            return false;
         }
 
         public override string salvar()

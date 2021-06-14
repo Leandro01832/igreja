@@ -47,7 +47,10 @@ namespace business.classes
         public virtual List<ReuniaoPessoa> Pessoas { get; set; }
 
         [NotMapped]
-        public static int UltimoRegistro { get; set; } 
+        public static int UltimoRegistro { get; set; }
+
+        [NotMapped]
+        public static List<Reuniao>  Reunioes { get; set; }
         #endregion
 
         AddNalista AddNalista;
@@ -74,13 +77,12 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Reuniao as M";
             if (id != null)
                 Select_padrao += $" where M.IdReuniao='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -96,7 +98,7 @@ namespace business.classes
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
                         dr.Read();
@@ -105,12 +107,10 @@ namespace business.classes
                         this.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
                         this.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
                         this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                        modelos.Add(this);
+                        
                         dr.Close();
 
                         bd.fecharconexao(conexao);
-                        Dados_Relacionados = true;
-                        ModeloErro = this;
                         this.Pessoas = new List<ReuniaoPessoa>();
                         var listaPessoas = recuperarPessoas(id);
                         if (listaPessoas != null)
@@ -118,19 +118,18 @@ namespace business.classes
                             {
                                 this.Pessoas.Add((ReuniaoPessoa)item);
                             }
-                        Dados_Relacionados = false;
-
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -143,9 +142,10 @@ namespace business.classes
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Reuniao r = new Reuniao();
@@ -155,35 +155,41 @@ namespace business.classes
 
                         dr.Close();
 
-                        //Recursividade
+                        //Recursividade                        
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        Reunioes = new List<Reuniao>();
                         foreach (var m in modelos)
                         {
                             var cel = (Reuniao)m;
                             var c = new Reuniao();
-                            c = (Reuniao)m.recuperar(cel.IdReuniao)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdReuniao))
+                            Reuniao.Reunioes.Add(c);
+                            else
+                            {
+                                Reunioes = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
-
+                    return true;
                 } 
             }
 
-            return modelos;
+            if (id == null)
+                Reunioes = null;
+
+            return false;
         }
 
         public override string salvar()
@@ -227,7 +233,9 @@ namespace business.classes
 
             foreach(var item in lista)
             {
-                    modelos.Add(new ReuniaoPessoa().recuperar(item.IdReuniaoPessoa)[0]);
+                var model = new ReuniaoPessoa();
+                if(model.recuperar(item.IdReuniaoPessoa))
+                    modelos.Add(model);
             }
 
             return modelos;

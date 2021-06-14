@@ -153,7 +153,7 @@ namespace business.classes
             throw new NotImplementedException();
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             throw new NotImplementedException();
         }        

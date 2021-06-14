@@ -81,7 +81,7 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Membro as P ";
             if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
@@ -91,7 +91,6 @@ namespace business.classes.Abstrato
 
             if (id != null)
             {
-                
                 Select_padrao = "select * from Membro as P ";
                 if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
                 SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -100,7 +99,7 @@ namespace business.classes.Abstrato
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 base.recuperar(id);
                 dr.Read();
@@ -112,7 +111,7 @@ namespace business.classes.Abstrato
                 modelos.Add(this);                
             }
             bd.fecharconexao(conexao);
-            return modelos;
+            return true;
         }
 
         public override string salvar()

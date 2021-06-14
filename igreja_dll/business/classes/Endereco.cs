@@ -48,6 +48,9 @@ namespace business.classes
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Complemento { get; set; }
 
+        [NotMapped]
+        public static List<Endereco> Enderecos { get; set; }
+
         public Endereco()
         {
         }
@@ -75,13 +78,13 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Endereco as M";
             if (id != null)
                 Select_padrao += $" where M.IdEndereco='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -93,7 +96,7 @@ namespace business.classes
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        return modelos;
+                        return false;
                     }
 
                     dr.Read();
@@ -117,8 +120,7 @@ namespace business.classes
                 {
                 }
 
-                modelos.Add(this);
-                return modelos;
+                return true;
             }
             else
             {
@@ -129,9 +131,10 @@ namespace business.classes
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        return modelos;
+                        return false;
                     }
 
+                    List<modelocrud> modelos = new List<modelocrud>();
                     while (dr.Read())
                     {
                         Endereco end = new Endereco();
@@ -142,16 +145,19 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    List<modelocrud> lista = new List<modelocrud>();
+                    Enderecos = new List<Endereco>();
                     foreach (var m in modelos)
                     {
                         var cel = (Endereco)m;
                         var c = new Endereco();
-                        c = (Endereco)m.recuperar(cel.IdEndereco)[0];
-                        lista.Add(c);
+                        if(c.recuperar(cel.IdEndereco))
+                        Enderecos.Add(c); // não deu erro de conexao
+                        else
+                        {
+                            Enderecos = null;
+                            break;
+                        }
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
                 }
 
                 catch (Exception)
@@ -162,7 +168,7 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
 
         }

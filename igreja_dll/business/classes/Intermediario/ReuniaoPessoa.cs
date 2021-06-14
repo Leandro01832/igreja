@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace business.classes.Intermediario
         [JsonIgnore]
         public virtual Reuniao Reuniao { get; set; }
 
+        [NotMapped]
+        public static List<ReuniaoPessoa> ReuniaoPessoas { get; set; }
+
         public override string alterar(int id)
         {
             throw new NotImplementedException();
@@ -32,12 +36,12 @@ namespace business.classes.Intermediario
             throw new NotImplementedException();
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from ReuniaoPessoa as RP ";
             if (id != null) Select_padrao += $" where RP.IdReuniaoPessoa='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -49,7 +53,7 @@ namespace business.classes.Intermediario
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 try
                 {
@@ -57,7 +61,6 @@ namespace business.classes.Intermediario
                     this.ReuniaoId = int.Parse(Convert.ToString(dr["ReuniaoId"]));
                     this.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
                     dr.Close();
-                    modelos.Add(this);
                 }
 
                 catch (Exception)
@@ -69,7 +72,7 @@ namespace business.classes.Intermediario
                     bd.fecharconexao(conexao);
                 }
 
-                return modelos;
+                return true;
             }
             else
             {
@@ -80,11 +83,12 @@ namespace business.classes.Intermediario
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 try
                 {
                     List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
+                    
                     while (dr.Read())
                     {
                         ReuniaoPessoa pm = new ReuniaoPessoa();
@@ -95,9 +99,17 @@ namespace business.classes.Intermediario
 
                     bd.fecharconexao(conexao);
                     //recursividade
+                    ReuniaoPessoas = new List<ReuniaoPessoa>();
                     foreach (var item in lista.OfType<ReuniaoPessoa>().ToList())
                     {
-                        modelos.Add(new ReuniaoPessoa().recuperar(item.IdReuniaoPessoa)[0]);
+                        var modelo = new ReuniaoPessoa();
+                        if (recuperar(item.IdReuniaoPessoa))
+                            ReuniaoPessoas.Add(modelo); // não deu erro de conexao
+                        else
+                        {
+                            ReuniaoPessoas = null;
+                            break;
+                        }
                     }
                 }
 
@@ -109,7 +121,7 @@ namespace business.classes.Intermediario
                 {
                     bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
         }
 

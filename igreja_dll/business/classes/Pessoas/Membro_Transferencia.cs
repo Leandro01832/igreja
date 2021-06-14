@@ -47,14 +47,13 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Transferencia as MT "
             + " inner join Membro as M on MT.IdPessoa=M.IdPessoa "
             + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa";
             if (id != null) Select_padrao += $" where MT.IdPessoa='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -75,7 +74,7 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
@@ -83,17 +82,17 @@ namespace business.classes.Pessoas
                         this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
                         this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                         dr.Close();
-                        modelos.Add(this);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -106,9 +105,10 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Membro_Transferencia mt = new Membro_Transferencia();
@@ -119,31 +119,35 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        membros_Transferencia = new List<Membro_Transferencia>();
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_Transferencia)m;
                             var c = new Membro_Transferencia();
-                            c = (Membro_Transferencia)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                membros_Transferencia.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                membros_Transferencia = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.membros_Transferencia = null;
-            return modelos;
+                membros_Transferencia = null;
+            return false;
 
         }
 

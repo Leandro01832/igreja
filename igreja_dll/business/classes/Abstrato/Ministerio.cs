@@ -43,6 +43,8 @@ namespace business.classes.Abstrato
         [NotMapped]
         public static int UltimoRegistro { get; set; }
 
+        
+        public static List<Ministerio> listaMinisterios = new List<Ministerio>();
         public static List<Lider_Celula> lideresCelula { get; set; }
         public static List<Lider_Celula_Treinamento> LideresCelulaTreinamento { get; set; }
         public static List<Lider_Ministerio> lideresMinisterio { get; set; }
@@ -81,12 +83,12 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Ministerio as M  ";
             if (id != null) Select_padrao += $" where M.IdMinisterio='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -96,7 +98,7 @@ namespace business.classes.Abstrato
                 if (dr.HasRows == false)
                 {
                     dr.Close();
-                    return modelos;
+                    return false;
                 }
                     dr.Read();
                     this.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
@@ -106,8 +108,6 @@ namespace business.classes.Abstrato
                     dr.Close();
 
                 bd.fecharconexao(conexao);
-                Dados_Relacionados = true;
-                ModeloErro = this;
                 this.Pessoas = new List<PessoaMinisterio>();
                     var listaPessoas = buscarPessoas(id);
                     if (listaPessoas != null)
@@ -119,14 +119,10 @@ namespace business.classes.Abstrato
                     if (listaCelulas != null)
                         foreach (var item in listaCelulas)
                             this.Celulas.Add((MinisterioCelula)item);
-
-                
                     
-                modelos.Add(this);
-                Dados_Relacionados = false;
-                return modelos;
+                return true;
             }
-            return modelos;
+            return false;
         }
 
         public override string salvar()
@@ -149,130 +145,58 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (lideresCelula == null)
-                {
-                    lideresCelula = new List<Lider_Celula>();
-                    var m = new Lider_Celula().recuperar(null);
-                    if(m != null)
-                    {
-                        lista.AddRange(m);
-                        if (lideresCelula != null)
-                            lideresCelula.AddRange(m.OfType<Lider_Celula>());
-                    }                    
-                }                
+                if (lideresCelula == null && new Lider_Celula().recuperar(null) && lideresCelula != null)
+                { lista.AddRange(lideresCelula); listaMinisterios.AddRange(lideresCelula); }
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (LideresCelulaTreinamento == null)
-                {
-                    LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
-                    var m = new Lider_Celula_Treinamento().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (LideresCelulaTreinamento != null)
-                            LideresCelulaTreinamento.AddRange(m.OfType<Lider_Celula_Treinamento>());
-                    }                    
-                }                
+                if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar(null) && LideresCelulaTreinamento != null)
+                { task.Result.AddRange(LideresCelulaTreinamento); listaMinisterios.AddRange(LideresCelulaTreinamento); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (lideresMinisterio == null)
-                {
-                    lideresMinisterio = new List<Lider_Ministerio>();
-                    var m = new Lider_Ministerio().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (lideresMinisterio != null)
-                            lideresMinisterio.AddRange(m.OfType<Lider_Ministerio>());
-                    }                    
-                }                
+                if (lideresMinisterio == null && new Lider_Ministerio().recuperar(null) && lideresMinisterio != null)
+                { task.Result.AddRange(lideresMinisterio); listaMinisterios.AddRange(lideresMinisterio); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (lideresMinisterioTreinamento == null)
-                {
-                    lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
-                    var m = new Lider_Ministerio_Treinamento().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (lideresMinisterioTreinamento != null)
-                            lideresMinisterioTreinamento.AddRange(m.OfType<Lider_Ministerio_Treinamento>());
-                    }                    
-                }                
+                if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar(null) && lideresMinisterioTreinamento != null)
+                { task.Result.AddRange(lideresMinisterioTreinamento); listaMinisterios.AddRange(lideresMinisterioTreinamento); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (supervisoresCelula == null)
-                {
-                    supervisoresCelula = new List<Supervisor_Celula>();
-                    var m = new Supervisor_Celula().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (supervisoresCelula != null)
-                            supervisoresCelula.AddRange(m.OfType<Supervisor_Celula>());
-                    }                    
-                }                
+                if (supervisoresCelula == null && new Supervisor_Celula().recuperar(null) && supervisoresCelula != null)
+                { task.Result.AddRange(supervisoresCelula); listaMinisterios.AddRange(supervisoresCelula); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t6 = t5.ContinueWith((task) =>
             {
-                if (supervisoresCelulaTreinamento != null)
-                {
-                    supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
-                    var m = new Supervisor_Celula_Treinamento().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (supervisoresCelulaTreinamento != null)
-                            supervisoresCelulaTreinamento.AddRange(m.OfType<Supervisor_Celula_Treinamento>());
-                    }                    
-                }                    
+                if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar(null) && supervisoresCelulaTreinamento != null)
+                { task.Result.AddRange(supervisoresCelulaTreinamento); listaMinisterios.AddRange(supervisoresCelulaTreinamento); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t7 = t6.ContinueWith((task) =>
             {
-                
-                if (supervisoresMinisterio == null)
-                {
-                    supervisoresMinisterio = new List<Supervisor_Ministerio>();
-                    var m = new Supervisor_Ministerio().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (supervisoresMinisterio != null)
-                            supervisoresMinisterio.AddRange(m.OfType<Supervisor_Ministerio>());
-                    }                    
-                }                    
+
+                if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar(null) && supervisoresMinisterio != null)
+                { task.Result.AddRange(supervisoresMinisterio); listaMinisterios.AddRange(supervisoresMinisterio); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
-                if (supervisoresMinisterioTreinamento == null)
-                {
-                    supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
-                    var m = new Supervisor_Ministerio_Treinamento().recuperar(null);
-                    if(m != null)
-                    {
-                        task.Result.AddRange(m);
-                        if (supervisoresMinisterioTreinamento != null)
-                            supervisoresMinisterioTreinamento.AddRange(m.OfType<Supervisor_Ministerio_Treinamento>());
-                    }                    
-                }                    
+                if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar(null) && supervisoresMinisterioTreinamento != null)
+                { task.Result.AddRange(supervisoresMinisterioTreinamento); listaMinisterios.AddRange(supervisoresMinisterioTreinamento); }
                 return task.Result;
             });
 
@@ -310,7 +234,12 @@ namespace business.classes.Abstrato
             bd.fecharconexao(conexao);
 
             foreach (var item in lista)
-                modelos.Add(new PessoaMinisterio().recuperar(item.IdPessoaMinisterio)[0]);
+            {
+                var model = new PessoaMinisterio();
+                if(model.recuperar(item.IdPessoaMinisterio))
+                modelos.Add(model);
+            }
+                
 
             return modelos;
         }
@@ -344,7 +273,11 @@ namespace business.classes.Abstrato
             bd.fecharconexao(conexao);
 
             foreach (var item in lista)
-                modelos.Add(new MinisterioCelula().recuperar(item.IdMinisterioCelula)[0]);
+            {
+                var model = new MinisterioCelula();
+                if (model.recuperar(item.IdMinisterioCelula))
+                    modelos.Add(model);
+            }
 
             return modelos;
         }

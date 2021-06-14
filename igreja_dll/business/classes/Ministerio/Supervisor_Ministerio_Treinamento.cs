@@ -37,11 +37,11 @@ namespace business.classes.Ministerio
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Supervisor_Ministerio_Treinamento as SMT inner join Ministerio as MI on SMT.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where SMT.IdMinisterio='{id}'";
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -50,8 +50,6 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Supervisor_Ministerio_Treinamento as SMT inner join Ministerio as MI on SMT.IdMinisterio=MI.IdMinisterio ";
                         if (id != null) Select_padrao += $" where SMT.IdMinisterio='{id}'";
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -60,23 +58,23 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
                         this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                         dr.Close();
-                        modelos.Add(this);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -89,9 +87,10 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Supervisor_Ministerio_Treinamento m = new Supervisor_Ministerio_Treinamento();
@@ -102,32 +101,36 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
                         foreach (var m in modelos)
                         {
                             var cel = (Supervisor_Ministerio_Treinamento)m;
                             var c = new Supervisor_Ministerio_Treinamento();
-                            c = (Supervisor_Ministerio_Treinamento)m.recuperar(cel.IdMinisterio)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdMinisterio))
+                                supervisoresMinisterioTreinamento.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                supervisoresMinisterioTreinamento = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Abstrato.Ministerio.supervisoresMinisterioTreinamento = null;
-            return modelos;
+                supervisoresMinisterioTreinamento = null;
+            return false;
         }
 
         public override string salvar()

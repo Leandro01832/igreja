@@ -69,7 +69,7 @@ namespace business.classes.Celula
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from EnderecoCelula as M";
             if (id != null)
@@ -86,7 +86,7 @@ namespace business.classes.Celula
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 try
                 {
@@ -113,7 +113,7 @@ namespace business.classes.Celula
                 }
 
                 modelos.Add(this);
-                return modelos;
+                return true;
             }
             else
             {
@@ -123,7 +123,7 @@ namespace business.classes.Celula
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 try
                 {
@@ -153,7 +153,7 @@ namespace business.classes.Celula
                     bd.fecharconexao(conexao);
                 }
 
-                return modelos;
+                return true;
             }
 
         }

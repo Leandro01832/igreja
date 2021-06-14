@@ -26,6 +26,9 @@ namespace business.classes.Intermediario
         [JsonIgnore]
         public virtual Abstrato.Ministerio Ministerio { get; set; }
 
+        [NotMapped]
+        public static List<PessoaMinisterio> PessoaMinisterios { get; set; }
+
         public override string alterar(int id)
         {
             throw new NotImplementedException();
@@ -36,12 +39,12 @@ namespace business.classes.Intermediario
             throw new NotImplementedException();
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from PessoaMinisterio as PM ";
             if (id != null) Select_padrao += $" where PM.IdPessoaMinisterio='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -55,14 +58,13 @@ namespace business.classes.Intermediario
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        return false;
                     }
 
                     dr.Read();
                     this.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
                     this.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
                     dr.Close();
-                    modelos.Add(this);
                 }
 
                 catch (Exception)
@@ -74,7 +76,7 @@ namespace business.classes.Intermediario
                     bd.fecharconexao(conexao);
                 }
 
-                return modelos;
+                return true;
             }
             else
             {
@@ -85,7 +87,7 @@ namespace business.classes.Intermediario
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 try
                 {
@@ -99,11 +101,13 @@ namespace business.classes.Intermediario
                     dr.Close();
 
                     bd.fecharconexao(conexao);
-                    // recursividade                    
+                    // recursividade          
+                    PessoaMinisterios = new List<PessoaMinisterio>();
                     foreach (var item in lista.OfType<PessoaMinisterio>())
                     {
-                        var pessoaMinisterio = new PessoaMinisterio().recuperar(item.IdPessoaMinisterio)[0];
-                        modelos.Add(pessoaMinisterio);
+                        var model = new PessoaMinisterio();
+                        if(model.recuperar(item.IdPessoaMinisterio))
+                            PessoaMinisterios.Add(model);
                     }
                 }
 
@@ -115,7 +119,7 @@ namespace business.classes.Intermediario
                 {
                     bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
         }
 

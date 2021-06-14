@@ -32,13 +32,13 @@ namespace business.classes.Celulas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Celula_Crianca as CC "
                 + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
             if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -47,8 +47,6 @@ namespace business.classes.Celulas
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Celula_Crianca as CC "
                         + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
                         if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
@@ -58,22 +56,22 @@ namespace business.classes.Celulas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         dr.Close();
                         base.recuperar(id);
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -86,9 +84,10 @@ namespace business.classes.Celulas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Celula_Crianca c = new Celula_Crianca();
@@ -100,31 +99,35 @@ namespace business.classes.Celulas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        celulasCrianca = new List<Celula_Crianca>();
                         foreach (var m in modelos)
                         {
                             var cel = (Celula_Crianca)m;
                             var c = new Celula_Crianca();
-                            c = (Celula_Crianca)m.recuperar(cel.IdCelula)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdCelula))
+                                celulasCrianca.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                celulasCrianca = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                business.classes.Abstrato.Celula.celulasCrianca = null;
-            return modelos;
+                celulasCrianca = null;
+            return false;
         }
 
         public override string salvar()

@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace business.classes
 {
-    public  class Chamada : modelocrud
+    public class Chamada : modelocrud
     {
         [Key, ForeignKey("Pessoa")]
         public int IdChamada { get; set; }
@@ -20,42 +20,43 @@ namespace business.classes
         [Display(Name = "Data de inicio")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public  DateTime Data_inicio{ get; set; }
+        public DateTime Data_inicio { get; set; }
 
         [Display(Name = "Numero da chamada")]
         public int Numero_chamada { get; set; }
 
         public virtual Pessoa Pessoa { get; set; }
 
-        
+        [NotMapped]
+        public static List<Chamada> Chamadas { get; set; }
 
         public Chamada()
         {
             Data_inicio = DateTime.Now;
             Numero_chamada = 0;
-            
+
         }
 
         public override string alterar(int id)
         {
             Update_padrao = $"update Chamada set Data_inicio={Data_inicio.ToString()},"
-               + $" Numero_chamada={Numero_chamada} where IdChamada={id} ";            
+               + $" Numero_chamada={Numero_chamada} where IdChamada={id} ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Chamada where IdChamada={id} ";            
+            Delete_padrao = $"delete from Chamada where IdChamada={id} ";
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Chamada as C";
             if (id != null)
-                Select_padrao +=  $" where C.IdChamada='{id}'";
+                Select_padrao += $" where C.IdChamada='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -66,7 +67,7 @@ namespace business.classes
                 {
                     dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                 }
                 try
                 {
@@ -74,7 +75,6 @@ namespace business.classes
                     this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
                     this.IdChamada = int.Parse(Convert.ToString(dr["IdChamada"]));
                     this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
-
                     dr.Close();
                 }
 
@@ -87,21 +87,22 @@ namespace business.classes
                     bd.fecharconexao(conexao);
                 }
 
-                modelos.Add(this);
-                return modelos;
+                return true;
             }
             else
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return modelos;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return false;
+                    }
+
+                    List<modelocrud> modelos = new List<modelocrud>();
                     while (dr.Read())
                     {
                         Chamada ch = new Chamada();
@@ -112,16 +113,20 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    List<modelocrud> lista = new List<modelocrud>();
+                    Chamadas = new List<Chamada>();
                     foreach (var m in modelos)
                     {
                         var cel = (Chamada)m;
                         var c = new Chamada();
-                        c = (Chamada)m.recuperar(cel.IdChamada)[0];
-                        lista.Add(c);
+                        if(c.recuperar(cel.IdChamada))
+                        Chamadas.Add(c); //não deu erro de conexao
+                        else
+                        {
+                            Chamadas = null;
+                            break;
+                        }
+
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
                 }
 
                 catch (Exception)
@@ -132,17 +137,17 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
 
         }
 
         public override string salvar()
-        {            
+        {
             Insert_padrao = $"insert into Chamada "
             + " (Data_inicio, Numero_chamada, IdChamada) values"
-            + $" ('{DateTime.Now.ToString("yyyy-MM-dd")}', '{Numero_chamada.ToString()}', IDENT_CURRENT('Pessoa'))";            
+            + $" ('{DateTime.Now.ToString("yyyy-MM-dd")}', '{Numero_chamada.ToString()}', IDENT_CURRENT('Pessoa'))";
             return Insert_padrao;
-        }              
+        }
     }
 }

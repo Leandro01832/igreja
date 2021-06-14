@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Abstrato;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,7 +53,7 @@ namespace WindowsFormsApp1.Formulario.Celula
                 var minis = c.Ministerios;
                 foreach (var item in minis)
                 {
-                    var m = listaMinisterios.First(i => i.IdMinisterio == item.MinisterioId);
+                    var m = Ministerio.listaMinisterios.First(i => i.IdMinisterio == item.MinisterioId);
                     txt_ministerio.Text += m.IdMinisterio.ToString() + ", ";
                 }
             }
@@ -83,14 +84,14 @@ namespace WindowsFormsApp1.Formulario.Celula
                             int numero = int.Parse(item);
                             try
                             {
-                                var modelo = listaMinisterios.FirstOrDefault(i => i.IdMinisterio == numero);
+                                var modelo = Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == numero);
                                 AddNaListaCelulaMinisterios += modelo.IdMinisterio.ToString() + ", ";
                             }
                             catch
                             {
                                 AddNaListaCelulaMinisterios = "";
                                 var num = GeTotalRegistrosMinisterios();
-                                if (num != listaMinisterios.Count)
+                                if (num != Ministerio.listaMinisterios.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");

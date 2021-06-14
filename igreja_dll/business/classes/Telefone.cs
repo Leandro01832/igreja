@@ -29,6 +29,9 @@ namespace business.classes
 
         public string Whatsapp { get; set; }
 
+        [NotMapped]
+        public static List<Telefone> Telefones { get; set; }
+
         public Telefone()
         {
         }
@@ -46,13 +49,13 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Telefone as M";
             if (id != null)
                 Select_padrao += Select_padrao + $" where M.IdTelefone={id}";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -64,7 +67,7 @@ namespace business.classes
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        return modelos;
+                        return false;
                     }
 
                     dr.Read();
@@ -81,10 +84,10 @@ namespace business.classes
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
-
-                modelos.Add(this);
-                return modelos;
+                
+                return true;
             }
             else
             {
@@ -95,9 +98,10 @@ namespace business.classes
                     if (dr.HasRows == false)
                     {
                         dr.Close();
-                        return modelos;
+                        return false;
                     }
 
+                    List<modelocrud> modelos = new List<modelocrud>();
                     while (dr.Read())
                     {
                         Telefone tel = new Telefone();
@@ -110,16 +114,19 @@ namespace business.classes
                     //Recursividade
                     bd.fecharconexao(conexao);
 
-                    List<modelocrud> lista = new List<modelocrud>();
+                    Telefones = new List<Telefone>();
                     foreach (var m in modelos)
                     {
                         var cel = (Telefone)m;
                         var c = new Telefone();
-                        c = (Telefone)m.recuperar(cel.IdTelefone)[0];
-                        lista.Add(c);
+                        if(c.recuperar(cel.IdTelefone))
+                        Telefones.Add(c); //não deu erro de conexao
+                        else
+                        {
+                            Telefones = null;
+                            break;
+                        }
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
                 }
 
                 catch (Exception)
@@ -128,8 +135,9 @@ namespace business.classes
                 }
                 finally
                 {
+                    bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
 
         }

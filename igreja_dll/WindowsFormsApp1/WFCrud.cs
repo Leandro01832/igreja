@@ -405,22 +405,22 @@ namespace WindowsFormsApp1
                 if (modelo is Pessoa)
                 {
                     var p = (Pessoa)modelo;
-                    if (modelo.recuperar(p.IdPessoa).Count > 0) deletar = true;
+                    if (modelo.recuperar(p.IdPessoa)) deletar = true;
                 }
                 if(modelo is Ministerio)
                 {
                     var p = (Ministerio)modelo;
-                    if (modelo.recuperar(p.IdMinisterio).Count > 0) deletar = true;
+                    if (modelo.recuperar(p.IdMinisterio)) deletar = true;
                 }
                 if (modelo is Celula)
                 {
                     var p = (Celula)modelo;
-                    if (modelo.recuperar(p.IdCelula).Count > 0) deletar = true;
+                    if (modelo.recuperar(p.IdCelula)) deletar = true;
                 }
                 if (modelo is Reuniao)
                 {
                     var p = (Reuniao)modelo;
-                    if (modelo.recuperar(p.IdReuniao).Count > 0) deletar = true;
+                    if (modelo.recuperar(p.IdReuniao)) deletar = true;
                 }
             }
 
@@ -430,59 +430,40 @@ namespace WindowsFormsApp1
                 {
                     Pessoa pes = null;
                     var p = (Pessoa)modelo;
-                    if (p is Visitante)
-                        pes = (Visitante)new Visitante().recuperar(p.IdPessoa)[0];
-                    if (p is Crianca)
-                        pes = (Crianca)new Crianca().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_Batismo)
-                        pes = (Membro_Batismo)new Membro_Batismo().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_Aclamacao)
-                        pes = (Membro_Aclamacao)new Membro_Aclamacao().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_Transferencia)
-                        pes = (Membro_Transferencia)new Membro_Transferencia().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_Reconciliacao)
-                        pes = (Membro_Reconciliacao)new Membro_Reconciliacao().recuperar(p.IdPessoa)[0];
+                    if (p is Visitante           )     { var model = new  Visitante           ();   if (model.recuperar(p.IdPessoa)) pes = model; }
+                    if (p is Crianca             )     { var model = new Crianca             ();     if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_Aclamacao    )     { var model = new Membro_Aclamacao    ();     if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_Batismo      )     { var model = new Membro_Batismo      ();     if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_Reconciliacao)     { var model = new Membro_Reconciliacao();     if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_Transferencia)     { var model = new Membro_Transferencia();     if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is VisitanteLgpd       )     { var model = new VisitanteLgpd();            if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is CriancaLgpd         )     { var model = new CriancaLgpd();              if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_AclamacaoLgpd)     { var model = new Membro_AclamacaoLgpd();     if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_BatismoLgpd  )     { var model = new Membro_BatismoLgpd();       if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_ReconciliacaoLgpd) { var model = new Membro_ReconciliacaoLgpd(); if (model.recuperar(p.IdPessoa)) pes = model;  }
+                    if (p is Membro_TransferenciaLgpd) { var model = new Membro_TransferenciaLgpd(); if (model.recuperar(p.IdPessoa)) pes = model;  }
+                        
+                    
 
-                    if (p is VisitanteLgpd)
-                        pes = (VisitanteLgpd)new VisitanteLgpd().recuperar(p.IdPessoa)[0];
-                    if (p is CriancaLgpd)
-                        pes = (CriancaLgpd)new CriancaLgpd().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_BatismoLgpd)
-                        pes = (Membro_BatismoLgpd)new Membro_BatismoLgpd().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_AclamacaoLgpd)
-                        pes = (Membro_AclamacaoLgpd)new Membro_AclamacaoLgpd().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_TransferenciaLgpd)
-                        pes = (Membro_TransferenciaLgpd)new Membro_TransferenciaLgpd().recuperar(p.IdPessoa)[0];
-                    if (p is Membro_ReconciliacaoLgpd)
-                        pes = (Membro_ReconciliacaoLgpd)new Membro_ReconciliacaoLgpd().recuperar(p.IdPessoa)[0];
-
-                    listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa == p.IdPessoa));
-                    listaPessoas.Add(pes);
+                    Pessoa.listaPessoas.Remove(Pessoa.listaPessoas.First(i => i.IdPessoa == p.IdPessoa));
+                    Pessoa.listaPessoas.Add(pes);
                 }
 
                 if (modelo is Ministerio)
                 {
                     Ministerio minis = null;
                     var m = (Ministerio)modelo;
-                    if (m is Lider_Celula)
-                        minis = (Lider_Celula)new Lider_Celula().recuperar(m.IdMinisterio)[0];
-                    if (m is Lider_Celula_Treinamento)
-                        minis = (Lider_Celula_Treinamento)new Lider_Celula_Treinamento().recuperar(m.IdMinisterio)[0];
-                    if (m is Lider_Ministerio)
-                        minis = (Lider_Ministerio)new Lider_Ministerio().recuperar(m.IdMinisterio)[0];
-                    if (m is Lider_Ministerio_Treinamento)
-                        minis = (Lider_Ministerio_Treinamento)new Lider_Ministerio_Treinamento().recuperar(m.IdMinisterio)[0];
-                    if (m is Supervisor_Celula)
-                        minis = (Supervisor_Celula)new Supervisor_Celula().recuperar(m.IdMinisterio)[0];
-                    if (m is Supervisor_Celula_Treinamento)
-                        minis = (Supervisor_Celula_Treinamento)new Supervisor_Celula_Treinamento().recuperar(m.IdMinisterio)[0];
-                    if (m is Supervisor_Ministerio)
-                        minis = (Supervisor_Ministerio)new Supervisor_Ministerio().recuperar(m.IdMinisterio)[0];
-                    if (m is Supervisor_Ministerio_Treinamento)
-                        minis = (Supervisor_Ministerio_Treinamento)new Supervisor_Ministerio_Treinamento().recuperar(m.IdMinisterio)[0];
-
-                    listaMinisterios.Remove(listaMinisterios.First(i => i.IdMinisterio == m.IdMinisterio));
-                    listaMinisterios.Add(minis);
+                    if (m is Lider_Celula                     ) { var model = new Lider_Celula                     (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Lider_Celula_Treinamento         ) { var model = new Lider_Celula_Treinamento         (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Lider_Ministerio                 ) { var model = new Lider_Ministerio                 (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Lider_Ministerio_Treinamento     ) { var model = new Lider_Ministerio_Treinamento     (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Supervisor_Celula                ) { var model = new Supervisor_Celula                (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Supervisor_Celula_Treinamento    ) { var model = new Supervisor_Celula_Treinamento    (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Supervisor_Ministerio            ) { var model = new Supervisor_Ministerio            (); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                    if (m is Supervisor_Ministerio_Treinamento) { var model = new Supervisor_Ministerio_Treinamento(); if (model.recuperar(m.IdMinisterio)) minis = model; }
+                                        
+                    Ministerio.listaMinisterios.Remove(Ministerio.listaMinisterios.First(i => i.IdMinisterio == m.IdMinisterio));
+                    Ministerio.listaMinisterios.Add(minis);
                 }
 
                 if (modelo is Celula)
@@ -490,31 +471,23 @@ namespace WindowsFormsApp1
                     Celula cel = null;
                     var c = (Celula)modelo;
 
-                    if (c is Celula_Adolescente)
-                        cel = (Celula_Adolescente)new Celula_Adolescente().recuperar(c.IdCelula)[0];
-
-                    if (c is Celula_Casado)
-                        cel = (Celula_Casado)new Celula_Casado().recuperar(c.IdCelula)[0];
-
-                    if (c is Celula_Jovem)
-                        cel = (Celula_Jovem)new Celula_Jovem().recuperar(c.IdCelula)[0];
-
-                    if (c is Celula_Crianca)
-                        cel = (Celula_Crianca)new Celula_Crianca().recuperar(c.IdCelula)[0];
-
-                    if (c is Celula_Adulto)
-                        cel = (Celula_Adulto)new Celula_Adulto().recuperar(c.IdCelula)[0];
-
-                    listaCelulas.Remove(listaCelulas.First(i => i.IdCelula == c.IdCelula));
-                    listaCelulas.Add(cel);
+                    if (c is Celula_Adolescente) { var model = new Celula_Adolescente(); if (model.recuperar(c.IdCelula)) cel = model; }
+                    if (c is Celula_Jovem      ) { var model = new Celula_Jovem      (); if (model.recuperar(c.IdCelula)) cel = model; }
+                    if (c is Celula_Adulto     ) { var model = new Celula_Adulto     (); if (model.recuperar(c.IdCelula)) cel = model; }
+                    if (c is Celula_Casado     ) { var model = new Celula_Casado     (); if (model.recuperar(c.IdCelula)) cel = model; }
+                    if (c is Celula_Crianca    ) { var model = new Celula_Crianca();     if (model.recuperar(c.IdCelula)) cel = model; }
+                    
+                    Celula.listaCelulas.Remove(Celula.listaCelulas.First(i => i.IdCelula == c.IdCelula));
+                    Celula.listaCelulas.Add(cel);
                 }
 
                 if (modelo is Reuniao)
                 {
+                    Reuniao reu = null;
                     var r = (Reuniao)modelo;
-                    var reu = (Reuniao)r.recuperar(r.IdReuniao)[0];
-                    listaReuniao.Remove(r);
-                    listaReuniao.Add(reu);
+                    var model = new Reuniao(); if (model.recuperar(r.IdReuniao)) reu = model;
+                    Reuniao.Reunioes.Remove(r);
+                    Reuniao.Reunioes.Add(reu);
                 }
             }
 
@@ -664,7 +637,7 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = listaMinisterios.ToList();
+                    var listaMinisterio = Ministerio.listaMinisterios.ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
@@ -712,20 +685,20 @@ namespace WindowsFormsApp1
 
             modelo.salvar();
 
-            if (modelo is Pessoa && listaPessoas.Count > 0)
-                listaPessoas.Add((Pessoa)modelo);
+            if (modelo is Pessoa && Pessoa.listaPessoas.Count > 0)
+                Pessoa.listaPessoas.Add((Pessoa)modelo);
 
-            if (modelo is Reuniao && listaReuniao.Count > 0)
-                listaReuniao.Add((Reuniao)modelo);
+            if (modelo is Reuniao && Reuniao.Reunioes.Count > 0)
+                Reuniao.Reunioes.Add((Reuniao)modelo);
 
-            if (modelo is Ministerio && listaMinisterios.Count > 0)
-                listaMinisterios.Add((Ministerio)modelo);
+            if (modelo is Ministerio && Ministerio.listaMinisterios.Count > 0)
+                Ministerio.listaMinisterios.Add((Ministerio)modelo);
 
-            if (modelo is Celula && listaCelulas.Count > 0)
-                listaCelulas.Add((Celula)modelo);
+            if (modelo is Celula && Celula.listaCelulas.Count > 0)
+                Celula.listaCelulas.Add((Celula)modelo);
 
-            if (modelo is MudancaEstado && listaMudancaEstado.Count > 0)
-                listaMudancaEstado.Add((MudancaEstado)modelo);
+            if (modelo is MudancaEstado && MudancaEstado.Mudancas.Count > 0)
+                MudancaEstado.Mudancas.Add((MudancaEstado)modelo);
 
             if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
             {

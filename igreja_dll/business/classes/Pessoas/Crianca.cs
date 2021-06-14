@@ -51,13 +51,13 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Crianca as C "
              + " inner join PessoaDado as PD on C.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -75,7 +75,7 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
 
@@ -83,19 +83,19 @@ namespace business.classes.Pessoas
                         this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
                         this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
                         dr.Close();
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -108,9 +108,10 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Crianca crianca = new Crianca();
@@ -121,32 +122,36 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        criancas = new List<Crianca>();
                         foreach (var m in modelos)
                         {
                             var cel = (Crianca)m;
                             var c = new Crianca();
-                            c = (Crianca)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                criancas.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                criancas = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.criancas = null;
-            return modelos;
+                criancas = null;
+            return false;
         }
 
         public override string salvar()

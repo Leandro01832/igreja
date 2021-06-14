@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             if (Tipo.IsSubclassOf(typeof(Pessoa)))
             {
                 table = new PdfPTable(2);
-                var quant = Pessoas.Where(i =>  i.GetType().Name == Tipo.GetType().Name).ToList().Count;
+                var quant = Pessoas.Where(i =>  i.GetType().Name == Tipo.Name).ToList().Count;
                 decimal p = (quant / totalPessoas);
                 porcentagem = "A procentagem em relação ao total de pessoas é "
                     + p.ToString("F2") + "%. Quantidade de registros é: "
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
 
             if (Tipo.IsSubclassOf(typeof(Celula)))
             {
-                var quant = Celulas.Where(i => i.GetType().Name == Tipo.GetType().Name).ToList().Count;
+                var quant = Celulas.Where(i => i.GetType().Name == Tipo.Name).ToList().Count;
                 decimal p = (quant / totalCelulas);
                 porcentagem = "A procentagem em relação ao total de celulas é "
                     + p.ToString("f2") + "%. Quantidade de registros é: "
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
 
             if (Tipo.IsSubclassOf(typeof(Ministerio)))
             {
-                var quant = Ministerios.Where(i => i.GetType().Name == Tipo.GetType().Name).ToList().Count;
+                var quant = Ministerios.Where(i => i.GetType().Name == Tipo.Name).ToList().Count;
                 decimal p = (quant / totalMinisterios);
                 porcentagem = "A procentagem em relação ao total de ministérios é "
                  + p.ToString("f2") + "%. Quantidade de registros é: "
@@ -76,9 +76,9 @@ namespace WindowsFormsApp1
             if (Tipo == typeof(MudancaEstado)) table = new PdfPTable(4);
 
             if (Tipo.IsAbstract)
-                valorTipo = Tipo.GetType().Name;
+                valorTipo = Tipo.Name;
             else
-                valorTipo = Tipo.GetType().Name;
+                valorTipo = Tipo.Name;
 
             Document doc = new Document(PageSize.A4);
             doc.SetMargins(40, 40, 40, 80);
@@ -129,7 +129,7 @@ namespace WindowsFormsApp1
             }
             else if (Tipo.IsSubclassOf(typeof(Pessoa)))
             {
-                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.Name))
                 {
                     table.AddCell("ID: " + item.Codigo.ToString());
                     if (Tipo.IsSubclassOf(typeof(PessoaDado)))
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             }
             else if (Tipo.IsSubclassOf(typeof(PessoaDado)))
             {
-                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.Name))
                 {
                     table.AddCell("ID: " + item.Codigo.ToString());
                     table.AddCell("Nome: " + item.NomePessoa.ToString());
@@ -167,7 +167,7 @@ namespace WindowsFormsApp1
             }
             else if (Tipo.IsSubclassOf(typeof(PessoaLgpd)))
             {
-                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                foreach (var item in Pessoas.Where(i => i.GetType().Name == Tipo.Name))
                 {
                     table.AddCell("ID: " + item.Codigo.ToString());
                     table.AddCell("Email: " + item.Email.ToString());
@@ -185,7 +185,7 @@ namespace WindowsFormsApp1
             }
             else if (Tipo.IsSubclassOf(typeof(Ministerio)))
             {
-                foreach (var item in Ministerios.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                foreach (var item in Ministerios.Where(i => i.GetType().Name == Tipo.Name))
                 {
                     table.AddCell("Id: " + item.IdMinisterio.ToString());
                     table.AddCell("Nome do ministério: " + item.Nome.ToString());
@@ -203,7 +203,7 @@ namespace WindowsFormsApp1
             }
             else if (Tipo.IsSubclassOf(typeof(Celula)))
             {
-                foreach (var item in Celulas.Where(i => i.GetType().Name == Tipo.GetType().Name))
+                foreach (var item in Celulas.Where(i => i.GetType().Name == Tipo.Name))
                 {
                     table.AddCell("Id: " + item.IdCelula.ToString());
                     table.AddCell("Nome da celula: " + item.Nome.ToString());

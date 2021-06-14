@@ -32,13 +32,13 @@ namespace business.classes.Celulas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Celula_Adulto as CA "
                 + " inner join Celula as C on CA.IdCelula=C.IdCelula ";
             if (id != null) Select_padrao += $" where CA.IdCelula='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -47,8 +47,6 @@ namespace business.classes.Celulas
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Celula_Adulto as CA "
                         + " inner join Celula as C on CA.IdCelula=C.IdCelula ";
                         if (id != null) Select_padrao += $" where CA.IdCelula='{id}'";
@@ -58,22 +56,22 @@ namespace business.classes.Celulas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         dr.Close();
                         base.recuperar(id);
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -86,9 +84,10 @@ namespace business.classes.Celulas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Celula_Adulto c = new Celula_Adulto();
@@ -101,31 +100,35 @@ namespace business.classes.Celulas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        celulasAdulto = new List<Celula_Adulto>();
                         foreach (var m in modelos)
                         {
                             var cel = (Celula_Adulto)m;
                             var c = new Celula_Adulto();
-                            c = (Celula_Adulto)m.recuperar(cel.IdCelula)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdCelula))
+                                celulasAdulto.Add(c); //não deu erro de conexao
+                            else
+                            {
+                                celulasAdulto = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                business.classes.Abstrato.Celula.celulasAdulto = null;
-            return modelos;
+                celulasAdulto = null;
+            return false;
         }
 
         public override string salvar()

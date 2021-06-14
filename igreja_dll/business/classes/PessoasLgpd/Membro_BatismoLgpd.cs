@@ -34,14 +34,13 @@ namespace business.classes.PessoasLgpd
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Membro_BatismoLgpd as MB "
                 + " inner join MembroLgpd as M on MB.IdPessoa=M.IdPessoa "
                 + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -50,8 +49,6 @@ namespace business.classes.PessoasLgpd
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Membro_BatismoLgpd as MB "
                             + " inner join MembroLgpd as M on MB.IdPessoa=M.IdPessoa "
                             + " inner join PessoaLgpd as PL on M.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
@@ -62,22 +59,22 @@ namespace business.classes.PessoasLgpd
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Close();
-                        modelos.Add(this);
 
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -90,9 +87,10 @@ namespace business.classes.PessoasLgpd
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Membro_BatismoLgpd mb = new Membro_BatismoLgpd();
@@ -103,33 +101,37 @@ namespace business.classes.PessoasLgpd
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        membros_BatismoLgpd = new List<Membro_BatismoLgpd>();
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_BatismoLgpd)m;
                             var c = new Membro_BatismoLgpd();
-                            c = (Membro_BatismoLgpd)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                membros_BatismoLgpd.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                membros_BatismoLgpd = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 }
             }
             if (id == null)
-                Pessoa.membros_BatismoLgpd = null;
-            return modelos;
+                membros_BatismoLgpd = null;
+            return false;
         }
 
         public override string salvar()

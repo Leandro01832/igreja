@@ -41,7 +41,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     {
                         if(item != "")
                         {
-                            var modelo = listaPessoas.First(m => m.Codigo == int.Parse(item));
+                            var modelo = business.classes.Abstrato.Pessoa.listaPessoas.First(m => m.Codigo == int.Parse(item));
                             txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                         }
                         
@@ -56,7 +56,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                 if (pessoas != null)
                 foreach (var item in pessoas)
                 {
-                        var pes = listaPessoas.First(i => i.IdPessoa == item.PessoaId);
+                        var pes = business.classes.Abstrato.Pessoa.listaPessoas.First(i => i.IdPessoa == item.PessoaId);
                         txt_pessoas.Text += pes.Codigo + ", ";
                 }
                 
@@ -88,14 +88,14 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                             
                         try
                         {
-                                var modelo = listaPessoas.First(m => m.Codigo == int.Parse(item));
+                                var modelo = business.classes.Abstrato.Pessoa.listaPessoas.First(m => m.Codigo == int.Parse(item));
                                 AddNaListaReuniaoPessoas += modelo.IdPessoa.ToString() + ", ";
                         }
                         catch
                         {
                             AddNaListaReuniaoPessoas = "";
                                 var numero = GeTotalRegistrosPessoas();
-                                if (numero != listaPessoas.Count)
+                                if (numero != business.classes.Abstrato.Pessoa.listaPessoas.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");

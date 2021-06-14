@@ -35,9 +35,9 @@ namespace WindowsFormsApp1
                 if (radio_reuniao.Checked)
                     MessageBox.Show("Você esta vendo informações de mudança de estado.");
                 Resultado.Clear();
-                Resultado.AddRange(listaMudancaEstado);
+                Resultado.AddRange(MudancaEstado.Mudancas);
 
-                foreach (var item in listaMudancaEstado)
+                foreach (var item in MudancaEstado.Mudancas)
                 {
                     var dado = (MudancaEstado)item;
                     dgdados.Rows.Add(dado.IdMudanca, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
@@ -56,9 +56,9 @@ namespace WindowsFormsApp1
                 if (radio_pessoa.Checked)
                     MessageBox.Show("Você esta vendo informações de pessoa.");
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas);
+                Resultado.AddRange(Pessoa.listaPessoas);
 
-                foreach (var item in listaPessoas)
+                foreach (var item in Pessoa.listaPessoas)
                 {
                     var dado = (Pessoa)item;
                     dgdados.Rows.Add(dado.IdPessoa, dado.Email, dado.celula_, dado.Falta, dado.Img);
@@ -77,9 +77,9 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Você esta vendo informações de ministério.");
 
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios);
+                Resultado.AddRange(Ministerio.listaMinisterios);
 
-                foreach (var item in listaMinisterios)
+                foreach (var item in Ministerio.listaMinisterios)
                 {
                     var dado = (Ministerio)item;
                     dgdados.Rows.Add(dado.IdMinisterio, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
@@ -97,9 +97,9 @@ namespace WindowsFormsApp1
                 if (radio_celula.Checked)
                     MessageBox.Show("Você esta vendo informações de celula.");
                 Resultado.Clear();
-                Resultado.AddRange(listaCelulas);
+                Resultado.AddRange(Celula.listaCelulas);
 
-                foreach (var item in listaCelulas)
+                foreach (var item in Celula.listaCelulas)
                 {
                     var dado = (Celula)item;
                     dgdados.Rows.Add(dado.IdCelula, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
@@ -116,9 +116,9 @@ namespace WindowsFormsApp1
                 if (radio_reuniao.Checked)
                     MessageBox.Show("Você esta vendo informações de reunião.");
                 Resultado.Clear();
-                Resultado.AddRange(listaReuniao);
+                Resultado.AddRange(Reuniao.Reunioes);
 
-                foreach (var item in listaReuniao)
+                foreach (var item in Reuniao.Reunioes)
                 {
                     var dado = item;
                     dgdados.Rows.Add(dado.IdReuniao, dado.Data_reuniao, dado.Horario_fim, dado.Horario_inicio);
@@ -507,7 +507,7 @@ namespace WindowsFormsApp1
             {
                 if (tipo == typeof(Pessoa))
                 {
-                    var Modelo = listaPessoas.FirstOrDefault(i => i.Codigo == value);
+                    var Modelo = Pessoa.listaPessoas.FirstOrDefault(i => i.Codigo == value);
                     if (Modelo != null)
                     {
                         FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
@@ -519,7 +519,7 @@ namespace WindowsFormsApp1
 
                 if (tipo == typeof(Ministerio))
                 {
-                    var Modelo = listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
+                    var Modelo = Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
                     if (Modelo != null)
                     {
                         FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
@@ -531,7 +531,7 @@ namespace WindowsFormsApp1
 
                 if (tipo == typeof(Celula))
                 {
-                    var Modelo = listaCelulas.FirstOrDefault(i => i.IdCelula == value);
+                    var Modelo = Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == value);
                     if (Modelo != null)
                     {
                         FinalizarCadastro dp =
@@ -544,7 +544,7 @@ namespace WindowsFormsApp1
 
             else if (tipo.IsSubclassOf(typeof(Pessoa)))
             {
-                var Modelo = listaPessoas.FirstOrDefault(i => i.Codigo == value);
+                var Modelo = Pessoa.listaPessoas.FirstOrDefault(i => i.Codigo == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
@@ -555,7 +555,7 @@ namespace WindowsFormsApp1
             }
             else if (tipo.IsSubclassOf(typeof(Ministerio)))
             {
-                var Modelo = listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
+                var Modelo = Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
@@ -566,7 +566,7 @@ namespace WindowsFormsApp1
             }
             else if (tipo.IsSubclassOf(typeof(Celula)))
             {
-                var Modelo = listaCelulas.FirstOrDefault(i => i.IdCelula == value);
+                var Modelo = Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastro dp =
@@ -578,7 +578,7 @@ namespace WindowsFormsApp1
 
             else if (tipo == typeof(Reuniao))
             {
-                var Modelo = listaReuniao.FirstOrDefault(i => i.IdReuniao == value);
+                var Modelo = Reuniao.Reunioes.FirstOrDefault(i => i.IdReuniao == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
@@ -589,7 +589,7 @@ namespace WindowsFormsApp1
 
             else if (tipo == typeof(MudancaEstado))
             {
-                var Modelo = listaMudancaEstado.FirstOrDefault(i => i.IdMudanca == value);
+                var Modelo = MudancaEstado.Mudancas.FirstOrDefault(i => i.IdMudanca == value);
                 if (Modelo != null)
                 {
                     DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
@@ -618,7 +618,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_data_visita.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<VisitanteLgpd>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<VisitanteLgpd>().ToList());
                 ModificaDataGridView(typeof(VisitanteLgpd), Resultado);
             }
 
@@ -627,7 +627,7 @@ namespace WindowsFormsApp1
                 check_pesquisa_nome_mae.Enabled = true;
                 check_pesquisa_nome_pai.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<CriancaLgpd>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<CriancaLgpd>().ToList());
                 ModificaDataGridView(typeof(CriancaLgpd), Resultado);
             }
 
@@ -635,7 +635,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_AclamacaoLgpd>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_AclamacaoLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_AclamacaoLgpd), Resultado);
             }
 
@@ -643,7 +643,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_BatismoLgpd>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_BatismoLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_BatismoLgpd), Resultado);
             }
 
@@ -651,7 +651,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_ReconciliacaoLgpd>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_ReconciliacaoLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_ReconciliacaoLgpd), Resultado);
             }
 
@@ -659,7 +659,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_TransferenciaLgpd>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_TransferenciaLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_TransferenciaLgpd), Resultado);
             }
 
@@ -667,7 +667,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_data_visita.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Visitante>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Visitante>().ToList());
                 ModificaDataGridView(typeof(Visitante), Resultado);
             }
 
@@ -676,7 +676,7 @@ namespace WindowsFormsApp1
                 check_pesquisa_nome_mae.Enabled = true;
                 check_pesquisa_nome_pai.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Crianca>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Crianca>().ToList());
                 ModificaDataGridView(typeof(Crianca), Resultado);
             }
 
@@ -684,7 +684,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_Aclamacao>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Aclamacao>().ToList());
                 ModificaDataGridView(typeof(Membro_Aclamacao), Resultado);
             }
 
@@ -692,7 +692,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_Batismo>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Batismo>().ToList());
                 ModificaDataGridView(typeof(Membro_Batismo), Resultado);
             }
 
@@ -700,7 +700,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_Reconciliacao>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Reconciliacao>().ToList());
                 ModificaDataGridView(typeof(Membro_Reconciliacao), Resultado);
             }
 
@@ -708,98 +708,98 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas.OfType<Membro_Transferencia>().ToList());
+                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Transferencia>().ToList());
                 ModificaDataGridView(typeof(Membro_Transferencia), Resultado);
             }
 
             if (comboBox1.Text == "Lider de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Lider_Celula>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Celula>().ToList());
                 ModificaDataGridView(typeof(Lider_Celula), Resultado);
             }
 
             if (comboBox1.Text == "Lider em treinamento de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Lider_Celula_Treinamento>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Celula_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Lider_Celula_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Lider de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Lider_Ministerio>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Ministerio>().ToList());
                 ModificaDataGridView(typeof(Lider_Ministerio), Resultado);
             }
 
             if (comboBox1.Text == "Lider em treinamento de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Lider_Ministerio_Treinamento>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Ministerio_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Lider_Ministerio_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Supervisor_Celula>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Celula>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Celula), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor em treinamento de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Supervisor_Celula_Treinamento>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Celula_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Celula_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Supervisor_Ministerio>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Ministerio>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Ministerio), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor em treinamento de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Supervisor_Ministerio_Treinamento>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Ministerio_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Ministerio_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Celula para adolescentes")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Celula_Adolescente>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Adolescente>().ToList());
                 ModificaDataGridView( typeof(Celula_Adolescente), Resultado);
             }
 
             if (comboBox1.Text == "Celula para adultos")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Celula_Adulto>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Adulto>().ToList());
                 ModificaDataGridView( typeof(Celula_Adulto), Resultado);
             }
 
             if (comboBox1.Text == "Celula para jovens")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Celula_Jovem>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Jovem>().ToList());
                 ModificaDataGridView( typeof(Celula_Jovem), Resultado);
             }
 
             if (comboBox1.Text == "Celula para crianças")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Celula_Crianca>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Crianca>().ToList());
                 ModificaDataGridView(typeof(Celula_Crianca), Resultado);
             }
 
             if (comboBox1.Text == "Celula para casados")
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios.OfType<Celula_Casado>().ToList());
+                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Casado>().ToList());
                 ModificaDataGridView(typeof(Celula_Casado), Resultado);
             }
 
@@ -808,31 +808,31 @@ namespace WindowsFormsApp1
                 if (Resultado[0] is Pessoa)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(listaPessoas);
+                    Resultado.AddRange(Pessoa.listaPessoas);
                 }
 
                 if (Resultado[0] is Celula)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(listaCelulas);
+                    Resultado.AddRange(Celula.listaCelulas);
                 }
 
                 if (Resultado[0] is Ministerio)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(listaMinisterios);
+                    Resultado.AddRange(Ministerio.listaMinisterios);
                 }
 
                 if (Resultado[0] is MudancaEstado)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(listaMudancaEstado);
+                    Resultado.AddRange(MudancaEstado.Mudancas);
                 }
 
                 if (Resultado[0] is Reuniao)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(listaReuniao);
+                    Resultado.AddRange(Reuniao.Reunioes);
                 }
             }
         }
@@ -869,31 +869,31 @@ namespace WindowsFormsApp1
             if (Resultado[0] is Pessoa)
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaPessoas);
+                Resultado.AddRange(Pessoa.listaPessoas);
             }
 
             if (Resultado[0] is Celula)
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaCelulas);
+                Resultado.AddRange(Celula.listaCelulas);
             }
 
             if (Resultado[0] is Ministerio)
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMinisterios);
+                Resultado.AddRange(Ministerio.listaMinisterios);
             }
 
             if (Resultado[0] is MudancaEstado)
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaMudancaEstado);
+                Resultado.AddRange(MudancaEstado.Mudancas);
             }
 
             if (Resultado[0] is Reuniao)
             {
                 Resultado.Clear();
-                Resultado.AddRange(listaReuniao);
+                Resultado.AddRange(Reuniao.Reunioes);
             }
         }
     }

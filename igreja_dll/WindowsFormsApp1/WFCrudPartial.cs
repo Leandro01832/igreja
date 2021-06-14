@@ -87,7 +87,7 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = listaMinisterios.ToList();
+                    var listaMinisterio = Ministerio.listaMinisterios.ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
@@ -147,46 +147,42 @@ namespace WindowsFormsApp1
             if(modelo is Pessoa)
             {                
                 var p = (Pessoa)modelo; id = p.IdPessoa;
-                var models = modelo.recuperar(id);
-                if(models.Count == 0)
+                if(!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                listaPessoas.Remove(listaPessoas.First(i => i.IdPessoa  == id));
+                Pessoa.listaPessoas.Remove(Pessoa.listaPessoas.First(i => i.IdPessoa  == id));
             }
             if(modelo is Ministerio)
             {
                 var p = (Ministerio)modelo; id = p.IdMinisterio;
-                var models = modelo.recuperar(id);
-                if (models.Count == 0)
+                if (!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                listaMinisterios.Remove(listaMinisterios.First(i => i.IdMinisterio == id));
+                Ministerio.listaMinisterios.Remove(Ministerio.listaMinisterios.First(i => i.IdMinisterio == id));
             }
             if(modelo is Celula)
             {
                 var p = (Celula)modelo; id = p.IdCelula;
-                var models = modelo.recuperar(id);
-                if (models.Count == 0)
+                if (!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                listaCelulas.Remove(listaCelulas.First(i => i.IdCelula == id));
+                Celula.listaCelulas.Remove(Celula.listaCelulas.First(i => i.IdCelula == id));
             }
             if(modelo is Reuniao)
             {
                 var p = (Reuniao)modelo; id = p.IdReuniao;
-                var models = modelo.recuperar(id);
-                if (models.Count == 0)
+                if (!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                listaReuniao.Remove(listaReuniao.First(i => i.IdReuniao == id));
+                Reuniao.Reunioes.Remove(Reuniao.Reunioes.First(i => i.IdReuniao == id));
             }
 
             modelo.excluir(id);

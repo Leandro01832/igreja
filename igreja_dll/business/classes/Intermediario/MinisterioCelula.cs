@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace business.classes.Intermediario
         [JsonIgnore]
         public virtual Abstrato.Ministerio Ministerio { get; set; }
 
+        [NotMapped]
+        public static List<MinisterioCelula> MinisterioCelulas { get; set; }
+
         public override string alterar(int id)
         {
             throw new NotImplementedException();
@@ -33,12 +37,12 @@ namespace business.classes.Intermediario
             throw new NotImplementedException();
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from MinisterioCelula as MC ";
             if (id != null) Select_padrao += $" where MC.IdMinisterioCelula='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -52,14 +56,13 @@ namespace business.classes.Intermediario
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        return false;
                     }
 
                     dr.Read();
                     this.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
                     this.CelulaId = int.Parse(Convert.ToString(dr["CelulaId"]));
                     dr.Close();
-                    modelos.Add(this);
                 }
 
                 catch (Exception)
@@ -71,7 +74,7 @@ namespace business.classes.Intermediario
                     bd.fecharconexao(conexao);
                 }
 
-                return modelos;
+                return true;
             }
             else
             {
@@ -84,7 +87,7 @@ namespace business.classes.Intermediario
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        return false;
                     }
 
                     List<MinisterioCelula> lista = new List<MinisterioCelula>();
@@ -100,7 +103,14 @@ namespace business.classes.Intermediario
                     //recursividade
                     foreach (var item in lista.OfType<MinisterioCelula>().ToList())
                     {
-                        modelos.Add(new MinisterioCelula().recuperar(item.IdMinisterioCelula)[0]);
+                        var model = new MinisterioCelula();
+                        if(model.recuperar(item.IdMinisterioCelula))
+                        MinisterioCelulas.Add(model); //não deu erro de conexão
+                        else
+                        {
+                            MinisterioCelulas = null;
+                            break;
+                        }
                     }
                 }
 
@@ -112,7 +122,7 @@ namespace business.classes.Intermediario
                 {
                     bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
         }
 

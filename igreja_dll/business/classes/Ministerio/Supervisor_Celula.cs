@@ -37,11 +37,11 @@ namespace business.classes.Ministerio
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Supervisor_Celula as SC inner join Ministerio as MI on SC.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where SC.IdMinisterio='{id}'";
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -58,23 +58,23 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
                         this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                         dr.Close();
-                        modelos.Add(this);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -87,9 +87,10 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Supervisor_Celula m = new Supervisor_Celula();
@@ -100,32 +101,36 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        supervisoresCelula = new List<Supervisor_Celula>();
                         foreach (var m in modelos)
                         {
                             var cel = (Supervisor_Celula)m;
                             var c = new Supervisor_Celula();
-                            c = (Supervisor_Celula)m.recuperar(cel.IdMinisterio)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdMinisterio))
+                                supervisoresCelula.Add(c); // não deu erro de conexão
+                            else
+                            {
+                                supervisoresCelula = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Abstrato.Ministerio.supervisoresCelula = null;
-            return modelos;
+                supervisoresCelula = null;
+            return false;
         }
 
         public override string salvar()

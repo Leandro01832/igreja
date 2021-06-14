@@ -29,12 +29,12 @@ namespace business.classes.Ministerio
             return Insert_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Lider_Celula_Treinamento " +
                 " as LCT inner join Ministerio as MI on LCT.IdMinisterio=MI.IdMinisterio ";
             if (id != null) Select_padrao += $" where LCT.IdMinisterio='{id}'";
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -49,21 +49,21 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         dr.Close();
                         base.recuperar(id);
-                        modelos.Add(this);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -76,9 +76,10 @@ namespace business.classes.Ministerio
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Lider_Celula_Treinamento m = new Lider_Celula_Treinamento();
@@ -89,32 +90,36 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
                         foreach (var m in modelos)
                         {
                             var cel = (Lider_Celula_Treinamento)m;
                             var c = new Lider_Celula_Treinamento();
-                            c = (Lider_Celula_Treinamento)m.recuperar(cel.IdMinisterio)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdMinisterio))
+                                LideresCelulaTreinamento.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                LideresCelulaTreinamento = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Abstrato.Ministerio.LideresCelulaTreinamento = null;
-            return modelos;
+               LideresCelulaTreinamento = null;
+            return false;
         }
 
         public override string excluir(int id)

@@ -36,14 +36,13 @@ namespace business.classes.Pessoas
         }
 
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Membro_Batismo as MB "
                 + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                 + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where MB.IdPessoa='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -52,8 +51,6 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Membro_Batismo as MB "
                         + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                         + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
@@ -64,27 +61,26 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Close();
-                        modelos.Add(this);
                     }
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 }
                 else
                 {
                     try
                     {
-
                         Select_padrao = "select * from Membro_Batismo as MB "
                         + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                         + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
@@ -95,9 +91,10 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Membro_Batismo mb = new Membro_Batismo();
@@ -108,33 +105,37 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        membros_Batismo = new List<Membro_Batismo>();
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_Batismo)m;
                             var c = new Membro_Batismo();
-                            c = (Membro_Batismo)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                membros_Batismo.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                membros_Batismo = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.membros_Batismo = null;
-            return modelos;
+               membros_Batismo = null;
+            return false;
         }
 
         public override string salvar()

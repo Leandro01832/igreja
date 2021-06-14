@@ -32,6 +32,9 @@ namespace business.classes
 
         public int Falta { get; set; }
 
+        [NotMapped]
+        public static List<Historico> Historicos { get; set; }
+
         public Historico() : base()
         {
         }
@@ -54,13 +57,13 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Historico as M";
             if (id != null)
                 Select_padrao += $" where M.IdHistorico='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (id != null)
@@ -73,7 +76,7 @@ namespace business.classes
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        return false;
                     }
 
                     dr.Read();
@@ -92,9 +95,8 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-
-                modelos.Add(this);
-                return modelos;
+                
+                return true;
             }
             else
             {
@@ -106,9 +108,10 @@ namespace business.classes
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        return false;
                     }
 
+                    List<modelocrud> modelos = new List<modelocrud>();
                     while (dr.Read())
                     {
                         Historico h = new Historico();
@@ -118,16 +121,19 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    List<modelocrud> lista = new List<modelocrud>();
+                    Historicos = new List<Historico>();
                     foreach (var m in modelos)
                     {
                         var cel = (Historico)m;
                         var c = new Historico();
-                        c = (Historico)m.recuperar(cel.IdHistorico)[0];
-                        lista.Add(c);
+                        if(c.recuperar(cel.IdHistorico))
+                        Historicos.Add(c);  //não deu erro de conexao
+                        else
+                        {
+                            Historicos = null;
+                            break;
+                        }
                     }
-                    modelos.Clear();
-                    modelos.AddRange(lista);
                 }
                 catch (Exception)
                 {
@@ -137,7 +143,7 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-                return modelos;
+                return true;
             }
 
         }

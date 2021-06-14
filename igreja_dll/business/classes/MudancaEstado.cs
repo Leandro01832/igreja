@@ -25,6 +25,9 @@ namespace business.classes
         public DateTime DataMudanca { get; set; }
         public int CodigoPessoa { get; set; }
 
+        [NotMapped]
+        public static List<MudancaEstado> Mudancas { get; set; }
+
         public MudancaEstado() : base()
         {
             this.DataMudanca = DateTime.Now;
@@ -33,33 +36,32 @@ namespace business.classes
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
-            var p1 = new Visitante().recuperar(idVelhoEstado);
-            var p2 = new VisitanteLgpd().recuperar(idVelhoEstado);
-            var p3 = new Crianca().recuperar(idVelhoEstado);
-            var p4 = new CriancaLgpd().recuperar(idVelhoEstado);
-            var p5 = new Membro_Aclamacao().recuperar(idVelhoEstado);
-            var p6 = new Membro_AclamacaoLgpd().recuperar(idVelhoEstado);
-            var p7 = new Membro_Batismo().recuperar(idVelhoEstado);
-            var p8 = new Membro_BatismoLgpd().recuperar(idVelhoEstado);
-            var p9 = new Membro_Reconciliacao().recuperar(idVelhoEstado);
-            var p10 = new Membro_ReconciliacaoLgpd().recuperar(idVelhoEstado);
-            var p11 = new Membro_Transferencia().recuperar(idVelhoEstado);
-            var p12 = new Membro_TransferenciaLgpd().recuperar(idVelhoEstado);
+            var model1  = new Visitante()               ; var p1 =  model1  .recuperar(idVelhoEstado);
+            var model2  = new VisitanteLgpd()           ; var p2 =  model2  .recuperar(idVelhoEstado);
+            var model3  = new Crianca()                 ; var p3 =  model3  .recuperar(idVelhoEstado);
+            var model4  = new CriancaLgpd()             ; var p4 =  model4  .recuperar(idVelhoEstado);
+            var model5  = new Membro_Aclamacao()        ; var p5 =  model5  .recuperar(idVelhoEstado);
+            var model6  = new Membro_AclamacaoLgpd()    ; var p6 =  model6  .recuperar(idVelhoEstado);
+            var model7  = new Membro_Batismo()          ; var p7 =  model7  .recuperar(idVelhoEstado);
+            var model8  = new Membro_BatismoLgpd()      ; var p8 =  model8  .recuperar(idVelhoEstado);
+            var model9  = new Membro_Reconciliacao()    ; var p9 =  model9  .recuperar(idVelhoEstado);
+            var model10 = new Membro_ReconciliacaoLgpd(); var p10 = model10 .recuperar(idVelhoEstado);
+            var model11 = new Membro_Transferencia()    ; var p11 = model11 .recuperar(idVelhoEstado);
+            var model12 = new Membro_TransferenciaLgpd(); var p12 = model12.recuperar(idVelhoEstado);
             Pessoa p = null;
-            if (p1.Count > 0) p = (Pessoa)p1[0];
-            if (p2.Count > 0) p = (Pessoa)p2[0];
-            if (p3.Count > 0) p = (Pessoa)p3[0];
-            if (p4.Count > 0) p = (Pessoa)p4[0];
-            if (p5.Count > 0) p = (Pessoa)p5[0];
-            if (p6.Count > 0) p = (Pessoa)p6[0];
-            if (p7.Count > 0) p = (Pessoa)p7[0];
-            if (p8.Count > 0) p = (Pessoa)p8[0];
-            if (p9.Count > 0) p = (Pessoa)p9[0];
-            if (p10.Count > 0) p = (Pessoa)p10[0];
-            if (p11.Count > 0) p = (Pessoa)p11[0];
-            if (p12.Count > 0) p = (Pessoa)p12[0];
+            if (p1) p =  model1;
+            if (p2) p =  model2 ;
+            if (p3) p =  model3 ;
+            if (p4) p =  model4 ;
+            if (p5) p =  model5 ;
+            if (p6) p =  model6 ;
+            if (p7) p =  model7 ;
+            if (p8) p =  model8 ;
+            if (p9) p =  model9 ;
+            if (p10) p = model10;
+            if (p11) p = model11;
+            if (p12) p = model12;
             estado = p.GetType().Name;
-            p = (Pessoa)p.recuperar(p.IdPessoa)[0];
 
             p.excluir(idVelhoEstado);
 
@@ -450,12 +452,12 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from MudancaEstado ";
             if (id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -471,7 +473,7 @@ namespace business.classes
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
                         dr.Read();
@@ -487,14 +489,14 @@ namespace business.classes
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-
-                    modelos.Add(this);
-                    return modelos;
+                    
+                    return true;
                 }
                 else
                 {
@@ -507,9 +509,10 @@ namespace business.classes
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             MudancaEstado m = new MudancaEstado();
@@ -521,32 +524,38 @@ namespace business.classes
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        Mudancas = new List<MudancaEstado>();
                         foreach (var m in modelos)
                         {
                             var cel = (MudancaEstado)m;
                             var c = new MudancaEstado();
-                            c = (MudancaEstado)m.recuperar(cel.IdMudanca)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdMudanca))
+                            Mudancas.Add(c); //não deu erro de conexao
+                            else
+                            {
+                                Mudancas = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 } 
             }
+            if (id == null)
+                Mudancas = null;
 
-            return modelos;
+                return false;
         }
 
         public override string salvar()

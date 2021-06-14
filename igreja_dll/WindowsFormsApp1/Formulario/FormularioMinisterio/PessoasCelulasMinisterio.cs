@@ -47,7 +47,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     {
                         if (item != "")
                         {
-                            var modelo = listaPessoas.First(m => m.Codigo == int.Parse(item));
+                            var modelo = business.classes.Abstrato.Pessoa.listaPessoas.First(m => m.Codigo == int.Parse(item));
                             txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                         }
                     }
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     {
                         if (item != "")
                         {
-                            var modelo = listaCelulas.First(m => m.IdCelula == int.Parse(item));
+                            var modelo = business.classes.Abstrato.Celula.listaCelulas.First(m => m.IdCelula == int.Parse(item));
                             txt_celulas.Text += modelo.IdCelula.ToString() + ", ";
                         }
                     }
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 if (celulas != null)
                     foreach (var item in celulas)
                     {
-                        var celula = listaCelulas.First(i => i.IdCelula == item.CelulaId);
+                        var celula = business.classes.Abstrato.Celula.listaCelulas.First(i => i.IdCelula == item.CelulaId);
                         txt_celulas.Text += celula.IdCelula.ToString() + ", ";
                     }
 
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 if (pessoas != null)
                     foreach (var item in pessoas)
                     {
-                        var pes = listaPessoas.First(i => i.IdPessoa == item.PessoaId);
+                        var pes = business.classes.Abstrato.Pessoa.listaPessoas.First(i => i.IdPessoa == item.PessoaId);
                         txt_pessoas.Text += pes.Codigo.ToString() + ", ";
                     }
             }
@@ -113,14 +113,14 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                             int numero = int.Parse(item);
                             try
                             {
-                                var modelo = listaPessoas.FirstOrDefault(i => i.Codigo == numero);
+                                var modelo = business.classes.Abstrato.Pessoa.listaPessoas.FirstOrDefault(i => i.Codigo == numero);
                                 AddNaListaMinisterioPessoas += modelo.IdPessoa.ToString() + ", ";
                             }
                             catch
                             {
                                 AddNaListaReuniaoPessoas = "";
                                 var num = GeTotalRegistrosPessoas();
-                                if (num != listaPessoas.Count)
+                                if (num != business.classes.Abstrato.Pessoa.listaPessoas.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");
@@ -164,7 +164,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                             int numero = int.Parse(item);
                             try
                             {
-                                var modelo = listaCelulas.FirstOrDefault(i => i.IdCelula == numero);
+                                var modelo = business.classes.Abstrato.Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == numero);
                                 AddNaListaMinisterioCelulas += modelo.IdCelula.ToString() + ", ";
                             }
                             catch
@@ -172,7 +172,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                                 AddNaListaMinisterioCelulas = "";
                                 txt_celulas.Text = "";
                                 var num = GeTotalRegistrosCelulas();
-                                if (num != listaCelulas.Count)
+                                if (num != business.classes.Abstrato.Celula.listaCelulas.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");

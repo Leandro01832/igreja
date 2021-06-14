@@ -46,12 +46,12 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from Visitante as V "
             + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -60,8 +60,6 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
-
-
                         Select_padrao = "select * from Visitante as V "
                     + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
                         if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
@@ -71,7 +69,7 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
@@ -79,19 +77,19 @@ namespace business.classes.Pessoas
                         this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
 
                         dr.Close();
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 }
                 else
                 {
@@ -104,9 +102,10 @@ namespace business.classes.Pessoas
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             Visitante v = new Visitante();
@@ -117,33 +116,37 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        visitantes = new List<Visitante>();
                         foreach (var m in modelos)
                         {
                             var cel = (Visitante)m;
                             var c = new Visitante();
-                            c = (Visitante)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                visitantes.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                visitantes = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.visitantes = null;
-            return modelos;
+                visitantes = null;
+            return false;
         }
 
         public override string salvar()

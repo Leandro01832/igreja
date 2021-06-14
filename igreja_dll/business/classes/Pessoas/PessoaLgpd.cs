@@ -48,7 +48,7 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from PessoaLgpd as PL ";
             if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
@@ -66,16 +66,16 @@ namespace business.classes.Pessoas
                     {
                         dr.Close();
                     bd.fecharconexao(conexao);
-                    return modelos;
+                    return false;
                     }
                 base.recuperar(id);
                 dr.Close();
                 modelos.Add(this);
                 bd.fecharconexao(conexao);
-                return modelos;
+                return true;
             }
             bd.fecharconexao(conexao);
-            return modelos;
+            return false;
         }
     }
 }

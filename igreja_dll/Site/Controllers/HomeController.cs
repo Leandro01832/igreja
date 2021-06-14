@@ -70,9 +70,7 @@ namespace Site.Controllers
 
             if (user != null)
             {
-                var lista = Pessoa.recuperarTodos();
-                var pe = lista.OfType<Pessoa>().First(p => p.Codigo == user.Codigo);
-                pe = (Pessoa)pe.recuperar(pe.IdPessoa)[0];
+                var pe = banco.pessoas.First(p => p.Codigo == user.Codigo);
                 pe.celula_ = id;
                 pe.alterar(pe.IdPessoa);
             }

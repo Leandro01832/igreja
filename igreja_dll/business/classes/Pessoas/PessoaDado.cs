@@ -111,7 +111,7 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from PessoaDado as PD "
         + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
@@ -134,7 +134,7 @@ namespace business.classes.Pessoas
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
-                        return modelos;
+                        return false;
                     }
                 base.recuperar(id);
                 dr.Read();
@@ -163,10 +163,10 @@ namespace business.classes.Pessoas
                     dr.Close();
                     modelos.Add(this);
                 bd.fecharconexao(conexao);
-                return modelos;
+                return true;
             }
             bd.fecharconexao(conexao);
-            return modelos;
+            return false;
         }
 
 

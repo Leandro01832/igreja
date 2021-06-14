@@ -49,13 +49,13 @@ namespace business.classes.PessoasLgpd
             return Delete_padrao;
         }
 
-        public override List<modelocrud> recuperar(int? id)
+        public override bool recuperar(int? id)
         {
             Select_padrao = "select * from CriancaLgpd as C "
              + " inner join PessoaLgpd as PL on C.IdPessoa=PL.IdPessoa inner join Pessoa as P on PL.IdPessoa=P.IdPessoa ";
             if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
 
-            List<modelocrud> modelos = new List<modelocrud>();
+            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -75,41 +75,41 @@ namespace business.classes.PessoasLgpd
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
                         base.recuperar(id);
                         dr.Read();
                         this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
                         this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
                         dr.Close();
-                        modelos.Add(this);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
 
-                    return modelos;
+                    return true;
                 }
                 else
                 {
                     try
                     {
-
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
                         {
                             dr.Close();
                             bd.fecharconexao(conexao);
-                            return modelos;
+                            return false;
                         }
 
+                        List<modelocrud> modelos = new List<modelocrud>();
                         while (dr.Read())
                         {
                             CriancaLgpd crianca = new CriancaLgpd();
@@ -120,32 +120,36 @@ namespace business.classes.PessoasLgpd
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        List<modelocrud> lista = new List<modelocrud>();
+                        criancasLgpd = new List<CriancaLgpd>();
                         foreach (var m in modelos)
                         {
                             var cel = (CriancaLgpd)m;
                             var c = new CriancaLgpd();
-                            c = (CriancaLgpd)m.recuperar(cel.IdPessoa)[0];
-                            lista.Add(c);
+                            if(c.recuperar(cel.IdPessoa))
+                                criancasLgpd.Add(c); // não deu erro de conexao
+                            else
+                            {
+                                criancasLgpd = null;
+                                break;
+                            }
                         }
-                        modelos.Clear();
-                        modelos.AddRange(lista);
                     }
 
                     catch (Exception ex)
                     {
                         TratarExcessao(ex);
+                        return false;
                     }
                     finally
                     {
                         bd.fecharconexao(conexao);
                     }
-                    return modelos;
+                    return true;
                 } 
             }
             if (id == null)
-                Pessoa.criancasLgpd = null;
-            return modelos;
+                criancasLgpd = null;
+            return false;
         }
 
         public override string salvar()

@@ -75,7 +75,7 @@ namespace WindowsFormsApp1
             ListaPessoas = lp.OfType<Pessoa>().Where(p => p.Codigo > UltimoRegistroPessoa).ToList();
             ListaMinisterios = lm.OfType<Ministerio>().Where(m => m.IdMinisterio > UltimoRegistroMinisterio).ToList();
             ListaCelulas = lc.OfType<Celula>().Where(c => c.IdCelula > UltimoRegistroCelula).ToList();
-            ListaReunioes = lr.OfType<Reuniao>().Where(r => r.IdReuniao > UltimoRegistroReuniao).ToList();
+            ListaReunioes = Reuniao.Reunioes.Where(r => r.IdReuniao > UltimoRegistroReuniao).ToList();
 
             if (ListaPessoas != null)
                 if (ListaPessoas.Count != 0)
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
                         notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + p.IdReuniao, ToolTipIcon.Info);
 
                     ListaReunioes.Clear();
-                    UltimoRegistroReuniao = lr.OfType<Reuniao>().Last().IdReuniao;
+                    UltimoRegistroReuniao = business.classes.Reuniao.Reunioes.Last().IdReuniao;
                 }
 
             if (ListaMinisterios != null)

@@ -19,7 +19,7 @@ namespace Tests
         static Random randNum = new Random();
        private static BDcomum  bd = new BDcomum();
         static int loop = 999;
-        
+        static int? condicao;
 
         static void Main(string[] args)
         {
@@ -80,9 +80,31 @@ namespace Tests
             //    if (t == typeof(Visitante)) modelo = new Visitante();
 
             //    if(modelo is Visitante) Console.WriteLine("sim é um visitante");
-            //}              
+            //}      
+
+
+            for(var i = 1; i < 1000; i++)
+            if ( condicao == null && naoFazFicarNulo() && condicao != null )
+                {
+                    Console.WriteLine("Esta entrando na minha condicao. Verificação n° " + i);
+                    condicao = null;
+                }
+                else
+                {
+                    Console.WriteLine("Não esta entrando na minha condicao. Verificação n° " + i);
+                }
+                
 
             Console.ReadLine();
+        }
+
+        private static bool naoFazFicarNulo()
+        {
+            if (2 * 2 == 4)
+            {
+                condicao = 4;
+                return true;
+            }
         }
 
         public static void CadastrarVisitanteDadoTest()
