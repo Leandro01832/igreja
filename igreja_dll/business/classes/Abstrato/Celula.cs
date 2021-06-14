@@ -160,35 +160,35 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (celulasAdolescente == null && new Celula_Adolescente().recuperar(null) && celulasAdolescente != null)
+                if (celulasAdolescente == null && new Celula_Adolescente().recuperar(null))
                 { lista.AddRange(celulasAdolescente); listaCelulas.AddRange(celulasAdolescente); }
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (celulasAdulto == null && new Celula_Adulto().recuperar(null) && celulasAdulto != null)
+                if (celulasAdulto == null && new Celula_Adulto().recuperar(null))
                 { task.Result.AddRange(celulasAdulto); listaCelulas.AddRange(celulasAdulto); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (celulasCasado == null && new Celula_Casado().recuperar(null) && celulasCasado != null)
+                if (celulasCasado == null && new Celula_Casado().recuperar(null))
                 { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCasado); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (celulasCrianca == null && new Celula_Crianca().recuperar(null) && celulasCrianca != null)
+                if (celulasCrianca == null && new Celula_Crianca().recuperar(null))
                 { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCrianca); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (celulasJovem == null && new Celula_Jovem().recuperar(null) && celulasJovem != null)
+                if (celulasJovem == null && new Celula_Jovem().recuperar(null))
                 {  task.Result.AddRange(celulasJovem); listaCelulas.AddRange(celulasJovem); }
                 return task.Result;
             });

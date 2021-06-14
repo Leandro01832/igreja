@@ -123,7 +123,7 @@ namespace business.classes
                         else
                         {
                             Chamadas = null;
-                            break;
+                            return false;
                         }
 
                     }

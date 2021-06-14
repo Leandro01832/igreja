@@ -115,7 +115,7 @@ namespace business.classes.Pessoas
                             else
                             {
                                 membros_Batismo = null;
-                                break;
+                                return false;
                             }
                         }
                     }

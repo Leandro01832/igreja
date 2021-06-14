@@ -125,7 +125,7 @@ namespace business.classes.Pessoas
                             else
                             {
                                 membros_Reconciliacao = null;
-                                break;
+                                return false;
                             }
                         }
                     }

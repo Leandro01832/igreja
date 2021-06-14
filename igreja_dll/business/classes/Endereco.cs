@@ -155,7 +155,7 @@ namespace business.classes
                         else
                         {
                             Enderecos = null;
-                            break;
+                            return false;
                         }
                     }
                 }

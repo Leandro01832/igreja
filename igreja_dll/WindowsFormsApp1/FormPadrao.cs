@@ -504,41 +504,41 @@ namespace WindowsFormsApp1
                     && Pessoa.listaPessoas.Where(m => m.GetType().Name == Tipo.Name).ToList().Count == 0)
                 {
                     List<Pessoa> pessoas = new List<Pessoa>();
-                    if (retorno && modelo is Visitante                && Pessoa.visitantes                != null) Pessoa.listaPessoas.AddRange(Pessoa.visitantes               );
-                    if (retorno && modelo is Crianca                  && Pessoa.criancas                  != null) Pessoa.listaPessoas.AddRange(Pessoa.criancas                 );
-                    if (retorno && modelo is Membro_Aclamacao         && Pessoa.membros_Aclamacao         != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_Aclamacao        );
-                    if (retorno && modelo is Membro_Batismo           && Pessoa.membros_Batismo           != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_Batismo          );
-                    if (retorno && modelo is Membro_Reconciliacao     && Pessoa.membros_Reconciliacao     != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_Reconciliacao    );
-                    if (retorno && modelo is Membro_Transferencia     && Pessoa.membros_Transferencia     != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_Transferencia    );
-                    if (retorno && modelo is VisitanteLgpd            && Pessoa.visitantesLgpd            != null) Pessoa.listaPessoas.AddRange(Pessoa.visitantesLgpd           );
-                    if (retorno && modelo is CriancaLgpd              && Pessoa.criancasLgpd              != null) Pessoa.listaPessoas.AddRange(Pessoa.criancasLgpd             );
-                    if (retorno && modelo is Membro_AclamacaoLgpd     && Pessoa.membros_AclamacaoLgpd     != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_AclamacaoLgpd    );
-                    if (retorno && modelo is Membro_BatismoLgpd       && Pessoa.membros_BatismoLgpd       != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_BatismoLgpd      );
-                    if (retorno && modelo is Membro_ReconciliacaoLgpd && Pessoa.membros_ReconciliacaoLgpd != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_ReconciliacaoLgpd);
-                    if (retorno && modelo is Membro_TransferenciaLgpd && Pessoa.membros_TransferenciaLgpd != null) Pessoa.listaPessoas.AddRange(Pessoa.membros_TransferenciaLgpd);
+                    if (retorno && modelo is Visitante               ) Pessoa.listaPessoas.AddRange(Pessoa.visitantes               );
+                    if (retorno && modelo is Crianca                 ) Pessoa.listaPessoas.AddRange(Pessoa.criancas                 );
+                    if (retorno && modelo is Membro_Aclamacao        ) Pessoa.listaPessoas.AddRange(Pessoa.membros_Aclamacao        );
+                    if (retorno && modelo is Membro_Batismo          ) Pessoa.listaPessoas.AddRange(Pessoa.membros_Batismo          );
+                    if (retorno && modelo is Membro_Reconciliacao    ) Pessoa.listaPessoas.AddRange(Pessoa.membros_Reconciliacao    );
+                    if (retorno && modelo is Membro_Transferencia    ) Pessoa.listaPessoas.AddRange(Pessoa.membros_Transferencia    );
+                    if (retorno && modelo is VisitanteLgpd           ) Pessoa.listaPessoas.AddRange(Pessoa.visitantesLgpd           );
+                    if (retorno && modelo is CriancaLgpd             ) Pessoa.listaPessoas.AddRange(Pessoa.criancasLgpd             );
+                    if (retorno && modelo is Membro_AclamacaoLgpd    ) Pessoa.listaPessoas.AddRange(Pessoa.membros_AclamacaoLgpd    );
+                    if (retorno && modelo is Membro_BatismoLgpd      ) Pessoa.listaPessoas.AddRange(Pessoa.membros_BatismoLgpd      );
+                    if (retorno && modelo is Membro_ReconciliacaoLgpd) Pessoa.listaPessoas.AddRange(Pessoa.membros_ReconciliacaoLgpd);
+                    if (retorno && modelo is Membro_TransferenciaLgpd) Pessoa.listaPessoas.AddRange(Pessoa.membros_TransferenciaLgpd);
                 }
 
                 if (Tipo.IsSubclassOf(typeof(Ministerio)) && !modelocrud.Erro_Conexao
                     && Ministerio.listaMinisterios.Where(m => m.GetType().Name == Tipo.Name).ToList().Count == 0)
                 {
-                    if (retorno && modelo is Lider_Celula                      && Ministerio.lideresCelula                     != null) Ministerio.listaMinisterios.AddRange(Ministerio.lideresCelula                    );
-                    if (retorno && modelo is Lider_Celula_Treinamento          && Ministerio.LideresCelulaTreinamento          != null) Ministerio.listaMinisterios.AddRange(Ministerio.LideresCelulaTreinamento         );
-                    if (retorno && modelo is Lider_Ministerio                  && Ministerio.lideresMinisterio                 != null) Ministerio.listaMinisterios.AddRange(Ministerio.lideresMinisterio                );
-                    if (retorno && modelo is Lider_Ministerio_Treinamento      && Ministerio.lideresMinisterioTreinamento      != null) Ministerio.listaMinisterios.AddRange(Ministerio.lideresMinisterioTreinamento     );
-                    if (retorno && modelo is Supervisor_Celula                 && Ministerio.supervisoresCelula                != null) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresCelula               );
-                    if (retorno && modelo is Supervisor_Celula_Treinamento     && Ministerio.supervisoresCelulaTreinamento     != null) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresCelulaTreinamento    );
-                    if (retorno && modelo is Supervisor_Ministerio             && Ministerio.supervisoresMinisterio            != null) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresMinisterio           );
-                    if (retorno && modelo is Supervisor_Ministerio_Treinamento && Ministerio.supervisoresMinisterioTreinamento != null) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresMinisterioTreinamento);
+                    if (retorno && modelo is Lider_Celula                     ) Ministerio.listaMinisterios.AddRange(Ministerio.lideresCelula                    );
+                    if (retorno && modelo is Lider_Celula_Treinamento         ) Ministerio.listaMinisterios.AddRange(Ministerio.LideresCelulaTreinamento         );
+                    if (retorno && modelo is Lider_Ministerio                 ) Ministerio.listaMinisterios.AddRange(Ministerio.lideresMinisterio                );
+                    if (retorno && modelo is Lider_Ministerio_Treinamento     ) Ministerio.listaMinisterios.AddRange(Ministerio.lideresMinisterioTreinamento     );
+                    if (retorno && modelo is Supervisor_Celula                ) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresCelula               );
+                    if (retorno && modelo is Supervisor_Celula_Treinamento    ) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresCelulaTreinamento    );
+                    if (retorno && modelo is Supervisor_Ministerio            ) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresMinisterio           );
+                    if (retorno && modelo is Supervisor_Ministerio_Treinamento) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresMinisterioTreinamento);
                 }
 
                 if (Tipo.IsSubclassOf(typeof(Celula)) && !modelocrud.Erro_Conexao
                     && Celula.listaCelulas.Where(m => m.GetType().Name == Tipo.Name).ToList().Count == 0)
                 {
-                    if (retorno && modelo is Celula_Adolescente && Celula.celulasAdolescente != null) Celula.listaCelulas.AddRange(Celula.celulasAdolescente);
-                    if (retorno && modelo is Celula_Adulto      && Celula.celulasAdulto      != null) Celula.listaCelulas.AddRange(Celula.celulasAdulto     );
-                    if (retorno && modelo is Celula_Casado      && Celula.celulasCasado      != null) Celula.listaCelulas.AddRange(Celula.celulasCasado     );
-                    if (retorno && modelo is Celula_Jovem       && Celula.celulasJovem       != null) Celula.listaCelulas.AddRange(Celula.celulasJovem      );
-                    if (retorno && modelo is Celula_Crianca     && Celula.celulasCrianca     != null) Celula.listaCelulas.AddRange(Celula.celulasCrianca    );
+                    if (retorno && modelo is Celula_Adolescente) Celula.listaCelulas.AddRange(Celula.celulasAdolescente);
+                    if (retorno && modelo is Celula_Adulto     ) Celula.listaCelulas.AddRange(Celula.celulasAdulto     );
+                    if (retorno && modelo is Celula_Casado     ) Celula.listaCelulas.AddRange(Celula.celulasCasado     );
+                    if (retorno && modelo is Celula_Jovem      ) Celula.listaCelulas.AddRange(Celula.celulasJovem      );
+                    if (retorno && modelo is Celula_Crianca    ) Celula.listaCelulas.AddRange(Celula.celulasCrianca    );
                 }
 
                 if (Tipo == typeof(Reuniao) && !modelocrud.Erro_Conexao)

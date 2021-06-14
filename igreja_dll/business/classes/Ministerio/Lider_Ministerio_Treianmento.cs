@@ -103,7 +103,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 lideresMinisterioTreinamento = null;
-                                break;
+                                return false;
                             }
                         }
                     }

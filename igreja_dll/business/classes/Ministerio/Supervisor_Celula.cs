@@ -111,7 +111,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 supervisoresCelula = null;
-                                break;
+                                return false;
                             }
                         }
                     }

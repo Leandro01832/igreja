@@ -124,7 +124,7 @@ namespace business.classes
                         else
                         {
                             Telefones = null;
-                            break;
+                            return false;
                         }
                     }
                 }

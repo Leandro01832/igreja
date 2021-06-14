@@ -100,7 +100,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 LideresCelulaTreinamento = null;
-                                break;
+                                return false;
                             }
                         }
                     }

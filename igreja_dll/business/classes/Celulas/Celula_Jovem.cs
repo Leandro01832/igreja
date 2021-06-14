@@ -108,7 +108,7 @@ namespace business.classes.Celulas
                             else
                             {
                                 celulasJovem = null;
-                                break;
+                                return false;
                             }
                         }
                     }

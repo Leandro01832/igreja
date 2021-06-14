@@ -110,7 +110,7 @@ namespace business.classes.Celulas
                             else
                             {
                                 celulasAdolescente = null;
-                                break;
+                                return false;
                             }
                         }
                     }

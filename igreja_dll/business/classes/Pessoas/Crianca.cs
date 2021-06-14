@@ -132,7 +132,7 @@ namespace business.classes.Pessoas
                             else
                             {
                                 criancas = null;
-                                break;
+                                return false;
                             }
                         }
                     }

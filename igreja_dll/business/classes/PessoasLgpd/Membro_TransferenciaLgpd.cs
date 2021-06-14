@@ -131,7 +131,7 @@ namespace business.classes.PessoasLgpd
                             else
                             {
                                 membros_TransferenciaLgpd = null;
-                                break;
+                                return false;
                             }
                         }
                     }

@@ -130,7 +130,7 @@ namespace business.classes.PessoasLgpd
                             else
                             {
                                 criancasLgpd = null;
-                                break;
+                                return false;
                             }
                         }
                     }

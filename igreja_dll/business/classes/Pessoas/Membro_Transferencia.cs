@@ -129,7 +129,7 @@ namespace business.classes.Pessoas
                             else
                             {
                                 membros_Transferencia = null;
-                                break;
+                                return false;
                             }
                         }
                     }

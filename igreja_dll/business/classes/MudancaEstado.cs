@@ -534,7 +534,7 @@ namespace business.classes
                             else
                             {
                                 Mudancas = null;
-                                break;
+                                return false;
                             }
                         }
                     }

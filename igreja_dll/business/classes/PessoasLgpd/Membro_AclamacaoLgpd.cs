@@ -124,7 +124,7 @@ namespace business.classes.PessoasLgpd
                             else
                             {
                                 membros_AclamacaoLgpd = null;
-                                break;
+                                return false;
                             }
                         }
                     }

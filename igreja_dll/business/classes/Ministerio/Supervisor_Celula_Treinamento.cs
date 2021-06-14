@@ -112,7 +112,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 supervisoresCelulaTreinamento = null;
-                                break;
+                                return false;
                             }
                         }
                     }

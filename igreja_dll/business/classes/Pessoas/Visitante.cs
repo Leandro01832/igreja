@@ -126,7 +126,7 @@ namespace business.classes.Pessoas
                             else
                             {
                                 visitantes = null;
-                                break;
+                                return false;
                             }
                         }
                     }

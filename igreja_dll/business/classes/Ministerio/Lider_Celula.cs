@@ -96,7 +96,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 lideresCelula = null;
-                                break;
+                                return false;
                             }
                         }
                     }

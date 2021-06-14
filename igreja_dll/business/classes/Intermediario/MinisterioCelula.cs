@@ -109,7 +109,7 @@ namespace business.classes.Intermediario
                         else
                         {
                             MinisterioCelulas = null;
-                            break;
+                            return false;
                         }
                     }
                 }

@@ -126,7 +126,7 @@ namespace business.classes.Pessoas
                             else
                             {
                                 membros_Aclamacao = null;
-                                break;
+                                return false;
                             }
                         }
                     }

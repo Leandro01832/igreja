@@ -129,7 +129,7 @@ namespace business.classes.PessoasLgpd
                             else
                             {
                                 visitantesLgpd = null;
-                                break;
+                                return false;
                             }
                         }
                     }

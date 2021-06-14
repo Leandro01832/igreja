@@ -131,7 +131,7 @@ namespace business.classes
                         else
                         {
                             Historicos = null;
-                            break;
+                            return false;
                         }
                     }
                 }

@@ -109,7 +109,7 @@ namespace business.classes.Celulas
                             else
                             {
                                 celulasCrianca = null;
-                                break;
+                                return false;
                             }
                         }
                     }

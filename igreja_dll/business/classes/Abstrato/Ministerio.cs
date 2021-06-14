@@ -145,42 +145,42 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (lideresCelula == null && new Lider_Celula().recuperar(null) && lideresCelula != null)
+                if (lideresCelula == null && new Lider_Celula().recuperar(null))
                 { lista.AddRange(lideresCelula); listaMinisterios.AddRange(lideresCelula); }
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar(null) && LideresCelulaTreinamento != null)
+                if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar(null))
                 { task.Result.AddRange(LideresCelulaTreinamento); listaMinisterios.AddRange(LideresCelulaTreinamento); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (lideresMinisterio == null && new Lider_Ministerio().recuperar(null) && lideresMinisterio != null)
+                if (lideresMinisterio == null && new Lider_Ministerio().recuperar(null))
                 { task.Result.AddRange(lideresMinisterio); listaMinisterios.AddRange(lideresMinisterio); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar(null) && lideresMinisterioTreinamento != null)
+                if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar(null))
                 { task.Result.AddRange(lideresMinisterioTreinamento); listaMinisterios.AddRange(lideresMinisterioTreinamento); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (supervisoresCelula == null && new Supervisor_Celula().recuperar(null) && supervisoresCelula != null)
+                if (supervisoresCelula == null && new Supervisor_Celula().recuperar(null))
                 { task.Result.AddRange(supervisoresCelula); listaMinisterios.AddRange(supervisoresCelula); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t6 = t5.ContinueWith((task) =>
             {
-                if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar(null) && supervisoresCelulaTreinamento != null)
+                if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar(null))
                 { task.Result.AddRange(supervisoresCelulaTreinamento); listaMinisterios.AddRange(supervisoresCelulaTreinamento); }
                 return task.Result;
             });
@@ -188,14 +188,14 @@ namespace business.classes.Abstrato
             Task<List<modelocrud>> t7 = t6.ContinueWith((task) =>
             {
 
-                if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar(null) && supervisoresMinisterio != null)
+                if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar(null))
                 { task.Result.AddRange(supervisoresMinisterio); listaMinisterios.AddRange(supervisoresMinisterio); }
                 return task.Result;
             });
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
-                if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar(null) && supervisoresMinisterioTreinamento != null)
+                if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar(null))
                 { task.Result.AddRange(supervisoresMinisterioTreinamento); listaMinisterios.AddRange(supervisoresMinisterioTreinamento); }
                 return task.Result;
             });

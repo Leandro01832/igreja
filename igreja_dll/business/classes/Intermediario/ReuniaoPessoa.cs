@@ -108,7 +108,7 @@ namespace business.classes.Intermediario
                         else
                         {
                             ReuniaoPessoas = null;
-                            break;
+                            return false;
                         }
                     }
                 }

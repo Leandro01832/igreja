@@ -19,7 +19,7 @@ namespace Tests
         static Random randNum = new Random();
        private static BDcomum  bd = new BDcomum();
         static int loop = 999;
-        static int? condicao;
+        
 
         static void Main(string[] args)
         {
@@ -83,28 +83,29 @@ namespace Tests
             //}      
 
 
-            for(var i = 1; i < 1000; i++)
-            if ( condicao == null && naoFazFicarNulo() && condicao != null )
-                {
-                    Console.WriteLine("Esta entrando na minha condicao. Verificação n° " + i);
-                    condicao = null;
-                }
+            for (var i = 1; i < 10; i++)
+               if(testandoComTry())
+                    Console.WriteLine("verificação retornou true");
                 else
-                {
-                    Console.WriteLine("Não esta entrando na minha condicao. Verificação n° " + i);
-                }
-                
-
+                    Console.WriteLine("verificação retornou false");
             Console.ReadLine();
         }
 
-        private static bool naoFazFicarNulo()
+        private static bool testandoComTry()
         {
-            if (2 * 2 == 4)
+            try
             {
-                condicao = 4;
-                return true;
+                int numero = int.Parse("leo");
             }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                Console.WriteLine("Entrou no finally");
+            }
+            return true;
         }
 
         public static void CadastrarVisitanteDadoTest()

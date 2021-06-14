@@ -111,7 +111,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 supervisoresMinisterioTreinamento = null;
-                                break;
+                                return false;
                             }
                         }
                     }

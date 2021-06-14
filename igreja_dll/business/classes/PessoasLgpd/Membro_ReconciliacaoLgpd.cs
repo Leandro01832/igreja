@@ -122,7 +122,7 @@ namespace business.classes.PessoasLgpd
                             else
                             {
                                 membros_ReconciliacaoLgpd = null;
-                                break;
+                                return false;
                             }
                         }
                     }

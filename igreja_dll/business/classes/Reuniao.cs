@@ -167,7 +167,7 @@ namespace business.classes
                             else
                             {
                                 Reunioes = null;
-                                break;
+                                return false;
                             }
                         }
                     }

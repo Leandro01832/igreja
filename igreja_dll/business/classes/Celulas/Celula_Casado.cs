@@ -110,7 +110,7 @@ namespace business.classes.Celulas
                             else
                             {
                                 celulasCasado = null;
-                                break;
+                                return false;
                             }
                         }
                     }

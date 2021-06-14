@@ -111,7 +111,7 @@ namespace business.classes.PessoasLgpd
                             else
                             {
                                 membros_BatismoLgpd = null;
-                                break;
+                                return false;
                             }
                         }
                     }

@@ -116,7 +116,7 @@ namespace business.classes.Ministerio
                             else
                             {
                                 supervisoresMinisterio = null;
-                                break;
+                                return false;
                             }
                         }
                     }
