@@ -100,6 +100,7 @@ namespace business.classes.PessoasLgpd
                 {
                     try
                     {
+                        criancasLgpd = new List<CriancaLgpd>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -120,7 +121,7 @@ namespace business.classes.PessoasLgpd
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        criancasLgpd = new List<CriancaLgpd>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (CriancaLgpd)m;

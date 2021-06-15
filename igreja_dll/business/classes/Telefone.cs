@@ -93,6 +93,7 @@ namespace business.classes
             {
                 try
                 {
+                    Telefones = new List<Telefone>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -114,7 +115,7 @@ namespace business.classes
                     //Recursividade
                     bd.fecharconexao(conexao);
 
-                    Telefones = new List<Telefone>();
+                    
                     foreach (var m in modelos)
                     {
                         var cel = (Telefone)m;

@@ -98,7 +98,7 @@ namespace business.classes.PessoasLgpd
                 {
                     try
                     {
-
+                        visitantesLgpd = new List<VisitanteLgpd>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -119,7 +119,7 @@ namespace business.classes.PessoasLgpd
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        visitantesLgpd = new List<VisitanteLgpd>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (VisitanteLgpd)m;

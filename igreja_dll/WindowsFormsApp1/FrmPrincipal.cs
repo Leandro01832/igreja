@@ -1,5 +1,10 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Celulas;
+using business.classes.Ministerio;
+using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
+using database.banco;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,15 +25,12 @@ namespace WindowsFormsApp1
             date = DateTime.Now;
         }
 
+        BDcomum bd = new BDcomum();
+
         #region IdentityRegistryNews
         bool notifica;
 
         DateTime date;
-        
-        List<Pessoa> ListaPessoas;
-        List<Ministerio> ListaMinisterios;
-        List<Celula> ListaCelulas;
-        List<Reuniao> ListaReunioes;
         #endregion
 
 
@@ -68,63 +70,165 @@ namespace WindowsFormsApp1
         private async void Notificar()
         {
             notifica = false;
-            var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
-            var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
-            var lp = await Task.Run(() => Pessoa.recuperarTodos());
-            var lr = await Task.Run(() => new Reuniao().recuperar(null));
-            ListaPessoas = lp.OfType<Pessoa>().Where(p => p.Codigo > UltimoRegistroPessoa).ToList();
-            ListaMinisterios = lm.OfType<Ministerio>().Where(m => m.IdMinisterio > UltimoRegistroMinisterio).ToList();
-            ListaCelulas = lc.OfType<Celula>().Where(c => c.IdCelula > UltimoRegistroCelula).ToList();
-            ListaReunioes = Reuniao.Reunioes.Where(r => r.IdReuniao > UltimoRegistroReuniao).ToList();
 
-            if (ListaPessoas != null)
-                if (ListaPessoas.Count != 0)
-                {
-                    foreach (var p in ListaPessoas)
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + p.Codigo, ToolTipIcon.Info);
-
-                    ListaPessoas.Clear();
-                    UltimoRegistroPessoa = lp.OfType<Pessoa>().OrderBy(m => m.IdPessoa).Last().Codigo;
-                }
-
-            if (ListaReunioes != null)
-                if (ListaReunioes.Count != 0)
-                {
-                    foreach (var p in ListaReunioes)
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + p.IdReuniao, ToolTipIcon.Info);
-
-                    ListaReunioes.Clear();
-                    UltimoRegistroReuniao = business.classes.Reuniao.Reunioes.Last().IdReuniao;
-                }
-
-            if (ListaMinisterios != null)
-                if (ListaMinisterios.Count != 0)
-                {
-                    foreach (var p in ListaMinisterios)
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + p.IdMinisterio, ToolTipIcon.Info);
-
-                    ListaMinisterios.Clear();
-                    UltimoRegistroMinisterio = lm.OfType<Ministerio>().Last().IdMinisterio;
-                }
-
-            if (ListaCelulas != null)
-                if (ListaCelulas.Count != 0)
-                {
-                    foreach (var p in ListaCelulas)
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma celula. ID: " + p.IdCelula, ToolTipIcon.Info);
-
-                    ListaCelulas.Clear();
-                    UltimoRegistroCelula = lc.OfType<Celula>().Last().IdCelula;
-                }
+            await Task.Run(() => verificaRegistros());            
 
             notifica = true;
         }
 
-        
+        private void verificaRegistros()
+        {
+            var UltimoRegistroCelula = bd.GetUltimoRegistroCelula();
+            if (UltimoRegistroCelula > Celula.UltimoRegistro)
+            {
+                for (var i = Celula.UltimoRegistro; i <= UltimoRegistroCelula; i++)
+                {
+                    var cel = new Celula_Adolescente();
+                    if (cel.recuperar(i))
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel.IdCelula, ToolTipIcon.Info);
+                    var cel2 = new Celula_Adolescente();
+                    if (cel2.recuperar(i))
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel2.IdCelula, ToolTipIcon.Info);
+                    var cel3 = new Celula_Adolescente();
+                    if (cel3.recuperar(i))
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel3.IdCelula, ToolTipIcon.Info);
+                    var cel4 = new Celula_Adolescente();
+                    if (cel4.recuperar(i))
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel4.IdCelula, ToolTipIcon.Info);
+                    var cel5 = new Celula_Adolescente();
+                    if (cel5.recuperar(i))
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel5.IdCelula, ToolTipIcon.Info);
+                }
+
+                Celula.UltimoRegistro = bd.GetUltimoRegistroCelula();
+            }
+
+            var UltimoRegistroReuniao = bd.GetUltimoRegistroReuniao();
+            if (UltimoRegistroReuniao > Reuniao.UltimoRegistro)
+            {
+                for (var i = Reuniao.UltimoRegistro; i <= UltimoRegistroReuniao; i++)
+                {
+                    var reu = new Reuniao();
+                    if (reu.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.IdReuniao, ToolTipIcon.Info);
+                }
+                Reuniao.UltimoRegistro = bd.GetUltimoRegistroReuniao();
+            }
+
+            var UltimoRegistroMinsterio = bd.GetUltimoRegistroMinisterio();
+            if (UltimoRegistroMinsterio > Ministerio.UltimoRegistro)
+            {
+                for (var i = Ministerio.UltimoRegistro; i <= UltimoRegistroMinsterio; i++)
+                {
+                    var minis = new Lider_Celula();
+                    if (minis.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis2 = new Lider_Celula_Treinamento();
+                    if (minis2.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis2.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis3 = new Lider_Ministerio();
+                    if (minis3.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis3.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis4 = new Lider_Ministerio_Treinamento();
+                    if (minis4.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis4.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis5 = new Supervisor_Celula();
+                    if (minis5.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis5.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis6 = new Supervisor_Celula_Treinamento();
+                    if (minis6.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis6.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis7 = new Supervisor_Ministerio();
+                    if (minis7.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis7.IdMinisterio, ToolTipIcon.Info);
+
+                    var minis8 = new Supervisor_Ministerio_Treinamento();
+                    if (minis8.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis8.IdMinisterio, ToolTipIcon.Info);
+
+                }
+
+                Ministerio.UltimoRegistro = bd.GetUltimoRegistroMinisterio();
+            }
+
+            var UltimoRegistroPessoa = bd.GetUltimoRegistroPessoa();
+            if (UltimoRegistroPessoa > Pessoa.UltimoRegistro)
+            {
+                for (var i = Pessoa.UltimoRegistro; i <= UltimoRegistroPessoa; i++)
+                {
+                    var pes = new Visitante();
+                    if (pes.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes.IdPessoa, ToolTipIcon.Info);
+
+                    var pes2 = new VisitanteLgpd();
+                    if (pes2.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes2.IdPessoa, ToolTipIcon.Info);
+
+                    var pes3 = new Crianca();
+                    if (pes3.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes3.IdPessoa, ToolTipIcon.Info);
+
+                    var pes4 = new CriancaLgpd();
+                    if (pes4.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes4.IdPessoa, ToolTipIcon.Info);
+
+                    var pes5 = new Membro_Aclamacao();
+                    if (pes5.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes5.IdPessoa, ToolTipIcon.Info);
+
+                    var pes6 = new Membro_AclamacaoLgpd();
+                    if (pes6.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes6.IdPessoa, ToolTipIcon.Info);
+
+                    var pes7 = new Membro_Reconciliacao();
+                    if (pes7.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes7.IdPessoa, ToolTipIcon.Info);
+
+                    var pes8 = new Membro_ReconciliacaoLgpd();
+                    if (pes8.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes8.IdPessoa, ToolTipIcon.Info);
+
+                    var pes9 = new Membro_Transferencia();
+                    if (pes9.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes9.IdPessoa, ToolTipIcon.Info);
+
+                    var pes10 = new Membro_TransferenciaLgpd();
+                    if (pes10.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes10.IdPessoa, ToolTipIcon.Info);
+
+                    var pes11 = new Membro_Batismo();
+                    if (pes11.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes11.IdPessoa, ToolTipIcon.Info);
+
+                    var pes12 = new Membro_BatismoLgpd();
+                    if (pes12.recuperar(i))
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes12.IdPessoa, ToolTipIcon.Info);
+                }
+
+                Pessoa.UltimoRegistro = bd.GetUltimoRegistroPessoa();
+            }
+        }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             UltimoRegistro();
+
+            try { Pessoa.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
+            catch { Pessoa.UltimoRegistro = 0; }
+            try { Reuniao.UltimoRegistro = bd.GetUltimoRegistroReuniao(); }
+            catch { Reuniao.UltimoRegistro = 0; }
+            try { Ministerio.UltimoRegistro = bd.GetUltimoRegistroMinisterio(); }
+            catch { Ministerio.UltimoRegistro = 0; }
+            try { Celula.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
+            catch { Celula.UltimoRegistro = 0; }
+
+
         }
 
         private void Principal_Tick(object sender, EventArgs e)

@@ -1,25 +1,18 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Celulas;
-using business.classes.Ministerio;
 using business.classes.Pessoas;
-using business.classes.PessoasLgpd;
 using database.banco;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace database
 {
-     public abstract class  modelocrud : IPesquisar
+    public abstract class  modelocrud : IPesquisar
     {
         //construtor para Entity Framework
         public modelocrud()
@@ -36,7 +29,9 @@ namespace database
 
         [NotMapped]
         public static bool Erro_Conexao;
-        
+        [NotMapped]
+        public static string textoPorcentagem = "0%";
+
 
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
@@ -90,35 +85,6 @@ namespace database
                 || ex.Message.Contains("conexão é fechada"))
             {
                 Erro_Conexao = true;
-
-                //if (erro is Visitante) Pessoa.visitantes = null;
-                //if (erro is Crianca) Pessoa.criancas = null;
-                //if (erro is Membro_Aclamacao) Pessoa.membros_Aclamacao = null;
-                //if (erro is Membro_Batismo) Pessoa.membros_Batismo = null;
-                //if (erro is Membro_Reconciliacao) Pessoa.membros_Reconciliacao = null;
-                //if (erro is Membro_Transferencia) Pessoa.membros_Transferencia = null;
-                    
-                //if (erro is VisitanteLgpd) Pessoa.visitantesLgpd = null;
-                //if (erro is CriancaLgpd) Pessoa.criancasLgpd = null;
-                //if (erro is Membro_AclamacaoLgpd) Pessoa.membros_AclamacaoLgpd = null;
-                //if (erro is Membro_BatismoLgpd) Pessoa.membros_BatismoLgpd = null;
-                //if (erro is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = null;
-                //if (erro is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = null;
-                    
-                //if (erro is Lider_Celula) Ministerio.lideresCelula = null;
-                //if (erro is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = null;
-                //if (erro is Lider_Ministerio) Ministerio.lideresMinisterio = null;
-                //if (erro is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = null;
-                //if (erro is Supervisor_Celula) Ministerio.supervisoresCelula = null;
-                //if (erro is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = null;
-                //if (erro is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = null;
-                //if (erro is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = null;
-                    
-                //if (erro is Celula_Adolescente) Celula.celulasAdolescente = null;
-                //if (erro is Celula_Adulto) Celula.celulasAdulto = null;
-                //if (erro is Celula_Casado) Celula.celulasCasado = null;
-                //if (erro is Celula_Crianca) Celula.celulasCrianca = null;
-                //if (erro is Celula_Jovem) Celula.celulasJovem = null;
             }
         }
 
@@ -232,6 +198,214 @@ namespace database
             if (modelos.OfType<Celula>().ToList().Count > 0 && campo == "Horario_inicio")
                 q = modelos.OfType<Celula>().Where(i => i.Horario == apenasUmHorario).Cast<modelocrud>().ToList();
             return q;
+        }
+
+
+        public static int GeTotalRegistrosPessoas()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+
+
+            return _TotalRegistros;
+        }
+
+        public static int GeTotalRegistrosCelulas()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
+        }
+
+        public static int GeTotalRegistrosMinisterios()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
+        }
+
+        public static int GeTotalRegistrosReunioes()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
+        }
+
+        public static int GeTotalRegistrosMudancaEstado()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    using (con = new SqlConnection(BDcomum.conecta2))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM MudancaEstado", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
+        }
+
+        public static void calcularPorcentagem()
+        {
+            try
+            {
+                var pessoas = GeTotalRegistrosPessoas();
+                var celulas = GeTotalRegistrosCelulas();
+                var ministerios = GeTotalRegistrosMinisterios();
+                var reunioes = GeTotalRegistrosReunioes();
+                var mudancas = GeTotalRegistrosMudancaEstado();
+                var totalRegistros = pessoas + celulas + ministerios + reunioes + mudancas;
+
+                var quantVisitante                 = 0;  var quamtCelula_Jovem       = 0;  var quantLider_Celula                      = 0;
+                var quantCrianca                   = 0;  var quamtCelula_Adolescente = 0;  var quantLider_Celula_Treinamento          = 0;
+                var quantMembro_Batismo            = 0;  var quamtCelula_Casado      = 0;  var quantLider_Ministerio                  = 0;
+                var quantMembro_Aclamacao          = 0;  var quamtCelula_Crianca     = 0;  var quantLider_Ministerio_Treinamento      = 0;
+                var quantMembro_Reconciliacao      = 0;  var quamtCelula_Adulto      = 0;  var quantSupervisor_Celula                 = 0;
+                var quantMembro_Transferencia      = 0;                                    var quantSupervisor_Celula_Treinamento     = 0;
+                var quantVisitanteLgpd             = 0;                                    var quantSupervisor_Ministerio             = 0;
+                var quantCriancaLgpd               = 0;                                    var quantSupervisor_Ministerio_Treinamento = 0;
+                var quantMembro_TransferenciaLgpd  = 0;  
+                var quantMembro_BatismoLgpd       = 0;   
+                var quantMembro_AclamacaoLgpd     = 0;   
+                var quantMembro_ReconciliacaoLgpd = 0;
+
+                var quantMudancas = 0;
+                var quantReunioes = 0;
+
+                if (Pessoa.visitantes                != null)  quantVisitante                 += Pessoa.visitantes                .Count;
+                if(Pessoa.criancas                  != null)  quantCrianca                   += Pessoa.criancas                  .Count;
+                if(Pessoa.membros_Aclamacao         != null) quantMembro_Aclamacao           += Pessoa.membros_Aclamacao         .Count;
+                if(Pessoa.membros_Batismo           != null) quantMembro_Batismo             += Pessoa.membros_Batismo           .Count;
+                if(Pessoa.membros_Reconciliacao     != null)  quantMembro_Reconciliacao      += Pessoa.membros_Reconciliacao     .Count;
+                if(Pessoa.membros_Transferencia     != null)  quantMembro_Transferencia      += Pessoa.membros_Transferencia     .Count;
+                if(Pessoa.visitantesLgpd            != null)  quantVisitanteLgpd             += Pessoa.visitantesLgpd            .Count;
+                if(Pessoa.criancasLgpd              != null)  quantCriancaLgpd               += Pessoa.criancasLgpd              .Count;
+                if(Pessoa.membros_AclamacaoLgpd     != null)  quantMembro_AclamacaoLgpd      += Pessoa.membros_AclamacaoLgpd     .Count;
+                if(Pessoa.membros_BatismoLgpd       != null)  quantMembro_BatismoLgpd        += Pessoa.membros_BatismoLgpd       .Count;
+                if(Pessoa.membros_ReconciliacaoLgpd != null)  quantMembro_ReconciliacaoLgpd  += Pessoa.membros_ReconciliacaoLgpd .Count;
+                if (Pessoa.membros_TransferenciaLgpd != null) quantMembro_TransferenciaLgpd  += Pessoa.membros_TransferenciaLgpd.Count;
+
+                if(Celula.celulasAdolescente != null) quamtCelula_Adolescente       +=  Celula.celulasAdolescente .Count;
+                if(Celula.celulasAdulto      != null) quamtCelula_Adulto            +=  Celula.celulasAdulto      .Count;
+                if(Celula.celulasCasado      != null) quamtCelula_Casado            +=  Celula.celulasCasado      .Count;
+                if(Celula.celulasJovem       != null) quamtCelula_Jovem             +=  Celula.celulasJovem       .Count;
+                if (Celula.celulasCrianca    != null) quamtCelula_Crianca           +=  Celula.celulasCrianca     .Count;
+
+                if(Ministerio.lideresCelula                     != null) quantLider_Celula                      += Ministerio.lideresCelula                    .Count;
+                if(Ministerio.LideresCelulaTreinamento          != null) quantLider_Celula_Treinamento          += Ministerio.LideresCelulaTreinamento         .Count;
+                if(Ministerio.lideresMinisterio                 != null) quantLider_Ministerio                  += Ministerio.lideresMinisterio                .Count;
+                if(Ministerio.lideresMinisterioTreinamento      != null) quantLider_Ministerio_Treinamento      += Ministerio.lideresMinisterioTreinamento     .Count;
+                if(Ministerio.supervisoresCelula                != null) quantSupervisor_Celula                 += Ministerio.supervisoresCelula               .Count;
+                if(Ministerio.supervisoresCelulaTreinamento     != null) quantSupervisor_Celula_Treinamento     += Ministerio.supervisoresCelulaTreinamento    .Count;
+                if(Ministerio.supervisoresMinisterio            != null) quantSupervisor_Ministerio             += Ministerio.supervisoresMinisterio           .Count;
+                if(Ministerio.supervisoresMinisterioTreinamento != null) quantSupervisor_Ministerio_Treinamento += Ministerio.supervisoresMinisterioTreinamento.Count;
+
+                if(Reuniao.Reunioes != null) quantReunioes += Reuniao.Reunioes.Count;
+                if(MudancaEstado.Mudancas != null) quantMudancas += MudancaEstado.Mudancas.Count;
+                
+                var quantidadeCarregada = quantMudancas + quantReunioes +
+                quantVisitante                 + quantLider_Celula                      + quamtCelula_Jovem       +
+                quantCrianca                   + quantLider_Celula_Treinamento          + quamtCelula_Adolescente +
+                quantMembro_Batismo            + quantLider_Ministerio                  + quamtCelula_Casado      +
+                quantMembro_Aclamacao          + quantLider_Ministerio_Treinamento      + quamtCelula_Crianca     +
+                quantMembro_Reconciliacao      + quantSupervisor_Celula                 + quamtCelula_Adulto      +
+                quantMembro_Transferencia      + quantSupervisor_Celula_Treinamento     +
+                quantVisitanteLgpd             + quantSupervisor_Ministerio             +
+                quantCriancaLgpd               + quantSupervisor_Ministerio_Treinamento +
+                quantMembro_TransferenciaLgpd  +
+                quantMembro_BatismoLgpd        +
+                quantMembro_AclamacaoLgpd      +
+                quantMembro_ReconciliacaoLgpd ; 
+
+
+                var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
+
+                textoPorcentagem = porcentagem.ToString() + "%";
+            }
+            catch { }
         }
     }
 }

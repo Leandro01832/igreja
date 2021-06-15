@@ -101,7 +101,7 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
-
+                        criancas = new List<Crianca>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -122,7 +122,7 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        criancas = new List<Crianca>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Crianca)m;

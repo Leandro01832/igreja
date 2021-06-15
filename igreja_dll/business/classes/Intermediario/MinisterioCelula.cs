@@ -80,7 +80,7 @@ namespace business.classes.Intermediario
             {
                 try
                 {
-                    
+                    MinisterioCelulas = new List<MinisterioCelula>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)

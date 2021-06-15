@@ -126,6 +126,7 @@ namespace business.classes
             {
                 try
                 {
+                    Enderecos = new List<Endereco>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -145,7 +146,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    Enderecos = new List<Endereco>();
+                    
                     foreach (var m in modelos)
                     {
                         var cel = (Endereco)m;

@@ -65,7 +65,7 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
-
+                        lideresCelula = new List<Lider_Celula>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -86,7 +86,7 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        lideresCelula = new List<Lider_Celula>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Lider_Celula)m;

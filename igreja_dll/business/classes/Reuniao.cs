@@ -50,7 +50,7 @@ namespace business.classes
         public static int UltimoRegistro { get; set; }
 
         [NotMapped]
-        public static List<Reuniao>  Reunioes { get; set; }
+        public static List<Reuniao> Reunioes = new List<Reuniao>();
         #endregion
 
         AddNalista AddNalista;
@@ -135,7 +135,7 @@ namespace business.classes
                 {
                     try
                     {
-
+                        Reunioes = new List<Reuniao>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -157,7 +157,7 @@ namespace business.classes
 
                         //Recursividade                        
                         bd.fecharconexao(conexao);
-                        Reunioes = new List<Reuniao>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Reuniao)m;

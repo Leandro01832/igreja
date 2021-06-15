@@ -221,35 +221,40 @@ namespace business.classes.Abstrato
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
                 if (visitantesLgpd == null && new VisitanteLgpd().recuperar(null))
-                { lista.AddRange(visitantesLgpd); listaPessoas.AddRange(visitantesLgpd); }              
+                { lista.AddRange(visitantesLgpd); listaPessoas.AddRange(visitantesLgpd); }
+                
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
                 if (criancasLgpd == null && new CriancaLgpd().recuperar(null))
-                { task.Result.AddRange(criancasLgpd); listaPessoas.AddRange(criancasLgpd); }   
-                 return task.Result;
+                { task.Result.AddRange(criancasLgpd); listaPessoas.AddRange(criancasLgpd); }
+                
+                return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
                 if (membros_AclamacaoLgpd == null && new Membro_AclamacaoLgpd().recuperar(null))
-                { task.Result.AddRange(membros_AclamacaoLgpd); listaPessoas.AddRange(membros_AclamacaoLgpd); }      
-                    return task.Result;
+                { task.Result.AddRange(membros_AclamacaoLgpd); listaPessoas.AddRange(membros_AclamacaoLgpd); }
+                
+                return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
                 if (membros_ReconciliacaoLgpd == null && new Membro_ReconciliacaoLgpd().recuperar(null))
-                { task.Result.AddRange(membros_ReconciliacaoLgpd); listaPessoas.AddRange(membros_ReconciliacaoLgpd); }  
-                    return task.Result;
+                { task.Result.AddRange(membros_ReconciliacaoLgpd); listaPessoas.AddRange(membros_ReconciliacaoLgpd); }
+                
+                return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
                 if (membros_BatismoLgpd == null && new Membro_BatismoLgpd().recuperar(null))
                 { task.Result.AddRange(membros_BatismoLgpd); listaPessoas.AddRange(membros_BatismoLgpd); }
+                
                 return task.Result;
             });
 
@@ -257,6 +262,7 @@ namespace business.classes.Abstrato
             {
                 if (membros_TransferenciaLgpd == null && new Membro_TransferenciaLgpd().recuperar(null))
                 { task.Result.AddRange(membros_TransferenciaLgpd); listaPessoas.AddRange(membros_TransferenciaLgpd); }
+                
                 return task.Result;
             });
 
@@ -264,13 +270,15 @@ namespace business.classes.Abstrato
             {
                 if (visitantes == null && new Visitante().recuperar(null))
                 { task.Result.AddRange(visitantes); listaPessoas.AddRange(visitantes); }
-                    return task.Result;
+                
+                return task.Result;
             });
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
                 if (criancas == null && new Crianca().recuperar(null))
                 { task.Result.AddRange(criancas); listaPessoas.AddRange(criancas); }
+                
                 return task.Result;
             });
 
@@ -278,6 +286,7 @@ namespace business.classes.Abstrato
             {
                 if (membros_Aclamacao == null && new Membro_Aclamacao().recuperar(null))
                 { task.Result.AddRange(membros_Aclamacao); listaPessoas.AddRange(membros_Aclamacao); }
+                
                 return task.Result;
             });
 
@@ -285,6 +294,7 @@ namespace business.classes.Abstrato
             {
                 if (membros_Reconciliacao == null && new Membro_Reconciliacao().recuperar(null))
                 {  task.Result.AddRange(membros_Reconciliacao); listaPessoas.AddRange(membros_Reconciliacao); }
+                
                 return task.Result;
             });
 
@@ -292,14 +302,15 @@ namespace business.classes.Abstrato
             {
                 if (membros_Batismo == null && new Membro_Batismo().recuperar(null))
                 { task.Result.AddRange(membros_Batismo); listaPessoas.AddRange(membros_Batismo); }
+                
                 return task.Result;
             });
 
             Task<List<modelocrud>> t12 = t11.ContinueWith((task) =>
             {
                 if (membros_Transferencia == null && new Membro_Transferencia().recuperar(null))
-                { task.Result.AddRange(membros_Transferencia); listaPessoas.AddRange(membros_Transferencia);
-            }
+                { task.Result.AddRange(membros_Transferencia); listaPessoas.AddRange(membros_Transferencia); }
+                
                 return task.Result;
             });
 

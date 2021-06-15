@@ -98,7 +98,7 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
-
+                        membros_Transferencia = new List<Membro_Transferencia>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -119,7 +119,7 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        membros_Transferencia = new List<Membro_Transferencia>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_Transferencia)m;

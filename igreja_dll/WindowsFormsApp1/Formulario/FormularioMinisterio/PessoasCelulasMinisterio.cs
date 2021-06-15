@@ -1,4 +1,5 @@
 ﻿using business.classes.Abstrato;
+using database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,7 +120,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                             catch
                             {
                                 AddNaListaReuniaoPessoas = "";
-                                var num = GeTotalRegistrosPessoas();
+                                var num = modelocrud.GeTotalRegistrosPessoas();
                                 if (num != business.classes.Abstrato.Pessoa.listaPessoas.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
@@ -171,7 +172,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                             {
                                 AddNaListaMinisterioCelulas = "";
                                 txt_celulas.Text = "";
-                                var num = GeTotalRegistrosCelulas();
+                                var num = modelocrud.GeTotalRegistrosCelulas();
                                 if (num != business.classes.Abstrato.Celula.listaCelulas.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

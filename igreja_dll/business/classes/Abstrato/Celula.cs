@@ -162,6 +162,7 @@ namespace business.classes.Abstrato
             {
                 if (celulasAdolescente == null && new Celula_Adolescente().recuperar(null))
                 { lista.AddRange(celulasAdolescente); listaCelulas.AddRange(celulasAdolescente); }
+                
                 return lista;
             });
 
@@ -169,6 +170,7 @@ namespace business.classes.Abstrato
             {
                 if (celulasAdulto == null && new Celula_Adulto().recuperar(null))
                 { task.Result.AddRange(celulasAdulto); listaCelulas.AddRange(celulasAdulto); }
+                
                 return task.Result;
             });
 
@@ -176,6 +178,7 @@ namespace business.classes.Abstrato
             {
                 if (celulasCasado == null && new Celula_Casado().recuperar(null))
                 { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCasado); }
+                
                 return task.Result;
             });
 
@@ -183,6 +186,7 @@ namespace business.classes.Abstrato
             {
                 if (celulasCrianca == null && new Celula_Crianca().recuperar(null))
                 { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCrianca); }
+                
                 return task.Result;
             });
 
@@ -190,6 +194,7 @@ namespace business.classes.Abstrato
             {
                 if (celulasJovem == null && new Celula_Jovem().recuperar(null))
                 {  task.Result.AddRange(celulasJovem); listaCelulas.AddRange(celulasJovem); }
+                
                 return task.Result;
             });
 

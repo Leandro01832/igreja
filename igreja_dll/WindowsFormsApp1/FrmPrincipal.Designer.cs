@@ -113,7 +113,7 @@
             // Principal
             // 
             this.Principal.Enabled = true;
-            this.Principal.Interval = 1000;
+            this.Principal.Interval = 60000;
             this.Principal.Tick += new System.EventHandler(this.Principal_Tick);
             // 
             // notifyIcon

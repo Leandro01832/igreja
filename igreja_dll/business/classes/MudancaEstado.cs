@@ -26,7 +26,7 @@ namespace business.classes
         public int CodigoPessoa { get; set; }
 
         [NotMapped]
-        public static List<MudancaEstado> Mudancas { get; set; }
+        public static List<MudancaEstado> Mudancas = new List<MudancaEstado>();
 
         public MudancaEstado() : base()
         {
@@ -502,7 +502,7 @@ namespace business.classes
                 {
                     try
                     {
-
+                        Mudancas = new List<MudancaEstado>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -524,7 +524,7 @@ namespace business.classes
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        Mudancas = new List<MudancaEstado>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (MudancaEstado)m;

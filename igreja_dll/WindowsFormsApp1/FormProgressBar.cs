@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             
-            label1.Text = textoPorcentagem;
+            label1.Text = modelocrud.textoPorcentagem;
         }
 
         private void FormProgressBar_Load(object sender, EventArgs e)
@@ -23,8 +23,8 @@ namespace WindowsFormsApp1
 
         private void ProgressBar_Tick(object sender, EventArgs e)
         {
-            label1.Text = textoPorcentagem;
-            var numero = textoPorcentagem.Replace("%", "");
+            label1.Text = modelocrud.textoPorcentagem;
+            var numero = modelocrud.textoPorcentagem.Replace("%", "");
 
             if (int.Parse(numero) <= 100)
                 progressBar1.Value = int.Parse(numero);

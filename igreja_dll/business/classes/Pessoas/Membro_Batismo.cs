@@ -81,6 +81,7 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
+                        membros_Batismo = new List<Membro_Batismo>();
                         Select_padrao = "select * from Membro_Batismo as MB "
                         + " inner join Membro as M on MB.IdPessoa=M.IdPessoa "
                         + " inner join PessoaDado as PD on M.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
@@ -105,7 +106,7 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        membros_Batismo = new List<Membro_Batismo>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_Batismo)m;

@@ -69,7 +69,7 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
-
+                        LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -90,7 +90,7 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Lider_Celula_Treinamento)m;

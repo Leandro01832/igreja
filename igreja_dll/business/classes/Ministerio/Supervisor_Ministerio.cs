@@ -85,7 +85,7 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
-
+                        supervisoresMinisterio = new List<Supervisor_Ministerio>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -106,7 +106,7 @@ namespace business.classes.Ministerio
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        supervisoresMinisterio = new List<Supervisor_Ministerio>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Supervisor_Ministerio)m;

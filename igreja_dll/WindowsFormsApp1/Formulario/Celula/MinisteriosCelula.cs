@@ -1,4 +1,5 @@
 ﻿using business.classes.Abstrato;
+using database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,7 +91,7 @@ namespace WindowsFormsApp1.Formulario.Celula
                             catch
                             {
                                 AddNaListaCelulaMinisterios = "";
-                                var num = GeTotalRegistrosMinisterios();
+                                var num = modelocrud.GeTotalRegistrosMinisterios();
                                 if (num != Ministerio.listaMinisterios.Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

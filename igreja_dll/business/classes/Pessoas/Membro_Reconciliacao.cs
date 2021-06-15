@@ -93,7 +93,7 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
-
+                        membros_Reconciliacao = new List<Membro_Reconciliacao>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -115,7 +115,7 @@ namespace business.classes.Pessoas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        membros_Reconciliacao = new List<Membro_Reconciliacao>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_Reconciliacao)m;

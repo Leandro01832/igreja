@@ -77,7 +77,7 @@ namespace business.classes.Celulas
                 {
                     try
                     {
-
+                        celulasCasado = new List<Celula_Casado>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -99,7 +99,7 @@ namespace business.classes.Celulas
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        celulasCasado = new List<Celula_Casado>();
+                        
                         List<modelocrud> lista = new List<modelocrud>();
                         foreach (var m in modelos)
                         {

@@ -102,6 +102,7 @@ namespace business.classes
             {
                 try
                 {
+                    Historicos = new List<Historico>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -121,7 +122,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    Historicos = new List<Historico>();
+                    
                     foreach (var m in modelos)
                     {
                         var cel = (Historico)m;

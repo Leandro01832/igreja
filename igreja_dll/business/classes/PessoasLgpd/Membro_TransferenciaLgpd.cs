@@ -100,7 +100,7 @@ namespace business.classes.PessoasLgpd
                 {
                     try
                     {
-
+                        membros_TransferenciaLgpd = new List<Membro_TransferenciaLgpd>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -121,7 +121,7 @@ namespace business.classes.PessoasLgpd
 
                         //Recursividade
                         bd.fecharconexao(conexao);
-                        membros_TransferenciaLgpd = new List<Membro_TransferenciaLgpd>();
+                        
                         foreach (var m in modelos)
                         {
                             var cel = (Membro_TransferenciaLgpd)m;

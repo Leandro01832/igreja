@@ -80,7 +80,7 @@ namespace business.classes.Intermediario
             }
             else
             {
-                
+                PessoaMinisterios = new List<PessoaMinisterio>();
                 SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
@@ -102,7 +102,7 @@ namespace business.classes.Intermediario
 
                     bd.fecharconexao(conexao);
                     // recursividade          
-                    PessoaMinisterios = new List<PessoaMinisterio>();
+                    
                     foreach (var item in lista.OfType<PessoaMinisterio>())
                     {
                         var model = new PessoaMinisterio();

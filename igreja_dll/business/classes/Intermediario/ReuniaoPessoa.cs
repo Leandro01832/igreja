@@ -76,7 +76,7 @@ namespace business.classes.Intermediario
             }
             else
             {
-                
+                ReuniaoPessoas = new List<ReuniaoPessoa>();
                 SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
                 if (dr.HasRows == false)
@@ -99,7 +99,7 @@ namespace business.classes.Intermediario
 
                     bd.fecharconexao(conexao);
                     //recursividade
-                    ReuniaoPessoas = new List<ReuniaoPessoa>();
+                    
                     foreach (var item in lista.OfType<ReuniaoPessoa>().ToList())
                     {
                         var modelo = new ReuniaoPessoa();

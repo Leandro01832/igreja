@@ -147,6 +147,7 @@ namespace business.classes.Abstrato
             {
                 if (lideresCelula == null && new Lider_Celula().recuperar(null))
                 { lista.AddRange(lideresCelula); listaMinisterios.AddRange(lideresCelula); }
+                
                 return lista;
             });
 
@@ -154,6 +155,7 @@ namespace business.classes.Abstrato
             {
                 if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar(null))
                 { task.Result.AddRange(LideresCelulaTreinamento); listaMinisterios.AddRange(LideresCelulaTreinamento); }
+                
                 return task.Result;
             });
 
@@ -161,6 +163,7 @@ namespace business.classes.Abstrato
             {
                 if (lideresMinisterio == null && new Lider_Ministerio().recuperar(null))
                 { task.Result.AddRange(lideresMinisterio); listaMinisterios.AddRange(lideresMinisterio); }
+                
                 return task.Result;
             });
 
@@ -168,6 +171,7 @@ namespace business.classes.Abstrato
             {
                 if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar(null))
                 { task.Result.AddRange(lideresMinisterioTreinamento); listaMinisterios.AddRange(lideresMinisterioTreinamento); }
+                
                 return task.Result;
             });
 
@@ -175,6 +179,7 @@ namespace business.classes.Abstrato
             {
                 if (supervisoresCelula == null && new Supervisor_Celula().recuperar(null))
                 { task.Result.AddRange(supervisoresCelula); listaMinisterios.AddRange(supervisoresCelula); }
+                
                 return task.Result;
             });
 
@@ -182,6 +187,7 @@ namespace business.classes.Abstrato
             {
                 if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar(null))
                 { task.Result.AddRange(supervisoresCelulaTreinamento); listaMinisterios.AddRange(supervisoresCelulaTreinamento); }
+                
                 return task.Result;
             });
 
@@ -190,6 +196,7 @@ namespace business.classes.Abstrato
 
                 if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar(null))
                 { task.Result.AddRange(supervisoresMinisterio); listaMinisterios.AddRange(supervisoresMinisterio); }
+                
                 return task.Result;
             });
 
@@ -197,6 +204,7 @@ namespace business.classes.Abstrato
             {
                 if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar(null))
                 { task.Result.AddRange(supervisoresMinisterioTreinamento); listaMinisterios.AddRange(supervisoresMinisterioTreinamento); }
+                
                 return task.Result;
             });
 

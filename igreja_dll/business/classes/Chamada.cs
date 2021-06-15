@@ -93,6 +93,7 @@ namespace business.classes
             {
                 try
                 {
+                    Chamadas = new List<Chamada>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -113,7 +114,7 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    Chamadas = new List<Chamada>();
+                    
                     foreach (var m in modelos)
                     {
                         var cel = (Chamada)m;

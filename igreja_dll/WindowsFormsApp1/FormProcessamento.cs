@@ -1,6 +1,7 @@
 ﻿using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using database;
 using database.banco;
 using System;
 using System.Collections.Generic;
@@ -142,8 +143,8 @@ namespace WindowsFormsApp1
             this.Controls.Add(statusMembroReconciliacao);
 
             InitializeComponent();
-            btn_processo_inicial.Enabled = bd.TestarConexao() && int.Parse(textoPorcentagem.Replace("%", "")) < 99;
-            btn_processa_pessoa.Enabled = bd.TestarConexao() && int.Parse(textoPorcentagem.Replace("%", "")) < 99;
+            btn_processo_inicial.Enabled = bd.TestarConexao() && int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99;
+            btn_processa_pessoa.Enabled = bd.TestarConexao() && int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99;
 
         }
 
@@ -187,10 +188,10 @@ namespace WindowsFormsApp1
 
         private void timerProcessamento_Tick(object sender, EventArgs e)
         {
-            this.Text = "Processamento: " + textoPorcentagem;
+            this.Text = "Processamento: " + modelocrud.textoPorcentagem;
 
-            btn_processo_inicial.Enabled = bd.TestarConexao() && int.Parse(textoPorcentagem.Replace("%", "")) < 99;
-            btn_processa_pessoa.Enabled = bd.TestarConexao() && int.Parse(textoPorcentagem.Replace("%", "")) < 99;
+            btn_processo_inicial.Enabled = bd.TestarConexao() && int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99;
+            btn_processa_pessoa.Enabled = bd.TestarConexao() && int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99;
             
             if (verifica)
             {
@@ -198,37 +199,37 @@ namespace WindowsFormsApp1
 
                 if (!carregandoCriancaLgpd)
                     statusCriancaLgpd.Text = "Status de processamento de criança Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new CriancaLgpd().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new CriancaLgpd().GetType().Name) != null)
                     statusCriancaLgpd.Text = "Status de processamento de criança Lgpd: processado.";
                 else statusCriancaLgpd.Text = "Status de processamento de criança Lgpd: Processando.";
 
                 if (!carregandoVisitanteLgpd)
                     statusVisitanteLgpd.Text = "Status de processamento de visitante Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new VisitanteLgpd().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new VisitanteLgpd().GetType().Name) != null)
                     statusVisitanteLgpd.Text = "Status de processamento de visitante Lgpd: processado.";
                 else statusVisitanteLgpd.Text = "Status de processamento de visitante Lgpd: Processando.";
 
                 if (!carregandoMembroBatismoLgpd)
                     statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name) != null)
                     statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: processado.";
                 else statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: Processando.";
 
                 if (!carregandoMembroTransferenciaLgpd)
                     statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name) != null)
                     statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: processado.";
                 else statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: Processando.";
 
                 if (!carregandoMembroAclamacaoLgpd)
                     statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name) != null)
                     statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: processado.";
                 else statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: Processando.";
 
                 if (!carregandoMembroReconciliacaoLgpd)
                     statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name) != null)
                     statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: processado.";
                 else statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: Processando.";
 
@@ -236,37 +237,37 @@ namespace WindowsFormsApp1
 
                 if (!carregandoCrianca)
                     statusCrianca.Text = "Status de processamento de criança: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Crianca().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Crianca().GetType().Name) != null)
                     statusCrianca.Text = "Status de processamento de criança: processado.";
                 else statusCrianca.Text = "Status de processamento de criança: Processando.";
 
                 if (!carregandoVisitante)
                     statusVisitante.Text = "Status de processamento de visitante: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Visitante().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Visitante().GetType().Name) != null)
                     statusVisitante.Text = "Status de processamento de visitante: processado.";
                 else statusVisitante.Text = "Status de processamento de visitante: Processando.";
 
                 if (!carregandoMembroBatismo)
                     statusMembroBatismo.Text = "Status de processamento de membro por batismo: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_Batismo().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Batismo().GetType().Name) != null)
                     statusMembroBatismo.Text = "Status de processamento de membro por batismo: processado.";
                 else statusMembroBatismo.Text = "Status de processamento de membro por batismo: Processando.";
 
                 if (!carregandoMembroTransferencia)
                     statusMembroTransferencia.Text = "Status de processamento de membro por transferência: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_Transferencia().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Transferencia().GetType().Name) != null)
                     statusMembroTransferencia.Text = "Status de processamento de membro por transferência: processado.";
                 else statusMembroTransferencia.Text = "Status de processamento de membro por transferência: Processando.";
 
                 if (!carregandoMembroAclamacao)
                     statusMembroAclamacao.Text = "Status de processamento de membro por aclamação: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name) != null)
                     statusMembroAclamacao.Text = "Status de processamento de membro por aclamação: processado.";
                 else statusMembroAclamacao.Text = "Status de processamento de membro por aclamação: Processando.";
 
                 if (!carregandoMembroReconciliacao)
                     statusMembroReconciliacao.Text = "Status de processamento de membro por reconciliação: Não processado.";
-                else if (Pessoa.listaPessoas.Where(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name).ToList().Count > 0)
+                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name) != null)
                     statusMembroReconciliacao.Text = "Status de processamento de membro por reconciliação: processado.";
                 else statusMembroReconciliacao.Text = "Status de processamento de membro por reconciliação: Processando.";
 
