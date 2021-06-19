@@ -1,13 +1,10 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using System;
-using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace database.banco
@@ -52,6 +49,8 @@ namespace database.banco
                 {
                  conn = new SqlConnection(conecta2);
                  conn.Open();
+                    modelocrud.Erro_Conexao = false;
+                    modelocrud.QuantErro = 0;
                 }
                 catch (Exception ex)
                 {

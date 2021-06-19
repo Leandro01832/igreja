@@ -19,6 +19,7 @@ namespace database
         {
             this.bd = new BDcomum();
             Erro_Conexao = false;
+            QuantErro = 0;
         }
 
 
@@ -26,6 +27,9 @@ namespace database
         private string update_padrao;
         private string delete_padrao;
         private string select_padrao;
+
+        [NotMapped]
+        public static int QuantErro;
 
         [NotMapped]
         public static bool Erro_Conexao;
@@ -74,17 +78,21 @@ namespace database
                 MessageBox.Show("A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
             }
             else if(!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não está respondendo")
-                && !ex.Message.Contains("índice estava fora do intervalo")
                 && !ex.Message.Contains("não foi inicializada")
                 && !ex.Message.Contains("conexão é fechada"))
                 MessageBox.Show(ex.Message);
 
             else if(ex.Message.Contains("transporte") || ex.Message.Contains("servidor não está respondendo")
-                || ex.Message.Contains("índice estava fora do intervalo")
                 || ex.Message.Contains("não foi inicializada")
                 || ex.Message.Contains("conexão é fechada"))
             {
+                 
                 Erro_Conexao = true;
+                QuantErro++;
+
+                if (QuantErro == 1)
+                MessageBox.Show("Verifique sua conexão");
+                
             }
         }
 

@@ -26,7 +26,9 @@ namespace WindowsFormsApp1.Formulario
         {
             ListView = ListBox;
 
-            this.Tipo = ListBox.Tipo;          
+            this.Tipo = ListBox.Tipo;  
+            
+            
 
             Mudanca = new Button();
             Mudanca.Location = new Point(570, 40);

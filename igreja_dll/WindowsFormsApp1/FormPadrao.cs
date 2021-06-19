@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario;
 
 namespace WindowsFormsApp1
 {
@@ -81,7 +82,7 @@ namespace WindowsFormsApp1
                 });
 
                 
-
+                if(!form.IsDisposed)
                 form.Dispose();                             
 
                 executar = true; podeVerificar = true;
@@ -107,15 +108,17 @@ namespace WindowsFormsApp1
             {
                 if (registrosMinisterios != Ministerio.listaMinisterios.Count)
                 {
-                    using (FormProgressBar2 form = new FormProgressBar2())
-                    {
+                    FormProgressBar2 form = new FormProgressBar2();
+                    
                         form.MdiParent = this.MdiParent;
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Ministerios";
                         form.Show();
-                        await Task.Run(() => recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio() + 10, 1));
-                        form.Close();
-                    }
+                        await Task.Run(() => recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio() + 10));
+
+                    if (!form.IsDisposed)
+                        form.Dispose();
+
                     Ministerio.UltimoRegistro = Ministerio.listaMinisterios.OrderBy(m => m.IdMinisterio).Last().IdMinisterio;
                 }
             }
@@ -125,15 +128,16 @@ namespace WindowsFormsApp1
             {
                 if (registrosCelulas != Celula.listaCelulas.Count)
                 {
-                    using (FormProgressBar2 form = new FormProgressBar2())
-                    {
+                    FormProgressBar2 form = new FormProgressBar2();
+                    
                         form.MdiParent = this.MdiParent;
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Celulas";
                         form.Show();
-                        await Task.Run(() => recuperarRegistrosCelula(bd.GetUltimoRegistroCelula() + 10, 1));
-                        form.Close();
-                    }
+                        await Task.Run(() => recuperarRegistrosCelula(bd.GetUltimoRegistroCelula() + 10));
+                        
+                    if (!form.IsDisposed)
+                        form.Dispose();
 
                     Celula.UltimoRegistro = Celula.listaCelulas.OrderBy(m => m.IdCelula).Last().IdCelula;
                 }
@@ -144,23 +148,26 @@ namespace WindowsFormsApp1
             {
                 if (registrosPessoas != Pessoa.listaPessoas.Count)
                 {
-                    using (FormProgressBar2 form = new FormProgressBar2())
-                    {
+                    FormProgressBar2 form = new FormProgressBar2();
+                    
                         form.MdiParent = this.MdiParent;
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Pessoas";
                         form.Show();
-                        await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa() + 10, 1));
-                        form.Close();
-                    }
+                        await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa() + 10));
+
+                        if(!form.IsDisposed)
+                        form.Dispose();
+                    
                     Pessoa.UltimoRegistro = Pessoa.listaPessoas.OrderBy(m => m.IdPessoa).Last().Codigo;
                 }
             }
             catch { }
         }
 
-        private void recuperarRegistrosPessoa(int v1, int v2)
+        private void recuperarRegistrosPessoa(int v1)
         {
+            var v2 = 1;
             List<modelocrud> lista = new List<modelocrud>();
             while (v1 >= v2)
             {
@@ -179,15 +186,15 @@ namespace WindowsFormsApp1
                     var model11 = new Membro_AclamacaoLgpd    (); var modelo11 = model11.recuperar(v2);
                     var model12 = new Membro_ReconciliacaoLgpd(); var modelo12 = model12.recuperar(v2);
 
-                    if (modelo) Pessoa.listaPessoas.Add(model);
-                    if (modelo2) Pessoa.listaPessoas.Add(model2);
-                    if (modelo3) Pessoa.listaPessoas.Add(model3);
-                    if (modelo4) Pessoa.listaPessoas.Add(model4);
-                    if (modelo5) Pessoa.listaPessoas.Add(model5);
-                    if (modelo6) Pessoa.listaPessoas.Add(model6);
-                    if (modelo7) Pessoa.listaPessoas.Add(model7);
-                    if (modelo8) Pessoa.listaPessoas.Add(model8);
-                    if (modelo9) Pessoa.listaPessoas.Add(model9);
+                    if (modelo  ) Pessoa.listaPessoas.Add(model);
+                    if (modelo2 ) Pessoa.listaPessoas.Add(model2);
+                    if (modelo3 ) Pessoa.listaPessoas.Add(model3);
+                    if (modelo4 ) Pessoa.listaPessoas.Add(model4);
+                    if (modelo5 ) Pessoa.listaPessoas.Add(model5);
+                    if (modelo6 ) Pessoa.listaPessoas.Add(model6);
+                    if (modelo7 ) Pessoa.listaPessoas.Add(model7);
+                    if (modelo8 ) Pessoa.listaPessoas.Add(model8);
+                    if (modelo9 ) Pessoa.listaPessoas.Add(model9);
                     if (modelo10) Pessoa.listaPessoas.Add(model10);
                     if (modelo11) Pessoa.listaPessoas.Add(model11);
                     if (modelo12) Pessoa.listaPessoas.Add(model12);
@@ -197,8 +204,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void recuperarRegistrosCelula(int v1, int v2)
+        private void recuperarRegistrosCelula(int v1)
         {
+            var v2 = 1;
             List<modelocrud> lista = new List<modelocrud>();
             while (v1 > v2)
             {
@@ -210,7 +218,7 @@ namespace WindowsFormsApp1
                     var model4 = new Celula_Crianca    (); var modelo4 = model4.recuperar(v2);
                     var model5 = new Celula_Adulto     (); var modelo5 = model5.recuperar(v2);
 
-                    if (modelo) Celula.listaCelulas.Add(model);
+                    if (modelo ) Celula.listaCelulas.Add(model);
                     if (modelo2) Celula.listaCelulas.Add(model2);
                     if (modelo3) Celula.listaCelulas.Add(model3);
                     if (modelo4) Celula.listaCelulas.Add(model4);
@@ -221,8 +229,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private  void recuperarRegistrosMinisterio(int v1, int v2)
+        private  void recuperarRegistrosMinisterio(int v1)
         {
+            var v2 = 1;
             while (v1 >= v2)
             {
                 if (Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == v2) == null)
@@ -236,7 +245,7 @@ namespace WindowsFormsApp1
                     var model7 = new Supervisor_Ministerio            (); var modelo7 = model7.recuperar(v2);
                     var model8 = new Supervisor_Ministerio_Treinamento(); var modelo8 = model8.recuperar(v2);
 
-                    if (modelo) Ministerio.listaMinisterios.Add(model);
+                    if (modelo ) Ministerio.listaMinisterios.Add(model);
                     if (modelo2) Ministerio.listaMinisterios.Add(model2);
                     if (modelo3) Ministerio.listaMinisterios.Add(model3);
                     if (modelo4) Ministerio.listaMinisterios.Add(model4);
@@ -264,7 +273,9 @@ namespace WindowsFormsApp1
 
                 verificarTimer = true;
             }
-                
+
+            if (this is FormularioListView && Width < 150)
+                Width = 470;
         }
 
         private static void verificarBoleanos()
@@ -460,6 +471,7 @@ namespace WindowsFormsApp1
                 if (Tipo == typeof(MudancaEstado) && !modelocrud.Erro_Conexao)
                     if (retorno && modelo is MudancaEstado & MudancaEstado.Mudancas != null) MudancaEstado.Mudancas.AddRange(MudancaEstado.Mudancas);
 
+                if (!form.IsDisposed)
                 form.Dispose();
 
                 if (!modelocrud.Erro_Conexao)
@@ -494,7 +506,7 @@ namespace WindowsFormsApp1
 
                     if (retorno && modelo is Reuniao) return Reuniao.Reunioes.Cast<modelocrud>().ToList();
                     if (retorno && modelo is MudancaEstado) return MudancaEstado.Mudancas.Cast<modelocrud>().ToList();
-                }
+                }                
             }
             return null;
         }

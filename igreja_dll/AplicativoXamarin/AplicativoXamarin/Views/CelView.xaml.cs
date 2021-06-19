@@ -19,11 +19,21 @@ namespace AplicativoXamarin.Views
     public partial class CelView : ContentPage
     {
         public ViewModelCell viewmodel { get; set; }
+        public Celula Celula { get; }
+
         Button botao;
+        Label label;
 
         public CelView(Celula celula)
         {
             InitializeComponent();
+
+            label = new Label
+            {
+                Text = "Você não possui celula ainda.",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
 
             botao = new Button
             {
@@ -41,12 +51,20 @@ namespace AplicativoXamarin.Views
 
             
             botao.Clicked += Botao_Clicked;
-            
-            
+            Celula = celula;
         }
 
         protected override void OnAppearing()
         {
+
+            if (Celula == null)
+                this.Content = new StackLayout
+                {
+                    Orientation = StackOrientation.Vertical,
+                    Children = { label, botao }
+                };
+
+
             base.OnAppearing();
             MessagingCenter.Subscribe<ViewModelCell>(this, "Geolocation", (msg) =>
             {
