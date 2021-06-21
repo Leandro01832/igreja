@@ -32,3 +32,9 @@ D:\codigo-github\Igreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_proje
 D:\codigo-github\Igreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csproj.CoreCompileInputs.cache
 D:\codigo-github\Igreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
 D:\codigo-github\Igreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb
+D:\Downloads\copia-igreja\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.dll
+D:\Downloads\copia-igreja\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.pdb
+D:\Downloads\copia-igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojAssemblyReference.cache
+D:\Downloads\copia-igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csproj.CoreCompileInputs.cache
+D:\Downloads\copia-igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
+D:\Downloads\copia-igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb

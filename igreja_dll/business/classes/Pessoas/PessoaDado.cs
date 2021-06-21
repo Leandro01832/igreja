@@ -1,5 +1,6 @@
 ﻿using business.classes.Abstrato;
 using database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -55,8 +56,9 @@ namespace business.classes.Pessoas
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Status { get; set; }
 
+        [JsonIgnore]
         public virtual Endereco Endereco { get; set; }
-
+        [JsonIgnore]
         public virtual Telefone Telefone { get; set; }
 
         private MudancaEstado MudancaEstado;

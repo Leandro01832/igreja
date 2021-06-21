@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
 using business.classes.Pessoas;
+using Newtonsoft.Json;
 
 namespace business.classes
 {
@@ -21,6 +22,7 @@ namespace business.classes
     {
         [Key, ForeignKey("Pessoa")]
         public int IdEndereco { get; set; }
+        [JsonIgnore]
         public virtual PessoaDado Pessoa { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]

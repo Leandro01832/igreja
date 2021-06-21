@@ -7,7 +7,7 @@
     <StackLayout>
         <Label Text="Lista de pessoas do ministério" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
-        
+
 
         <ListView  ItemsSource="{Binding PessoasDoMinisterio}">
             <ListView.ItemTemplate>

@@ -28,14 +28,14 @@ namespace AplicativoXamarin.ViewModels
         public ObservableCollection<Pessoa> PessoasDaReuniao { get; set; }
 
         string Url_Get_CelulaMinisterio =
-            "http://www.igrejadeusbom.somee.com/api/MinisterioCelulaApi?filter=MinisterioId" + " eq ";
+            "http://www.igrejadeusbom.somee.com/api/MinisterioCelulaApi?$filter=MinisterioId" + " eq ";
 
         string Url_Get_PessoaMinisterio =
-            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?filter=MinisterioId" + " eq ";
+            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?$filter=MinisterioId" + " eq ";
             
 
         string Url_Get_ReuniaoPessoa =
-            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?filter=ReuniaoId" + " eq ";
+            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?$filter=ReuniaoId" + " eq ";
 
         private bool aguarde;
         public bool Aguarde

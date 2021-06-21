@@ -2,7 +2,7 @@
 using business.classes.Pessoas;
 using database;
 using database.banco;
-
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -24,7 +24,7 @@ namespace business.classes
 
         [Display(Name = "Numero da chamada")]
         public int Numero_chamada { get; set; }
-
+        [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
 
         [NotMapped]

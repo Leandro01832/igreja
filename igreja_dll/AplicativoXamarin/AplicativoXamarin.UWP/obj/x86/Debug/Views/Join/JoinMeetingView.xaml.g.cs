@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views.Join {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
-        "ws\\Join\\JoinMeetingView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Downloads\\copia-igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Jo" +
+        "in\\JoinMeetingView.xaml")]
     public partial class JoinMeetingView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

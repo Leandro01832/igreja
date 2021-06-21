@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views.Main {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
-        "ws\\Main\\MasterDetail.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Downloads\\copia-igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Ma" +
+        "in\\MasterDetail.xaml")]
     public partial class MasterDetail : global::Xamarin.Forms.MasterDetailPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

@@ -37,31 +37,11 @@
 
         <ActivityIndicator IsRunning="{Binding Aguarde}"
                            IsVisible="{Binding Aguarde}">
-        </ActivityIndicator>
+        </ActivityIndicator>        
 
-        <ListView  ItemsSource="{Binding PessoasDoMinisterio}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="ID: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding IdPessoa}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text="Email: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding Email}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <controls:CircleImage Source="{Binding Foto}" Aspect="AspectFill" 
-                                WidthRequest="50" HeightRequest="50"
-                                HorizontalOptions="End" VerticalOptions="Center">
-                                </controls:CircleImage>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <Button Text="Lista de pessoas do ministério" Command="{Binding ViewPeopleMinistry}"></Button>
 
-        <Button Text="Participar deste ministério" Command="{Binding ParticipandoMinisterio}"></Button>
+            <Button Text="Participar deste ministério" Command="{Binding ParticipandoMinisterio}"></Button>
 
     </StackLayout>
     </ScrollView>

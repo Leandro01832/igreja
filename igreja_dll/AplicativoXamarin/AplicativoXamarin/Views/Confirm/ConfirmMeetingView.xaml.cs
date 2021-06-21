@@ -4,6 +4,7 @@ using AplicativoXamarin.ViewModels;
 using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,11 @@ namespace AplicativoXamarin.Views.Confirm
         protected override  void OnAppearing()
         {
             base.OnAppearing();
+
+            MessagingCenter.Subscribe<ObservableCollection<Pessoa>>(this, "PessoasReuniao", async (msg) => {
+                await Navigation.PushAsync(new PeopleMeetingView(msg));
+            });
+
             MessagingCenter.Subscribe<Reuniao>(this, "ConfirmaReuniao",
               async (msg) =>
               {
@@ -58,7 +64,13 @@ namespace AplicativoXamarin.Views.Confirm
                    await DisplayAlert("Falha", "Falha ao participar da reunião!", "ok");
                 });
 
-            
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaListagemReuniao",
+               async (msg3) =>
+               {
+                   await DisplayAlert("Falha", "Falha de listagem de pessoas da reunião!", "ok");
+               });
+
+
 
         }
 
@@ -66,7 +78,9 @@ namespace AplicativoXamarin.Views.Confirm
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Reuniao>(this, "ConfirmaReuniao");
+            MessagingCenter.Unsubscribe<Reuniao>(this, "PessoasReuniao");
             MessagingCenter.Unsubscribe<Exception>(this, "FalhaParticiparReuniao");
+            MessagingCenter.Unsubscribe<Exception>(this, "FalhaListagemReuniao");
             MessagingCenter.Unsubscribe<Exception>(this, "SucessoParticiparReuniao");
         }
     }

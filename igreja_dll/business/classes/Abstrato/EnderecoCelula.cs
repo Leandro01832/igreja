@@ -1,5 +1,6 @@
 ﻿using database;
 using database.banco;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,7 @@ namespace business.classes.Celula
 
         [Key, ForeignKey("Celula")]
         public int IdEnderecoCelula { get; set; }
+        [JsonIgnore]
         public virtual Abstrato.Celula Celula { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]

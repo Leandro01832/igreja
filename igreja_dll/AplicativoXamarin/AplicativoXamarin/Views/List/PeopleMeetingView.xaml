@@ -4,11 +4,11 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="AplicativoXamarin.Views.List.PeopleMeetingView">
     <StackLayout>
-        <Label Text="Lista de pessoas do ministério" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        <Label Text="Lista de pessoas da reunião" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
 
 
-        <ListView  ItemsSource="{Binding PessoasDoMinisterio}">
+        <ListView  ItemsSource="{Binding PessoasDaReuniao}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

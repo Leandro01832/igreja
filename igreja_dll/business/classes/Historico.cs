@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using database;
 using business.classes.Abstrato;
 using business.classes.Pessoas;
+using Newtonsoft.Json;
 
 namespace business.classes
 {
@@ -28,6 +29,7 @@ namespace business.classes
         public int pessoaid { get; set; }
 
         [ForeignKey("pessoaid")]
+        [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
 
         public int Falta { get; set; }

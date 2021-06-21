@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views.List {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Vie" +
-        "ws\\List\\CellsMinistryView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Downloads\\copia-igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin\\Views\\Li" +
+        "st\\CellsMinistryView.xaml")]
     public partial class CellsMinistryView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

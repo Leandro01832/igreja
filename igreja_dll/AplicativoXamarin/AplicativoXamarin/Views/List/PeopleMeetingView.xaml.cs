@@ -17,6 +17,10 @@ namespace AplicativoXamarin.Views.List
 		public PeopleMeetingView (ObservableCollection<Pessoa> pessoasDaReuniao)
 		{
 			InitializeComponent ();
-		}
-	}
+            PessoasDaReuniao = pessoasDaReuniao;
+            BindingContext = this;
+        }
+
+        public ObservableCollection<Pessoa> PessoasDaReuniao { get; }
+    }
 }

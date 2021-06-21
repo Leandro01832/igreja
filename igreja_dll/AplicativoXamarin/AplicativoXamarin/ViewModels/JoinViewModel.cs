@@ -28,14 +28,14 @@ namespace AplicativoXamarin.ViewModels
         public ObservableCollection<Pessoa> PessoasDaReuniao { get; set; }
 
         string Url_Get_CelulaMinisterio =
-            "http://www.igrejadeusbom.somee.com/api/MinisterioCelulaApi?filter=MinisterioId" + " eq ";
+            "http://www.igrejadeusbom.somee.com/api/MinisterioCelulaApi?$filter=MinisterioId" + " eq ";
 
         string Url_Get_PessoaMinisterio =
-            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?filter=MinisterioId" + " eq ";
+            "http://www.igrejadeusbom.somee.com/api/PessoaMinisterioApi?$filter=MinisterioId" + " eq ";
             
 
         string Url_Get_ReuniaoPessoa =
-            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?filter=ReuniaoId" + " eq ";
+            "http://www.igrejadeusbom.somee.com/api/ReuniaoPessoaApi?$filter=ReuniaoId" + " eq ";
 
         private bool aguarde;
         public bool Aguarde
@@ -58,13 +58,15 @@ namespace AplicativoXamarin.ViewModels
             ViewPeopleMinistry = new Command(async () =>
             {
                 await GetPessoas(true);
-                await App.Current.MainPage.Navigation.PushAsync(new Views.List.PeopleMinistry(PessoasDoMinisterio));
+                MessagingCenter.Send<ObservableCollection<Pessoa>>(this.PessoasDoMinisterio
+                    , "PessoasMinisterio");
             });
 
             ViewPeopleMeeting = new Command(async () =>
             {
                 await GetPessoas(false);
-                await App.Current.MainPage.Navigation.PushAsync(new PeopleMeetingView(PessoasDaReuniao));
+                MessagingCenter.Send<ObservableCollection<Pessoa>>(this.PessoasDaReuniao
+                    , "PessoasReuniao");
             });
 
             ViewCellMinistry = new Command(async () =>
@@ -120,7 +122,7 @@ namespace AplicativoXamarin.ViewModels
             }
             catch (Exception exc)
             {
-                MessagingCenter.Send<Exception>(exc, "FalhaListagemLogout");
+                MessagingCenter.Send<Exception>(exc, "FalhaListagemMinisterio");
             }
             Aguarde = false;
         }
@@ -188,7 +190,7 @@ namespace AplicativoXamarin.ViewModels
             }
             catch (Exception exc)
             {
-                MessagingCenter.Send<Exception>(exc, "FalhaListagemMinisterio");
+                MessagingCenter.Send<Exception>(exc, "FalhaListagemReuniao");
             }
             Aguarde = false;
         }

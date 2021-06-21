@@ -21,6 +21,9 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
         {
             InitializeComponent();
+            txt_ministerios.Leave += Txt_ministerios_Leave;
+            txt_reunioes.Leave += Txt_reunioes_Leave;
+            txt_celula.Leave += Txt_celula_Leave;
         }
 
         public ReunioesMinisteriosPessoa(modelocrud p, bool Deletar, bool Atualizar, bool Detalhes)
@@ -205,7 +208,9 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                 if (modelo is business.classes.Abstrato.Pessoa)
                 {
                     var p = (business.classes.Abstrato.Pessoa)modelo;
-                    p.celula_ = int.Parse(txt_celula.Text);
+                    var m = business.classes.Abstrato.Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == int.Parse(txt_celula.Text));
+                    if(m != null)
+                    p.celula_ = m.IdCelula;
                 }
 
             }

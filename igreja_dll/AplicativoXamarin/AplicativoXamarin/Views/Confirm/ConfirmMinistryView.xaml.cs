@@ -4,6 +4,7 @@ using AplicativoXamarin.ViewModels;
 using AplicativoXamarin.Views.List;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,11 @@ namespace AplicativoXamarin.Views.Confirm
         protected  override void OnAppearing()
         {
             base.OnAppearing();
+
+            MessagingCenter.Subscribe<ObservableCollection<Pessoa>>(this, "PessoasMinisterio", async (msg) => {
+                await Navigation.PushAsync(new PeopleMinistry(msg));
+            });
+
             MessagingCenter.Subscribe<Ministerio>(this, "ConfirmaMinisterio",
                async (msg) =>
                {
@@ -57,7 +63,13 @@ namespace AplicativoXamarin.Views.Confirm
                    await DisplayAlert("Falha", "Falha ao participar do ministério!", "ok");
                 });
 
-           
+
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaListagemMinisterio",
+               async (msg3) =>
+               {
+                   await DisplayAlert("Falha", "Falha ao listar pessoas do ministério!", "ok");
+               });
+
 
         }
 
@@ -65,8 +77,10 @@ namespace AplicativoXamarin.Views.Confirm
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Ministerio>(this, "ConfirmaMinisterio");
+            MessagingCenter.Unsubscribe<Ministerio>(this, "PessoasMinisterio");
             MessagingCenter.Unsubscribe<Exception>(this, "SucessoParticiparMinisterio");
             MessagingCenter.Unsubscribe<Exception>(this, "FalhaParticiparMinisterio");
+            MessagingCenter.Unsubscribe<Exception>(this, "FalhaListagemMinisterio");
         }
     }
 }
