@@ -93,6 +93,7 @@ namespace business.classes
             {
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "C.IdChamada");
                     Chamadas = new List<Chamada>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();

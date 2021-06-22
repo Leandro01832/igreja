@@ -51,8 +51,6 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
-                        Select_padrao = "select * from Supervisor_Celula_Treinamento as SCT inner join Ministerio as MI on SCT.IdMinisterio=MI.IdMinisterio ";
-                        if (id != null) Select_padrao += $" where SCT.IdMinisterio='{id}'";
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -81,6 +79,7 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
+                        Select_padrao = Select_padrao.Replace("*", "MI.IdMinisterio");
                         supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();

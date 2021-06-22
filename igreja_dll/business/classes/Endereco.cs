@@ -128,6 +128,7 @@ namespace business.classes
             {
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "M.IdEndereco");
                     Enderecos = new List<Endereco>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();

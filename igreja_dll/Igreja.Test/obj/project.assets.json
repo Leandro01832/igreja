@@ -6290,11 +6290,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Downloads\\copia-igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
+      "projectUniqueName": "D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
       "projectName": "Igreja.Test",
-      "projectPath": "D:\\Downloads\\copia-igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
+      "projectPath": "D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "D:\\Downloads\\copia-igreja\\igreja_dll\\Igreja.Test\\obj\\",
+      "outputPath": "D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\Igreja.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6313,8 +6313,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Downloads\\copia-igreja\\igreja_dll\\business\\business.csproj": {
-              "projectPath": "D:\\Downloads\\copia-igreja\\igreja_dll\\business\\business.csproj"
+            "D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\business\\business.csproj": {
+              "projectPath": "D:\\codigo-github\\Igreja\\igreja\\igreja_dll\\business\\business.csproj"
             }
           }
         }

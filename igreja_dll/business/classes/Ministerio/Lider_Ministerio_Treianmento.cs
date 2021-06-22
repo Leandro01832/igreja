@@ -72,6 +72,7 @@ namespace business.classes.Ministerio
                 {
                     try
                     {
+                        Select_padrao = Select_padrao.Replace("*", "MI.IdMinisterio");
                         lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();

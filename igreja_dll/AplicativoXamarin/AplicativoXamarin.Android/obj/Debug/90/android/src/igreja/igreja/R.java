@@ -6167,39 +6167,39 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ActionBar_background Igreja.Igreja:background}</code></td><td> Specifies a background drawable for the action bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_backgroundSplit Igreja.Igreja:backgroundSplit}</code></td><td> Specifies a background drawable for the bottom component of a split action bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_backgroundStacked Igreja.Igreja:backgroundStacked}</code></td><td> Specifies a background drawable for a second stacked row of the action bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_contentInsetEnd Igreja.Igreja:contentInsetEnd}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_contentInsetEndWithActions Igreja.Igreja:contentInsetEndWithActions}</code></td><td> Minimum inset for content views within a bar when actions from a menu
+           <tr><td><code>{@link #ActionBar_background igreja.igreja:background}</code></td><td> Specifies a background drawable for the action bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_backgroundSplit igreja.igreja:backgroundSplit}</code></td><td> Specifies a background drawable for the bottom component of a split action bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_backgroundStacked igreja.igreja:backgroundStacked}</code></td><td> Specifies a background drawable for a second stacked row of the action bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_contentInsetEnd igreja.igreja:contentInsetEnd}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_contentInsetEndWithActions igreja.igreja:contentInsetEndWithActions}</code></td><td> Minimum inset for content views within a bar when actions from a menu
              are present.</td></tr>
-           <tr><td><code>{@link #ActionBar_contentInsetLeft Igreja.Igreja:contentInsetLeft}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_contentInsetRight Igreja.Igreja:contentInsetRight}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_contentInsetStart Igreja.Igreja:contentInsetStart}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_contentInsetStartWithNavigation Igreja.Igreja:contentInsetStartWithNavigation}</code></td><td> Minimum inset for content views within a bar when a navigation button
+           <tr><td><code>{@link #ActionBar_contentInsetLeft igreja.igreja:contentInsetLeft}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_contentInsetRight igreja.igreja:contentInsetRight}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_contentInsetStart igreja.igreja:contentInsetStart}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_contentInsetStartWithNavigation igreja.igreja:contentInsetStartWithNavigation}</code></td><td> Minimum inset for content views within a bar when a navigation button
              is present, such as the Up button.</td></tr>
-           <tr><td><code>{@link #ActionBar_customNavigationLayout Igreja.Igreja:customNavigationLayout}</code></td><td> Specifies a layout for custom navigation.</td></tr>
-           <tr><td><code>{@link #ActionBar_displayOptions Igreja.Igreja:displayOptions}</code></td><td> Options affecting how the action bar is displayed.</td></tr>
-           <tr><td><code>{@link #ActionBar_divider Igreja.Igreja:divider}</code></td><td> Specifies the drawable used for item dividers.</td></tr>
-           <tr><td><code>{@link #ActionBar_elevation Igreja.Igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #ActionBar_height Igreja.Igreja:height}</code></td><td> Specifies a fixed height.</td></tr>
-           <tr><td><code>{@link #ActionBar_hideOnContentScroll Igreja.Igreja:hideOnContentScroll}</code></td><td> Set true to hide the action bar on a vertical nested scroll of content.</td></tr>
-           <tr><td><code>{@link #ActionBar_homeAsUpIndicator Igreja.Igreja:homeAsUpIndicator}</code></td><td> Up navigation glyph </td></tr>
-           <tr><td><code>{@link #ActionBar_homeLayout Igreja.Igreja:homeLayout}</code></td><td> Specifies a layout to use for the "home" section of the action bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_icon Igreja.Igreja:icon}</code></td><td> Specifies the drawable used for the application icon.</td></tr>
-           <tr><td><code>{@link #ActionBar_indeterminateProgressStyle Igreja.Igreja:indeterminateProgressStyle}</code></td><td> Specifies a style resource to use for an indeterminate progress spinner.</td></tr>
-           <tr><td><code>{@link #ActionBar_itemPadding Igreja.Igreja:itemPadding}</code></td><td> Specifies padding that should be applied to the left and right sides of
+           <tr><td><code>{@link #ActionBar_customNavigationLayout igreja.igreja:customNavigationLayout}</code></td><td> Specifies a layout for custom navigation.</td></tr>
+           <tr><td><code>{@link #ActionBar_displayOptions igreja.igreja:displayOptions}</code></td><td> Options affecting how the action bar is displayed.</td></tr>
+           <tr><td><code>{@link #ActionBar_divider igreja.igreja:divider}</code></td><td> Specifies the drawable used for item dividers.</td></tr>
+           <tr><td><code>{@link #ActionBar_elevation igreja.igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
+           <tr><td><code>{@link #ActionBar_height igreja.igreja:height}</code></td><td> Specifies a fixed height.</td></tr>
+           <tr><td><code>{@link #ActionBar_hideOnContentScroll igreja.igreja:hideOnContentScroll}</code></td><td> Set true to hide the action bar on a vertical nested scroll of content.</td></tr>
+           <tr><td><code>{@link #ActionBar_homeAsUpIndicator igreja.igreja:homeAsUpIndicator}</code></td><td> Up navigation glyph </td></tr>
+           <tr><td><code>{@link #ActionBar_homeLayout igreja.igreja:homeLayout}</code></td><td> Specifies a layout to use for the "home" section of the action bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_icon igreja.igreja:icon}</code></td><td> Specifies the drawable used for the application icon.</td></tr>
+           <tr><td><code>{@link #ActionBar_indeterminateProgressStyle igreja.igreja:indeterminateProgressStyle}</code></td><td> Specifies a style resource to use for an indeterminate progress spinner.</td></tr>
+           <tr><td><code>{@link #ActionBar_itemPadding igreja.igreja:itemPadding}</code></td><td> Specifies padding that should be applied to the left and right sides of
              system-provided items in the bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_logo Igreja.Igreja:logo}</code></td><td> Specifies the drawable used for the application logo.</td></tr>
-           <tr><td><code>{@link #ActionBar_navigationMode Igreja.Igreja:navigationMode}</code></td><td> The type of navigation to use.</td></tr>
-           <tr><td><code>{@link #ActionBar_popupTheme Igreja.Igreja:popupTheme}</code></td><td> Reference to a theme that should be used to inflate popups
+           <tr><td><code>{@link #ActionBar_logo igreja.igreja:logo}</code></td><td> Specifies the drawable used for the application logo.</td></tr>
+           <tr><td><code>{@link #ActionBar_navigationMode igreja.igreja:navigationMode}</code></td><td> The type of navigation to use.</td></tr>
+           <tr><td><code>{@link #ActionBar_popupTheme igreja.igreja:popupTheme}</code></td><td> Reference to a theme that should be used to inflate popups
              shown by widgets in the action bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_progressBarPadding Igreja.Igreja:progressBarPadding}</code></td><td> Specifies the horizontal padding on either end for an embedded progress bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_progressBarStyle Igreja.Igreja:progressBarStyle}</code></td><td> Specifies a style resource to use for an embedded progress bar.</td></tr>
-           <tr><td><code>{@link #ActionBar_subtitle Igreja.Igreja:subtitle}</code></td><td> Specifies subtitle text used for navigationMode="normal" </td></tr>
-           <tr><td><code>{@link #ActionBar_subtitleTextStyle Igreja.Igreja:subtitleTextStyle}</code></td><td> Specifies a style to use for subtitle text.</td></tr>
-           <tr><td><code>{@link #ActionBar_title Igreja.Igreja:title}</code></td><td> Specifies title text used for navigationMode="normal" </td></tr>
-           <tr><td><code>{@link #ActionBar_titleTextStyle Igreja.Igreja:titleTextStyle}</code></td><td> Specifies a style to use for title text.</td></tr>
+           <tr><td><code>{@link #ActionBar_progressBarPadding igreja.igreja:progressBarPadding}</code></td><td> Specifies the horizontal padding on either end for an embedded progress bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_progressBarStyle igreja.igreja:progressBarStyle}</code></td><td> Specifies a style resource to use for an embedded progress bar.</td></tr>
+           <tr><td><code>{@link #ActionBar_subtitle igreja.igreja:subtitle}</code></td><td> Specifies subtitle text used for navigationMode="normal" </td></tr>
+           <tr><td><code>{@link #ActionBar_subtitleTextStyle igreja.igreja:subtitleTextStyle}</code></td><td> Specifies a style to use for subtitle text.</td></tr>
+           <tr><td><code>{@link #ActionBar_title igreja.igreja:title}</code></td><td> Specifies title text used for navigationMode="normal" </td></tr>
+           <tr><td><code>{@link #ActionBar_titleTextStyle igreja.igreja:titleTextStyle}</code></td><td> Specifies a style to use for title text.</td></tr>
            </table>
            @see #ActionBar_background
            @see #ActionBar_backgroundSplit
@@ -6250,7 +6250,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:background
+          @attr name igreja.igreja:background
         */
         public static final int ActionBar_background = 10;
         /**
@@ -6264,7 +6264,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundSplit
+          @attr name igreja.igreja:backgroundSplit
         */
         public static final int ActionBar_backgroundSplit = 12;
         /**
@@ -6278,7 +6278,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundStacked
+          @attr name igreja.igreja:backgroundStacked
         */
         public static final int ActionBar_backgroundStacked = 11;
         /**
@@ -6297,7 +6297,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetEnd
+          @attr name igreja.igreja:contentInsetEnd
         */
         public static final int ActionBar_contentInsetEnd = 21;
         /**
@@ -6316,7 +6316,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetEndWithActions
+          @attr name igreja.igreja:contentInsetEndWithActions
         */
         public static final int ActionBar_contentInsetEndWithActions = 25;
         /**
@@ -6335,7 +6335,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetLeft
+          @attr name igreja.igreja:contentInsetLeft
         */
         public static final int ActionBar_contentInsetLeft = 22;
         /**
@@ -6354,7 +6354,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetRight
+          @attr name igreja.igreja:contentInsetRight
         */
         public static final int ActionBar_contentInsetRight = 23;
         /**
@@ -6373,7 +6373,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetStart
+          @attr name igreja.igreja:contentInsetStart
         */
         public static final int ActionBar_contentInsetStart = 20;
         /**
@@ -6392,7 +6392,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetStartWithNavigation
+          @attr name igreja.igreja:contentInsetStartWithNavigation
         */
         public static final int ActionBar_contentInsetStartWithNavigation = 24;
         /**
@@ -6404,7 +6404,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:customNavigationLayout
+          @attr name igreja.igreja:customNavigationLayout
         */
         public static final int ActionBar_customNavigationLayout = 13;
         /**
@@ -6428,7 +6428,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>disableHome</code></td><td>0x20</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:displayOptions
+          @attr name igreja.igreja:displayOptions
         */
         public static final int ActionBar_displayOptions = 3;
         /**
@@ -6440,7 +6440,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:divider
+          @attr name igreja.igreja:divider
         */
         public static final int ActionBar_divider = 9;
         /**
@@ -6458,7 +6458,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:elevation
+          @attr name igreja.igreja:elevation
         */
         public static final int ActionBar_elevation = 26;
         /**
@@ -6476,7 +6476,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:height
+          @attr name igreja.igreja:height
         */
         public static final int ActionBar_height = 0;
         /**
@@ -6492,7 +6492,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:hideOnContentScroll
+          @attr name igreja.igreja:hideOnContentScroll
         */
         public static final int ActionBar_hideOnContentScroll = 19;
         /**
@@ -6504,7 +6504,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:homeAsUpIndicator
+          @attr name igreja.igreja:homeAsUpIndicator
         */
         public static final int ActionBar_homeAsUpIndicator = 28;
         /**
@@ -6516,7 +6516,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:homeLayout
+          @attr name igreja.igreja:homeLayout
         */
         public static final int ActionBar_homeLayout = 14;
         /**
@@ -6530,7 +6530,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:icon
+          @attr name igreja.igreja:icon
         */
         public static final int ActionBar_icon = 7;
         /**
@@ -6542,7 +6542,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:indeterminateProgressStyle
+          @attr name igreja.igreja:indeterminateProgressStyle
         */
         public static final int ActionBar_indeterminateProgressStyle = 16;
         /**
@@ -6561,7 +6561,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:itemPadding
+          @attr name igreja.igreja:itemPadding
         */
         public static final int ActionBar_itemPadding = 18;
         /**
@@ -6573,7 +6573,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:logo
+          @attr name igreja.igreja:logo
         */
         public static final int ActionBar_logo = 8;
         /**
@@ -6593,7 +6593,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>tabMode</code></td><td>2</td><td> The action bar will use a series of horizontal tabs for navigation. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:navigationMode
+          @attr name igreja.igreja:navigationMode
         */
         public static final int ActionBar_navigationMode = 2;
         /**
@@ -6606,7 +6606,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:popupTheme
+          @attr name igreja.igreja:popupTheme
         */
         public static final int ActionBar_popupTheme = 27;
         /**
@@ -6624,7 +6624,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:progressBarPadding
+          @attr name igreja.igreja:progressBarPadding
         */
         public static final int ActionBar_progressBarPadding = 17;
         /**
@@ -6636,7 +6636,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:progressBarStyle
+          @attr name igreja.igreja:progressBarStyle
         */
         public static final int ActionBar_progressBarStyle = 15;
         /**
@@ -6652,7 +6652,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:subtitle
+          @attr name igreja.igreja:subtitle
         */
         public static final int ActionBar_subtitle = 4;
         /**
@@ -6664,7 +6664,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:subtitleTextStyle
+          @attr name igreja.igreja:subtitleTextStyle
         */
         public static final int ActionBar_subtitleTextStyle = 6;
         /**
@@ -6680,7 +6680,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:title
+          @attr name igreja.igreja:title
         */
         public static final int ActionBar_title = 1;
         /**
@@ -6692,7 +6692,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleTextStyle
+          @attr name igreja.igreja:titleTextStyle
         */
         public static final int ActionBar_titleTextStyle = 5;
         /** Attributes that can be used with a ActionBarLayout.
@@ -6744,12 +6744,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ActionMode_background Igreja.Igreja:background}</code></td><td> Specifies a background for the action mode bar.</td></tr>
-           <tr><td><code>{@link #ActionMode_backgroundSplit Igreja.Igreja:backgroundSplit}</code></td><td> Specifies a background for the split action mode bar.</td></tr>
-           <tr><td><code>{@link #ActionMode_closeItemLayout Igreja.Igreja:closeItemLayout}</code></td><td> Specifies a layout to use for the "close" item at the starting edge.</td></tr>
-           <tr><td><code>{@link #ActionMode_height Igreja.Igreja:height}</code></td><td> Specifies a fixed height for the action mode bar.</td></tr>
-           <tr><td><code>{@link #ActionMode_subtitleTextStyle Igreja.Igreja:subtitleTextStyle}</code></td><td> Specifies a style to use for subtitle text.</td></tr>
-           <tr><td><code>{@link #ActionMode_titleTextStyle Igreja.Igreja:titleTextStyle}</code></td><td> Specifies a style to use for title text.</td></tr>
+           <tr><td><code>{@link #ActionMode_background igreja.igreja:background}</code></td><td> Specifies a background for the action mode bar.</td></tr>
+           <tr><td><code>{@link #ActionMode_backgroundSplit igreja.igreja:backgroundSplit}</code></td><td> Specifies a background for the split action mode bar.</td></tr>
+           <tr><td><code>{@link #ActionMode_closeItemLayout igreja.igreja:closeItemLayout}</code></td><td> Specifies a layout to use for the "close" item at the starting edge.</td></tr>
+           <tr><td><code>{@link #ActionMode_height igreja.igreja:height}</code></td><td> Specifies a fixed height for the action mode bar.</td></tr>
+           <tr><td><code>{@link #ActionMode_subtitleTextStyle igreja.igreja:subtitleTextStyle}</code></td><td> Specifies a style to use for subtitle text.</td></tr>
+           <tr><td><code>{@link #ActionMode_titleTextStyle igreja.igreja:titleTextStyle}</code></td><td> Specifies a style to use for title text.</td></tr>
            </table>
            @see #ActionMode_background
            @see #ActionMode_backgroundSplit
@@ -6771,7 +6771,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:background
+          @attr name igreja.igreja:background
         */
         public static final int ActionMode_background = 3;
         /**
@@ -6785,7 +6785,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundSplit
+          @attr name igreja.igreja:backgroundSplit
         */
         public static final int ActionMode_backgroundSplit = 4;
         /**
@@ -6797,7 +6797,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:closeItemLayout
+          @attr name igreja.igreja:closeItemLayout
         */
         public static final int ActionMode_closeItemLayout = 5;
         /**
@@ -6815,7 +6815,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:height
+          @attr name igreja.igreja:height
         */
         public static final int ActionMode_height = 0;
         /**
@@ -6827,7 +6827,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:subtitleTextStyle
+          @attr name igreja.igreja:subtitleTextStyle
         */
         public static final int ActionMode_subtitleTextStyle = 2;
         /**
@@ -6839,7 +6839,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleTextStyle
+          @attr name igreja.igreja:titleTextStyle
         */
         public static final int ActionMode_titleTextStyle = 1;
         /** Attributes that can be used with a ActivityChooserView.
@@ -6848,8 +6848,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ActivityChooserView_expandActivityOverflowButtonDrawable Igreja.Igreja:expandActivityOverflowButtonDrawable}</code></td><td> The drawable to show in the button for expanding the activities overflow popup.</td></tr>
-           <tr><td><code>{@link #ActivityChooserView_initialActivityCount Igreja.Igreja:initialActivityCount}</code></td><td> The maximal number of items initially shown in the activity list.</td></tr>
+           <tr><td><code>{@link #ActivityChooserView_expandActivityOverflowButtonDrawable igreja.igreja:expandActivityOverflowButtonDrawable}</code></td><td> The drawable to show in the button for expanding the activities overflow popup.</td></tr>
+           <tr><td><code>{@link #ActivityChooserView_initialActivityCount igreja.igreja:initialActivityCount}</code></td><td> The maximal number of items initially shown in the activity list.</td></tr>
            </table>
            @see #ActivityChooserView_expandActivityOverflowButtonDrawable
            @see #ActivityChooserView_initialActivityCount
@@ -6871,7 +6871,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:expandActivityOverflowButtonDrawable
+          @attr name igreja.igreja:expandActivityOverflowButtonDrawable
         */
         public static final int ActivityChooserView_expandActivityOverflowButtonDrawable = 1;
         /**
@@ -6887,7 +6887,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:initialActivityCount
+          @attr name igreja.igreja:initialActivityCount
         */
         public static final int ActivityChooserView_initialActivityCount = 0;
         /** Attributes that can be used with a AlertDialog.
@@ -6897,13 +6897,13 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #AlertDialog_android_layout android:layout}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_buttonIconDimen Igreja.Igreja:buttonIconDimen}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_buttonPanelSideLayout Igreja.Igreja:buttonPanelSideLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_listItemLayout Igreja.Igreja:listItemLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_listLayout Igreja.Igreja:listLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_multiChoiceItemLayout Igreja.Igreja:multiChoiceItemLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_showTitle Igreja.Igreja:showTitle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AlertDialog_singleChoiceItemLayout Igreja.Igreja:singleChoiceItemLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_buttonIconDimen igreja.igreja:buttonIconDimen}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_buttonPanelSideLayout igreja.igreja:buttonPanelSideLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_listItemLayout igreja.igreja:listItemLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_listLayout igreja.igreja:listLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_multiChoiceItemLayout igreja.igreja:multiChoiceItemLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_showTitle igreja.igreja:showTitle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AlertDialog_singleChoiceItemLayout igreja.igreja:singleChoiceItemLayout}</code></td><td></td></tr>
            </table>
            @see #AlertDialog_android_layout
            @see #AlertDialog_buttonIconDimen
@@ -6925,7 +6925,7 @@ containing a value of this type.
         */
         public static final int AlertDialog_android_layout = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#buttonIconDimen}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#buttonIconDimen}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
@@ -6937,51 +6937,51 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:buttonIconDimen
+          @attr name igreja.igreja:buttonIconDimen
         */
         public static final int AlertDialog_buttonIconDimen = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#buttonPanelSideLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#buttonPanelSideLayout}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:buttonPanelSideLayout
+          @attr name igreja.igreja:buttonPanelSideLayout
         */
         public static final int AlertDialog_buttonPanelSideLayout = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#listItemLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#listItemLayout}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:listItemLayout
+          @attr name igreja.igreja:listItemLayout
         */
         public static final int AlertDialog_listItemLayout = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#listLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#listLayout}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:listLayout
+          @attr name igreja.igreja:listLayout
         */
         public static final int AlertDialog_listLayout = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#multiChoiceItemLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#multiChoiceItemLayout}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:multiChoiceItemLayout
+          @attr name igreja.igreja:multiChoiceItemLayout
         */
         public static final int AlertDialog_multiChoiceItemLayout = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#showTitle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#showTitle}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
@@ -6991,17 +6991,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:showTitle
+          @attr name igreja.igreja:showTitle
         */
         public static final int AlertDialog_showTitle = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#singleChoiceItemLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#singleChoiceItemLayout}
           attribute's value can be found in the {@link #AlertDialog} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:singleChoiceItemLayout
+          @attr name igreja.igreja:singleChoiceItemLayout
         */
         public static final int AlertDialog_singleChoiceItemLayout = 4;
         /**  Indicates if the drawable needs to be mirrored when its layout direction is
@@ -7198,9 +7198,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><td><code>{@link #AppBarLayout_android_background android:background}</code></td><td></td></tr>
            <tr><td><code>{@link #AppBarLayout_android_keyboardNavigationCluster android:keyboardNavigationCluster}</code></td><td></td></tr>
            <tr><td><code>{@link #AppBarLayout_android_touchscreenBlocksFocus android:touchscreenBlocksFocus}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayout_elevation Igreja.Igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #AppBarLayout_expanded Igreja.Igreja:expanded}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayout_liftOnScroll Igreja.Igreja:liftOnScroll}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayout_elevation igreja.igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
+           <tr><td><code>{@link #AppBarLayout_expanded igreja.igreja:expanded}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayout_liftOnScroll igreja.igreja:liftOnScroll}</code></td><td></td></tr>
            </table>
            @see #AppBarLayout_android_background
            @see #AppBarLayout_android_keyboardNavigationCluster
@@ -7246,11 +7246,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:elevation
+          @attr name igreja.igreja:elevation
         */
         public static final int AppBarLayout_elevation = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expanded}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expanded}
           attribute's value can be found in the {@link #AppBarLayout} array.
 
 
@@ -7260,11 +7260,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:expanded
+          @attr name igreja.igreja:expanded
         */
         public static final int AppBarLayout_expanded = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#liftOnScroll}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#liftOnScroll}
           attribute's value can be found in the {@link #AppBarLayout} array.
 
 
@@ -7274,7 +7274,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:liftOnScroll
+          @attr name igreja.igreja:liftOnScroll
         */
         public static final int AppBarLayout_liftOnScroll = 5;
         /** Attributes that can be used with a AppBarLayoutStates.
@@ -7283,10 +7283,10 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AppBarLayoutStates_state_collapsed Igreja.Igreja:state_collapsed}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayoutStates_state_collapsible Igreja.Igreja:state_collapsible}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayoutStates_state_liftable Igreja.Igreja:state_liftable}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayoutStates_state_lifted Igreja.Igreja:state_lifted}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayoutStates_state_collapsed igreja.igreja:state_collapsed}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayoutStates_state_collapsible igreja.igreja:state_collapsible}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayoutStates_state_liftable igreja.igreja:state_liftable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayoutStates_state_lifted igreja.igreja:state_lifted}</code></td><td></td></tr>
            </table>
            @see #AppBarLayoutStates_state_collapsed
            @see #AppBarLayoutStates_state_collapsible
@@ -7297,7 +7297,7 @@ containing a value of this type.
             0x7f01015e, 0x7f01015f, 0x7f010160, 0x7f010161
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#state_collapsed}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#state_collapsed}
           attribute's value can be found in the {@link #AppBarLayoutStates} array.
 
 
@@ -7307,11 +7307,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:state_collapsed
+          @attr name igreja.igreja:state_collapsed
         */
         public static final int AppBarLayoutStates_state_collapsed = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#state_collapsible}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#state_collapsible}
           attribute's value can be found in the {@link #AppBarLayoutStates} array.
 
 
@@ -7321,11 +7321,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:state_collapsible
+          @attr name igreja.igreja:state_collapsible
         */
         public static final int AppBarLayoutStates_state_collapsible = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#state_liftable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#state_liftable}
           attribute's value can be found in the {@link #AppBarLayoutStates} array.
 
 
@@ -7335,11 +7335,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:state_liftable
+          @attr name igreja.igreja:state_liftable
         */
         public static final int AppBarLayoutStates_state_liftable = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#state_lifted}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#state_lifted}
           attribute's value can be found in the {@link #AppBarLayoutStates} array.
 
 
@@ -7349,7 +7349,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:state_lifted
+          @attr name igreja.igreja:state_lifted
         */
         public static final int AppBarLayoutStates_state_lifted = 2;
         /** Attributes that can be used with a AppBarLayout_Layout.
@@ -7358,8 +7358,8 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollFlags Igreja.Igreja:layout_scrollFlags}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollInterpolator Igreja.Igreja:layout_scrollInterpolator}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollFlags igreja.igreja:layout_scrollFlags}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppBarLayout_Layout_layout_scrollInterpolator igreja.igreja:layout_scrollInterpolator}</code></td><td></td></tr>
            </table>
            @see #AppBarLayout_Layout_layout_scrollFlags
            @see #AppBarLayout_Layout_layout_scrollInterpolator
@@ -7368,7 +7368,7 @@ containing a value of this type.
             0x7f010162, 0x7f010163
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#layout_scrollFlags}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#layout_scrollFlags}
           attribute's value can be found in the {@link #AppBarLayout_Layout} array.
 
 
@@ -7385,17 +7385,17 @@ containing a value of this type.
 <tr><td><code>snap</code></td><td>0x10</td><td></td></tr>
 <tr><td><code>snapMargins</code></td><td>0x20</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:layout_scrollFlags
+          @attr name igreja.igreja:layout_scrollFlags
         */
         public static final int AppBarLayout_Layout_layout_scrollFlags = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#layout_scrollInterpolator}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#layout_scrollInterpolator}
           attribute's value can be found in the {@link #AppBarLayout_Layout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:layout_scrollInterpolator
+          @attr name igreja.igreja:layout_scrollInterpolator
         */
         public static final int AppBarLayout_Layout_layout_scrollInterpolator = 1;
         /** Attributes that can be used with a AppCompatImageView.
@@ -7405,9 +7405,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #AppCompatImageView_android_src android:src}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatImageView_srcCompat Igreja.Igreja:srcCompat}</code></td><td> Sets a drawable as the content of this ImageView.</td></tr>
-           <tr><td><code>{@link #AppCompatImageView_tint Igreja.Igreja:tint}</code></td><td> Tint to apply to the image source.</td></tr>
-           <tr><td><code>{@link #AppCompatImageView_tintMode Igreja.Igreja:tintMode}</code></td><td> Blending mode used to apply the image source tint.</td></tr>
+           <tr><td><code>{@link #AppCompatImageView_srcCompat igreja.igreja:srcCompat}</code></td><td> Sets a drawable as the content of this ImageView.</td></tr>
+           <tr><td><code>{@link #AppCompatImageView_tint igreja.igreja:tint}</code></td><td> Tint to apply to the image source.</td></tr>
+           <tr><td><code>{@link #AppCompatImageView_tintMode igreja.igreja:tintMode}</code></td><td> Blending mode used to apply the image source tint.</td></tr>
            </table>
            @see #AppCompatImageView_android_src
            @see #AppCompatImageView_srcCompat
@@ -7433,7 +7433,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:srcCompat
+          @attr name igreja.igreja:srcCompat
         */
         public static final int AppCompatImageView_srcCompat = 1;
         /**
@@ -7450,7 +7450,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tint
+          @attr name igreja.igreja:tint
         */
         public static final int AppCompatImageView_tint = 2;
         /**
@@ -7478,7 +7478,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tintMode
+          @attr name igreja.igreja:tintMode
         */
         public static final int AppCompatImageView_tintMode = 3;
         /** Attributes that can be used with a AppCompatSeekBar.
@@ -7488,9 +7488,9 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #AppCompatSeekBar_android_thumb android:thumb}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatSeekBar_tickMark Igreja.Igreja:tickMark}</code></td><td> Drawable displayed at each progress position on a seekbar.</td></tr>
-           <tr><td><code>{@link #AppCompatSeekBar_tickMarkTint Igreja.Igreja:tickMarkTint}</code></td><td> Tint to apply to the tick mark drawable.</td></tr>
-           <tr><td><code>{@link #AppCompatSeekBar_tickMarkTintMode Igreja.Igreja:tickMarkTintMode}</code></td><td> Blending mode used to apply the tick mark tint.</td></tr>
+           <tr><td><code>{@link #AppCompatSeekBar_tickMark igreja.igreja:tickMark}</code></td><td> Drawable displayed at each progress position on a seekbar.</td></tr>
+           <tr><td><code>{@link #AppCompatSeekBar_tickMarkTint igreja.igreja:tickMarkTint}</code></td><td> Tint to apply to the tick mark drawable.</td></tr>
+           <tr><td><code>{@link #AppCompatSeekBar_tickMarkTintMode igreja.igreja:tickMarkTintMode}</code></td><td> Blending mode used to apply the tick mark tint.</td></tr>
            </table>
            @see #AppCompatSeekBar_android_thumb
            @see #AppCompatSeekBar_tickMark
@@ -7515,7 +7515,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tickMark
+          @attr name igreja.igreja:tickMark
         */
         public static final int AppCompatSeekBar_tickMark = 1;
         /**
@@ -7532,7 +7532,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tickMarkTint
+          @attr name igreja.igreja:tickMarkTint
         */
         public static final int AppCompatSeekBar_tickMarkTint = 2;
         /**
@@ -7560,7 +7560,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tickMarkTintMode
+          @attr name igreja.igreja:tickMarkTintMode
         */
         public static final int AppCompatSeekBar_tickMarkTintMode = 3;
         /** Attributes that can be used with a AppCompatTextHelper.
@@ -7638,18 +7638,18 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #AppCompatTextView_android_textAppearance android:textAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTextView_autoSizeMaxTextSize Igreja.Igreja:autoSizeMaxTextSize}</code></td><td> The maximum text size constraint to be used when auto-sizing text.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_autoSizeMinTextSize Igreja.Igreja:autoSizeMinTextSize}</code></td><td> The minimum text size constraint to be used when auto-sizing text.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_autoSizePresetSizes Igreja.Igreja:autoSizePresetSizes}</code></td><td> Resource array of dimensions to be used in conjunction with
+           <tr><td><code>{@link #AppCompatTextView_autoSizeMaxTextSize igreja.igreja:autoSizeMaxTextSize}</code></td><td> The maximum text size constraint to be used when auto-sizing text.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_autoSizeMinTextSize igreja.igreja:autoSizeMinTextSize}</code></td><td> The minimum text size constraint to be used when auto-sizing text.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_autoSizePresetSizes igreja.igreja:autoSizePresetSizes}</code></td><td> Resource array of dimensions to be used in conjunction with
         <code>autoSizeTextType</code> set to <code>uniform</code>.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_autoSizeStepGranularity Igreja.Igreja:autoSizeStepGranularity}</code></td><td> Specify the auto-size step size if <code>autoSizeTextType</code> is set to
+           <tr><td><code>{@link #AppCompatTextView_autoSizeStepGranularity igreja.igreja:autoSizeStepGranularity}</code></td><td> Specify the auto-size step size if <code>autoSizeTextType</code> is set to
         <code>uniform</code>.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_autoSizeTextType Igreja.Igreja:autoSizeTextType}</code></td><td> Specify the type of auto-size.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_firstBaselineToTopHeight Igreja.Igreja:firstBaselineToTopHeight}</code></td><td> Distance from the top of the TextView to the first text baseline.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_fontFamily Igreja.Igreja:fontFamily}</code></td><td> The attribute for the font family.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_lastBaselineToBottomHeight Igreja.Igreja:lastBaselineToBottomHeight}</code></td><td> Distance from the bottom of the TextView to the last text baseline.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_lineHeight Igreja.Igreja:lineHeight}</code></td><td> Explicit height between lines of text.</td></tr>
-           <tr><td><code>{@link #AppCompatTextView_textAllCaps Igreja.Igreja:textAllCaps}</code></td><td> Present the text in ALL CAPS.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_autoSizeTextType igreja.igreja:autoSizeTextType}</code></td><td> Specify the type of auto-size.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_firstBaselineToTopHeight igreja.igreja:firstBaselineToTopHeight}</code></td><td> Distance from the top of the TextView to the first text baseline.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_fontFamily igreja.igreja:fontFamily}</code></td><td> The attribute for the font family.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_lastBaselineToBottomHeight igreja.igreja:lastBaselineToBottomHeight}</code></td><td> Distance from the bottom of the TextView to the last text baseline.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_lineHeight igreja.igreja:lineHeight}</code></td><td> Explicit height between lines of text.</td></tr>
+           <tr><td><code>{@link #AppCompatTextView_textAllCaps igreja.igreja:textAllCaps}</code></td><td> Present the text in ALL CAPS.</td></tr>
            </table>
            @see #AppCompatTextView_android_textAppearance
            @see #AppCompatTextView_autoSizeMaxTextSize
@@ -7689,7 +7689,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:autoSizeMaxTextSize
+          @attr name igreja.igreja:autoSizeMaxTextSize
         */
         public static final int AppCompatTextView_autoSizeMaxTextSize = 6;
         /**
@@ -7707,7 +7707,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:autoSizeMinTextSize
+          @attr name igreja.igreja:autoSizeMinTextSize
         */
         public static final int AppCompatTextView_autoSizeMinTextSize = 5;
         /**
@@ -7721,7 +7721,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:autoSizePresetSizes
+          @attr name igreja.igreja:autoSizePresetSizes
         */
         public static final int AppCompatTextView_autoSizePresetSizes = 4;
         /**
@@ -7741,7 +7741,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:autoSizeStepGranularity
+          @attr name igreja.igreja:autoSizeStepGranularity
         */
         public static final int AppCompatTextView_autoSizeStepGranularity = 3;
         /**
@@ -7762,7 +7762,7 @@ containing a value of this type.
             container. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:autoSizeTextType
+          @attr name igreja.igreja:autoSizeTextType
         */
         public static final int AppCompatTextView_autoSizeTextType = 2;
         /**
@@ -7781,7 +7781,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:firstBaselineToTopHeight
+          @attr name igreja.igreja:firstBaselineToTopHeight
         */
         public static final int AppCompatTextView_firstBaselineToTopHeight = 9;
         /**
@@ -7797,7 +7797,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontFamily
+          @attr name igreja.igreja:fontFamily
         */
         public static final int AppCompatTextView_fontFamily = 7;
         /**
@@ -7816,7 +7816,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:lastBaselineToBottomHeight
+          @attr name igreja.igreja:lastBaselineToBottomHeight
         */
         public static final int AppCompatTextView_lastBaselineToBottomHeight = 10;
         /**
@@ -7835,7 +7835,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:lineHeight
+          @attr name igreja.igreja:lineHeight
         */
         public static final int AppCompatTextView_lineHeight = 8;
         /**
@@ -7848,7 +7848,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAllCaps
+          @attr name igreja.igreja:textAllCaps
         */
         public static final int AppCompatTextView_textAllCaps = 1;
         /** Attributes that can be used with a AppCompatTheme.
@@ -7857,144 +7857,144 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarDivider Igreja.Igreja:actionBarDivider}</code></td><td> Custom divider drawable to use for elements in the action bar.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarItemBackground Igreja.Igreja:actionBarItemBackground}</code></td><td> Custom item state list drawable background for action bar items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarPopupTheme Igreja.Igreja:actionBarPopupTheme}</code></td><td> Reference to a theme that should be used to inflate popups
+           <tr><td><code>{@link #AppCompatTheme_actionBarDivider igreja.igreja:actionBarDivider}</code></td><td> Custom divider drawable to use for elements in the action bar.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarItemBackground igreja.igreja:actionBarItemBackground}</code></td><td> Custom item state list drawable background for action bar items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarPopupTheme igreja.igreja:actionBarPopupTheme}</code></td><td> Reference to a theme that should be used to inflate popups
              shown by widgets in the action bar.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarSize Igreja.Igreja:actionBarSize}</code></td><td> Size of the Action Bar, including the contextual
+           <tr><td><code>{@link #AppCompatTheme_actionBarSize igreja.igreja:actionBarSize}</code></td><td> Size of the Action Bar, including the contextual
              bar used to present Action Modes.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarSplitStyle Igreja.Igreja:actionBarSplitStyle}</code></td><td> Reference to a style for the split Action Bar.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarStyle Igreja.Igreja:actionBarStyle}</code></td><td> Reference to a style for the Action Bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarTabBarStyle Igreja.Igreja:actionBarTabBarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarTabStyle Igreja.Igreja:actionBarTabStyle}</code></td><td> Default style for tabs within an action bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarTabTextStyle Igreja.Igreja:actionBarTabTextStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarTheme Igreja.Igreja:actionBarTheme}</code></td><td> Reference to a theme that should be used to inflate the
+           <tr><td><code>{@link #AppCompatTheme_actionBarSplitStyle igreja.igreja:actionBarSplitStyle}</code></td><td> Reference to a style for the split Action Bar.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarStyle igreja.igreja:actionBarStyle}</code></td><td> Reference to a style for the Action Bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTabBarStyle igreja.igreja:actionBarTabBarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTabStyle igreja.igreja:actionBarTabStyle}</code></td><td> Default style for tabs within an action bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTabTextStyle igreja.igreja:actionBarTabTextStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTheme igreja.igreja:actionBarTheme}</code></td><td> Reference to a theme that should be used to inflate the
              action bar.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionBarWidgetTheme Igreja.Igreja:actionBarWidgetTheme}</code></td><td> Reference to a theme that should be used to inflate widgets
+           <tr><td><code>{@link #AppCompatTheme_actionBarWidgetTheme igreja.igreja:actionBarWidgetTheme}</code></td><td> Reference to a theme that should be used to inflate widgets
              and layouts destined for the action bar.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionButtonStyle Igreja.Igreja:actionButtonStyle}</code></td><td> Default action button style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionDropDownStyle Igreja.Igreja:actionDropDownStyle}</code></td><td> Default ActionBar dropdown style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionMenuTextAppearance Igreja.Igreja:actionMenuTextAppearance}</code></td><td> TextAppearance style that will be applied to text that
+           <tr><td><code>{@link #AppCompatTheme_actionButtonStyle igreja.igreja:actionButtonStyle}</code></td><td> Default action button style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionDropDownStyle igreja.igreja:actionDropDownStyle}</code></td><td> Default ActionBar dropdown style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionMenuTextAppearance igreja.igreja:actionMenuTextAppearance}</code></td><td> TextAppearance style that will be applied to text that
              appears within action menu items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionMenuTextColor Igreja.Igreja:actionMenuTextColor}</code></td><td> Color for text that appears within action menu items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeBackground Igreja.Igreja:actionModeBackground}</code></td><td> Background drawable to use for action mode UI </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeCloseButtonStyle Igreja.Igreja:actionModeCloseButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeCloseDrawable Igreja.Igreja:actionModeCloseDrawable}</code></td><td> Drawable to use for the close action mode button </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeCopyDrawable Igreja.Igreja:actionModeCopyDrawable}</code></td><td> Drawable to use for the Copy action button in Contextual Action Bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeCutDrawable Igreja.Igreja:actionModeCutDrawable}</code></td><td> Drawable to use for the Cut action button in Contextual Action Bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeFindDrawable Igreja.Igreja:actionModeFindDrawable}</code></td><td> Drawable to use for the Find action button in WebView selection action modes </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModePasteDrawable Igreja.Igreja:actionModePasteDrawable}</code></td><td> Drawable to use for the Paste action button in Contextual Action Bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModePopupWindowStyle Igreja.Igreja:actionModePopupWindowStyle}</code></td><td> PopupWindow style to use for action modes when showing as a window overlay.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeSelectAllDrawable Igreja.Igreja:actionModeSelectAllDrawable}</code></td><td> Drawable to use for the Select all action button in Contextual Action Bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeShareDrawable Igreja.Igreja:actionModeShareDrawable}</code></td><td> Drawable to use for the Share action button in WebView selection action modes </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeSplitBackground Igreja.Igreja:actionModeSplitBackground}</code></td><td> Background drawable to use for action mode UI in the lower split bar </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeStyle Igreja.Igreja:actionModeStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionModeWebSearchDrawable Igreja.Igreja:actionModeWebSearchDrawable}</code></td><td> Drawable to use for the Web Search action button in WebView selection action modes </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionOverflowButtonStyle Igreja.Igreja:actionOverflowButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_actionOverflowMenuStyle Igreja.Igreja:actionOverflowMenuStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_activityChooserViewStyle Igreja.Igreja:activityChooserViewStyle}</code></td><td> Default ActivityChooserView style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_alertDialogButtonGroupStyle Igreja.Igreja:alertDialogButtonGroupStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_alertDialogCenterButtons Igreja.Igreja:alertDialogCenterButtons}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_alertDialogStyle Igreja.Igreja:alertDialogStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_alertDialogTheme Igreja.Igreja:alertDialogTheme}</code></td><td> Theme to use for alert dialogs spawned from this theme.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionMenuTextColor igreja.igreja:actionMenuTextColor}</code></td><td> Color for text that appears within action menu items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeBackground igreja.igreja:actionModeBackground}</code></td><td> Background drawable to use for action mode UI </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCloseButtonStyle igreja.igreja:actionModeCloseButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCloseDrawable igreja.igreja:actionModeCloseDrawable}</code></td><td> Drawable to use for the close action mode button </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCopyDrawable igreja.igreja:actionModeCopyDrawable}</code></td><td> Drawable to use for the Copy action button in Contextual Action Bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCutDrawable igreja.igreja:actionModeCutDrawable}</code></td><td> Drawable to use for the Cut action button in Contextual Action Bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeFindDrawable igreja.igreja:actionModeFindDrawable}</code></td><td> Drawable to use for the Find action button in WebView selection action modes </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModePasteDrawable igreja.igreja:actionModePasteDrawable}</code></td><td> Drawable to use for the Paste action button in Contextual Action Bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModePopupWindowStyle igreja.igreja:actionModePopupWindowStyle}</code></td><td> PopupWindow style to use for action modes when showing as a window overlay.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeSelectAllDrawable igreja.igreja:actionModeSelectAllDrawable}</code></td><td> Drawable to use for the Select all action button in Contextual Action Bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeShareDrawable igreja.igreja:actionModeShareDrawable}</code></td><td> Drawable to use for the Share action button in WebView selection action modes </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeSplitBackground igreja.igreja:actionModeSplitBackground}</code></td><td> Background drawable to use for action mode UI in the lower split bar </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeStyle igreja.igreja:actionModeStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeWebSearchDrawable igreja.igreja:actionModeWebSearchDrawable}</code></td><td> Drawable to use for the Web Search action button in WebView selection action modes </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionOverflowButtonStyle igreja.igreja:actionOverflowButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionOverflowMenuStyle igreja.igreja:actionOverflowMenuStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_activityChooserViewStyle igreja.igreja:activityChooserViewStyle}</code></td><td> Default ActivityChooserView style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogButtonGroupStyle igreja.igreja:alertDialogButtonGroupStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogCenterButtons igreja.igreja:alertDialogCenterButtons}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogStyle igreja.igreja:alertDialogStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogTheme igreja.igreja:alertDialogTheme}</code></td><td> Theme to use for alert dialogs spawned from this theme.</td></tr>
            <tr><td><code>{@link #AppCompatTheme_android_windowAnimationStyle android:windowAnimationStyle}</code></td><td></td></tr>
            <tr><td><code>{@link #AppCompatTheme_android_windowIsFloating android:windowIsFloating}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_autoCompleteTextViewStyle Igreja.Igreja:autoCompleteTextViewStyle}</code></td><td> Default AutoCompleteTextView style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_borderlessButtonStyle Igreja.Igreja:borderlessButtonStyle}</code></td><td> Style for buttons without an explicit border, often used in groups.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonBarButtonStyle Igreja.Igreja:buttonBarButtonStyle}</code></td><td> Style for buttons within button bars </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonBarNegativeButtonStyle Igreja.Igreja:buttonBarNegativeButtonStyle}</code></td><td> Style for the "negative" buttons within button bars </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonBarNeutralButtonStyle Igreja.Igreja:buttonBarNeutralButtonStyle}</code></td><td> Style for the "neutral" buttons within button bars </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonBarPositiveButtonStyle Igreja.Igreja:buttonBarPositiveButtonStyle}</code></td><td> Style for the "positive" buttons within button bars </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonBarStyle Igreja.Igreja:buttonBarStyle}</code></td><td> Style for button bars </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonStyle Igreja.Igreja:buttonStyle}</code></td><td> Normal Button style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_buttonStyleSmall Igreja.Igreja:buttonStyleSmall}</code></td><td> Small Button style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_checkboxStyle Igreja.Igreja:checkboxStyle}</code></td><td> Default Checkbox style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_checkedTextViewStyle Igreja.Igreja:checkedTextViewStyle}</code></td><td> Default CheckedTextView style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorAccent Igreja.Igreja:colorAccent}</code></td><td> Bright complement to the primary branding color.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorBackgroundFloating Igreja.Igreja:colorBackgroundFloating}</code></td><td> Default color of background imagery for floating components, ex.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorButtonNormal Igreja.Igreja:colorButtonNormal}</code></td><td> The color applied to framework buttons in their normal state.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorControlActivated Igreja.Igreja:colorControlActivated}</code></td><td> The color applied to framework controls in their activated (ex.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorControlHighlight Igreja.Igreja:colorControlHighlight}</code></td><td> The color applied to framework control highlights (ex.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorControlNormal Igreja.Igreja:colorControlNormal}</code></td><td> The color applied to framework controls in their normal state.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorError Igreja.Igreja:colorError}</code></td><td> Color used for error states and things that need to be drawn to
+           <tr><td><code>{@link #AppCompatTheme_autoCompleteTextViewStyle igreja.igreja:autoCompleteTextViewStyle}</code></td><td> Default AutoCompleteTextView style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_borderlessButtonStyle igreja.igreja:borderlessButtonStyle}</code></td><td> Style for buttons without an explicit border, often used in groups.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarButtonStyle igreja.igreja:buttonBarButtonStyle}</code></td><td> Style for buttons within button bars </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarNegativeButtonStyle igreja.igreja:buttonBarNegativeButtonStyle}</code></td><td> Style for the "negative" buttons within button bars </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarNeutralButtonStyle igreja.igreja:buttonBarNeutralButtonStyle}</code></td><td> Style for the "neutral" buttons within button bars </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarPositiveButtonStyle igreja.igreja:buttonBarPositiveButtonStyle}</code></td><td> Style for the "positive" buttons within button bars </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarStyle igreja.igreja:buttonBarStyle}</code></td><td> Style for button bars </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonStyle igreja.igreja:buttonStyle}</code></td><td> Normal Button style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonStyleSmall igreja.igreja:buttonStyleSmall}</code></td><td> Small Button style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_checkboxStyle igreja.igreja:checkboxStyle}</code></td><td> Default Checkbox style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_checkedTextViewStyle igreja.igreja:checkedTextViewStyle}</code></td><td> Default CheckedTextView style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorAccent igreja.igreja:colorAccent}</code></td><td> Bright complement to the primary branding color.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorBackgroundFloating igreja.igreja:colorBackgroundFloating}</code></td><td> Default color of background imagery for floating components, ex.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorButtonNormal igreja.igreja:colorButtonNormal}</code></td><td> The color applied to framework buttons in their normal state.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorControlActivated igreja.igreja:colorControlActivated}</code></td><td> The color applied to framework controls in their activated (ex.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorControlHighlight igreja.igreja:colorControlHighlight}</code></td><td> The color applied to framework control highlights (ex.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorControlNormal igreja.igreja:colorControlNormal}</code></td><td> The color applied to framework controls in their normal state.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorError igreja.igreja:colorError}</code></td><td> Color used for error states and things that need to be drawn to
              the user's attention.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorPrimary Igreja.Igreja:colorPrimary}</code></td><td> The primary branding color for the app.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorPrimaryDark Igreja.Igreja:colorPrimaryDark}</code></td><td> Dark variant of the primary branding color.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_colorSwitchThumbNormal Igreja.Igreja:colorSwitchThumbNormal}</code></td><td> The color applied to framework switch thumbs in their normal state.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_controlBackground Igreja.Igreja:controlBackground}</code></td><td> The background used by framework controls.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dialogCornerRadius Igreja.Igreja:dialogCornerRadius}</code></td><td> Preferred corner radius of dialogs.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dialogPreferredPadding Igreja.Igreja:dialogPreferredPadding}</code></td><td> Preferred padding for dialog content.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dialogTheme Igreja.Igreja:dialogTheme}</code></td><td> Theme to use for dialogs spawned from this theme.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dividerHorizontal Igreja.Igreja:dividerHorizontal}</code></td><td> A drawable that may be used as a horizontal divider between visual elements.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dividerVertical Igreja.Igreja:dividerVertical}</code></td><td> A drawable that may be used as a vertical divider between visual elements.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dropDownListViewStyle Igreja.Igreja:dropDownListViewStyle}</code></td><td> ListPopupWindow compatibility </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_dropdownListPreferredItemHeight Igreja.Igreja:dropdownListPreferredItemHeight}</code></td><td> The preferred item height for dropdown lists.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_editTextBackground Igreja.Igreja:editTextBackground}</code></td><td> EditText background drawable.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_editTextColor Igreja.Igreja:editTextColor}</code></td><td> EditText text foreground color.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_editTextStyle Igreja.Igreja:editTextStyle}</code></td><td> Default EditText style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_homeAsUpIndicator Igreja.Igreja:homeAsUpIndicator}</code></td><td> Specifies a drawable to use for the 'home as up' indicator.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_imageButtonStyle Igreja.Igreja:imageButtonStyle}</code></td><td> ImageButton background drawable.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listChoiceBackgroundIndicator Igreja.Igreja:listChoiceBackgroundIndicator}</code></td><td> Drawable used as a background for selected list items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listDividerAlertDialog Igreja.Igreja:listDividerAlertDialog}</code></td><td> The list divider used in alert dialogs.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listMenuViewStyle Igreja.Igreja:listMenuViewStyle}</code></td><td> Default menu-style ListView style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listPopupWindowStyle Igreja.Igreja:listPopupWindowStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeight Igreja.Igreja:listPreferredItemHeight}</code></td><td> The preferred list item height.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightLarge Igreja.Igreja:listPreferredItemHeightLarge}</code></td><td> A larger, more robust list item height.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightSmall Igreja.Igreja:listPreferredItemHeightSmall}</code></td><td> A smaller, sleeker list item height.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingLeft Igreja.Igreja:listPreferredItemPaddingLeft}</code></td><td> The preferred padding along the left edge of list items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingRight Igreja.Igreja:listPreferredItemPaddingRight}</code></td><td> The preferred padding along the right edge of list items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_panelBackground Igreja.Igreja:panelBackground}</code></td><td> The background of a panel when it is inset from the left and right edges of the screen.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_panelMenuListTheme Igreja.Igreja:panelMenuListTheme}</code></td><td> Default Panel Menu style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_panelMenuListWidth Igreja.Igreja:panelMenuListWidth}</code></td><td> Default Panel Menu width.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_popupMenuStyle Igreja.Igreja:popupMenuStyle}</code></td><td> Default PopupMenu style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_popupWindowStyle Igreja.Igreja:popupWindowStyle}</code></td><td> Default PopupWindow style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_radioButtonStyle Igreja.Igreja:radioButtonStyle}</code></td><td> Default RadioButton style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_ratingBarStyle Igreja.Igreja:ratingBarStyle}</code></td><td> Default RatingBar style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_ratingBarStyleIndicator Igreja.Igreja:ratingBarStyleIndicator}</code></td><td> Indicator RatingBar style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_ratingBarStyleSmall Igreja.Igreja:ratingBarStyleSmall}</code></td><td> Small indicator RatingBar style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_searchViewStyle Igreja.Igreja:searchViewStyle}</code></td><td> Style for the search query widget.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_seekBarStyle Igreja.Igreja:seekBarStyle}</code></td><td> Default SeekBar style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_selectableItemBackground Igreja.Igreja:selectableItemBackground}</code></td><td> A style that may be applied to buttons or other selectable items
+           <tr><td><code>{@link #AppCompatTheme_colorPrimary igreja.igreja:colorPrimary}</code></td><td> The primary branding color for the app.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorPrimaryDark igreja.igreja:colorPrimaryDark}</code></td><td> Dark variant of the primary branding color.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorSwitchThumbNormal igreja.igreja:colorSwitchThumbNormal}</code></td><td> The color applied to framework switch thumbs in their normal state.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_controlBackground igreja.igreja:controlBackground}</code></td><td> The background used by framework controls.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dialogCornerRadius igreja.igreja:dialogCornerRadius}</code></td><td> Preferred corner radius of dialogs.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dialogPreferredPadding igreja.igreja:dialogPreferredPadding}</code></td><td> Preferred padding for dialog content.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dialogTheme igreja.igreja:dialogTheme}</code></td><td> Theme to use for dialogs spawned from this theme.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dividerHorizontal igreja.igreja:dividerHorizontal}</code></td><td> A drawable that may be used as a horizontal divider between visual elements.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dividerVertical igreja.igreja:dividerVertical}</code></td><td> A drawable that may be used as a vertical divider between visual elements.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dropDownListViewStyle igreja.igreja:dropDownListViewStyle}</code></td><td> ListPopupWindow compatibility </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dropdownListPreferredItemHeight igreja.igreja:dropdownListPreferredItemHeight}</code></td><td> The preferred item height for dropdown lists.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_editTextBackground igreja.igreja:editTextBackground}</code></td><td> EditText background drawable.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_editTextColor igreja.igreja:editTextColor}</code></td><td> EditText text foreground color.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_editTextStyle igreja.igreja:editTextStyle}</code></td><td> Default EditText style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_homeAsUpIndicator igreja.igreja:homeAsUpIndicator}</code></td><td> Specifies a drawable to use for the 'home as up' indicator.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_imageButtonStyle igreja.igreja:imageButtonStyle}</code></td><td> ImageButton background drawable.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listChoiceBackgroundIndicator igreja.igreja:listChoiceBackgroundIndicator}</code></td><td> Drawable used as a background for selected list items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listDividerAlertDialog igreja.igreja:listDividerAlertDialog}</code></td><td> The list divider used in alert dialogs.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listMenuViewStyle igreja.igreja:listMenuViewStyle}</code></td><td> Default menu-style ListView style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPopupWindowStyle igreja.igreja:listPopupWindowStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeight igreja.igreja:listPreferredItemHeight}</code></td><td> The preferred list item height.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightLarge igreja.igreja:listPreferredItemHeightLarge}</code></td><td> A larger, more robust list item height.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightSmall igreja.igreja:listPreferredItemHeightSmall}</code></td><td> A smaller, sleeker list item height.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingLeft igreja.igreja:listPreferredItemPaddingLeft}</code></td><td> The preferred padding along the left edge of list items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingRight igreja.igreja:listPreferredItemPaddingRight}</code></td><td> The preferred padding along the right edge of list items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_panelBackground igreja.igreja:panelBackground}</code></td><td> The background of a panel when it is inset from the left and right edges of the screen.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_panelMenuListTheme igreja.igreja:panelMenuListTheme}</code></td><td> Default Panel Menu style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_panelMenuListWidth igreja.igreja:panelMenuListWidth}</code></td><td> Default Panel Menu width.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_popupMenuStyle igreja.igreja:popupMenuStyle}</code></td><td> Default PopupMenu style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_popupWindowStyle igreja.igreja:popupWindowStyle}</code></td><td> Default PopupWindow style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_radioButtonStyle igreja.igreja:radioButtonStyle}</code></td><td> Default RadioButton style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_ratingBarStyle igreja.igreja:ratingBarStyle}</code></td><td> Default RatingBar style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_ratingBarStyleIndicator igreja.igreja:ratingBarStyleIndicator}</code></td><td> Indicator RatingBar style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_ratingBarStyleSmall igreja.igreja:ratingBarStyleSmall}</code></td><td> Small indicator RatingBar style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_searchViewStyle igreja.igreja:searchViewStyle}</code></td><td> Style for the search query widget.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_seekBarStyle igreja.igreja:seekBarStyle}</code></td><td> Default SeekBar style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_selectableItemBackground igreja.igreja:selectableItemBackground}</code></td><td> A style that may be applied to buttons or other selectable items
              that should react to pressed and focus states, but that do not
              have a clear visual border along the edges.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_selectableItemBackgroundBorderless Igreja.Igreja:selectableItemBackgroundBorderless}</code></td><td> Background drawable for borderless standalone items that need focus/pressed states.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_spinnerDropDownItemStyle Igreja.Igreja:spinnerDropDownItemStyle}</code></td><td> Default Spinner style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_spinnerStyle Igreja.Igreja:spinnerStyle}</code></td><td> Default Spinner style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_switchStyle Igreja.Igreja:switchStyle}</code></td><td> Default style for the Switch widget.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceLargePopupMenu Igreja.Igreja:textAppearanceLargePopupMenu}</code></td><td> Text color, typeface, size, and style for the text inside of a popup menu.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItem Igreja.Igreja:textAppearanceListItem}</code></td><td> The preferred TextAppearance for the primary text of list items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSecondary Igreja.Igreja:textAppearanceListItemSecondary}</code></td><td> The preferred TextAppearance for the secondary text of list items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSmall Igreja.Igreja:textAppearanceListItemSmall}</code></td><td> The preferred TextAppearance for the primary text of small list items.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearancePopupMenuHeader Igreja.Igreja:textAppearancePopupMenuHeader}</code></td><td> Text color, typeface, size, and style for header text inside of a popup menu.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultSubtitle Igreja.Igreja:textAppearanceSearchResultSubtitle}</code></td><td> Text color, typeface, size, and style for system search result subtitle.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultTitle Igreja.Igreja:textAppearanceSearchResultTitle}</code></td><td> Text color, typeface, size, and style for system search result title.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textAppearanceSmallPopupMenu Igreja.Igreja:textAppearanceSmallPopupMenu}</code></td><td> Text color, typeface, size, and style for small text inside of a popup menu.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textColorAlertDialogListItem Igreja.Igreja:textColorAlertDialogListItem}</code></td><td> Color of list item text in alert dialogs.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_textColorSearchUrl Igreja.Igreja:textColorSearchUrl}</code></td><td> Text color for urls in search suggestions, used by things like global search </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_toolbarNavigationButtonStyle Igreja.Igreja:toolbarNavigationButtonStyle}</code></td><td> Default Toolar NavigationButtonStyle </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_toolbarStyle Igreja.Igreja:toolbarStyle}</code></td><td> Default Toolbar style.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_tooltipForegroundColor Igreja.Igreja:tooltipForegroundColor}</code></td><td> Foreground color to use for tooltips </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_tooltipFrameBackground Igreja.Igreja:tooltipFrameBackground}</code></td><td> Background to use for tooltips </td></tr>
-           <tr><td><code>{@link #AppCompatTheme_viewInflaterClass Igreja.Igreja:viewInflaterClass}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowActionBar Igreja.Igreja:windowActionBar}</code></td><td> Flag indicating whether this window should have an Action Bar
+           <tr><td><code>{@link #AppCompatTheme_selectableItemBackgroundBorderless igreja.igreja:selectableItemBackgroundBorderless}</code></td><td> Background drawable for borderless standalone items that need focus/pressed states.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_spinnerDropDownItemStyle igreja.igreja:spinnerDropDownItemStyle}</code></td><td> Default Spinner style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_spinnerStyle igreja.igreja:spinnerStyle}</code></td><td> Default Spinner style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_switchStyle igreja.igreja:switchStyle}</code></td><td> Default style for the Switch widget.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceLargePopupMenu igreja.igreja:textAppearanceLargePopupMenu}</code></td><td> Text color, typeface, size, and style for the text inside of a popup menu.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItem igreja.igreja:textAppearanceListItem}</code></td><td> The preferred TextAppearance for the primary text of list items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSecondary igreja.igreja:textAppearanceListItemSecondary}</code></td><td> The preferred TextAppearance for the secondary text of list items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSmall igreja.igreja:textAppearanceListItemSmall}</code></td><td> The preferred TextAppearance for the primary text of small list items.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearancePopupMenuHeader igreja.igreja:textAppearancePopupMenuHeader}</code></td><td> Text color, typeface, size, and style for header text inside of a popup menu.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultSubtitle igreja.igreja:textAppearanceSearchResultSubtitle}</code></td><td> Text color, typeface, size, and style for system search result subtitle.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultTitle igreja.igreja:textAppearanceSearchResultTitle}</code></td><td> Text color, typeface, size, and style for system search result title.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceSmallPopupMenu igreja.igreja:textAppearanceSmallPopupMenu}</code></td><td> Text color, typeface, size, and style for small text inside of a popup menu.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textColorAlertDialogListItem igreja.igreja:textColorAlertDialogListItem}</code></td><td> Color of list item text in alert dialogs.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textColorSearchUrl igreja.igreja:textColorSearchUrl}</code></td><td> Text color for urls in search suggestions, used by things like global search </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_toolbarNavigationButtonStyle igreja.igreja:toolbarNavigationButtonStyle}</code></td><td> Default Toolar NavigationButtonStyle </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_toolbarStyle igreja.igreja:toolbarStyle}</code></td><td> Default Toolbar style.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_tooltipForegroundColor igreja.igreja:tooltipForegroundColor}</code></td><td> Foreground color to use for tooltips </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_tooltipFrameBackground igreja.igreja:tooltipFrameBackground}</code></td><td> Background to use for tooltips </td></tr>
+           <tr><td><code>{@link #AppCompatTheme_viewInflaterClass igreja.igreja:viewInflaterClass}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowActionBar igreja.igreja:windowActionBar}</code></td><td> Flag indicating whether this window should have an Action Bar
              in place of the usual title bar.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowActionBarOverlay Igreja.Igreja:windowActionBarOverlay}</code></td><td> Flag indicating whether this window's Action Bar should overlay
+           <tr><td><code>{@link #AppCompatTheme_windowActionBarOverlay igreja.igreja:windowActionBarOverlay}</code></td><td> Flag indicating whether this window's Action Bar should overlay
              application content.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowActionModeOverlay Igreja.Igreja:windowActionModeOverlay}</code></td><td> Flag indicating whether action modes should overlay window content
+           <tr><td><code>{@link #AppCompatTheme_windowActionModeOverlay igreja.igreja:windowActionModeOverlay}</code></td><td> Flag indicating whether action modes should overlay window content
              when there is not reserved space for their UI (such as an Action Bar).</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMajor Igreja.Igreja:windowFixedHeightMajor}</code></td><td> A fixed height for the window along the major axis of the screen,
+           <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMajor igreja.igreja:windowFixedHeightMajor}</code></td><td> A fixed height for the window along the major axis of the screen,
              that is, when in portrait.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMinor Igreja.Igreja:windowFixedHeightMinor}</code></td><td> A fixed height for the window along the minor axis of the screen,
+           <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMinor igreja.igreja:windowFixedHeightMinor}</code></td><td> A fixed height for the window along the minor axis of the screen,
              that is, when in landscape.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMajor Igreja.Igreja:windowFixedWidthMajor}</code></td><td> A fixed width for the window along the major axis of the screen,
+           <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMajor igreja.igreja:windowFixedWidthMajor}</code></td><td> A fixed width for the window along the major axis of the screen,
              that is, when in landscape.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMinor Igreja.Igreja:windowFixedWidthMinor}</code></td><td> A fixed width for the window along the minor axis of the screen,
+           <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMinor igreja.igreja:windowFixedWidthMinor}</code></td><td> A fixed width for the window along the minor axis of the screen,
              that is, when in portrait.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowMinWidthMajor Igreja.Igreja:windowMinWidthMajor}</code></td><td> The minimum width the window is allowed to be, along the major
+           <tr><td><code>{@link #AppCompatTheme_windowMinWidthMajor igreja.igreja:windowMinWidthMajor}</code></td><td> The minimum width the window is allowed to be, along the major
              axis of the screen.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowMinWidthMinor Igreja.Igreja:windowMinWidthMinor}</code></td><td> The minimum width the window is allowed to be, along the minor
+           <tr><td><code>{@link #AppCompatTheme_windowMinWidthMinor igreja.igreja:windowMinWidthMinor}</code></td><td> The minimum width the window is allowed to be, along the minor
              axis of the screen.</td></tr>
-           <tr><td><code>{@link #AppCompatTheme_windowNoTitle Igreja.Igreja:windowNoTitle}</code></td><td> Flag indicating whether there should be no title on this window.</td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowNoTitle igreja.igreja:windowNoTitle}</code></td><td> Flag indicating whether there should be no title on this window.</td></tr>
            </table>
            @see #AppCompatTheme_actionBarDivider
            @see #AppCompatTheme_actionBarItemBackground
@@ -8160,7 +8160,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarDivider
+          @attr name igreja.igreja:actionBarDivider
         */
         public static final int AppCompatTheme_actionBarDivider = 23;
         /**
@@ -8172,7 +8172,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarItemBackground
+          @attr name igreja.igreja:actionBarItemBackground
         */
         public static final int AppCompatTheme_actionBarItemBackground = 24;
         /**
@@ -8185,7 +8185,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarPopupTheme
+          @attr name igreja.igreja:actionBarPopupTheme
         */
         public static final int AppCompatTheme_actionBarPopupTheme = 17;
         /**
@@ -8212,7 +8212,7 @@ containing a value of this type.
 <tr><td><code>wrap_content</code></td><td>0</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarSize
+          @attr name igreja.igreja:actionBarSize
         */
         public static final int AppCompatTheme_actionBarSize = 22;
         /**
@@ -8227,7 +8227,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarSplitStyle
+          @attr name igreja.igreja:actionBarSplitStyle
         */
         public static final int AppCompatTheme_actionBarSplitStyle = 19;
         /**
@@ -8239,17 +8239,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarStyle
+          @attr name igreja.igreja:actionBarStyle
         */
         public static final int AppCompatTheme_actionBarStyle = 18;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#actionBarTabBarStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#actionBarTabBarStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:actionBarTabBarStyle
+          @attr name igreja.igreja:actionBarTabBarStyle
         */
         public static final int AppCompatTheme_actionBarTabBarStyle = 13;
         /**
@@ -8261,17 +8261,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarTabStyle
+          @attr name igreja.igreja:actionBarTabStyle
         */
         public static final int AppCompatTheme_actionBarTabStyle = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#actionBarTabTextStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#actionBarTabTextStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:actionBarTabTextStyle
+          @attr name igreja.igreja:actionBarTabTextStyle
         */
         public static final int AppCompatTheme_actionBarTabTextStyle = 14;
         /**
@@ -8285,7 +8285,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarTheme
+          @attr name igreja.igreja:actionBarTheme
         */
         public static final int AppCompatTheme_actionBarTheme = 20;
         /**
@@ -8303,7 +8303,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionBarWidgetTheme
+          @attr name igreja.igreja:actionBarWidgetTheme
         */
         public static final int AppCompatTheme_actionBarWidgetTheme = 21;
         /**
@@ -8315,7 +8315,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionButtonStyle
+          @attr name igreja.igreja:actionButtonStyle
         */
         public static final int AppCompatTheme_actionButtonStyle = 51;
         /**
@@ -8327,7 +8327,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionDropDownStyle
+          @attr name igreja.igreja:actionDropDownStyle
         */
         public static final int AppCompatTheme_actionDropDownStyle = 47;
         /**
@@ -8340,7 +8340,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionMenuTextAppearance
+          @attr name igreja.igreja:actionMenuTextAppearance
         */
         public static final int AppCompatTheme_actionMenuTextAppearance = 25;
         /**
@@ -8355,7 +8355,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionMenuTextColor
+          @attr name igreja.igreja:actionMenuTextColor
         */
         public static final int AppCompatTheme_actionMenuTextColor = 26;
         /**
@@ -8367,17 +8367,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeBackground
+          @attr name igreja.igreja:actionModeBackground
         */
         public static final int AppCompatTheme_actionModeBackground = 29;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#actionModeCloseButtonStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#actionModeCloseButtonStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:actionModeCloseButtonStyle
+          @attr name igreja.igreja:actionModeCloseButtonStyle
         */
         public static final int AppCompatTheme_actionModeCloseButtonStyle = 28;
         /**
@@ -8389,7 +8389,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeCloseDrawable
+          @attr name igreja.igreja:actionModeCloseDrawable
         */
         public static final int AppCompatTheme_actionModeCloseDrawable = 31;
         /**
@@ -8401,7 +8401,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeCopyDrawable
+          @attr name igreja.igreja:actionModeCopyDrawable
         */
         public static final int AppCompatTheme_actionModeCopyDrawable = 33;
         /**
@@ -8413,7 +8413,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeCutDrawable
+          @attr name igreja.igreja:actionModeCutDrawable
         */
         public static final int AppCompatTheme_actionModeCutDrawable = 32;
         /**
@@ -8425,7 +8425,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeFindDrawable
+          @attr name igreja.igreja:actionModeFindDrawable
         */
         public static final int AppCompatTheme_actionModeFindDrawable = 37;
         /**
@@ -8437,7 +8437,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModePasteDrawable
+          @attr name igreja.igreja:actionModePasteDrawable
         */
         public static final int AppCompatTheme_actionModePasteDrawable = 34;
         /**
@@ -8449,7 +8449,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModePopupWindowStyle
+          @attr name igreja.igreja:actionModePopupWindowStyle
         */
         public static final int AppCompatTheme_actionModePopupWindowStyle = 39;
         /**
@@ -8461,7 +8461,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeSelectAllDrawable
+          @attr name igreja.igreja:actionModeSelectAllDrawable
         */
         public static final int AppCompatTheme_actionModeSelectAllDrawable = 35;
         /**
@@ -8473,7 +8473,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeShareDrawable
+          @attr name igreja.igreja:actionModeShareDrawable
         */
         public static final int AppCompatTheme_actionModeShareDrawable = 36;
         /**
@@ -8485,17 +8485,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeSplitBackground
+          @attr name igreja.igreja:actionModeSplitBackground
         */
         public static final int AppCompatTheme_actionModeSplitBackground = 30;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#actionModeStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#actionModeStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:actionModeStyle
+          @attr name igreja.igreja:actionModeStyle
         */
         public static final int AppCompatTheme_actionModeStyle = 27;
         /**
@@ -8507,27 +8507,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionModeWebSearchDrawable
+          @attr name igreja.igreja:actionModeWebSearchDrawable
         */
         public static final int AppCompatTheme_actionModeWebSearchDrawable = 38;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#actionOverflowButtonStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#actionOverflowButtonStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:actionOverflowButtonStyle
+          @attr name igreja.igreja:actionOverflowButtonStyle
         */
         public static final int AppCompatTheme_actionOverflowButtonStyle = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#actionOverflowMenuStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#actionOverflowMenuStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:actionOverflowMenuStyle
+          @attr name igreja.igreja:actionOverflowMenuStyle
         */
         public static final int AppCompatTheme_actionOverflowMenuStyle = 16;
         /**
@@ -8539,21 +8539,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:activityChooserViewStyle
+          @attr name igreja.igreja:activityChooserViewStyle
         */
         public static final int AppCompatTheme_activityChooserViewStyle = 59;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#alertDialogButtonGroupStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#alertDialogButtonGroupStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:alertDialogButtonGroupStyle
+          @attr name igreja.igreja:alertDialogButtonGroupStyle
         */
         public static final int AppCompatTheme_alertDialogButtonGroupStyle = 96;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#alertDialogCenterButtons}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#alertDialogCenterButtons}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
@@ -8563,17 +8563,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:alertDialogCenterButtons
+          @attr name igreja.igreja:alertDialogCenterButtons
         */
         public static final int AppCompatTheme_alertDialogCenterButtons = 97;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#alertDialogStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#alertDialogStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:alertDialogStyle
+          @attr name igreja.igreja:alertDialogStyle
         */
         public static final int AppCompatTheme_alertDialogStyle = 95;
         /**
@@ -8585,7 +8585,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:alertDialogTheme
+          @attr name igreja.igreja:alertDialogTheme
         */
         public static final int AppCompatTheme_alertDialogTheme = 98;
         /**
@@ -8609,7 +8609,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:autoCompleteTextViewStyle
+          @attr name igreja.igreja:autoCompleteTextViewStyle
         */
         public static final int AppCompatTheme_autoCompleteTextViewStyle = 103;
         /**
@@ -8621,7 +8621,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:borderlessButtonStyle
+          @attr name igreja.igreja:borderlessButtonStyle
         */
         public static final int AppCompatTheme_borderlessButtonStyle = 56;
         /**
@@ -8633,7 +8633,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonBarButtonStyle
+          @attr name igreja.igreja:buttonBarButtonStyle
         */
         public static final int AppCompatTheme_buttonBarButtonStyle = 53;
         /**
@@ -8645,7 +8645,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonBarNegativeButtonStyle
+          @attr name igreja.igreja:buttonBarNegativeButtonStyle
         */
         public static final int AppCompatTheme_buttonBarNegativeButtonStyle = 101;
         /**
@@ -8657,7 +8657,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonBarNeutralButtonStyle
+          @attr name igreja.igreja:buttonBarNeutralButtonStyle
         */
         public static final int AppCompatTheme_buttonBarNeutralButtonStyle = 102;
         /**
@@ -8669,7 +8669,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonBarPositiveButtonStyle
+          @attr name igreja.igreja:buttonBarPositiveButtonStyle
         */
         public static final int AppCompatTheme_buttonBarPositiveButtonStyle = 100;
         /**
@@ -8681,7 +8681,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonBarStyle
+          @attr name igreja.igreja:buttonBarStyle
         */
         public static final int AppCompatTheme_buttonBarStyle = 52;
         /**
@@ -8693,7 +8693,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonStyle
+          @attr name igreja.igreja:buttonStyle
         */
         public static final int AppCompatTheme_buttonStyle = 104;
         /**
@@ -8705,7 +8705,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonStyleSmall
+          @attr name igreja.igreja:buttonStyleSmall
         */
         public static final int AppCompatTheme_buttonStyleSmall = 105;
         /**
@@ -8717,7 +8717,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:checkboxStyle
+          @attr name igreja.igreja:checkboxStyle
         */
         public static final int AppCompatTheme_checkboxStyle = 106;
         /**
@@ -8729,7 +8729,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:checkedTextViewStyle
+          @attr name igreja.igreja:checkedTextViewStyle
         */
         public static final int AppCompatTheme_checkedTextViewStyle = 107;
         /**
@@ -8747,7 +8747,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorAccent
+          @attr name igreja.igreja:colorAccent
         */
         public static final int AppCompatTheme_colorAccent = 87;
         /**
@@ -8764,7 +8764,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorBackgroundFloating
+          @attr name igreja.igreja:colorBackgroundFloating
         */
         public static final int AppCompatTheme_colorBackgroundFloating = 94;
         /**
@@ -8781,7 +8781,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorButtonNormal
+          @attr name igreja.igreja:colorButtonNormal
         */
         public static final int AppCompatTheme_colorButtonNormal = 91;
         /**
@@ -8798,7 +8798,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorControlActivated
+          @attr name igreja.igreja:colorControlActivated
         */
         public static final int AppCompatTheme_colorControlActivated = 89;
         /**
@@ -8815,7 +8815,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorControlHighlight
+          @attr name igreja.igreja:colorControlHighlight
         */
         public static final int AppCompatTheme_colorControlHighlight = 90;
         /**
@@ -8832,7 +8832,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorControlNormal
+          @attr name igreja.igreja:colorControlNormal
         */
         public static final int AppCompatTheme_colorControlNormal = 88;
         /**
@@ -8847,7 +8847,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorError
+          @attr name igreja.igreja:colorError
         */
         public static final int AppCompatTheme_colorError = 119;
         /**
@@ -8865,7 +8865,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorPrimary
+          @attr name igreja.igreja:colorPrimary
         */
         public static final int AppCompatTheme_colorPrimary = 85;
         /**
@@ -8883,7 +8883,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorPrimaryDark
+          @attr name igreja.igreja:colorPrimaryDark
         */
         public static final int AppCompatTheme_colorPrimaryDark = 86;
         /**
@@ -8900,7 +8900,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorSwitchThumbNormal
+          @attr name igreja.igreja:colorSwitchThumbNormal
         */
         public static final int AppCompatTheme_colorSwitchThumbNormal = 92;
         /**
@@ -8912,7 +8912,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:controlBackground
+          @attr name igreja.igreja:controlBackground
         */
         public static final int AppCompatTheme_controlBackground = 93;
         /**
@@ -8930,7 +8930,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dialogCornerRadius
+          @attr name igreja.igreja:dialogCornerRadius
         */
         public static final int AppCompatTheme_dialogCornerRadius = 46;
         /**
@@ -8948,7 +8948,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dialogPreferredPadding
+          @attr name igreja.igreja:dialogPreferredPadding
         */
         public static final int AppCompatTheme_dialogPreferredPadding = 44;
         /**
@@ -8960,7 +8960,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dialogTheme
+          @attr name igreja.igreja:dialogTheme
         */
         public static final int AppCompatTheme_dialogTheme = 43;
         /**
@@ -8972,7 +8972,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dividerHorizontal
+          @attr name igreja.igreja:dividerHorizontal
         */
         public static final int AppCompatTheme_dividerHorizontal = 58;
         /**
@@ -8984,7 +8984,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dividerVertical
+          @attr name igreja.igreja:dividerVertical
         */
         public static final int AppCompatTheme_dividerVertical = 57;
         /**
@@ -8996,7 +8996,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dropDownListViewStyle
+          @attr name igreja.igreja:dropDownListViewStyle
         */
         public static final int AppCompatTheme_dropDownListViewStyle = 76;
         /**
@@ -9014,7 +9014,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dropdownListPreferredItemHeight
+          @attr name igreja.igreja:dropdownListPreferredItemHeight
         */
         public static final int AppCompatTheme_dropdownListPreferredItemHeight = 48;
         /**
@@ -9026,7 +9026,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:editTextBackground
+          @attr name igreja.igreja:editTextBackground
         */
         public static final int AppCompatTheme_editTextBackground = 65;
         /**
@@ -9040,7 +9040,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:editTextColor
+          @attr name igreja.igreja:editTextColor
         */
         public static final int AppCompatTheme_editTextColor = 64;
         /**
@@ -9052,7 +9052,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:editTextStyle
+          @attr name igreja.igreja:editTextStyle
         */
         public static final int AppCompatTheme_editTextStyle = 108;
         /**
@@ -9064,7 +9064,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:homeAsUpIndicator
+          @attr name igreja.igreja:homeAsUpIndicator
         */
         public static final int AppCompatTheme_homeAsUpIndicator = 50;
         /**
@@ -9076,7 +9076,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:imageButtonStyle
+          @attr name igreja.igreja:imageButtonStyle
         */
         public static final int AppCompatTheme_imageButtonStyle = 66;
         /**
@@ -9088,7 +9088,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listChoiceBackgroundIndicator
+          @attr name igreja.igreja:listChoiceBackgroundIndicator
         */
         public static final int AppCompatTheme_listChoiceBackgroundIndicator = 84;
         /**
@@ -9100,7 +9100,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listDividerAlertDialog
+          @attr name igreja.igreja:listDividerAlertDialog
         */
         public static final int AppCompatTheme_listDividerAlertDialog = 45;
         /**
@@ -9112,17 +9112,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listMenuViewStyle
+          @attr name igreja.igreja:listMenuViewStyle
         */
         public static final int AppCompatTheme_listMenuViewStyle = 116;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#listPopupWindowStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#listPopupWindowStyle}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:listPopupWindowStyle
+          @attr name igreja.igreja:listPopupWindowStyle
         */
         public static final int AppCompatTheme_listPopupWindowStyle = 77;
         /**
@@ -9140,7 +9140,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listPreferredItemHeight
+          @attr name igreja.igreja:listPreferredItemHeight
         */
         public static final int AppCompatTheme_listPreferredItemHeight = 71;
         /**
@@ -9158,7 +9158,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listPreferredItemHeightLarge
+          @attr name igreja.igreja:listPreferredItemHeightLarge
         */
         public static final int AppCompatTheme_listPreferredItemHeightLarge = 73;
         /**
@@ -9176,7 +9176,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listPreferredItemHeightSmall
+          @attr name igreja.igreja:listPreferredItemHeightSmall
         */
         public static final int AppCompatTheme_listPreferredItemHeightSmall = 72;
         /**
@@ -9194,7 +9194,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listPreferredItemPaddingLeft
+          @attr name igreja.igreja:listPreferredItemPaddingLeft
         */
         public static final int AppCompatTheme_listPreferredItemPaddingLeft = 74;
         /**
@@ -9212,7 +9212,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:listPreferredItemPaddingRight
+          @attr name igreja.igreja:listPreferredItemPaddingRight
         */
         public static final int AppCompatTheme_listPreferredItemPaddingRight = 75;
         /**
@@ -9224,7 +9224,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:panelBackground
+          @attr name igreja.igreja:panelBackground
         */
         public static final int AppCompatTheme_panelBackground = 81;
         /**
@@ -9236,7 +9236,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:panelMenuListTheme
+          @attr name igreja.igreja:panelMenuListTheme
         */
         public static final int AppCompatTheme_panelMenuListTheme = 83;
         /**
@@ -9254,7 +9254,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:panelMenuListWidth
+          @attr name igreja.igreja:panelMenuListWidth
         */
         public static final int AppCompatTheme_panelMenuListWidth = 82;
         /**
@@ -9266,7 +9266,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:popupMenuStyle
+          @attr name igreja.igreja:popupMenuStyle
         */
         public static final int AppCompatTheme_popupMenuStyle = 62;
         /**
@@ -9278,7 +9278,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:popupWindowStyle
+          @attr name igreja.igreja:popupWindowStyle
         */
         public static final int AppCompatTheme_popupWindowStyle = 63;
         /**
@@ -9290,7 +9290,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:radioButtonStyle
+          @attr name igreja.igreja:radioButtonStyle
         */
         public static final int AppCompatTheme_radioButtonStyle = 109;
         /**
@@ -9302,7 +9302,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:ratingBarStyle
+          @attr name igreja.igreja:ratingBarStyle
         */
         public static final int AppCompatTheme_ratingBarStyle = 110;
         /**
@@ -9314,7 +9314,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:ratingBarStyleIndicator
+          @attr name igreja.igreja:ratingBarStyleIndicator
         */
         public static final int AppCompatTheme_ratingBarStyleIndicator = 111;
         /**
@@ -9326,7 +9326,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:ratingBarStyleSmall
+          @attr name igreja.igreja:ratingBarStyleSmall
         */
         public static final int AppCompatTheme_ratingBarStyleSmall = 112;
         /**
@@ -9338,7 +9338,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:searchViewStyle
+          @attr name igreja.igreja:searchViewStyle
         */
         public static final int AppCompatTheme_searchViewStyle = 70;
         /**
@@ -9350,7 +9350,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:seekBarStyle
+          @attr name igreja.igreja:seekBarStyle
         */
         public static final int AppCompatTheme_seekBarStyle = 113;
         /**
@@ -9364,7 +9364,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:selectableItemBackground
+          @attr name igreja.igreja:selectableItemBackground
         */
         public static final int AppCompatTheme_selectableItemBackground = 54;
         /**
@@ -9376,7 +9376,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:selectableItemBackgroundBorderless
+          @attr name igreja.igreja:selectableItemBackgroundBorderless
         */
         public static final int AppCompatTheme_selectableItemBackgroundBorderless = 55;
         /**
@@ -9388,7 +9388,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:spinnerDropDownItemStyle
+          @attr name igreja.igreja:spinnerDropDownItemStyle
         */
         public static final int AppCompatTheme_spinnerDropDownItemStyle = 49;
         /**
@@ -9400,7 +9400,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:spinnerStyle
+          @attr name igreja.igreja:spinnerStyle
         */
         public static final int AppCompatTheme_spinnerStyle = 114;
         /**
@@ -9412,7 +9412,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:switchStyle
+          @attr name igreja.igreja:switchStyle
         */
         public static final int AppCompatTheme_switchStyle = 115;
         /**
@@ -9424,7 +9424,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceLargePopupMenu
+          @attr name igreja.igreja:textAppearanceLargePopupMenu
         */
         public static final int AppCompatTheme_textAppearanceLargePopupMenu = 40;
         /**
@@ -9436,7 +9436,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceListItem
+          @attr name igreja.igreja:textAppearanceListItem
         */
         public static final int AppCompatTheme_textAppearanceListItem = 78;
         /**
@@ -9448,7 +9448,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceListItemSecondary
+          @attr name igreja.igreja:textAppearanceListItemSecondary
         */
         public static final int AppCompatTheme_textAppearanceListItemSecondary = 79;
         /**
@@ -9460,7 +9460,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceListItemSmall
+          @attr name igreja.igreja:textAppearanceListItemSmall
         */
         public static final int AppCompatTheme_textAppearanceListItemSmall = 80;
         /**
@@ -9472,7 +9472,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearancePopupMenuHeader
+          @attr name igreja.igreja:textAppearancePopupMenuHeader
         */
         public static final int AppCompatTheme_textAppearancePopupMenuHeader = 42;
         /**
@@ -9484,7 +9484,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceSearchResultSubtitle
+          @attr name igreja.igreja:textAppearanceSearchResultSubtitle
         */
         public static final int AppCompatTheme_textAppearanceSearchResultSubtitle = 68;
         /**
@@ -9496,7 +9496,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceSearchResultTitle
+          @attr name igreja.igreja:textAppearanceSearchResultTitle
         */
         public static final int AppCompatTheme_textAppearanceSearchResultTitle = 67;
         /**
@@ -9508,7 +9508,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAppearanceSmallPopupMenu
+          @attr name igreja.igreja:textAppearanceSmallPopupMenu
         */
         public static final int AppCompatTheme_textAppearanceSmallPopupMenu = 41;
         /**
@@ -9522,7 +9522,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textColorAlertDialogListItem
+          @attr name igreja.igreja:textColorAlertDialogListItem
         */
         public static final int AppCompatTheme_textColorAlertDialogListItem = 99;
         /**
@@ -9536,7 +9536,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textColorSearchUrl
+          @attr name igreja.igreja:textColorSearchUrl
         */
         public static final int AppCompatTheme_textColorSearchUrl = 69;
         /**
@@ -9548,7 +9548,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:toolbarNavigationButtonStyle
+          @attr name igreja.igreja:toolbarNavigationButtonStyle
         */
         public static final int AppCompatTheme_toolbarNavigationButtonStyle = 61;
         /**
@@ -9560,7 +9560,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:toolbarStyle
+          @attr name igreja.igreja:toolbarStyle
         */
         public static final int AppCompatTheme_toolbarStyle = 60;
         /**
@@ -9574,7 +9574,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tooltipForegroundColor
+          @attr name igreja.igreja:tooltipForegroundColor
         */
         public static final int AppCompatTheme_tooltipForegroundColor = 118;
         /**
@@ -9586,11 +9586,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tooltipFrameBackground
+          @attr name igreja.igreja:tooltipFrameBackground
         */
         public static final int AppCompatTheme_tooltipFrameBackground = 117;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#viewInflaterClass}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#viewInflaterClass}
           attribute's value can be found in the {@link #AppCompatTheme} array.
 
 
@@ -9600,7 +9600,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:viewInflaterClass
+          @attr name igreja.igreja:viewInflaterClass
         */
         public static final int AppCompatTheme_viewInflaterClass = 120;
         /**
@@ -9617,7 +9617,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowActionBar
+          @attr name igreja.igreja:windowActionBar
         */
         public static final int AppCompatTheme_windowActionBar = 2;
         /**
@@ -9635,7 +9635,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowActionBarOverlay
+          @attr name igreja.igreja:windowActionBarOverlay
         */
         public static final int AppCompatTheme_windowActionBarOverlay = 4;
         /**
@@ -9652,7 +9652,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowActionModeOverlay
+          @attr name igreja.igreja:windowActionModeOverlay
         */
         public static final int AppCompatTheme_windowActionModeOverlay = 5;
         /**
@@ -9675,7 +9675,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowFixedHeightMajor
+          @attr name igreja.igreja:windowFixedHeightMajor
         */
         public static final int AppCompatTheme_windowFixedHeightMajor = 9;
         /**
@@ -9698,7 +9698,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowFixedHeightMinor
+          @attr name igreja.igreja:windowFixedHeightMinor
         */
         public static final int AppCompatTheme_windowFixedHeightMinor = 7;
         /**
@@ -9721,7 +9721,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowFixedWidthMajor
+          @attr name igreja.igreja:windowFixedWidthMajor
         */
         public static final int AppCompatTheme_windowFixedWidthMajor = 6;
         /**
@@ -9744,7 +9744,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowFixedWidthMinor
+          @attr name igreja.igreja:windowFixedWidthMinor
         */
         public static final int AppCompatTheme_windowFixedWidthMinor = 8;
         /**
@@ -9768,7 +9768,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowMinWidthMajor
+          @attr name igreja.igreja:windowMinWidthMajor
         */
         public static final int AppCompatTheme_windowMinWidthMajor = 10;
         /**
@@ -9792,7 +9792,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowMinWidthMinor
+          @attr name igreja.igreja:windowMinWidthMinor
         */
         public static final int AppCompatTheme_windowMinWidthMinor = 11;
         /**
@@ -9808,7 +9808,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:windowNoTitle
+          @attr name igreja.igreja:windowNoTitle
         */
         public static final int AppCompatTheme_windowNoTitle = 3;
         /** Attributes that can be used with a BottomAppBar.
@@ -9817,12 +9817,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #BottomAppBar_backgroundTint Igreja.Igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
-           <tr><td><code>{@link #BottomAppBar_fabAlignmentMode Igreja.Igreja:fabAlignmentMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomAppBar_fabCradleMargin Igreja.Igreja:fabCradleMargin}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomAppBar_fabCradleRoundedCornerRadius Igreja.Igreja:fabCradleRoundedCornerRadius}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomAppBar_fabCradleVerticalOffset Igreja.Igreja:fabCradleVerticalOffset}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomAppBar_hideOnScroll Igreja.Igreja:hideOnScroll}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomAppBar_backgroundTint igreja.igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
+           <tr><td><code>{@link #BottomAppBar_fabAlignmentMode igreja.igreja:fabAlignmentMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomAppBar_fabCradleMargin igreja.igreja:fabCradleMargin}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomAppBar_fabCradleRoundedCornerRadius igreja.igreja:fabCradleRoundedCornerRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomAppBar_fabCradleVerticalOffset igreja.igreja:fabCradleVerticalOffset}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomAppBar_hideOnScroll igreja.igreja:hideOnScroll}</code></td><td></td></tr>
            </table>
            @see #BottomAppBar_backgroundTint
            @see #BottomAppBar_fabAlignmentMode
@@ -9849,11 +9849,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTint
+          @attr name igreja.igreja:backgroundTint
         */
         public static final int BottomAppBar_backgroundTint = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fabAlignmentMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fabAlignmentMode}
           attribute's value can be found in the {@link #BottomAppBar} array.
 
 
@@ -9866,11 +9866,11 @@ containing a value of this type.
 <tr><td><code>center</code></td><td>0</td><td></td></tr>
 <tr><td><code>end</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:fabAlignmentMode
+          @attr name igreja.igreja:fabAlignmentMode
         */
         public static final int BottomAppBar_fabAlignmentMode = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fabCradleMargin}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fabCradleMargin}
           attribute's value can be found in the {@link #BottomAppBar} array.
 
 
@@ -9882,11 +9882,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:fabCradleMargin
+          @attr name igreja.igreja:fabCradleMargin
         */
         public static final int BottomAppBar_fabCradleMargin = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fabCradleRoundedCornerRadius}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fabCradleRoundedCornerRadius}
           attribute's value can be found in the {@link #BottomAppBar} array.
 
 
@@ -9898,11 +9898,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:fabCradleRoundedCornerRadius
+          @attr name igreja.igreja:fabCradleRoundedCornerRadius
         */
         public static final int BottomAppBar_fabCradleRoundedCornerRadius = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fabCradleVerticalOffset}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fabCradleVerticalOffset}
           attribute's value can be found in the {@link #BottomAppBar} array.
 
 
@@ -9914,11 +9914,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:fabCradleVerticalOffset
+          @attr name igreja.igreja:fabCradleVerticalOffset
         */
         public static final int BottomAppBar_fabCradleVerticalOffset = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hideOnScroll}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hideOnScroll}
           attribute's value can be found in the {@link #BottomAppBar} array.
 
 
@@ -9928,7 +9928,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:hideOnScroll
+          @attr name igreja.igreja:hideOnScroll
         */
         public static final int BottomAppBar_hideOnScroll = 5;
         /** Attributes that can be used with a BottomNavigationView.
@@ -9937,16 +9937,16 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #BottomNavigationView_elevation Igreja.Igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemBackground Igreja.Igreja:itemBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemHorizontalTranslationEnabled Igreja.Igreja:itemHorizontalTranslationEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemIconSize Igreja.Igreja:itemIconSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemIconTint Igreja.Igreja:itemIconTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemTextAppearanceActive Igreja.Igreja:itemTextAppearanceActive}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemTextAppearanceInactive Igreja.Igreja:itemTextAppearanceInactive}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_itemTextColor Igreja.Igreja:itemTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_labelVisibilityMode Igreja.Igreja:labelVisibilityMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomNavigationView_menu Igreja.Igreja:menu}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_elevation igreja.igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemBackground igreja.igreja:itemBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemHorizontalTranslationEnabled igreja.igreja:itemHorizontalTranslationEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemIconSize igreja.igreja:itemIconSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemIconTint igreja.igreja:itemIconTint}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemTextAppearanceActive igreja.igreja:itemTextAppearanceActive}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemTextAppearanceInactive igreja.igreja:itemTextAppearanceInactive}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_itemTextColor igreja.igreja:itemTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_labelVisibilityMode igreja.igreja:labelVisibilityMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomNavigationView_menu igreja.igreja:menu}</code></td><td></td></tr>
            </table>
            @see #BottomNavigationView_elevation
            @see #BottomNavigationView_itemBackground
@@ -9979,21 +9979,21 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:elevation
+          @attr name igreja.igreja:elevation
         */
         public static final int BottomNavigationView_elevation = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemBackground}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemBackground}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:itemBackground
+          @attr name igreja.igreja:itemBackground
         */
         public static final int BottomNavigationView_itemBackground = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemHorizontalTranslationEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemHorizontalTranslationEnabled}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
@@ -10003,11 +10003,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemHorizontalTranslationEnabled
+          @attr name igreja.igreja:itemHorizontalTranslationEnabled
         */
         public static final int BottomNavigationView_itemHorizontalTranslationEnabled = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemIconSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemIconSize}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
@@ -10019,11 +10019,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemIconSize
+          @attr name igreja.igreja:itemIconSize
         */
         public static final int BottomNavigationView_itemIconSize = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemIconTint}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemIconTint}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
@@ -10034,31 +10034,31 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemIconTint
+          @attr name igreja.igreja:itemIconTint
         */
         public static final int BottomNavigationView_itemIconTint = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemTextAppearanceActive}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemTextAppearanceActive}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:itemTextAppearanceActive
+          @attr name igreja.igreja:itemTextAppearanceActive
         */
         public static final int BottomNavigationView_itemTextAppearanceActive = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemTextAppearanceInactive}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemTextAppearanceInactive}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:itemTextAppearanceInactive
+          @attr name igreja.igreja:itemTextAppearanceInactive
         */
         public static final int BottomNavigationView_itemTextAppearanceInactive = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemTextColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemTextColor}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
@@ -10069,11 +10069,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemTextColor
+          @attr name igreja.igreja:itemTextColor
         */
         public static final int BottomNavigationView_itemTextColor = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#labelVisibilityMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#labelVisibilityMode}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
@@ -10088,17 +10088,17 @@ containing a value of this type.
 <tr><td><code>labeled</code></td><td>1</td><td></td></tr>
 <tr><td><code>unlabeled</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:labelVisibilityMode
+          @attr name igreja.igreja:labelVisibilityMode
         */
         public static final int BottomNavigationView_labelVisibilityMode = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#menu}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#menu}
           attribute's value can be found in the {@link #BottomNavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:menu
+          @attr name igreja.igreja:menu
         */
         public static final int BottomNavigationView_menu = 6;
         /** Attributes that can be used with a BottomSheetBehavior_Layout.
@@ -10107,10 +10107,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_fitToContents Igreja.Igreja:behavior_fitToContents}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_hideable Igreja.Igreja:behavior_hideable}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_peekHeight Igreja.Igreja:behavior_peekHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_skipCollapsed Igreja.Igreja:behavior_skipCollapsed}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_fitToContents igreja.igreja:behavior_fitToContents}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_hideable igreja.igreja:behavior_hideable}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_peekHeight igreja.igreja:behavior_peekHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #BottomSheetBehavior_Layout_behavior_skipCollapsed igreja.igreja:behavior_skipCollapsed}</code></td><td></td></tr>
            </table>
            @see #BottomSheetBehavior_Layout_behavior_fitToContents
            @see #BottomSheetBehavior_Layout_behavior_hideable
@@ -10121,7 +10121,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f01016e, 0x7f01016f, 0x7f010170, 0x7f010171
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#behavior_fitToContents}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#behavior_fitToContents}
           attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
 
 
@@ -10131,11 +10131,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:behavior_fitToContents
+          @attr name igreja.igreja:behavior_fitToContents
         */
         public static final int BottomSheetBehavior_Layout_behavior_fitToContents = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#behavior_hideable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#behavior_hideable}
           attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
 
 
@@ -10145,11 +10145,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:behavior_hideable
+          @attr name igreja.igreja:behavior_hideable
         */
         public static final int BottomSheetBehavior_Layout_behavior_hideable = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#behavior_peekHeight}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#behavior_peekHeight}
           attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
 
 
@@ -10169,11 +10169,11 @@ containing a value of this type.
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>auto</code></td><td>-1</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:behavior_peekHeight
+          @attr name igreja.igreja:behavior_peekHeight
         */
         public static final int BottomSheetBehavior_Layout_behavior_peekHeight = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#behavior_skipCollapsed}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#behavior_skipCollapsed}
           attribute's value can be found in the {@link #BottomSheetBehavior_Layout} array.
 
 
@@ -10183,7 +10183,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:behavior_skipCollapsed
+          @attr name igreja.igreja:behavior_skipCollapsed
         */
         public static final int BottomSheetBehavior_Layout_behavior_skipCollapsed = 2;
         /** Attributes that can be used with a ButtonBarLayout.
@@ -10192,7 +10192,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ButtonBarLayout_allowStacking Igreja.Igreja:allowStacking}</code></td><td> Whether to automatically stack the buttons when there is not
+           <tr><td><code>{@link #ButtonBarLayout_allowStacking igreja.igreja:allowStacking}</code></td><td> Whether to automatically stack the buttons when there is not
              enough space to lay them out side-by-side.</td></tr>
            </table>
            @see #ButtonBarLayout_allowStacking
@@ -10214,7 +10214,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:allowStacking
+          @attr name igreja.igreja:allowStacking
         */
         public static final int ButtonBarLayout_allowStacking = 0;
         /** Attributes that can be used with a CardView.
@@ -10225,17 +10225,17 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #CardView_android_minHeight android:minHeight}</code></td><td> Workaround to read user defined minimum height </td></tr>
            <tr><td><code>{@link #CardView_android_minWidth android:minWidth}</code></td><td> Workaround to read user defined minimum width </td></tr>
-           <tr><td><code>{@link #CardView_cardBackgroundColor Igreja.Igreja:cardBackgroundColor}</code></td><td> Background color for CardView.</td></tr>
-           <tr><td><code>{@link #CardView_cardCornerRadius Igreja.Igreja:cardCornerRadius}</code></td><td> Corner radius for CardView.</td></tr>
-           <tr><td><code>{@link #CardView_cardElevation Igreja.Igreja:cardElevation}</code></td><td> Elevation for CardView.</td></tr>
-           <tr><td><code>{@link #CardView_cardMaxElevation Igreja.Igreja:cardMaxElevation}</code></td><td> Maximum Elevation for CardView.</td></tr>
-           <tr><td><code>{@link #CardView_cardPreventCornerOverlap Igreja.Igreja:cardPreventCornerOverlap}</code></td><td> Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.</td></tr>
-           <tr><td><code>{@link #CardView_cardUseCompatPadding Igreja.Igreja:cardUseCompatPadding}</code></td><td> Add padding in API v21+ as well to have the same measurements with previous versions.</td></tr>
-           <tr><td><code>{@link #CardView_contentPadding Igreja.Igreja:contentPadding}</code></td><td> Inner padding between the edges of the Card and children of the CardView.</td></tr>
-           <tr><td><code>{@link #CardView_contentPaddingBottom Igreja.Igreja:contentPaddingBottom}</code></td><td> Inner padding between the bottom edge of the Card and children of the CardView.</td></tr>
-           <tr><td><code>{@link #CardView_contentPaddingLeft Igreja.Igreja:contentPaddingLeft}</code></td><td> Inner padding between the left edge of the Card and children of the CardView.</td></tr>
-           <tr><td><code>{@link #CardView_contentPaddingRight Igreja.Igreja:contentPaddingRight}</code></td><td> Inner padding between the right edge of the Card and children of the CardView.</td></tr>
-           <tr><td><code>{@link #CardView_contentPaddingTop Igreja.Igreja:contentPaddingTop}</code></td><td> Inner padding between the top edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardBackgroundColor igreja.igreja:cardBackgroundColor}</code></td><td> Background color for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardCornerRadius igreja.igreja:cardCornerRadius}</code></td><td> Corner radius for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardElevation igreja.igreja:cardElevation}</code></td><td> Elevation for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardMaxElevation igreja.igreja:cardMaxElevation}</code></td><td> Maximum Elevation for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardPreventCornerOverlap igreja.igreja:cardPreventCornerOverlap}</code></td><td> Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.</td></tr>
+           <tr><td><code>{@link #CardView_cardUseCompatPadding igreja.igreja:cardUseCompatPadding}</code></td><td> Add padding in API v21+ as well to have the same measurements with previous versions.</td></tr>
+           <tr><td><code>{@link #CardView_contentPadding igreja.igreja:contentPadding}</code></td><td> Inner padding between the edges of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingBottom igreja.igreja:contentPaddingBottom}</code></td><td> Inner padding between the bottom edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingLeft igreja.igreja:contentPaddingLeft}</code></td><td> Inner padding between the left edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingRight igreja.igreja:contentPaddingRight}</code></td><td> Inner padding between the right edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingTop igreja.igreja:contentPaddingTop}</code></td><td> Inner padding between the top edge of the Card and children of the CardView.</td></tr>
            </table>
            @see #CardView_android_minHeight
            @see #CardView_android_minWidth
@@ -10289,7 +10289,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:cardBackgroundColor
+          @attr name igreja.igreja:cardBackgroundColor
         */
         public static final int CardView_cardBackgroundColor = 2;
         /**
@@ -10307,7 +10307,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:cardCornerRadius
+          @attr name igreja.igreja:cardCornerRadius
         */
         public static final int CardView_cardCornerRadius = 3;
         /**
@@ -10325,7 +10325,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:cardElevation
+          @attr name igreja.igreja:cardElevation
         */
         public static final int CardView_cardElevation = 4;
         /**
@@ -10343,7 +10343,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:cardMaxElevation
+          @attr name igreja.igreja:cardMaxElevation
         */
         public static final int CardView_cardMaxElevation = 5;
         /**
@@ -10359,7 +10359,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:cardPreventCornerOverlap
+          @attr name igreja.igreja:cardPreventCornerOverlap
         */
         public static final int CardView_cardPreventCornerOverlap = 7;
         /**
@@ -10375,7 +10375,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:cardUseCompatPadding
+          @attr name igreja.igreja:cardUseCompatPadding
         */
         public static final int CardView_cardUseCompatPadding = 6;
         /**
@@ -10393,7 +10393,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentPadding
+          @attr name igreja.igreja:contentPadding
         */
         public static final int CardView_contentPadding = 8;
         /**
@@ -10411,7 +10411,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentPaddingBottom
+          @attr name igreja.igreja:contentPaddingBottom
         */
         public static final int CardView_contentPaddingBottom = 12;
         /**
@@ -10429,7 +10429,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentPaddingLeft
+          @attr name igreja.igreja:contentPaddingLeft
         */
         public static final int CardView_contentPaddingLeft = 9;
         /**
@@ -10447,7 +10447,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentPaddingRight
+          @attr name igreja.igreja:contentPaddingRight
         */
         public static final int CardView_contentPaddingRight = 10;
         /**
@@ -10465,7 +10465,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentPaddingTop
+          @attr name igreja.igreja:contentPaddingTop
         */
         public static final int CardView_contentPaddingTop = 11;
         /** Attributes that can be used with a Chip.
@@ -10479,35 +10479,35 @@ containing a value of this type.
            <tr><td><code>{@link #Chip_android_maxWidth android:maxWidth}</code></td><td></td></tr>
            <tr><td><code>{@link #Chip_android_text android:text}</code></td><td></td></tr>
            <tr><td><code>{@link #Chip_android_textAppearance android:textAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_checkedIcon Igreja.Igreja:checkedIcon}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_checkedIconEnabled Igreja.Igreja:checkedIconEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_checkedIconVisible Igreja.Igreja:checkedIconVisible}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipBackgroundColor Igreja.Igreja:chipBackgroundColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipCornerRadius Igreja.Igreja:chipCornerRadius}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipEndPadding Igreja.Igreja:chipEndPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipIcon Igreja.Igreja:chipIcon}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipIconEnabled Igreja.Igreja:chipIconEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipIconSize Igreja.Igreja:chipIconSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipIconTint Igreja.Igreja:chipIconTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipIconVisible Igreja.Igreja:chipIconVisible}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipMinHeight Igreja.Igreja:chipMinHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipStartPadding Igreja.Igreja:chipStartPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipStrokeColor Igreja.Igreja:chipStrokeColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_chipStrokeWidth Igreja.Igreja:chipStrokeWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_closeIcon Igreja.Igreja:closeIcon}</code></td><td> Close button icon </td></tr>
-           <tr><td><code>{@link #Chip_closeIconEnabled Igreja.Igreja:closeIconEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_closeIconEndPadding Igreja.Igreja:closeIconEndPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_closeIconSize Igreja.Igreja:closeIconSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_closeIconStartPadding Igreja.Igreja:closeIconStartPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_closeIconTint Igreja.Igreja:closeIconTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_closeIconVisible Igreja.Igreja:closeIconVisible}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_hideMotionSpec Igreja.Igreja:hideMotionSpec}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_iconEndPadding Igreja.Igreja:iconEndPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_iconStartPadding Igreja.Igreja:iconStartPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_rippleColor Igreja.Igreja:rippleColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_showMotionSpec Igreja.Igreja:showMotionSpec}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_textEndPadding Igreja.Igreja:textEndPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Chip_textStartPadding Igreja.Igreja:textStartPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_checkedIcon igreja.igreja:checkedIcon}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_checkedIconEnabled igreja.igreja:checkedIconEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_checkedIconVisible igreja.igreja:checkedIconVisible}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipBackgroundColor igreja.igreja:chipBackgroundColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipCornerRadius igreja.igreja:chipCornerRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipEndPadding igreja.igreja:chipEndPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipIcon igreja.igreja:chipIcon}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipIconEnabled igreja.igreja:chipIconEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipIconSize igreja.igreja:chipIconSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipIconTint igreja.igreja:chipIconTint}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipIconVisible igreja.igreja:chipIconVisible}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipMinHeight igreja.igreja:chipMinHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipStartPadding igreja.igreja:chipStartPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipStrokeColor igreja.igreja:chipStrokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_chipStrokeWidth igreja.igreja:chipStrokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_closeIcon igreja.igreja:closeIcon}</code></td><td> Close button icon </td></tr>
+           <tr><td><code>{@link #Chip_closeIconEnabled igreja.igreja:closeIconEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_closeIconEndPadding igreja.igreja:closeIconEndPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_closeIconSize igreja.igreja:closeIconSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_closeIconStartPadding igreja.igreja:closeIconStartPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_closeIconTint igreja.igreja:closeIconTint}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_closeIconVisible igreja.igreja:closeIconVisible}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_hideMotionSpec igreja.igreja:hideMotionSpec}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_iconEndPadding igreja.igreja:iconEndPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_iconStartPadding igreja.igreja:iconStartPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_rippleColor igreja.igreja:rippleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_showMotionSpec igreja.igreja:showMotionSpec}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_textEndPadding igreja.igreja:textEndPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #Chip_textStartPadding igreja.igreja:textStartPadding}</code></td><td></td></tr>
            </table>
            @see #Chip_android_checkable
            @see #Chip_android_ellipsize
@@ -10586,17 +10586,17 @@ containing a value of this type.
         */
         public static final int Chip_android_textAppearance = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#checkedIcon}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#checkedIcon}
           attribute's value can be found in the {@link #Chip} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:checkedIcon
+          @attr name igreja.igreja:checkedIcon
         */
         public static final int Chip_checkedIcon = 25;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#checkedIconEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#checkedIconEnabled}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10606,11 +10606,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:checkedIconEnabled
+          @attr name igreja.igreja:checkedIconEnabled
         */
         public static final int Chip_checkedIconEnabled = 24;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#checkedIconVisible}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#checkedIconVisible}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10620,11 +10620,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:checkedIconVisible
+          @attr name igreja.igreja:checkedIconVisible
         */
         public static final int Chip_checkedIconVisible = 23;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipBackgroundColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipBackgroundColor}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10635,11 +10635,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipBackgroundColor
+          @attr name igreja.igreja:chipBackgroundColor
         */
         public static final int Chip_chipBackgroundColor = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipCornerRadius}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipCornerRadius}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10651,11 +10651,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipCornerRadius
+          @attr name igreja.igreja:chipCornerRadius
         */
         public static final int Chip_chipCornerRadius = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipEndPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipEndPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10667,21 +10667,21 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipEndPadding
+          @attr name igreja.igreja:chipEndPadding
         */
         public static final int Chip_chipEndPadding = 33;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipIcon}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipIcon}
           attribute's value can be found in the {@link #Chip} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:chipIcon
+          @attr name igreja.igreja:chipIcon
         */
         public static final int Chip_chipIcon = 16;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipIconEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipIconEnabled}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10691,11 +10691,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipIconEnabled
+          @attr name igreja.igreja:chipIconEnabled
         */
         public static final int Chip_chipIconEnabled = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipIconSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipIconSize}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10707,11 +10707,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipIconSize
+          @attr name igreja.igreja:chipIconSize
         */
         public static final int Chip_chipIconSize = 18;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipIconTint}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipIconTint}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10722,11 +10722,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipIconTint
+          @attr name igreja.igreja:chipIconTint
         */
         public static final int Chip_chipIconTint = 17;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipIconVisible}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipIconVisible}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10736,11 +10736,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipIconVisible
+          @attr name igreja.igreja:chipIconVisible
         */
         public static final int Chip_chipIconVisible = 14;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipMinHeight}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipMinHeight}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10752,11 +10752,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipMinHeight
+          @attr name igreja.igreja:chipMinHeight
         */
         public static final int Chip_chipMinHeight = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipStartPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipStartPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10768,11 +10768,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipStartPadding
+          @attr name igreja.igreja:chipStartPadding
         */
         public static final int Chip_chipStartPadding = 26;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipStrokeColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipStrokeColor}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10783,11 +10783,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipStrokeColor
+          @attr name igreja.igreja:chipStrokeColor
         */
         public static final int Chip_chipStrokeColor = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipStrokeWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipStrokeWidth}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10799,7 +10799,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipStrokeWidth
+          @attr name igreja.igreja:chipStrokeWidth
         */
         public static final int Chip_chipStrokeWidth = 13;
         /**
@@ -10813,11 +10813,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:closeIcon
+          @attr name igreja.igreja:closeIcon
         */
         public static final int Chip_closeIcon = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#closeIconEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#closeIconEnabled}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10827,11 +10827,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:closeIconEnabled
+          @attr name igreja.igreja:closeIconEnabled
         */
         public static final int Chip_closeIconEnabled = 20;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#closeIconEndPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#closeIconEndPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10843,11 +10843,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:closeIconEndPadding
+          @attr name igreja.igreja:closeIconEndPadding
         */
         public static final int Chip_closeIconEndPadding = 32;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#closeIconSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#closeIconSize}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10859,11 +10859,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:closeIconSize
+          @attr name igreja.igreja:closeIconSize
         */
         public static final int Chip_closeIconSize = 22;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#closeIconStartPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#closeIconStartPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10875,11 +10875,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:closeIconStartPadding
+          @attr name igreja.igreja:closeIconStartPadding
         */
         public static final int Chip_closeIconStartPadding = 31;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#closeIconTint}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#closeIconTint}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10890,11 +10890,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:closeIconTint
+          @attr name igreja.igreja:closeIconTint
         */
         public static final int Chip_closeIconTint = 21;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#closeIconVisible}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#closeIconVisible}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10904,21 +10904,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:closeIconVisible
+          @attr name igreja.igreja:closeIconVisible
         */
         public static final int Chip_closeIconVisible = 19;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hideMotionSpec}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hideMotionSpec}
           attribute's value can be found in the {@link #Chip} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:hideMotionSpec
+          @attr name igreja.igreja:hideMotionSpec
         */
         public static final int Chip_hideMotionSpec = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#iconEndPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#iconEndPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10930,11 +10930,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:iconEndPadding
+          @attr name igreja.igreja:iconEndPadding
         */
         public static final int Chip_iconEndPadding = 28;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#iconStartPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#iconStartPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10946,11 +10946,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:iconStartPadding
+          @attr name igreja.igreja:iconStartPadding
         */
         public static final int Chip_iconStartPadding = 27;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#rippleColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#rippleColor}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10961,21 +10961,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:rippleColor
+          @attr name igreja.igreja:rippleColor
         */
         public static final int Chip_rippleColor = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#showMotionSpec}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#showMotionSpec}
           attribute's value can be found in the {@link #Chip} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:showMotionSpec
+          @attr name igreja.igreja:showMotionSpec
         */
         public static final int Chip_showMotionSpec = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textEndPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textEndPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -10987,11 +10987,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:textEndPadding
+          @attr name igreja.igreja:textEndPadding
         */
         public static final int Chip_textEndPadding = 30;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textStartPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textStartPadding}
           attribute's value can be found in the {@link #Chip} array.
 
 
@@ -11003,7 +11003,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:textStartPadding
+          @attr name igreja.igreja:textStartPadding
         */
         public static final int Chip_textStartPadding = 29;
         /** Attributes that can be used with a ChipGroup.
@@ -11012,12 +11012,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ChipGroup_checkedChip Igreja.Igreja:checkedChip}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChipGroup_chipSpacing Igreja.Igreja:chipSpacing}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChipGroup_chipSpacingHorizontal Igreja.Igreja:chipSpacingHorizontal}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChipGroup_chipSpacingVertical Igreja.Igreja:chipSpacingVertical}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChipGroup_singleLine Igreja.Igreja:singleLine}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChipGroup_singleSelection Igreja.Igreja:singleSelection}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChipGroup_checkedChip igreja.igreja:checkedChip}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChipGroup_chipSpacing igreja.igreja:chipSpacing}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChipGroup_chipSpacingHorizontal igreja.igreja:chipSpacingHorizontal}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChipGroup_chipSpacingVertical igreja.igreja:chipSpacingVertical}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChipGroup_singleLine igreja.igreja:singleLine}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChipGroup_singleSelection igreja.igreja:singleSelection}</code></td><td></td></tr>
            </table>
            @see #ChipGroup_checkedChip
            @see #ChipGroup_chipSpacing
@@ -11031,17 +11031,17 @@ containing a value of this type.
             0x7f01018f, 0x7f010190
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#checkedChip}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#checkedChip}
           attribute's value can be found in the {@link #ChipGroup} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:checkedChip
+          @attr name igreja.igreja:checkedChip
         */
         public static final int ChipGroup_checkedChip = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipSpacing}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipSpacing}
           attribute's value can be found in the {@link #ChipGroup} array.
 
 
@@ -11053,11 +11053,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipSpacing
+          @attr name igreja.igreja:chipSpacing
         */
         public static final int ChipGroup_chipSpacing = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipSpacingHorizontal}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipSpacingHorizontal}
           attribute's value can be found in the {@link #ChipGroup} array.
 
 
@@ -11069,11 +11069,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipSpacingHorizontal
+          @attr name igreja.igreja:chipSpacingHorizontal
         */
         public static final int ChipGroup_chipSpacingHorizontal = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipSpacingVertical}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipSpacingVertical}
           attribute's value can be found in the {@link #ChipGroup} array.
 
 
@@ -11085,11 +11085,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:chipSpacingVertical
+          @attr name igreja.igreja:chipSpacingVertical
         */
         public static final int ChipGroup_chipSpacingVertical = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#singleLine}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#singleLine}
           attribute's value can be found in the {@link #ChipGroup} array.
 
 
@@ -11099,11 +11099,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:singleLine
+          @attr name igreja.igreja:singleLine
         */
         public static final int ChipGroup_singleLine = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#singleSelection}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#singleSelection}
           attribute's value can be found in the {@link #ChipGroup} array.
 
 
@@ -11113,7 +11113,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:singleSelection
+          @attr name igreja.igreja:singleSelection
         */
         public static final int ChipGroup_singleSelection = 4;
         /** Attributes that can be used with a CollapsingToolbarLayout.
@@ -11122,22 +11122,22 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleGravity Igreja.Igreja:collapsedTitleGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleTextAppearance Igreja.Igreja:collapsedTitleTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_contentScrim Igreja.Igreja:contentScrim}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleGravity Igreja.Igreja:expandedTitleGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMargin Igreja.Igreja:expandedTitleMargin}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginBottom Igreja.Igreja:expandedTitleMarginBottom}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginEnd Igreja.Igreja:expandedTitleMarginEnd}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginStart Igreja.Igreja:expandedTitleMarginStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginTop Igreja.Igreja:expandedTitleMarginTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleTextAppearance Igreja.Igreja:expandedTitleTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_scrimAnimationDuration Igreja.Igreja:scrimAnimationDuration}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_scrimVisibleHeightTrigger Igreja.Igreja:scrimVisibleHeightTrigger}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_statusBarScrim Igreja.Igreja:statusBarScrim}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_title Igreja.Igreja:title}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_titleEnabled Igreja.Igreja:titleEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_toolbarId Igreja.Igreja:toolbarId}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleGravity igreja.igreja:collapsedTitleGravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleTextAppearance igreja.igreja:collapsedTitleTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_contentScrim igreja.igreja:contentScrim}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleGravity igreja.igreja:expandedTitleGravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMargin igreja.igreja:expandedTitleMargin}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginBottom igreja.igreja:expandedTitleMarginBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginEnd igreja.igreja:expandedTitleMarginEnd}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginStart igreja.igreja:expandedTitleMarginStart}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginTop igreja.igreja:expandedTitleMarginTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleTextAppearance igreja.igreja:expandedTitleTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_scrimAnimationDuration igreja.igreja:scrimAnimationDuration}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_scrimVisibleHeightTrigger igreja.igreja:scrimVisibleHeightTrigger}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_statusBarScrim igreja.igreja:statusBarScrim}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_title igreja.igreja:title}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_titleEnabled igreja.igreja:titleEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_toolbarId igreja.igreja:toolbarId}</code></td><td></td></tr>
            </table>
            @see #CollapsingToolbarLayout_collapsedTitleGravity
            @see #CollapsingToolbarLayout_collapsedTitleTextAppearance
@@ -11163,7 +11163,7 @@ containing a value of this type.
             0x7f01019c, 0x7f01019d, 0x7f01019e, 0x7f01019f
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#collapsedTitleGravity}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#collapsedTitleGravity}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11184,21 +11184,21 @@ containing a value of this type.
 <tr><td><code>start</code></td><td>0x00800003</td><td></td></tr>
 <tr><td><code>end</code></td><td>0x00800005</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:collapsedTitleGravity
+          @attr name igreja.igreja:collapsedTitleGravity
         */
         public static final int CollapsingToolbarLayout_collapsedTitleGravity = 13;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#collapsedTitleTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#collapsedTitleTextAppearance}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:collapsedTitleTextAppearance
+          @attr name igreja.igreja:collapsedTitleTextAppearance
         */
         public static final int CollapsingToolbarLayout_collapsedTitleTextAppearance = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#contentScrim}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#contentScrim}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11209,11 +11209,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:contentScrim
+          @attr name igreja.igreja:contentScrim
         */
         public static final int CollapsingToolbarLayout_contentScrim = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleGravity}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleGravity}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11234,11 +11234,11 @@ containing a value of this type.
 <tr><td><code>start</code></td><td>0x00800003</td><td></td></tr>
 <tr><td><code>end</code></td><td>0x00800005</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:expandedTitleGravity
+          @attr name igreja.igreja:expandedTitleGravity
         */
         public static final int CollapsingToolbarLayout_expandedTitleGravity = 14;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleMargin}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleMargin}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11250,11 +11250,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:expandedTitleMargin
+          @attr name igreja.igreja:expandedTitleMargin
         */
         public static final int CollapsingToolbarLayout_expandedTitleMargin = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleMarginBottom}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleMarginBottom}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11266,11 +11266,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:expandedTitleMarginBottom
+          @attr name igreja.igreja:expandedTitleMarginBottom
         */
         public static final int CollapsingToolbarLayout_expandedTitleMarginBottom = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleMarginEnd}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleMarginEnd}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11282,11 +11282,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:expandedTitleMarginEnd
+          @attr name igreja.igreja:expandedTitleMarginEnd
         */
         public static final int CollapsingToolbarLayout_expandedTitleMarginEnd = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleMarginStart}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleMarginStart}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11298,11 +11298,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:expandedTitleMarginStart
+          @attr name igreja.igreja:expandedTitleMarginStart
         */
         public static final int CollapsingToolbarLayout_expandedTitleMarginStart = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleMarginTop}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleMarginTop}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11314,21 +11314,21 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:expandedTitleMarginTop
+          @attr name igreja.igreja:expandedTitleMarginTop
         */
         public static final int CollapsingToolbarLayout_expandedTitleMarginTop = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#expandedTitleTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#expandedTitleTextAppearance}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:expandedTitleTextAppearance
+          @attr name igreja.igreja:expandedTitleTextAppearance
         */
         public static final int CollapsingToolbarLayout_expandedTitleTextAppearance = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#scrimAnimationDuration}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#scrimAnimationDuration}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11338,11 +11338,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:scrimAnimationDuration
+          @attr name igreja.igreja:scrimAnimationDuration
         */
         public static final int CollapsingToolbarLayout_scrimAnimationDuration = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#scrimVisibleHeightTrigger}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#scrimVisibleHeightTrigger}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11354,11 +11354,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:scrimVisibleHeightTrigger
+          @attr name igreja.igreja:scrimVisibleHeightTrigger
         */
         public static final int CollapsingToolbarLayout_scrimVisibleHeightTrigger = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#statusBarScrim}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#statusBarScrim}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11369,11 +11369,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:statusBarScrim
+          @attr name igreja.igreja:statusBarScrim
         */
         public static final int CollapsingToolbarLayout_statusBarScrim = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#title}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#title}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11383,11 +11383,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:title
+          @attr name igreja.igreja:title
         */
         public static final int CollapsingToolbarLayout_title = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#titleEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#titleEnabled}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
@@ -11397,17 +11397,17 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:titleEnabled
+          @attr name igreja.igreja:titleEnabled
         */
         public static final int CollapsingToolbarLayout_titleEnabled = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#toolbarId}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#toolbarId}
           attribute's value can be found in the {@link #CollapsingToolbarLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:toolbarId
+          @attr name igreja.igreja:toolbarId
         */
         public static final int CollapsingToolbarLayout_toolbarId = 10;
         /** Attributes that can be used with a CollapsingToolbarLayout_Layout.
@@ -11416,8 +11416,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseMode Igreja.Igreja:layout_collapseMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier Igreja.Igreja:layout_collapseParallaxMultiplier}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseMode igreja.igreja:layout_collapseMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier igreja.igreja:layout_collapseParallaxMultiplier}</code></td><td></td></tr>
            </table>
            @see #CollapsingToolbarLayout_Layout_layout_collapseMode
            @see #CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier
@@ -11426,7 +11426,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f0101a0, 0x7f0101a1
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#layout_collapseMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#layout_collapseMode}
           attribute's value can be found in the {@link #CollapsingToolbarLayout_Layout} array.
 
 
@@ -11440,11 +11440,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>pin</code></td><td>1</td><td></td></tr>
 <tr><td><code>parallax</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:layout_collapseMode
+          @attr name igreja.igreja:layout_collapseMode
         */
         public static final int CollapsingToolbarLayout_Layout_layout_collapseMode = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#layout_collapseParallaxMultiplier}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#layout_collapseParallaxMultiplier}
           attribute's value can be found in the {@link #CollapsingToolbarLayout_Layout} array.
 
 
@@ -11454,7 +11454,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:layout_collapseParallaxMultiplier
+          @attr name igreja.igreja:layout_collapseParallaxMultiplier
         */
         public static final int CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = 1;
         /** Attributes that can be used with a ColorStateListItem.
@@ -11463,7 +11463,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ColorStateListItem_alpha Igreja.Igreja:alpha}</code></td><td> Alpha multiplier applied to the base color.</td></tr>
+           <tr><td><code>{@link #ColorStateListItem_alpha igreja.igreja:alpha}</code></td><td> Alpha multiplier applied to the base color.</td></tr>
            <tr><td><code>{@link #ColorStateListItem_android_alpha android:alpha}</code></td><td></td></tr>
            <tr><td><code>{@link #ColorStateListItem_android_color android:color}</code></td><td> Base color for this state.</td></tr>
            </table>
@@ -11487,7 +11487,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:alpha
+          @attr name igreja.igreja:alpha
         */
         public static final int ColorStateListItem_alpha = 2;
         /**
@@ -11512,8 +11512,8 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #CompoundButton_android_button android:button}</code></td><td></td></tr>
-           <tr><td><code>{@link #CompoundButton_buttonTint Igreja.Igreja:buttonTint}</code></td><td> Tint to apply to the button drawable.</td></tr>
-           <tr><td><code>{@link #CompoundButton_buttonTintMode Igreja.Igreja:buttonTintMode}</code></td><td> Blending mode used to apply the button tint.</td></tr>
+           <tr><td><code>{@link #CompoundButton_buttonTint igreja.igreja:buttonTint}</code></td><td> Tint to apply to the button drawable.</td></tr>
+           <tr><td><code>{@link #CompoundButton_buttonTintMode igreja.igreja:buttonTintMode}</code></td><td> Blending mode used to apply the button tint.</td></tr>
            </table>
            @see #CompoundButton_android_button
            @see #CompoundButton_buttonTint
@@ -11542,7 +11542,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonTint
+          @attr name igreja.igreja:buttonTint
         */
         public static final int CompoundButton_buttonTint = 1;
         /**
@@ -11570,7 +11570,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:buttonTintMode
+          @attr name igreja.igreja:buttonTintMode
         */
         public static final int CompoundButton_buttonTintMode = 2;
         /** Attributes that can be used with a CoordinatorLayout.
@@ -11579,9 +11579,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CoordinatorLayout_keylines Igreja.Igreja:keylines}</code></td><td> A reference to an array of integers representing the
+           <tr><td><code>{@link #CoordinatorLayout_keylines igreja.igreja:keylines}</code></td><td> A reference to an array of integers representing the
              locations of horizontal keylines in dp from the starting edge.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_statusBarBackground Igreja.Igreja:statusBarBackground}</code></td><td> Drawable to display behind the status bar when the view is set to draw behind it.</td></tr>
+           <tr><td><code>{@link #CoordinatorLayout_statusBarBackground igreja.igreja:statusBarBackground}</code></td><td> Drawable to display behind the status bar when the view is set to draw behind it.</td></tr>
            </table>
            @see #CoordinatorLayout_keylines
            @see #CoordinatorLayout_statusBarBackground
@@ -11602,7 +11602,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:keylines
+          @attr name igreja.igreja:keylines
         */
         public static final int CoordinatorLayout_keylines = 0;
         /**
@@ -11616,7 +11616,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:statusBarBackground
+          @attr name igreja.igreja:statusBarBackground
         */
         public static final int CoordinatorLayout_statusBarBackground = 1;
         /** Attributes that can be used with a CoordinatorLayout_Layout.
@@ -11626,15 +11626,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #CoordinatorLayout_Layout_android_layout_gravity android:layout_gravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchor Igreja.Igreja:layout_anchor}</code></td><td> The id of an anchor view that this view should position relative to.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchorGravity Igreja.Igreja:layout_anchorGravity}</code></td><td> Specifies how an object should position relative to an anchor, on both the X and Y axes,
+           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchor igreja.igreja:layout_anchor}</code></td><td> The id of an anchor view that this view should position relative to.</td></tr>
+           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchorGravity igreja.igreja:layout_anchorGravity}</code></td><td> Specifies how an object should position relative to an anchor, on both the X and Y axes,
              within its parent's bounds.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_behavior Igreja.Igreja:layout_behavior}</code></td><td> The class name of a Behavior class defining special runtime behavior
+           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_behavior igreja.igreja:layout_behavior}</code></td><td> The class name of a Behavior class defining special runtime behavior
              for this child view.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_dodgeInsetEdges Igreja.Igreja:layout_dodgeInsetEdges}</code></td><td> Specifies how this view dodges the inset edges of the CoordinatorLayout.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_insetEdge Igreja.Igreja:layout_insetEdge}</code></td><td> Specifies how this view insets the CoordinatorLayout and make some other views
+           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_dodgeInsetEdges igreja.igreja:layout_dodgeInsetEdges}</code></td><td> Specifies how this view dodges the inset edges of the CoordinatorLayout.</td></tr>
+           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_insetEdge igreja.igreja:layout_insetEdge}</code></td><td> Specifies how this view insets the CoordinatorLayout and make some other views
              dodge it.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_keyline Igreja.Igreja:layout_keyline}</code></td><td> The index of a keyline this view should position relative to.</td></tr>
+           <tr><td><code>{@link #CoordinatorLayout_Layout_layout_keyline igreja.igreja:layout_keyline}</code></td><td> The index of a keyline this view should position relative to.</td></tr>
            </table>
            @see #CoordinatorLayout_Layout_android_layout_gravity
            @see #CoordinatorLayout_Layout_layout_anchor
@@ -11663,7 +11663,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout_anchor
+          @attr name igreja.igreja:layout_anchor
         */
         public static final int CoordinatorLayout_Layout_layout_anchor = 2;
         /**
@@ -11701,7 +11701,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>end</code></td><td>0x00800005</td><td> Push object to the end of its container, not changing its size. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout_anchorGravity
+          @attr name igreja.igreja:layout_anchorGravity
         */
         public static final int CoordinatorLayout_Layout_layout_anchorGravity = 4;
         /**
@@ -11718,7 +11718,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout_behavior
+          @attr name igreja.igreja:layout_behavior
         */
         public static final int CoordinatorLayout_Layout_layout_behavior = 1;
         /**
@@ -11743,7 +11743,7 @@ containing a value of this type.
 <tr><td><code>all</code></td><td>0x77</td><td> Dodge all the inset edges. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout_dodgeInsetEdges
+          @attr name igreja.igreja:layout_dodgeInsetEdges
         */
         public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges = 6;
         /**
@@ -11768,7 +11768,7 @@ containing a value of this type.
 <tr><td><code>end</code></td><td>0x00800005</td><td> Inset the end edge. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout_insetEdge
+          @attr name igreja.igreja:layout_insetEdge
         */
         public static final int CoordinatorLayout_Layout_layout_insetEdge = 5;
         /**
@@ -11786,7 +11786,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout_keyline
+          @attr name igreja.igreja:layout_keyline
         */
         public static final int CoordinatorLayout_Layout_layout_keyline = 3;
         /** Attributes that can be used with a DesignTheme.
@@ -11795,8 +11795,8 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #DesignTheme_bottomSheetDialogTheme Igreja.Igreja:bottomSheetDialogTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #DesignTheme_bottomSheetStyle Igreja.Igreja:bottomSheetStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #DesignTheme_bottomSheetDialogTheme igreja.igreja:bottomSheetDialogTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #DesignTheme_bottomSheetStyle igreja.igreja:bottomSheetStyle}</code></td><td></td></tr>
            </table>
            @see #DesignTheme_bottomSheetDialogTheme
            @see #DesignTheme_bottomSheetStyle
@@ -11805,23 +11805,23 @@ containing a value of this type.
             0x7f01013d, 0x7f01013e
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#bottomSheetDialogTheme}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#bottomSheetDialogTheme}
           attribute's value can be found in the {@link #DesignTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:bottomSheetDialogTheme
+          @attr name igreja.igreja:bottomSheetDialogTheme
         */
         public static final int DesignTheme_bottomSheetDialogTheme = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#bottomSheetStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#bottomSheetStyle}
           attribute's value can be found in the {@link #DesignTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:bottomSheetStyle
+          @attr name igreja.igreja:bottomSheetStyle
         */
         public static final int DesignTheme_bottomSheetStyle = 1;
         /** Attributes that can be used with a DrawerArrowToggle.
@@ -11830,14 +11830,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_arrowHeadLength Igreja.Igreja:arrowHeadLength}</code></td><td> The length of the arrow head when formed to make an arrow </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_arrowShaftLength Igreja.Igreja:arrowShaftLength}</code></td><td> The length of the shaft when formed to make an arrow </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_barLength Igreja.Igreja:barLength}</code></td><td> The length of the bars when they are parallel to each other </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_color Igreja.Igreja:color}</code></td><td> The drawing color for the bars </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_drawableSize Igreja.Igreja:drawableSize}</code></td><td> The total size of the drawable </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_gapBetweenBars Igreja.Igreja:gapBetweenBars}</code></td><td> The max gap between the bars when they are parallel to each other </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_spinBars Igreja.Igreja:spinBars}</code></td><td> Whether bars should rotate or not during transition </td></tr>
-           <tr><td><code>{@link #DrawerArrowToggle_thickness Igreja.Igreja:thickness}</code></td><td> The thickness (stroke size) for the bar paint </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_arrowHeadLength igreja.igreja:arrowHeadLength}</code></td><td> The length of the arrow head when formed to make an arrow </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_arrowShaftLength igreja.igreja:arrowShaftLength}</code></td><td> The length of the shaft when formed to make an arrow </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_barLength igreja.igreja:barLength}</code></td><td> The length of the bars when they are parallel to each other </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_color igreja.igreja:color}</code></td><td> The drawing color for the bars </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_drawableSize igreja.igreja:drawableSize}</code></td><td> The total size of the drawable </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_gapBetweenBars igreja.igreja:gapBetweenBars}</code></td><td> The max gap between the bars when they are parallel to each other </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_spinBars igreja.igreja:spinBars}</code></td><td> Whether bars should rotate or not during transition </td></tr>
+           <tr><td><code>{@link #DrawerArrowToggle_thickness igreja.igreja:thickness}</code></td><td> The thickness (stroke size) for the bar paint </td></tr>
            </table>
            @see #DrawerArrowToggle_arrowHeadLength
            @see #DrawerArrowToggle_arrowShaftLength
@@ -11867,7 +11867,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:arrowHeadLength
+          @attr name igreja.igreja:arrowHeadLength
         */
         public static final int DrawerArrowToggle_arrowHeadLength = 4;
         /**
@@ -11885,7 +11885,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:arrowShaftLength
+          @attr name igreja.igreja:arrowShaftLength
         */
         public static final int DrawerArrowToggle_arrowShaftLength = 5;
         /**
@@ -11903,7 +11903,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:barLength
+          @attr name igreja.igreja:barLength
         */
         public static final int DrawerArrowToggle_barLength = 6;
         /**
@@ -11920,7 +11920,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:color
+          @attr name igreja.igreja:color
         */
         public static final int DrawerArrowToggle_color = 0;
         /**
@@ -11938,7 +11938,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:drawableSize
+          @attr name igreja.igreja:drawableSize
         */
         public static final int DrawerArrowToggle_drawableSize = 2;
         /**
@@ -11956,7 +11956,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:gapBetweenBars
+          @attr name igreja.igreja:gapBetweenBars
         */
         public static final int DrawerArrowToggle_gapBetweenBars = 3;
         /**
@@ -11972,7 +11972,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:spinBars
+          @attr name igreja.igreja:spinBars
         */
         public static final int DrawerArrowToggle_spinBars = 1;
         /**
@@ -11990,7 +11990,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:thickness
+          @attr name igreja.igreja:thickness
         */
         public static final int DrawerArrowToggle_thickness = 7;
         /** Attributes that can be used with a FloatingActionButton.
@@ -11999,19 +11999,19 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #FloatingActionButton_backgroundTint Igreja.Igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
-           <tr><td><code>{@link #FloatingActionButton_backgroundTintMode Igreja.Igreja:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
-           <tr><td><code>{@link #FloatingActionButton_borderWidth Igreja.Igreja:borderWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_elevation Igreja.Igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #FloatingActionButton_fabCustomSize Igreja.Igreja:fabCustomSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_fabSize Igreja.Igreja:fabSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_hideMotionSpec Igreja.Igreja:hideMotionSpec}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_hoveredFocusedTranslationZ Igreja.Igreja:hoveredFocusedTranslationZ}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_maxImageSize Igreja.Igreja:maxImageSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_pressedTranslationZ Igreja.Igreja:pressedTranslationZ}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_rippleColor Igreja.Igreja:rippleColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_showMotionSpec Igreja.Igreja:showMotionSpec}</code></td><td></td></tr>
-           <tr><td><code>{@link #FloatingActionButton_useCompatPadding Igreja.Igreja:useCompatPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_backgroundTint igreja.igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
+           <tr><td><code>{@link #FloatingActionButton_backgroundTintMode igreja.igreja:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
+           <tr><td><code>{@link #FloatingActionButton_borderWidth igreja.igreja:borderWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_elevation igreja.igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
+           <tr><td><code>{@link #FloatingActionButton_fabCustomSize igreja.igreja:fabCustomSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_fabSize igreja.igreja:fabSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_hideMotionSpec igreja.igreja:hideMotionSpec}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_hoveredFocusedTranslationZ igreja.igreja:hoveredFocusedTranslationZ}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_maxImageSize igreja.igreja:maxImageSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_pressedTranslationZ igreja.igreja:pressedTranslationZ}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_rippleColor igreja.igreja:rippleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_showMotionSpec igreja.igreja:showMotionSpec}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_useCompatPadding igreja.igreja:useCompatPadding}</code></td><td></td></tr>
            </table>
            @see #FloatingActionButton_backgroundTint
            @see #FloatingActionButton_backgroundTintMode
@@ -12047,7 +12047,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTint
+          @attr name igreja.igreja:backgroundTint
         */
         public static final int FloatingActionButton_backgroundTint = 1;
         /**
@@ -12075,11 +12075,11 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTintMode
+          @attr name igreja.igreja:backgroundTintMode
         */
         public static final int FloatingActionButton_backgroundTintMode = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#borderWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#borderWidth}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12091,7 +12091,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:borderWidth
+          @attr name igreja.igreja:borderWidth
         */
         public static final int FloatingActionButton_borderWidth = 10;
         /**
@@ -12109,11 +12109,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:elevation
+          @attr name igreja.igreja:elevation
         */
         public static final int FloatingActionButton_elevation = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fabCustomSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fabCustomSize}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12125,11 +12125,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:fabCustomSize
+          @attr name igreja.igreja:fabCustomSize
         */
         public static final int FloatingActionButton_fabCustomSize = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fabSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fabSize}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12143,21 +12143,21 @@ containing a value of this type.
 <tr><td><code>normal</code></td><td>0</td><td></td></tr>
 <tr><td><code>mini</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:fabSize
+          @attr name igreja.igreja:fabSize
         */
         public static final int FloatingActionButton_fabSize = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hideMotionSpec}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hideMotionSpec}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:hideMotionSpec
+          @attr name igreja.igreja:hideMotionSpec
         */
         public static final int FloatingActionButton_hideMotionSpec = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hoveredFocusedTranslationZ}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hoveredFocusedTranslationZ}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12169,11 +12169,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:hoveredFocusedTranslationZ
+          @attr name igreja.igreja:hoveredFocusedTranslationZ
         */
         public static final int FloatingActionButton_hoveredFocusedTranslationZ = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#maxImageSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#maxImageSize}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12185,11 +12185,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:maxImageSize
+          @attr name igreja.igreja:maxImageSize
         */
         public static final int FloatingActionButton_maxImageSize = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#pressedTranslationZ}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#pressedTranslationZ}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12201,11 +12201,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:pressedTranslationZ
+          @attr name igreja.igreja:pressedTranslationZ
         */
         public static final int FloatingActionButton_pressedTranslationZ = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#rippleColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#rippleColor}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12216,21 +12216,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:rippleColor
+          @attr name igreja.igreja:rippleColor
         */
         public static final int FloatingActionButton_rippleColor = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#showMotionSpec}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#showMotionSpec}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:showMotionSpec
+          @attr name igreja.igreja:showMotionSpec
         */
         public static final int FloatingActionButton_showMotionSpec = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#useCompatPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#useCompatPadding}
           attribute's value can be found in the {@link #FloatingActionButton} array.
 
 
@@ -12240,7 +12240,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:useCompatPadding
+          @attr name igreja.igreja:useCompatPadding
         */
         public static final int FloatingActionButton_useCompatPadding = 11;
         /** Attributes that can be used with a FloatingActionButton_Behavior_Layout.
@@ -12249,7 +12249,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #FloatingActionButton_Behavior_Layout_behavior_autoHide Igreja.Igreja:behavior_autoHide}</code></td><td></td></tr>
+           <tr><td><code>{@link #FloatingActionButton_Behavior_Layout_behavior_autoHide igreja.igreja:behavior_autoHide}</code></td><td></td></tr>
            </table>
            @see #FloatingActionButton_Behavior_Layout_behavior_autoHide
          */
@@ -12257,7 +12257,7 @@ containing a value of this type.
             0x7f0101a9
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#behavior_autoHide}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#behavior_autoHide}
           attribute's value can be found in the {@link #FloatingActionButton_Behavior_Layout} array.
 
 
@@ -12267,7 +12267,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:behavior_autoHide
+          @attr name igreja.igreja:behavior_autoHide
         */
         public static final int FloatingActionButton_Behavior_Layout_behavior_autoHide = 0;
         /** Attributes that can be used with a FlowLayout.
@@ -12276,8 +12276,8 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #FlowLayout_itemSpacing Igreja.Igreja:itemSpacing}</code></td><td></td></tr>
-           <tr><td><code>{@link #FlowLayout_lineSpacing Igreja.Igreja:lineSpacing}</code></td><td></td></tr>
+           <tr><td><code>{@link #FlowLayout_itemSpacing igreja.igreja:itemSpacing}</code></td><td></td></tr>
+           <tr><td><code>{@link #FlowLayout_lineSpacing igreja.igreja:lineSpacing}</code></td><td></td></tr>
            </table>
            @see #FlowLayout_itemSpacing
            @see #FlowLayout_lineSpacing
@@ -12286,7 +12286,7 @@ containing a value of this type.
             0x7f0101aa, 0x7f0101ab
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemSpacing}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemSpacing}
           attribute's value can be found in the {@link #FlowLayout} array.
 
 
@@ -12298,11 +12298,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemSpacing
+          @attr name igreja.igreja:itemSpacing
         */
         public static final int FlowLayout_itemSpacing = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#lineSpacing}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#lineSpacing}
           attribute's value can be found in the {@link #FlowLayout} array.
 
 
@@ -12314,7 +12314,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:lineSpacing
+          @attr name igreja.igreja:lineSpacing
         */
         public static final int FlowLayout_lineSpacing = 1;
         /** Attributes that can be used with a FontFamily.
@@ -12323,12 +12323,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #FontFamily_fontProviderAuthority Igreja.Igreja:fontProviderAuthority}</code></td><td> The authority of the Font Provider to be used for the request.</td></tr>
-           <tr><td><code>{@link #FontFamily_fontProviderCerts Igreja.Igreja:fontProviderCerts}</code></td><td> The sets of hashes for the certificates the provider should be signed with.</td></tr>
-           <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy Igreja.Igreja:fontProviderFetchStrategy}</code></td><td> The strategy to be used when fetching font data from a font provider in XML layouts.</td></tr>
-           <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout Igreja.Igreja:fontProviderFetchTimeout}</code></td><td> The length of the timeout during fetching.</td></tr>
-           <tr><td><code>{@link #FontFamily_fontProviderPackage Igreja.Igreja:fontProviderPackage}</code></td><td> The package for the Font Provider to be used for the request.</td></tr>
-           <tr><td><code>{@link #FontFamily_fontProviderQuery Igreja.Igreja:fontProviderQuery}</code></td><td> The query to be sent over to the provider.</td></tr>
+           <tr><td><code>{@link #FontFamily_fontProviderAuthority igreja.igreja:fontProviderAuthority}</code></td><td> The authority of the Font Provider to be used for the request.</td></tr>
+           <tr><td><code>{@link #FontFamily_fontProviderCerts igreja.igreja:fontProviderCerts}</code></td><td> The sets of hashes for the certificates the provider should be signed with.</td></tr>
+           <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy igreja.igreja:fontProviderFetchStrategy}</code></td><td> The strategy to be used when fetching font data from a font provider in XML layouts.</td></tr>
+           <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout igreja.igreja:fontProviderFetchTimeout}</code></td><td> The length of the timeout during fetching.</td></tr>
+           <tr><td><code>{@link #FontFamily_fontProviderPackage igreja.igreja:fontProviderPackage}</code></td><td> The package for the Font Provider to be used for the request.</td></tr>
+           <tr><td><code>{@link #FontFamily_fontProviderQuery igreja.igreja:fontProviderQuery}</code></td><td> The query to be sent over to the provider.</td></tr>
            </table>
            @see #FontFamily_fontProviderAuthority
            @see #FontFamily_fontProviderCerts
@@ -12354,7 +12354,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontProviderAuthority
+          @attr name igreja.igreja:fontProviderAuthority
         */
         public static final int FontFamily_fontProviderAuthority = 0;
         /**
@@ -12370,7 +12370,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontProviderCerts
+          @attr name igreja.igreja:fontProviderCerts
         */
         public static final int FontFamily_fontProviderCerts = 3;
         /**
@@ -12403,7 +12403,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
               fontProviderFetchTimeout will be ignored if async loading is specified. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontProviderFetchStrategy
+          @attr name igreja.igreja:fontProviderFetchStrategy
         */
         public static final int FontFamily_fontProviderFetchStrategy = 4;
         /**
@@ -12428,7 +12428,7 @@ containing a value of this type.
               timeout and wait until a reply is received from the font provider. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontProviderFetchTimeout
+          @attr name igreja.igreja:fontProviderFetchTimeout
         */
         public static final int FontFamily_fontProviderFetchTimeout = 5;
         /**
@@ -12445,7 +12445,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontProviderPackage
+          @attr name igreja.igreja:fontProviderPackage
         */
         public static final int FontFamily_fontProviderPackage = 1;
         /**
@@ -12462,7 +12462,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontProviderQuery
+          @attr name igreja.igreja:fontProviderQuery
         */
         public static final int FontFamily_fontProviderQuery = 2;
         /** Attributes that can be used with a FontFamilyFont.
@@ -12476,11 +12476,11 @@ containing a value of this type.
            <tr><td><code>{@link #FontFamilyFont_android_fontVariationSettings android:fontVariationSettings}</code></td><td></td></tr>
            <tr><td><code>{@link #FontFamilyFont_android_fontWeight android:fontWeight}</code></td><td></td></tr>
            <tr><td><code>{@link #FontFamilyFont_android_ttcIndex android:ttcIndex}</code></td><td></td></tr>
-           <tr><td><code>{@link #FontFamilyFont_font Igreja.Igreja:font}</code></td><td> The reference to the font file to be used.</td></tr>
-           <tr><td><code>{@link #FontFamilyFont_fontStyle Igreja.Igreja:fontStyle}</code></td><td> The style of the given font file.</td></tr>
-           <tr><td><code>{@link #FontFamilyFont_fontVariationSettings Igreja.Igreja:fontVariationSettings}</code></td><td> The variation settings to be applied to the font.</td></tr>
-           <tr><td><code>{@link #FontFamilyFont_fontWeight Igreja.Igreja:fontWeight}</code></td><td> The weight of the given font file.</td></tr>
-           <tr><td><code>{@link #FontFamilyFont_ttcIndex Igreja.Igreja:ttcIndex}</code></td><td> The index of the font in the tcc font file.</td></tr>
+           <tr><td><code>{@link #FontFamilyFont_font igreja.igreja:font}</code></td><td> The reference to the font file to be used.</td></tr>
+           <tr><td><code>{@link #FontFamilyFont_fontStyle igreja.igreja:fontStyle}</code></td><td> The style of the given font file.</td></tr>
+           <tr><td><code>{@link #FontFamilyFont_fontVariationSettings igreja.igreja:fontVariationSettings}</code></td><td> The variation settings to be applied to the font.</td></tr>
+           <tr><td><code>{@link #FontFamilyFont_fontWeight igreja.igreja:fontWeight}</code></td><td> The weight of the given font file.</td></tr>
+           <tr><td><code>{@link #FontFamilyFont_ttcIndex igreja.igreja:ttcIndex}</code></td><td> The index of the font in the tcc font file.</td></tr>
            </table>
            @see #FontFamilyFont_android_font
            @see #FontFamilyFont_android_fontStyle
@@ -12541,7 +12541,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:font
+          @attr name igreja.igreja:font
         */
         public static final int FontFamilyFont_font = 6;
         /**
@@ -12562,7 +12562,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>italic</code></td><td>1</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontStyle
+          @attr name igreja.igreja:fontStyle
         */
         public static final int FontFamilyFont_fontStyle = 5;
         /**
@@ -12581,7 +12581,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontVariationSettings
+          @attr name igreja.igreja:fontVariationSettings
         */
         public static final int FontFamilyFont_fontVariationSettings = 8;
         /**
@@ -12601,7 +12601,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontWeight
+          @attr name igreja.igreja:fontWeight
         */
         public static final int FontFamilyFont_fontWeight = 7;
         /**
@@ -12618,7 +12618,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:ttcIndex
+          @attr name igreja.igreja:ttcIndex
         */
         public static final int FontFamilyFont_ttcIndex = 9;
         /** Attributes that can be used with a ForegroundLinearLayout.
@@ -12629,7 +12629,7 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ForegroundLinearLayout_android_foreground android:foreground}</code></td><td></td></tr>
            <tr><td><code>{@link #ForegroundLinearLayout_android_foregroundGravity android:foregroundGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #ForegroundLinearLayout_foregroundInsidePadding Igreja.Igreja:foregroundInsidePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #ForegroundLinearLayout_foregroundInsidePadding igreja.igreja:foregroundInsidePadding}</code></td><td></td></tr>
            </table>
            @see #ForegroundLinearLayout_android_foreground
            @see #ForegroundLinearLayout_android_foregroundGravity
@@ -12651,7 +12651,7 @@ containing a value of this type.
         */
         public static final int ForegroundLinearLayout_android_foregroundGravity = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#foregroundInsidePadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#foregroundInsidePadding}
           attribute's value can be found in the {@link #ForegroundLinearLayout} array.
 
 
@@ -12661,7 +12661,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:foregroundInsidePadding
+          @attr name igreja.igreja:foregroundInsidePadding
         */
         public static final int ForegroundLinearLayout_foregroundInsidePadding = 2;
         /** Attributes that can be used with a GradientColor.
@@ -12868,11 +12868,11 @@ containing a value of this type.
            <tr><td><code>{@link #LinearLayoutCompat_android_orientation android:orientation}</code></td><td> Should the layout be a column or a row?  Use "horizontal"
              for a row, "vertical" for a column.</td></tr>
            <tr><td><code>{@link #LinearLayoutCompat_android_weightSum android:weightSum}</code></td><td> Defines the maximum weight sum.</td></tr>
-           <tr><td><code>{@link #LinearLayoutCompat_divider Igreja.Igreja:divider}</code></td><td> Drawable to use as a vertical divider between buttons.</td></tr>
-           <tr><td><code>{@link #LinearLayoutCompat_dividerPadding Igreja.Igreja:dividerPadding}</code></td><td> Size of padding on either end of a divider.</td></tr>
-           <tr><td><code>{@link #LinearLayoutCompat_measureWithLargestChild Igreja.Igreja:measureWithLargestChild}</code></td><td> When set to true, all children with a weight will be considered having
+           <tr><td><code>{@link #LinearLayoutCompat_divider igreja.igreja:divider}</code></td><td> Drawable to use as a vertical divider between buttons.</td></tr>
+           <tr><td><code>{@link #LinearLayoutCompat_dividerPadding igreja.igreja:dividerPadding}</code></td><td> Size of padding on either end of a divider.</td></tr>
+           <tr><td><code>{@link #LinearLayoutCompat_measureWithLargestChild igreja.igreja:measureWithLargestChild}</code></td><td> When set to true, all children with a weight will be considered having
              the minimum size of the largest child.</td></tr>
-           <tr><td><code>{@link #LinearLayoutCompat_showDividers Igreja.Igreja:showDividers}</code></td><td> Setting for which dividers to show.</td></tr>
+           <tr><td><code>{@link #LinearLayoutCompat_showDividers igreja.igreja:showDividers}</code></td><td> Setting for which dividers to show.</td></tr>
            </table>
            @see #LinearLayoutCompat_android_baselineAligned
            @see #LinearLayoutCompat_android_baselineAlignedChildIndex
@@ -12950,7 +12950,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:divider
+          @attr name igreja.igreja:divider
         */
         public static final int LinearLayoutCompat_divider = 5;
         /**
@@ -12968,7 +12968,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:dividerPadding
+          @attr name igreja.igreja:dividerPadding
         */
         public static final int LinearLayoutCompat_dividerPadding = 8;
         /**
@@ -12986,7 +12986,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:measureWithLargestChild
+          @attr name igreja.igreja:measureWithLargestChild
         */
         public static final int LinearLayoutCompat_measureWithLargestChild = 6;
         /**
@@ -13007,7 +13007,7 @@ containing a value of this type.
 <tr><td><code>end</code></td><td>4</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:showDividers
+          @attr name igreja.igreja:showDividers
         */
         public static final int LinearLayoutCompat_showDividers = 7;
         /** Attributes that can be used with a LinearLayoutCompat_Layout.
@@ -13092,9 +13092,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #LoadingImageView_circleCrop Igreja.Igreja:circleCrop}</code></td><td></td></tr>
-           <tr><td><code>{@link #LoadingImageView_imageAspectRatio Igreja.Igreja:imageAspectRatio}</code></td><td></td></tr>
-           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust Igreja.Igreja:imageAspectRatioAdjust}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_circleCrop igreja.igreja:circleCrop}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatio igreja.igreja:imageAspectRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust igreja.igreja:imageAspectRatioAdjust}</code></td><td></td></tr>
            </table>
            @see #LoadingImageView_circleCrop
            @see #LoadingImageView_imageAspectRatio
@@ -13104,7 +13104,7 @@ containing a value of this type.
             0x7f010017, 0x7f010018, 0x7f010019
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#circleCrop}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#circleCrop}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -13114,11 +13114,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:circleCrop
+          @attr name igreja.igreja:circleCrop
         */
         public static final int LoadingImageView_circleCrop = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#imageAspectRatio}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#imageAspectRatio}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -13128,11 +13128,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:imageAspectRatio
+          @attr name igreja.igreja:imageAspectRatio
         */
         public static final int LoadingImageView_imageAspectRatio = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#imageAspectRatioAdjust}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#imageAspectRatioAdjust}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -13146,7 +13146,7 @@ containing a value of this type.
 <tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
 <tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:imageAspectRatioAdjust
+          @attr name igreja.igreja:imageAspectRatioAdjust
         */
         public static final int LoadingImageView_imageAspectRatioAdjust = 0;
         /** Attributes that can be used with a MapAttrs.
@@ -13155,29 +13155,29 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_ambientEnabled Igreja.Igreja:ambientEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing Igreja.Igreja:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraMaxZoomPreference Igreja.Igreja:cameraMaxZoomPreference}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraMinZoomPreference Igreja.Igreja:cameraMinZoomPreference}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat Igreja.Igreja:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng Igreja.Igreja:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt Igreja.Igreja:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom Igreja.Igreja:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLatitude Igreja.Igreja:latLngBoundsNorthEastLatitude}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLongitude Igreja.Igreja:latLngBoundsNorthEastLongitude}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLatitude Igreja.Igreja:latLngBoundsSouthWestLatitude}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLongitude Igreja.Igreja:latLngBoundsSouthWestLongitude}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_liteMode Igreja.Igreja:liteMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType Igreja.Igreja:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass Igreja.Igreja:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiMapToolbar Igreja.Igreja:uiMapToolbar}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures Igreja.Igreja:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures Igreja.Igreja:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures Igreja.Igreja:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls Igreja.Igreja:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures Igreja.Igreja:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle Igreja.Igreja:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop Igreja.Igreja:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_ambientEnabled igreja.igreja:ambientEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing igreja.igreja:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraMaxZoomPreference igreja.igreja:cameraMaxZoomPreference}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraMinZoomPreference igreja.igreja:cameraMinZoomPreference}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat igreja.igreja:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng igreja.igreja:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt igreja.igreja:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom igreja.igreja:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLatitude igreja.igreja:latLngBoundsNorthEastLatitude}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_latLngBoundsNorthEastLongitude igreja.igreja:latLngBoundsNorthEastLongitude}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLatitude igreja.igreja:latLngBoundsSouthWestLatitude}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_latLngBoundsSouthWestLongitude igreja.igreja:latLngBoundsSouthWestLongitude}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_liteMode igreja.igreja:liteMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType igreja.igreja:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass igreja.igreja:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiMapToolbar igreja.igreja:uiMapToolbar}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures igreja.igreja:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures igreja.igreja:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures igreja.igreja:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls igreja.igreja:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures igreja.igreja:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle igreja.igreja:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop igreja.igreja:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_ambientEnabled
            @see #MapAttrs_cameraBearing
@@ -13212,7 +13212,7 @@ containing a value of this type.
             0x7f010014, 0x7f010015, 0x7f010016
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#ambientEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#ambientEnabled}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13222,11 +13222,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:ambientEnabled
+          @attr name igreja.igreja:ambientEnabled
         */
         public static final int MapAttrs_ambientEnabled = 16;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13236,11 +13236,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraBearing
+          @attr name igreja.igreja:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraMaxZoomPreference}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraMaxZoomPreference}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13250,11 +13250,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraMaxZoomPreference
+          @attr name igreja.igreja:cameraMaxZoomPreference
         */
         public static final int MapAttrs_cameraMaxZoomPreference = 18;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraMinZoomPreference}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraMinZoomPreference}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13264,11 +13264,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraMinZoomPreference
+          @attr name igreja.igreja:cameraMinZoomPreference
         */
         public static final int MapAttrs_cameraMinZoomPreference = 17;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13278,11 +13278,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraTargetLat
+          @attr name igreja.igreja:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13292,11 +13292,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraTargetLng
+          @attr name igreja.igreja:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13306,11 +13306,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraTilt
+          @attr name igreja.igreja:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13320,11 +13320,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cameraZoom
+          @attr name igreja.igreja:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#latLngBoundsNorthEastLatitude}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#latLngBoundsNorthEastLatitude}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13334,11 +13334,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:latLngBoundsNorthEastLatitude
+          @attr name igreja.igreja:latLngBoundsNorthEastLatitude
         */
         public static final int MapAttrs_latLngBoundsNorthEastLatitude = 21;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#latLngBoundsNorthEastLongitude}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#latLngBoundsNorthEastLongitude}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13348,11 +13348,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:latLngBoundsNorthEastLongitude
+          @attr name igreja.igreja:latLngBoundsNorthEastLongitude
         */
         public static final int MapAttrs_latLngBoundsNorthEastLongitude = 22;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#latLngBoundsSouthWestLatitude}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#latLngBoundsSouthWestLatitude}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13362,11 +13362,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:latLngBoundsSouthWestLatitude
+          @attr name igreja.igreja:latLngBoundsSouthWestLatitude
         */
         public static final int MapAttrs_latLngBoundsSouthWestLatitude = 19;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#latLngBoundsSouthWestLongitude}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#latLngBoundsSouthWestLongitude}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13376,11 +13376,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:latLngBoundsSouthWestLongitude
+          @attr name igreja.igreja:latLngBoundsSouthWestLongitude
         */
         public static final int MapAttrs_latLngBoundsSouthWestLongitude = 20;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#liteMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#liteMode}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13390,11 +13390,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:liteMode
+          @attr name igreja.igreja:liteMode
         */
         public static final int MapAttrs_liteMode = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#mapType}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13410,11 +13410,11 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:mapType
+          @attr name igreja.igreja:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13424,11 +13424,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiCompass
+          @attr name igreja.igreja:uiCompass
         */
         public static final int MapAttrs_uiCompass = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiMapToolbar}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiMapToolbar}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13438,11 +13438,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiMapToolbar
+          @attr name igreja.igreja:uiMapToolbar
         */
         public static final int MapAttrs_uiMapToolbar = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13452,11 +13452,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiRotateGestures
+          @attr name igreja.igreja:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13466,11 +13466,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiScrollGestures
+          @attr name igreja.igreja:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13480,11 +13480,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiTiltGestures
+          @attr name igreja.igreja:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13494,11 +13494,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiZoomControls
+          @attr name igreja.igreja:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13508,11 +13508,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:uiZoomGestures
+          @attr name igreja.igreja:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13522,11 +13522,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:useViewLifecycle
+          @attr name igreja.igreja:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 13;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -13536,7 +13536,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:zOrderOnTop
+          @attr name igreja.igreja:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 14;
         /** Attributes that can be used with a MaterialButton.
@@ -13549,18 +13549,18 @@ containing a value of this type.
            <tr><td><code>{@link #MaterialButton_android_insetLeft android:insetLeft}</code></td><td></td></tr>
            <tr><td><code>{@link #MaterialButton_android_insetRight android:insetRight}</code></td><td></td></tr>
            <tr><td><code>{@link #MaterialButton_android_insetTop android:insetTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_backgroundTint Igreja.Igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
-           <tr><td><code>{@link #MaterialButton_backgroundTintMode Igreja.Igreja:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
-           <tr><td><code>{@link #MaterialButton_cornerRadius Igreja.Igreja:cornerRadius}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_icon Igreja.Igreja:icon}</code></td><td> Specifies the drawable used for the application icon.</td></tr>
-           <tr><td><code>{@link #MaterialButton_iconGravity Igreja.Igreja:iconGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_iconPadding Igreja.Igreja:iconPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_iconSize Igreja.Igreja:iconSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_iconTint Igreja.Igreja:iconTint}</code></td><td> Tint to apply to the icon.</td></tr>
-           <tr><td><code>{@link #MaterialButton_iconTintMode Igreja.Igreja:iconTintMode}</code></td><td> Blending mode used to apply the icon tint.</td></tr>
-           <tr><td><code>{@link #MaterialButton_rippleColor Igreja.Igreja:rippleColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_strokeColor Igreja.Igreja:strokeColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialButton_strokeWidth Igreja.Igreja:strokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_backgroundTint igreja.igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
+           <tr><td><code>{@link #MaterialButton_backgroundTintMode igreja.igreja:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
+           <tr><td><code>{@link #MaterialButton_cornerRadius igreja.igreja:cornerRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_icon igreja.igreja:icon}</code></td><td> Specifies the drawable used for the application icon.</td></tr>
+           <tr><td><code>{@link #MaterialButton_iconGravity igreja.igreja:iconGravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_iconPadding igreja.igreja:iconPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_iconSize igreja.igreja:iconSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_iconTint igreja.igreja:iconTint}</code></td><td> Tint to apply to the icon.</td></tr>
+           <tr><td><code>{@link #MaterialButton_iconTintMode igreja.igreja:iconTintMode}</code></td><td> Blending mode used to apply the icon tint.</td></tr>
+           <tr><td><code>{@link #MaterialButton_rippleColor igreja.igreja:rippleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_strokeColor igreja.igreja:strokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialButton_strokeWidth igreja.igreja:strokeWidth}</code></td><td></td></tr>
            </table>
            @see #MaterialButton_android_insetBottom
            @see #MaterialButton_android_insetLeft
@@ -13623,7 +13623,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTint
+          @attr name igreja.igreja:backgroundTint
         */
         public static final int MaterialButton_backgroundTint = 7;
         /**
@@ -13651,11 +13651,11 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTintMode
+          @attr name igreja.igreja:backgroundTintMode
         */
         public static final int MaterialButton_backgroundTintMode = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#cornerRadius}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#cornerRadius}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13667,7 +13667,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:cornerRadius
+          @attr name igreja.igreja:cornerRadius
         */
         public static final int MaterialButton_cornerRadius = 15;
         /**
@@ -13681,11 +13681,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:icon
+          @attr name igreja.igreja:icon
         */
         public static final int MaterialButton_icon = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#iconGravity}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#iconGravity}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13698,11 +13698,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>start</code></td><td>0x1</td><td></td></tr>
 <tr><td><code>textStart</code></td><td>0x2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:iconGravity
+          @attr name igreja.igreja:iconGravity
         */
         public static final int MaterialButton_iconGravity = 14;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#iconPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#iconPadding}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13714,11 +13714,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:iconPadding
+          @attr name igreja.igreja:iconPadding
         */
         public static final int MaterialButton_iconPadding = 13;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#iconSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#iconSize}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13730,7 +13730,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:iconSize
+          @attr name igreja.igreja:iconSize
         */
         public static final int MaterialButton_iconSize = 12;
         /**
@@ -13754,7 +13754,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:iconTint
+          @attr name igreja.igreja:iconTint
         */
         public static final int MaterialButton_iconTint = 5;
         /**
@@ -13782,11 +13782,11 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:iconTintMode
+          @attr name igreja.igreja:iconTintMode
         */
         public static final int MaterialButton_iconTintMode = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#rippleColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#rippleColor}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13797,11 +13797,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:rippleColor
+          @attr name igreja.igreja:rippleColor
         */
         public static final int MaterialButton_rippleColor = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#strokeColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#strokeColor}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13812,11 +13812,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:strokeColor
+          @attr name igreja.igreja:strokeColor
         */
         public static final int MaterialButton_strokeColor = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#strokeWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#strokeWidth}
           attribute's value can be found in the {@link #MaterialButton} array.
 
 
@@ -13828,7 +13828,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:strokeWidth
+          @attr name igreja.igreja:strokeWidth
         */
         public static final int MaterialButton_strokeWidth = 11;
         /** Attributes that can be used with a MaterialCardView.
@@ -13837,8 +13837,8 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MaterialCardView_strokeColor Igreja.Igreja:strokeColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialCardView_strokeWidth Igreja.Igreja:strokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialCardView_strokeColor igreja.igreja:strokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialCardView_strokeWidth igreja.igreja:strokeWidth}</code></td><td></td></tr>
            </table>
            @see #MaterialCardView_strokeColor
            @see #MaterialCardView_strokeWidth
@@ -13847,7 +13847,7 @@ containing a value of this type.
             0x7f01014b, 0x7f01014c
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#strokeColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#strokeColor}
           attribute's value can be found in the {@link #MaterialCardView} array.
 
 
@@ -13858,11 +13858,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:strokeColor
+          @attr name igreja.igreja:strokeColor
         */
         public static final int MaterialCardView_strokeColor = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#strokeWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#strokeWidth}
           attribute's value can be found in the {@link #MaterialCardView} array.
 
 
@@ -13874,7 +13874,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:strokeWidth
+          @attr name igreja.igreja:strokeWidth
         */
         public static final int MaterialCardView_strokeWidth = 1;
         /** Attributes that can be used with a MaterialComponentsTheme.
@@ -13883,38 +13883,38 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_bottomSheetDialogTheme Igreja.Igreja:bottomSheetDialogTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_bottomSheetStyle Igreja.Igreja:bottomSheetStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_chipGroupStyle Igreja.Igreja:chipGroupStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_chipStandaloneStyle Igreja.Igreja:chipStandaloneStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_chipStyle Igreja.Igreja:chipStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_colorAccent Igreja.Igreja:colorAccent}</code></td><td> Bright complement to the primary branding color.</td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_colorBackgroundFloating Igreja.Igreja:colorBackgroundFloating}</code></td><td> Default color of background imagery for floating components, ex.</td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_colorPrimary Igreja.Igreja:colorPrimary}</code></td><td> The primary branding color for the app.</td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_colorPrimaryDark Igreja.Igreja:colorPrimaryDark}</code></td><td> Dark variant of the primary branding color.</td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_colorSecondary Igreja.Igreja:colorSecondary}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_editTextStyle Igreja.Igreja:editTextStyle}</code></td><td> Default EditText style.</td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_floatingActionButtonStyle Igreja.Igreja:floatingActionButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_materialButtonStyle Igreja.Igreja:materialButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_materialCardViewStyle Igreja.Igreja:materialCardViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_navigationViewStyle Igreja.Igreja:navigationViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_scrimBackground Igreja.Igreja:scrimBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_snackbarButtonStyle Igreja.Igreja:snackbarButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_tabStyle Igreja.Igreja:tabStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceBody1 Igreja.Igreja:textAppearanceBody1}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceBody2 Igreja.Igreja:textAppearanceBody2}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceButton Igreja.Igreja:textAppearanceButton}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceCaption Igreja.Igreja:textAppearanceCaption}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline1 Igreja.Igreja:textAppearanceHeadline1}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline2 Igreja.Igreja:textAppearanceHeadline2}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline3 Igreja.Igreja:textAppearanceHeadline3}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline4 Igreja.Igreja:textAppearanceHeadline4}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline5 Igreja.Igreja:textAppearanceHeadline5}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline6 Igreja.Igreja:textAppearanceHeadline6}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceOverline Igreja.Igreja:textAppearanceOverline}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceSubtitle1 Igreja.Igreja:textAppearanceSubtitle1}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceSubtitle2 Igreja.Igreja:textAppearanceSubtitle2}</code></td><td></td></tr>
-           <tr><td><code>{@link #MaterialComponentsTheme_textInputStyle Igreja.Igreja:textInputStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_bottomSheetDialogTheme igreja.igreja:bottomSheetDialogTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_bottomSheetStyle igreja.igreja:bottomSheetStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_chipGroupStyle igreja.igreja:chipGroupStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_chipStandaloneStyle igreja.igreja:chipStandaloneStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_chipStyle igreja.igreja:chipStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_colorAccent igreja.igreja:colorAccent}</code></td><td> Bright complement to the primary branding color.</td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_colorBackgroundFloating igreja.igreja:colorBackgroundFloating}</code></td><td> Default color of background imagery for floating components, ex.</td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_colorPrimary igreja.igreja:colorPrimary}</code></td><td> The primary branding color for the app.</td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_colorPrimaryDark igreja.igreja:colorPrimaryDark}</code></td><td> Dark variant of the primary branding color.</td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_colorSecondary igreja.igreja:colorSecondary}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_editTextStyle igreja.igreja:editTextStyle}</code></td><td> Default EditText style.</td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_floatingActionButtonStyle igreja.igreja:floatingActionButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_materialButtonStyle igreja.igreja:materialButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_materialCardViewStyle igreja.igreja:materialCardViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_navigationViewStyle igreja.igreja:navigationViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_scrimBackground igreja.igreja:scrimBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_snackbarButtonStyle igreja.igreja:snackbarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_tabStyle igreja.igreja:tabStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceBody1 igreja.igreja:textAppearanceBody1}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceBody2 igreja.igreja:textAppearanceBody2}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceButton igreja.igreja:textAppearanceButton}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceCaption igreja.igreja:textAppearanceCaption}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline1 igreja.igreja:textAppearanceHeadline1}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline2 igreja.igreja:textAppearanceHeadline2}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline3 igreja.igreja:textAppearanceHeadline3}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline4 igreja.igreja:textAppearanceHeadline4}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline5 igreja.igreja:textAppearanceHeadline5}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceHeadline6 igreja.igreja:textAppearanceHeadline6}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceOverline igreja.igreja:textAppearanceOverline}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceSubtitle1 igreja.igreja:textAppearanceSubtitle1}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textAppearanceSubtitle2 igreja.igreja:textAppearanceSubtitle2}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialComponentsTheme_textInputStyle igreja.igreja:textInputStyle}</code></td><td></td></tr>
            </table>
            @see #MaterialComponentsTheme_bottomSheetDialogTheme
            @see #MaterialComponentsTheme_bottomSheetStyle
@@ -13960,53 +13960,53 @@ containing a value of this type.
             0x7f010159, 0x7f01015a, 0x7f01015b, 0x7f0101bc
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#bottomSheetDialogTheme}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#bottomSheetDialogTheme}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:bottomSheetDialogTheme
+          @attr name igreja.igreja:bottomSheetDialogTheme
         */
         public static final int MaterialComponentsTheme_bottomSheetDialogTheme = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#bottomSheetStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#bottomSheetStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:bottomSheetStyle
+          @attr name igreja.igreja:bottomSheetStyle
         */
         public static final int MaterialComponentsTheme_bottomSheetStyle = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipGroupStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipGroupStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:chipGroupStyle
+          @attr name igreja.igreja:chipGroupStyle
         */
         public static final int MaterialComponentsTheme_chipGroupStyle = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipStandaloneStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipStandaloneStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:chipStandaloneStyle
+          @attr name igreja.igreja:chipStandaloneStyle
         */
         public static final int MaterialComponentsTheme_chipStandaloneStyle = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#chipStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#chipStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:chipStyle
+          @attr name igreja.igreja:chipStyle
         */
         public static final int MaterialComponentsTheme_chipStyle = 9;
         /**
@@ -14024,7 +14024,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorAccent
+          @attr name igreja.igreja:colorAccent
         */
         public static final int MaterialComponentsTheme_colorAccent = 2;
         /**
@@ -14041,7 +14041,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorBackgroundFloating
+          @attr name igreja.igreja:colorBackgroundFloating
         */
         public static final int MaterialComponentsTheme_colorBackgroundFloating = 3;
         /**
@@ -14059,7 +14059,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorPrimary
+          @attr name igreja.igreja:colorPrimary
         */
         public static final int MaterialComponentsTheme_colorPrimary = 0;
         /**
@@ -14077,11 +14077,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:colorPrimaryDark
+          @attr name igreja.igreja:colorPrimaryDark
         */
         public static final int MaterialComponentsTheme_colorPrimaryDark = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#colorSecondary}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#colorSecondary}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
@@ -14092,7 +14092,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:colorSecondary
+          @attr name igreja.igreja:colorSecondary
         */
         public static final int MaterialComponentsTheme_colorSecondary = 10;
         /**
@@ -14104,11 +14104,11 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:editTextStyle
+          @attr name igreja.igreja:editTextStyle
         */
         public static final int MaterialComponentsTheme_editTextStyle = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#floatingActionButtonStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#floatingActionButtonStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
@@ -14126,41 +14126,41 @@ in (inches), mm (millimeters).
 <p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
 The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
 some parent container.
-          @attr name Igreja.Igreja:floatingActionButtonStyle
+          @attr name igreja.igreja:floatingActionButtonStyle
         */
         public static final int MaterialComponentsTheme_floatingActionButtonStyle = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#materialButtonStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#materialButtonStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:materialButtonStyle
+          @attr name igreja.igreja:materialButtonStyle
         */
         public static final int MaterialComponentsTheme_materialButtonStyle = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#materialCardViewStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#materialCardViewStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:materialCardViewStyle
+          @attr name igreja.igreja:materialCardViewStyle
         */
         public static final int MaterialComponentsTheme_materialCardViewStyle = 13;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#navigationViewStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#navigationViewStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:navigationViewStyle
+          @attr name igreja.igreja:navigationViewStyle
         */
         public static final int MaterialComponentsTheme_navigationViewStyle = 14;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#scrimBackground}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#scrimBackground}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
@@ -14168,167 +14168,167 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name Igreja.Igreja:scrimBackground
+          @attr name igreja.igreja:scrimBackground
         */
         public static final int MaterialComponentsTheme_scrimBackground = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#snackbarButtonStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#snackbarButtonStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:snackbarButtonStyle
+          @attr name igreja.igreja:snackbarButtonStyle
         */
         public static final int MaterialComponentsTheme_snackbarButtonStyle = 31;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:tabStyle
+          @attr name igreja.igreja:tabStyle
         */
         public static final int MaterialComponentsTheme_tabStyle = 16;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceBody1}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceBody1}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceBody1
+          @attr name igreja.igreja:textAppearanceBody1
         */
         public static final int MaterialComponentsTheme_textAppearanceBody1 = 17;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceBody2}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceBody2}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceBody2
+          @attr name igreja.igreja:textAppearanceBody2
         */
         public static final int MaterialComponentsTheme_textAppearanceBody2 = 18;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceButton}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceButton}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceButton
+          @attr name igreja.igreja:textAppearanceButton
         */
         public static final int MaterialComponentsTheme_textAppearanceButton = 19;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceCaption}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceCaption}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceCaption
+          @attr name igreja.igreja:textAppearanceCaption
         */
         public static final int MaterialComponentsTheme_textAppearanceCaption = 20;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceHeadline1}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceHeadline1}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceHeadline1
+          @attr name igreja.igreja:textAppearanceHeadline1
         */
         public static final int MaterialComponentsTheme_textAppearanceHeadline1 = 21;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceHeadline2}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceHeadline2}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceHeadline2
+          @attr name igreja.igreja:textAppearanceHeadline2
         */
         public static final int MaterialComponentsTheme_textAppearanceHeadline2 = 22;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceHeadline3}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceHeadline3}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceHeadline3
+          @attr name igreja.igreja:textAppearanceHeadline3
         */
         public static final int MaterialComponentsTheme_textAppearanceHeadline3 = 23;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceHeadline4}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceHeadline4}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceHeadline4
+          @attr name igreja.igreja:textAppearanceHeadline4
         */
         public static final int MaterialComponentsTheme_textAppearanceHeadline4 = 24;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceHeadline5}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceHeadline5}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceHeadline5
+          @attr name igreja.igreja:textAppearanceHeadline5
         */
         public static final int MaterialComponentsTheme_textAppearanceHeadline5 = 25;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceHeadline6}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceHeadline6}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceHeadline6
+          @attr name igreja.igreja:textAppearanceHeadline6
         */
         public static final int MaterialComponentsTheme_textAppearanceHeadline6 = 26;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceOverline}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceOverline}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceOverline
+          @attr name igreja.igreja:textAppearanceOverline
         */
         public static final int MaterialComponentsTheme_textAppearanceOverline = 27;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceSubtitle1}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceSubtitle1}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceSubtitle1
+          @attr name igreja.igreja:textAppearanceSubtitle1
         */
         public static final int MaterialComponentsTheme_textAppearanceSubtitle1 = 28;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textAppearanceSubtitle2}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textAppearanceSubtitle2}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textAppearanceSubtitle2
+          @attr name igreja.igreja:textAppearanceSubtitle2
         */
         public static final int MaterialComponentsTheme_textAppearanceSubtitle2 = 29;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#textInputStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#textInputStyle}
           attribute's value can be found in the {@link #MaterialComponentsTheme} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:textInputStyle
+          @attr name igreja.igreja:textInputStyle
         */
         public static final int MaterialComponentsTheme_textInputStyle = 30;
         /** Attributes that can be used with a MediaRouteButton.
@@ -14339,9 +14339,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #MediaRouteButton_android_minHeight android:minHeight}</code></td><td></td></tr>
            <tr><td><code>{@link #MediaRouteButton_android_minWidth android:minWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #MediaRouteButton_externalRouteEnabledDrawable Igreja.Igreja:externalRouteEnabledDrawable}</code></td><td> This drawable is a state list where the "checked" state
+           <tr><td><code>{@link #MediaRouteButton_externalRouteEnabledDrawable igreja.igreja:externalRouteEnabledDrawable}</code></td><td> This drawable is a state list where the "checked" state
              indicates active media routing.</td></tr>
-           <tr><td><code>{@link #MediaRouteButton_mediaRouteButtonTint Igreja.Igreja:mediaRouteButtonTint}</code></td><td> Tint to apply to the media route button </td></tr>
+           <tr><td><code>{@link #MediaRouteButton_mediaRouteButtonTint igreja.igreja:mediaRouteButtonTint}</code></td><td> Tint to apply to the media route button </td></tr>
            </table>
            @see #MediaRouteButton_android_minHeight
            @see #MediaRouteButton_android_minWidth
@@ -14375,7 +14375,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:externalRouteEnabledDrawable
+          @attr name igreja.igreja:externalRouteEnabledDrawable
         */
         public static final int MediaRouteButton_externalRouteEnabledDrawable = 2;
         /**
@@ -14392,7 +14392,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:mediaRouteButtonTint
+          @attr name igreja.igreja:mediaRouteButtonTint
         */
         public static final int MediaRouteButton_mediaRouteButtonTint = 3;
         /** Attributes that can be used with a MenuGroup.
@@ -14481,12 +14481,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MenuItem_actionLayout Igreja.Igreja:actionLayout}</code></td><td> An optional layout to be used as an action view.</td></tr>
-           <tr><td><code>{@link #MenuItem_actionProviderClass Igreja.Igreja:actionProviderClass}</code></td><td> The name of an optional ActionProvider class to instantiate an action view
+           <tr><td><code>{@link #MenuItem_actionLayout igreja.igreja:actionLayout}</code></td><td> An optional layout to be used as an action view.</td></tr>
+           <tr><td><code>{@link #MenuItem_actionProviderClass igreja.igreja:actionProviderClass}</code></td><td> The name of an optional ActionProvider class to instantiate an action view
              and perform operations such as default action for that menu item.</td></tr>
-           <tr><td><code>{@link #MenuItem_actionViewClass Igreja.Igreja:actionViewClass}</code></td><td> The name of an optional View class to instantiate and use as an
+           <tr><td><code>{@link #MenuItem_actionViewClass igreja.igreja:actionViewClass}</code></td><td> The name of an optional View class to instantiate and use as an
              action view.</td></tr>
-           <tr><td><code>{@link #MenuItem_alphabeticModifiers Igreja.Igreja:alphabeticModifiers}</code></td><td> The alphabetic modifier key.</td></tr>
+           <tr><td><code>{@link #MenuItem_alphabeticModifiers igreja.igreja:alphabeticModifiers}</code></td><td> The alphabetic modifier key.</td></tr>
            <tr><td><code>{@link #MenuItem_android_alphabeticShortcut android:alphabeticShortcut}</code></td><td> The alphabetic shortcut key.</td></tr>
            <tr><td><code>{@link #MenuItem_android_checkable android:checkable}</code></td><td> Whether the item is capable of displaying a check mark.</td></tr>
            <tr><td><code>{@link #MenuItem_android_checked android:checked}</code></td><td> Whether the item is checked.</td></tr>
@@ -14501,12 +14501,12 @@ containing a value of this type.
            <tr><td><code>{@link #MenuItem_android_title android:title}</code></td><td> The title associated with the item.</td></tr>
            <tr><td><code>{@link #MenuItem_android_titleCondensed android:titleCondensed}</code></td><td> The condensed title associated with the item.</td></tr>
            <tr><td><code>{@link #MenuItem_android_visible android:visible}</code></td><td> Whether the item is shown/visible.</td></tr>
-           <tr><td><code>{@link #MenuItem_contentDescription Igreja.Igreja:contentDescription}</code></td><td> The content description associated with the item.</td></tr>
-           <tr><td><code>{@link #MenuItem_iconTint Igreja.Igreja:iconTint}</code></td><td> Tint to apply to the icon.</td></tr>
-           <tr><td><code>{@link #MenuItem_iconTintMode Igreja.Igreja:iconTintMode}</code></td><td> Blending mode used to apply the icon tint.</td></tr>
-           <tr><td><code>{@link #MenuItem_numericModifiers Igreja.Igreja:numericModifiers}</code></td><td> The numeric modifier key.</td></tr>
-           <tr><td><code>{@link #MenuItem_showAsAction Igreja.Igreja:showAsAction}</code></td><td> How this item should display in the Action Bar, if present.</td></tr>
-           <tr><td><code>{@link #MenuItem_tooltipText Igreja.Igreja:tooltipText}</code></td><td> The tooltip text associated with the item.</td></tr>
+           <tr><td><code>{@link #MenuItem_contentDescription igreja.igreja:contentDescription}</code></td><td> The content description associated with the item.</td></tr>
+           <tr><td><code>{@link #MenuItem_iconTint igreja.igreja:iconTint}</code></td><td> Tint to apply to the icon.</td></tr>
+           <tr><td><code>{@link #MenuItem_iconTintMode igreja.igreja:iconTintMode}</code></td><td> Blending mode used to apply the icon tint.</td></tr>
+           <tr><td><code>{@link #MenuItem_numericModifiers igreja.igreja:numericModifiers}</code></td><td> The numeric modifier key.</td></tr>
+           <tr><td><code>{@link #MenuItem_showAsAction igreja.igreja:showAsAction}</code></td><td> How this item should display in the Action Bar, if present.</td></tr>
+           <tr><td><code>{@link #MenuItem_tooltipText igreja.igreja:tooltipText}</code></td><td> The tooltip text associated with the item.</td></tr>
            </table>
            @see #MenuItem_actionLayout
            @see #MenuItem_actionProviderClass
@@ -14551,7 +14551,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionLayout
+          @attr name igreja.igreja:actionLayout
         */
         public static final int MenuItem_actionLayout = 16;
         /**
@@ -14570,7 +14570,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionProviderClass
+          @attr name igreja.igreja:actionProviderClass
         */
         public static final int MenuItem_actionProviderClass = 18;
         /**
@@ -14588,7 +14588,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:actionViewClass
+          @attr name igreja.igreja:actionViewClass
         */
         public static final int MenuItem_actionViewClass = 17;
         /**
@@ -14612,7 +14612,7 @@ containing a value of this type.
 <tr><td><code>FUNCTION</code></td><td>0x8</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:alphabeticModifiers
+          @attr name igreja.igreja:alphabeticModifiers
         */
         public static final int MenuItem_alphabeticModifiers = 13;
         /**
@@ -14753,7 +14753,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentDescription
+          @attr name igreja.igreja:contentDescription
         */
         public static final int MenuItem_contentDescription = 19;
         /**
@@ -14777,7 +14777,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:iconTint
+          @attr name igreja.igreja:iconTint
         */
         public static final int MenuItem_iconTint = 21;
         /**
@@ -14805,7 +14805,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:iconTintMode
+          @attr name igreja.igreja:iconTintMode
         */
         public static final int MenuItem_iconTintMode = 22;
         /**
@@ -14829,7 +14829,7 @@ containing a value of this type.
 <tr><td><code>FUNCTION</code></td><td>0x8</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:numericModifiers
+          @attr name igreja.igreja:numericModifiers
         */
         public static final int MenuItem_numericModifiers = 14;
         /**
@@ -14860,7 +14860,7 @@ containing a value of this type.
                  larger segment of its container. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:showAsAction
+          @attr name igreja.igreja:showAsAction
         */
         public static final int MenuItem_showAsAction = 15;
         /**
@@ -14876,7 +14876,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:tooltipText
+          @attr name igreja.igreja:tooltipText
         */
         public static final int MenuItem_tooltipText = 20;
         /** Attributes that can be used with a MenuView.
@@ -14892,8 +14892,8 @@ containing a value of this type.
            <tr><td><code>{@link #MenuView_android_itemTextAppearance android:itemTextAppearance}</code></td><td> Default appearance of menu item text.</td></tr>
            <tr><td><code>{@link #MenuView_android_verticalDivider android:verticalDivider}</code></td><td> Default vertical divider between menu items.</td></tr>
            <tr><td><code>{@link #MenuView_android_windowAnimationStyle android:windowAnimationStyle}</code></td><td> Default animations for the menu.</td></tr>
-           <tr><td><code>{@link #MenuView_preserveIconSpacing Igreja.Igreja:preserveIconSpacing}</code></td><td> Whether space should be reserved in layout when an icon is missing.</td></tr>
-           <tr><td><code>{@link #MenuView_subMenuArrow Igreja.Igreja:subMenuArrow}</code></td><td> Drawable for the arrow icon indicating a particular item is a submenu.</td></tr>
+           <tr><td><code>{@link #MenuView_preserveIconSpacing igreja.igreja:preserveIconSpacing}</code></td><td> Whether space should be reserved in layout when an icon is missing.</td></tr>
+           <tr><td><code>{@link #MenuView_subMenuArrow igreja.igreja:subMenuArrow}</code></td><td> Drawable for the arrow icon indicating a particular item is a submenu.</td></tr>
            </table>
            @see #MenuView_android_headerBackground
            @see #MenuView_android_horizontalDivider
@@ -14986,7 +14986,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:preserveIconSpacing
+          @attr name igreja.igreja:preserveIconSpacing
         */
         public static final int MenuView_preserveIconSpacing = 7;
         /**
@@ -14998,7 +14998,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:subMenuArrow
+          @attr name igreja.igreja:subMenuArrow
         */
         public static final int MenuView_subMenuArrow = 8;
         /** Attributes that can be used with a NavigationView.
@@ -15010,15 +15010,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><td><code>{@link #NavigationView_android_background android:background}</code></td><td></td></tr>
            <tr><td><code>{@link #NavigationView_android_fitsSystemWindows android:fitsSystemWindows}</code></td><td></td></tr>
            <tr><td><code>{@link #NavigationView_android_maxWidth android:maxWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_elevation Igreja.Igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #NavigationView_headerLayout Igreja.Igreja:headerLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemBackground Igreja.Igreja:itemBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemHorizontalPadding Igreja.Igreja:itemHorizontalPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemIconPadding Igreja.Igreja:itemIconPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemIconTint Igreja.Igreja:itemIconTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemTextAppearance Igreja.Igreja:itemTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemTextColor Igreja.Igreja:itemTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_menu Igreja.Igreja:menu}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_elevation igreja.igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
+           <tr><td><code>{@link #NavigationView_headerLayout igreja.igreja:headerLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_itemBackground igreja.igreja:itemBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_itemHorizontalPadding igreja.igreja:itemHorizontalPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_itemIconPadding igreja.igreja:itemIconPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_itemIconTint igreja.igreja:itemIconTint}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_itemTextAppearance igreja.igreja:itemTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_itemTextColor igreja.igreja:itemTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #NavigationView_menu igreja.igreja:menu}</code></td><td></td></tr>
            </table>
            @see #NavigationView_android_background
            @see #NavigationView_android_fitsSystemWindows
@@ -15071,31 +15071,31 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:elevation
+          @attr name igreja.igreja:elevation
         */
         public static final int NavigationView_elevation = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#headerLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#headerLayout}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:headerLayout
+          @attr name igreja.igreja:headerLayout
         */
         public static final int NavigationView_headerLayout = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemBackground}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemBackground}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:itemBackground
+          @attr name igreja.igreja:itemBackground
         */
         public static final int NavigationView_itemBackground = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemHorizontalPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemHorizontalPadding}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
@@ -15107,11 +15107,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemHorizontalPadding
+          @attr name igreja.igreja:itemHorizontalPadding
         */
         public static final int NavigationView_itemHorizontalPadding = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemIconPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemIconPadding}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
@@ -15123,11 +15123,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemIconPadding
+          @attr name igreja.igreja:itemIconPadding
         */
         public static final int NavigationView_itemIconPadding = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemIconTint}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemIconTint}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
@@ -15138,21 +15138,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemIconTint
+          @attr name igreja.igreja:itemIconTint
         */
         public static final int NavigationView_itemIconTint = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemTextAppearance}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:itemTextAppearance
+          @attr name igreja.igreja:itemTextAppearance
         */
         public static final int NavigationView_itemTextAppearance = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#itemTextColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#itemTextColor}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
@@ -15163,17 +15163,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:itemTextColor
+          @attr name igreja.igreja:itemTextColor
         */
         public static final int NavigationView_itemTextColor = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#menu}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#menu}
           attribute's value can be found in the {@link #NavigationView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:menu
+          @attr name igreja.igreja:menu
         */
         public static final int NavigationView_menu = 4;
         /** Attributes that can be used with a PopupWindow.
@@ -15184,7 +15184,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #PopupWindow_android_popupAnimationStyle android:popupAnimationStyle}</code></td><td></td></tr>
            <tr><td><code>{@link #PopupWindow_android_popupBackground android:popupBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #PopupWindow_overlapAnchor Igreja.Igreja:overlapAnchor}</code></td><td> Whether the popup window should overlap its anchor view.</td></tr>
+           <tr><td><code>{@link #PopupWindow_overlapAnchor igreja.igreja:overlapAnchor}</code></td><td> Whether the popup window should overlap its anchor view.</td></tr>
            </table>
            @see #PopupWindow_android_popupAnimationStyle
            @see #PopupWindow_android_popupBackground
@@ -15218,7 +15218,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:overlapAnchor
+          @attr name igreja.igreja:overlapAnchor
         */
         public static final int PopupWindow_overlapAnchor = 2;
         /** Attributes that can be used with a PopupWindowBackgroundState.
@@ -15227,7 +15227,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #PopupWindowBackgroundState_state_above_anchor Igreja.Igreja:state_above_anchor}</code></td><td> State identifier indicating the popup will be above the anchor.</td></tr>
+           <tr><td><code>{@link #PopupWindowBackgroundState_state_above_anchor igreja.igreja:state_above_anchor}</code></td><td> State identifier indicating the popup will be above the anchor.</td></tr>
            </table>
            @see #PopupWindowBackgroundState_state_above_anchor
          */
@@ -15247,7 +15247,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:state_above_anchor
+          @attr name igreja.igreja:state_above_anchor
         */
         public static final int PopupWindowBackgroundState_state_above_anchor = 0;
         /** Attributes that can be used with a RecycleListView.
@@ -15256,8 +15256,8 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #RecycleListView_paddingBottomNoButtons Igreja.Igreja:paddingBottomNoButtons}</code></td><td> Bottom padding to use when no buttons are present.</td></tr>
-           <tr><td><code>{@link #RecycleListView_paddingTopNoTitle Igreja.Igreja:paddingTopNoTitle}</code></td><td> Top padding to use when no title is present.</td></tr>
+           <tr><td><code>{@link #RecycleListView_paddingBottomNoButtons igreja.igreja:paddingBottomNoButtons}</code></td><td> Bottom padding to use when no buttons are present.</td></tr>
+           <tr><td><code>{@link #RecycleListView_paddingTopNoTitle igreja.igreja:paddingTopNoTitle}</code></td><td> Top padding to use when no title is present.</td></tr>
            </table>
            @see #RecycleListView_paddingBottomNoButtons
            @see #RecycleListView_paddingTopNoTitle
@@ -15280,7 +15280,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:paddingBottomNoButtons
+          @attr name igreja.igreja:paddingBottomNoButtons
         */
         public static final int RecycleListView_paddingBottomNoButtons = 0;
         /**
@@ -15298,7 +15298,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:paddingTopNoTitle
+          @attr name igreja.igreja:paddingTopNoTitle
         */
         public static final int RecycleListView_paddingTopNoTitle = 1;
         /** Attributes that can be used with a RecyclerView.
@@ -15309,15 +15309,15 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #RecyclerView_android_descendantFocusability android:descendantFocusability}</code></td><td></td></tr>
            <tr><td><code>{@link #RecyclerView_android_orientation android:orientation}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_fastScrollEnabled Igreja.Igreja:fastScrollEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_fastScrollHorizontalThumbDrawable Igreja.Igreja:fastScrollHorizontalThumbDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_fastScrollHorizontalTrackDrawable Igreja.Igreja:fastScrollHorizontalTrackDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_fastScrollVerticalThumbDrawable Igreja.Igreja:fastScrollVerticalThumbDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_fastScrollVerticalTrackDrawable Igreja.Igreja:fastScrollVerticalTrackDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_layoutManager Igreja.Igreja:layoutManager}</code></td><td> Class name of the Layout Manager to be used.</td></tr>
-           <tr><td><code>{@link #RecyclerView_reverseLayout Igreja.Igreja:reverseLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_spanCount Igreja.Igreja:spanCount}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_stackFromEnd Igreja.Igreja:stackFromEnd}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_fastScrollEnabled igreja.igreja:fastScrollEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_fastScrollHorizontalThumbDrawable igreja.igreja:fastScrollHorizontalThumbDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_fastScrollHorizontalTrackDrawable igreja.igreja:fastScrollHorizontalTrackDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_fastScrollVerticalThumbDrawable igreja.igreja:fastScrollVerticalThumbDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_fastScrollVerticalTrackDrawable igreja.igreja:fastScrollVerticalTrackDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_layoutManager igreja.igreja:layoutManager}</code></td><td> Class name of the Layout Manager to be used.</td></tr>
+           <tr><td><code>{@link #RecyclerView_reverseLayout igreja.igreja:reverseLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_spanCount igreja.igreja:spanCount}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_stackFromEnd igreja.igreja:stackFromEnd}</code></td><td></td></tr>
            </table>
            @see #RecyclerView_android_descendantFocusability
            @see #RecyclerView_android_orientation
@@ -15349,7 +15349,7 @@ containing a value of this type.
         */
         public static final int RecyclerView_android_orientation = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fastScrollEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fastScrollEnabled}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -15359,47 +15359,47 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:fastScrollEnabled
+          @attr name igreja.igreja:fastScrollEnabled
         */
         public static final int RecyclerView_fastScrollEnabled = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fastScrollHorizontalThumbDrawable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fastScrollHorizontalThumbDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:fastScrollHorizontalThumbDrawable
+          @attr name igreja.igreja:fastScrollHorizontalThumbDrawable
         */
         public static final int RecyclerView_fastScrollHorizontalThumbDrawable = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fastScrollHorizontalTrackDrawable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fastScrollHorizontalTrackDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:fastScrollHorizontalTrackDrawable
+          @attr name igreja.igreja:fastScrollHorizontalTrackDrawable
         */
         public static final int RecyclerView_fastScrollHorizontalTrackDrawable = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fastScrollVerticalThumbDrawable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fastScrollVerticalThumbDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:fastScrollVerticalThumbDrawable
+          @attr name igreja.igreja:fastScrollVerticalThumbDrawable
         */
         public static final int RecyclerView_fastScrollVerticalThumbDrawable = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#fastScrollVerticalTrackDrawable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#fastScrollVerticalTrackDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:fastScrollVerticalTrackDrawable
+          @attr name igreja.igreja:fastScrollVerticalTrackDrawable
         */
         public static final int RecyclerView_fastScrollVerticalTrackDrawable = 8;
         /**
@@ -15423,11 +15423,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layoutManager
+          @attr name igreja.igreja:layoutManager
         */
         public static final int RecyclerView_layoutManager = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#reverseLayout}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#reverseLayout}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -15437,11 +15437,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:reverseLayout
+          @attr name igreja.igreja:reverseLayout
         */
         public static final int RecyclerView_reverseLayout = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#spanCount}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#spanCount}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -15451,11 +15451,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:spanCount
+          @attr name igreja.igreja:spanCount
         */
         public static final int RecyclerView_spanCount = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#stackFromEnd}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#stackFromEnd}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -15465,7 +15465,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:stackFromEnd
+          @attr name igreja.igreja:stackFromEnd
         */
         public static final int RecyclerView_stackFromEnd = 5;
         /** Attributes that can be used with a ScrimInsetsFrameLayout.
@@ -15474,7 +15474,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ScrimInsetsFrameLayout_insetForeground Igreja.Igreja:insetForeground}</code></td><td></td></tr>
+           <tr><td><code>{@link #ScrimInsetsFrameLayout_insetForeground igreja.igreja:insetForeground}</code></td><td></td></tr>
            </table>
            @see #ScrimInsetsFrameLayout_insetForeground
          */
@@ -15482,7 +15482,7 @@ containing a value of this type.
             0x7f0101b9
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#insetForeground}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#insetForeground}
           attribute's value can be found in the {@link #ScrimInsetsFrameLayout} array.
 
 
@@ -15490,7 +15490,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name Igreja.Igreja:insetForeground
+          @attr name igreja.igreja:insetForeground
         */
         public static final int ScrimInsetsFrameLayout_insetForeground = 0;
         /** Attributes that can be used with a ScrollingViewBehavior_Layout.
@@ -15499,7 +15499,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ScrollingViewBehavior_Layout_behavior_overlapTop Igreja.Igreja:behavior_overlapTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #ScrollingViewBehavior_Layout_behavior_overlapTop igreja.igreja:behavior_overlapTop}</code></td><td></td></tr>
            </table>
            @see #ScrollingViewBehavior_Layout_behavior_overlapTop
          */
@@ -15507,7 +15507,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f0101ba
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#behavior_overlapTop}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#behavior_overlapTop}
           attribute's value can be found in the {@link #ScrollingViewBehavior_Layout} array.
 
 
@@ -15519,7 +15519,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:behavior_overlapTop
+          @attr name igreja.igreja:behavior_overlapTop
         */
         public static final int ScrollingViewBehavior_Layout_behavior_overlapTop = 0;
         /** Attributes that can be used with a SearchView.
@@ -15532,20 +15532,20 @@ containing a value of this type.
            <tr><td><code>{@link #SearchView_android_imeOptions android:imeOptions}</code></td><td> The IME options to set on the query text field.</td></tr>
            <tr><td><code>{@link #SearchView_android_inputType android:inputType}</code></td><td> The input type to set on the query text field.</td></tr>
            <tr><td><code>{@link #SearchView_android_maxWidth android:maxWidth}</code></td><td> An optional maximum width of the SearchView.</td></tr>
-           <tr><td><code>{@link #SearchView_closeIcon Igreja.Igreja:closeIcon}</code></td><td> Close button icon </td></tr>
-           <tr><td><code>{@link #SearchView_commitIcon Igreja.Igreja:commitIcon}</code></td><td> Commit icon shown in the query suggestion row </td></tr>
-           <tr><td><code>{@link #SearchView_defaultQueryHint Igreja.Igreja:defaultQueryHint}</code></td><td> Default query hint used when {@code queryHint} is undefined and
+           <tr><td><code>{@link #SearchView_closeIcon igreja.igreja:closeIcon}</code></td><td> Close button icon </td></tr>
+           <tr><td><code>{@link #SearchView_commitIcon igreja.igreja:commitIcon}</code></td><td> Commit icon shown in the query suggestion row </td></tr>
+           <tr><td><code>{@link #SearchView_defaultQueryHint igreja.igreja:defaultQueryHint}</code></td><td> Default query hint used when {@code queryHint} is undefined and
              the search view's {@code SearchableInfo} does not provide a hint.</td></tr>
-           <tr><td><code>{@link #SearchView_goIcon Igreja.Igreja:goIcon}</code></td><td> Go button icon </td></tr>
-           <tr><td><code>{@link #SearchView_iconifiedByDefault Igreja.Igreja:iconifiedByDefault}</code></td><td> The default state of the SearchView.</td></tr>
-           <tr><td><code>{@link #SearchView_layout Igreja.Igreja:layout}</code></td><td> The layout to use for the search view.</td></tr>
-           <tr><td><code>{@link #SearchView_queryBackground Igreja.Igreja:queryBackground}</code></td><td> Background for the section containing the search query </td></tr>
-           <tr><td><code>{@link #SearchView_queryHint Igreja.Igreja:queryHint}</code></td><td> An optional user-defined query hint string to be displayed in the empty query field.</td></tr>
-           <tr><td><code>{@link #SearchView_searchHintIcon Igreja.Igreja:searchHintIcon}</code></td><td> Search icon displayed as a text field hint </td></tr>
-           <tr><td><code>{@link #SearchView_searchIcon Igreja.Igreja:searchIcon}</code></td><td> Search icon </td></tr>
-           <tr><td><code>{@link #SearchView_submitBackground Igreja.Igreja:submitBackground}</code></td><td> Background for the section containing the action (e.</td></tr>
-           <tr><td><code>{@link #SearchView_suggestionRowLayout Igreja.Igreja:suggestionRowLayout}</code></td><td> Layout for query suggestion rows </td></tr>
-           <tr><td><code>{@link #SearchView_voiceIcon Igreja.Igreja:voiceIcon}</code></td><td> Voice button icon </td></tr>
+           <tr><td><code>{@link #SearchView_goIcon igreja.igreja:goIcon}</code></td><td> Go button icon </td></tr>
+           <tr><td><code>{@link #SearchView_iconifiedByDefault igreja.igreja:iconifiedByDefault}</code></td><td> The default state of the SearchView.</td></tr>
+           <tr><td><code>{@link #SearchView_layout igreja.igreja:layout}</code></td><td> The layout to use for the search view.</td></tr>
+           <tr><td><code>{@link #SearchView_queryBackground igreja.igreja:queryBackground}</code></td><td> Background for the section containing the search query </td></tr>
+           <tr><td><code>{@link #SearchView_queryHint igreja.igreja:queryHint}</code></td><td> An optional user-defined query hint string to be displayed in the empty query field.</td></tr>
+           <tr><td><code>{@link #SearchView_searchHintIcon igreja.igreja:searchHintIcon}</code></td><td> Search icon displayed as a text field hint </td></tr>
+           <tr><td><code>{@link #SearchView_searchIcon igreja.igreja:searchIcon}</code></td><td> Search icon </td></tr>
+           <tr><td><code>{@link #SearchView_submitBackground igreja.igreja:submitBackground}</code></td><td> Background for the section containing the action (e.</td></tr>
+           <tr><td><code>{@link #SearchView_suggestionRowLayout igreja.igreja:suggestionRowLayout}</code></td><td> Layout for query suggestion rows </td></tr>
+           <tr><td><code>{@link #SearchView_voiceIcon igreja.igreja:voiceIcon}</code></td><td> Voice button icon </td></tr>
            </table>
            @see #SearchView_android_focusable
            @see #SearchView_android_imeOptions
@@ -15616,7 +15616,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:closeIcon
+          @attr name igreja.igreja:closeIcon
         */
         public static final int SearchView_closeIcon = 8;
         /**
@@ -15628,7 +15628,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:commitIcon
+          @attr name igreja.igreja:commitIcon
         */
         public static final int SearchView_commitIcon = 13;
         /**
@@ -15645,7 +15645,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:defaultQueryHint
+          @attr name igreja.igreja:defaultQueryHint
         */
         public static final int SearchView_defaultQueryHint = 7;
         /**
@@ -15657,7 +15657,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:goIcon
+          @attr name igreja.igreja:goIcon
         */
         public static final int SearchView_goIcon = 9;
         /**
@@ -15674,7 +15674,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:iconifiedByDefault
+          @attr name igreja.igreja:iconifiedByDefault
         */
         public static final int SearchView_iconifiedByDefault = 5;
         /**
@@ -15686,7 +15686,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:layout
+          @attr name igreja.igreja:layout
         */
         public static final int SearchView_layout = 4;
         /**
@@ -15698,7 +15698,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:queryBackground
+          @attr name igreja.igreja:queryBackground
         */
         public static final int SearchView_queryBackground = 15;
         /**
@@ -15714,7 +15714,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:queryHint
+          @attr name igreja.igreja:queryHint
         */
         public static final int SearchView_queryHint = 6;
         /**
@@ -15726,7 +15726,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:searchHintIcon
+          @attr name igreja.igreja:searchHintIcon
         */
         public static final int SearchView_searchHintIcon = 11;
         /**
@@ -15738,7 +15738,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:searchIcon
+          @attr name igreja.igreja:searchIcon
         */
         public static final int SearchView_searchIcon = 10;
         /**
@@ -15750,7 +15750,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:submitBackground
+          @attr name igreja.igreja:submitBackground
         */
         public static final int SearchView_submitBackground = 16;
         /**
@@ -15762,7 +15762,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:suggestionRowLayout
+          @attr name igreja.igreja:suggestionRowLayout
         */
         public static final int SearchView_suggestionRowLayout = 14;
         /**
@@ -15774,7 +15774,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:voiceIcon
+          @attr name igreja.igreja:voiceIcon
         */
         public static final int SearchView_voiceIcon = 12;
         /** Attributes that can be used with a SignInButton.
@@ -15783,9 +15783,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SignInButton_buttonSize Igreja.Igreja:buttonSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #SignInButton_colorScheme Igreja.Igreja:colorScheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #SignInButton_scopeUris Igreja.Igreja:scopeUris}</code></td><td></td></tr>
+           <tr><td><code>{@link #SignInButton_buttonSize igreja.igreja:buttonSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #SignInButton_colorScheme igreja.igreja:colorScheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #SignInButton_scopeUris igreja.igreja:scopeUris}</code></td><td></td></tr>
            </table>
            @see #SignInButton_buttonSize
            @see #SignInButton_colorScheme
@@ -15795,7 +15795,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f01001a, 0x7f01001b, 0x7f01001c
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#buttonSize}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#buttonSize}
           attribute's value can be found in the {@link #SignInButton} array.
 
 
@@ -15811,11 +15811,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>wide</code></td><td>1</td><td></td></tr>
 <tr><td><code>icon_only</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:buttonSize
+          @attr name igreja.igreja:buttonSize
         */
         public static final int SignInButton_buttonSize = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#colorScheme}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#colorScheme}
           attribute's value can be found in the {@link #SignInButton} array.
 
 
@@ -15831,18 +15831,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>light</code></td><td>1</td><td></td></tr>
 <tr><td><code>auto</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:colorScheme
+          @attr name igreja.igreja:colorScheme
         */
         public static final int SignInButton_colorScheme = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#scopeUris}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#scopeUris}
           attribute's value can be found in the {@link #SignInButton} array.
 
 
           <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-          @attr name Igreja.Igreja:scopeUris
+          @attr name igreja.igreja:scopeUris
         */
         public static final int SignInButton_scopeUris = 2;
         /** Attributes that can be used with a Snackbar.
@@ -15851,8 +15851,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #Snackbar_snackbarButtonStyle Igreja.Igreja:snackbarButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Snackbar_snackbarStyle Igreja.Igreja:snackbarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #Snackbar_snackbarButtonStyle igreja.igreja:snackbarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #Snackbar_snackbarStyle igreja.igreja:snackbarStyle}</code></td><td></td></tr>
            </table>
            @see #Snackbar_snackbarButtonStyle
            @see #Snackbar_snackbarStyle
@@ -15861,23 +15861,23 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f0101bb, 0x7f0101bc
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#snackbarButtonStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#snackbarButtonStyle}
           attribute's value can be found in the {@link #Snackbar} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:snackbarButtonStyle
+          @attr name igreja.igreja:snackbarButtonStyle
         */
         public static final int Snackbar_snackbarButtonStyle = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#snackbarStyle}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#snackbarStyle}
           attribute's value can be found in the {@link #Snackbar} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:snackbarStyle
+          @attr name igreja.igreja:snackbarStyle
         */
         public static final int Snackbar_snackbarStyle = 0;
         /** Attributes that can be used with a SnackbarLayout.
@@ -15887,8 +15887,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #SnackbarLayout_android_maxWidth android:maxWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #SnackbarLayout_elevation Igreja.Igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #SnackbarLayout_maxActionInlineWidth Igreja.Igreja:maxActionInlineWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #SnackbarLayout_elevation igreja.igreja:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
+           <tr><td><code>{@link #SnackbarLayout_maxActionInlineWidth igreja.igreja:maxActionInlineWidth}</code></td><td></td></tr>
            </table>
            @see #SnackbarLayout_android_maxWidth
            @see #SnackbarLayout_elevation
@@ -15918,11 +15918,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:elevation
+          @attr name igreja.igreja:elevation
         */
         public static final int SnackbarLayout_elevation = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#maxActionInlineWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#maxActionInlineWidth}
           attribute's value can be found in the {@link #SnackbarLayout} array.
 
 
@@ -15934,7 +15934,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:maxActionInlineWidth
+          @attr name igreja.igreja:maxActionInlineWidth
         */
         public static final int SnackbarLayout_maxActionInlineWidth = 2;
         /** Attributes that can be used with a Spinner.
@@ -15947,7 +15947,7 @@ containing a value of this type.
            <tr><td><code>{@link #Spinner_android_entries android:entries}</code></td><td> Reference to an array resource that will populate the Spinner.</td></tr>
            <tr><td><code>{@link #Spinner_android_popupBackground android:popupBackground}</code></td><td> Background drawable to use for the dropdown in spinnerMode="dropdown".</td></tr>
            <tr><td><code>{@link #Spinner_android_prompt android:prompt}</code></td><td> The prompt to display when the spinner's dialog is shown.</td></tr>
-           <tr><td><code>{@link #Spinner_popupTheme Igreja.Igreja:popupTheme}</code></td><td> Theme to use for the drop-down or dialog popup window.</td></tr>
+           <tr><td><code>{@link #Spinner_popupTheme igreja.igreja:popupTheme}</code></td><td> Theme to use for the drop-down or dialog popup window.</td></tr>
            </table>
            @see #Spinner_android_dropDownWidth
            @see #Spinner_android_entries
@@ -16004,7 +16004,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:popupTheme
+          @attr name igreja.igreja:popupTheme
         */
         public static final int Spinner_popupTheme = 4;
         /**  Indicates if the drawable needs to be mirrored when its layout direction is
@@ -16134,17 +16134,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><td><code>{@link #SwitchCompat_android_textOff android:textOff}</code></td><td> Text to use when the switch is in the unchecked/"off" state.</td></tr>
            <tr><td><code>{@link #SwitchCompat_android_textOn android:textOn}</code></td><td> Text to use when the switch is in the checked/"on" state.</td></tr>
            <tr><td><code>{@link #SwitchCompat_android_thumb android:thumb}</code></td><td> Drawable to use as the "thumb" that switches back and forth.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_showText Igreja.Igreja:showText}</code></td><td> Whether to draw on/off text.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_splitTrack Igreja.Igreja:splitTrack}</code></td><td> Whether to split the track and leave a gap for the thumb drawable.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_switchMinWidth Igreja.Igreja:switchMinWidth}</code></td><td> Minimum width for the switch component </td></tr>
-           <tr><td><code>{@link #SwitchCompat_switchPadding Igreja.Igreja:switchPadding}</code></td><td> Minimum space between the switch and caption text </td></tr>
-           <tr><td><code>{@link #SwitchCompat_switchTextAppearance Igreja.Igreja:switchTextAppearance}</code></td><td> TextAppearance style for text displayed on the switch thumb.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_thumbTextPadding Igreja.Igreja:thumbTextPadding}</code></td><td> Amount of padding on either side of text within the switch thumb.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_thumbTint Igreja.Igreja:thumbTint}</code></td><td> Tint to apply to the thumb drawable.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_thumbTintMode Igreja.Igreja:thumbTintMode}</code></td><td> Blending mode used to apply the thumb tint.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_track Igreja.Igreja:track}</code></td><td> Drawable to use as the "track" that the switch thumb slides within.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_trackTint Igreja.Igreja:trackTint}</code></td><td> Tint to apply to the track.</td></tr>
-           <tr><td><code>{@link #SwitchCompat_trackTintMode Igreja.Igreja:trackTintMode}</code></td><td> Blending mode used to apply the track tint.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_showText igreja.igreja:showText}</code></td><td> Whether to draw on/off text.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_splitTrack igreja.igreja:splitTrack}</code></td><td> Whether to split the track and leave a gap for the thumb drawable.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_switchMinWidth igreja.igreja:switchMinWidth}</code></td><td> Minimum width for the switch component </td></tr>
+           <tr><td><code>{@link #SwitchCompat_switchPadding igreja.igreja:switchPadding}</code></td><td> Minimum space between the switch and caption text </td></tr>
+           <tr><td><code>{@link #SwitchCompat_switchTextAppearance igreja.igreja:switchTextAppearance}</code></td><td> TextAppearance style for text displayed on the switch thumb.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_thumbTextPadding igreja.igreja:thumbTextPadding}</code></td><td> Amount of padding on either side of text within the switch thumb.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_thumbTint igreja.igreja:thumbTint}</code></td><td> Tint to apply to the thumb drawable.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_thumbTintMode igreja.igreja:thumbTintMode}</code></td><td> Blending mode used to apply the thumb tint.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_track igreja.igreja:track}</code></td><td> Drawable to use as the "track" that the switch thumb slides within.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_trackTint igreja.igreja:trackTint}</code></td><td> Tint to apply to the track.</td></tr>
+           <tr><td><code>{@link #SwitchCompat_trackTintMode igreja.igreja:trackTintMode}</code></td><td> Blending mode used to apply the track tint.</td></tr>
            </table>
            @see #SwitchCompat_android_textOff
            @see #SwitchCompat_android_textOn
@@ -16207,7 +16207,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:showText
+          @attr name igreja.igreja:showText
         */
         public static final int SwitchCompat_showText = 13;
         /**
@@ -16223,7 +16223,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:splitTrack
+          @attr name igreja.igreja:splitTrack
         */
         public static final int SwitchCompat_splitTrack = 12;
         /**
@@ -16241,7 +16241,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:switchMinWidth
+          @attr name igreja.igreja:switchMinWidth
         */
         public static final int SwitchCompat_switchMinWidth = 10;
         /**
@@ -16259,7 +16259,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:switchPadding
+          @attr name igreja.igreja:switchPadding
         */
         public static final int SwitchCompat_switchPadding = 11;
         /**
@@ -16271,7 +16271,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:switchTextAppearance
+          @attr name igreja.igreja:switchTextAppearance
         */
         public static final int SwitchCompat_switchTextAppearance = 9;
         /**
@@ -16289,7 +16289,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:thumbTextPadding
+          @attr name igreja.igreja:thumbTextPadding
         */
         public static final int SwitchCompat_thumbTextPadding = 8;
         /**
@@ -16306,7 +16306,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:thumbTint
+          @attr name igreja.igreja:thumbTint
         */
         public static final int SwitchCompat_thumbTint = 3;
         /**
@@ -16334,7 +16334,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:thumbTintMode
+          @attr name igreja.igreja:thumbTintMode
         */
         public static final int SwitchCompat_thumbTintMode = 4;
         /**
@@ -16346,7 +16346,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:track
+          @attr name igreja.igreja:track
         */
         public static final int SwitchCompat_track = 5;
         /**
@@ -16363,7 +16363,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:trackTint
+          @attr name igreja.igreja:trackTint
         */
         public static final int SwitchCompat_trackTint = 6;
         /**
@@ -16391,7 +16391,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:trackTintMode
+          @attr name igreja.igreja:trackTintMode
         */
         public static final int SwitchCompat_trackTintMode = 7;
         /** Attributes that can be used with a TabItem.
@@ -16435,31 +16435,31 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #TabLayout_tabBackground Igreja.Igreja:tabBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabContentStart Igreja.Igreja:tabContentStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabGravity Igreja.Igreja:tabGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIconTint Igreja.Igreja:tabIconTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIconTintMode Igreja.Igreja:tabIconTintMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicator Igreja.Igreja:tabIndicator}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorAnimationDuration Igreja.Igreja:tabIndicatorAnimationDuration}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorColor Igreja.Igreja:tabIndicatorColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorFullWidth Igreja.Igreja:tabIndicatorFullWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorGravity Igreja.Igreja:tabIndicatorGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorHeight Igreja.Igreja:tabIndicatorHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabInlineLabel Igreja.Igreja:tabInlineLabel}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabMaxWidth Igreja.Igreja:tabMaxWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabMinWidth Igreja.Igreja:tabMinWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabMode Igreja.Igreja:tabMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPadding Igreja.Igreja:tabPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingBottom Igreja.Igreja:tabPaddingBottom}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingEnd Igreja.Igreja:tabPaddingEnd}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingStart Igreja.Igreja:tabPaddingStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingTop Igreja.Igreja:tabPaddingTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabRippleColor Igreja.Igreja:tabRippleColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabSelectedTextColor Igreja.Igreja:tabSelectedTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabTextAppearance Igreja.Igreja:tabTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabTextColor Igreja.Igreja:tabTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabUnboundedRipple Igreja.Igreja:tabUnboundedRipple}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabBackground igreja.igreja:tabBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabContentStart igreja.igreja:tabContentStart}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabGravity igreja.igreja:tabGravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIconTint igreja.igreja:tabIconTint}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIconTintMode igreja.igreja:tabIconTintMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIndicator igreja.igreja:tabIndicator}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIndicatorAnimationDuration igreja.igreja:tabIndicatorAnimationDuration}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIndicatorColor igreja.igreja:tabIndicatorColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIndicatorFullWidth igreja.igreja:tabIndicatorFullWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIndicatorGravity igreja.igreja:tabIndicatorGravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabIndicatorHeight igreja.igreja:tabIndicatorHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabInlineLabel igreja.igreja:tabInlineLabel}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabMaxWidth igreja.igreja:tabMaxWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabMinWidth igreja.igreja:tabMinWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabMode igreja.igreja:tabMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabPadding igreja.igreja:tabPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabPaddingBottom igreja.igreja:tabPaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabPaddingEnd igreja.igreja:tabPaddingEnd}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabPaddingStart igreja.igreja:tabPaddingStart}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabPaddingTop igreja.igreja:tabPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabRippleColor igreja.igreja:tabRippleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabSelectedTextColor igreja.igreja:tabSelectedTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabTextAppearance igreja.igreja:tabTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabTextColor igreja.igreja:tabTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TabLayout_tabUnboundedRipple igreja.igreja:tabUnboundedRipple}</code></td><td></td></tr>
            </table>
            @see #TabLayout_tabBackground
            @see #TabLayout_tabContentStart
@@ -16497,17 +16497,17 @@ containing a value of this type.
             0x7f0101d6
         };
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabBackground}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabBackground}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:tabBackground
+          @attr name igreja.igreja:tabBackground
         */
         public static final int TabLayout_tabBackground = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabContentStart}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabContentStart}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16519,11 +16519,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabContentStart
+          @attr name igreja.igreja:tabContentStart
         */
         public static final int TabLayout_tabContentStart = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabGravity}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabGravity}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16536,11 +16536,11 @@ containing a value of this type.
 <tr><td><code>fill</code></td><td>0</td><td></td></tr>
 <tr><td><code>center</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:tabGravity
+          @attr name igreja.igreja:tabGravity
         */
         public static final int TabLayout_tabGravity = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIconTint}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIconTint}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16551,11 +16551,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabIconTint
+          @attr name igreja.igreja:tabIconTint
         */
         public static final int TabLayout_tabIconTint = 21;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIconTintMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIconTintMode}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16572,21 +16572,21 @@ containing a value of this type.
 <tr><td><code>screen</code></td><td>15</td><td></td></tr>
 <tr><td><code>add</code></td><td>16</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:tabIconTintMode
+          @attr name igreja.igreja:tabIconTintMode
         */
         public static final int TabLayout_tabIconTintMode = 22;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIndicator}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIndicator}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:tabIndicator
+          @attr name igreja.igreja:tabIndicator
         */
         public static final int TabLayout_tabIndicator = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIndicatorAnimationDuration}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIndicatorAnimationDuration}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16596,11 +16596,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabIndicatorAnimationDuration
+          @attr name igreja.igreja:tabIndicatorAnimationDuration
         */
         public static final int TabLayout_tabIndicatorAnimationDuration = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIndicatorColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIndicatorColor}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16611,11 +16611,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabIndicatorColor
+          @attr name igreja.igreja:tabIndicatorColor
         */
         public static final int TabLayout_tabIndicatorColor = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIndicatorFullWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIndicatorFullWidth}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16625,11 +16625,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabIndicatorFullWidth
+          @attr name igreja.igreja:tabIndicatorFullWidth
         */
         public static final int TabLayout_tabIndicatorFullWidth = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIndicatorGravity}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIndicatorGravity}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16644,11 +16644,11 @@ containing a value of this type.
 <tr><td><code>top</code></td><td>2</td><td></td></tr>
 <tr><td><code>stretch</code></td><td>3</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:tabIndicatorGravity
+          @attr name igreja.igreja:tabIndicatorGravity
         */
         public static final int TabLayout_tabIndicatorGravity = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabIndicatorHeight}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabIndicatorHeight}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16660,11 +16660,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabIndicatorHeight
+          @attr name igreja.igreja:tabIndicatorHeight
         */
         public static final int TabLayout_tabIndicatorHeight = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabInlineLabel}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabInlineLabel}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16674,11 +16674,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabInlineLabel
+          @attr name igreja.igreja:tabInlineLabel
         */
         public static final int TabLayout_tabInlineLabel = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabMaxWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabMaxWidth}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16690,11 +16690,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabMaxWidth
+          @attr name igreja.igreja:tabMaxWidth
         */
         public static final int TabLayout_tabMaxWidth = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabMinWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabMinWidth}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16706,11 +16706,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabMinWidth
+          @attr name igreja.igreja:tabMinWidth
         */
         public static final int TabLayout_tabMinWidth = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabMode}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16723,11 +16723,11 @@ containing a value of this type.
 <tr><td><code>scrollable</code></td><td>0</td><td></td></tr>
 <tr><td><code>fixed</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:tabMode
+          @attr name igreja.igreja:tabMode
         */
         public static final int TabLayout_tabMode = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabPadding}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabPadding}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16739,11 +16739,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabPadding
+          @attr name igreja.igreja:tabPadding
         */
         public static final int TabLayout_tabPadding = 20;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabPaddingBottom}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabPaddingBottom}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16755,11 +16755,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabPaddingBottom
+          @attr name igreja.igreja:tabPaddingBottom
         */
         public static final int TabLayout_tabPaddingBottom = 19;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabPaddingEnd}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabPaddingEnd}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16771,11 +16771,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabPaddingEnd
+          @attr name igreja.igreja:tabPaddingEnd
         */
         public static final int TabLayout_tabPaddingEnd = 18;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabPaddingStart}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabPaddingStart}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16787,11 +16787,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabPaddingStart
+          @attr name igreja.igreja:tabPaddingStart
         */
         public static final int TabLayout_tabPaddingStart = 16;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabPaddingTop}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabPaddingTop}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16803,11 +16803,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabPaddingTop
+          @attr name igreja.igreja:tabPaddingTop
         */
         public static final int TabLayout_tabPaddingTop = 17;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabRippleColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabRippleColor}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16818,11 +16818,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabRippleColor
+          @attr name igreja.igreja:tabRippleColor
         */
         public static final int TabLayout_tabRippleColor = 23;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabSelectedTextColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabSelectedTextColor}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16833,21 +16833,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabSelectedTextColor
+          @attr name igreja.igreja:tabSelectedTextColor
         */
         public static final int TabLayout_tabSelectedTextColor = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabTextAppearance}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:tabTextAppearance
+          @attr name igreja.igreja:tabTextAppearance
         */
         public static final int TabLayout_tabTextAppearance = 13;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabTextColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabTextColor}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16858,11 +16858,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabTextColor
+          @attr name igreja.igreja:tabTextColor
         */
         public static final int TabLayout_tabTextColor = 14;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#tabUnboundedRipple}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#tabUnboundedRipple}
           attribute's value can be found in the {@link #TabLayout} array.
 
 
@@ -16872,7 +16872,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:tabUnboundedRipple
+          @attr name igreja.igreja:tabUnboundedRipple
         */
         public static final int TabLayout_tabUnboundedRipple = 24;
         /** Attributes that can be used with a TextAppearance.
@@ -16892,8 +16892,8 @@ containing a value of this type.
            <tr><td><code>{@link #TextAppearance_android_textSize android:textSize}</code></td><td></td></tr>
            <tr><td><code>{@link #TextAppearance_android_textStyle android:textStyle}</code></td><td></td></tr>
            <tr><td><code>{@link #TextAppearance_android_typeface android:typeface}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextAppearance_fontFamily Igreja.Igreja:fontFamily}</code></td><td> The attribute for the font family.</td></tr>
-           <tr><td><code>{@link #TextAppearance_textAllCaps Igreja.Igreja:textAllCaps}</code></td><td> Present the text in ALL CAPS.</td></tr>
+           <tr><td><code>{@link #TextAppearance_fontFamily igreja.igreja:fontFamily}</code></td><td> The attribute for the font family.</td></tr>
+           <tr><td><code>{@link #TextAppearance_textAllCaps igreja.igreja:textAllCaps}</code></td><td> Present the text in ALL CAPS.</td></tr>
            </table>
            @see #TextAppearance_android_fontFamily
            @see #TextAppearance_android_shadowColor
@@ -16994,7 +16994,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:fontFamily
+          @attr name igreja.igreja:fontFamily
         */
         public static final int TextAppearance_fontFamily = 12;
         /**
@@ -17007,7 +17007,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:textAllCaps
+          @attr name igreja.igreja:textAllCaps
         */
         public static final int TextAppearance_textAllCaps = 11;
         /** Attributes that can be used with a TextInputLayout.
@@ -17018,32 +17018,32 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #TextInputLayout_android_hint android:hint}</code></td><td></td></tr>
            <tr><td><code>{@link #TextInputLayout_android_textColorHint android:textColorHint}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxBackgroundColor Igreja.Igreja:boxBackgroundColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxBackgroundMode Igreja.Igreja:boxBackgroundMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxCollapsedPaddingTop Igreja.Igreja:boxCollapsedPaddingTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusBottomEnd Igreja.Igreja:boxCornerRadiusBottomEnd}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusBottomStart Igreja.Igreja:boxCornerRadiusBottomStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusTopEnd Igreja.Igreja:boxCornerRadiusTopEnd}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusTopStart Igreja.Igreja:boxCornerRadiusTopStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxStrokeColor Igreja.Igreja:boxStrokeColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_boxStrokeWidth Igreja.Igreja:boxStrokeWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterEnabled Igreja.Igreja:counterEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterMaxLength Igreja.Igreja:counterMaxLength}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterOverflowTextAppearance Igreja.Igreja:counterOverflowTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterTextAppearance Igreja.Igreja:counterTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_errorEnabled Igreja.Igreja:errorEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_errorTextAppearance Igreja.Igreja:errorTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_helperText Igreja.Igreja:helperText}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_helperTextEnabled Igreja.Igreja:helperTextEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_helperTextTextAppearance Igreja.Igreja:helperTextTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_hintAnimationEnabled Igreja.Igreja:hintAnimationEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_hintEnabled Igreja.Igreja:hintEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_hintTextAppearance Igreja.Igreja:hintTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_passwordToggleContentDescription Igreja.Igreja:passwordToggleContentDescription}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_passwordToggleDrawable Igreja.Igreja:passwordToggleDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_passwordToggleEnabled Igreja.Igreja:passwordToggleEnabled}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_passwordToggleTint Igreja.Igreja:passwordToggleTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_passwordToggleTintMode Igreja.Igreja:passwordToggleTintMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxBackgroundColor igreja.igreja:boxBackgroundColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxBackgroundMode igreja.igreja:boxBackgroundMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxCollapsedPaddingTop igreja.igreja:boxCollapsedPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusBottomEnd igreja.igreja:boxCornerRadiusBottomEnd}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusBottomStart igreja.igreja:boxCornerRadiusBottomStart}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusTopEnd igreja.igreja:boxCornerRadiusTopEnd}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxCornerRadiusTopStart igreja.igreja:boxCornerRadiusTopStart}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxStrokeColor igreja.igreja:boxStrokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_boxStrokeWidth igreja.igreja:boxStrokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_counterEnabled igreja.igreja:counterEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_counterMaxLength igreja.igreja:counterMaxLength}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_counterOverflowTextAppearance igreja.igreja:counterOverflowTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_counterTextAppearance igreja.igreja:counterTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_errorEnabled igreja.igreja:errorEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_errorTextAppearance igreja.igreja:errorTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_helperText igreja.igreja:helperText}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_helperTextEnabled igreja.igreja:helperTextEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_helperTextTextAppearance igreja.igreja:helperTextTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_hintAnimationEnabled igreja.igreja:hintAnimationEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_hintEnabled igreja.igreja:hintEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_hintTextAppearance igreja.igreja:hintTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_passwordToggleContentDescription igreja.igreja:passwordToggleContentDescription}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_passwordToggleDrawable igreja.igreja:passwordToggleDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_passwordToggleEnabled igreja.igreja:passwordToggleEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_passwordToggleTint igreja.igreja:passwordToggleTint}</code></td><td></td></tr>
+           <tr><td><code>{@link #TextInputLayout_passwordToggleTintMode igreja.igreja:passwordToggleTintMode}</code></td><td></td></tr>
            </table>
            @see #TextInputLayout_android_hint
            @see #TextInputLayout_android_textColorHint
@@ -17096,7 +17096,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         */
         public static final int TextInputLayout_android_textColorHint = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxBackgroundColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxBackgroundColor}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17107,11 +17107,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxBackgroundColor
+          @attr name igreja.igreja:boxBackgroundColor
         */
         public static final int TextInputLayout_boxBackgroundColor = 26;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxBackgroundMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxBackgroundMode}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17125,11 +17125,11 @@ containing a value of this type.
 <tr><td><code>filled</code></td><td>1</td><td></td></tr>
 <tr><td><code>outline</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:boxBackgroundMode
+          @attr name igreja.igreja:boxBackgroundMode
         */
         public static final int TextInputLayout_boxBackgroundMode = 19;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxCollapsedPaddingTop}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxCollapsedPaddingTop}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17141,11 +17141,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxCollapsedPaddingTop
+          @attr name igreja.igreja:boxCollapsedPaddingTop
         */
         public static final int TextInputLayout_boxCollapsedPaddingTop = 20;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxCornerRadiusBottomEnd}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxCornerRadiusBottomEnd}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17157,11 +17157,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxCornerRadiusBottomEnd
+          @attr name igreja.igreja:boxCornerRadiusBottomEnd
         */
         public static final int TextInputLayout_boxCornerRadiusBottomEnd = 24;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxCornerRadiusBottomStart}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxCornerRadiusBottomStart}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17173,11 +17173,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxCornerRadiusBottomStart
+          @attr name igreja.igreja:boxCornerRadiusBottomStart
         */
         public static final int TextInputLayout_boxCornerRadiusBottomStart = 23;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxCornerRadiusTopEnd}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxCornerRadiusTopEnd}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17189,11 +17189,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxCornerRadiusTopEnd
+          @attr name igreja.igreja:boxCornerRadiusTopEnd
         */
         public static final int TextInputLayout_boxCornerRadiusTopEnd = 22;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxCornerRadiusTopStart}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxCornerRadiusTopStart}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17205,11 +17205,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxCornerRadiusTopStart
+          @attr name igreja.igreja:boxCornerRadiusTopStart
         */
         public static final int TextInputLayout_boxCornerRadiusTopStart = 21;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxStrokeColor}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxStrokeColor}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17220,11 +17220,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxStrokeColor
+          @attr name igreja.igreja:boxStrokeColor
         */
         public static final int TextInputLayout_boxStrokeColor = 25;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#boxStrokeWidth}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#boxStrokeWidth}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17236,11 +17236,11 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:boxStrokeWidth
+          @attr name igreja.igreja:boxStrokeWidth
         */
         public static final int TextInputLayout_boxStrokeWidth = 27;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#counterEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#counterEnabled}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17250,11 +17250,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:counterEnabled
+          @attr name igreja.igreja:counterEnabled
         */
         public static final int TextInputLayout_counterEnabled = 10;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#counterMaxLength}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#counterMaxLength}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17264,31 +17264,31 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:counterMaxLength
+          @attr name igreja.igreja:counterMaxLength
         */
         public static final int TextInputLayout_counterMaxLength = 11;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#counterOverflowTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#counterOverflowTextAppearance}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:counterOverflowTextAppearance
+          @attr name igreja.igreja:counterOverflowTextAppearance
         */
         public static final int TextInputLayout_counterOverflowTextAppearance = 13;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#counterTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#counterTextAppearance}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:counterTextAppearance
+          @attr name igreja.igreja:counterTextAppearance
         */
         public static final int TextInputLayout_counterTextAppearance = 12;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#errorEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#errorEnabled}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17298,21 +17298,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:errorEnabled
+          @attr name igreja.igreja:errorEnabled
         */
         public static final int TextInputLayout_errorEnabled = 8;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#errorTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#errorTextAppearance}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:errorTextAppearance
+          @attr name igreja.igreja:errorTextAppearance
         */
         public static final int TextInputLayout_errorTextAppearance = 9;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#helperText}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#helperText}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17322,11 +17322,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:helperText
+          @attr name igreja.igreja:helperText
         */
         public static final int TextInputLayout_helperText = 5;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#helperTextEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#helperTextEnabled}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17336,21 +17336,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:helperTextEnabled
+          @attr name igreja.igreja:helperTextEnabled
         */
         public static final int TextInputLayout_helperTextEnabled = 6;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#helperTextTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#helperTextTextAppearance}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:helperTextTextAppearance
+          @attr name igreja.igreja:helperTextTextAppearance
         */
         public static final int TextInputLayout_helperTextTextAppearance = 7;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hintAnimationEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hintAnimationEnabled}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17360,11 +17360,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:hintAnimationEnabled
+          @attr name igreja.igreja:hintAnimationEnabled
         */
         public static final int TextInputLayout_hintAnimationEnabled = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hintEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hintEnabled}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17374,21 +17374,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:hintEnabled
+          @attr name igreja.igreja:hintEnabled
         */
         public static final int TextInputLayout_hintEnabled = 2;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#hintTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#hintTextAppearance}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:hintTextAppearance
+          @attr name igreja.igreja:hintTextAppearance
         */
         public static final int TextInputLayout_hintTextAppearance = 4;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#passwordToggleContentDescription}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#passwordToggleContentDescription}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17398,21 +17398,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:passwordToggleContentDescription
+          @attr name igreja.igreja:passwordToggleContentDescription
         */
         public static final int TextInputLayout_passwordToggleContentDescription = 16;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#passwordToggleDrawable}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#passwordToggleDrawable}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:passwordToggleDrawable
+          @attr name igreja.igreja:passwordToggleDrawable
         */
         public static final int TextInputLayout_passwordToggleDrawable = 15;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#passwordToggleEnabled}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#passwordToggleEnabled}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17422,11 +17422,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:passwordToggleEnabled
+          @attr name igreja.igreja:passwordToggleEnabled
         */
         public static final int TextInputLayout_passwordToggleEnabled = 14;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#passwordToggleTint}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#passwordToggleTint}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17437,11 +17437,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:passwordToggleTint
+          @attr name igreja.igreja:passwordToggleTint
         */
         public static final int TextInputLayout_passwordToggleTint = 17;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#passwordToggleTintMode}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#passwordToggleTintMode}
           attribute's value can be found in the {@link #TextInputLayout} array.
 
 
@@ -17457,7 +17457,7 @@ containing a value of this type.
 <tr><td><code>multiply</code></td><td>14</td><td></td></tr>
 <tr><td><code>screen</code></td><td>15</td><td></td></tr>
 </table>
-          @attr name Igreja.Igreja:passwordToggleTintMode
+          @attr name igreja.igreja:passwordToggleTintMode
         */
         public static final int TextInputLayout_passwordToggleTintMode = 18;
         /** Attributes that can be used with a ThemeEnforcement.
@@ -17467,8 +17467,8 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ThemeEnforcement_android_textAppearance android:textAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #ThemeEnforcement_enforceMaterialTheme Igreja.Igreja:enforceMaterialTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #ThemeEnforcement_enforceTextAppearance Igreja.Igreja:enforceTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #ThemeEnforcement_enforceMaterialTheme igreja.igreja:enforceMaterialTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #ThemeEnforcement_enforceTextAppearance igreja.igreja:enforceTextAppearance}</code></td><td></td></tr>
            </table>
            @see #ThemeEnforcement_android_textAppearance
            @see #ThemeEnforcement_enforceMaterialTheme
@@ -17484,7 +17484,7 @@ containing a value of this type.
         */
         public static final int ThemeEnforcement_android_textAppearance = 0;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#enforceMaterialTheme}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#enforceMaterialTheme}
           attribute's value can be found in the {@link #ThemeEnforcement} array.
 
 
@@ -17494,11 +17494,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:enforceMaterialTheme
+          @attr name igreja.igreja:enforceMaterialTheme
         */
         public static final int ThemeEnforcement_enforceMaterialTheme = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#enforceTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#enforceTextAppearance}
           attribute's value can be found in the {@link #ThemeEnforcement} array.
 
 
@@ -17508,7 +17508,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:enforceTextAppearance
+          @attr name igreja.igreja:enforceTextAppearance
         */
         public static final int ThemeEnforcement_enforceTextAppearance = 2;
         /** Attributes that can be used with a Toolbar.
@@ -17519,41 +17519,41 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #Toolbar_android_gravity android:gravity}</code></td><td></td></tr>
            <tr><td><code>{@link #Toolbar_android_minHeight android:minHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Toolbar_buttonGravity Igreja.Igreja:buttonGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #Toolbar_collapseContentDescription Igreja.Igreja:collapseContentDescription}</code></td><td> Text to set as the content description for the collapse button.</td></tr>
-           <tr><td><code>{@link #Toolbar_collapseIcon Igreja.Igreja:collapseIcon}</code></td><td> Icon drawable to use for the collapse button.</td></tr>
-           <tr><td><code>{@link #Toolbar_contentInsetEnd Igreja.Igreja:contentInsetEnd}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #Toolbar_contentInsetEndWithActions Igreja.Igreja:contentInsetEndWithActions}</code></td><td> Minimum inset for content views within a bar when actions from a menu
+           <tr><td><code>{@link #Toolbar_buttonGravity igreja.igreja:buttonGravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #Toolbar_collapseContentDescription igreja.igreja:collapseContentDescription}</code></td><td> Text to set as the content description for the collapse button.</td></tr>
+           <tr><td><code>{@link #Toolbar_collapseIcon igreja.igreja:collapseIcon}</code></td><td> Icon drawable to use for the collapse button.</td></tr>
+           <tr><td><code>{@link #Toolbar_contentInsetEnd igreja.igreja:contentInsetEnd}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #Toolbar_contentInsetEndWithActions igreja.igreja:contentInsetEndWithActions}</code></td><td> Minimum inset for content views within a bar when actions from a menu
              are present.</td></tr>
-           <tr><td><code>{@link #Toolbar_contentInsetLeft Igreja.Igreja:contentInsetLeft}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #Toolbar_contentInsetRight Igreja.Igreja:contentInsetRight}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #Toolbar_contentInsetStart Igreja.Igreja:contentInsetStart}</code></td><td> Minimum inset for content views within a bar.</td></tr>
-           <tr><td><code>{@link #Toolbar_contentInsetStartWithNavigation Igreja.Igreja:contentInsetStartWithNavigation}</code></td><td> Minimum inset for content views within a bar when a navigation button
+           <tr><td><code>{@link #Toolbar_contentInsetLeft igreja.igreja:contentInsetLeft}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #Toolbar_contentInsetRight igreja.igreja:contentInsetRight}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #Toolbar_contentInsetStart igreja.igreja:contentInsetStart}</code></td><td> Minimum inset for content views within a bar.</td></tr>
+           <tr><td><code>{@link #Toolbar_contentInsetStartWithNavigation igreja.igreja:contentInsetStartWithNavigation}</code></td><td> Minimum inset for content views within a bar when a navigation button
              is present, such as the Up button.</td></tr>
-           <tr><td><code>{@link #Toolbar_logo Igreja.Igreja:logo}</code></td><td> Drawable to set as the logo that appears at the starting side of
+           <tr><td><code>{@link #Toolbar_logo igreja.igreja:logo}</code></td><td> Drawable to set as the logo that appears at the starting side of
              the Toolbar, just after the navigation button.</td></tr>
-           <tr><td><code>{@link #Toolbar_logoDescription Igreja.Igreja:logoDescription}</code></td><td> A content description string to describe the appearance of the
+           <tr><td><code>{@link #Toolbar_logoDescription igreja.igreja:logoDescription}</code></td><td> A content description string to describe the appearance of the
              associated logo image.</td></tr>
-           <tr><td><code>{@link #Toolbar_maxButtonHeight Igreja.Igreja:maxButtonHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Toolbar_navigationContentDescription Igreja.Igreja:navigationContentDescription}</code></td><td> Text to set as the content description for the navigation button
+           <tr><td><code>{@link #Toolbar_maxButtonHeight igreja.igreja:maxButtonHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #Toolbar_navigationContentDescription igreja.igreja:navigationContentDescription}</code></td><td> Text to set as the content description for the navigation button
              located at the start of the toolbar.</td></tr>
-           <tr><td><code>{@link #Toolbar_navigationIcon Igreja.Igreja:navigationIcon}</code></td><td> Icon drawable to use for the navigation button located at
+           <tr><td><code>{@link #Toolbar_navigationIcon igreja.igreja:navigationIcon}</code></td><td> Icon drawable to use for the navigation button located at
              the start of the toolbar.</td></tr>
-           <tr><td><code>{@link #Toolbar_popupTheme Igreja.Igreja:popupTheme}</code></td><td> Reference to a theme that should be used to inflate popups
+           <tr><td><code>{@link #Toolbar_popupTheme igreja.igreja:popupTheme}</code></td><td> Reference to a theme that should be used to inflate popups
              shown by widgets in the toolbar.</td></tr>
-           <tr><td><code>{@link #Toolbar_subtitle Igreja.Igreja:subtitle}</code></td><td> Specifies subtitle text used for navigationMode="normal" </td></tr>
-           <tr><td><code>{@link #Toolbar_subtitleTextAppearance Igreja.Igreja:subtitleTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #Toolbar_subtitleTextColor Igreja.Igreja:subtitleTextColor}</code></td><td> A color to apply to the subtitle string.</td></tr>
-           <tr><td><code>{@link #Toolbar_title Igreja.Igreja:title}</code></td><td></td></tr>
-           <tr><td><code>{@link #Toolbar_titleMargin Igreja.Igreja:titleMargin}</code></td><td>  Specifies extra space on the left, start, right and end sides
+           <tr><td><code>{@link #Toolbar_subtitle igreja.igreja:subtitle}</code></td><td> Specifies subtitle text used for navigationMode="normal" </td></tr>
+           <tr><td><code>{@link #Toolbar_subtitleTextAppearance igreja.igreja:subtitleTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #Toolbar_subtitleTextColor igreja.igreja:subtitleTextColor}</code></td><td> A color to apply to the subtitle string.</td></tr>
+           <tr><td><code>{@link #Toolbar_title igreja.igreja:title}</code></td><td></td></tr>
+           <tr><td><code>{@link #Toolbar_titleMargin igreja.igreja:titleMargin}</code></td><td>  Specifies extra space on the left, start, right and end sides
               of the toolbar's title.</td></tr>
-           <tr><td><code>{@link #Toolbar_titleMarginBottom Igreja.Igreja:titleMarginBottom}</code></td><td>  Specifies extra space on the bottom side of the toolbar's title.</td></tr>
-           <tr><td><code>{@link #Toolbar_titleMarginEnd Igreja.Igreja:titleMarginEnd}</code></td><td>  Specifies extra space on the end side of the toolbar's title.</td></tr>
-           <tr><td><code>{@link #Toolbar_titleMarginStart Igreja.Igreja:titleMarginStart}</code></td><td>  Specifies extra space on the start side of the toolbar's title.</td></tr>
-           <tr><td><code>{@link #Toolbar_titleMarginTop Igreja.Igreja:titleMarginTop}</code></td><td>  Specifies extra space on the top side of the toolbar's title.</td></tr>
-           <tr><td><code>{@link #Toolbar_titleMargins Igreja.Igreja:titleMargins}</code></td><td> {@deprecated Use titleMargin} </td></tr>
-           <tr><td><code>{@link #Toolbar_titleTextAppearance Igreja.Igreja:titleTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #Toolbar_titleTextColor Igreja.Igreja:titleTextColor}</code></td><td> A color to apply to the title string.</td></tr>
+           <tr><td><code>{@link #Toolbar_titleMarginBottom igreja.igreja:titleMarginBottom}</code></td><td>  Specifies extra space on the bottom side of the toolbar's title.</td></tr>
+           <tr><td><code>{@link #Toolbar_titleMarginEnd igreja.igreja:titleMarginEnd}</code></td><td>  Specifies extra space on the end side of the toolbar's title.</td></tr>
+           <tr><td><code>{@link #Toolbar_titleMarginStart igreja.igreja:titleMarginStart}</code></td><td>  Specifies extra space on the start side of the toolbar's title.</td></tr>
+           <tr><td><code>{@link #Toolbar_titleMarginTop igreja.igreja:titleMarginTop}</code></td><td>  Specifies extra space on the top side of the toolbar's title.</td></tr>
+           <tr><td><code>{@link #Toolbar_titleMargins igreja.igreja:titleMargins}</code></td><td> {@deprecated Use titleMargin} </td></tr>
+           <tr><td><code>{@link #Toolbar_titleTextAppearance igreja.igreja:titleTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #Toolbar_titleTextColor igreja.igreja:titleTextColor}</code></td><td> A color to apply to the title string.</td></tr>
            </table>
            @see #Toolbar_android_gravity
            @see #Toolbar_android_minHeight
@@ -17608,7 +17608,7 @@ containing a value of this type.
         */
         public static final int Toolbar_android_minHeight = 1;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#buttonGravity}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#buttonGravity}
           attribute's value can be found in the {@link #Toolbar} array.
 
 
@@ -17621,7 +17621,7 @@ containing a value of this type.
 <tr><td><code>top</code></td><td>0x30</td><td> Push object to the top of its container, not changing its size. </td></tr>
 <tr><td><code>bottom</code></td><td>0x50</td><td> Push object to the bottom of its container, not changing its size. </td></tr>
 </table>
-          @attr name Igreja.Igreja:buttonGravity
+          @attr name igreja.igreja:buttonGravity
         */
         public static final int Toolbar_buttonGravity = 21;
         /**
@@ -17637,7 +17637,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:collapseContentDescription
+          @attr name igreja.igreja:collapseContentDescription
         */
         public static final int Toolbar_collapseContentDescription = 23;
         /**
@@ -17649,7 +17649,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:collapseIcon
+          @attr name igreja.igreja:collapseIcon
         */
         public static final int Toolbar_collapseIcon = 22;
         /**
@@ -17668,7 +17668,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetEnd
+          @attr name igreja.igreja:contentInsetEnd
         */
         public static final int Toolbar_contentInsetEnd = 6;
         /**
@@ -17687,7 +17687,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetEndWithActions
+          @attr name igreja.igreja:contentInsetEndWithActions
         */
         public static final int Toolbar_contentInsetEndWithActions = 10;
         /**
@@ -17706,7 +17706,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetLeft
+          @attr name igreja.igreja:contentInsetLeft
         */
         public static final int Toolbar_contentInsetLeft = 7;
         /**
@@ -17725,7 +17725,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetRight
+          @attr name igreja.igreja:contentInsetRight
         */
         public static final int Toolbar_contentInsetRight = 8;
         /**
@@ -17744,7 +17744,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetStart
+          @attr name igreja.igreja:contentInsetStart
         */
         public static final int Toolbar_contentInsetStart = 5;
         /**
@@ -17763,7 +17763,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:contentInsetStartWithNavigation
+          @attr name igreja.igreja:contentInsetStartWithNavigation
         */
         public static final int Toolbar_contentInsetStartWithNavigation = 9;
         /**
@@ -17776,7 +17776,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:logo
+          @attr name igreja.igreja:logo
         */
         public static final int Toolbar_logo = 4;
         /**
@@ -17793,11 +17793,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:logoDescription
+          @attr name igreja.igreja:logoDescription
         */
         public static final int Toolbar_logoDescription = 26;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#maxButtonHeight}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#maxButtonHeight}
           attribute's value can be found in the {@link #Toolbar} array.
 
 
@@ -17809,7 +17809,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:maxButtonHeight
+          @attr name igreja.igreja:maxButtonHeight
         */
         public static final int Toolbar_maxButtonHeight = 20;
         /**
@@ -17826,7 +17826,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:navigationContentDescription
+          @attr name igreja.igreja:navigationContentDescription
         */
         public static final int Toolbar_navigationContentDescription = 25;
         /**
@@ -17839,7 +17839,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:navigationIcon
+          @attr name igreja.igreja:navigationIcon
         */
         public static final int Toolbar_navigationIcon = 24;
         /**
@@ -17852,7 +17852,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:popupTheme
+          @attr name igreja.igreja:popupTheme
         */
         public static final int Toolbar_popupTheme = 11;
         /**
@@ -17868,17 +17868,17 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:subtitle
+          @attr name igreja.igreja:subtitle
         */
         public static final int Toolbar_subtitle = 3;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#subtitleTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#subtitleTextAppearance}
           attribute's value can be found in the {@link #Toolbar} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:subtitleTextAppearance
+          @attr name igreja.igreja:subtitleTextAppearance
         */
         public static final int Toolbar_subtitleTextAppearance = 13;
         /**
@@ -17895,11 +17895,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:subtitleTextColor
+          @attr name igreja.igreja:subtitleTextColor
         */
         public static final int Toolbar_subtitleTextColor = 28;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#title}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#title}
           attribute's value can be found in the {@link #Toolbar} array.
 
 
@@ -17909,7 +17909,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Igreja.Igreja:title
+          @attr name igreja.igreja:title
         */
         public static final int Toolbar_title = 2;
         /**
@@ -17928,7 +17928,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleMargin
+          @attr name igreja.igreja:titleMargin
         */
         public static final int Toolbar_titleMargin = 14;
         /**
@@ -17948,7 +17948,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleMarginBottom
+          @attr name igreja.igreja:titleMarginBottom
         */
         public static final int Toolbar_titleMarginBottom = 18;
         /**
@@ -17968,7 +17968,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleMarginEnd
+          @attr name igreja.igreja:titleMarginEnd
         */
         public static final int Toolbar_titleMarginEnd = 16;
         /**
@@ -17988,7 +17988,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleMarginStart
+          @attr name igreja.igreja:titleMarginStart
         */
         public static final int Toolbar_titleMarginStart = 15;
         /**
@@ -18008,7 +18008,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleMarginTop
+          @attr name igreja.igreja:titleMarginTop
         */
         public static final int Toolbar_titleMarginTop = 17;
         /**
@@ -18026,18 +18026,18 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleMargins
+          @attr name igreja.igreja:titleMargins
         */
         @Deprecated
         public static final int Toolbar_titleMargins = 19;
         /**
-          <p>This symbol is the offset where the {@link Igreja.Igreja.R.attr#titleTextAppearance}
+          <p>This symbol is the offset where the {@link igreja.igreja.R.attr#titleTextAppearance}
           attribute's value can be found in the {@link #Toolbar} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Igreja.Igreja:titleTextAppearance
+          @attr name igreja.igreja:titleTextAppearance
         */
         public static final int Toolbar_titleTextAppearance = 12;
         /**
@@ -18054,7 +18054,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:titleTextColor
+          @attr name igreja.igreja:titleTextColor
         */
         public static final int Toolbar_titleTextColor = 27;
         /** Attributes that can be used with a View.
@@ -18065,9 +18065,9 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #View_android_focusable android:focusable}</code></td><td> Boolean that controls whether a view can take focus.</td></tr>
            <tr><td><code>{@link #View_android_theme android:theme}</code></td><td> Specifies a theme override for a view.</td></tr>
-           <tr><td><code>{@link #View_paddingEnd Igreja.Igreja:paddingEnd}</code></td><td> Sets the padding, in pixels, of the end edge; see {@link android.R.attr#padding}.</td></tr>
-           <tr><td><code>{@link #View_paddingStart Igreja.Igreja:paddingStart}</code></td><td> Sets the padding, in pixels, of the start edge; see {@link android.R.attr#padding}.</td></tr>
-           <tr><td><code>{@link #View_theme Igreja.Igreja:theme}</code></td><td> Deprecated.</td></tr>
+           <tr><td><code>{@link #View_paddingEnd igreja.igreja:paddingEnd}</code></td><td> Sets the padding, in pixels, of the end edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_paddingStart igreja.igreja:paddingStart}</code></td><td> Sets the padding, in pixels, of the start edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_theme igreja.igreja:theme}</code></td><td> Deprecated.</td></tr>
            </table>
            @see #View_android_focusable
            @see #View_android_theme
@@ -18119,7 +18119,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:paddingEnd
+          @attr name igreja.igreja:paddingEnd
         */
         public static final int View_paddingEnd = 3;
         /**
@@ -18137,7 +18137,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:paddingStart
+          @attr name igreja.igreja:paddingStart
         */
         public static final int View_paddingStart = 2;
         /**
@@ -18149,7 +18149,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:theme
+          @attr name igreja.igreja:theme
         */
         public static final int View_theme = 4;
         /** Attributes that can be used with a ViewBackgroundHelper.
@@ -18159,8 +18159,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ViewBackgroundHelper_android_background android:background}</code></td><td></td></tr>
-           <tr><td><code>{@link #ViewBackgroundHelper_backgroundTint Igreja.Igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
-           <tr><td><code>{@link #ViewBackgroundHelper_backgroundTintMode Igreja.Igreja:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
+           <tr><td><code>{@link #ViewBackgroundHelper_backgroundTint igreja.igreja:backgroundTint}</code></td><td> Tint to apply to the background.</td></tr>
+           <tr><td><code>{@link #ViewBackgroundHelper_backgroundTintMode igreja.igreja:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
            </table>
            @see #ViewBackgroundHelper_android_background
            @see #ViewBackgroundHelper_backgroundTint
@@ -18189,7 +18189,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTint
+          @attr name igreja.igreja:backgroundTint
         */
         public static final int ViewBackgroundHelper_backgroundTint = 1;
         /**
@@ -18217,7 +18217,7 @@ containing a value of this type.
                  result to valid color values. Saturate(S + D) </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name Igreja.Igreja:backgroundTintMode
+          @attr name igreja.igreja:backgroundTintMode
         */
         public static final int ViewBackgroundHelper_backgroundTintMode = 2;
         /** Attributes that can be used with a ViewStubCompat.

@@ -91,7 +91,6 @@ namespace business.classes
                 {
                     try
                     {
-
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -135,6 +134,7 @@ namespace business.classes
                 {
                     try
                     {
+                        Select_padrao = Select_padrao.Replace("*", "M.IdReuniao");
                         Reunioes = new List<Reuniao>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();

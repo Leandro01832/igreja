@@ -48,8 +48,7 @@ namespace business.classes.Pessoas
 
         public override bool recuperar(int? id)
         {
-            Select_padrao = "select * from Visitante as V "
-            + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
+            Select_padrao = "select * from Visitante as V ";
             if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
             
             var conexao = bd.obterconexao();
@@ -60,9 +59,6 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
-                        Select_padrao = "select * from Visitante as V "
-                    + " inner join PessoaDado as PD on V.IdPessoa=PD.IdPessoa inner join Pessoa as P on PD.IdPessoa=P.IdPessoa ";
-                        if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -95,6 +91,7 @@ namespace business.classes.Pessoas
                 {
                     try
                     {
+                        Select_padrao = Select_padrao.Replace("*", "V.IdPessoa");
                         visitantes = new List<Visitante>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();

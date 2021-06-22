@@ -1,2 +1,2 @@
 android.support.multidex.MultiDexApplication
-Igreja.Igreja
+com.myapp.igreja

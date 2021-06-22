@@ -95,6 +95,7 @@ namespace business.classes
             {
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "M.IdTelefone");
                     Telefones = new List<Telefone>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();

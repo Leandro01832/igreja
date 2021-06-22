@@ -454,8 +454,8 @@ namespace business.classes
 
         public override bool recuperar(int? id)
         {
-            Select_padrao = "select * from MudancaEstado ";
-            if (id != null) Select_padrao += $" as P where  P.IdMudanca='{id}'";
+            Select_padrao = "select * from MudancaEstado as P ";
+            if (id != null) Select_padrao += $" where  P.IdMudanca='{id}'";
 
             
             var conexao = bd.obterconexao();
@@ -466,7 +466,6 @@ namespace business.classes
                 {
                     try
                     {
-
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -502,6 +501,7 @@ namespace business.classes
                 {
                     try
                     {
+                        Select_padrao = Select_padrao.Replace("*", "P.IdMudanca");
                         Mudancas = new List<MudancaEstado>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();

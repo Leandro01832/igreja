@@ -104,6 +104,7 @@ namespace business.classes
             {
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "M.IdHistorico");
                     Historicos = new List<Historico>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();

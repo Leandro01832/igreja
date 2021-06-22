@@ -47,9 +47,6 @@ namespace business.classes.Celulas
                 {
                     try
                     {
-                        Select_padrao = "select * from Celula_Crianca as CC "
-                        + " inner join Celula as C on CC.IdCelula=C.IdCelula ";
-                        if (id != null) Select_padrao += $" where CC.IdCelula='{id}'";
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();
                         if (dr.HasRows == false)
@@ -77,6 +74,7 @@ namespace business.classes.Celulas
                 {
                     try
                     {
+                        Select_padrao = Select_padrao.Replace("*", "C.IdCelula");
                         celulasCrianca = new List<Celula_Crianca>();
                         SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                         SqlDataReader dr = comando.ExecuteReader();

@@ -57,9 +57,6 @@ namespace business.classes.Pessoas
 
             if (id != null)
             {
-                
-                    Select_padrao = "select * from PessoaLgpd as PL ";
-                    if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
