@@ -610,3 +610,13 @@ D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.An
 D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\bin\Debug\com.myapp.igreja.apk
 D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\bin\Debug\com.myapp.igreja-Signed.apk
 D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\android\bin\com.myapp.igreja.apk
+C:\Users\leand\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.dll
+C:\Users\leand\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Extras.dll
+C:\Users\leand\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Platform.dll
+C:\Users\leand\.nuget\packages\xam.plugins.forms.imagecircle\1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Abstractions.dll
+C:\Users\leand\.nuget\packages\xam.plugins.forms.imagecircle\1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Android.dll
+D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\linksrc\GalaSoft.MvvmLight.dll.mdb
+D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\linksrc\GalaSoft.MvvmLight.Extras.dll.mdb
+D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\linksrc\GalaSoft.MvvmLight.Platform.dll.mdb
+D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\linksrc\ImageCircle.Forms.Plugin.Abstractions.dll.mdb
+D:\codigo-github\Igreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\linksrc\ImageCircle.Forms.Plugin.Android.dll.mdb

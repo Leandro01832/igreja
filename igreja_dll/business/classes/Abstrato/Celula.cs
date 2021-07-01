@@ -88,61 +88,54 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
             Select_padrao = "select * from Celula as C "
-            + " inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula ";
-            if (id != null) Select_padrao += $" where C.IdCelula='{id}'";
+            + $" inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula where C.IdCelula='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    return false;
-                }
-                
-                    dr.Read();
-                    this.IdCelula = int.Parse(dr["IdCelula"].ToString());
-                    this.Nome = Convert.ToString(dr["Nome"]);
-                    this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
-                    this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
-                    this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-                    this.EnderecoCelula = new EnderecoCelula();
-                    this.EnderecoCelula.Bairro = Convert.ToString(dr["Bairro"]);
-                    this.EnderecoCelula.Cidade = Convert.ToString(dr["Cidade"]);
-                    this.EnderecoCelula.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.EnderecoCelula.Estado = Convert.ToString(dr["Estado"]);
-                    this.EnderecoCelula.Rua = Convert.ToString(dr["Rua"]);
-                    this.EnderecoCelula.Pais = Convert.ToString(dr["Pais"]);
-                    this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
-                    this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
-                    dr.Close();
-
-                bd.fecharconexao(conexao);
-                this.Ministerios = new List<MinisterioCelula>();
-                    var listaMinisterios = recuperarMinisterios(id);
-                    if (listaMinisterios != null)
-                        foreach (var item in listaMinisterios)
-                            this.Ministerios.Add((MinisterioCelula)item);
-
-                    this.Pessoas = new List<Pessoa>();
-                    var listaPessoas = buscarPessoas(id);
-                    if (listaPessoas != null)
-                        foreach (var item in listaPessoas)
-                            this.Pessoas.Add((Pessoa)item);
-
-                
-
-                modelos.Add(this);
-                return true;
+                dr.Close();
+                return false;
             }
-            return false;
+
+            dr.Read();
+            this.IdCelula = int.Parse(dr["IdCelula"].ToString());
+            this.Nome = Convert.ToString(dr["Nome"]);
+            this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
+            this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
+            this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
+            this.EnderecoCelula = new EnderecoCelula();
+            this.EnderecoCelula.Bairro = Convert.ToString(dr["Bairro"]);
+            this.EnderecoCelula.Cidade = Convert.ToString(dr["Cidade"]);
+            this.EnderecoCelula.Complemento = Convert.ToString(dr["Complemento"]);
+            this.EnderecoCelula.Estado = Convert.ToString(dr["Estado"]);
+            this.EnderecoCelula.Rua = Convert.ToString(dr["Rua"]);
+            this.EnderecoCelula.Pais = Convert.ToString(dr["Pais"]);
+            this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
+            this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
+            dr.Close();
+
+            bd.fecharconexao(conexao);
+            this.Ministerios = new List<MinisterioCelula>();
+            var listaMinisterios = recuperarMinisterios(id);
+            if (listaMinisterios != null)
+                foreach (var item in listaMinisterios)
+                    this.Ministerios.Add((MinisterioCelula)item);
+
+            this.Pessoas = new List<Pessoa>();
+            var listaPessoas = buscarPessoas(id);
+            if (listaPessoas != null)
+                foreach (var item in listaPessoas)
+                    this.Pessoas.Add((Pessoa)item);
+
+            modelos.Add(this);
+            return true;
         }
 
         public override string salvar()
@@ -160,7 +153,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (celulasAdolescente == null && new Celula_Adolescente().recuperar(null))
+                if (celulasAdolescente == null && new Celula_Adolescente().recuperar())
                 { lista.AddRange(celulasAdolescente); listaCelulas.AddRange(celulasAdolescente); }
                 
                 return lista;
@@ -168,7 +161,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (celulasAdulto == null && new Celula_Adulto().recuperar(null))
+                if (celulasAdulto == null && new Celula_Adulto().recuperar())
                 { task.Result.AddRange(celulasAdulto); listaCelulas.AddRange(celulasAdulto); }
                 
                 return task.Result;
@@ -176,7 +169,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (celulasCasado == null && new Celula_Casado().recuperar(null))
+                if (celulasCasado == null && new Celula_Casado().recuperar())
                 { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCasado); }
                 
                 return task.Result;
@@ -184,7 +177,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (celulasCrianca == null && new Celula_Crianca().recuperar(null))
+                if (celulasCrianca == null && new Celula_Crianca().recuperar())
                 { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCrianca); }
                 
                 return task.Result;
@@ -192,7 +185,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (celulasJovem == null && new Celula_Jovem().recuperar(null))
+                if (celulasJovem == null && new Celula_Jovem().recuperar())
                 {  task.Result.AddRange(celulasJovem); listaCelulas.AddRange(celulasJovem); }
                 
                 return task.Result;

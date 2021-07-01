@@ -33,95 +33,97 @@ namespace business.classes.Ministerio
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Lider_Ministerio as LM inner join Ministerio as MI on LM.IdMinisterio=MI.IdMinisterio ";
-            if (id != null) Select_padrao += $" where LM.IdMinisterio='{id}'";
-            
+            Select_padrao = $"select * from Lider_Ministerio as LM where LM.IdMinisterio='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
                         dr.Close();
-                        base.recuperar(id);
-                    }
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
+                        bd.fecharconexao(conexao);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
-                    return true;
+                    dr.Close();
+                    base.recuperar(id);
                 }
-                else
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        Select_padrao = Select_padrao.Replace("*", "MI.IdMinisterio");
-                        lideresMinisterio = new List<Lider_Ministerio>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
 
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            Lider_Ministerio m = new Lider_Ministerio();
-                            m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                            modelos.Add(m);
-                        }
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Lider_Ministerio as LM ";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "LM.IdMinisterio");
+                    lideresMinisterio = new List<Lider_Ministerio>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
                         dr.Close();
-
-                        //Recursividade
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (Lider_Ministerio)m;
-                            var c = new Lider_Ministerio();
-                            if(c.recuperar(cel.IdMinisterio))
-                                lideresMinisterio.Add(c); // não deu erro de conexao
-                            else
-                            {
-                                lideresMinisterio = null;
-                                return false;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
+
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
                     {
-                        bd.fecharconexao(conexao);
+                        Lider_Ministerio m = new Lider_Ministerio();
+                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+                        modelos.Add(m);
                     }
-                    return true;
-                } 
+                    dr.Close();
+
+                    //Recursividade
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Lider_Ministerio)m;
+                        var c = new Lider_Ministerio();
+                        if (c.recuperar(cel.IdMinisterio))
+                            lideresMinisterio.Add(c); // não deu erro de conexao
+                        else
+                        {
+                            lideresMinisterio = null;
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
             }
-            if (id == null)
-                lideresMinisterio = null;
+            lideresMinisterio = null;
             return false;
 
         }

@@ -36,27 +36,24 @@ namespace business.classes.Intermediario
             throw new NotImplementedException();
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from ReuniaoPessoa as RP ";
-            if (id != null) Select_padrao += $" where RP.IdReuniaoPessoa='{id}'";
-
-            
+            Select_padrao = $"select * from ReuniaoPessoa as RP where RP.IdReuniaoPessoa='{id}'";
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
-                
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return false;
+                    }
+
                     dr.Read();
                     this.ReuniaoId = int.Parse(Convert.ToString(dr["ReuniaoId"]));
                     this.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
@@ -71,24 +68,33 @@ namespace business.classes.Intermediario
                 {
                     bd.fecharconexao(conexao);
                 }
-
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from ReuniaoPessoa as RP ";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
             {
-                ReuniaoPessoas = new List<ReuniaoPessoa>();
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "RP.IdReuniaoPessoa");
+                    ReuniaoPessoas = new List<ReuniaoPessoa>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return false;
+                    }
+
                     List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
-                    
+
                     while (dr.Read())
                     {
                         ReuniaoPessoa pm = new ReuniaoPessoa();
@@ -99,7 +105,7 @@ namespace business.classes.Intermediario
 
                     bd.fecharconexao(conexao);
                     //recursividade
-                    
+
                     foreach (var item in lista.OfType<ReuniaoPessoa>().ToList())
                     {
                         var modelo = new ReuniaoPessoa();
@@ -123,6 +129,8 @@ namespace business.classes.Intermediario
                 }
                 return true;
             }
+            ReuniaoPessoas = null;
+            return false;
         }
 
         public override string salvar()
@@ -137,7 +145,7 @@ namespace business.classes.Intermediario
         {
             ToTable("ReuniaoPessoa");
 
-           // HasKey(a => new { a.PessoaId, a.ReuniaoId });
+            // HasKey(a => new { a.PessoaId, a.ReuniaoId });
 
             Property(a => a.PessoaId)
                 .IsRequired();

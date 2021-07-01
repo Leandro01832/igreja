@@ -80,38 +80,27 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from MembroLgpd as P ";
-            if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            Select_padrao = $"select * from MembroLgpd as P where P.IdPessoa='{id}'";
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
             {
-                Select_padrao = "select * from MembroLgpd as P ";
-                if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
-                base.recuperar(id);
-                dr.Read();
-                    this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
-                    this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
-                    this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
-                    dr.Close();
-                    modelos.Add(this);
+                dr.Close();
                 bd.fecharconexao(conexao);
-                return true;
+                return false;
             }
+            base.recuperar(id);
+            dr.Read();
+            this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
+            this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
+            this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
+            dr.Close();
             bd.fecharconexao(conexao);
-            return false;
+            return true;
         }
 
         public override string salvar()

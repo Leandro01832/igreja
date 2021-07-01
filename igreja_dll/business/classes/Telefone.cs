@@ -51,16 +51,12 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Telefone as M";
-            if (id != null)
-                Select_padrao += Select_padrao + $" where M.IdTelefone={id}";
-
-            
+            Select_padrao = $"select * from Telefone as M where M.IdTelefone={id}";            
             var conexao = bd.obterconexao();
-
-            if (id != null)
+            
+            if(conexao != null)
             {
                 try
                 {
@@ -88,10 +84,17 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-                
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Telefone as M";           
+            var conexao = bd.obterconexao();
+
+            if(conexao != null)
             {
                 try
                 {
@@ -118,13 +121,13 @@ namespace business.classes
                     //Recursividade
                     bd.fecharconexao(conexao);
 
-                    
+
                     foreach (var m in modelos)
                     {
                         var cel = (Telefone)m;
                         var c = new Telefone();
-                        if(c.recuperar(cel.IdTelefone))
-                        Telefones.Add(c); //não deu erro de conexao
+                        if (c.recuperar(cel.IdTelefone))
+                            Telefones.Add(c); //não deu erro de conexao
                         else
                         {
                             Telefones = null;
@@ -144,6 +147,8 @@ namespace business.classes
                 return true;
             }
 
+            Telefones = null;
+            return false;
         }
 
         public override string salvar()

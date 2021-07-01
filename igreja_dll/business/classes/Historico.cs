@@ -59,16 +59,12 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Historico as M";
-            if (id != null)
-                Select_padrao += $" where M.IdHistorico='{id}'";
-
-            
+            Select_padrao = $"select * from Historico as M where M.IdHistorico='{id}'";            
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
                 try
                 {
@@ -97,10 +93,17 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-                
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Historico as M";            
+            var conexao = bd.obterconexao();
+
+            if(conexao != null)
             {
                 try
                 {
@@ -125,13 +128,13 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    
+
                     foreach (var m in modelos)
                     {
                         var cel = (Historico)m;
                         var c = new Historico();
-                        if(c.recuperar(cel.IdHistorico))
-                        Historicos.Add(c);  //não deu erro de conexao
+                        if (c.recuperar(cel.IdHistorico))
+                            Historicos.Add(c);  //não deu erro de conexao
                         else
                         {
                             Historicos = null;
@@ -149,7 +152,8 @@ namespace business.classes
                 }
                 return true;
             }
-
+            Historicos = null;
+            return false;
         }
 
         public override string salvar()

@@ -47,11 +47,8 @@ namespace RepositorioEF
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            // modelBuilder.Conventions.Remove<PrimaryKeyNameForeignKeyDiscoveryConvention>();
-            //  modelBuilder.Entity<Celula>().HasKey(c => c.Id).HasEntitySetName("Celulaid");
 
         }
-
-        public System.Data.Entity.DbSet<business.classes.Pessoas.Membro_Aclamacao> Pessoas { get; set; }
+        
     }
 }

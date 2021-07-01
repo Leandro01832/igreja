@@ -37,19 +37,15 @@ namespace business.classes.Intermediario
             throw new NotImplementedException();
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from MinisterioCelula as MC ";
-            if (id != null) Select_padrao += $" where MC.IdMinisterioCelula='{id}'";
-
-            
+            Select_padrao = $"select * from MinisterioCelula as MC where MC.IdMinisterioCelula='{id}'";            
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
                 try
                 {
-                    
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -73,13 +69,21 @@ namespace business.classes.Intermediario
                 {
                     bd.fecharconexao(conexao);
                 }
-
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from MinisterioCelula as MC ";            
+            var conexao = bd.obterconexao();
+
+            if(conexao != null)
             {
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "MC.IdMinisterioCelula");
                     MinisterioCelulas = new List<MinisterioCelula>();
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
@@ -104,8 +108,8 @@ namespace business.classes.Intermediario
                     foreach (var item in lista.OfType<MinisterioCelula>().ToList())
                     {
                         var model = new MinisterioCelula();
-                        if(model.recuperar(item.IdMinisterioCelula))
-                        MinisterioCelulas.Add(model); //não deu erro de conexão
+                        if (model.recuperar(item.IdMinisterioCelula))
+                            MinisterioCelulas.Add(model); //não deu erro de conexão
                         else
                         {
                             MinisterioCelulas = null;
@@ -124,6 +128,8 @@ namespace business.classes.Intermediario
                 }
                 return true;
             }
+            MinisterioCelulas = null;
+            return false;
         }
 
         public override string salvar()

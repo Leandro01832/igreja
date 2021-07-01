@@ -36,28 +36,28 @@ namespace business.classes
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
-            var model1  = new Visitante()               ; var p1 =  model1  .recuperar(idVelhoEstado);
-            var model2  = new VisitanteLgpd()           ; var p2 =  model2  .recuperar(idVelhoEstado);
-            var model3  = new Crianca()                 ; var p3 =  model3  .recuperar(idVelhoEstado);
-            var model4  = new CriancaLgpd()             ; var p4 =  model4  .recuperar(idVelhoEstado);
-            var model5  = new Membro_Aclamacao()        ; var p5 =  model5  .recuperar(idVelhoEstado);
-            var model6  = new Membro_AclamacaoLgpd()    ; var p6 =  model6  .recuperar(idVelhoEstado);
-            var model7  = new Membro_Batismo()          ; var p7 =  model7  .recuperar(idVelhoEstado);
-            var model8  = new Membro_BatismoLgpd()      ; var p8 =  model8  .recuperar(idVelhoEstado);
-            var model9  = new Membro_Reconciliacao()    ; var p9 =  model9  .recuperar(idVelhoEstado);
-            var model10 = new Membro_ReconciliacaoLgpd(); var p10 = model10 .recuperar(idVelhoEstado);
-            var model11 = new Membro_Transferencia()    ; var p11 = model11 .recuperar(idVelhoEstado);
+            var model1 = new Visitante(); var p1 = model1.recuperar(idVelhoEstado);
+            var model2 = new VisitanteLgpd(); var p2 = model2.recuperar(idVelhoEstado);
+            var model3 = new Crianca(); var p3 = model3.recuperar(idVelhoEstado);
+            var model4 = new CriancaLgpd(); var p4 = model4.recuperar(idVelhoEstado);
+            var model5 = new Membro_Aclamacao(); var p5 = model5.recuperar(idVelhoEstado);
+            var model6 = new Membro_AclamacaoLgpd(); var p6 = model6.recuperar(idVelhoEstado);
+            var model7 = new Membro_Batismo(); var p7 = model7.recuperar(idVelhoEstado);
+            var model8 = new Membro_BatismoLgpd(); var p8 = model8.recuperar(idVelhoEstado);
+            var model9 = new Membro_Reconciliacao(); var p9 = model9.recuperar(idVelhoEstado);
+            var model10 = new Membro_ReconciliacaoLgpd(); var p10 = model10.recuperar(idVelhoEstado);
+            var model11 = new Membro_Transferencia(); var p11 = model11.recuperar(idVelhoEstado);
             var model12 = new Membro_TransferenciaLgpd(); var p12 = model12.recuperar(idVelhoEstado);
             Pessoa p = null;
-            if (p1) p =  model1;
-            if (p2) p =  model2 ;
-            if (p3) p =  model3 ;
-            if (p4) p =  model4 ;
-            if (p5) p =  model5 ;
-            if (p6) p =  model6 ;
-            if (p7) p =  model7 ;
-            if (p8) p =  model8 ;
-            if (p9) p =  model9 ;
+            if (p1) p = model1;
+            if (p2) p = model2;
+            if (p3) p = model3;
+            if (p4) p = model4;
+            if (p5) p = model5;
+            if (p6) p = model6;
+            if (p7) p = model7;
+            if (p8) p = model8;
+            if (p9) p = model9;
             if (p10) p = model10;
             if (p11) p = model11;
             if (p12) p = model12;
@@ -452,110 +452,108 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from MudancaEstado as P ";
-            if (id != null) Select_padrao += $" where  P.IdMudanca='{id}'";
-
-            
+            Select_padrao = $"select * from MudancaEstado as P where P.IdMudanca='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-
-                        dr.Read();
-
-                        this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                        this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                        this.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
-                        this.novoEstado = Convert.ToString(dr["novoEstado"]);
-                        this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                         dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
+                        bd.fecharconexao(conexao);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
-                    
-                    return true;
+
+                    dr.Read();
+
+                    this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
+                    this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
+                    this.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
+                    this.novoEstado = Convert.ToString(dr["novoEstado"]);
+                    this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from MudancaEstado as P ";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "P.IdMudanca");
+                    Mudancas = new List<MudancaEstado>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        Select_padrao = Select_padrao.Replace("*", "P.IdMudanca");
-                        Mudancas = new List<MudancaEstado>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            MudancaEstado m = new MudancaEstado();
-                            m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
-                            modelos.Add(m);
-                        }
-
                         dr.Close();
-
-                        //Recursividade
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (MudancaEstado)m;
-                            var c = new MudancaEstado();
-                            if(c.recuperar(cel.IdMudanca))
-                            Mudancas.Add(c); //não deu erro de conexao
-                            else
-                            {
-                                Mudancas = null;
-                                return false;
-                            }
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
+
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
                     {
-                        bd.fecharconexao(conexao);
+                        MudancaEstado m = new MudancaEstado();
+                        m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
+                        modelos.Add(m);
                     }
 
-                    return true;
-                } 
-            }
-            if (id == null)
-                Mudancas = null;
+                    dr.Close();
 
-                return false;
+                    //Recursividade
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (MudancaEstado)m;
+                        var c = new MudancaEstado();
+                        if (c.recuperar(cel.IdMudanca))
+                            Mudancas.Add(c); //não deu erro de conexao
+                        else
+                        {
+                            Mudancas = null;
+                            return false;
+                        }
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            Mudancas = null;
+            return false;
         }
 
         public override string salvar()

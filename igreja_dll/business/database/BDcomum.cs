@@ -18,7 +18,7 @@ namespace database.banco
 
         public static string addNaLista;
         public static bool podeAbrir = true;
-        public static bool BancoEnbarcado = false;
+        public static bool BancoEnbarcado = true;
 
         public bool TestarConexao()
         {
@@ -42,13 +42,18 @@ namespace database.banco
 
         public SqlConnection obterconexao()
         {
+            conecta1 = conecta1.Replace("Tests", "WindowsFormsApp1");
+
             SqlConnection conn = null;
             if (podeAbrir)
             {
                 try
                 {
-                 conn = new SqlConnection(conecta2);
-                 conn.Open();
+                    var stringConexao = "";
+                    if (BancoEnbarcado) stringConexao = conecta1;
+                    else stringConexao = conecta2;
+                    conn = new SqlConnection(stringConexao);
+                    conn.Open();
                     modelocrud.Erro_Conexao = false;
                     modelocrud.QuantErro = 0;
                 }
@@ -62,18 +67,20 @@ namespace database.banco
                     
                 }                
             }
-            if (!podeAbrir)
+            else
             {
                 if (TestarConexao())
                 {
                     podeAbrir = true;
-                    conn = new SqlConnection(conecta2);
+                    var stringConexao = "";
+                    if (BancoEnbarcado) stringConexao = conecta1;
+                    else stringConexao = conecta2;
+                    conn = new SqlConnection(stringConexao);
                     try { conn.Open(); }
                     catch (Exception ex)
                     {
                         if (ex.Message.Contains("instância"))
                         {
-                            MessageBox.Show("Você não esta conectado." + ex.Message);
                             podeAbrir = false;
                         }
 

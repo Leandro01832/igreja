@@ -50,27 +50,24 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Chamada as C";
-            if (id != null)
-                Select_padrao += $" where C.IdChamada='{id}'";
-
-
+            Select_padrao = $"select * from Chamada as C where C.IdChamada='{id}'";
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return false;
+                    }
+
                     dr.Read();
                     this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
                     this.IdChamada = int.Parse(Convert.ToString(dr["IdChamada"]));
@@ -86,10 +83,17 @@ namespace business.classes
                 {
                     bd.fecharconexao(conexao);
                 }
-
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Chamada as C";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
             {
                 try
                 {
@@ -115,13 +119,13 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    
+
                     foreach (var m in modelos)
                     {
                         var cel = (Chamada)m;
                         var c = new Chamada();
-                        if(c.recuperar(cel.IdChamada))
-                        Chamadas.Add(c); //não deu erro de conexao
+                        if (c.recuperar(cel.IdChamada))
+                            Chamadas.Add(c); //não deu erro de conexao
                         else
                         {
                             Chamadas = null;
@@ -142,6 +146,8 @@ namespace business.classes
                 return true;
             }
 
+            Chamadas = null;
+            return false;
         }
 
         public override string salvar()

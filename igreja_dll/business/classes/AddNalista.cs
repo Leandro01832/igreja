@@ -153,10 +153,15 @@ namespace business.classes
             throw new NotImplementedException();
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
             throw new NotImplementedException();
-        }        
+        }
+
+        public override bool recuperar()
+        {
+            throw new NotImplementedException();
+        }
 
         public override string salvar()
         {

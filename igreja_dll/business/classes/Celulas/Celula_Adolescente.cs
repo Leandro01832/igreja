@@ -32,100 +32,100 @@ namespace business.classes.Celulas
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Celula_Adolescente as CA "
-                + " inner join Celula as C on CA.IdCelula=C.IdCelula ";
-            if (id != null) Select_padrao += $" where CA.IdCelula='{id}'";
-
-            
+            Select_padrao = $"select * from Celula_Adolescente as CA where CA.IdCelula='{id}'";            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
                         dr.Close();
-                        base.recuperar(id);
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
+                        bd.fecharconexao(conexao);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
-                    return true;
+                    dr.Close();
+                    base.recuperar(id);
                 }
-                else
-                {                    
-                    try
+
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Celula_Adolescente as CA ";            
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "CA.IdCelula");
+                    celulasAdolescente = new List<Celula_Adolescente>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        Select_padrao = Select_padrao.Replace("*", "C.IdCelula");
-                        celulasAdolescente = new List<Celula_Adolescente>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            Celula_Adolescente c = new Celula_Adolescente();
-                            c.IdCelula = int.Parse(dr["IdCelula"].ToString());
-                            c.Nome = Convert.ToString(dr["Nome"]);
-                            modelos.Add(c);
-                        }
-
                         dr.Close();
-
-                        //Recursividade
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (Celula_Adolescente)m;
-                            var c = new Celula_Adolescente();
-                            if(c.recuperar(cel.IdCelula))
-                            celulasAdolescente.Add(c); // não deu erro de conexao
-                            else
-                            {
-                                celulasAdolescente = null;
-                                return false;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
+
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
                     {
-                        bd.fecharconexao(conexao);
+                        Celula_Adolescente c = new Celula_Adolescente();
+                        c.IdCelula = int.Parse(dr["IdCelula"].ToString());
+                        c.Nome = Convert.ToString(dr["Nome"]);
+                        modelos.Add(c);
                     }
-                    return true;
-                } 
+
+                    dr.Close();
+
+                    //Recursividade
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Celula_Adolescente)m;
+                        var c = new Celula_Adolescente();
+                        if (c.recuperar(cel.IdCelula))
+                            celulasAdolescente.Add(c); // não deu erro de conexao
+                        else
+                        {
+                            celulasAdolescente = null;
+                            return false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
             }
-            if (id == null)
-                celulasAdolescente = null;
+            celulasAdolescente = null;
             return false;
         }
 

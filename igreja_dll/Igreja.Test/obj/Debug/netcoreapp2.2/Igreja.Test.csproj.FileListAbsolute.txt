@@ -40,3 +40,5 @@ D:\Downloads\copia-igreja\igreja_dll\Igreja.Test\obj\Debug\netcoreapp2.2\Igreja.
 D:\Downloads\copia-igreja\igreja_dll\Igreja.Test\obj\Debug\netcoreapp2.2\Igreja.Test.csproj.CopyComplete
 D:\Downloads\copia-igreja\igreja_dll\Igreja.Test\obj\Debug\netcoreapp2.2\Igreja.Test.dll
 D:\Downloads\copia-igreja\igreja_dll\Igreja.Test\obj\Debug\netcoreapp2.2\Igreja.Test.pdb
+D:\codigo-github\Igreja\igreja\igreja_dll\Igreja.Test\bin\Debug\netcoreapp2.2\Newtonsoft.Json.dll
+D:\codigo-github\Igreja\igreja\igreja_dll\Igreja.Test\bin\Debug\netcoreapp2.2\Newtonsoft.Json.xml

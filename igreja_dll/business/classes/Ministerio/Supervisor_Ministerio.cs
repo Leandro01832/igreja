@@ -39,99 +39,100 @@ namespace business.classes.Ministerio
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Supervisor_Ministerio as SM inner join Ministerio as MI on SM.IdMinisterio=MI.IdMinisterio ";
-            if (id != null) Select_padrao += $" where SM.IdMinisterio='{id}'";
-            
+            Select_padrao = $"select * from Supervisor_Ministerio as SM where SM.IdMinisterio='{id}'";            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-                        base.recuperar(id);
-                        dr.Read();
-                        this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                         dr.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
+                        bd.fecharconexao(conexao);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
-
-                    return true;
+                    base.recuperar(id);
+                    dr.Read();
+                    this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
+                    dr.Close();
                 }
-                else
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        Select_padrao = Select_padrao.Replace("*", "MI.IdMinisterio");
-                        supervisoresMinisterio = new List<Supervisor_Ministerio>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
 
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            Supervisor_Ministerio m = new Supervisor_Ministerio();
-                            m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                            modelos.Add(m);
-                        }
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Supervisor_Ministerio as SM ";            
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "SM.IdMinisterio");
+                    supervisoresMinisterio = new List<Supervisor_Ministerio>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
                         dr.Close();
-
-                        //Recursividade
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (Supervisor_Ministerio)m;
-                            var c = new Supervisor_Ministerio();
-                            if(c.recuperar(cel.IdMinisterio))
-                                supervisoresMinisterio.Add(c); //não deu erro de conexao
-                            else
-                            {
-                                supervisoresMinisterio = null;
-                                return false;
-                            }
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
+
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
                     {
-                        bd.fecharconexao(conexao);
+                        Supervisor_Ministerio m = new Supervisor_Ministerio();
+                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+                        modelos.Add(m);
                     }
-                    return true;
-                } 
+                    dr.Close();
+
+                    //Recursividade
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Supervisor_Ministerio)m;
+                        var c = new Supervisor_Ministerio();
+                        if (c.recuperar(cel.IdMinisterio))
+                            supervisoresMinisterio.Add(c); //não deu erro de conexao
+                        else
+                        {
+                            supervisoresMinisterio = null;
+                            return false;
+                        }
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
             }
-            if (id == null)
-                supervisoresMinisterio = null;
+            supervisoresMinisterio = null;
             return false;
         }
 

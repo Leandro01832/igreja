@@ -23,13 +23,14 @@ namespace business.database
         public DbSet<Chamada> Chamadas { get; set; }
         public DbSet<MudancaEstado> MudancaEstado { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }
+
         public DbSet<Pessoa> pessoas { get; set; }
         public DbSet<Endereco> endereco { get; set; }
         public DbSet<EnderecoCelula> EnderecoCelula { get; set; }
         public DbSet<Telefone> telefone { get; set; }
         public DbSet<Celula> celula { get; set; }
+
         public DbSet<Ministerio> ministerio { get; set; }
-        public DbSet<Lider_Celula> Lider_Celula { get; set; }
         public DbSet<Historico> historico { get; set; }
         public DbSet<PessoaMinisterio> PessoaMinisterio { get; set; }
         public DbSet<ReuniaoPessoa> ReuniaoPessoa { get; set; }
@@ -45,9 +46,6 @@ namespace business.database
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            // modelBuilder.Conventions.Remove<PrimaryKeyNameForeignKeyDiscoveryConvention>();
-            //  modelBuilder.Entity<Celula>().HasKey(c => c.Id).HasEntitySetName("Celulaid");
-
         }
 
 

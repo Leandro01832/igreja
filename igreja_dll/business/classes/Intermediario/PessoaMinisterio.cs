@@ -39,19 +39,15 @@ namespace business.classes.Intermediario
             throw new NotImplementedException();
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from PessoaMinisterio as PM ";
-            if (id != null) Select_padrao += $" where PM.IdPessoaMinisterio='{id}'";
-
-            
+            Select_padrao = $"select * from PessoaMinisterio as PM where PM.IdPessoaMinisterio='{id}'";            
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
                 try
                 {
-                    
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -75,22 +71,31 @@ namespace business.classes.Intermediario
                 {
                     bd.fecharconexao(conexao);
                 }
-
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from PessoaMinisterio as PM ";            
+            var conexao = bd.obterconexao();
+
+            if(conexao != null)
             {
-                PessoaMinisterios = new List<PessoaMinisterio>();
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
                 try
                 {
+                    Select_padrao = Select_padrao.Replace("*", "PM.IdPessoaMinisterio");
+                    PessoaMinisterios = new List<PessoaMinisterio>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return false;
+                    }
+
                     List<modelocrud> lista = new List<modelocrud>();
                     while (dr.Read())
                     {
@@ -102,11 +107,11 @@ namespace business.classes.Intermediario
 
                     bd.fecharconexao(conexao);
                     // recursividade          
-                    
+
                     foreach (var item in lista.OfType<PessoaMinisterio>())
                     {
                         var model = new PessoaMinisterio();
-                        if(model.recuperar(item.IdPessoaMinisterio))
+                        if (model.recuperar(item.IdPessoaMinisterio))
                             PessoaMinisterios.Add(model);
                     }
                 }
@@ -121,6 +126,9 @@ namespace business.classes.Intermediario
                 }
                 return true;
             }
+
+            PessoaMinisterios = null;
+            return false;
         }
 
         public override string salvar()

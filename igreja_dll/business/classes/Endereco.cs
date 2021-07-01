@@ -80,16 +80,12 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Endereco as M";
-            if (id != null)
-                Select_padrao += $" where M.IdEndereco='{id}'";
-
-            
+            Select_padrao = $"select * from Endereco as M where M.IdEndereco='{id}'";            
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
                 try
                 {
@@ -121,10 +117,17 @@ namespace business.classes
                 finally
                 {
                 }
-
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Endereco as M";
+            var conexao = bd.obterconexao();
+
+            if(conexao != null)
             {
                 try
                 {
@@ -149,13 +152,13 @@ namespace business.classes
                     dr.Close();
 
                     //Recursividade
-                    
+
                     foreach (var m in modelos)
                     {
                         var cel = (Endereco)m;
                         var c = new Endereco();
-                        if(c.recuperar(cel.IdEndereco))
-                        Enderecos.Add(c); // não deu erro de conexao
+                        if (c.recuperar(cel.IdEndereco))
+                            Enderecos.Add(c); // não deu erro de conexao
                         else
                         {
                             Enderecos = null;
@@ -175,14 +178,9 @@ namespace business.classes
                 return true;
             }
 
+            Enderecos = null;
+            return false;
         }
 
     }
-
-
-
-
-
-
-
 }

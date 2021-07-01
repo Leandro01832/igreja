@@ -46,103 +46,103 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Visitante as V ";
-            if (id != null) Select_padrao += $" where V.IdPessoa='{id}' ";
-            
+            Select_padrao = $"select * from Visitante as V where V.IdPessoa='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-                        base.recuperar(id);
-                        dr.Read();
-                        this.Data_visita = Convert.ToDateTime(Convert.ToString(dr["Data_visita"]));
-                        this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
-
                         dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
+                        bd.fecharconexao(conexao);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
+                    base.recuperar(id);
+                    dr.Read();
+                    this.Data_visita = Convert.ToDateTime(Convert.ToString(dr["Data_visita"]));
+                    this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
 
-                    return true;
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        Select_padrao = Select_padrao.Replace("*", "V.IdPessoa");
-                        visitantes = new List<Visitante>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
 
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            Visitante v = new Visitante();
-                            v.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                            modelos.Add(v);
-                        }
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Visitante as V ";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "V.IdPessoa");
+                    visitantes = new List<Visitante>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
                         dr.Close();
-
-                        //Recursividade
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (Visitante)m;
-                            var c = new Visitante();
-                            if(c.recuperar(cel.IdPessoa))
-                                visitantes.Add(c); // não deu erro de conexao
-                            else
-                            {
-                                visitantes = null;
-                                return false;
-                            }
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
 
-                    return true;
-                } 
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
+                    {
+                        Visitante v = new Visitante();
+                        v.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                        modelos.Add(v);
+                    }
+                    dr.Close();
+
+                    //Recursividade
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Visitante)m;
+                        var c = new Visitante();
+                        if (c.recuperar(cel.IdPessoa))
+                            visitantes.Add(c); // não deu erro de conexao
+                        else
+                        {
+                            visitantes = null;
+                            return false;
+                        }
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
             }
-            if (id == null)
-                visitantes = null;
+            visitantes = null;
             return false;
         }
 

@@ -49,102 +49,102 @@ namespace business.classes.PessoasLgpd
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from CriancaLgpd as C ";
-            if (id != null) Select_padrao += $" where C.IdPessoa='{id}'";
-
-            
+            Select_padrao = $"select * from CriancaLgpd as C where C.IdPessoa='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-                        base.recuperar(id);
-                        dr.Read();
-                        this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
-                        this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
                         dr.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
+                        bd.fecharconexao(conexao);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
-
-                    return true;
+                    base.recuperar(id);
+                    dr.Read();
+                    this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
+                    this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
+                    dr.Close();
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        Select_padrao = Select_padrao.Replace("*", "C.IdPessoa");
-                        criancasLgpd = new List<CriancaLgpd>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
 
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            CriancaLgpd crianca = new CriancaLgpd();
-                            crianca.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                            modelos.Add(crianca);
-                        }
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from CriancaLgpd as C ";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "C.IdPessoa");
+                    criancasLgpd = new List<CriancaLgpd>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
                         dr.Close();
-
-                        //Recursividade
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (CriancaLgpd)m;
-                            var c = new CriancaLgpd();
-                            if(c.recuperar(cel.IdPessoa))
-                                criancasLgpd.Add(c); // não deu erro de conexao
-                            else
-                            {
-                                criancasLgpd = null;
-                                return false;
-                            }
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
+
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
                     {
-                        bd.fecharconexao(conexao);
+                        CriancaLgpd crianca = new CriancaLgpd();
+                        crianca.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+                        modelos.Add(crianca);
                     }
-                    return true;
-                } 
+                    dr.Close();
+
+                    //Recursividade
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (CriancaLgpd)m;
+                        var c = new CriancaLgpd();
+                        if (c.recuperar(cel.IdPessoa))
+                            criancasLgpd.Add(c); // não deu erro de conexao
+                        else
+                        {
+                            criancasLgpd = null;
+                            return false;
+                        }
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
             }
-            if (id == null)
-                criancasLgpd = null;
+            criancasLgpd = null;
             return false;
         }
 

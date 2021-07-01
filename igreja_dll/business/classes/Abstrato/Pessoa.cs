@@ -150,68 +150,63 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
             Select_padrao = "select * from Pessoa as P "
-                 + " inner join Chamada as CH on CH.IdChamada=P.IdPessoa ";
-            if (id != null) Select_padrao += $" where P.IdPessoa='{id}'";
+                 + $" inner join Chamada as CH on CH.IdChamada=P.IdPessoa where P.IdPessoa='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    return false;
-                }
-                
-                    dr.Read();
-                    this.Img = Convert.ToString(dr["Img"]);
-                    this.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                    this.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-                    this.Email = Convert.ToString(dr["Email"]);
-                    this.NomePessoa = Convert.ToString(dr["NomePessoa"]);
-                    this.Falta = int.Parse(dr["Falta"].ToString());
-                    this.Chamada = new Chamada();
-                    this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                    this.Chamada.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
-
-                    if (retornoDados(dr, "celula_"))
-                        this.celula_ = int.Parse(dr["celula_"].ToString());
-
-                    dr.Close();
-
-                bd.fecharconexao(conexao);
-                this.Ministerios = new List<PessoaMinisterio>();
-                    var listaMinisterios = recuperarMinisterios(id);
-                    if (listaMinisterios != null)
-                        foreach (var item in listaMinisterios)
-                        {
-                            this.Ministerios.Add((PessoaMinisterio)item);
-                        }
-                    this.Reuniao = new List<ReuniaoPessoa>();                
-                    var listaReunioes = recuperarReuniao(id);
-                    if (listaReunioes != null)
-                        foreach (var item in listaReunioes)
-                        {
-                            this.Reuniao.Add((ReuniaoPessoa)item);
-                        }
-
-                    this.Historico = new List<Historico>();
-                    var listaHistoricos = recuperarHistorico(id);
-                    if (listaHistoricos != null)
-                        foreach (var item in listaHistoricos)
-                        {
-                            this.Historico.Add((Historico)item);
-                        }
-                modelos.Add(this);
-                return true;
+                dr.Close();
+                return false;
             }
-            return false;
+
+            dr.Read();
+            this.Img = Convert.ToString(dr["Img"]);
+            this.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
+            this.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
+            this.Email = Convert.ToString(dr["Email"]);
+            this.NomePessoa = Convert.ToString(dr["NomePessoa"]);
+            this.Falta = int.Parse(dr["Falta"].ToString());
+            this.Chamada = new Chamada();
+            this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
+            this.Chamada.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
+
+            if (retornoDados(dr, "celula_"))
+                this.celula_ = int.Parse(dr["celula_"].ToString());
+
+            dr.Close();
+
+            bd.fecharconexao(conexao);
+            this.Ministerios = new List<PessoaMinisterio>();
+            var listaMinisterios = recuperarMinisterios(id);
+            if (listaMinisterios != null)
+                foreach (var item in listaMinisterios)
+                {
+                    this.Ministerios.Add((PessoaMinisterio)item);
+                }
+            this.Reuniao = new List<ReuniaoPessoa>();
+            var listaReunioes = recuperarReuniao(id);
+            if (listaReunioes != null)
+                foreach (var item in listaReunioes)
+                {
+                    this.Reuniao.Add((ReuniaoPessoa)item);
+                }
+
+            this.Historico = new List<Historico>();
+            var listaHistoricos = recuperarHistorico(id);
+            if (listaHistoricos != null)
+                foreach (var item in listaHistoricos)
+                {
+                    this.Historico.Add((Historico)item);
+                }
+            modelos.Add(this);
+            return true;
         } 
         #endregion
 
@@ -220,7 +215,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (visitantesLgpd == null && new VisitanteLgpd().recuperar(null))
+                if (visitantesLgpd == null && new VisitanteLgpd().recuperar())
                 { lista.AddRange(visitantesLgpd); listaPessoas.AddRange(visitantesLgpd); }
                 
                 return lista;
@@ -228,7 +223,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (criancasLgpd == null && new CriancaLgpd().recuperar(null))
+                if (criancasLgpd == null && new CriancaLgpd().recuperar())
                 { task.Result.AddRange(criancasLgpd); listaPessoas.AddRange(criancasLgpd); }
                 
                 return task.Result;
@@ -236,7 +231,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (membros_AclamacaoLgpd == null && new Membro_AclamacaoLgpd().recuperar(null))
+                if (membros_AclamacaoLgpd == null && new Membro_AclamacaoLgpd().recuperar())
                 { task.Result.AddRange(membros_AclamacaoLgpd); listaPessoas.AddRange(membros_AclamacaoLgpd); }
                 
                 return task.Result;
@@ -244,7 +239,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (membros_ReconciliacaoLgpd == null && new Membro_ReconciliacaoLgpd().recuperar(null))
+                if (membros_ReconciliacaoLgpd == null && new Membro_ReconciliacaoLgpd().recuperar())
                 { task.Result.AddRange(membros_ReconciliacaoLgpd); listaPessoas.AddRange(membros_ReconciliacaoLgpd); }
                 
                 return task.Result;
@@ -252,7 +247,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (membros_BatismoLgpd == null && new Membro_BatismoLgpd().recuperar(null))
+                if (membros_BatismoLgpd == null && new Membro_BatismoLgpd().recuperar())
                 { task.Result.AddRange(membros_BatismoLgpd); listaPessoas.AddRange(membros_BatismoLgpd); }
                 
                 return task.Result;
@@ -260,7 +255,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t6 = t5.ContinueWith((task) =>
             {
-                if (membros_TransferenciaLgpd == null && new Membro_TransferenciaLgpd().recuperar(null))
+                if (membros_TransferenciaLgpd == null && new Membro_TransferenciaLgpd().recuperar())
                 { task.Result.AddRange(membros_TransferenciaLgpd); listaPessoas.AddRange(membros_TransferenciaLgpd); }
                 
                 return task.Result;
@@ -268,7 +263,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t7 = t6.ContinueWith((task) =>
             {
-                if (visitantes == null && new Visitante().recuperar(null))
+                if (visitantes == null && new Visitante().recuperar())
                 { task.Result.AddRange(visitantes); listaPessoas.AddRange(visitantes); }
                 
                 return task.Result;
@@ -276,7 +271,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
-                if (criancas == null && new Crianca().recuperar(null))
+                if (criancas == null && new Crianca().recuperar())
                 { task.Result.AddRange(criancas); listaPessoas.AddRange(criancas); }
                 
                 return task.Result;
@@ -284,7 +279,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t9 = t8.ContinueWith((task) =>
             {
-                if (membros_Aclamacao == null && new Membro_Aclamacao().recuperar(null))
+                if (membros_Aclamacao == null && new Membro_Aclamacao().recuperar())
                 { task.Result.AddRange(membros_Aclamacao); listaPessoas.AddRange(membros_Aclamacao); }
                 
                 return task.Result;
@@ -292,7 +287,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t10 = t9.ContinueWith((task) =>
             {
-                if (membros_Reconciliacao == null && new Membro_Reconciliacao().recuperar(null))
+                if (membros_Reconciliacao == null && new Membro_Reconciliacao().recuperar())
                 {  task.Result.AddRange(membros_Reconciliacao); listaPessoas.AddRange(membros_Reconciliacao); }
                 
                 return task.Result;
@@ -300,7 +295,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t11 = t10.ContinueWith((task) =>
             {
-                if (membros_Batismo == null && new Membro_Batismo().recuperar(null))
+                if (membros_Batismo == null && new Membro_Batismo().recuperar())
                 { task.Result.AddRange(membros_Batismo); listaPessoas.AddRange(membros_Batismo); }
                 
                 return task.Result;
@@ -308,7 +303,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t12 = t11.ContinueWith((task) =>
             {
-                if (membros_Transferencia == null && new Membro_Transferencia().recuperar(null))
+                if (membros_Transferencia == null && new Membro_Transferencia().recuperar())
                 { task.Result.AddRange(membros_Transferencia); listaPessoas.AddRange(membros_Transferencia); }
                 
                 return task.Result;

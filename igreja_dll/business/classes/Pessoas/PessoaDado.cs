@@ -113,62 +113,48 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
             Select_padrao = "select * from PessoaDado as PD "
         + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
-        + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
-            if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+        + $" inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa where PD.IdPessoa='{id}'";
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
             {
-                    
-                    Select_padrao = "select * from PessoaDado as PD "
-            + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
-            + " inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa ";
-                    if (id != null) Select_padrao += $" where PD.IdPessoa='{id}'";
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-                base.recuperar(id);
-                dr.Read();
-                    this.Data_nascimento = Convert.ToDateTime(dr["Data_nascimento"]);
-                    this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
-                    this.Sexo_masculino = Convert.ToBoolean(dr["Sexo_masculino"]);
-                    this.Sexo_feminino = Convert.ToBoolean(dr["Sexo_feminino"]);
-                    this.Falescimento = Convert.ToBoolean(dr["Falescimento"]);
-                    this.Rg = Convert.ToString(dr["Rg"]);
-                    this.Cpf = Convert.ToString(dr["Cpf"]);
-                    this.Status = Convert.ToString(dr["Status"]);
-                    this.Endereco = new Endereco();
-                    this.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
-                    this.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
-                    this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-                    this.Endereco.Estado = Convert.ToString(dr["Estado"]);
-                    this.Endereco.Rua = Convert.ToString(dr["Rua"]);
-                    this.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-                    this.Endereco.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
-                    this.Telefone = new Telefone();
-                    this.Telefone.Fone = Convert.ToString(dr["Fone"]);
-                    this.Telefone.Celular = Convert.ToString(dr["Celular"]);
-                    this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                    this.Telefone.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
-
-                    dr.Close();
-                    modelos.Add(this);
+                dr.Close();
                 bd.fecharconexao(conexao);
-                return true;
+                return false;
             }
+            base.recuperar(id);
+            dr.Read();
+            this.Data_nascimento = Convert.ToDateTime(dr["Data_nascimento"]);
+            this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
+            this.Sexo_masculino = Convert.ToBoolean(dr["Sexo_masculino"]);
+            this.Sexo_feminino = Convert.ToBoolean(dr["Sexo_feminino"]);
+            this.Falescimento = Convert.ToBoolean(dr["Falescimento"]);
+            this.Rg = Convert.ToString(dr["Rg"]);
+            this.Cpf = Convert.ToString(dr["Cpf"]);
+            this.Status = Convert.ToString(dr["Status"]);
+            this.Endereco = new Endereco();
+            this.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
+            this.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
+            this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+            this.Endereco.Estado = Convert.ToString(dr["Estado"]);
+            this.Endereco.Rua = Convert.ToString(dr["Rua"]);
+            this.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
+            this.Endereco.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
+            this.Telefone = new Telefone();
+            this.Telefone.Fone = Convert.ToString(dr["Fone"]);
+            this.Telefone.Celular = Convert.ToString(dr["Celular"]);
+            this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
+            this.Telefone.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
+
+            dr.Close();
             bd.fecharconexao(conexao);
-            return false;
+            return true;
         }
 
 

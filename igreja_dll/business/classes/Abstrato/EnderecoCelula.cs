@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 namespace business.classes.Celula
 {
     public class EnderecoCelula : modelocrud
-    {       
+    {
 
         [Key, ForeignKey("Celula")]
         public int IdEnderecoCelula { get; set; }
@@ -23,7 +23,7 @@ namespace business.classes.Celula
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Estado { get; set; }
-    
+
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Cidade { get; set; }
@@ -43,6 +43,9 @@ namespace business.classes.Celula
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Complemento { get; set; }
+
+        [NotMapped]
+        public static List<EnderecoCelula> EnderecosCelula = new List<EnderecoCelula>();
 
         public EnderecoCelula() : base()
         {
@@ -71,27 +74,24 @@ namespace business.classes.Celula
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from EnderecoCelula as M";
-            if (id != null)
-                Select_padrao += $" where M.IdEnderecoCelula={id}";
-
-            List<modelocrud> modelos = new List<modelocrud>();
+            Select_padrao = $"select * from EnderecoCelula as M where M.IdEnderecoCelula='{id}'";
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            if(conexao != null)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
                 try
                 {
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
+                    {
+                        dr.Close();
+                        bd.fecharconexao(conexao);
+                        return false;
+                    }
+
                     dr.Read();
                     this.Pais = Convert.ToString(dr["Pais"]);
                     this.Estado = Convert.ToString(dr["Estado"]);
@@ -113,11 +113,19 @@ namespace business.classes.Celula
                 {
                     bd.fecharconexao(conexao);
                 }
-
-                modelos.Add(this);
                 return true;
             }
-            else
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from EnderecoCelula as M";
+
+            List<modelocrud> modelos = new List<modelocrud>();
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
             {
                 SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                 SqlDataReader dr = comando.ExecuteReader();
@@ -158,8 +166,9 @@ namespace business.classes.Celula
                 return true;
             }
 
+            EnderecosCelula = null;
+            return false;
         }
-
     }
 
 }

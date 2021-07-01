@@ -52,7 +52,8 @@ namespace database
         public abstract string salvar();
         public abstract string alterar( int id);
         public abstract string excluir(int id);
-        public abstract bool recuperar(int? id);
+        public abstract bool recuperar(int id);
+        public abstract bool recuperar();
 
         public bool retornoDados(SqlDataReader dr, string pesquisa)
         {
@@ -218,7 +219,10 @@ namespace database
             {
                 try
                 {
-                    using (con = new SqlConnection(BDcomum.conecta2))
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
                     {
                         cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
                         con.Open();
@@ -245,7 +249,10 @@ namespace database
             {
                 try
                 {
-                    using (con = new SqlConnection(BDcomum.conecta2))
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
                     {
                         cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
                         con.Open();
@@ -270,7 +277,10 @@ namespace database
             {
                 try
                 {
-                    using (con = new SqlConnection(BDcomum.conecta2))
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
                     {
                         cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
                         con.Open();
@@ -295,7 +305,10 @@ namespace database
             {
                 try
                 {
-                    using (con = new SqlConnection(BDcomum.conecta2))
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
                     {
                         cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
                         con.Open();
@@ -320,7 +333,10 @@ namespace database
             {
                 try
                 {
-                    using (con = new SqlConnection(BDcomum.conecta2))
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
                     {
                         cmd = new SqlCommand("SELECT COUNT(*) FROM MudancaEstado", con);
                         con.Open();

@@ -69,9 +69,9 @@ namespace WindowsFormsApp1
 
                 var lm = await Task.Run(() => Ministerio.recuperarTodosMinisterios());
 
-                var lme = await Task.Run(() => new MudancaEstado().recuperar(null));
+                var lme = await Task.Run(() => new MudancaEstado().recuperar());
 
-                var lr = await Task.Run(() => new Reuniao().recuperar(null));
+                var lr = await Task.Run(() => new Reuniao().recuperar());
 
                 var lp = await Task.Run(() => Pessoa.recuperarTodos());
 
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Ministerios";
                         form.Show();
-                        await Task.Run(() => recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio() + 10));
+                        await Task.Run(() => recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio()));
 
                     if (!form.IsDisposed)
                         form.Dispose();
@@ -134,7 +134,7 @@ namespace WindowsFormsApp1
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Celulas";
                         form.Show();
-                        await Task.Run(() => recuperarRegistrosCelula(bd.GetUltimoRegistroCelula() + 10));
+                        await Task.Run(() => recuperarRegistrosCelula(bd.GetUltimoRegistroCelula()));
                         
                     if (!form.IsDisposed)
                         form.Dispose();
@@ -154,7 +154,7 @@ namespace WindowsFormsApp1
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.Text = "Barra de processamento - Pessoas";
                         form.Show();
-                        await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa() + 10));
+                        await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa()));
 
                         if(!form.IsDisposed)
                         form.Dispose();
@@ -167,24 +167,24 @@ namespace WindowsFormsApp1
 
         private void recuperarRegistrosPessoa(int v1)
         {
-            var v2 = 1;
+            var v2 = v1 + 10;
             List<modelocrud> lista = new List<modelocrud>();
-            while (v1 >= v2)
+            while (v1 <= v2)
             {
-                if (Pessoa.listaPessoas.FirstOrDefault(i => i.IdPessoa == v2) == null)
+                if (Pessoa.listaPessoas.FirstOrDefault(i => i.IdPessoa == v1) == null)
                 {
-                    var model = new  Visitante                (); var modelo = model.recuperar(v2);
-                    var model2 = new Crianca                  (); var modelo2 = model2.recuperar(v2);
-                    var model3 = new Membro_Batismo           (); var modelo3 = model3.recuperar(v2);
-                    var model4 = new Membro_Aclamacao         (); var modelo4 = model4.recuperar(v2);
-                    var model5 = new Membro_Reconciliacao     (); var modelo5 = model5.recuperar(v2);
-                    var model6 = new Membro_Transferencia     (); var modelo6 = model6.recuperar(v2);
-                    var model7 = new VisitanteLgpd            (); var modelo7 = model7.recuperar(v2);
-                    var model8 = new CriancaLgpd              (); var modelo8 = model8.recuperar(v2);
-                    var model9 = new Membro_TransferenciaLgpd (); var modelo9 = model9.recuperar(v2);
-                    var model10 = new Membro_BatismoLgpd      (); var modelo10 = model10.recuperar(v2);
-                    var model11 = new Membro_AclamacaoLgpd    (); var modelo11 = model11.recuperar(v2);
-                    var model12 = new Membro_ReconciliacaoLgpd(); var modelo12 = model12.recuperar(v2);
+                    var model = new  Visitante                (); var modelo = model.recuperar    (v1);
+                    var model2 = new Crianca                  (); var modelo2 = model2.recuperar  (v1);
+                    var model3 = new Membro_Batismo           (); var modelo3 = model3.recuperar  (v1);
+                    var model4 = new Membro_Aclamacao         (); var modelo4 = model4.recuperar  (v1);
+                    var model5 = new Membro_Reconciliacao     (); var modelo5 = model5.recuperar  (v1);
+                    var model6 = new Membro_Transferencia     (); var modelo6 = model6.recuperar  (v1);
+                    var model7 = new VisitanteLgpd            (); var modelo7 = model7.recuperar  (v1);
+                    var model8 = new CriancaLgpd              (); var modelo8 = model8.recuperar  (v1);
+                    var model9 = new Membro_TransferenciaLgpd (); var modelo9 = model9.recuperar  (v1);
+                    var model10 = new Membro_BatismoLgpd      (); var modelo10 = model10.recuperar(v1);
+                    var model11 = new Membro_AclamacaoLgpd    (); var modelo11 = model11.recuperar(v1);
+                    var model12 = new Membro_ReconciliacaoLgpd(); var modelo12 = model12.recuperar(v1);
 
                     if (modelo  ) Pessoa.listaPessoas.Add(model);
                     if (modelo2 ) Pessoa.listaPessoas.Add(model2);
@@ -200,23 +200,23 @@ namespace WindowsFormsApp1
                     if (modelo12) Pessoa.listaPessoas.Add(model12);
                 }
 
-                v2++;
+                v1++;
             }
         }
 
         private void recuperarRegistrosCelula(int v1)
         {
-            var v2 = 1;
+            var v2 = v1 + 10;
             List<modelocrud> lista = new List<modelocrud>();
-            while (v1 > v2)
+            while (v1 <= v2)
             {
-                if (Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == v2) == null)
+                if (Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == v1) == null)
                 {
-                    var model =  new Celula_Jovem      (); var modelo = model.recuperar(v2);
-                    var model2 = new Celula_Adolescente(); var modelo2 = model2.recuperar(v2);
-                    var model3 = new Celula_Casado     (); var modelo3 = model3.recuperar(v2);
-                    var model4 = new Celula_Crianca    (); var modelo4 = model4.recuperar(v2);
-                    var model5 = new Celula_Adulto     (); var modelo5 = model5.recuperar(v2);
+                    var model =  new Celula_Jovem      (); var modelo = model.recuperar  (v1);
+                    var model2 = new Celula_Adolescente(); var modelo2 = model2.recuperar(v1);
+                    var model3 = new Celula_Casado     (); var modelo3 = model3.recuperar(v1);
+                    var model4 = new Celula_Crianca    (); var modelo4 = model4.recuperar(v1);
+                    var model5 = new Celula_Adulto     (); var modelo5 = model5.recuperar(v1);
 
                     if (modelo ) Celula.listaCelulas.Add(model);
                     if (modelo2) Celula.listaCelulas.Add(model2);
@@ -224,26 +224,25 @@ namespace WindowsFormsApp1
                     if (modelo4) Celula.listaCelulas.Add(model4);
                     if (modelo5) Celula.listaCelulas.Add(model5);
                 }
-
-                v2++;
+                v1++;
             }
         }
 
         private  void recuperarRegistrosMinisterio(int v1)
         {
-            var v2 = 1;
-            while (v1 >= v2)
+            var v2 = v1 + 10;
+            while (v1 <= v2)
             {
-                if (Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == v2) == null)
+                if (Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == v1) == null)
                 {
-                    var model =  new Lider_Celula                     (); var modelo = model.recuperar(v2);
-                    var model2 = new Lider_Celula_Treinamento         (); var modelo2 = model2.recuperar(v2);
-                    var model3 = new Lider_Ministerio                 (); var modelo3 = model3.recuperar(v2);
-                    var model4 = new Lider_Ministerio_Treinamento     (); var modelo4 = model4.recuperar(v2);
-                    var model5 = new Supervisor_Celula                (); var modelo5 = model5.recuperar(v2);
-                    var model6 = new Supervisor_Celula_Treinamento    (); var modelo6 = model6.recuperar(v2);
-                    var model7 = new Supervisor_Ministerio            (); var modelo7 = model7.recuperar(v2);
-                    var model8 = new Supervisor_Ministerio_Treinamento(); var modelo8 = model8.recuperar(v2);
+                    var model =  new Lider_Celula                     (); var modelo = model.recuperar  (v1);
+                    var model2 = new Lider_Celula_Treinamento         (); var modelo2 = model2.recuperar(v1);
+                    var model3 = new Lider_Ministerio                 (); var modelo3 = model3.recuperar(v1);
+                    var model4 = new Lider_Ministerio_Treinamento     (); var modelo4 = model4.recuperar(v1);
+                    var model5 = new Supervisor_Celula                (); var modelo5 = model5.recuperar(v1);
+                    var model6 = new Supervisor_Celula_Treinamento    (); var modelo6 = model6.recuperar(v1);
+                    var model7 = new Supervisor_Ministerio            (); var modelo7 = model7.recuperar(v1);
+                    var model8 = new Supervisor_Ministerio_Treinamento(); var modelo8 = model8.recuperar(v1);
 
                     if (modelo ) Ministerio.listaMinisterios.Add(model);
                     if (modelo2) Ministerio.listaMinisterios.Add(model2);
@@ -254,7 +253,7 @@ namespace WindowsFormsApp1
                     if (modelo7) Ministerio.listaMinisterios.Add(model7);
                     if (modelo8) Ministerio.listaMinisterios.Add(model8);
                 }
-                v2++;
+                v1++;
             }
         }
 
@@ -333,7 +332,7 @@ namespace WindowsFormsApp1
         public async Task<List<modelocrud>> AtualizarComModelo(Type Tipo)
         {
             modelocrud modelo = retornaModelo(Tipo);
-            var retorno = await Task.Run(() => modelo.recuperar(null));
+            var retorno = await Task.Run(() => modelo.recuperar());
 
             if (retorno && modelo is Visitante) return Pessoa.visitantes.Cast<modelocrud>().ToList();
             if (retorno && modelo is Crianca) return Pessoa.criancas.Cast<modelocrud>().ToList();
@@ -422,7 +421,7 @@ namespace WindowsFormsApp1
                 form.StartPosition = FormStartPosition.CenterScreen;
                 form.Text = $"Barra de processamento - {modelo.GetType().Name}";
                 form.Show();
-                var retorno = await Task.Run(() => modelo.recuperar(null));
+                var retorno = await Task.Run(() => modelo.recuperar());
 
                 if (Tipo.IsSubclassOf(typeof(Pessoa)) && !modelocrud.Erro_Conexao
                     && Pessoa.listaPessoas.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
@@ -510,8 +509,6 @@ namespace WindowsFormsApp1
             }
             return null;
         }
-
-
 
         private modelocrud retornaModelo(Type tipo)
         {

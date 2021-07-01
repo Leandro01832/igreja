@@ -48,31 +48,23 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from PessoaLgpd as PL ";
-            if (id != null) Select_padrao += $" where PL.IdPessoa='{id}'";
-            List<modelocrud> modelos = new List<modelocrud>();
+            Select_padrao = $"select * from PessoaLgpd as PL where PL.IdPessoa='{id}'";
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
             {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                    }
-                base.recuperar(id);
                 dr.Close();
-                modelos.Add(this);
                 bd.fecharconexao(conexao);
-                return true;
+                return false;
             }
+            base.recuperar(id);
+            dr.Close();
             bd.fecharconexao(conexao);
-            return false;
+            return true;
         }
     }
 }

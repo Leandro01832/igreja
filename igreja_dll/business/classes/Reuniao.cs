@@ -77,118 +77,116 @@ namespace business.classes
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Reuniao as M";
-            if (id != null)
-                Select_padrao += $" where M.IdReuniao='{id}'";
-            
+            Select_padrao = $"select * from Reuniao as M where M.IdReuniao='{id}' ";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
             {
-                if (id != null)
+                try
                 {
-                    try
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-
-                        dr.Read();
-                        this.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
-                        this.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
-                        this.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
-                        this.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
-                        this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-                        
                         dr.Close();
-
                         bd.fecharconexao(conexao);
-                        this.Pessoas = new List<ReuniaoPessoa>();
-                        var listaPessoas = recuperarPessoas(id);
-                        if (listaPessoas != null)
-                            foreach (var item in listaPessoas)
-                            {
-                                this.Pessoas.Add((ReuniaoPessoa)item);
-                            }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
-                    {
-                        bd.fecharconexao(conexao);
-                    }
-                    return true;
+
+                    dr.Read();
+                    this.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
+                    this.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
+                    this.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
+                    this.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
+                    this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
+
+                    dr.Close();
+
+                    bd.fecharconexao(conexao);
+                    this.Pessoas = new List<ReuniaoPessoa>();
+                    var listaPessoas = recuperarPessoas(id);
+                    if (listaPessoas != null)
+                        foreach (var item in listaPessoas)
+                        {
+                            this.Pessoas.Add((ReuniaoPessoa)item);
+                        }
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    try
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public override bool recuperar()
+        {
+            Select_padrao = "select * from Reuniao as M";
+            var conexao = bd.obterconexao();
+
+            if (conexao != null)
+            {
+                try
+                {
+                    Select_padrao = Select_padrao.Replace("*", "M.IdReuniao");
+                    Reunioes = new List<Reuniao>();
+                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+                    SqlDataReader dr = comando.ExecuteReader();
+                    if (dr.HasRows == false)
                     {
-                        Select_padrao = Select_padrao.Replace("*", "M.IdReuniao");
-                        Reunioes = new List<Reuniao>();
-                        SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.HasRows == false)
-                        {
-                            dr.Close();
-                            bd.fecharconexao(conexao);
-                            return false;
-                        }
-
-                        List<modelocrud> modelos = new List<modelocrud>();
-                        while (dr.Read())
-                        {
-                            Reuniao r = new Reuniao();
-                            r.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
-                            modelos.Add(r);
-                        }
-
                         dr.Close();
-
-                        //Recursividade                        
                         bd.fecharconexao(conexao);
-                        
-                        foreach (var m in modelos)
-                        {
-                            var cel = (Reuniao)m;
-                            var c = new Reuniao();
-                            if(c.recuperar(cel.IdReuniao))
-                            Reuniao.Reunioes.Add(c);
-                            else
-                            {
-                                Reunioes = null;
-                                return false;
-                            }
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        TratarExcessao(ex);
                         return false;
                     }
-                    finally
+
+                    List<modelocrud> modelos = new List<modelocrud>();
+                    while (dr.Read())
                     {
-                        bd.fecharconexao(conexao);
+                        Reuniao r = new Reuniao();
+                        r.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
+                        modelos.Add(r);
                     }
 
-                    return true;
-                } 
+                    dr.Close();
+
+                    //Recursividade                        
+                    bd.fecharconexao(conexao);
+
+                    foreach (var m in modelos)
+                    {
+                        var cel = (Reuniao)m;
+                        var c = new Reuniao();
+                        if (c.recuperar(cel.IdReuniao))
+                            Reuniao.Reunioes.Add(c);
+                        else
+                        {
+                            Reunioes = null;
+                            return false;
+                        }
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    TratarExcessao(ex);
+                    return false;
+                }
+                finally
+                {
+                    bd.fecharconexao(conexao);
+                }
+                return true;
             }
-
-            if (id == null)
-                Reunioes = null;
-
+            Reunioes = null;
             return false;
         }
 
@@ -214,7 +212,7 @@ namespace business.classes
             List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
             var conexao = bd.obterconexao();
 
-            
+
             SqlCommand comando = new SqlCommand(select, conexao);
             SqlDataReader dr = comando.ExecuteReader();
             if (dr.HasRows == false)
@@ -223,18 +221,18 @@ namespace business.classes
                 bd.fecharconexao(conexao);
                 return modelos;
             }
-            
+
             while (dr.Read())
             {
-                lista.Add(new ReuniaoPessoa { IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"])) });                
+                lista.Add(new ReuniaoPessoa { IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"])) });
             }
             dr.Close();
             bd.fecharconexao(conexao);
 
-            foreach(var item in lista)
+            foreach (var item in lista)
             {
                 var model = new ReuniaoPessoa();
-                if(model.recuperar(item.IdReuniaoPessoa))
+                if (model.recuperar(item.IdReuniaoPessoa))
                     modelos.Add(model);
             }
 

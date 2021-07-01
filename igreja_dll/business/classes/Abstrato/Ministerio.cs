@@ -83,46 +83,39 @@ namespace business.classes.Abstrato
             return Delete_padrao;
         }
 
-        public override bool recuperar(int? id)
+        public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Ministerio as M  ";
-            if (id != null) Select_padrao += $" where M.IdMinisterio='{id}'";
-
-            
+            Select_padrao = $"select * from Ministerio as M where M.IdMinisterio='{id}'";            
             var conexao = bd.obterconexao();
 
-            if (id != null)
+            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
+            SqlDataReader dr = comando.ExecuteReader();
+            if (dr.HasRows == false)
             {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    return false;
-                }
-                    dr.Read();
-                    this.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                    this.Nome = Convert.ToString(dr["Nome"]);
-                    this.Proposito = Convert.ToString(dr["Proposito"]);
-                    this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-                    dr.Close();
-
-                bd.fecharconexao(conexao);
-                this.Pessoas = new List<PessoaMinisterio>();
-                    var listaPessoas = buscarPessoas(id);
-                    if (listaPessoas != null)
-                        foreach (var item in listaPessoas)
-                            this.Pessoas.Add((PessoaMinisterio)item);
-
-                    this.Celulas = new List<MinisterioCelula>();
-                    var listaCelulas = buscarCelulas(id);
-                    if (listaCelulas != null)
-                        foreach (var item in listaCelulas)
-                            this.Celulas.Add((MinisterioCelula)item);
-                    
-                return true;
+                dr.Close();
+                return false;
             }
-            return false;
+            dr.Read();
+            this.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+            this.Nome = Convert.ToString(dr["Nome"]);
+            this.Proposito = Convert.ToString(dr["Proposito"]);
+            this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
+            dr.Close();
+
+            bd.fecharconexao(conexao);
+            this.Pessoas = new List<PessoaMinisterio>();
+            var listaPessoas = buscarPessoas(id);
+            if (listaPessoas != null)
+                foreach (var item in listaPessoas)
+                    this.Pessoas.Add((PessoaMinisterio)item);
+
+            this.Celulas = new List<MinisterioCelula>();
+            var listaCelulas = buscarCelulas(id);
+            if (listaCelulas != null)
+                foreach (var item in listaCelulas)
+                    this.Celulas.Add((MinisterioCelula)item);
+
+            return true;
         }
 
         public override string salvar()
@@ -145,7 +138,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                if (lideresCelula == null && new Lider_Celula().recuperar(null))
+                if (lideresCelula == null && new Lider_Celula().recuperar())
                 { lista.AddRange(lideresCelula); listaMinisterios.AddRange(lideresCelula); }
                 
                 return lista;
@@ -153,7 +146,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
-                if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar(null))
+                if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar())
                 { task.Result.AddRange(LideresCelulaTreinamento); listaMinisterios.AddRange(LideresCelulaTreinamento); }
                 
                 return task.Result;
@@ -161,7 +154,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
-                if (lideresMinisterio == null && new Lider_Ministerio().recuperar(null))
+                if (lideresMinisterio == null && new Lider_Ministerio().recuperar())
                 { task.Result.AddRange(lideresMinisterio); listaMinisterios.AddRange(lideresMinisterio); }
                 
                 return task.Result;
@@ -169,7 +162,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
-                if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar(null))
+                if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar())
                 { task.Result.AddRange(lideresMinisterioTreinamento); listaMinisterios.AddRange(lideresMinisterioTreinamento); }
                 
                 return task.Result;
@@ -177,7 +170,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
-                if (supervisoresCelula == null && new Supervisor_Celula().recuperar(null))
+                if (supervisoresCelula == null && new Supervisor_Celula().recuperar())
                 { task.Result.AddRange(supervisoresCelula); listaMinisterios.AddRange(supervisoresCelula); }
                 
                 return task.Result;
@@ -185,7 +178,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t6 = t5.ContinueWith((task) =>
             {
-                if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar(null))
+                if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar())
                 { task.Result.AddRange(supervisoresCelulaTreinamento); listaMinisterios.AddRange(supervisoresCelulaTreinamento); }
                 
                 return task.Result;
@@ -194,7 +187,7 @@ namespace business.classes.Abstrato
             Task<List<modelocrud>> t7 = t6.ContinueWith((task) =>
             {
 
-                if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar(null))
+                if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar())
                 { task.Result.AddRange(supervisoresMinisterio); listaMinisterios.AddRange(supervisoresMinisterio); }
                 
                 return task.Result;
@@ -202,7 +195,7 @@ namespace business.classes.Abstrato
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
-                if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar(null))
+                if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar())
                 { task.Result.AddRange(supervisoresMinisterioTreinamento); listaMinisterios.AddRange(supervisoresMinisterioTreinamento); }
                 
                 return task.Result;
