@@ -35,12 +35,12 @@ namespace WindowsFormsApp1
                 if (radio_reuniao.Checked)
                     MessageBox.Show("Você esta vendo informações de mudança de estado.");
                 Resultado.Clear();
-                Resultado.AddRange(MudancaEstado.Mudancas);
+                Resultado.AddRange(modelocrud.Modelos.OfType<MudancaEstado>().ToList());
 
-                foreach (var item in MudancaEstado.Mudancas)
+                foreach (var item in modelocrud.Modelos.OfType<MudancaEstado>().ToList())
                 {
                     var dado = (MudancaEstado)item;
-                    dgdados.Rows.Add(dado.IdMudanca, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
+                    dgdados.Rows.Add(dado.Id, dado.CodigoPessoa, dado.velhoEstado, dado.novoEstado,
                     dado.DataMudanca);
                 } 
             }
@@ -56,12 +56,12 @@ namespace WindowsFormsApp1
                 if (radio_pessoa.Checked)
                     MessageBox.Show("Você esta vendo informações de pessoa.");
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList());
 
-                foreach (var item in Pessoa.listaPessoas)
+                foreach (var item in modelocrud.Modelos.OfType<Pessoa>().ToList())
                 {
                     var dado = (Pessoa)item;
-                    dgdados.Rows.Add(dado.IdPessoa, dado.Email, dado.celula_, dado.Falta, dado.Img);
+                    dgdados.Rows.Add(dado.Id, dado.Email, dado.celula_, dado.Falta, dado.Img);
                 } 
             }
         }
@@ -77,12 +77,12 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Você esta vendo informações de ministério.");
 
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList());
 
-                foreach (var item in Ministerio.listaMinisterios)
+                foreach (var item in modelocrud.Modelos.OfType<Ministerio>().ToList())
                 {
                     var dado = (Ministerio)item;
-                    dgdados.Rows.Add(dado.IdMinisterio, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
+                    dgdados.Rows.Add(dado.Id, dado.Nome, dado.Maximo_pessoa, dado.Ministro_, dado.Proposito);
                 } 
             }
         }
@@ -97,12 +97,12 @@ namespace WindowsFormsApp1
                 if (radio_celula.Checked)
                     MessageBox.Show("Você esta vendo informações de celula.");
                 Resultado.Clear();
-                Resultado.AddRange(Celula.listaCelulas);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Celula>().ToList());
 
-                foreach (var item in Celula.listaCelulas)
+                foreach (var item in modelocrud.Modelos.OfType<Celula>().ToList())
                 {
                     var dado = (Celula)item;
-                    dgdados.Rows.Add(dado.IdCelula, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
+                    dgdados.Rows.Add(dado.Id, dado.Nome, dado.Maximo_pessoa, dado.Dia_semana, dado.Horario);
                 } 
             }
         }
@@ -116,12 +116,12 @@ namespace WindowsFormsApp1
                 if (radio_reuniao.Checked)
                     MessageBox.Show("Você esta vendo informações de reunião.");
                 Resultado.Clear();
-                Resultado.AddRange(Reuniao.Reunioes);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Reuniao>().ToList());
 
-                foreach (var item in Reuniao.Reunioes)
+                foreach (var item in modelocrud.Modelos.OfType<Reuniao>().ToList())
                 {
                     var dado = item;
-                    dgdados.Rows.Add(dado.IdReuniao, dado.Data_reuniao, dado.Horario_fim, dado.Horario_inicio);
+                    dgdados.Rows.Add(dado.Id, dado.Data_reuniao, dado.Horario_fim, dado.Horario_inicio);
                 } 
             }
         }
@@ -180,7 +180,7 @@ namespace WindowsFormsApp1
                 check_pesquisa_nome.Enabled = true;
                 tipo = typeof(Ministerio);
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("IdMinisterio", "Id");
+                dgdados.Columns.Add("Id", "Id");
                 dgdados.Columns.Add("Nome", "Nome");
                 dgdados.Columns.Add("Maximo_pessoa", "Maximo de pessoas");
                 dgdados.Columns.Add("Ministro_", "Ministro");
@@ -204,7 +204,7 @@ namespace WindowsFormsApp1
                 check_horario_celula.Enabled = true;
                 tipo = typeof(Celula);
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("IdCelula", "Id");
+                dgdados.Columns.Add("Id", "Id");
                 dgdados.Columns.Add("Nome", "Nome");
                 dgdados.Columns.Add("Maximo_pessoa", "Maximo de pessoas");
                 dgdados.Columns.Add("Dia_semana", "Dia da semana");
@@ -223,7 +223,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_data_reuniao.Enabled = true;
                 dgdados.Columns.Clear();
-                dgdados.Columns.Add("IdReuniao", "Id");
+                dgdados.Columns.Add("Id", "Id");
                 dgdados.Columns.Add("Data_reuniao", "Data da reunião");
                 dgdados.Columns.Add("Horario_inicio", "Horário que inicia");
                 dgdados.Columns.Add("Horario_fim", "Horário que termina");
@@ -355,42 +355,42 @@ namespace WindowsFormsApp1
                         if (item is Visitante)
                         {
                             Visitante info = (Visitante)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_visita, info.Condicao_religiosa);
                         }
 
                         if (item is Crianca)
                         {
                             Crianca info = (Crianca)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Nome_mae, info.Nome_pai);
                         }
 
                         if (item is Membro_Aclamacao)
                         {
                             Membro_Aclamacao info = (Membro_Aclamacao)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
                         }
 
                         if (item is Membro_Batismo)
                         {
                             Membro_Batismo info = (Membro_Batismo)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
                         }
 
                         if (item is Membro_Reconciliacao)
                         {
                             Membro_Reconciliacao info = (Membro_Reconciliacao)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
                         }
 
                         if (item is Membro_Transferencia)
                         {
                             Membro_Transferencia info = (Membro_Transferencia)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
                             info.Nome_cidade_transferencia,
                             info.Estado_transferencia, info.Nome_igreja_transferencia);
@@ -402,42 +402,42 @@ namespace WindowsFormsApp1
                         if (item is VisitanteLgpd)
                         {
                             VisitanteLgpd info = (VisitanteLgpd)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_visita, info.Condicao_religiosa);
                         }
 
                         if (item is CriancaLgpd)
                         {
                             CriancaLgpd info = (CriancaLgpd)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Nome_mae, info.Nome_pai);
                         }
 
                         if (item is Membro_AclamacaoLgpd)
                         {
                             Membro_AclamacaoLgpd info = (Membro_AclamacaoLgpd)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Denominacao, info.Desligamento, info.Motivo_desligamento);
                         }
 
                         if (item is Membro_BatismoLgpd)
                         {
                             Membro_BatismoLgpd info = (Membro_BatismoLgpd)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Desligamento, info.Motivo_desligamento);
                         }
 
                         if (item is Membro_ReconciliacaoLgpd)
                         {
                             Membro_ReconciliacaoLgpd info = (Membro_ReconciliacaoLgpd)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Desligamento, info.Motivo_desligamento, info.Data_reconciliacao);
                         }
 
                         if (item is Membro_TransferenciaLgpd)
                         {
                             Membro_TransferenciaLgpd info = (Membro_TransferenciaLgpd)item;
-                            dgdados.Rows.Add(info.IdPessoa, info.Email, info.celula_, info.Falta, info.Img,
+                            dgdados.Rows.Add(info.Id, info.Email, info.celula_, info.Falta, info.Img,
                             info.Data_batismo, info.Desligamento, info.Motivo_desligamento,
                             info.Nome_cidade_transferencia,
                             info.Estado_transferencia, info.Nome_igreja_transferencia);
@@ -450,28 +450,28 @@ namespace WindowsFormsApp1
                     if (item is Supervisor_Celula)
                     {
                         Supervisor_Celula info = (Supervisor_Celula)item;
-                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa,
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa,
                             info.Ministro_, info.Proposito, info.Maximo_celula);
                     }
 
                     if (item is Supervisor_Celula_Treinamento)
                     {
                         Supervisor_Celula_Treinamento info = (Supervisor_Celula_Treinamento)item;
-                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
                             info.Proposito, info.Maximo_celula);
                     }
 
                     if (item is Supervisor_Ministerio)
                     {
                         Supervisor_Ministerio info = (Supervisor_Ministerio)item;
-                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
                             info.Proposito, info.Maximo_celula);
                     }
 
                     if (item is Supervisor_Ministerio_Treinamento)
                     {
                         Supervisor_Ministerio_Treinamento info = (Supervisor_Ministerio_Treinamento)item;
-                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_,
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_,
                         info.Proposito, info.Maximo_celula);
                     }
 
@@ -481,7 +481,7 @@ namespace WindowsFormsApp1
                        item is Lider_Ministerio_Treinamento)
                     {
                         Ministerio info = (Ministerio)item;
-                        dgdados.Rows.Add(info.IdMinisterio, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito);
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Ministro_, info.Proposito);
                     }
                 }
 
@@ -492,7 +492,7 @@ namespace WindowsFormsApp1
                         item is Celula_Crianca)
                     {
                         Celula_Crianca info = (Celula_Crianca)item;
-                        dgdados.Rows.Add(info.IdCelula, info.Nome, info.Maximo_pessoa, info.Dia_semana, info.Horario);
+                        dgdados.Rows.Add(info.Id, info.Nome, info.Maximo_pessoa, info.Dia_semana, info.Horario);
                     }
                 }
             }
@@ -507,7 +507,7 @@ namespace WindowsFormsApp1
             {
                 if (tipo == typeof(Pessoa))
                 {
-                    var Modelo = Pessoa.listaPessoas.FirstOrDefault(i => i.Codigo == value);
+                    var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Codigo == value);
                     if (Modelo != null)
                     {
                         FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
@@ -519,7 +519,7 @@ namespace WindowsFormsApp1
 
                 if (tipo == typeof(Ministerio))
                 {
-                    var Modelo = Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
+                    var Modelo = modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == value);
                     if (Modelo != null)
                     {
                         FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
@@ -531,7 +531,7 @@ namespace WindowsFormsApp1
 
                 if (tipo == typeof(Celula))
                 {
-                    var Modelo = Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == value);
+                    var Modelo = modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == value);
                     if (Modelo != null)
                     {
                         FinalizarCadastro dp =
@@ -544,7 +544,7 @@ namespace WindowsFormsApp1
 
             else if (tipo.IsSubclassOf(typeof(Pessoa)))
             {
-                var Modelo = Pessoa.listaPessoas.FirstOrDefault(i => i.Codigo == value);
+                var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Codigo == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa((Pessoa)Modelo
@@ -555,7 +555,7 @@ namespace WindowsFormsApp1
             }
             else if (tipo.IsSubclassOf(typeof(Ministerio)))
             {
-                var Modelo = Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == value);
+                var Modelo = modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastroMinisterio dp = new FinalizarCadastroMinisterio((Ministerio)Modelo,
@@ -566,7 +566,7 @@ namespace WindowsFormsApp1
             }
             else if (tipo.IsSubclassOf(typeof(Celula)))
             {
-                var Modelo = Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == value);
+                var Modelo = modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastro dp =
@@ -578,7 +578,7 @@ namespace WindowsFormsApp1
 
             else if (tipo == typeof(Reuniao))
             {
-                var Modelo = Reuniao.Reunioes.FirstOrDefault(i => i.IdReuniao == value);
+                var Modelo = modelocrud.Modelos.OfType<Reuniao>().ToList().FirstOrDefault(i => i.Id == value);
                 if (Modelo != null)
                 {
                     FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(Modelo, false, false, true);
@@ -589,7 +589,7 @@ namespace WindowsFormsApp1
 
             else if (tipo == typeof(MudancaEstado))
             {
-                var Modelo = MudancaEstado.Mudancas.FirstOrDefault(i => i.IdMudanca == value);
+                var Modelo = modelocrud.Modelos.OfType<MudancaEstado>().ToList().FirstOrDefault(i => i.Id == value);
                 if (Modelo != null)
                 {
                     DetalhesMudancaEstado frm = new DetalhesMudancaEstado(Modelo, false, false, true);
@@ -618,7 +618,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_data_visita.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<VisitanteLgpd>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<VisitanteLgpd>().ToList());
                 ModificaDataGridView(typeof(VisitanteLgpd), Resultado);
             }
 
@@ -627,7 +627,7 @@ namespace WindowsFormsApp1
                 check_pesquisa_nome_mae.Enabled = true;
                 check_pesquisa_nome_pai.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<CriancaLgpd>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<CriancaLgpd>().ToList());
                 ModificaDataGridView(typeof(CriancaLgpd), Resultado);
             }
 
@@ -635,7 +635,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_AclamacaoLgpd>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_AclamacaoLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_AclamacaoLgpd), Resultado);
             }
 
@@ -643,7 +643,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_BatismoLgpd>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_BatismoLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_BatismoLgpd), Resultado);
             }
 
@@ -651,7 +651,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_ReconciliacaoLgpd>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_ReconciliacaoLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_ReconciliacaoLgpd), Resultado);
             }
 
@@ -659,7 +659,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_TransferenciaLgpd>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_TransferenciaLgpd>().ToList());
                 ModificaDataGridView(typeof(Membro_TransferenciaLgpd), Resultado);
             }
 
@@ -667,7 +667,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_data_visita.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Visitante>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Visitante>().ToList());
                 ModificaDataGridView(typeof(Visitante), Resultado);
             }
 
@@ -676,7 +676,7 @@ namespace WindowsFormsApp1
                 check_pesquisa_nome_mae.Enabled = true;
                 check_pesquisa_nome_pai.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Crianca>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Crianca>().ToList());
                 ModificaDataGridView(typeof(Crianca), Resultado);
             }
 
@@ -684,7 +684,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Aclamacao>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Aclamacao>().ToList());
                 ModificaDataGridView(typeof(Membro_Aclamacao), Resultado);
             }
 
@@ -692,7 +692,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Batismo>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Batismo>().ToList());
                 ModificaDataGridView(typeof(Membro_Batismo), Resultado);
             }
 
@@ -700,7 +700,7 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Reconciliacao>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Reconciliacao>().ToList());
                 ModificaDataGridView(typeof(Membro_Reconciliacao), Resultado);
             }
 
@@ -708,98 +708,98 @@ namespace WindowsFormsApp1
             {
                 check_pesquisa_ano_batismo.Enabled = true;
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas.OfType<Membro_Transferencia>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Transferencia>().ToList());
                 ModificaDataGridView(typeof(Membro_Transferencia), Resultado);
             }
 
             if (comboBox1.Text == "Lider de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Celula>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Celula>().ToList());
                 ModificaDataGridView(typeof(Lider_Celula), Resultado);
             }
 
             if (comboBox1.Text == "Lider em treinamento de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Celula_Treinamento>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Celula_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Lider_Celula_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Lider de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Ministerio>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Ministerio>().ToList());
                 ModificaDataGridView(typeof(Lider_Ministerio), Resultado);
             }
 
             if (comboBox1.Text == "Lider em treinamento de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Lider_Ministerio_Treinamento>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Ministerio_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Lider_Ministerio_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Celula>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Celula>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Celula), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor em treinamento de celula")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Celula_Treinamento>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Celula_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Celula_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Ministerio>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Ministerio>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Ministerio), Resultado);
             }
 
             if (comboBox1.Text == "Supervisor em treinamento de ministério")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Supervisor_Ministerio_Treinamento>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Ministerio_Treinamento>().ToList());
                 ModificaDataGridView(typeof(Supervisor_Ministerio_Treinamento), Resultado);
             }
 
             if (comboBox1.Text == "Celula para adolescentes")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Adolescente>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Adolescente>().ToList());
                 ModificaDataGridView( typeof(Celula_Adolescente), Resultado);
             }
 
             if (comboBox1.Text == "Celula para adultos")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Adulto>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Adulto>().ToList());
                 ModificaDataGridView( typeof(Celula_Adulto), Resultado);
             }
 
             if (comboBox1.Text == "Celula para jovens")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Jovem>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Jovem>().ToList());
                 ModificaDataGridView( typeof(Celula_Jovem), Resultado);
             }
 
             if (comboBox1.Text == "Celula para crianças")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Crianca>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Crianca>().ToList());
                 ModificaDataGridView(typeof(Celula_Crianca), Resultado);
             }
 
             if (comboBox1.Text == "Celula para casados")
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios.OfType<Celula_Casado>().ToList());
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Casado>().ToList());
                 ModificaDataGridView(typeof(Celula_Casado), Resultado);
             }
 
@@ -808,31 +808,31 @@ namespace WindowsFormsApp1
                 if (Resultado[0] is Pessoa)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(Pessoa.listaPessoas);
+                    Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList());
                 }
 
                 if (Resultado[0] is Celula)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(Celula.listaCelulas);
+                    Resultado.AddRange(modelocrud.Modelos.OfType<Celula>().ToList());
                 }
 
                 if (Resultado[0] is Ministerio)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(Ministerio.listaMinisterios);
+                    Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList());
                 }
 
                 if (Resultado[0] is MudancaEstado)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(MudancaEstado.Mudancas);
+                    Resultado.AddRange(modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 }
 
                 if (Resultado[0] is Reuniao)
                 {
                     Resultado.Clear();
-                    Resultado.AddRange(Reuniao.Reunioes);
+                    Resultado.AddRange(modelocrud.Modelos.OfType<Reuniao>().ToList());
                 }
             }
         }
@@ -869,31 +869,31 @@ namespace WindowsFormsApp1
             if (Resultado[0] is Pessoa)
             {
                 Resultado.Clear();
-                Resultado.AddRange(Pessoa.listaPessoas);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList());
             }
 
             if (Resultado[0] is Celula)
             {
                 Resultado.Clear();
-                Resultado.AddRange(Celula.listaCelulas);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Celula>().ToList());
             }
 
             if (Resultado[0] is Ministerio)
             {
                 Resultado.Clear();
-                Resultado.AddRange(Ministerio.listaMinisterios);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList());
             }
 
             if (Resultado[0] is MudancaEstado)
             {
                 Resultado.Clear();
-                Resultado.AddRange(MudancaEstado.Mudancas);
+                Resultado.AddRange(modelocrud.Modelos.OfType<MudancaEstado>().ToList());
             }
 
             if (Resultado[0] is Reuniao)
             {
                 Resultado.Clear();
-                Resultado.AddRange(Reuniao.Reunioes);
+                Resultado.AddRange(modelocrud.Modelos.OfType<Reuniao>().ToList());
             }
         }
     }

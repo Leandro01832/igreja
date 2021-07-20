@@ -11,7 +11,7 @@ namespace AplicativoXamarin.models
 {
     public class MudancaEstado :  IMudancaEstado
     {
-        public int IdMudanca { get; set; }
+        public int Id { get; set; }
         public string velhoEstado { get; set; }
         public string novoEstado { get; set; }
         public DateTime DataMudanca { get; set; }
@@ -75,9 +75,9 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                    var pes = await salvar(membro);
-                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    membro.Endereco.Id = pes.IdPessoa;
                      salvarEndereco(membro.Endereco);
-                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    membro.Telefone.Id = pes.IdPessoa;
                     salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
@@ -113,9 +113,9 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(membro);
-                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    membro.Endereco.Id = pes.IdPessoa;
                     salvarEndereco(membro.Endereco);
-                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    membro.Telefone.Id = pes.IdPessoa;
                     salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
@@ -152,9 +152,9 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(membro);
-                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    membro.Endereco.Id = pes.IdPessoa;
                     salvarEndereco(membro.Endereco);
-                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    membro.Telefone.Id = pes.IdPessoa;
                     salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
@@ -193,9 +193,9 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(membro);
-                    membro.Endereco.IdEndereco = pes.IdPessoa;
+                    membro.Endereco.Id = pes.IdPessoa;
                     salvarEndereco(membro.Endereco);
-                    membro.Telefone.IdTelefone = pes.IdPessoa;
+                    membro.Telefone.Id = pes.IdPessoa;
                     salvarTelefone(membro.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
@@ -230,9 +230,9 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(c);
-                    c.Endereco.IdEndereco = pes.IdPessoa;
+                    c.Endereco.Id = pes.IdPessoa;
                     salvarEndereco(c.Endereco);
-                    c.Telefone.IdTelefone = pes.IdPessoa;
+                    c.Telefone.Id = pes.IdPessoa;
                     salvarTelefone(c.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 }
@@ -267,9 +267,9 @@ namespace AplicativoXamarin.models
                         Codigo = pd.Codigo
                     };
                     var pes = await salvar(v);
-                    v.Endereco.IdEndereco = pes.IdPessoa;
+                    v.Endereco.Id = pes.IdPessoa;
                     salvarEndereco(v.Endereco);
-                    v.Telefone.IdTelefone = pes.IdPessoa;
+                    v.Telefone.Id = pes.IdPessoa;
                     salvarTelefone(v.Telefone);
                     user.IdPessoa = pes.IdPessoa;
                 } 
@@ -425,7 +425,7 @@ namespace AplicativoXamarin.models
             if (minis != null)
                 foreach (var itemMinisterio in minis)
                 {
-                    PessoaMinisterio item = await retornaPessoaMinsterio(itemMinisterio.IdPessoaMinisterio);
+                    PessoaMinisterio item = await retornaPessoaMinsterio(itemMinisterio.Id);
                     Api.ParticiparMinisterio(item.Ministerio);
                 }
 
@@ -433,7 +433,7 @@ namespace AplicativoXamarin.models
             if (reu != null)
                 foreach (var itemReuniao in reu)
                 {
-                    ReuniaoPessoa item = await retornaReuniaoPessoa(itemReuniao.IdReuniaoPessoa);
+                    ReuniaoPessoa item = await retornaReuniaoPessoa(itemReuniao.Id);
                     Api.ParticiparReuniao(item.Reuniao);
                 }
 
@@ -458,14 +458,14 @@ namespace AplicativoXamarin.models
             Api.salvarEndereco(endereco);
         }
 
-        private async Task<ReuniaoPessoa> retornaReuniaoPessoa(int idReuniaoPessoa)
+        private async Task<ReuniaoPessoa> retornaReuniaoPessoa(int Id)
         {
-            return await Api.retornaReuniaoPessoa(idReuniaoPessoa);
+            return await Api.retornaReuniaoPessoa(Id);
         }
 
-        private async Task<PessoaMinisterio> retornaPessoaMinsterio(int idPessoaMinisterio)
+        private async Task<PessoaMinisterio> retornaPessoaMinsterio(int Id)
         {
-           return  await Api.retornaPessoaMinsterio(idPessoaMinisterio);
+           return  await Api.retornaPessoaMinsterio(Id);
         }
 
         private void salvarMudanca(MudancaEstado mudanca)

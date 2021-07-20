@@ -8,7 +8,7 @@ namespace Site.Models.Api
 {
     public class MinisterioApi
     {
-        public int IdMinisterio { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Proposito { get; set; }
         public virtual List<PessoaMinisterio> Pessoas { get; set; }

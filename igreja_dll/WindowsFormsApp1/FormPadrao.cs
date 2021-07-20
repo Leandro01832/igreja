@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             var registrosCelulas = modelocrud.GeTotalRegistrosCelulas();
             try
             {
-                if (registrosMinisterios != Ministerio.listaMinisterios.Count)
+                if (registrosMinisterios != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
                 {
                     FormProgressBar2 form = new FormProgressBar2();
                     
@@ -119,14 +119,14 @@ namespace WindowsFormsApp1
                     if (!form.IsDisposed)
                         form.Dispose();
 
-                    Ministerio.UltimoRegistro = Ministerio.listaMinisterios.OrderBy(m => m.IdMinisterio).Last().IdMinisterio;
+                    Ministerio.UltimoRegistro = modelocrud.Modelos.OfType<Ministerio>().ToList().OrderBy(m => m.Id).Last().Id;
                 }
             }
             catch { }
 
             try
             {
-                if (registrosCelulas != Celula.listaCelulas.Count)
+                if (registrosCelulas != modelocrud.Modelos.OfType<Celula>().ToList().Count)
                 {
                     FormProgressBar2 form = new FormProgressBar2();
                     
@@ -139,14 +139,14 @@ namespace WindowsFormsApp1
                     if (!form.IsDisposed)
                         form.Dispose();
 
-                    Celula.UltimoRegistro = Celula.listaCelulas.OrderBy(m => m.IdCelula).Last().IdCelula;
+                    Celula.UltimoRegistro = modelocrud.Modelos.OfType<Celula>().ToList().OrderBy(m => m.Id).Last().Id;
                 }
             }
             catch { }
 
             try
             {
-                if (registrosPessoas != Pessoa.listaPessoas.Count)
+                if (registrosPessoas != modelocrud.Modelos.OfType<Pessoa>().ToList().Count)
                 {
                     FormProgressBar2 form = new FormProgressBar2();
                     
@@ -159,7 +159,7 @@ namespace WindowsFormsApp1
                         if(!form.IsDisposed)
                         form.Dispose();
                     
-                    Pessoa.UltimoRegistro = Pessoa.listaPessoas.OrderBy(m => m.IdPessoa).Last().Codigo;
+                    Pessoa.UltimoRegistro = modelocrud.Modelos.OfType<Pessoa>().ToList().OrderBy(m => m.Id).Last().Codigo;
                 }
             }
             catch { }
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             List<modelocrud> lista = new List<modelocrud>();
             while (v1 <= v2)
             {
-                if (Pessoa.listaPessoas.FirstOrDefault(i => i.IdPessoa == v1) == null)
+                if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Id == v1) == null)
                 {
                     var model = new  Visitante                (); var modelo = model.recuperar    (v1);
                     var model2 = new Crianca                  (); var modelo2 = model2.recuperar  (v1);
@@ -186,18 +186,18 @@ namespace WindowsFormsApp1
                     var model11 = new Membro_AclamacaoLgpd    (); var modelo11 = model11.recuperar(v1);
                     var model12 = new Membro_ReconciliacaoLgpd(); var modelo12 = model12.recuperar(v1);
 
-                    if (modelo  ) Pessoa.listaPessoas.Add(model);
-                    if (modelo2 ) Pessoa.listaPessoas.Add(model2);
-                    if (modelo3 ) Pessoa.listaPessoas.Add(model3);
-                    if (modelo4 ) Pessoa.listaPessoas.Add(model4);
-                    if (modelo5 ) Pessoa.listaPessoas.Add(model5);
-                    if (modelo6 ) Pessoa.listaPessoas.Add(model6);
-                    if (modelo7 ) Pessoa.listaPessoas.Add(model7);
-                    if (modelo8 ) Pessoa.listaPessoas.Add(model8);
-                    if (modelo9 ) Pessoa.listaPessoas.Add(model9);
-                    if (modelo10) Pessoa.listaPessoas.Add(model10);
-                    if (modelo11) Pessoa.listaPessoas.Add(model11);
-                    if (modelo12) Pessoa.listaPessoas.Add(model12);
+                    if (modelo  ) modelocrud.Modelos.Add(model);
+                    if (modelo2 ) modelocrud.Modelos.Add(model2);
+                    if (modelo3 ) modelocrud.Modelos.Add(model3);
+                    if (modelo4 ) modelocrud.Modelos.Add(model4);
+                    if (modelo5 ) modelocrud.Modelos.Add(model5);
+                    if (modelo6 ) modelocrud.Modelos.Add(model6);
+                    if (modelo7 ) modelocrud.Modelos.Add(model7);
+                    if (modelo8 ) modelocrud.Modelos.Add(model8);
+                    if (modelo9 ) modelocrud.Modelos.Add(model9);
+                    if (modelo10) modelocrud.Modelos.Add(model10);
+                    if (modelo11) modelocrud.Modelos.Add(model11);
+                    if (modelo12) modelocrud.Modelos.Add(model12);
                 }
 
                 v1++;
@@ -210,7 +210,7 @@ namespace WindowsFormsApp1
             List<modelocrud> lista = new List<modelocrud>();
             while (v1 <= v2)
             {
-                if (Celula.listaCelulas.FirstOrDefault(i => i.IdCelula == v1) == null)
+                if (modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == v1) == null)
                 {
                     var model =  new Celula_Jovem      (); var modelo = model.recuperar  (v1);
                     var model2 = new Celula_Adolescente(); var modelo2 = model2.recuperar(v1);
@@ -218,11 +218,11 @@ namespace WindowsFormsApp1
                     var model4 = new Celula_Crianca    (); var modelo4 = model4.recuperar(v1);
                     var model5 = new Celula_Adulto     (); var modelo5 = model5.recuperar(v1);
 
-                    if (modelo ) Celula.listaCelulas.Add(model);
-                    if (modelo2) Celula.listaCelulas.Add(model2);
-                    if (modelo3) Celula.listaCelulas.Add(model3);
-                    if (modelo4) Celula.listaCelulas.Add(model4);
-                    if (modelo5) Celula.listaCelulas.Add(model5);
+                    if (modelo ) modelocrud.Modelos.Add(model);
+                    if (modelo2) modelocrud.Modelos.Add(model2);
+                    if (modelo3) modelocrud.Modelos.Add(model3);
+                    if (modelo4) modelocrud.Modelos.Add(model4);
+                    if (modelo5) modelocrud.Modelos.Add(model5);
                 }
                 v1++;
             }
@@ -233,7 +233,7 @@ namespace WindowsFormsApp1
             var v2 = v1 + 10;
             while (v1 <= v2)
             {
-                if (Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == v1) == null)
+                if (modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == v1) == null)
                 {
                     var model =  new Lider_Celula                     (); var modelo = model.recuperar  (v1);
                     var model2 = new Lider_Celula_Treinamento         (); var modelo2 = model2.recuperar(v1);
@@ -244,14 +244,14 @@ namespace WindowsFormsApp1
                     var model7 = new Supervisor_Ministerio            (); var modelo7 = model7.recuperar(v1);
                     var model8 = new Supervisor_Ministerio_Treinamento(); var modelo8 = model8.recuperar(v1);
 
-                    if (modelo ) Ministerio.listaMinisterios.Add(model);
-                    if (modelo2) Ministerio.listaMinisterios.Add(model2);
-                    if (modelo3) Ministerio.listaMinisterios.Add(model3);
-                    if (modelo4) Ministerio.listaMinisterios.Add(model4);
-                    if (modelo5) Ministerio.listaMinisterios.Add(model5);
-                    if (modelo6) Ministerio.listaMinisterios.Add(model6);
-                    if (modelo7) Ministerio.listaMinisterios.Add(model7);
-                    if (modelo8) Ministerio.listaMinisterios.Add(model8);
+                    if (modelo ) modelocrud.Modelos.Add(model);
+                    if (modelo2) modelocrud.Modelos.Add(model2);
+                    if (modelo3) modelocrud.Modelos.Add(model3);
+                    if (modelo4) modelocrud.Modelos.Add(model4);
+                    if (modelo5) modelocrud.Modelos.Add(model5);
+                    if (modelo6) modelocrud.Modelos.Add(model6);
+                    if (modelo7) modelocrud.Modelos.Add(model7);
+                    if (modelo8) modelocrud.Modelos.Add(model8);
                 }
                 v1++;
             }
@@ -280,51 +280,51 @@ namespace WindowsFormsApp1
         private static void verificarBoleanos()
         {
             if (Pessoa.visitantesLgpd != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new VisitanteLgpd().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new VisitanteLgpd().GetType().Name) != null)
                 carregandoVisitanteLgpd = true;
             else carregandoVisitanteLgpd = false;
             if (Pessoa.criancasLgpd != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new CriancaLgpd().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new CriancaLgpd().GetType().Name) != null)
                 carregandoCriancaLgpd = true;
             else carregandoCriancaLgpd = false;
             if (Pessoa.membros_BatismoLgpd != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name) != null)
                 carregandoMembroBatismoLgpd = true;
             else carregandoMembroBatismoLgpd = false;
             if (Pessoa.membros_ReconciliacaoLgpd != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name) != null)
                 carregandoMembroReconciliacaoLgpd = true;
             else carregandoMembroReconciliacaoLgpd = false;
             if (Pessoa.membros_TransferenciaLgpd != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name) != null)
                 carregandoMembroTransferenciaLgpd = true;
             else carregandoMembroTransferenciaLgpd = false;
             if (Pessoa.membros_AclamacaoLgpd != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name) != null)
                 carregandoMembroAclamacaoLgpd = true;
             else carregandoMembroAclamacaoLgpd = false;
             if (Pessoa.visitantes != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Visitante().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Visitante().GetType().Name) != null)
                 carregandoVisitante = true;
             else carregandoVisitante = false;
             if (Pessoa.criancas != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Crianca().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Crianca().GetType().Name) != null)
                 carregandoCrianca = true;
             else carregandoCrianca = false;
             if (Pessoa.membros_Batismo != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Batismo().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_Batismo().GetType().Name) != null)
                 carregandoMembroBatismo = true;
             else carregandoMembroBatismo = false;
             if (Pessoa.membros_Reconciliacao != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name) != null)
                 carregandoMembroReconciliacao = true;
             else carregandoMembroReconciliacao = false;
             if (Pessoa.membros_Transferencia != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Transferencia().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_Transferencia().GetType().Name) != null)
                 carregandoMembroTransferencia = true;
             else carregandoMembroTransferencia = false;
             if (Pessoa.membros_Aclamacao != null ||
-            Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name) != null)
+            modelocrud.Modelos.FirstOrDefault(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name) != null)
                 carregandoMembroAclamacao = true;
             else carregandoMembroAclamacao = false;
         }
@@ -372,7 +372,7 @@ namespace WindowsFormsApp1
         {
             bool condicao = false;
 
-            if (Tipo.IsSubclassOf(typeof(Pessoa)) && Pessoa.listaPessoas.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
+            if (Tipo.IsSubclassOf(typeof(Pessoa)) && modelocrud.Modelos.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
             {
                 if (Tipo == typeof(Visitante) && Pessoa.visitantes == null) condicao = true;
                 if (Tipo == typeof(Crianca) && Pessoa.criancas == null) condicao = true;
@@ -388,7 +388,7 @@ namespace WindowsFormsApp1
                 if (Tipo == typeof(Membro_TransferenciaLgpd) && Pessoa.membros_TransferenciaLgpd == null) condicao = true;
             }
 
-            if (Tipo.IsSubclassOf(typeof(Ministerio)) && Ministerio.listaMinisterios.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
+            if (Tipo.IsSubclassOf(typeof(Ministerio)) && modelocrud.Modelos.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
             {
                 if (Tipo == typeof(Lider_Celula) && Ministerio.lideresCelula == null) condicao = true;
                 if (Tipo == typeof(Lider_Celula_Treinamento) && Ministerio.LideresCelulaTreinamento == null) condicao = true;
@@ -400,7 +400,7 @@ namespace WindowsFormsApp1
                 if (Tipo == typeof(Supervisor_Ministerio_Treinamento) && Ministerio.supervisoresMinisterioTreinamento == null) condicao = true;
             }
 
-            if (Tipo.IsSubclassOf(typeof(Celula)) && Celula.listaCelulas.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
+            if (Tipo.IsSubclassOf(typeof(Celula)) && modelocrud.Modelos.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
             {
                 if (Tipo == typeof(Celula_Adolescente) && Celula.celulasAdolescente == null) condicao = true;
                 if (Tipo == typeof(Celula_Adulto) && Celula.celulasAdulto == null) condicao = true;
@@ -424,44 +424,44 @@ namespace WindowsFormsApp1
                 var retorno = await Task.Run(() => modelo.recuperar());
 
                 if (Tipo.IsSubclassOf(typeof(Pessoa)) && !modelocrud.Erro_Conexao
-                    && Pessoa.listaPessoas.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
+                    && modelocrud.Modelos.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
                 {
                     List<Pessoa> pessoas = new List<Pessoa>();
-                    if (retorno && modelo is Visitante)                Pessoa.listaPessoas.AddRange(Pessoa.visitantes               );
-                    if (retorno && modelo is Crianca)                  Pessoa.listaPessoas.AddRange(Pessoa.criancas                 );
-                    if (retorno && modelo is Membro_Aclamacao)         Pessoa.listaPessoas.AddRange(Pessoa.membros_Aclamacao        );
-                    if (retorno && modelo is Membro_Batismo)           Pessoa.listaPessoas.AddRange(Pessoa.membros_Batismo          );
-                    if (retorno && modelo is Membro_Reconciliacao)     Pessoa.listaPessoas.AddRange(Pessoa.membros_Reconciliacao    );
-                    if (retorno && modelo is Membro_Transferencia)     Pessoa.listaPessoas.AddRange(Pessoa.membros_Transferencia    );
-                    if (retorno && modelo is VisitanteLgpd)            Pessoa.listaPessoas.AddRange(Pessoa.visitantesLgpd           );
-                    if (retorno && modelo is CriancaLgpd)              Pessoa.listaPessoas.AddRange(Pessoa.criancasLgpd             );
-                    if (retorno && modelo is Membro_AclamacaoLgpd)     Pessoa.listaPessoas.AddRange(Pessoa.membros_AclamacaoLgpd    );
-                    if (retorno && modelo is Membro_BatismoLgpd)       Pessoa.listaPessoas.AddRange(Pessoa.membros_BatismoLgpd      );
-                    if (retorno && modelo is Membro_ReconciliacaoLgpd) Pessoa.listaPessoas.AddRange(Pessoa.membros_ReconciliacaoLgpd);
-                    if (retorno && modelo is Membro_TransferenciaLgpd) Pessoa.listaPessoas.AddRange(Pessoa.membros_TransferenciaLgpd);
+                    if (retorno && modelo is Visitante) modelocrud.Modelos.AddRange(Pessoa.visitantes);
+                    if (retorno && modelo is Crianca) modelocrud.Modelos.AddRange(Pessoa.criancas);
+                    if (retorno && modelo is Membro_Aclamacao) modelocrud.Modelos.AddRange(Pessoa.membros_Aclamacao);
+                    if (retorno && modelo is Membro_Batismo) modelocrud.Modelos.AddRange(Pessoa.membros_Batismo);
+                    if (retorno && modelo is Membro_Reconciliacao) modelocrud.Modelos.AddRange(Pessoa.membros_Reconciliacao);
+                    if (retorno && modelo is Membro_Transferencia) modelocrud.Modelos.AddRange(Pessoa.membros_Transferencia);
+                    if (retorno && modelo is VisitanteLgpd) modelocrud.Modelos.AddRange(Pessoa.visitantesLgpd);
+                    if (retorno && modelo is CriancaLgpd) modelocrud.Modelos.AddRange(Pessoa.criancasLgpd);
+                    if (retorno && modelo is Membro_AclamacaoLgpd) modelocrud.Modelos.AddRange(Pessoa.membros_AclamacaoLgpd);
+                    if (retorno && modelo is Membro_BatismoLgpd) modelocrud.Modelos.AddRange(Pessoa.membros_BatismoLgpd);
+                    if (retorno && modelo is Membro_ReconciliacaoLgpd) modelocrud.Modelos.AddRange(Pessoa.membros_ReconciliacaoLgpd);
+                    if (retorno && modelo is Membro_TransferenciaLgpd) modelocrud.Modelos.AddRange(Pessoa.membros_TransferenciaLgpd);
                 }
 
                 if (Tipo.IsSubclassOf(typeof(Ministerio)) && !modelocrud.Erro_Conexao
-                    && Ministerio.listaMinisterios.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
+                    && modelocrud.Modelos.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
                 {
-                    if (retorno && modelo is Lider_Celula) Ministerio.listaMinisterios.AddRange                     (Ministerio.lideresCelula                    );
-                    if (retorno && modelo is Lider_Celula_Treinamento) Ministerio.listaMinisterios.AddRange         (Ministerio.LideresCelulaTreinamento         );
-                    if (retorno && modelo is Lider_Ministerio) Ministerio.listaMinisterios.AddRange                 (Ministerio.lideresMinisterio                );
-                    if (retorno && modelo is Lider_Ministerio_Treinamento) Ministerio.listaMinisterios.AddRange     (Ministerio.lideresMinisterioTreinamento     );
-                    if (retorno && modelo is Supervisor_Celula) Ministerio.listaMinisterios.AddRange                (Ministerio.supervisoresCelula               );
-                    if (retorno && modelo is Supervisor_Celula_Treinamento) Ministerio.listaMinisterios.AddRange    (Ministerio.supervisoresCelulaTreinamento    );
-                    if (retorno && modelo is Supervisor_Ministerio) Ministerio.listaMinisterios.AddRange            (Ministerio.supervisoresMinisterio           );
-                    if (retorno && modelo is Supervisor_Ministerio_Treinamento) Ministerio.listaMinisterios.AddRange(Ministerio.supervisoresMinisterioTreinamento);
+                    if (retorno && modelo is Lider_Celula) modelocrud.Modelos.AddRange(Ministerio.lideresCelula);
+                    if (retorno && modelo is Lider_Celula_Treinamento) modelocrud.Modelos.AddRange(Ministerio.LideresCelulaTreinamento);
+                    if (retorno && modelo is Lider_Ministerio) modelocrud.Modelos.AddRange(Ministerio.lideresMinisterio);
+                    if (retorno && modelo is Lider_Ministerio_Treinamento) modelocrud.Modelos.AddRange(Ministerio.lideresMinisterioTreinamento);
+                    if (retorno && modelo is Supervisor_Celula) modelocrud.Modelos.AddRange(Ministerio.supervisoresCelula);
+                    if (retorno && modelo is Supervisor_Celula_Treinamento) modelocrud.Modelos.AddRange(Ministerio.supervisoresCelulaTreinamento);
+                    if (retorno && modelo is Supervisor_Ministerio) modelocrud.Modelos.AddRange(Ministerio.supervisoresMinisterio);
+                    if (retorno && modelo is Supervisor_Ministerio_Treinamento) modelocrud.Modelos.AddRange(Ministerio.supervisoresMinisterioTreinamento);
                 }
 
                 if (Tipo.IsSubclassOf(typeof(Celula)) && !modelocrud.Erro_Conexao
-                    && Celula.listaCelulas.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
+                    && modelocrud.Modelos.FirstOrDefault(m => m.GetType().Name == Tipo.Name) == null)
                 {
-                    if (retorno && modelo is Celula_Adolescente) Celula.listaCelulas.AddRange(Celula.celulasAdolescente);
-                    if (retorno && modelo is Celula_Adulto) Celula.listaCelulas.AddRange     (Celula.celulasAdulto     );
-                    if (retorno && modelo is Celula_Casado) Celula.listaCelulas.AddRange     (Celula.celulasCasado     );
-                    if (retorno && modelo is Celula_Jovem) Celula.listaCelulas.AddRange      (Celula.celulasJovem      );
-                    if (retorno && modelo is Celula_Crianca) Celula.listaCelulas.AddRange    (Celula.celulasCrianca    );
+                    if (retorno && modelo is Celula_Adolescente) modelocrud.Modelos.AddRange(Celula.celulasAdolescente);
+                    if (retorno && modelo is Celula_Adulto) modelocrud.Modelos.AddRange(Celula.celulasAdulto);
+                    if (retorno && modelo is Celula_Casado) modelocrud.Modelos.AddRange(Celula.celulasCasado);
+                    if (retorno && modelo is Celula_Jovem) modelocrud.Modelos.AddRange(Celula.celulasJovem);
+                    if (retorno && modelo is Celula_Crianca) modelocrud.Modelos.AddRange(Celula.celulasCrianca);
                 }
 
                 if (Tipo == typeof(Reuniao) && !modelocrud.Erro_Conexao)
@@ -471,7 +471,7 @@ namespace WindowsFormsApp1
                     if (retorno && modelo is MudancaEstado & MudancaEstado.Mudancas != null) MudancaEstado.Mudancas.AddRange(MudancaEstado.Mudancas);
 
                 if (!form.IsDisposed)
-                form.Dispose();
+                    form.Dispose();
 
                 if (!modelocrud.Erro_Conexao)
                 {
@@ -505,7 +505,7 @@ namespace WindowsFormsApp1
 
                     if (retorno && modelo is Reuniao) return Reuniao.Reunioes.Cast<modelocrud>().ToList();
                     if (retorno && modelo is MudancaEstado) return MudancaEstado.Mudancas.Cast<modelocrud>().ToList();
-                }                
+                }
             }
             return null;
         }

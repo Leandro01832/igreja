@@ -48,7 +48,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != mudancaEstado.IdMudanca)
+            if (id != mudancaEstado.Id)
             {
                 return BadRequest();
             }
@@ -86,7 +86,7 @@ namespace Site.Controllers.Api
             db.MudancaEstado.Add(mudancaEstado);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = mudancaEstado.IdMudanca }, mudancaEstado);
+            return CreatedAtRoute("DefaultApi", new { id = mudancaEstado.Id }, mudancaEstado);
         }
 
         // DELETE: api/MudancaEstadoApi/5
@@ -116,7 +116,7 @@ namespace Site.Controllers.Api
 
         private bool MudancaEstadoExists(int id)
         {
-            return db.MudancaEstado.Count(e => e.IdMudanca == id) > 0;
+            return db.MudancaEstado.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace business.classes
     public class Endereco : modelocrud
     {
         [Key, ForeignKey("Pessoa")]
-        public int IdEndereco { get; set; }
+        public new int Id { get; set; }
         [JsonIgnore]
         public virtual PessoaDado Pessoa { get; set; }
 
@@ -61,7 +61,7 @@ namespace business.classes
         {
             Insert_padrao =
         $"insert into Endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
-        $" IdEndereco) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
+        $" Id) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
         $" '{Cep}', '{Complemento}', IDENT_CURRENT('Pessoa'))";
             return Insert_padrao;
         }
@@ -70,19 +70,19 @@ namespace business.classes
         {
             Update_padrao = $"update Endereco set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
             $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
-            $"  where IdEndereco='{id}' ";
+            $"  where Id='{id}' ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Endereco where IdEndereco='{id}' ";
+            Delete_padrao = $"delete from Endereco where Id='{id}' ";
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Endereco as M where M.IdEndereco='{id}'";            
+            Select_padrao = $"select * from Endereco as M where M.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if(conexao != null)
@@ -103,7 +103,7 @@ namespace business.classes
                     this.Cidade = Convert.ToString(dr["Cidade"]);
                     this.Bairro = Convert.ToString(dr["Bairro"]);
                     this.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                     this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
 
@@ -121,66 +121,6 @@ namespace business.classes
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Endereco as M";
-            var conexao = bd.obterconexao();
-
-            if(conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "M.IdEndereco");
-                    Enderecos = new List<Endereco>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Endereco end = new Endereco();
-                        end.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
-                        modelos.Add(end);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Endereco)m;
-                        var c = new Endereco();
-                        if (c.recuperar(cel.IdEndereco))
-                            Enderecos.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            Enderecos = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-
-            Enderecos = null;
-            return false;
-        }
-
+        
     }
 }

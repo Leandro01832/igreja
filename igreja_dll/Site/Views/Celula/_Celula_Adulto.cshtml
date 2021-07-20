@@ -10,8 +10,8 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    @{ if (Model.IdCelula != 0)
-        { <div>@Html.HiddenFor(model => model.IdCelula)</div> } }
+    @{ if (Model.Id != 0)
+        { <div>@Html.HiddenFor(model => model.Id)</div> } }
 
     <div class="form-group">
         @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -49,8 +49,8 @@
         <h4>Endereço da Celula</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @{ if (Model.EnderecoCelula.IdEnderecoCelula != 0)
-            { <div>@Html.HiddenFor(model => model.EnderecoCelula.IdEnderecoCelula)</div> } }
+        @{ if (Model.EnderecoCelula.Id != 0)
+            { <div>@Html.HiddenFor(model => model.EnderecoCelula.Id)</div> } }
 
         <div class="form-group">
             @Html.LabelFor(model => model.EnderecoCelula.Pais, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -79,7 +79,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != pessoa.IdPessoa)
+            if (id != pessoa.Id)
             {
                 return BadRequest();
             }
@@ -117,7 +117,7 @@ namespace Site.Controllers.Api
             db.pessoas.Add(pessoa);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pessoa.IdPessoa }, pessoa);
+            return CreatedAtRoute("DefaultApi", new { id = pessoa.Id }, pessoa);
         }
 
         // DELETE: api/PessoaApi/5
@@ -154,7 +154,7 @@ namespace Site.Controllers.Api
 
         private bool PessoaExists(int id)
         {
-            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.Id == id) > 0;
         }
     }
 }

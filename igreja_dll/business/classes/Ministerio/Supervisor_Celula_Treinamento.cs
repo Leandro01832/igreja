@@ -26,21 +26,21 @@ namespace business.classes.Ministerio
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update  Supervisor_Celula_Treinamento " +
-                $" set Maximo_celula='{Maximo_celula}' where IdMinisterio='{id}' " + BDcomum.addNaLista;
+                $" set Maximo_celula='{Maximo_celula}' where Id='{id}' " + BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Supervisor_Celula_Treinamento where IdMinisterio='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Supervisor_Celula_Treinamento where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Supervisor_Celula_Treinamento as SCT where SCT.IdMinisterio='{id}' ";
+            Select_padrao = $"select * from Supervisor_Celula_Treinamento as SCT where SCT.Id='{id}' ";
             
             var conexao = bd.obterconexao();
 
@@ -74,73 +74,12 @@ namespace business.classes.Ministerio
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Supervisor_Celula_Treinamento as SCT ";            
-            var conexao = bd.obterconexao();
-
-            if (conexao  != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "SCT.IdMinisterio");
-                    supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Supervisor_Celula_Treinamento m = new Supervisor_Celula_Treinamento();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
-                    }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Supervisor_Celula_Treinamento)m;
-                        var c = new Supervisor_Celula_Treinamento();
-                        if (c.recuperar(cel.IdMinisterio))
-                            supervisoresCelulaTreinamento.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            supervisoresCelulaTreinamento = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            supervisoresCelulaTreinamento = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = base.salvar();
             Insert_padrao += $" insert into Supervisor_Celula_Treinamento " +
-           $" (IdMinisterio, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
+           $" (Id, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);
 
@@ -150,7 +89,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.IdMinisterio.ToString() + " - " + base.Nome;
+            return base.Id.ToString() + " - " + base.Nome;
         }
 
     }

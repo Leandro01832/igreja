@@ -8,7 +8,7 @@
     <StackLayout Orientation="Vertical" Padding="20" Spacing="20">
         <StackLayout Orientation="Horizontal">
             <Label Text="ID:" FontAttributes="Bold" VerticalTextAlignment="Center" />
-            <Label Text="{Binding Reuniao.IdReuniao}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.Id}" FontAttributes="Bold" VerticalTextAlignment="Center" />
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">

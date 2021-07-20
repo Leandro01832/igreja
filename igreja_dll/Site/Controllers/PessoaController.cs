@@ -77,7 +77,7 @@ namespace Site.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.celula_ = new SelectList(db.celula, "IdCelula", "Nome", pessoa.celula_);
+            ViewBag.celula_ = new SelectList(db.celula, "Id", "Nome", pessoa.celula_);
             return View(pessoa);
         }
 

@@ -11,19 +11,19 @@ namespace RepositorioEF.Migrations
                 "dbo.Celula",
                 c => new
                     {
-                        IdCelula = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Nome = c.String(nullable: false),
                         Dia_semana = c.String(nullable: false),
                         Horario = c.Time(nullable: false, precision: 7),
                         Maximo_pessoa = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCelula);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.EnderecoCelula",
                 c => new
                     {
-                        IdEnderecoCelula = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                         Pais = c.String(nullable: false),
                         Estado = c.String(nullable: false),
                         Cidade = c.String(nullable: false),
@@ -33,19 +33,19 @@ namespace RepositorioEF.Migrations
                         Cep = c.Long(nullable: false),
                         Complemento = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.IdEnderecoCelula)
-                .ForeignKey("dbo.Celula", t => t.IdEnderecoCelula)
-                .Index(t => t.IdEnderecoCelula);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Celula", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.MinisterioCelula",
                 c => new
                     {
-                        IdMinisterioCelula = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         CelulaId = c.Int(nullable: false),
                         MinisterioId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdMinisterioCelula)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Celula", t => t.CelulaId)
                 .ForeignKey("dbo.Ministerio", t => t.MinisterioId)
                 .Index(t => t.CelulaId)
@@ -67,11 +67,11 @@ namespace RepositorioEF.Migrations
                 "dbo.PessoaMinisterio",
                 c => new
                     {
-                        IdPessoaMinisterio = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         PessoaId = c.Int(nullable: false),
                         MinisterioId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdPessoaMinisterio)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Ministerio", t => t.MinisterioId)
                 .ForeignKey("dbo.Pessoa", t => t.PessoaId)
                 .Index(t => t.PessoaId)
@@ -99,24 +99,24 @@ namespace RepositorioEF.Migrations
                 "dbo.Chamada",
                 c => new
                     {
-                        IdChamada = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                         Data_inicio = c.DateTime(nullable: false),
                         Numero_chamada = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdChamada)
-                .ForeignKey("dbo.Pessoa", t => t.IdChamada)
-                .Index(t => t.IdChamada);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pessoa", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Historico",
                 c => new
                     {
-                        IdHistorico = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Data_inicio = c.DateTime(nullable: false),
                         pessoaid = c.Int(nullable: false),
                         Falta = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdHistorico)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Pessoa", t => t.pessoaid)
                 .Index(t => t.pessoaid);
             
@@ -124,11 +124,11 @@ namespace RepositorioEF.Migrations
                 "dbo.ReuniaoPessoa",
                 c => new
                     {
-                        IdReuniaoPessoa = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         PessoaId = c.Int(nullable: false),
                         ReuniaoId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdReuniaoPessoa)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Pessoa", t => t.PessoaId)
                 .ForeignKey("dbo.Reuniao", t => t.ReuniaoId)
                 .Index(t => t.PessoaId)
@@ -138,19 +138,19 @@ namespace RepositorioEF.Migrations
                 "dbo.Reuniao",
                 c => new
                     {
-                        IdReuniao = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Data_reuniao = c.DateTime(nullable: false),
                         Horario_inicio = c.Time(nullable: false, precision: 7),
                         Horario_fim = c.Time(nullable: false, precision: 7),
                         Local_reuniao = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.IdReuniao);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Endereco",
                 c => new
                     {
-                        IdEndereco = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                         Pais = c.String(nullable: false),
                         Estado = c.String(nullable: false),
                         Cidade = c.String(nullable: false),
@@ -160,34 +160,34 @@ namespace RepositorioEF.Migrations
                         Cep = c.Long(nullable: false),
                         Complemento = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.IdEndereco)
-                .ForeignKey("dbo.PessoaDado", t => t.IdEndereco)
-                .Index(t => t.IdEndereco);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.PessoaDado", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Telefone",
                 c => new
                     {
-                        IdTelefone = c.Int(nullable: false),
+                        Id= c.Int(nullable: false),
                         Fone = c.String(),
                         Celular = c.String(),
                         Whatsapp = c.String(),
                     })
-                .PrimaryKey(t => t.IdTelefone)
-                .ForeignKey("dbo.PessoaDado", t => t.IdTelefone)
-                .Index(t => t.IdTelefone);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.PessoaDado", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.MudancaEstado",
                 c => new
                     {
-                        IdMudanca = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         velhoEstado = c.String(),
                         novoEstado = c.String(),
                         DataMudanca = c.DateTime(nullable: false),
                         CodigoPessoa = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdMudanca);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.PessoaDado",
@@ -470,61 +470,61 @@ namespace RepositorioEF.Migrations
                 "dbo.Celula_Adolescente",
                 c => new
                     {
-                        IdCelula = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCelula)
-                .ForeignKey("dbo.Celula", t => t.IdCelula)
-                .Index(t => t.IdCelula);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Celula", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Celula_Adulto",
                 c => new
                     {
-                        IdCelula = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCelula)
-                .ForeignKey("dbo.Celula", t => t.IdCelula)
-                .Index(t => t.IdCelula);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Celula", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Celula_Casado",
                 c => new
                     {
-                        IdCelula = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCelula)
-                .ForeignKey("dbo.Celula", t => t.IdCelula)
-                .Index(t => t.IdCelula);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Celula", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Celula_Crianca",
                 c => new
                     {
-                        IdCelula = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCelula)
-                .ForeignKey("dbo.Celula", t => t.IdCelula)
-                .Index(t => t.IdCelula);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Celula", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Celula_Jovem",
                 c => new
                     {
-                        IdCelula = c.Int(nullable: false),
+                        Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCelula)
-                .ForeignKey("dbo.Celula", t => t.IdCelula)
-                .Index(t => t.IdCelula);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Celula", t => t.Id)
+                .Index(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Celula_Jovem", "IdCelula", "dbo.Celula");
-            DropForeignKey("dbo.Celula_Crianca", "IdCelula", "dbo.Celula");
-            DropForeignKey("dbo.Celula_Casado", "IdCelula", "dbo.Celula");
-            DropForeignKey("dbo.Celula_Adulto", "IdCelula", "dbo.Celula");
-            DropForeignKey("dbo.Celula_Adolescente", "IdCelula", "dbo.Celula");
+            DropForeignKey("dbo.Celula_Jovem", "Id", "dbo.Celula");
+            DropForeignKey("dbo.Celula_Crianca", "Id", "dbo.Celula");
+            DropForeignKey("dbo.Celula_Casado", "Id", "dbo.Celula");
+            DropForeignKey("dbo.Celula_Adulto", "Id", "dbo.Celula");
+            DropForeignKey("dbo.Celula_Adolescente", "Id", "dbo.Celula");
             DropForeignKey("dbo.Supervisor_Ministerio_Treinamento", "IdMinisterio", "dbo.Ministerio");
             DropForeignKey("dbo.Supervisor_Ministerio", "IdMinisterio", "dbo.Ministerio");
             DropForeignKey("dbo.Supervisor_Celula_Treinamento", "IdMinisterio", "dbo.Ministerio");
@@ -551,21 +551,21 @@ namespace RepositorioEF.Migrations
             DropForeignKey("dbo.PessoaDado", "IdPessoa", "dbo.Pessoa");
             DropForeignKey("dbo.MinisterioCelula", "MinisterioId", "dbo.Ministerio");
             DropForeignKey("dbo.PessoaMinisterio", "PessoaId", "dbo.Pessoa");
-            DropForeignKey("dbo.Telefone", "IdTelefone", "dbo.PessoaDado");
-            DropForeignKey("dbo.Endereco", "IdEndereco", "dbo.PessoaDado");
+            DropForeignKey("dbo.Telefone", "Id", "dbo.PessoaDado");
+            DropForeignKey("dbo.Endereco", "Id", "dbo.PessoaDado");
             DropForeignKey("dbo.ReuniaoPessoa", "ReuniaoId", "dbo.Reuniao");
             DropForeignKey("dbo.ReuniaoPessoa", "PessoaId", "dbo.Pessoa");
             DropForeignKey("dbo.Historico", "pessoaid", "dbo.Pessoa");
-            DropForeignKey("dbo.Chamada", "IdChamada", "dbo.Pessoa");
+            DropForeignKey("dbo.Chamada", "Id", "dbo.Pessoa");
             DropForeignKey("dbo.Pessoa", "celula_", "dbo.Celula");
             DropForeignKey("dbo.PessoaMinisterio", "MinisterioId", "dbo.Ministerio");
             DropForeignKey("dbo.MinisterioCelula", "CelulaId", "dbo.Celula");
-            DropForeignKey("dbo.EnderecoCelula", "IdEnderecoCelula", "dbo.Celula");
-            DropIndex("dbo.Celula_Jovem", new[] { "IdCelula" });
-            DropIndex("dbo.Celula_Crianca", new[] { "IdCelula" });
-            DropIndex("dbo.Celula_Casado", new[] { "IdCelula" });
-            DropIndex("dbo.Celula_Adulto", new[] { "IdCelula" });
-            DropIndex("dbo.Celula_Adolescente", new[] { "IdCelula" });
+            DropForeignKey("dbo.EnderecoCelula", "Id", "dbo.Celula");
+            DropIndex("dbo.Celula_Jovem", new[] { "Id" });
+            DropIndex("dbo.Celula_Crianca", new[] { "Id" });
+            DropIndex("dbo.Celula_Casado", new[] { "Id" });
+            DropIndex("dbo.Celula_Adulto", new[] { "Id" });
+            DropIndex("dbo.Celula_Adolescente", new[] { "Id" });
             DropIndex("dbo.Supervisor_Ministerio_Treinamento", new[] { "IdMinisterio" });
             DropIndex("dbo.Supervisor_Ministerio", new[] { "IdMinisterio" });
             DropIndex("dbo.Supervisor_Celula_Treinamento", new[] { "IdMinisterio" });
@@ -591,12 +591,12 @@ namespace RepositorioEF.Migrations
             DropIndex("dbo.Membro", new[] { "IdPessoa" });
             DropIndex("dbo.PessoaDado", "CPF");
             DropIndex("dbo.PessoaDado", new[] { "IdPessoa" });
-            DropIndex("dbo.Telefone", new[] { "IdTelefone" });
-            DropIndex("dbo.Endereco", new[] { "IdEndereco" });
+            DropIndex("dbo.Telefone", new[] { "Id" });
+            DropIndex("dbo.Endereco", new[] { "Id" });
             DropIndex("dbo.ReuniaoPessoa", new[] { "ReuniaoId" });
             DropIndex("dbo.ReuniaoPessoa", new[] { "PessoaId" });
             DropIndex("dbo.Historico", new[] { "pessoaid" });
-            DropIndex("dbo.Chamada", new[] { "IdChamada" });
+            DropIndex("dbo.Chamada", new[] { "Id" });
             DropIndex("dbo.Pessoa", new[] { "celula_" });
             DropIndex("dbo.Pessoa", "EMAIL");
             DropIndex("dbo.Pessoa", "CODIGO");
@@ -604,7 +604,7 @@ namespace RepositorioEF.Migrations
             DropIndex("dbo.PessoaMinisterio", new[] { "PessoaId" });
             DropIndex("dbo.MinisterioCelula", new[] { "MinisterioId" });
             DropIndex("dbo.MinisterioCelula", new[] { "CelulaId" });
-            DropIndex("dbo.EnderecoCelula", new[] { "IdEnderecoCelula" });
+            DropIndex("dbo.EnderecoCelula", new[] { "Id" });
             DropTable("dbo.Celula_Jovem");
             DropTable("dbo.Celula_Crianca");
             DropTable("dbo.Celula_Casado");

@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
             if(Tipo == typeof(Reuniao))
             foreach (var item in Reuniao)
             {
-                table.AddCell("Id: " + item.IdReuniao.ToString());
+                table.AddCell("Id: " + item.Id.ToString());
                 table.AddCell("Data da reunião: " + item.Data_reuniao.ToString());
                 table.AddCell("Horario de inicio: " + item.Horario_inicio.ToString());
             }
@@ -179,7 +179,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var item in Ministerios)
                 {
-                    table.AddCell("Id: " + item.IdMinisterio.ToString());
+                    table.AddCell("Id: " + item.Id.ToString());
                     table.AddCell("Nome do ministério: " + item.Nome.ToString());
                 } 
             }
@@ -187,7 +187,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var item in Ministerios.Where(i => i.GetType().Name == Tipo.Name))
                 {
-                    table.AddCell("Id: " + item.IdMinisterio.ToString());
+                    table.AddCell("Id: " + item.Id.ToString());
                     table.AddCell("Nome do ministério: " + item.Nome.ToString());
                 }
             }
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var item in Celulas)
                 {
-                    table.AddCell("Id: " + item.IdCelula.ToString());
+                    table.AddCell("Id: " + item.Id.ToString());
                     table.AddCell("Nome da celula: " + item.Nome.ToString());
                 } 
             }
@@ -205,7 +205,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var item in Celulas.Where(i => i.GetType().Name == Tipo.Name))
                 {
-                    table.AddCell("Id: " + item.IdCelula.ToString());
+                    table.AddCell("Id: " + item.Id.ToString());
                     table.AddCell("Nome da celula: " + item.Nome.ToString());
                 }
             }

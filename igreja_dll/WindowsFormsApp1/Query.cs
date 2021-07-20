@@ -381,13 +381,13 @@ namespace WindowsFormsApp1
             if (Resultado[0] is Pessoa)
                 id = "IdPessoa";
             if (Resultado[0] is Celula)
-                id = "IdCelula";
+                id = "Id";
             if (Resultado[0] is Ministerio)
                 id = "IdMinisterio";
             if (Resultado[0] is Reuniao)
-                id = "IdReuniao";
+                id = "Id";
             if (Resultado[0] is MudancaEstado)
-                id = "IdMudanca";
+                id = "Id";
             return id;
         }
         

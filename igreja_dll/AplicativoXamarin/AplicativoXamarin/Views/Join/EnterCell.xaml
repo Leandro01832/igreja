@@ -20,7 +20,7 @@
                         <ViewCell.View>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding IdCelula}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Id}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="{Binding Nome}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>                               
                             </StackLayout>

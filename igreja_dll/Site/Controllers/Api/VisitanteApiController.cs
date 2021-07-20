@@ -49,7 +49,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != visitante.IdPessoa)
+            if (id != visitante.Id)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace Site.Controllers.Api
                 visitante.salvar();
             }
             catch { BadRequest("Cadastro não realizado."); }
-            return CreatedAtRoute("DefaultApi", new { id = visitante.IdPessoa }, visitante);
+            return CreatedAtRoute("DefaultApi", new { id = visitante.Id }, visitante);
         }
 
         // DELETE: api/VisitanteApi/5
@@ -118,7 +118,7 @@ namespace Site.Controllers.Api
 
         private bool VisitanteExists(int id)
         {
-            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.Id == id) > 0;
         }
     }
 }

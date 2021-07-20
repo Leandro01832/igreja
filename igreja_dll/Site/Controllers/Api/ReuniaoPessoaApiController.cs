@@ -32,7 +32,7 @@ namespace Site.Controllers.Api
             {
                 itens.Add(new ReuniaoPessoaApi
                 {
-                    IdReuniaoPessoa = modelo.IdReuniaoPessoa,
+                    Id = modelo.Id,
                     Pessoa = modelo.Pessoa,
                     PessoaId = modelo.PessoaId,
                     Reuniao = modelo.Reuniao,
@@ -67,7 +67,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != reuniaoPessoa.IdReuniaoPessoa)
+            if (id != reuniaoPessoa.Id)
             {
                 return BadRequest();
             }
@@ -105,7 +105,7 @@ namespace Site.Controllers.Api
             db.ReuniaoPessoa.Add(reuniaoPessoa);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = reuniaoPessoa.IdReuniaoPessoa }, reuniaoPessoa);
+            return CreatedAtRoute("DefaultApi", new { id = reuniaoPessoa.Id }, reuniaoPessoa);
         }
 
         // DELETE: api/ReuniaoPessoaApi/5
@@ -135,7 +135,7 @@ namespace Site.Controllers.Api
 
         private bool ReuniaoPessoaExists(int id)
         {
-            return db.ReuniaoPessoa.Count(e => e.IdReuniaoPessoa == id) > 0;
+            return db.ReuniaoPessoa.Count(e => e.Id == id) > 0;
         }
     }
 }

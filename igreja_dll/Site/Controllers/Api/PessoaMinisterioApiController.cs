@@ -31,7 +31,7 @@ namespace Site.Controllers.Api
             {
                 itens.Add(new PessoaMinisterioApi
                 {
-                    IdPessoaMinisterio = modelo.IdPessoaMinisterio,
+                    Id = modelo.Id,
                     Ministerio = modelo.Ministerio,
                     MinisterioId = modelo.MinisterioId,
                     Pessoa = modelo.Pessoa,
@@ -65,7 +65,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != pessoaMinisterio.IdPessoaMinisterio)
+            if (id != pessoaMinisterio.Id)
             {
                 return BadRequest();
             }
@@ -103,7 +103,7 @@ namespace Site.Controllers.Api
             db.PessoaMinisterio.Add(pessoaMinisterio);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = pessoaMinisterio.IdPessoaMinisterio }, pessoaMinisterio);
+            return CreatedAtRoute("DefaultApi", new { id = pessoaMinisterio.Id }, pessoaMinisterio);
         }
 
         // DELETE: api/PessoaMinisterioApi/5
@@ -133,7 +133,7 @@ namespace Site.Controllers.Api
 
         private bool PessoaMinisterioExists(int id)
         {
-            return db.PessoaMinisterio.Count(e => e.IdPessoaMinisterio == id) > 0;
+            return db.PessoaMinisterio.Count(e => e.Id == id) > 0;
         }
     }
 }

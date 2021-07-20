@@ -21,7 +21,7 @@ namespace business.classes
     public class Telefone : modelocrud
     {
         [Key, ForeignKey("Pessoa")]
-        public int IdTelefone { get; set; }
+        public new int Id { get; set; }
         [JsonIgnore]
         public virtual PessoaDado Pessoa { get; set; }
 
@@ -41,19 +41,19 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Telefone set Fone='{Fone}', Celular='{Celular}', " +
-            $"Whatsapp='{Whatsapp}' where IdTelefone='{id}' ";
+            $"Whatsapp='{Whatsapp}' where Id='{id}' ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Telefone where IdTelefone='{id}' ";
+            Delete_padrao = $"delete from Telefone where Id='{id}' ";
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Telefone as M where M.IdTelefone={id}";            
+            Select_padrao = $"select * from Telefone as M where M.Id={id}";            
             var conexao = bd.obterconexao();
             
             if(conexao != null)
@@ -69,7 +69,7 @@ namespace business.classes
                     }
 
                     dr.Read();
-                    this.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.Fone = Convert.ToString(dr["Fone"]);
                     this.Celular = Convert.ToString(dr["Celular"]);
                     this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
@@ -88,74 +88,12 @@ namespace business.classes
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Telefone as M";           
-            var conexao = bd.obterconexao();
-
-            if(conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "M.IdTelefone");
-                    Telefones = new List<Telefone>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Telefone tel = new Telefone();
-                        tel.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
-                        modelos.Add(tel);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Telefone)m;
-                        var c = new Telefone();
-                        if (c.recuperar(cel.IdTelefone))
-                            Telefones.Add(c); //não deu erro de conexao
-                        else
-                        {
-                            Telefones = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-
-            Telefones = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao =
-        $" insert into Telefone (Fone, Celular, Whatsapp, IdTelefone) " +
-        $" values ('{Fone}', '{Celular}', '{Whatsapp}', IDENT_CURRENT('Pessoa')) ";
+            $" insert into Telefone (Fone, Celular, Whatsapp, Id) " +
+            $" values ('{Fone}', '{Celular}', '{Whatsapp}', IDENT_CURRENT('Pessoa')) ";
             return Insert_padrao;
         }
 

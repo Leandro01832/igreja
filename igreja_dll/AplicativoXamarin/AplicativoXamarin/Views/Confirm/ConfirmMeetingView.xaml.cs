@@ -53,7 +53,7 @@ namespace AplicativoXamarin.Views.Confirm
              async (msg2) =>
               {
                 await  DisplayAlert("Reunião", "Parabens!!! Você esta participando desta reunião." +
-                      " \n Identificação da reunião: " + msg2.IdReuniao.ToString(), "ok");
+                      " \n Identificação da reunião: " + msg2.Id.ToString(), "ok");
 
                   await Navigation.PopAsync();
               });

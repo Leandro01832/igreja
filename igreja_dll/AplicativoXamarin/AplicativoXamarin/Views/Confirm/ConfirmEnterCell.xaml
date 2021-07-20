@@ -10,7 +10,7 @@
 
         <StackLayout Orientation="Horizontal">
             <Label Text="Id: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-            <Label Text="{Binding IdCelula}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding Id}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">

@@ -74,7 +74,7 @@ namespace business.classes.Pessoas
             Insert_padrao +=
             "insert into PessoaDado ( Data_nascimento, Estado_civil, Sexo_masculino, " +
             "Rg, Cpf, Sexo_feminino, Falescimento, " +
-            "Status, IdPessoa)" +
+            "Status, Id)" +
             $" values ('{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
             $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
             $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +
@@ -92,7 +92,7 @@ namespace business.classes.Pessoas
             $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Status='{Status}', " +
             $" Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
             $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +
-            $"  where IdPessoa='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
+            $"  where Id='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
 
             return Update_padrao;
         }
@@ -102,12 +102,12 @@ namespace business.classes.Pessoas
             
             Delete_padrao =
             " delete Telefone from Telefone as T inner " +
-            " join PessoaDado as PD on T.IdTelefone=PD.IdPessoa" +
-            $" where PD.IdPessoa='{id}' " +
+            " join PessoaDado as PD on T.Id=PD.Id" +
+            $" where PD.Id='{id}' " +
             "delete Endereco from Endereco as E inner " +
-            "join PessoaDado as PD on E.IdEndereco=PD.IdPessoa" +
-            $" where PD.IdPessoa='{id}' " +
-            $" delete PessoaDado from PessoaDado as PD where PD.IdPessoa='{id}' ";
+            "join PessoaDado as PD on E.Id=PD.Id" +
+            $" where PD.Id='{id}' " +
+            $" delete PessoaDado from PessoaDado as PD where PD.Id='{id}' ";
             Delete_padrao += base.excluir(id);
 
             return Delete_padrao;
@@ -116,8 +116,8 @@ namespace business.classes.Pessoas
         public override bool recuperar(int id)
         {
             Select_padrao = "select * from PessoaDado as PD "
-        + " inner join Endereco as EN on EN.IdEndereco=PD.IdPessoa "
-        + $" inner join Telefone as TE on TE.IdTelefone=PD.IdPessoa where PD.IdPessoa='{id}'";
+        + " inner join Endereco as EN on EN.Id=PD.Id "
+        + $" inner join Telefone as TE on TE.Id=PD.Id where PD.Id='{id}'";
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -145,12 +145,12 @@ namespace business.classes.Pessoas
             this.Endereco.Estado = Convert.ToString(dr["Estado"]);
             this.Endereco.Rua = Convert.ToString(dr["Rua"]);
             this.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-            this.Endereco.IdEndereco = int.Parse(Convert.ToString(dr["IdEndereco"]));
+            this.Endereco.Id = int.Parse(Convert.ToString(dr["Id"]));
             this.Telefone = new Telefone();
             this.Telefone.Fone = Convert.ToString(dr["Fone"]);
             this.Telefone.Celular = Convert.ToString(dr["Celular"]);
             this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-            this.Telefone.IdTelefone = int.Parse(Convert.ToString(dr["IdTelefone"]));
+            this.Telefone.Id = int.Parse(Convert.ToString(dr["Id"]));
 
             dr.Close();
             bd.fecharconexao(conexao);

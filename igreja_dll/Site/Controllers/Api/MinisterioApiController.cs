@@ -37,7 +37,7 @@ namespace Site.Controllers.Api
                 {
                     Celulas = item.Celulas,
                     Pessoas = item.Pessoas,
-                    IdMinisterio = item.IdMinisterio,
+                    Id = item.Id,
                     Maximo_pessoa = item.Maximo_pessoa,
                     Ministro_ = item.Ministro_,
                     Nome = item.Nome,
@@ -72,7 +72,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != ministerio.IdMinisterio)
+            if (id != ministerio.Id)
             {
                 return BadRequest();
             }
@@ -110,7 +110,7 @@ namespace Site.Controllers.Api
             db.ministerio.Add(ministerio);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = ministerio.IdMinisterio }, ministerio);
+            return CreatedAtRoute("DefaultApi", new { id = ministerio.Id }, ministerio);
         }
 
         // DELETE: api/MinisterioApi/5
@@ -140,7 +140,7 @@ namespace Site.Controllers.Api
 
         private bool MinisterioExists(int id)
         {
-            return db.ministerio.Count(e => e.IdMinisterio == id) > 0;
+            return db.ministerio.Count(e => e.Id == id) > 0;
         }
     }
 }

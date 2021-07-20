@@ -7,7 +7,7 @@ namespace AplicativoXamarin.models
 {
     public class ReuniaoPessoa : modelocrud
     {
-        public int IdReuniaoPessoa { get; set; }
+        public int Id { get; set; }
         public int PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
         public int ReuniaoId { get; set; }

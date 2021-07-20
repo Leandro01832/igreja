@@ -6,7 +6,7 @@ namespace AplicativoXamarin.models
 
     public class Endereco 
     {
-        public int IdEndereco { get; set; }
+        public int Id { get; set; }
         public virtual PessoaDado Pessoa { get; set; }
         public string Pais { get; set; }
         public string Estado { get; set; }
@@ -25,7 +25,7 @@ namespace AplicativoXamarin.models
         {
             var j = JsonConvert.SerializeObject(new Endereco
             {
-                IdEndereco = end.IdEndereco,
+                Id = end.Id,
                 Pais = end.Pais,
                 Estado = end.Estado,
                 Cidade = end.Cidade,

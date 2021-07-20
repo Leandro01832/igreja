@@ -56,7 +56,7 @@ namespace Site.Controllers
 
             celula.EnderecoCelula = new EnderecoCelula();
 
-            ViewBag.IdCelula = new SelectList(db.EnderecoCelula, "IdEnderecoCelula", "Cep");
+            ViewBag.Id = new SelectList(db.EnderecoCelula, "Id", "Cep");
             return View(celula);
         }
 
@@ -66,7 +66,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CelulaAdolescente(Celula_Adolescente celula)
         {
-            if (celula.IdCelula == 0) return await Salvar(celula);
+            if (celula.Id == 0) return await Salvar(celula);
             else return await Editar(celula);           
         }
 
@@ -74,7 +74,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CelulaAdulto(Celula_Adulto celula)
         {
-            if (celula.IdCelula == 0) return await Salvar(celula);
+            if (celula.Id == 0) return await Salvar(celula);
             else return await Editar(celula);
         }
 
@@ -82,7 +82,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Celula_Jovem(Celula_Jovem celula)
         {
-            if (celula.IdCelula == 0) return await Salvar(celula);
+            if (celula.Id == 0) return await Salvar(celula);
             else return await Editar(celula);
         }
 
@@ -90,7 +90,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Celula_Jovem(Celula_Crianca celula)
         {
-            if (celula.IdCelula == 0) return await Salvar(celula);
+            if (celula.Id == 0) return await Salvar(celula);
             else return await Editar(celula);
         }
 
@@ -98,7 +98,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Celula_Jovem(Celula_Casado celula)
         {
-            if (celula.IdCelula == 0) return await Salvar(celula);
+            if (celula.Id == 0) return await Salvar(celula);
             else return await Editar(celula);
         }
 
@@ -127,12 +127,12 @@ namespace Site.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Celula celula = await db.celula.Include(c => c.EnderecoCelula).FirstAsync(c => c.IdCelula == id);
+            Celula celula = await db.celula.Include(c => c.EnderecoCelula).FirstAsync(c => c.Id == id);
             if (celula == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCelula = new SelectList(db.EnderecoCelula, "IdEnderecoCelula", "Pais", celula.IdCelula);
+            ViewBag.Id = new SelectList(db.EnderecoCelula, "Id", "Pais", celula.Id);
             return View(celula);
         }        
 

@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
 
         private void ministerioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (Ministerio.listaMinisterios.Count > 0)
+            if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0)
             {
                 FrmMinisterio m = new FrmMinisterio();
                 m.MdiParent = this;
@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
 
         private void celulaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (Celula.listaCelulas.Count > 0)
+            if (modelocrud.Modelos.OfType<Celula>().ToList().Count > 0)
             {
                 FrmCelula c = new FrmCelula();
                 c.MdiParent = this;
@@ -368,126 +368,126 @@ namespace WindowsFormsApp1
 
         private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Pessoa)); 
         }
 
         private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Celula)); 
         }
 
         private void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Celula_Adolescente)); 
         }
 
         private void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Celula_Adulto)); 
         }
 
         private void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Celula_Jovem)); 
         }
 
         private void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Celula_Crianca)); 
         }
 
         private void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Celula_Casado)); 
         }
 
         private void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Ministerio)); 
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Lider_Celula)); 
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Lider_Celula_Treinamento)); 
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Lider_Ministerio)); 
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Lider_Ministerio_Treinamento)); 
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Supervisor_Celula)); 
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Supervisor_Celula_Treinamento)); 
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Supervisor_Ministerio)); 
         }
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
 
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Supervisor_Ministerio_Treinamento)); 
         }
 
@@ -516,15 +516,15 @@ namespace WindowsFormsApp1
 
         private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
         {            
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(MudancaEstado)); 
         }
 
         private void reuniãoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(Pessoa.listaPessoas, Ministerio.listaMinisterios, Celula.listaCelulas,
-                    Reuniao.Reunioes, MudancaEstado.Mudancas);
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
+                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
                 ir.imprimir(typeof(Reuniao));
         }
 

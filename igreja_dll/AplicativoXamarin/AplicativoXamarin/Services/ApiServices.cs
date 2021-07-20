@@ -56,7 +56,7 @@ namespace AplicativoXamarin.Services
             var cel = new Pessoa
             {
                 Celula = p.Celula,
-                celula_ = msg.IdCelula,
+                celula_ = msg.Id,
                 Chamada = p.Chamada,
                 Codigo = p.Codigo,
                 Email = p.Email,
@@ -237,7 +237,7 @@ namespace AplicativoXamarin.Services
             var listaPessoaMinisterio = JsonConvert.DeserializeObject<PessoaMinisterio[]>(resultadoLista);
 
             var resposta = await cliente.DeleteAsync(URL_DELETE_PARTICIPARMINISTERIO + 
-                 listaPessoaMinisterio[0].IdPessoaMinisterio.ToString());
+                 listaPessoaMinisterio[0].Id.ToString());
 
 
             if (resposta.IsSuccessStatusCode)
@@ -252,7 +252,7 @@ namespace AplicativoXamarin.Services
 
             var json = JsonConvert.SerializeObject(new
             {
-                ReuniaoId = Reuniao.IdReuniao,
+                ReuniaoId = Reuniao.Id,
                 PessoaId = App.UserCurrent.IdPessoa
             });
 
@@ -270,12 +270,12 @@ namespace AplicativoXamarin.Services
             HttpClient cliente = new HttpClient();
 
             var resultadoLista = await cliente.GetStringAsync
-            (URL_POST_PARTICIPARREUNIAO + "?$filter=ReuniaoId eq " + Reuniao.IdReuniao.ToString() +
+            (URL_POST_PARTICIPARREUNIAO + "?$filter=ReuniaoId eq " + Reuniao.Id.ToString() +
             "&$filter=PessoaId eq " + App.UserCurrent.IdPessoa.ToString());
             var listaReuniaoPessoa = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultadoLista);
 
             var resposta = await cliente.DeleteAsync(URL_DELETE_PARTICIPARREUNIAO + 
-                 listaReuniaoPessoa[0].IdReuniaoPessoa.ToString());
+                 listaReuniaoPessoa[0].Id.ToString());
 
             if (resposta.IsSuccessStatusCode)
                 MessagingCenter.Send<Reuniao>(Reuniao, "SucessoSairReuniao");
@@ -390,19 +390,19 @@ namespace AplicativoXamarin.Services
             var response = await client.PostAsync(URL + urlSet, body);
         }
 
-        internal async Task<PessoaMinisterio> retornaPessoaMinsterio(int idPessoaMinisterio)
+        internal async Task<PessoaMinisterio> retornaPessoaMinsterio(int Id)
         {
             HttpClient cliente = new HttpClient();
             var resultadoLista = await cliente.GetStringAsync
-            (URL + "api/PessoaMinisterioApi/" + idPessoaMinisterio);
+            (URL + "api/PessoaMinisterioApi/" + Id);
             return JsonConvert.DeserializeObject<PessoaMinisterio>(resultadoLista);
         }
 
-        internal async Task<ReuniaoPessoa> retornaReuniaoPessoa(int idReuniaoPessoa)
+        internal async Task<ReuniaoPessoa> retornaReuniaoPessoa(int Id)
         {
             HttpClient cliente = new HttpClient();
             var resultadoLista = await cliente.GetStringAsync
-            (URL + "api/ReuniaoPessoaApi/" + idReuniaoPessoa);
+            (URL + "api/ReuniaoPessoaApi/" + Id);
             return JsonConvert.DeserializeObject<ReuniaoPessoa>(resultadoLista);
         }
 

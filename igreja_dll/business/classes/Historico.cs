@@ -21,9 +21,6 @@ namespace business.classes
     public class Historico : modelocrud
     {
 
-        [Key]
-        public int IdHistorico { get; set; }
-
         public DateTime Data_inicio { get; set; }
 
         public int pessoaid { get; set; }
@@ -45,7 +42,7 @@ namespace business.classes
         {
             Update_padrao = $"update Historico set Data_inicio={Data_inicio.ToString()}, " +
             $"pessoaid={pessoaid}, Falta={Falta} " +
-            $"  where IdHistorico={id} ";
+            $"  where Id={id} ";
 
             bd.Editar(this);
             return Update_padrao;
@@ -53,7 +50,7 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Historico where IdHistorico='{id}' ";
+            Delete_padrao = $"delete from Historico where Id='{id}' ";
 
             bd.Excluir(this);
             return Delete_padrao;
@@ -61,7 +58,7 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Historico as M where M.IdHistorico='{id}'";            
+            Select_padrao = $"select * from Historico as M where M.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if(conexao != null)
@@ -79,7 +76,7 @@ namespace business.classes
 
                     dr.Read();
                     this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                    this.IdHistorico = int.Parse(Convert.ToString(dr["IdHistorico"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.pessoaid = int.Parse(Convert.ToString(dr["pessoaid"]));
                     this.Falta = int.Parse(Convert.ToString(dr["Falta"]));
                     dr.Close();
@@ -97,65 +94,7 @@ namespace business.classes
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Historico as M";            
-            var conexao = bd.obterconexao();
-
-            if(conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "M.IdHistorico");
-                    Historicos = new List<Historico>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Historico h = new Historico();
-                        h.IdHistorico = int.Parse(Convert.ToString(dr["IdHistorico"]));
-                        modelos.Add(h);
-                    }
-                    dr.Close();
-
-                    //Recursividade
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Historico)m;
-                        var c = new Historico();
-                        if (c.recuperar(cel.IdHistorico))
-                            Historicos.Add(c);  //não deu erro de conexao
-                        else
-                        {
-                            Historicos = null;
-                            return false;
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            Historicos = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao =

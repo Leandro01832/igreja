@@ -38,13 +38,13 @@ namespace WindowsFormsApp1.Formulario.Celula
             this.Text = " - Ministérios da celula";
 
             var c = (business.classes.Abstrato.Celula)modelo;
-            if (c.IdCelula == 0)
+            if (c.Id == 0)
             {
                 txt_ministerio.Text = AddNaListaCelulaMinisterios;
             }
             else
             {
-                var lista = c.buscarLista(new business.classes.Pessoas.Crianca(), c, "celula_", c.IdCelula);
+                var lista = c.buscarLista(new business.classes.Pessoas.Crianca(), c, "celula_", c.Id);
                 if (lista != null) lbl_pessoas.Text = "Pessoas: ";
                 foreach (var numero in lista)
                 {
@@ -54,8 +54,8 @@ namespace WindowsFormsApp1.Formulario.Celula
                 var minis = c.Ministerios;
                 foreach (var item in minis)
                 {
-                    var m = Ministerio.listaMinisterios.First(i => i.IdMinisterio == item.MinisterioId);
-                    txt_ministerio.Text += m.IdMinisterio.ToString() + ", ";
+                    var m = modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.Id == item.MinisterioId);
+                    txt_ministerio.Text += m.Id.ToString() + ", ";
                 }
             }
 
@@ -85,14 +85,14 @@ namespace WindowsFormsApp1.Formulario.Celula
                             int numero = int.Parse(item);
                             try
                             {
-                                var modelo = Ministerio.listaMinisterios.FirstOrDefault(i => i.IdMinisterio == numero);
-                                AddNaListaCelulaMinisterios += modelo.IdMinisterio.ToString() + ", ";
+                                var modelo = modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == numero);
+                                AddNaListaCelulaMinisterios += modelo.Id.ToString() + ", ";
                             }
                             catch
                             {
                                 AddNaListaCelulaMinisterios = "";
                                 var num = modelocrud.GeTotalRegistrosMinisterios();
-                                if (num != Ministerio.listaMinisterios.Count)
+                                if (num != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");

@@ -48,7 +48,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != membro_Reconciliacao.IdPessoa)
+            if (id != membro_Reconciliacao.Id)
             {
                 return BadRequest();
             }
@@ -87,7 +87,7 @@ namespace Site.Controllers.Api
                 membro_Reconciliacao.salvar();
             }
             catch { return BadRequest("Cadastro não realizado"); }
-            return CreatedAtRoute("DefaultApi", new { id = membro_Reconciliacao.IdPessoa }, membro_Reconciliacao);
+            return CreatedAtRoute("DefaultApi", new { id = membro_Reconciliacao.Id }, membro_Reconciliacao);
         }
 
         // DELETE: api/MembroReconciliacaoApi/5
@@ -117,7 +117,7 @@ namespace Site.Controllers.Api
 
         private bool Membro_ReconciliacaoExists(int id)
         {
-            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.Id == id) > 0;
         }
     }
 }

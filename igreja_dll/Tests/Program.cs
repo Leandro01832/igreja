@@ -18,7 +18,7 @@ namespace Tests
        static string[] arr2 = new string[10];
         static Random randNum = new Random();
        private static BDcomum  bd = new BDcomum();
-        static int loop = 5000;
+        static int loop = 1000;
         
 
         static void Main(string[] args)
@@ -128,7 +128,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -200,7 +200,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -274,7 +274,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -347,7 +347,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -424,7 +424,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -498,7 +498,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -545,7 +545,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -592,7 +592,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -641,7 +641,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -689,7 +689,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -741,7 +741,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else
@@ -790,7 +790,7 @@ namespace Tests
 
             //Assert
             var ValorEsperado = pes.bd.GetUltimoRegistroPessoa();
-            var valorObtido = pes.IdPessoa;
+            var valorObtido = pes.Id;
             if (valorObtido == ValorEsperado)
                 Console.WriteLine("Ok");
             else

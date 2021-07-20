@@ -8,7 +8,7 @@ namespace Site.Models.Api
 {
     public class ReuniaoApi
     {       
-        public int IdReuniao { get; set; }        
+        public int Id { get; set; }        
         public DateTime Data_reuniao { get; set; }         
         public TimeSpan? Horario_inicio { get; set; }       
         public TimeSpan? Horario_fim { get; set; }       

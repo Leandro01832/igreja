@@ -27,10 +27,10 @@ namespace Site.Models.Repository
 
         public bool Delete(int id)
         {
-            var condicao = contexto.celula.FirstOrDefault(m => m.IdCelula == id);
+            var condicao = contexto.celula.FirstOrDefault(m => m.Id == id);
             if (condicao != null)
             {
-                contexto.celula.Remove(contexto.celula.First(m => m.IdCelula == id));
+                contexto.celula.Remove(contexto.celula.First(m => m.Id == id));
                 return true;
             }
             else return false;

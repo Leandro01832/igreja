@@ -4,7 +4,6 @@ using business.classes.Intermediario;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
-using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,10 +19,7 @@ namespace business.classes.Abstrato
     [Table("Celula")]
     public abstract  class Celula : modelocrud, IAddNalista, IBuscaLista
     {
-        #region properties
-        [Key]
-        public int IdCelula { get; set; }
-
+        #region properties        
         [Display(Name = "Nome da celula")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome { get; set; }
@@ -50,7 +46,6 @@ namespace business.classes.Abstrato
         [NotMapped]
         public static int UltimoRegistro { get; set; }
 
-        public static List<Celula> listaCelulas = new List<Celula>();
         public static List<Celula_Adolescente> celulasAdolescente { get; set; }
         public static List<Celula_Jovem> celulasJovem { get; set; }
         public static List<Celula_Adulto> celulasAdulto { get; set; }
@@ -73,17 +68,17 @@ namespace business.classes.Abstrato
         {
             Update_padrao = $"update Celula set Nome='{Nome}', Dia_semana='{Dia_semana}', " +
             $"Horario='{Horario.ToString()}', Maximo_pessoa='{Maximo_pessoa}' " +
-            $"  where IdCelula='{id}' " + this.EnderecoCelula.alterar(id);
+            $"  where Id='{id}' " + this.EnderecoCelula.alterar(id);
 
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete Celula from Celula where IdCelula='{id}'"
+            Delete_padrao = $"delete Celula from Celula where Id='{id}'"
                 + " delete EnderecoCelula from EnderecoCelula "
-                + " as E inner join Celula as C on E.IdEnderecoCelula=C.IdCelula"
-                + $" where C.IdCelula='{id}'";
+                + " as E inner join Celula as C on E.Id=C.Id"
+                + $" where C.Id='{id}'";
 
             return Delete_padrao;
         }
@@ -91,7 +86,7 @@ namespace business.classes.Abstrato
         public override bool recuperar(int id)
         {
             Select_padrao = "select * from Celula as C "
-            + $" inner join EnderecoCelula as E on E.IdEnderecoCelula=C.IdCelula where C.IdCelula='{id}'";
+            + $" inner join EnderecoCelula as E on E.Id=C.Id where C.Id='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
@@ -105,7 +100,7 @@ namespace business.classes.Abstrato
             }
 
             dr.Read();
-            this.IdCelula = int.Parse(dr["IdCelula"].ToString());
+            this.Id = int.Parse(dr["Id"].ToString());
             this.Nome = Convert.ToString(dr["Nome"]);
             this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
             this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
@@ -145,7 +140,7 @@ namespace business.classes.Abstrato
                 + this.EnderecoCelula.salvar();
 
             return Insert_padrao;
-        } 
+        }
         #endregion
 
         public static List<modelocrud> recuperarTodasCelulas()
@@ -154,40 +149,40 @@ namespace business.classes.Abstrato
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
                 if (celulasAdolescente == null && new Celula_Adolescente().recuperar())
-                { lista.AddRange(celulasAdolescente); listaCelulas.AddRange(celulasAdolescente); }
-                
+                { lista.AddRange(celulasAdolescente); Modelos.AddRange(celulasAdolescente); }
+
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
                 if (celulasAdulto == null && new Celula_Adulto().recuperar())
-                { task.Result.AddRange(celulasAdulto); listaCelulas.AddRange(celulasAdulto); }
-                
+                { task.Result.AddRange(celulasAdulto); Modelos.AddRange(celulasAdulto); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
                 if (celulasCasado == null && new Celula_Casado().recuperar())
-                { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCasado); }
-                
+                { task.Result.AddRange(celulasCasado); Modelos.AddRange(celulasCasado); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
                 if (celulasCrianca == null && new Celula_Crianca().recuperar())
-                { task.Result.AddRange(celulasCasado); listaCelulas.AddRange(celulasCrianca); }
-                
+                { task.Result.AddRange(celulasCasado); Modelos.AddRange(celulasCrianca); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
                 if (celulasJovem == null && new Celula_Jovem().recuperar())
-                {  task.Result.AddRange(celulasJovem); listaCelulas.AddRange(celulasJovem); }
-                
+                { task.Result.AddRange(celulasJovem); Modelos.AddRange(celulasJovem); }
+
                 return task.Result;
             });
 
@@ -195,12 +190,12 @@ namespace business.classes.Abstrato
 
             return t5.Result;
         }
-        
+
         private List<modelocrud> recuperarMinisterios(int? id)
         {
             var select = "select * from Ministerio as m inner join " +
-                " MinisterioCelula as mice on m.IdMinisterio=mice.MinisterioId  inner join Celula as c" +
-                $" on mice.CelulaId=c.IdCelula where mice.CelulaId='{id}' ";
+                " MinisterioCelula as mice on m.Id=mice.MinisterioId  inner join Celula as c" +
+                $" on mice.CelulaId=c.Id where mice.CelulaId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             List<MinisterioCelula> lista = new List<MinisterioCelula>();
@@ -217,7 +212,7 @@ namespace business.classes.Abstrato
 
             while (dr.Read())
             {
-                var m = new MinisterioCelula { IdMinisterioCelula = int.Parse(Convert.ToString(dr["IdMinisterioCelula"])) };
+                var m = new MinisterioCelula { Id = int.Parse(Convert.ToString(dr["Id"])) };
                 lista.Add(m);
             }
             dr.Close();
@@ -226,7 +221,7 @@ namespace business.classes.Abstrato
             foreach (var item in lista)
             {
                 var model = new MinisterioCelula();
-                if(model.recuperar(item.IdMinisterioCelula))
+                if(model.recuperar(item.Id))
                 modelos.Add(model);
             }           
 
@@ -236,7 +231,7 @@ namespace business.classes.Abstrato
         private List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
-                + " inner join Celula as C on C.IdCelula=P.celula_ "
+                + " inner join Celula as C on C.Id=P.celula_ "
                 + $" where P.celula_='{id}' ";
 
             var conexao = bd.obterconexao();
@@ -256,7 +251,7 @@ namespace business.classes.Abstrato
 
             while (dr.Read())
             {
-                lista.Add(int.Parse(Convert.ToString(dr["IdPessoa"])));                
+                lista.Add(int.Parse(Convert.ToString(dr["Id"])));                
             }
             dr.Close();
             bd.fecharconexao(conexao);

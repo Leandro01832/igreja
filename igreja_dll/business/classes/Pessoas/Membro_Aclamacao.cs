@@ -30,7 +30,7 @@ namespace business.classes.Pessoas
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_Aclamacao set Denominacao='{Denominacao}' " +
-            $" where IdPessoa='{id}' " + BDcomum.addNaLista;
+            $" where Id='{id}' " + BDcomum.addNaLista;
 
             bd.Editar(this);
             return Update_padrao;
@@ -38,14 +38,14 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_Aclamacao where IdPessoa='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Membro_Aclamacao where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Membro_Aclamacao as MA where MA.IdPessoa='{id}'";            
+            Select_padrao = $"select * from Membro_Aclamacao as MA where MA.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -79,73 +79,11 @@ namespace business.classes.Pessoas
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Membro_Aclamacao as MA ";            
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "MA.IdPessoa");
-                    membros_Aclamacao = new List<Membro_Aclamacao>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Membro_Aclamacao ma = new Membro_Aclamacao();
-                        ma.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(ma);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Membro_Aclamacao)m;
-                        var c = new Membro_Aclamacao();
-                        if (c.recuperar(cel.IdPessoa))
-                            membros_Aclamacao.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            membros_Aclamacao = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            membros_Aclamacao = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_aclamacao (Denominacao, IdPessoa) " +
+            Insert_padrao += " insert into Membro_aclamacao (Denominacao, Id) " +
                 $" values ('{Denominacao}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);

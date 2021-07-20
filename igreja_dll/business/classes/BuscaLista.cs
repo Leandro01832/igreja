@@ -96,12 +96,7 @@ namespace business.classes
         {
             throw new NotImplementedException();
         }
-
-        public override bool recuperar()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public override string salvar()
         {
             throw new NotImplementedException();

@@ -17,8 +17,6 @@ namespace business.classes.Intermediario
     [Table("PessoaMinisterio")]
     public class PessoaMinisterio : modelocrud
     {
-        [Key]
-        public int IdPessoaMinisterio { get; set; }
         public int PessoaId { get; set; }
         [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
@@ -41,7 +39,7 @@ namespace business.classes.Intermediario
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from PessoaMinisterio as PM where PM.IdPessoaMinisterio='{id}'";            
+            Select_padrao = $"select * from PessoaMinisterio as PM where PM.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if(conexao != null)
@@ -75,62 +73,7 @@ namespace business.classes.Intermediario
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from PessoaMinisterio as PM ";            
-            var conexao = bd.obterconexao();
-
-            if(conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "PM.IdPessoaMinisterio");
-                    PessoaMinisterios = new List<PessoaMinisterio>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> lista = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        PessoaMinisterio pm = new PessoaMinisterio();
-                        pm.IdPessoaMinisterio = int.Parse(Convert.ToString(dr["IdPessoaMinisterio"]));
-                        lista.Add(pm);
-                    }
-                    dr.Close();
-
-                    bd.fecharconexao(conexao);
-                    // recursividade          
-
-                    foreach (var item in lista.OfType<PessoaMinisterio>())
-                    {
-                        var model = new PessoaMinisterio();
-                        if (model.recuperar(item.IdPessoaMinisterio))
-                            PessoaMinisterios.Add(model);
-                    }
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-
-            PessoaMinisterios = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             throw new NotImplementedException();

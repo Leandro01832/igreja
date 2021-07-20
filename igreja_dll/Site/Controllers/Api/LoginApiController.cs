@@ -67,7 +67,7 @@ namespace Site.Controllers.Api
             .Include(p => p.Reuniao)
             .Include(x => x.Reuniao.Select(y => y.Pessoa))
             .Include(x => x.Reuniao.Select(y => y.Reuniao))
-            .FirstAsync(p => p.IdPessoa == usuario.IdPessoa);
+            .FirstAsync(p => p.Id == usuario.Id);
 
             if (usuario == null)
             {
@@ -84,7 +84,7 @@ namespace Site.Controllers.Api
                 Codigo = user.Codigo,
                 Email = user.Email,
                 Falta = user.Falta,
-                IdPessoa = user.IdPessoa,
+                Id = user.Id,
                 Ministerios = user.Ministerios,
                 Nome = user.NomePessoa,
                 Img = user.Img
@@ -166,7 +166,7 @@ namespace Site.Controllers.Api
                     return Ok();
                 }
 
-                p.excluir(p.IdPessoa);
+                p.excluir(p.Id);
 
                 return this.BadRequest("Usuario não cadastrado! Usuario ja existente!!!");
             }

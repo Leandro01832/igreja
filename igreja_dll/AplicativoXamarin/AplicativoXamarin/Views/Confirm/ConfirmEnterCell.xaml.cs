@@ -38,7 +38,7 @@ namespace AplicativoXamarin.Views.Confirm
              async (msg2) =>
              {
                  await DisplayAlert("Celula", "Parabens!!! Você esta participando desta celula." +
-                       " \n Identificação da reunião: " + msg2.IdCelula.ToString(), "ok");
+                       " \n Identificação da reunião: " + msg2.Id.ToString(), "ok");
 
                  App.Current.MainPage = new CelView(msg2);
              });

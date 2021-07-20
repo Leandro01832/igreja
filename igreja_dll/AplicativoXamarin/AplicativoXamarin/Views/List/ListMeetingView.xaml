@@ -28,7 +28,7 @@
                             </Label>-->
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Id - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding IdReuniao}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Id}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text=" - " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="Data da reunião: " FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                 <Label Text="{Binding Data_reuniao}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>

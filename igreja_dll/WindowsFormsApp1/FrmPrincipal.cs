@@ -85,19 +85,19 @@ namespace WindowsFormsApp1
                 {
                     var cel = new Celula_Adolescente();
                     if (cel.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel.IdCelula, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel.Id, ToolTipIcon.Info);
                     var cel2 = new Celula_Adolescente();
                     if (cel2.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel2.IdCelula, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel2.Id, ToolTipIcon.Info);
                     var cel3 = new Celula_Adolescente();
                     if (cel3.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel3.IdCelula, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel3.Id, ToolTipIcon.Info);
                     var cel4 = new Celula_Adolescente();
                     if (cel4.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel4.IdCelula, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel4.Id, ToolTipIcon.Info);
                     var cel5 = new Celula_Adolescente();
                     if (cel5.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel5.IdCelula, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel5.Id, ToolTipIcon.Info);
                 }
 
                 Celula.UltimoRegistro = bd.GetUltimoRegistroCelula();
@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
                 {
                     var reu = new Reuniao();
                     if (reu.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.IdReuniao, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.Id, ToolTipIcon.Info);
                 }
                 Reuniao.UltimoRegistro = bd.GetUltimoRegistroReuniao();
             }
@@ -122,35 +122,35 @@ namespace WindowsFormsApp1
                 {
                     var minis = new Lider_Celula();
                     if (minis.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis.Id, ToolTipIcon.Info);
 
                     var minis2 = new Lider_Celula_Treinamento();
                     if (minis2.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis2.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis2.Id, ToolTipIcon.Info);
 
                     var minis3 = new Lider_Ministerio();
                     if (minis3.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis3.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis3.Id, ToolTipIcon.Info);
 
                     var minis4 = new Lider_Ministerio_Treinamento();
                     if (minis4.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis4.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis4.Id, ToolTipIcon.Info);
 
                     var minis5 = new Supervisor_Celula();
                     if (minis5.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis5.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis5.Id, ToolTipIcon.Info);
 
                     var minis6 = new Supervisor_Celula_Treinamento();
                     if (minis6.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis6.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis6.Id, ToolTipIcon.Info);
 
                     var minis7 = new Supervisor_Ministerio();
                     if (minis7.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis7.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis7.Id, ToolTipIcon.Info);
 
                     var minis8 = new Supervisor_Ministerio_Treinamento();
                     if (minis8.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis8.IdMinisterio, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis8.Id, ToolTipIcon.Info);
 
                 }
 
@@ -164,51 +164,51 @@ namespace WindowsFormsApp1
                 {
                     var pes = new Visitante();
                     if (pes.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes.Id, ToolTipIcon.Info);
 
                     var pes2 = new VisitanteLgpd();
                     if (pes2.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes2.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes2.Id, ToolTipIcon.Info);
 
                     var pes3 = new Crianca();
                     if (pes3.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes3.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes3.Id, ToolTipIcon.Info);
 
                     var pes4 = new CriancaLgpd();
                     if (pes4.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes4.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes4.Id, ToolTipIcon.Info);
 
                     var pes5 = new Membro_Aclamacao();
                     if (pes5.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes5.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes5.Id, ToolTipIcon.Info);
 
                     var pes6 = new Membro_AclamacaoLgpd();
                     if (pes6.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes6.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes6.Id, ToolTipIcon.Info);
 
                     var pes7 = new Membro_Reconciliacao();
                     if (pes7.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes7.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes7.Id, ToolTipIcon.Info);
 
                     var pes8 = new Membro_ReconciliacaoLgpd();
                     if (pes8.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes8.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes8.Id, ToolTipIcon.Info);
 
                     var pes9 = new Membro_Transferencia();
                     if (pes9.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes9.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes9.Id, ToolTipIcon.Info);
 
                     var pes10 = new Membro_TransferenciaLgpd();
                     if (pes10.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes10.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes10.Id, ToolTipIcon.Info);
 
                     var pes11 = new Membro_Batismo();
                     if (pes11.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes11.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes11.Id, ToolTipIcon.Info);
 
                     var pes12 = new Membro_BatismoLgpd();
                     if (pes12.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes12.IdPessoa, ToolTipIcon.Info);
+                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + pes12.Id, ToolTipIcon.Info);
                 }
 
                 Pessoa.UltimoRegistro = bd.GetUltimoRegistroPessoa();

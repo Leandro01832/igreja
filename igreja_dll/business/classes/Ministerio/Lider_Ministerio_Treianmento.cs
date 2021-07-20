@@ -28,14 +28,14 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Ministerio_Treinamento where IdMinisterio='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Lider_Ministerio_Treinamento where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Lider_Ministerio_Treinamento as LMT where LMT.IdMinisterio='{id}'";            
+            Select_padrao = $"select * from Lider_Ministerio_Treinamento as LMT where LMT.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -66,72 +66,11 @@ namespace business.classes.Ministerio
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Lider_Ministerio_Treinamento as LMT ";            
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "LMT.IdMinisterio");
-                    lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Lider_Ministerio_Treinamento m = new Lider_Ministerio_Treinamento();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
-                    }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Lider_Ministerio_Treinamento)m;
-                        var c = new Lider_Ministerio_Treinamento();
-                        if (c.recuperar(cel.IdMinisterio))
-                            lideresMinisterioTreinamento.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            lideresMinisterioTreinamento = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            lideresMinisterioTreinamento = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Lider_Ministerio_Treinamento (IdMinisterio) values " +
+            Insert_padrao += $" insert into Lider_Ministerio_Treinamento (Id) values " +
             $" (IDENT_CURRENT('Ministerio'))" + BDcomum.addNaLista;
             bd.SalvarModelo(this);
 
@@ -140,7 +79,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.IdMinisterio.ToString() + " - " + base.Nome;
+            return base.Id.ToString() + " - " + base.Nome;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace AplicativoXamarin.models
 
     public class Telefone 
     {
-        public int IdTelefone {  get; set; }
+        public int Id {  get; set; }
         public virtual PessoaDado Pessoa { get; set; }
 
         public string Fone { get; set; }
@@ -23,7 +23,7 @@ namespace AplicativoXamarin.models
         {
             var j = JsonConvert.SerializeObject(new Telefone
             {
-                IdTelefone  = tel.IdTelefone,
+                Id  = tel.Id,
                 Fone        = tel.Fone,
                 Celular     = tel.Celular,
                 Whatsapp    = tel.Whatsapp

@@ -21,9 +21,6 @@ namespace business.classes.Abstrato
     public abstract class Ministerio : modelocrud, IAddNalista
     {
         #region Properties
-        [Key]
-        public int IdMinisterio { get; set; }
-
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome { get; set; }
 
@@ -43,8 +40,6 @@ namespace business.classes.Abstrato
         [NotMapped]
         public static int UltimoRegistro { get; set; }
 
-        
-        public static List<Ministerio> listaMinisterios = new List<Ministerio>();
         public static List<Lider_Celula> lideresCelula { get; set; }
         public static List<Lider_Celula_Treinamento> LideresCelulaTreinamento { get; set; }
         public static List<Lider_Ministerio> lideresMinisterio { get; set; }
@@ -71,21 +66,21 @@ namespace business.classes.Abstrato
 
             Update_padrao = $" update Ministerio set Nome='{Nome}', " +
             $" Proposito='{Proposito}', Ministro_={ministro} " +
-            $"  where IdMinisterio='{id}' ";
+            $"  where Id='{id}' ";
 
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Ministerio where IdMinisterio='{id}' ";
+            Delete_padrao = $" delete from Ministerio where Id='{id}' ";
 
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Ministerio as M where M.IdMinisterio='{id}'";            
+            Select_padrao = $"select * from Ministerio as M where M.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -96,7 +91,7 @@ namespace business.classes.Abstrato
                 return false;
             }
             dr.Read();
-            this.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
+            this.Id = int.Parse(dr["Id"].ToString());
             this.Nome = Convert.ToString(dr["Nome"]);
             this.Proposito = Convert.ToString(dr["Proposito"]);
             this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
@@ -139,48 +134,48 @@ namespace business.classes.Abstrato
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
                 if (lideresCelula == null && new Lider_Celula().recuperar())
-                { lista.AddRange(lideresCelula); listaMinisterios.AddRange(lideresCelula); }
-                
+                { lista.AddRange(lideresCelula); Modelos.AddRange(lideresCelula); }
+
                 return lista;
             });
 
             Task<List<modelocrud>> t2 = t.ContinueWith((task) =>
             {
                 if (LideresCelulaTreinamento == null && new Lider_Celula_Treinamento().recuperar())
-                { task.Result.AddRange(LideresCelulaTreinamento); listaMinisterios.AddRange(LideresCelulaTreinamento); }
-                
+                { task.Result.AddRange(LideresCelulaTreinamento); Modelos.AddRange(LideresCelulaTreinamento); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t3 = t2.ContinueWith((task) =>
             {
                 if (lideresMinisterio == null && new Lider_Ministerio().recuperar())
-                { task.Result.AddRange(lideresMinisterio); listaMinisterios.AddRange(lideresMinisterio); }
-                
+                { task.Result.AddRange(lideresMinisterio); Modelos.AddRange(lideresMinisterio); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t4 = t3.ContinueWith((task) =>
             {
                 if (lideresMinisterioTreinamento == null && new Lider_Ministerio_Treinamento().recuperar())
-                { task.Result.AddRange(lideresMinisterioTreinamento); listaMinisterios.AddRange(lideresMinisterioTreinamento); }
-                
+                { task.Result.AddRange(lideresMinisterioTreinamento); Modelos.AddRange(lideresMinisterioTreinamento); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t5 = t4.ContinueWith((task) =>
             {
                 if (supervisoresCelula == null && new Supervisor_Celula().recuperar())
-                { task.Result.AddRange(supervisoresCelula); listaMinisterios.AddRange(supervisoresCelula); }
-                
+                { task.Result.AddRange(supervisoresCelula); Modelos.AddRange(supervisoresCelula); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t6 = t5.ContinueWith((task) =>
             {
                 if (supervisoresCelulaTreinamento == null && new Supervisor_Celula_Treinamento().recuperar())
-                { task.Result.AddRange(supervisoresCelulaTreinamento); listaMinisterios.AddRange(supervisoresCelulaTreinamento); }
-                
+                { task.Result.AddRange(supervisoresCelulaTreinamento); Modelos.AddRange(supervisoresCelulaTreinamento); }
+
                 return task.Result;
             });
 
@@ -188,29 +183,29 @@ namespace business.classes.Abstrato
             {
 
                 if (supervisoresMinisterio == null && new Supervisor_Ministerio().recuperar())
-                { task.Result.AddRange(supervisoresMinisterio); listaMinisterios.AddRange(supervisoresMinisterio); }
-                
+                { task.Result.AddRange(supervisoresMinisterio); Modelos.AddRange(supervisoresMinisterio); }
+
                 return task.Result;
             });
 
             Task<List<modelocrud>> t8 = t7.ContinueWith((task) =>
             {
                 if (supervisoresMinisterioTreinamento == null && new Supervisor_Ministerio_Treinamento().recuperar())
-                { task.Result.AddRange(supervisoresMinisterioTreinamento); listaMinisterios.AddRange(supervisoresMinisterioTreinamento); }
-                
+                { task.Result.AddRange(supervisoresMinisterioTreinamento); Modelos.AddRange(supervisoresMinisterioTreinamento); }
+
                 return task.Result;
             });
 
             Task.WaitAll(t, t2, t3, t4, t5, t6, t7, t8);
 
             return t8.Result;
-        }        
+        }
 
         private List<modelocrud> buscarPessoas(int? id)
         {
             Select_padrao = "select * from Pessoa as P "
-                + " inner join PessoaMinisterio as PEMI on P.IdPessoa=PEMI.PessoaId"
-                + " inner join Ministerio as M on PEMI.MinisterioId=M.IdMinisterio"
+                + " inner join PessoaMinisterio as PEMI on P.Id=PEMI.PessoaId"
+                + " inner join Ministerio as M on PEMI.MinisterioId=M.Id"
                 + $" where PEMI.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -228,7 +223,7 @@ namespace business.classes.Abstrato
             
             while (dr.Read())
             {
-                var m = new PessoaMinisterio { IdPessoaMinisterio = int.Parse(Convert.ToString(dr["IdPessoaMinisterio"])) };                
+                var m = new PessoaMinisterio { Id = int.Parse(Convert.ToString(dr["Id"])) };                
                 lista.Add(m);
             }
             dr.Close();
@@ -237,7 +232,7 @@ namespace business.classes.Abstrato
             foreach (var item in lista)
             {
                 var model = new PessoaMinisterio();
-                if(model.recuperar(item.IdPessoaMinisterio))
+                if(model.recuperar(item.Id))
                 modelos.Add(model);
             }
                 
@@ -248,8 +243,8 @@ namespace business.classes.Abstrato
         private List<modelocrud> buscarCelulas(int? id)
         {
             Select_padrao = "select * from Celula as C "
-                + " inner join MinisterioCelula as MICE on C.IdCelula=MICE.CelulaId"
-                + " inner join Ministerio as M on MICE.MinisterioId=M.IdMinisterio"
+                + " inner join MinisterioCelula as MICE on C.Id=MICE.CelulaId"
+                + " inner join Ministerio as M on MICE.MinisterioId=M.Id"
                 + $" where MICE.MinisterioId='{id}'";
 
             List<modelocrud> modelos = new List<modelocrud>();
@@ -267,7 +262,7 @@ namespace business.classes.Abstrato
 
             while (dr.Read())
             {
-                var m = new MinisterioCelula { IdMinisterioCelula = int.Parse(Convert.ToString(dr["CelulaId"])) };
+                var m = new MinisterioCelula { Id = int.Parse(Convert.ToString(dr["CelulaId"])) };
                 lista.Add(m);
             }
             dr.Close();
@@ -276,7 +271,7 @@ namespace business.classes.Abstrato
             foreach (var item in lista)
             {
                 var model = new MinisterioCelula();
-                if (model.recuperar(item.IdMinisterioCelula))
+                if (model.recuperar(item.Id))
                     modelos.Add(model);
             }
 

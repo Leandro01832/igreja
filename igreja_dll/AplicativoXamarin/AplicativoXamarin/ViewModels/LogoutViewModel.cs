@@ -161,7 +161,7 @@ namespace AplicativoXamarin.ViewModels
                 else
                 {
 
-                    var resultado = await cliente.GetStringAsync(Url_Get_ReuniaoPessoa + Reuniao.IdReuniao.ToString());
+                    var resultado = await cliente.GetStringAsync(Url_Get_ReuniaoPessoa + Reuniao.Id.ToString());
 
                     var lista = JsonConvert.DeserializeObject<ReuniaoPessoa[]>(resultado);
 

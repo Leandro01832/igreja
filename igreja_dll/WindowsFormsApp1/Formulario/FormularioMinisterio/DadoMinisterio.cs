@@ -1,21 +1,14 @@
 ﻿using business.classes.Abstrato;
 using database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class DadoMinisterio : FormCrudMinisterio
     {
-        public DadoMinisterio(business.classes.Abstrato.Ministerio p,
-            bool Deletar, bool Atualizar, bool Detalhes)
+        public DadoMinisterio(Ministerio p, bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {
             InitializeComponent();
@@ -37,7 +30,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void txt_nome_ministerio_TextChanged(object sender, EventArgs e)
         {
-            var m = (business.classes.Abstrato.Ministerio)modelo;
+            var m = (Ministerio)modelo;
             m.Nome = txt_nome_ministerio.Text;
             
         }
@@ -53,9 +46,9 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             var m = (Ministerio)modelo;
             try
             {
-                var modelo = business.classes.Abstrato.Pessoa.listaPessoas.FirstOrDefault(i => i.Codigo == int.Parse(txt_ministro.Text));
+                var modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().FirstOrDefault(i => i.Codigo == int.Parse(txt_ministro.Text));
                 if(modelo != null)
-                m.Ministro_ = modelo.IdPessoa;
+                m.Ministro_ = modelo.Id;
             }
             catch (Exception)
             {

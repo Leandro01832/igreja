@@ -28,14 +28,14 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Ministerio where IdMinisterio='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Lider_Ministerio where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Lider_Ministerio as LM where LM.IdMinisterio='{id}'";
+            Select_padrao = $"select * from Lider_Ministerio as LM where LM.Id='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -66,72 +66,11 @@ namespace business.classes.Ministerio
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Lider_Ministerio as LM ";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "LM.IdMinisterio");
-                    lideresMinisterio = new List<Lider_Ministerio>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Lider_Ministerio m = new Lider_Ministerio();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
-                    }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Lider_Ministerio)m;
-                        var c = new Lider_Ministerio();
-                        if (c.recuperar(cel.IdMinisterio))
-                            lideresMinisterio.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            lideresMinisterio = null;
-                            return false;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            lideresMinisterio = null;
-            return false;
-
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Lider_Ministerio (IdMinisterio) values " +
+            Insert_padrao += $" insert into Lider_Ministerio (Id) values " +
             $" (IDENT_CURRENT('Ministerio'))" + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);
@@ -141,7 +80,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.IdMinisterio.ToString() + " - " + base.Nome;
+            return base.Id.ToString() + " - " + base.Nome;
         }
     }
 }

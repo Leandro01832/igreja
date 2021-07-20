@@ -58,7 +58,7 @@ namespace Igreja.Test
                         Data_inicio = DateTime.Now,
                         Numero_chamada = 0
                     },
-                    Codigo = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa + 1,
+                    Codigo = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.Id).Last().Id + 1,
                     Img = "",
                     Historico = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
@@ -103,8 +103,8 @@ namespace Igreja.Test
 
 
             //Assert
-            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.IdPessoa).Last().IdPessoa;
-            var valorObtido = pes.IdPessoa;
+            var ValorEsperado = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.Id).Last().Id;
+            var valorObtido = pes.Id;
             Assert.AreEqual(ValorEsperado, valorObtido);
         }
 

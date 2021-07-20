@@ -1,12 +1,6 @@
 ﻿using database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Pessoa;
 
@@ -31,7 +25,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
         {
             var p = (business.classes.Reuniao)modelo;
 
-            if(p.IdReuniao == 0)
+            if(p.Id == 0)
             {
 
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
@@ -41,7 +35,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     {
                         if(item != "")
                         {
-                            var modelo = business.classes.Abstrato.Pessoa.listaPessoas.First(m => m.Codigo == int.Parse(item));
+                            var modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
                             txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                         }
                         
@@ -56,7 +50,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                 if (pessoas != null)
                 foreach (var item in pessoas)
                 {
-                        var pes = business.classes.Abstrato.Pessoa.listaPessoas.First(i => i.IdPessoa == item.PessoaId);
+                        var pes = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Id == item.PessoaId);
                         txt_pessoas.Text += pes.Codigo + ", ";
                 }
                 
@@ -88,14 +82,14 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                             
                         try
                         {
-                                var modelo = business.classes.Abstrato.Pessoa.listaPessoas.First(m => m.Codigo == int.Parse(item));
-                                AddNaListaReuniaoPessoas += modelo.IdPessoa.ToString() + ", ";
+                                var modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
+                                AddNaListaReuniaoPessoas += modelo.Id.ToString() + ", ";
                         }
                         catch
                         {
                             AddNaListaReuniaoPessoas = "";
                                 var numero = modelocrud.GeTotalRegistrosPessoas();
-                                if (numero != business.classes.Abstrato.Pessoa.listaPessoas.Count)
+                                if (numero != modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");

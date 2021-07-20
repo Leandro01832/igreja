@@ -4,6 +4,7 @@ using business.classes.Celulas;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,13 +88,13 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = Ministerio.listaMinisterios.ToList();
+                    var listaMinisterio = modelocrud.Modelos.OfType<Ministerio>().ToList().ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     foreach (var item in arr)
                     {
                         try
                         {
-                            if (listaMinisterio.FirstOrDefault(i => i.IdMinisterio == int.Parse(item)) == null)
+                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
                                 AddNaListaCelulaMinisterios.Replace(item, "");
                         }
                         catch { }
@@ -132,10 +133,10 @@ namespace WindowsFormsApp1
             }
 
             var id = 0;
-            if (modelo is Pessoa) { var p = (Pessoa)modelo; id = p.IdPessoa; }
-            if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.IdMinisterio; }
-            if (modelo is Celula) { var p = (Celula)modelo; id = p.IdCelula; }
-            if (modelo is Reuniao) { var p = (Reuniao)modelo; id = p.IdReuniao; }
+            if (modelo is Pessoa) { var p = (Pessoa)modelo; id = p.Id; }
+            if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.Id; }
+            if (modelo is Celula) { var p = (Celula)modelo; id = p.Id; }
+            if (modelo is Reuniao) { var p = (Reuniao)modelo; id = p.Id; }
 
             modelo.alterar(id);
             MessageBox.Show("Informação atualizada com sucesso.");
@@ -146,43 +147,45 @@ namespace WindowsFormsApp1
             var id = 0;
             if(modelo is Pessoa)
             {                
-                var p = (Pessoa)modelo; id = p.IdPessoa;
+                var p = (Pessoa)modelo; id = p.Id;
                 if(!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                Pessoa.listaPessoas.Remove(Pessoa.listaPessoas.First(i => i.IdPessoa  == id));
+                modelocrud.Modelos.OfType<Pessoa>().ToList().Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id  == id));
             }
             if(modelo is Ministerio)
             {
-                var p = (Ministerio)modelo; id = p.IdMinisterio;
+                var p = (Ministerio)modelo; id = p.Id;
                 if (!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                Ministerio.listaMinisterios.Remove(Ministerio.listaMinisterios.First(i => i.IdMinisterio == id));
+                modelocrud.Modelos.OfType<Ministerio>().ToList().Remove(modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.Id == id));
             }
             if(modelo is Celula)
             {
-                var p = (Celula)modelo; id = p.IdCelula;
+                var p = (Celula)modelo; id = p.Id;
                 if (!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                Celula.listaCelulas.Remove(Celula.listaCelulas.First(i => i.IdCelula == id));
+                modelocrud.Modelos.OfType<Celula>().ToList()
+                    .Remove(modelocrud.Modelos.OfType<Celula>().ToList().First(i => i.Id == id));
             }
             if(modelo is Reuniao)
             {
-                var p = (Reuniao)modelo; id = p.IdReuniao;
+                var p = (Reuniao)modelo; id = p.Id;
                 if (!modelo.recuperar(id))
                 {
                     MessageBox.Show("Você já apagou este registro");
                     return;
                 }
-                Reuniao.Reunioes.Remove(Reuniao.Reunioes.First(i => i.IdReuniao == id));
+                modelocrud.Modelos.OfType<Reuniao>().ToList()
+                    .Remove(modelocrud.Modelos.OfType<Reuniao>().ToList().First(i => i.Id == id));
             }
 
             modelo.excluir(id);

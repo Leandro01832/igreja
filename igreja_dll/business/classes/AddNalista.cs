@@ -52,19 +52,19 @@ namespace business.classes
 
         private void verificaModelos(modelocrud modeloQRecebe, modelocrud modeloQPreenche)
         {
-            if (modeloQRecebe is Pessoa) { recebe = "Pessoa"; var p = (Pessoa)modeloQRecebe; IdModelo = p.IdPessoa; }
+            if (modeloQRecebe is Pessoa) { recebe = "Pessoa"; var p = (Pessoa)modeloQRecebe; IdModelo = p.Id; }
             if (modeloQPreenche is Pessoa) preenche = "Pessoa";
 
             if (modeloQRecebe is Abstrato.Ministerio)
-            { recebe = "Ministerio"; var p = (Abstrato.Ministerio)modeloQRecebe; IdModelo = p.IdMinisterio; }
+            { recebe = "Ministerio"; var p = (Abstrato.Ministerio)modeloQRecebe; IdModelo = p.Id; }
             if (modeloQPreenche is Abstrato.Ministerio) preenche = "Ministerio";
 
             if (modeloQRecebe is Abstrato.Celula)
-            { recebe = "Celula"; var p = (Abstrato.Celula)modeloQRecebe; IdModelo = p.IdCelula; }
+            { recebe = "Celula"; var p = (Abstrato.Celula)modeloQRecebe; IdModelo = p.Id; }
             if (modeloQPreenche is Abstrato.Celula) preenche = "Celula";
 
             if (modeloQRecebe is Reuniao)
-            { recebe = "Reuniao"; var p = (Reuniao)modeloQRecebe; IdModelo = p.IdReuniao; }
+            { recebe = "Reuniao"; var p = (Reuniao)modeloQRecebe; IdModelo = p.Id; }
             if (modeloQPreenche is Reuniao) preenche = "Reuniao";
         }
 
@@ -154,11 +154,6 @@ namespace business.classes
         }
 
         public override bool recuperar(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool recuperar()
         {
             throw new NotImplementedException();
         }

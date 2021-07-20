@@ -46,7 +46,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != telefone.IdTelefone)
+            if (id != telefone.Id)
             {
                 return BadRequest();
             }
@@ -89,7 +89,7 @@ namespace Site.Controllers.Api
             }
             catch (DbUpdateException)
             {
-                if (TelefoneExists(telefone.IdTelefone))
+                if (TelefoneExists(telefone.Id))
                 {
                     return Conflict();
                 }
@@ -99,7 +99,7 @@ namespace Site.Controllers.Api
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = telefone.IdTelefone }, telefone);
+            return CreatedAtRoute("DefaultApi", new { id = telefone.Id }, telefone);
         }
 
         // DELETE: api/TelefoneApi/5
@@ -129,7 +129,7 @@ namespace Site.Controllers.Api
 
         private bool TelefoneExists(int id)
         {
-            return db.telefone.Count(e => e.IdTelefone == id) > 0;
+            return db.telefone.Count(e => e.Id == id) > 0;
         }
     }
 }

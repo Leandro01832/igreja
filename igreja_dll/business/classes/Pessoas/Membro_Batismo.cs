@@ -30,7 +30,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_Batismo where IdPessoa='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Membro_Batismo where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -38,7 +38,7 @@ namespace business.classes.Pessoas
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Membro_Batismo as MB where MB.IdPessoa='{id}'";
+            Select_padrao = $"select * from Membro_Batismo as MB where MB.Id='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -69,72 +69,11 @@ namespace business.classes.Pessoas
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Membro_Batismo as MB ";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "MB.IdPessoa");
-                    membros_Batismo = new List<Membro_Batismo>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Membro_Batismo mb = new Membro_Batismo();
-                        mb.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(mb);
-                    }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Membro_Batismo)m;
-                        var c = new Membro_Batismo();
-                        if (c.recuperar(cel.IdPessoa))
-                            membros_Batismo.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            membros_Batismo = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            membros_Batismo = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_Batismo (IdPessoa) values (IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
+            Insert_padrao += " insert into Membro_Batismo (Id) values (IDENT_CURRENT('Pessoa')) " + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);
 

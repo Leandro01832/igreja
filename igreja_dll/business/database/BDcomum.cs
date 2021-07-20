@@ -108,25 +108,25 @@ namespace database.banco
             if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
-                p.IdPessoa = GetUltimoRegistroPessoa();
+                p.Id = GetUltimoRegistroPessoa();
             }
             else
             if (modelo is Celula)
             {
                 var p = (Celula)modelo;
-                p.IdCelula = GetUltimoRegistroCelula();
+                p.Id = GetUltimoRegistroCelula();
             }
             else
             if (modelo is Ministerio)
             {
                 var p = (Ministerio)modelo;
-                p.IdMinisterio = GetUltimoRegistroMinisterio();
+                p.Id = GetUltimoRegistroMinisterio();
             }
             else
             if (modelo is Reuniao)
             {
                 var p = (Reuniao)modelo;
-                p.IdReuniao = GetUltimoRegistroReuniao();
+                p.Id = GetUltimoRegistroReuniao();
             }
         }
 
@@ -141,11 +141,11 @@ namespace database.banco
                 {
                     con = obterconexao();
 
-                    cmd = new SqlCommand("SELECT TOP(1) IdPessoa FROM Pessoa order by IdPessoa desc", con);
+                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Pessoa order by Id desc", con);
 
                     SqlDataReader dr = cmd.ExecuteReader();
                     dr.Read();
-                    Id = int.Parse(dr["IdPessoa"].ToString());
+                    Id = int.Parse(dr["Id"].ToString());
                     dr.Close();
                     fecharconexao(con);
 
@@ -169,10 +169,10 @@ namespace database.banco
                 {
                     con = obterconexao();
 
-                    cmd = new SqlCommand("SELECT TOP(1) IdCelula FROM Celula order by IdCelula desc", con);
+                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Celula order by Id desc", con);
                     SqlDataReader dr = cmd.ExecuteReader();
                     dr.Read();
-                    Id = int.Parse(dr["IdCelula"].ToString());
+                    Id = int.Parse(dr["Id"].ToString());
                     dr.Close();
                     fecharconexao(con);
 
@@ -196,10 +196,10 @@ namespace database.banco
                 {
                     con = obterconexao();
 
-                    cmd = new SqlCommand("SELECT TOP(1) IdMinisterio FROM Ministerio order by IdMinisterio desc", con);
+                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Ministerio order by Id desc", con);
                     SqlDataReader dr = cmd.ExecuteReader();
                     dr.Read();
-                    Id = int.Parse(dr["IdMinisterio"].ToString());
+                    Id = int.Parse(dr["Id"].ToString());
                     dr.Close();
                     fecharconexao(con);
 
@@ -223,10 +223,10 @@ namespace database.banco
                 {
                     con = obterconexao();
 
-                    cmd = new SqlCommand("SELECT TOP(1) IdReuniao FROM Reuniao order by IdReuniao desc", con);
+                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Reuniao order by Id desc", con);
                     SqlDataReader dr = cmd.ExecuteReader();
                     dr.Read();
-                    Id = int.Parse(dr["IdReuniao"].ToString());
+                    Id = int.Parse(dr["Id"].ToString());
                     dr.Close();
                     fecharconexao(con);
 

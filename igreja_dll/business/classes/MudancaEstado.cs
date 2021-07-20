@@ -18,8 +18,6 @@ namespace business.classes
     [Table("MudancaEstado")]
     public class MudancaEstado : modelocrud, IMudancaEstado
     {
-        [Key]
-        public int IdMudanca { get; set; }
         public string velhoEstado { get; set; }
         public string novoEstado { get; set; }
         public DateTime DataMudanca { get; set; }
@@ -69,7 +67,7 @@ namespace business.classes
             var minis = p.Ministerios;
             if (minis != null)
                 foreach (var itemMinisterio in minis)
-                    addMinisterios += itemMinisterio.Ministerio.IdMinisterio.ToString() + ", ";
+                    addMinisterios += itemMinisterio.Ministerio.Id.ToString() + ", ";
             if (minis != null)
                 if (minis.Count != 0)
                     p.AdicionarNaLista("PessoaMinsterio", p, minis[0], addMinisterios);
@@ -78,7 +76,7 @@ namespace business.classes
             var reu = p.Reuniao;
             if (reu != null)
                 foreach (var itemReuniao in reu)
-                    addReunioes += itemReuniao.Reuniao.IdReuniao.ToString() + ", ";
+                    addReunioes += itemReuniao.Reuniao.Id.ToString() + ", ";
             if (reu != null)
                 if (reu.Count != 0)
                     p.AdicionarNaLista("ReuniaoPessoa", p, reu[0], addReunioes);
@@ -438,7 +436,7 @@ namespace business.classes
         {
             Update_padrao = $"update MudancaEstado set velhoEstado='{velhoEstado}', " +
            $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', CodigoPessoa='{CodigoPessoa}' " +
-           $"  where IdMudanca='{id}' ";
+           $"  where Id='{id}' ";
 
             bd.Editar(this);
             return Update_padrao;
@@ -446,7 +444,7 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from MudancaEstado as M where M.IdMudanca='{id}'";
+            Delete_padrao = $"delete from MudancaEstado as M where M.Id='{id}'";
 
             bd.Excluir(this);
             return Delete_padrao;
@@ -454,7 +452,7 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from MudancaEstado as P where P.IdMudanca='{id}'";
+            Select_padrao = $"select * from MudancaEstado as P where P.Id='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -474,7 +472,7 @@ namespace business.classes
 
                     this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                     this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                    this.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.novoEstado = Convert.ToString(dr["novoEstado"]);
                     this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                     dr.Close();
@@ -493,69 +491,7 @@ namespace business.classes
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from MudancaEstado as P ";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "P.IdMudanca");
-                    Mudancas = new List<MudancaEstado>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        MudancaEstado m = new MudancaEstado();
-                        m.IdMudanca = int.Parse(Convert.ToString(dr["IdMudanca"]));
-                        modelos.Add(m);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (MudancaEstado)m;
-                        var c = new MudancaEstado();
-                        if (c.recuperar(cel.IdMudanca))
-                            Mudancas.Add(c); //não deu erro de conexao
-                        else
-                        {
-                            Mudancas = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            Mudancas = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, CodigoPessoa) " +
@@ -567,7 +503,7 @@ namespace business.classes
 
         public override string ToString()
         {
-            return "ID da mudança: " + IdMudanca.ToString() + " ID da pessoa: " + this.CodigoPessoa;
+            return "ID da mudança: " + Id.ToString() + " ID da pessoa: " + this.CodigoPessoa;
         }
     }
 }

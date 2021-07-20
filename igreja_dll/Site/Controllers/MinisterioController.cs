@@ -62,7 +62,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LiderCelula(Lider_Celula ministerio)
         {
-            if (ministerio.IdMinisterio == 0) return await Create(ministerio);
+            if (ministerio.Id == 0) return await Create(ministerio);
             else return await Editar(ministerio);
         }
 
@@ -70,7 +70,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LiderCelulaTreinamento(Lider_Celula_Treinamento ministerio)
         {
-            if (ministerio.IdMinisterio == 0) return await Create(ministerio);
+            if (ministerio.Id == 0) return await Create(ministerio);
             else return await Editar(ministerio);
         }
 
@@ -78,7 +78,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LiderMinisterio(Lider_Ministerio ministerio)
         {
-            if (ministerio.IdMinisterio == 0) return await Create(ministerio);
+            if (ministerio.Id == 0) return await Create(ministerio);
             else return await Editar(ministerio);
         }
 
@@ -86,7 +86,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LiderMinisterioTreinamento(Lider_Ministerio_Treinamento ministerio)
         {
-            if (ministerio.IdMinisterio == 0) return await Create(ministerio);
+            if (ministerio.Id == 0) return await Create(ministerio);
             else return await Editar(ministerio);
         }
 
@@ -94,7 +94,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SupervisorCelula(Supervisor_Celula ministerio)
         {
-            if (ministerio.IdMinisterio == 0) return await Create(ministerio);
+            if (ministerio.Id == 0) return await Create(ministerio);
             else return await Editar(ministerio);
         }
 
@@ -102,7 +102,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SupervisorCelula(Supervisor_Celula_Treinamento ministerio)
         {
-            if (ministerio.IdMinisterio == 0) return await Create(ministerio);
+            if (ministerio.Id == 0) return await Create(ministerio);
             else return await Editar(ministerio);
         }
 

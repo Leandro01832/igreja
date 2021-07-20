@@ -46,7 +46,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != endereco.IdEndereco)
+            if (id != endereco.Id)
             {
                 return BadRequest();
             }
@@ -89,7 +89,7 @@ namespace Site.Controllers.Api
             }
             catch (DbUpdateException)
             {
-                if (EnderecoExists(endereco.IdEndereco))
+                if (EnderecoExists(endereco.Id))
                 {
                     return Conflict();
                 }
@@ -99,7 +99,7 @@ namespace Site.Controllers.Api
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = endereco.IdEndereco }, endereco);
+            return CreatedAtRoute("DefaultApi", new { id = endereco.Id }, endereco);
         }
 
         // DELETE: api/EnderecoApi/5
@@ -129,7 +129,7 @@ namespace Site.Controllers.Api
 
         private bool EnderecoExists(int id)
         {
-            return db.endereco.Count(e => e.IdEndereco == id) > 0;
+            return db.endereco.Count(e => e.Id == id) > 0;
         }
     }
 }

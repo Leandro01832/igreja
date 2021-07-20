@@ -29,7 +29,7 @@ namespace business.classes.PessoasLgpd
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Membro_AclamacaoLgpd set Denominacao='{Denominacao}' " +
-            $" where IdPessoa='{id}' " + BDcomum.addNaLista;
+            $" where Id='{id}' " + BDcomum.addNaLista;
 
             bd.Editar(this);
             return Update_padrao;
@@ -37,14 +37,14 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from {this.GetType().Name} where IdPessoa='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Membro_AclamacaoLgpd as MA where MA.IdPessoa='{id}'";
+            Select_padrao = $"select * from Membro_AclamacaoLgpd as MA where MA.Id='{id}'";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -77,74 +77,12 @@ namespace business.classes.PessoasLgpd
                 return true;
             }
             return false;
-        }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Membro_AclamacaoLgpd as MA ";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "MA.IdPessoa");
-                    membros_AclamacaoLgpd = new List<Membro_AclamacaoLgpd>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Membro_AclamacaoLgpd ma = new Membro_AclamacaoLgpd();
-                        ma.IdPessoa = int.Parse(Convert.ToString(dr["IdPessoa"]));
-                        modelos.Add(ma);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Membro_AclamacaoLgpd)m;
-                        var c = new Membro_AclamacaoLgpd();
-                        if (c.recuperar(cel.IdPessoa))
-                            membros_AclamacaoLgpd.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            membros_AclamacaoLgpd = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            membros_AclamacaoLgpd = null;
-            return false;
-        }
+        }        
 
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_aclamacaoLgpd (Denominacao, IdPessoa) " +
+            Insert_padrao += " insert into Membro_aclamacaoLgpd (Denominacao, Id) " +
                 $" values ('{Denominacao}', IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
 
             bd.SalvarModelo(this);

@@ -51,7 +51,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != visitanteLgpd.IdPessoa)
+            if (id != visitanteLgpd.Id)
             {
                 return BadRequest();
             }
@@ -91,7 +91,7 @@ namespace Site.Controllers.Api
                 visitante.salvar();
             }
             catch { return this.BadRequest("Usuario não cadastrado!!!"); }
-            return CreatedAtRoute("DefaultApi", new { id = visitante.IdPessoa }, visitante);
+            return CreatedAtRoute("DefaultApi", new { id = visitante.Id }, visitante);
         }
 
         // POST: api/VisitanteLgpdApi
@@ -115,7 +115,7 @@ namespace Site.Controllers.Api
             }
             visitante.Codigo = Cod;
             visitante.salvar();
-            return CreatedAtRoute("DefaultApi", new { id = visitante.IdPessoa }, visitante);
+            return CreatedAtRoute("DefaultApi", new { id = visitante.Id }, visitante);
         }
 
         // DELETE: api/VisitanteLgpdApi/5
@@ -145,7 +145,7 @@ namespace Site.Controllers.Api
 
         private bool VisitanteLgpdExists(int id)
         {
-            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.Id == id) > 0;
         }
     }
 }

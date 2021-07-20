@@ -117,7 +117,7 @@ namespace AplicativoXamarin.ViewModels
                         Dia_semana = celula.Dia_semana,
                         EnderecoCelula = celula.EnderecoCelula,
                         Horario = celula.Horario,
-                        IdCelula = celula.IdCelula,
+                        Id = celula.Id,
                         Maximo_pessoa = celula.Maximo_pessoa,
                         Ministerios = celula.Ministerios,
                         Nome = celula.Nome,
@@ -145,7 +145,7 @@ namespace AplicativoXamarin.ViewModels
                 var lista = JsonConvert.DeserializeObject<List<Pessoa>>(resultadoLista);
 
                 this.Pessoas.Clear();
-                foreach (var pes in lista.Where(i => i.celula_ == celula.IdCelula))
+                foreach (var pes in lista.Where(i => i.celula_ == celula.Id))
                 {
                     this.Pessoas.Add(new Pessoa
                     {

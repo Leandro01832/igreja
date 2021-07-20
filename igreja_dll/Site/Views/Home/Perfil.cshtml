@@ -9,7 +9,7 @@
     { texto = "Editar perfil para perfil Lgpd"; }
 }
 
-<h2>Perfil - @ViewBag.perfil - @Html.ActionLink(texto, "Editar", new { id = Model.IdPessoa })</h2>
+<h2>Perfil - @ViewBag.perfil - @Html.ActionLink(texto, "Editar", new { id = Model.Id })</h2>
 
 <h4>@Model.NomePessoa</h4>
 
@@ -25,7 +25,7 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.IdPessoa)
+            @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.Codigo)
             @Html.HiddenFor(model => model.Email)
             @Html.HiddenFor(model => model.FiguraFile)
@@ -71,7 +71,7 @@
         <p> Ministérios do usuario @Model.Email </p>
         @foreach (var minis in Model.Ministerios)
         {
-            <p> Codigo ID do ministério: @minis.Ministerio.IdMinisterio</p>
+            <p> Codigo ID do ministério: @minis.Ministerio.Id</p>
             <p> Nome do ministério: @minis.Ministerio.Nome </p>
             <p> Propósito do ministério: @minis.Ministerio.Proposito </p>
         }
@@ -84,7 +84,7 @@
         <p> Reuniões do usuario @Model.Email </p>
         @foreach (var reu in Model.Reuniao.Where(r => r.Reuniao.Data_reuniao >= DateTime.Now))
         {
-            <p> Codigo ID da reunião: @reu.Reuniao.IdReuniao</p>
+            <p> Codigo ID da reunião: @reu.Reuniao.Id</p>
             <p> Local da reunião: @reu.Reuniao.Local_reuniao </p>
             <p> Data da reunião: @reu.Reuniao.Data_reuniao </p>
             <p> Horário de início da reunião: @reu.Reuniao.Horario_inicio </p>

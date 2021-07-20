@@ -14,8 +14,6 @@ namespace business.classes.Intermediario
 {
     public class ReuniaoPessoa : modelocrud
     {
-        [Key]
-        public int IdReuniaoPessoa { get; set; }
         public int PessoaId { get; set; }
         [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
@@ -38,7 +36,7 @@ namespace business.classes.Intermediario
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from ReuniaoPessoa as RP where RP.IdReuniaoPessoa='{id}'";
+            Select_padrao = $"select * from ReuniaoPessoa as RP where RP.Id='{id}'";
             var conexao = bd.obterconexao();
 
             if(conexao != null)
@@ -71,67 +69,7 @@ namespace business.classes.Intermediario
                 return true;
             }
             return false;
-        }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from ReuniaoPessoa as RP ";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "RP.IdReuniaoPessoa");
-                    ReuniaoPessoas = new List<ReuniaoPessoa>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
-
-                    while (dr.Read())
-                    {
-                        ReuniaoPessoa pm = new ReuniaoPessoa();
-                        pm.IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"]));
-                        lista.Add(pm);
-                    }
-                    dr.Close();
-
-                    bd.fecharconexao(conexao);
-                    //recursividade
-
-                    foreach (var item in lista.OfType<ReuniaoPessoa>().ToList())
-                    {
-                        var modelo = new ReuniaoPessoa();
-                        if (recuperar(item.IdReuniaoPessoa))
-                            ReuniaoPessoas.Add(modelo); // não deu erro de conexao
-                        else
-                        {
-                            ReuniaoPessoas = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            ReuniaoPessoas = null;
-            return false;
-        }
+        }        
 
         public override string salvar()
         {

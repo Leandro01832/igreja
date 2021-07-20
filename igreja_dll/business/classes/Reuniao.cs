@@ -19,8 +19,6 @@ namespace business.classes
     {
 
         #region Properties
-        [Key]
-        public int IdReuniao { get; set; }
 
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -63,7 +61,7 @@ namespace business.classes
         public override string alterar(int id)
         {
             Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao.ToString("yyyy-MM-dd")}', " +
-            $" Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where IdReuniao='{id}'"
+            $" Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where Id='{id}'"
             + BDcomum.addNaLista;
 
             bd.Editar(this);
@@ -72,14 +70,14 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Reuniao where IdReuniao='{id}' ";
+            Delete_padrao = $"delete from Reuniao where Id='{id}' ";
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Reuniao as M where M.IdReuniao='{id}' ";
+            Select_padrao = $"select * from Reuniao as M where M.Id='{id}' ";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -99,7 +97,7 @@ namespace business.classes
                     this.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
                     this.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
                     this.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
-                    this.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
 
                     dr.Close();
@@ -126,69 +124,7 @@ namespace business.classes
                 return true;
             }
             return false;
-        }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Reuniao as M";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "M.IdReuniao");
-                    Reunioes = new List<Reuniao>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Reuniao r = new Reuniao();
-                        r.IdReuniao = int.Parse(Convert.ToString(dr["IdReuniao"]));
-                        modelos.Add(r);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade                        
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Reuniao)m;
-                        var c = new Reuniao();
-                        if (c.recuperar(cel.IdReuniao))
-                            Reuniao.Reunioes.Add(c);
-                        else
-                        {
-                            Reunioes = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            Reunioes = null;
-            return false;
-        }
+        }        
 
         public override string salvar()
         {
@@ -205,8 +141,8 @@ namespace business.classes
         private List<modelocrud> recuperarPessoas(int? id)
         {
             var select = "select * from Pessoa as P inner join " +
-                " ReuniaoPessoa as PERE on P.IdPessoa=PERE.PessoaId  inner join Reuniao as R" +
-                $" on PERE.ReuniaoId=R.IdReuniao where PERE.ReuniaoId='{id}' ";
+                " ReuniaoPessoa as PERE on P.Id=PERE.PessoaId  inner join Reuniao as R" +
+                $" on PERE.ReuniaoId=R.Id where PERE.ReuniaoId='{id}' ";
 
             List<modelocrud> modelos = new List<modelocrud>();
             List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
@@ -224,7 +160,7 @@ namespace business.classes
 
             while (dr.Read())
             {
-                lista.Add(new ReuniaoPessoa { IdReuniaoPessoa = int.Parse(Convert.ToString(dr["IdReuniaoPessoa"])) });
+                lista.Add(new ReuniaoPessoa { Id = int.Parse(Convert.ToString(dr["Id"])) });
             }
             dr.Close();
             bd.fecharconexao(conexao);
@@ -232,7 +168,7 @@ namespace business.classes
             foreach (var item in lista)
             {
                 var model = new ReuniaoPessoa();
-                if (model.recuperar(item.IdReuniaoPessoa))
+                if (model.recuperar(item.Id))
                     modelos.Add(model);
             }
 
@@ -253,7 +189,7 @@ namespace business.classes
 
         public override string ToString()
         {
-            return this.IdReuniao.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
+            return this.Id.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
         }
     }
 }

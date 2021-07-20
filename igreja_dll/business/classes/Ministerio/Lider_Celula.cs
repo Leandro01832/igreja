@@ -20,7 +20,7 @@ namespace business.classes.Ministerio
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Lider_Celula (IdMinisterio) values (IDENT_CURRENT('Ministerio')) " + BDcomum.addNaLista;
+            Insert_padrao += $" insert into Lider_Celula (Id) values (IDENT_CURRENT('Ministerio')) " + BDcomum.addNaLista;
             bd.SalvarModelo(this);
 
             return Insert_padrao;
@@ -28,7 +28,7 @@ namespace business.classes.Ministerio
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Lider_Celula as LC where LC.IdMinisterio='{id}' ";
+            Select_padrao = $"select * from Lider_Celula as LC where LC.Id='{id}' ";
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -59,71 +59,10 @@ namespace business.classes.Ministerio
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Lider_Celula as LC ";
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "LC.IdMinisterio");
-                    lideresCelula = new List<Lider_Celula>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Lider_Celula m = new Lider_Celula();
-                        m.IdMinisterio = int.Parse(dr["IdMinisterio"].ToString());
-                        modelos.Add(m);
-                    }
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Lider_Celula)m;
-                        var c = new Lider_Celula();
-                        if (c.recuperar(cel.IdMinisterio))
-                            lideresCelula.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            lideresCelula = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            lideresCelula = null;
-            return false;
-        }
-
+        
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Celula where IdMinisterio='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Lider_Celula where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
@@ -137,7 +76,7 @@ namespace business.classes.Ministerio
 
         public override string ToString()
         {
-            return base.IdMinisterio.ToString() + " - " + base.Nome;
+            return base.Id.ToString() + " - " + base.Nome;
         }
 
     }

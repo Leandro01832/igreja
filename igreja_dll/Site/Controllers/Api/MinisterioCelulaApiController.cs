@@ -35,7 +35,7 @@ namespace Site.Controllers.Api
                     CelulaId = modelo.CelulaId,
                     Ministerio = modelo.Ministerio,
                     MinisterioId = modelo.MinisterioId,
-                    IdMinisterioCelula = modelo.IdMinisterioCelula
+                    Id = modelo.Id
                 });
             }
 
@@ -65,7 +65,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != ministerioCelula.IdMinisterioCelula)
+            if (id != ministerioCelula.Id)
             {
                 return BadRequest();
             }
@@ -103,7 +103,7 @@ namespace Site.Controllers.Api
             db.MinisterioCelula.Add(ministerioCelula);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = ministerioCelula.IdMinisterioCelula }, ministerioCelula);
+            return CreatedAtRoute("DefaultApi", new { id = ministerioCelula.Id }, ministerioCelula);
         }
 
         // DELETE: api/MinisterioCelulaApi/5
@@ -133,7 +133,7 @@ namespace Site.Controllers.Api
 
         private bool MinisterioCelulaExists(int id)
         {
-            return db.MinisterioCelula.Count(e => e.IdMinisterioCelula == id) > 0;
+            return db.MinisterioCelula.Count(e => e.Id == id) > 0;
         }
     }
 }

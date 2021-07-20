@@ -155,30 +155,18 @@ namespace WindowsFormsApp1
 
         private void btn_processa_pessoa_Click(object sender, EventArgs e)
         {
-            if (Pessoa.criancas == null)
-            { var form = new FrmCrianca(typeof(Crianca)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança"; form.Show(); }
-            if (Pessoa.visitantes == null)
-            { var form = new FrmVisitante(typeof(Visitante)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante"; form.Show(); }
-            if (Pessoa.membros_Aclamacao == null)
-            { var form = new FrmMembroAclamacao(typeof(Membro_Aclamacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação"; form.Show(); }
-            if (Pessoa.membros_Batismo == null)
-            { var form = new MembroBatismo(typeof(Membro_Batismo)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo"; form.Show(); }
-            if (Pessoa.membros_Reconciliacao == null)
-            { var form = new MembroReconciliacao(typeof(Membro_Reconciliacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação"; form.Show(); }
-            if (Pessoa.membros_Transferencia == null)
-            { var form = new MembroTransferencia(typeof(Membro_Transferencia)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferencia"; form.Show(); }
-            if (Pessoa.criancasLgpd == null)
-            { var form = new FrmCrianca(typeof(CriancaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança Lgpd"; form.Show(); }
-            if (Pessoa.visitantesLgpd == null)
-            { var form = new FrmVisitante(typeof(VisitanteLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante Lgpd"; form.Show(); }
-            if (Pessoa.membros_AclamacaoLgpd == null)
-            { var form = new FrmMembroAclamacao(typeof(Membro_AclamacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação Lgpd"; form.Show(); }
-            if (Pessoa.membros_BatismoLgpd == null)
-            { var form = new MembroBatismo(typeof(Membro_BatismoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo Lgpd"; form.Show(); }
-            if (Pessoa.membros_ReconciliacaoLgpd == null)
-            { var form = new MembroReconciliacao(typeof(Membro_ReconciliacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação Lgpd"; form.Show(); }
-            if (Pessoa.membros_TransferenciaLgpd == null)
-            { var form = new MembroTransferencia(typeof(Membro_TransferenciaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferência Lgpd"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Visitante               >().FirstOrDefault() == null) { var form = new FrmCrianca(typeof(Crianca)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Crianca                 >().FirstOrDefault() == null) { var form = new FrmVisitante(typeof(Visitante)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_Aclamacao        >().FirstOrDefault() == null) { var form = new FrmMembroAclamacao(typeof(Membro_Aclamacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_Batismo          >().FirstOrDefault() == null) { var form = new MembroBatismo(typeof(Membro_Batismo)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_Reconciliacao    >().FirstOrDefault() == null) { var form = new MembroReconciliacao(typeof(Membro_Reconciliacao)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_Transferencia    >().FirstOrDefault() == null) { var form = new MembroTransferencia(typeof(Membro_Transferencia)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferencia"; form.Show(); }
+            if (modelocrud.Modelos.OfType<VisitanteLgpd           >().FirstOrDefault() == null) { var form = new FrmCrianca(typeof(CriancaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Criança Lgpd"; form.Show(); }
+            if (modelocrud.Modelos.OfType<CriancaLgpd             >().FirstOrDefault() == null) { var form = new FrmVisitante(typeof(VisitanteLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Visitante Lgpd"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_AclamacaoLgpd    >().FirstOrDefault() == null) { var form = new FrmMembroAclamacao(typeof(Membro_AclamacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Aclamação Lgpd"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_BatismoLgpd      >().FirstOrDefault() == null) { var form = new MembroBatismo(typeof(Membro_BatismoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por batismo Lgpd"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_ReconciliacaoLgpd>().FirstOrDefault() == null) { var form = new MembroReconciliacao(typeof(Membro_ReconciliacaoLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Reconciliação Lgpd"; form.Show(); }
+            if (modelocrud.Modelos.OfType<Membro_TransferenciaLgpd>().FirstOrDefault() == null) { var form = new MembroTransferencia(typeof(Membro_TransferenciaLgpd)); form.MdiParent = this.MdiParent; form.Text = "Processando dados - Membro por Transferência Lgpd"; form.Show(); }
         }
 
         private void btn_processo_inicial_Click(object sender, EventArgs e)
@@ -199,37 +187,37 @@ namespace WindowsFormsApp1
 
                 if (!carregandoCriancaLgpd)
                     statusCriancaLgpd.Text = "Status de processamento de criança Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new CriancaLgpd().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new CriancaLgpd().GetType().Name) != null)
                     statusCriancaLgpd.Text = "Status de processamento de criança Lgpd: processado.";
                 else statusCriancaLgpd.Text = "Status de processamento de criança Lgpd: Processando.";
 
                 if (!carregandoVisitanteLgpd)
                     statusVisitanteLgpd.Text = "Status de processamento de visitante Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new VisitanteLgpd().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new VisitanteLgpd().GetType().Name) != null)
                     statusVisitanteLgpd.Text = "Status de processamento de visitante Lgpd: processado.";
                 else statusVisitanteLgpd.Text = "Status de processamento de visitante Lgpd: Processando.";
 
                 if (!carregandoMembroBatismoLgpd)
                     statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_BatismoLgpd().GetType().Name) != null)
                     statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: processado.";
                 else statusMembroBatismoLgpd.Text = "Status de processamento de Membro por Batismo Lgpd: Processando.";
 
                 if (!carregandoMembroTransferenciaLgpd)
                     statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_TransferenciaLgpd().GetType().Name) != null)
                     statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: processado.";
                 else statusMembroTransferenciaLgpd.Text = "Status de processamento de Membro por Transferência Lgpd: Processando.";
 
                 if (!carregandoMembroAclamacaoLgpd)
                     statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_AclamacaoLgpd().GetType().Name) != null)
                     statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: processado.";
                 else statusMembroAclamacaoLgpd.Text = "Status de processamento de Membro por aclamação Lgpd: Processando.";
 
                 if (!carregandoMembroReconciliacaoLgpd)
                     statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_ReconciliacaoLgpd().GetType().Name) != null)
                     statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: processado.";
                 else statusMembroReconciliacaoLgpd.Text = "Status de processamento de Membro por reconciliação Lgpd: Processando.";
 
@@ -237,37 +225,37 @@ namespace WindowsFormsApp1
 
                 if (!carregandoCrianca)
                     statusCrianca.Text = "Status de processamento de criança: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Crianca().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Crianca().GetType().Name) != null)
                     statusCrianca.Text = "Status de processamento de criança: processado.";
                 else statusCrianca.Text = "Status de processamento de criança: Processando.";
 
                 if (!carregandoVisitante)
                     statusVisitante.Text = "Status de processamento de visitante: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Visitante().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Visitante().GetType().Name) != null)
                     statusVisitante.Text = "Status de processamento de visitante: processado.";
                 else statusVisitante.Text = "Status de processamento de visitante: Processando.";
 
                 if (!carregandoMembroBatismo)
                     statusMembroBatismo.Text = "Status de processamento de membro por batismo: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Batismo().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_Batismo().GetType().Name) != null)
                     statusMembroBatismo.Text = "Status de processamento de membro por batismo: processado.";
                 else statusMembroBatismo.Text = "Status de processamento de membro por batismo: Processando.";
 
                 if (!carregandoMembroTransferencia)
                     statusMembroTransferencia.Text = "Status de processamento de membro por transferência: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Transferencia().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_Transferencia().GetType().Name) != null)
                     statusMembroTransferencia.Text = "Status de processamento de membro por transferência: processado.";
                 else statusMembroTransferencia.Text = "Status de processamento de membro por transferência: Processando.";
 
                 if (!carregandoMembroAclamacao)
                     statusMembroAclamacao.Text = "Status de processamento de membro por aclamação: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_Aclamacao().GetType().Name) != null)
                     statusMembroAclamacao.Text = "Status de processamento de membro por aclamação: processado.";
                 else statusMembroAclamacao.Text = "Status de processamento de membro por aclamação: Processando.";
 
                 if (!carregandoMembroReconciliacao)
                     statusMembroReconciliacao.Text = "Status de processamento de membro por reconciliação: Não processado.";
-                else if (Pessoa.listaPessoas.FirstOrDefault(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name) != null)
+                else if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(p => p.GetType().Name == new Membro_Reconciliacao().GetType().Name) != null)
                     statusMembroReconciliacao.Text = "Status de processamento de membro por reconciliação: processado.";
                 else statusMembroReconciliacao.Text = "Status de processamento de membro por reconciliação: Processando.";
 

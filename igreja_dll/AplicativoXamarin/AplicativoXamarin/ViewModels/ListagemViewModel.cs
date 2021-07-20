@@ -209,7 +209,7 @@ namespace AplicativoXamarin.ViewModels
                             Data_reuniao = reuniao.Reuniao.Data_reuniao,
                             Horario_fim = reuniao.Reuniao.Horario_fim,
                             Horario_inicio = reuniao.Reuniao.Horario_inicio,
-                            IdReuniao = reuniao.Reuniao.IdReuniao,
+                            Id = reuniao.Reuniao.Id,
                             Local_reuniao = reuniao.Reuniao.Local_reuniao,
                             Pessoas = reuniao.Reuniao.Pessoas
                         });
@@ -227,18 +227,18 @@ namespace AplicativoXamarin.ViewModels
                         //condicao que indica se usuario não pertence a esta reuniao
                         if(listaReuniaoPessoa != null)
                         {
-                            if (listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) == null &&
+                            if (listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.Id) == null &&
                            listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) == null ||
-                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) != null &&
+                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.Id) != null &&
                            listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) == null ||
-                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.IdReuniao) == null &&
+                           listaReuniaoPessoa.FirstOrDefault(i => i.ReuniaoId == reuniao.Id) == null &&
                            listaReuniaoPessoa.FirstOrDefault(i => i.PessoaId == App.UserCurrent.IdPessoa) != null)
                                 this.Reunioes.Add(new Reuniao
                                 {
                                     Data_reuniao = reuniao.Data_reuniao,
                                     Horario_fim = reuniao.Horario_fim,
                                     Horario_inicio = reuniao.Horario_inicio,
-                                    IdReuniao = reuniao.IdReuniao,
+                                    Id = reuniao.Id,
                                     Local_reuniao = reuniao.Local_reuniao,
                                     Pessoas = reuniao.Pessoas
                                 });
@@ -250,7 +250,7 @@ namespace AplicativoXamarin.ViewModels
                                 Data_reuniao = reuniao.Data_reuniao,
                                 Horario_fim = reuniao.Horario_fim,
                                 Horario_inicio = reuniao.Horario_inicio,
-                                IdReuniao = reuniao.IdReuniao,
+                                Id = reuniao.Id,
                                 Local_reuniao = reuniao.Local_reuniao,
                                 Pessoas = reuniao.Pessoas
                             });

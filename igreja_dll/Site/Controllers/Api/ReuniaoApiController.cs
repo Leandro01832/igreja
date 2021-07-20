@@ -36,7 +36,7 @@ namespace Site.Controllers.Api
                     Pessoas = item.Pessoas,
                     Horario_fim = item.Horario_fim,
                     Horario_inicio = item.Horario_inicio,
-                    IdReuniao = item.IdReuniao,
+                    Id = item.Id,
                     Local_reuniao = item.Local_reuniao
                 };
                 lista.Add(modelo);
@@ -69,7 +69,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != reuniao.IdReuniao)
+            if (id != reuniao.Id)
             {
                 return BadRequest();
             }
@@ -107,7 +107,7 @@ namespace Site.Controllers.Api
             db.reuniao.Add(reuniao);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = reuniao.IdReuniao }, reuniao);
+            return CreatedAtRoute("DefaultApi", new { id = reuniao.Id }, reuniao);
         }
 
         // DELETE: api/ReuniaoApi/5
@@ -137,7 +137,7 @@ namespace Site.Controllers.Api
 
         private bool ReuniaoExists(int id)
         {
-            return db.reuniao.Count(e => e.IdReuniao == id) > 0;
+            return db.reuniao.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Site.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdReuniao,Data_reuniao,Horario_inicio,Horario_fim,Local_reuniao")] Reuniao reuniao)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Data_reuniao,Horario_inicio,Horario_fim,Local_reuniao")] Reuniao reuniao)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace Site.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdReuniao,Data_reuniao,Horario_inicio,Horario_fim,Local_reuniao")] Reuniao reuniao)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Data_reuniao,Horario_inicio,Horario_fim,Local_reuniao")] Reuniao reuniao)
         {
             if (ModelState.IsValid)
             {

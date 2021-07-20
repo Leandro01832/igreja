@@ -54,12 +54,11 @@ namespace WindowsFormsApp1.Formulario
         {
             var m = (business.classes.Abstrato.Pessoa)ModeloVelho;
             var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
-            p.MudarEstado(m.IdPessoa, ModeloNovo);
-            
+            p.MudarEstado(m.Id, ModeloNovo);            
 
-            business.classes.Abstrato.Pessoa.listaPessoas.Remove(business.classes.Abstrato.Pessoa.listaPessoas.First(i => i.IdPessoa == m.IdPessoa));
-            business.classes.Abstrato.Pessoa.listaPessoas.Add(p);
-            
+            modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList()
+           .Remove(modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Id == m.Id));
+            modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Add(p);            
 
             MessageBox.Show("Mudança realizada com sucesso!!!");
         }

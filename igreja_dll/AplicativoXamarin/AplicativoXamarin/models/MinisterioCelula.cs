@@ -8,7 +8,7 @@ namespace AplicativoXamarin.models
 {
    public class MinisterioCelula : modelocrud
     {
-        public int IdMinisterioCelula { get; set; }
+        public int Id { get; set; }
         public int CelulaId { get; set; }
         public virtual Celula Celula { get; set; }
         public int MinisterioId { get; set; }

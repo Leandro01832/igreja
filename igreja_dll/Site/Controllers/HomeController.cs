@@ -72,7 +72,7 @@ namespace Site.Controllers
             {
                 var pe = banco.pessoas.First(p => p.Codigo == user.Codigo);
                 pe.celula_ = id;
-                pe.alterar(pe.IdPessoa);
+                pe.alterar(pe.Id);
             }
             ViewBag.mensagem = "Parabêns você esta participando da celula!!!";
             return View("Index");
@@ -91,7 +91,7 @@ namespace Site.Controllers
             {
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Ministerio ministerio = banco.ministerio.Find(Id);
-                ministerio.RemoverDaLista("PessoaMinisterio", ministerio, new VisitanteLgpd(), pessoa.IdPessoa + ", ");
+                ministerio.RemoverDaLista("PessoaMinisterio", ministerio, new VisitanteLgpd(), pessoa.Id + ", ");
 
                 ministerio.alterar(Id);
             }
@@ -114,7 +114,7 @@ namespace Site.Controllers
             {
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Reuniao reuniao = banco.reuniao.Find(Id);
-                reuniao.RemoverDaLista("ReuniaoPessoa", reuniao, new VisitanteLgpd(), pessoa.IdPessoa + ", ");
+                reuniao.RemoverDaLista("ReuniaoPessoa", reuniao, new VisitanteLgpd(), pessoa.Id + ", ");
 
                 reuniao.alterar(Id);
             }
@@ -160,7 +160,7 @@ namespace Site.Controllers
                 {
                     var pic = string.Empty;
                     var folder = "/Content/Imagens";
-                    var file = string.Format("{0}.jpg", pessoa.IdPessoa);
+                    var file = string.Format("{0}.jpg", pessoa.Id);
 
                     var response = FileHelpers.UploadPhoto(Request.Files[0], folder, file);
                     if (response)
@@ -229,7 +229,7 @@ namespace Site.Controllers
             
 
 
-            ViewBag.celula_ = new SelectList(banco.celula.ToList(), "IdCelula", "Nome");
+            ViewBag.celula_ = new SelectList(banco.celula.ToList(), "Id", "Nome");
 
             return View("CadastrarPerfil", p);
         }
@@ -373,7 +373,7 @@ namespace Site.Controllers
                 pes.Chamada.Numero_chamada = pessoa.Chamada.Numero_chamada;
                 pes.Email = pessoa.Email;
 
-                pes.MudarEstado(pessoa.IdPessoa, pes);
+                pes.MudarEstado(pessoa.Id, pes);
                 var tipo = "";
 
                 if (pes is PessoaLgpd)

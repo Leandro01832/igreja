@@ -15,8 +15,6 @@ namespace business.classes.Intermediario
 {
     public class MinisterioCelula : modelocrud
     {
-        [Key]
-        public int IdMinisterioCelula { get; set; }
         public int CelulaId { get; set; }
         [JsonIgnore]
         public virtual Abstrato.Celula Celula { get; set; }
@@ -39,7 +37,7 @@ namespace business.classes.Intermediario
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from MinisterioCelula as MC where MC.IdMinisterioCelula='{id}'";            
+            Select_padrao = $"select * from MinisterioCelula as MC where MC.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if(conexao != null)
@@ -73,65 +71,7 @@ namespace business.classes.Intermediario
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from MinisterioCelula as MC ";            
-            var conexao = bd.obterconexao();
-
-            if(conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "MC.IdMinisterioCelula");
-                    MinisterioCelulas = new List<MinisterioCelula>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<MinisterioCelula> lista = new List<MinisterioCelula>();
-                    while (dr.Read())
-                    {
-                        MinisterioCelula pm = new MinisterioCelula();
-                        pm.IdMinisterioCelula = int.Parse(Convert.ToString(dr["IdMinisterioCelula"]));
-                        lista.Add(pm);
-                    }
-                    dr.Close();
-
-                    bd.fecharconexao(conexao);
-                    //recursividade
-                    foreach (var item in lista.OfType<MinisterioCelula>().ToList())
-                    {
-                        var model = new MinisterioCelula();
-                        if (model.recuperar(item.IdMinisterioCelula))
-                            MinisterioCelulas.Add(model); //não deu erro de conexão
-                        else
-                        {
-                            MinisterioCelulas = null;
-                            return false;
-                        }
-                    }
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            MinisterioCelulas = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             throw new NotImplementedException();

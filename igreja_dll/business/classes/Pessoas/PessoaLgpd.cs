@@ -28,7 +28,7 @@ namespace business.classes.Pessoas
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into PessoaLgpd (IdPessoa) values (IDENT_CURRENT('Pessoa')) ";
+            Insert_padrao += " insert into PessoaLgpd (Id) values (IDENT_CURRENT('Pessoa')) ";
 
             return Insert_padrao;
         }
@@ -42,7 +42,7 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.IdPessoa='{id}' "
+            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.Id='{id}' "
             + base.excluir(id);
 
             return Delete_padrao;
@@ -50,7 +50,7 @@ namespace business.classes.Pessoas
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from PessoaLgpd as PL where PL.IdPessoa='{id}'";
+            Select_padrao = $"select * from PessoaLgpd as PL where PL.Id='{id}'";
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);

@@ -41,8 +41,8 @@
                 @Html.DisplayFor(modelItem => item.Local_reuniao)
             </td>
             <td>
-                @Html.ActionLink("Detalhes da reunião", "Details", "Reuniao", new { id = item.IdReuniao }, null) |
-                @using (Html.BeginForm("ParticiparReuniao", "Home", new { Id = item.IdReuniao }, FormMethod.Post, null))
+                @Html.ActionLink("Detalhes da reunião", "Details", "Reuniao", new { id = item.Id }, null) |
+                @using (Html.BeginForm("ParticiparReuniao", "Home", new { Id = item.Id }, FormMethod.Post, null))
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-group">

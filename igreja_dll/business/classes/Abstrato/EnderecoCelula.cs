@@ -14,7 +14,7 @@ namespace business.classes.Celula
     {
 
         [Key, ForeignKey("Celula")]
-        public int IdEnderecoCelula { get; set; }
+        public new int Id { get; set; }
         [JsonIgnore]
         public virtual Abstrato.Celula Celula { get; set; }
 
@@ -55,7 +55,7 @@ namespace business.classes.Celula
         {
             Insert_padrao =
         $"insert into EnderecoCelula (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
-        $" IdEnderecoCelula) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
+        $" Id) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
         $" '{Cep}', '{Complemento}', IDENT_CURRENT('Celula'))";
             return Insert_padrao;
         }
@@ -64,19 +64,19 @@ namespace business.classes.Celula
         {
             Update_padrao = $"update EnderecoCelula set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
             $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
-            $"  where IdEnderecoCelula='{id}' ";
+            $"  where Id='{id}' ";
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from EnderecoCelula where IdEnderecoCelula={id} ";
+            Delete_padrao = $"delete from EnderecoCelula where Id={id} ";
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from EnderecoCelula as M where M.IdEnderecoCelula='{id}'";
+            Select_padrao = $"select * from EnderecoCelula as M where M.Id='{id}'";
             var conexao = bd.obterconexao();
 
             if(conexao != null)
@@ -98,7 +98,7 @@ namespace business.classes.Celula
                     this.Cidade = Convert.ToString(dr["Cidade"]);
                     this.Bairro = Convert.ToString(dr["Bairro"]);
                     this.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.IdEnderecoCelula = int.Parse(Convert.ToString(dr["IdEnderecoCelula"]));
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
                     this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
 
@@ -117,58 +117,7 @@ namespace business.classes.Celula
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from EnderecoCelula as M";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                SqlDataReader dr = comando.ExecuteReader();
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
-                try
-                {
-                    while (dr.Read())
-                    {
-                        EnderecoCelula end = new EnderecoCelula();
-                        end.Pais = Convert.ToString(dr["Pais"]);
-                        end.Estado = Convert.ToString(dr["Estado"]);
-                        end.Cidade = Convert.ToString(dr["Cidade"]);
-                        end.Bairro = Convert.ToString(dr["Bairro"]);
-                        end.Complemento = Convert.ToString(dr["Complemento"]);
-                        end.IdEnderecoCelula = int.Parse(Convert.ToString(dr["IdEnderecoCelula"]));
-                        end.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-                        end.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-                        modelos.Add(end);
-                    }
-
-                    dr.Close();
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                return true;
-            }
-
-            EnderecosCelula = null;
-            return false;
-        }
+        
     }
 
 }

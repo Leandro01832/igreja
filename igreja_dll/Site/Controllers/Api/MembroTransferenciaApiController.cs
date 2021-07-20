@@ -48,7 +48,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != membro_Transferencia.IdPessoa)
+            if (id != membro_Transferencia.Id)
             {
                 return BadRequest();
             }
@@ -87,7 +87,7 @@ namespace Site.Controllers.Api
                 membro_Transferencia.salvar();
             }
             catch { BadRequest("Cadastro não realizado"); }
-            return CreatedAtRoute("DefaultApi", new { id = membro_Transferencia.IdPessoa }, membro_Transferencia);
+            return CreatedAtRoute("DefaultApi", new { id = membro_Transferencia.Id }, membro_Transferencia);
         }
 
         // DELETE: api/MembroTransferenciaApi/5
@@ -117,7 +117,7 @@ namespace Site.Controllers.Api
 
         private bool Membro_TransferenciaExists(int id)
         {
-            return db.pessoas.Count(e => e.IdPessoa == id) > 0;
+            return db.pessoas.Count(e => e.Id == id) > 0;
         }
     }
 }

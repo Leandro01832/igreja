@@ -67,14 +67,14 @@ namespace business.classes.Abstrato
         {
             Update_padrao = base.alterar(id);
             Update_padrao += $" update MembroLgpd set Data_batismo='{Data_batismo}', " +
-            $" Desligamento='{Desligamento.ToString()}', Motivo_desligamento='{Motivo_desligamento}' where IdPessoa='{id}'";
+            $" Desligamento='{Desligamento.ToString()}', Motivo_desligamento='{Motivo_desligamento}' where Id='{id}'";
             
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from MembroLgpd where IdPessoa='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from MembroLgpd where Id='{id}' " + base.excluir(id);
 
             
             return Delete_padrao;
@@ -82,7 +82,7 @@ namespace business.classes.Abstrato
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from MembroLgpd as P where P.IdPessoa='{id}'";
+            Select_padrao = $"select * from MembroLgpd as P where P.Id='{id}'";
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -106,7 +106,7 @@ namespace business.classes.Abstrato
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into MembroLgpd (Data_batismo, Desligamento, Motivo_desligamento, IdPessoa) values" +
+            Insert_padrao += " insert into MembroLgpd (Data_batismo, Desligamento, Motivo_desligamento, Id) values" +
                 $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
             
             return Insert_padrao;

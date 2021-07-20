@@ -83,7 +83,7 @@ namespace business.classes.Abstrato
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Membro as P where P.IdPessoa='{id}'";
+            Select_padrao = $"select * from Membro as P where P.Id='{id}'";
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -107,7 +107,7 @@ namespace business.classes.Abstrato
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro (Data_batismo, Desligamento, Motivo_desligamento, IdPessoa) values" +
+            Insert_padrao += " insert into Membro (Data_batismo, Desligamento, Motivo_desligamento, Id) values" +
             $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
             
             return Insert_padrao;

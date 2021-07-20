@@ -27,14 +27,14 @@ namespace business.classes.Celulas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Celula_Crianca where IdCelula='{id}' " + base.excluir(id);
+            Delete_padrao = $" delete from Celula_Crianca where Id='{id}' " + base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Celula_Crianca as CC where CC.IdCelula='{id}'";            
+            Select_padrao = $"select * from Celula_Crianca as CC where CC.Id='{id}'";            
             var conexao = bd.obterconexao();
 
             if (conexao != null)
@@ -66,72 +66,11 @@ namespace business.classes.Celulas
             }
             return false;
         }
-
-        public override bool recuperar()
-        {
-            Select_padrao = "select * from Celula_Crianca as CC ";            
-            var conexao = bd.obterconexao();
-
-            if (conexao != null)
-            {
-                try
-                {
-                    Select_padrao = Select_padrao.Replace("*", "CC.IdCelula");
-                    celulasCrianca = new List<Celula_Crianca>();
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    List<modelocrud> modelos = new List<modelocrud>();
-                    while (dr.Read())
-                    {
-                        Celula_Crianca c = new Celula_Crianca();
-                        c.IdCelula = int.Parse(dr["IdCelula"].ToString());
-                        modelos.Add(c);
-                    }
-
-                    dr.Close();
-
-                    //Recursividade
-                    bd.fecharconexao(conexao);
-
-                    foreach (var m in modelos)
-                    {
-                        var cel = (Celula_Crianca)m;
-                        var c = new Celula_Crianca();
-                        if (c.recuperar(cel.IdCelula))
-                            celulasCrianca.Add(c); // não deu erro de conexao
-                        else
-                        {
-                            celulasCrianca = null;
-                            return false;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
-            celulasCrianca = null;
-            return false;
-        }
-
+        
         public override string salvar()
         {
             Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Celula_Crianca (IdCelula) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
+            Insert_padrao += " insert into Celula_Crianca (Id) values (IDENT_CURRENT('Celula')) " + BDcomum.addNaLista;
             bd.SalvarModelo(this);
 
             return Insert_padrao;
@@ -139,7 +78,7 @@ namespace business.classes.Celulas
 
         public override string ToString()
         {
-            return base.IdCelula.ToString() + " - " + base.Nome;
+            return base.Id.ToString() + " - " + base.Nome;
         }
     }
 }

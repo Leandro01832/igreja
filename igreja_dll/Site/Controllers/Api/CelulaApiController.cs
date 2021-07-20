@@ -41,7 +41,7 @@ namespace Site.Controllers.Api
                     Dia_semana = item.Dia_semana,
                     EnderecoCelula = item.EnderecoCelula,
                     Horario = item.Horario,
-                    IdCelula = item.IdCelula,
+                    Id = item.Id,
                     Maximo_pessoa = item.Maximo_pessoa,
                     Nome = item.Nome
                 };
@@ -60,7 +60,7 @@ namespace Site.Controllers.Api
             Celula item = await db.celula
                 .Include(c => c.Pessoas)
                 .Include(c => c.Ministerios)
-                .FirstAsync(c => c.IdCelula == id);
+                .FirstAsync(c => c.Id == id);
             if (item == null)
             {
                 return NotFound();
@@ -73,7 +73,7 @@ namespace Site.Controllers.Api
                 Dia_semana = item.Dia_semana,
                 EnderecoCelula = item.EnderecoCelula,
                 Horario = item.Horario,
-                IdCelula = item.IdCelula,
+                Id = item.Id,
                 Maximo_pessoa = item.Maximo_pessoa,
                 Nome = item.Nome
             };
@@ -90,7 +90,7 @@ namespace Site.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != celula.IdCelula)
+            if (id != celula.Id)
             {
                 return BadRequest();
             }
@@ -128,7 +128,7 @@ namespace Site.Controllers.Api
             db.celula.Add(celula);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = celula.IdCelula }, celula);
+            return CreatedAtRoute("DefaultApi", new { id = celula.Id }, celula);
         }
 
         // DELETE: api/CelulaApi/5
@@ -158,7 +158,7 @@ namespace Site.Controllers.Api
 
         private bool CelulaExists(int id)
         {
-            return db.celula.Count(e => e.IdCelula == id) > 0;
+            return db.celula.Count(e => e.Id == id) > 0;
         }
     }
 }

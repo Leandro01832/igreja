@@ -14,7 +14,7 @@
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Id:" HorizontalTextAlignment="Start" TextColor="{StaticResource AcentColor}"/>
-                <Label Text="{Binding celula.IdCelula}" HorizontalTextAlignment="End" TextColor="{StaticResource AcentColor}"/>
+                <Label Text="{Binding celula.Id}" HorizontalTextAlignment="End" TextColor="{StaticResource AcentColor}"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" >

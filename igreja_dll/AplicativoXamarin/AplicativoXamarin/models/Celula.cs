@@ -9,7 +9,7 @@ namespace AplicativoXamarin.models
 {
     public class Celula : modelocrud
     {
-        public int IdCelula { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Dia_semana { get; set; }
         public TimeSpan? Horario { get; set; }        
