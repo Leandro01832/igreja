@@ -38,6 +38,10 @@ namespace business.classes
         {
         }
 
+        public Historico(int id) : base(id)
+        {
+        }
+
         public override string alterar(int id)
         {
             Update_padrao = $"update Historico set Data_inicio={Data_inicio.ToString()}, " +
@@ -58,15 +62,10 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Historico as M where M.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if(conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
@@ -75,8 +74,8 @@ namespace business.classes
                     }
 
                     dr.Read();
-                    this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
                     this.Id = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
                     this.pessoaid = int.Parse(Convert.ToString(dr["pessoaid"]));
                     this.Falta = int.Parse(Convert.ToString(dr["Falta"]));
                     dr.Close();

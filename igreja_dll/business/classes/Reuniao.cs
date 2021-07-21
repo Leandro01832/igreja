@@ -58,6 +58,10 @@ namespace business.classes
             AddNalista = new AddNalista();
         }
 
+        public Reuniao(int id) : base(id)
+        {
+        }
+
         public override string alterar(int id)
         {
             Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao.ToString("yyyy-MM-dd")}', " +
@@ -70,22 +74,16 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Reuniao where Id='{id}' ";
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Reuniao as M where M.Id='{id}' ";
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

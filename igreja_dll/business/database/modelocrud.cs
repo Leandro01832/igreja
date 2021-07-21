@@ -24,9 +24,18 @@ namespace database
         public modelocrud()
         {
             this.bd = new BDcomum();
-            this.sqlCommand = new SqlCommand("", this.bd.obterconexao());
             Erro_Conexao = false;
             QuantErro = 0;
+        }
+
+        public modelocrud(int id)
+        {
+            this.bd = new BDcomum();
+            Select_padrao = $"select * from {this.GetType().Name} as C where C.Id='{id}'";
+            Delete_padrao = $" delete from {this.GetType().Name} as C where C.Id='{Id}' ";
+            SqlCommand comando = new SqlCommand(Select_padrao, this.bd.obterconexao());
+            this.dr =  comando.ExecuteReader();
+            this.conexao = this.bd.obterconexao();
         }
 
         private string insert_padrao;
@@ -35,7 +44,8 @@ namespace database
         private string select_padrao;
         
         public BDcomum bd;
-        public SqlCommand sqlCommand;
+        public SqlDataReader dr;
+        public SqlConnection conexao;
 
         [NotMapped]
         public static List<modelocrud> Modelos = new List<modelocrud>();
@@ -51,13 +61,13 @@ namespace database
         [NotMapped]
         protected string Comando { get; set; }
         [NotMapped]
-        protected string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
+        public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
         [NotMapped]
-        protected string Update_padrao { get => update_padrao; set => update_padrao = value; }
+        public string Update_padrao { get => update_padrao; set => update_padrao = value; }
         [NotMapped]
-        protected string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
+        public string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
         [NotMapped]
-        protected string Select_padrao { get => select_padrao; set => select_padrao = value; }
+        public string Select_padrao { get => select_padrao; set => select_padrao = value; }
 
         public abstract string salvar();
         public abstract string alterar(int id);
@@ -145,51 +155,51 @@ namespace database
                     {
                         if (this is Pessoa)
                         {
-                            if (this is Visitante               ) { var c = new Visitante();                if (c.recuperar(m)) Pessoa.visitantes.Add(c);                else { Pessoa.visitantes = null;                return false; } }
-                            if (this is Crianca                 ) { var c = new Crianca();                  if (c.recuperar(m)) Pessoa.criancas.Add(c);                  else { Pessoa.criancas                  = null; return false; } }
-                            if (this is Membro_Aclamacao        ) { var c = new Membro_Aclamacao();         if (c.recuperar(m)) Pessoa.membros_Aclamacao.Add(c);         else { Pessoa.membros_Aclamacao         = null; return false; } }
-                            if (this is Membro_Batismo          ) { var c = new Membro_Batismo();           if (c.recuperar(m)) Pessoa.membros_Batismo.Add(c);           else { Pessoa.membros_Batismo           = null; return false; } }
-                            if (this is Membro_Reconciliacao    ) { var c = new Membro_Reconciliacao();     if (c.recuperar(m)) Pessoa.membros_Reconciliacao.Add(c);     else { Pessoa.membros_Reconciliacao     = null; return false; } }
-                            if (this is Membro_Transferencia    ) { var c = new Membro_Transferencia();     if (c.recuperar(m)) Pessoa.membros_Transferencia.Add(c);     else { Pessoa.membros_Transferencia     = null; return false; } }
-                            if (this is VisitanteLgpd           ) { var c = new VisitanteLgpd();            if (c.recuperar(m)) Pessoa.visitantesLgpd.Add(c);            else { Pessoa.visitantesLgpd            = null; return false; } }
-                            if (this is CriancaLgpd             ) { var c = new CriancaLgpd();              if (c.recuperar(m)) Pessoa.criancasLgpd.Add(c);              else { Pessoa.criancasLgpd              = null; return false; } }
-                            if (this is Membro_AclamacaoLgpd    ) { var c = new Membro_AclamacaoLgpd();     if (c.recuperar(m)) Pessoa.membros_AclamacaoLgpd.Add(c);     else { Pessoa.membros_AclamacaoLgpd     = null; return false; } }
-                            if (this is Membro_BatismoLgpd      ) { var c = new Membro_BatismoLgpd();       if (c.recuperar(m)) Pessoa.membros_BatismoLgpd.Add(c);       else { Pessoa.membros_BatismoLgpd       = null; return false; } }
-                            if (this is Membro_ReconciliacaoLgpd) { var c = new Membro_ReconciliacaoLgpd(); if (c.recuperar(m)) Pessoa.membros_ReconciliacaoLgpd.Add(c); else { Pessoa.membros_ReconciliacaoLgpd = null; return false; } }
-                            if (this is Membro_TransferenciaLgpd) { var c = new Membro_TransferenciaLgpd(); if (c.recuperar(m)) Pessoa.membros_TransferenciaLgpd.Add(c); else { Pessoa.membros_TransferenciaLgpd = null; return false; } }
+                            if (this is Visitante               ) { var c = new Visitante               (m); if (c.recuperar(m)) Pessoa.visitantes.Add(c);                else { Pessoa.visitantes = null;                return false; } }
+                            if (this is Crianca                 ) { var c = new Crianca                 (m); if (c.recuperar(m)) Pessoa.criancas.Add(c);                  else { Pessoa.criancas                  = null; return false; } }
+                            if (this is Membro_Aclamacao        ) { var c = new Membro_Aclamacao        (m); if (c.recuperar(m)) Pessoa.membros_Aclamacao.Add(c);         else { Pessoa.membros_Aclamacao         = null; return false; } }
+                            if (this is Membro_Batismo          ) { var c = new Membro_Batismo          (m); if (c.recuperar(m)) Pessoa.membros_Batismo.Add(c);           else { Pessoa.membros_Batismo           = null; return false; } }
+                            if (this is Membro_Reconciliacao    ) { var c = new Membro_Reconciliacao    (m); if (c.recuperar(m)) Pessoa.membros_Reconciliacao.Add(c);     else { Pessoa.membros_Reconciliacao     = null; return false; } }
+                            if (this is Membro_Transferencia    ) { var c = new Membro_Transferencia    (m); if (c.recuperar(m)) Pessoa.membros_Transferencia.Add(c);     else { Pessoa.membros_Transferencia     = null; return false; } }
+                            if (this is VisitanteLgpd           ) { var c = new VisitanteLgpd           (m); if (c.recuperar(m)) Pessoa.visitantesLgpd.Add(c);            else { Pessoa.visitantesLgpd            = null; return false; } }
+                            if (this is CriancaLgpd             ) { var c = new CriancaLgpd             (m); if (c.recuperar(m)) Pessoa.criancasLgpd.Add(c);              else { Pessoa.criancasLgpd              = null; return false; } }
+                            if (this is Membro_AclamacaoLgpd    ) { var c = new Membro_AclamacaoLgpd    (m); if (c.recuperar(m)) Pessoa.membros_AclamacaoLgpd.Add(c);     else { Pessoa.membros_AclamacaoLgpd     = null; return false; } }
+                            if (this is Membro_BatismoLgpd      ) { var c = new Membro_BatismoLgpd      (m); if (c.recuperar(m)) Pessoa.membros_BatismoLgpd.Add(c);       else { Pessoa.membros_BatismoLgpd       = null; return false; } }
+                            if (this is Membro_ReconciliacaoLgpd) { var c = new Membro_ReconciliacaoLgpd(m); if (c.recuperar(m)) Pessoa.membros_ReconciliacaoLgpd.Add(c); else { Pessoa.membros_ReconciliacaoLgpd = null; return false; } }
+                            if (this is Membro_TransferenciaLgpd) { var c = new Membro_TransferenciaLgpd(m); if (c.recuperar(m)) Pessoa.membros_TransferenciaLgpd.Add(c); else { Pessoa.membros_TransferenciaLgpd = null; return false; } }
                         }
                         else
                         if (this is Ministerio)
                         {
-                            if (this is Lider_Celula                     ) { var c = new Lider_Celula();                      if (c.recuperar(m)) Ministerio.lideresCelula.Add(c);                     else { Ministerio.lideresCelula                     = null; return false; } }
-                            if (this is Lider_Celula_Treinamento         ) { var c = new Lider_Celula_Treinamento();          if (c.recuperar(m)) Ministerio.LideresCelulaTreinamento.Add(c);          else { Ministerio.LideresCelulaTreinamento          = null; return false; } }
-                            if (this is Lider_Ministerio                 ) { var c = new Lider_Ministerio();                  if (c.recuperar(m)) Ministerio.lideresMinisterio.Add(c);                 else { Ministerio.lideresMinisterio                 = null; return false; } }
-                            if (this is Lider_Ministerio_Treinamento     ) { var c = new Lider_Ministerio_Treinamento();      if (c.recuperar(m)) Ministerio.lideresMinisterioTreinamento.Add(c);      else { Ministerio.lideresMinisterioTreinamento      = null; return false; } }
-                            if (this is Supervisor_Celula                ) { var c = new Supervisor_Celula();                 if (c.recuperar(m)) Ministerio.supervisoresCelula.Add(c);                else { Ministerio.supervisoresCelula                = null; return false; } }
-                            if (this is Supervisor_Celula_Treinamento    ) { var c = new Supervisor_Celula_Treinamento();     if (c.recuperar(m)) Ministerio.supervisoresCelulaTreinamento.Add(c);     else { Ministerio.supervisoresCelulaTreinamento     = null; return false; } }
-                            if (this is Supervisor_Ministerio            ) { var c = new Supervisor_Ministerio();             if (c.recuperar(m)) Ministerio.supervisoresMinisterio.Add(c);            else { Ministerio.supervisoresMinisterio            = null; return false; } }
-                            if (this is Supervisor_Ministerio_Treinamento) { var c = new Supervisor_Ministerio_Treinamento(); if (c.recuperar(m)) Ministerio.supervisoresMinisterioTreinamento.Add(c); else { Ministerio.supervisoresMinisterioTreinamento = null; return false; } }
+                            if (this is Lider_Celula                     ) { var c = new Lider_Celula                     (m); if (c.recuperar(m)) Ministerio.lideresCelula.Add(c);                     else { Ministerio.lideresCelula                     = null; return false; } }
+                            if (this is Lider_Celula_Treinamento         ) { var c = new Lider_Celula_Treinamento         (m); if (c.recuperar(m)) Ministerio.LideresCelulaTreinamento.Add(c);          else { Ministerio.LideresCelulaTreinamento          = null; return false; } }
+                            if (this is Lider_Ministerio                 ) { var c = new Lider_Ministerio                 (m); if (c.recuperar(m)) Ministerio.lideresMinisterio.Add(c);                 else { Ministerio.lideresMinisterio                 = null; return false; } }
+                            if (this is Lider_Ministerio_Treinamento     ) { var c = new Lider_Ministerio_Treinamento     (m); if (c.recuperar(m)) Ministerio.lideresMinisterioTreinamento.Add(c);      else { Ministerio.lideresMinisterioTreinamento      = null; return false; } }
+                            if (this is Supervisor_Celula                ) { var c = new Supervisor_Celula                (m); if (c.recuperar(m)) Ministerio.supervisoresCelula.Add(c);                else { Ministerio.supervisoresCelula                = null; return false; } }
+                            if (this is Supervisor_Celula_Treinamento    ) { var c = new Supervisor_Celula_Treinamento    (m); if (c.recuperar(m)) Ministerio.supervisoresCelulaTreinamento.Add(c);     else { Ministerio.supervisoresCelulaTreinamento     = null; return false; } }
+                            if (this is Supervisor_Ministerio            ) { var c = new Supervisor_Ministerio            (m); if (c.recuperar(m)) Ministerio.supervisoresMinisterio.Add(c);            else { Ministerio.supervisoresMinisterio            = null; return false; } }
+                            if (this is Supervisor_Ministerio_Treinamento) { var c = new Supervisor_Ministerio_Treinamento(m); if (c.recuperar(m)) Ministerio.supervisoresMinisterioTreinamento.Add(c); else { Ministerio.supervisoresMinisterioTreinamento = null; return false; } }
                         }
                         else
                         if (this is Celula)
                         {
-                            if (this is Celula_Adolescente) { var c = new Celula_Adolescente(); if (c.recuperar(m)) Celula.celulasAdolescente.Add(c); else { Celula.celulasAdolescente = null; return false; } }
-                            if (this is Celula_Adulto     ) { var c = new Celula_Adulto();      if (c.recuperar(m)) Celula.celulasAdulto.Add(c);      else { Celula.celulasAdulto = null; return false; } }
-                            if (this is Celula_Casado     ) { var c = new Celula_Casado();      if (c.recuperar(m)) Celula.celulasCasado.Add(c);      else { Celula.celulasCasado = null; return false; } }
-                            if (this is Celula_Jovem      ) { var c = new Celula_Jovem();       if (c.recuperar(m)) Celula.celulasJovem.Add(c);       else { Celula.celulasJovem = null; return false; } }
-                            if (this is Celula_Crianca    ) { var c = new Celula_Crianca();     if (c.recuperar(m)) Celula.celulasCrianca.Add(c);     else { Celula.celulasCrianca = null; return false; } }
+                            if (this is Celula_Adolescente) { var c = new Celula_Adolescente(m); if (c.recuperar(m)) Celula.celulasAdolescente.Add(c); else { Celula.celulasAdolescente = null; return false; } }
+                            if (this is Celula_Adulto     ) { var c = new Celula_Adulto     (m); if (c.recuperar(m)) Celula.celulasAdulto.Add(c);      else { Celula.celulasAdulto = null; return false; } }
+                            if (this is Celula_Casado     ) { var c = new Celula_Casado     (m); if (c.recuperar(m)) Celula.celulasCasado.Add(c);      else { Celula.celulasCasado = null; return false; } }
+                            if (this is Celula_Jovem      ) { var c = new Celula_Jovem      (m); if (c.recuperar(m)) Celula.celulasJovem.Add(c);       else { Celula.celulasJovem = null; return false; } }
+                            if (this is Celula_Crianca    ) { var c = new Celula_Crianca    (m); if (c.recuperar(m)) Celula.celulasCrianca.Add(c);     else { Celula.celulasCrianca = null; return false; } }
                         }
                         else
-                        if (this is Reuniao         ) { var c = new Reuniao();          if (c.recuperar(m)) Reuniao.Reunioes.Add(c);                   else { Reuniao.Reunioes = null;  return false;                  } } else
-                        if (this is MudancaEstado   ) { var c = new MudancaEstado();    if (c.recuperar(m)) MudancaEstado.Mudancas.Add(c);             else { MudancaEstado.Mudancas = null; return false;             } } else
-                        if (this is Historico       ) { var c = new Historico();        if (c.recuperar(m)) Historico.Historicos.Add(c);               else { Historico.Historicos = null; return false;               } } else
-                        if (this is Chamada         ) { var c = new Chamada();          if (c.recuperar(m)) Chamada.Chamadas.Add(c);                   else { Chamada.Chamadas = null; return false;                   } } else
-                        if (this is Telefone        ) { var c = new Telefone();         if (c.recuperar(m)) Telefone.Telefones.Add(c);                 else { Telefone.Telefones = null; return false;                 } } else
-                        if (this is Endereco        ) { var c = new Endereco();         if (c.recuperar(m)) Endereco.Enderecos.Add(c);                 else { Endereco.Enderecos = null; return false;                 } } else
-                        if (this is EnderecoCelula  ) { var c = new EnderecoCelula();   if (c.recuperar(m)) EnderecoCelula.EnderecosCelula.Add(c);     else { EnderecoCelula.EnderecosCelula = null; return false;     } } else
-                        if (this is MinisterioCelula) { var c = new MinisterioCelula(); if (c.recuperar(m)) MinisterioCelula.MinisterioCelulas.Add(c); else { MinisterioCelula.MinisterioCelulas = null; return false; } } else
-                        if (this is PessoaMinisterio) { var c = new PessoaMinisterio(); if (c.recuperar(m)) PessoaMinisterio.PessoaMinisterios.Add(c); else { PessoaMinisterio.PessoaMinisterios = null; return false; } } else
-                        if (this is ReuniaoPessoa   ) { var c = new ReuniaoPessoa();    if (c.recuperar(m)) ReuniaoPessoa.ReuniaoPessoas.Add(c);       else { ReuniaoPessoa.ReuniaoPessoas = null; return false; } }
+                        if (this is Reuniao         ) { var c = new Reuniao         (m); if (c.recuperar(m)) Reuniao.Reunioes.Add(c);                   else { Reuniao.Reunioes = null;  return false;                  } } else
+                        if (this is MudancaEstado   ) { var c = new MudancaEstado   (m); if (c.recuperar(m)) MudancaEstado.Mudancas.Add(c);             else { MudancaEstado.Mudancas = null; return false;             } } else
+                        if (this is Historico       ) { var c = new Historico       (m); if (c.recuperar(m)) Historico.Historicos.Add(c);               else { Historico.Historicos = null; return false;               } } else
+                        if (this is Chamada         ) { var c = new Chamada         (m); if (c.recuperar(m)) Chamada.Chamadas.Add(c);                   else { Chamada.Chamadas = null; return false;                   } } else
+                        if (this is Telefone        ) { var c = new Telefone        (m); if (c.recuperar(m)) Telefone.Telefones.Add(c);                 else { Telefone.Telefones = null; return false;                 } } else
+                        if (this is Endereco        ) { var c = new Endereco        (m); if (c.recuperar(m)) Endereco.Enderecos.Add(c);                 else { Endereco.Enderecos = null; return false;                 } } else
+                        if (this is EnderecoCelula  ) { var c = new EnderecoCelula  (m); if (c.recuperar(m)) EnderecoCelula.EnderecosCelula.Add(c);     else { EnderecoCelula.EnderecosCelula = null; return false;     } } else
+                        if (this is MinisterioCelula) { var c = new MinisterioCelula(m); if (c.recuperar(m)) MinisterioCelula.MinisterioCelulas.Add(c); else { MinisterioCelula.MinisterioCelulas = null; return false; } } else
+                        if (this is PessoaMinisterio) { var c = new PessoaMinisterio(m); if (c.recuperar(m)) PessoaMinisterio.PessoaMinisterios.Add(c); else { PessoaMinisterio.PessoaMinisterios = null; return false; } } else
+                        if (this is ReuniaoPessoa   ) { var c = new ReuniaoPessoa   (m); if (c.recuperar(m)) ReuniaoPessoa.ReuniaoPessoas.Add(c);       else { ReuniaoPessoa.ReuniaoPessoas = null; return false; } }
                     }
                 }
 
@@ -360,7 +370,6 @@ namespace database
                 q = modelos.OfType<Celula>().Where(i => i.Horario == apenasUmHorario).Cast<modelocrud>().ToList();
             return q;
         }
-
 
         public static int GeTotalRegistrosPessoas()
         {

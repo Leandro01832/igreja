@@ -30,6 +30,8 @@ namespace business.classes.PessoasLgpd
         {
         }
 
+        public Membro_TransferenciaLgpd(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -43,34 +45,29 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Membro_TransferenciaLgpd as MT where MT.Id='{id}'";
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
                         return false;
                     }
-                    base.recuperar(id);
                     dr.Read();
                     this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                     this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
                     this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
                     dr.Close();
+                    base.recuperar(id);
                 }
                 catch (Exception ex)
                 {

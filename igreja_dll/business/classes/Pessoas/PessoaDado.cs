@@ -19,6 +19,10 @@ namespace business.classes.Pessoas
             AddNalista = new AddNalista();
         }
 
+        protected PessoaDado(int m) : base(m)
+        {
+        }
+
         //propriedades
         #region
 

@@ -63,6 +63,8 @@ namespace business.classes.Abstrato
             BuscaLista = new BuscaLista();
         }
 
+        protected Celula(int m) : base(m) { }
+
         #region Methods
         public override string alterar(int id)
         {

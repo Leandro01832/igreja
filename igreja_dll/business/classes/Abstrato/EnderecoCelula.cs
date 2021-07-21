@@ -51,6 +51,10 @@ namespace business.classes.Celula
         {
         }
 
+        public EnderecoCelula(int id) : base(id)
+        {
+        }
+
         public override string salvar()
         {
             Insert_padrao =
@@ -76,15 +80,10 @@ namespace business.classes.Celula
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from EnderecoCelula as M where M.Id='{id}'";
-            var conexao = bd.obterconexao();
-
             if(conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

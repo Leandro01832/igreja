@@ -17,6 +17,8 @@ namespace business.classes.Celulas
         {
         }
 
+        public Celula_Jovem(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id) + BDcomum.addNaLista;
@@ -26,22 +28,17 @@ namespace business.classes.Celulas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Celula_Jovem where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Celula_Jovem as CJ where CJ.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

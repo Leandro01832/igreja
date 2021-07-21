@@ -17,6 +17,10 @@ namespace business.classes.Ministerio
         {
         }
 
+        public Lider_Celula(int m) : base(m)
+        {
+        }
+
         public override string salvar()
         {
             Insert_padrao = base.salvar();
@@ -28,15 +32,10 @@ namespace business.classes.Ministerio
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Lider_Celula as LC where LC.Id='{id}' ";
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
@@ -62,7 +61,7 @@ namespace business.classes.Ministerio
         
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Celula where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }

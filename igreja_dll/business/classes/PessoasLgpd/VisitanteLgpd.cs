@@ -28,6 +28,8 @@ namespace business.classes.PessoasLgpd
         {
         }
 
+        public VisitanteLgpd(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -41,36 +43,28 @@ namespace business.classes.PessoasLgpd
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from {this.GetType().Name} where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from VisitanteLgpd as V where V.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
-
                     if (dr.HasRows == false)
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
                         return false;
                     }
-                    base.recuperar(id);
                     dr.Read();
-
                     this.Data_visita = Convert.ToDateTime(dr["Data_visita"]);
                     this.Condicao_religiosa = Convert.ToString(dr["Condicao_religiosa"]);
-
                     dr.Close();
+                    base.recuperar(id);
                 }
 
                 catch (Exception ex)

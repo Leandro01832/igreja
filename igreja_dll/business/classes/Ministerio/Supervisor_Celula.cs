@@ -21,6 +21,8 @@ namespace business.classes.Ministerio
             this.Maximo_celula = 5;
         }
 
+        public Supervisor_Celula(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -32,32 +34,27 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Supervisor_Celula where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Supervisor_Celula as SC where SC.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
                         return false;
                     }
-                    base.recuperar(id);
                     dr.Read();
                     this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
                     dr.Close();
+                    base.recuperar(id);
                 }
                 catch (Exception ex)
                 {

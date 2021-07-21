@@ -26,6 +26,8 @@ namespace business.classes.Pessoas
         {
         }
 
+        public Membro_Aclamacao(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);
@@ -38,32 +40,27 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Membro_Aclamacao where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Membro_Aclamacao as MA where MA.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
                         return false;
                     }
-                    base.recuperar(id);
                     dr.Read();
                     this.Denominacao = Convert.ToString(dr["Denominacao"]);
                     dr.Close();
+                    base.recuperar(id);
                 }
 
                 catch (Exception ex)

@@ -36,6 +36,10 @@ namespace business.classes
 
         }
 
+        public Chamada(int id) : base(id)
+        {
+        }
+
         public override string alterar(int id)
         {
             Update_padrao = $"update Chamada set Data_inicio={Data_inicio.ToString()},"
@@ -51,15 +55,10 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Chamada as C where C.Id='{id}'";
-            var conexao = bd.obterconexao();
-
             if(conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

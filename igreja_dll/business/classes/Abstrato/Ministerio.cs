@@ -57,6 +57,10 @@ namespace business.classes.Abstrato
             AddNalista = new AddNalista();
         }
 
+        protected Ministerio(int m) : base(m)
+        {
+        }
+
         #region Methods
         public override string alterar(int id)
         {

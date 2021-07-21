@@ -38,6 +38,10 @@ namespace business.classes
         {
         }
 
+        public Telefone(int id) : base(id)
+        {
+        }
+
         public override string alterar(int id)
         {
             Update_padrao = $"update Telefone set Fone='{Fone}', Celular='{Celular}', " +
@@ -53,15 +57,10 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Telefone as M where M.Id={id}";            
-            var conexao = bd.obterconexao();
-            
             if(conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

@@ -31,6 +31,10 @@ namespace business.classes
             this.DataMudanca = DateTime.Now;
         }
 
+        public MudancaEstado(int id) : base(id)
+        {
+        }
+
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
@@ -444,23 +448,16 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from MudancaEstado as M where M.Id='{id}'";
-
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from MudancaEstado as P where P.Id='{id}'";
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
@@ -469,10 +466,9 @@ namespace business.classes
                     }
 
                     dr.Read();
-
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
                     this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.novoEstado = Convert.ToString(dr["novoEstado"]);
                     this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
                     dr.Close();

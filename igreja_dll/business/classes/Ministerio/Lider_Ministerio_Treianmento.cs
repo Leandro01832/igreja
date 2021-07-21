@@ -19,6 +19,8 @@ namespace business.classes.Ministerio
         {
         }
 
+        public Lider_Ministerio_Treinamento(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id) + BDcomum.addNaLista;
@@ -28,22 +30,17 @@ namespace business.classes.Ministerio
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Lider_Ministerio_Treinamento where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Lider_Ministerio_Treinamento as LMT where LMT.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

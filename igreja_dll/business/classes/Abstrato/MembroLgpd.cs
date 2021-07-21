@@ -59,9 +59,11 @@ namespace business.classes.Abstrato
 
         public string Motivo_desligamento { get; set; }
 
-        public MembroLgpd() : base()
+        public MembroLgpd() : base() 
         {
         }
+
+        protected MembroLgpd(int m) : base(m) { }
 
         public override string alterar(int id)
         {

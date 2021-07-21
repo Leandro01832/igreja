@@ -133,10 +133,10 @@ namespace WindowsFormsApp1
             }
 
             var id = 0;
-            if (modelo is Pessoa) { var p = (Pessoa)modelo; id = p.Id; }
+            if (modelo is Pessoa)     { var p = (Pessoa)modelo; id = p.Id; }
             if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.Id; }
-            if (modelo is Celula) { var p = (Celula)modelo; id = p.Id; }
-            if (modelo is Reuniao) { var p = (Reuniao)modelo; id = p.Id; }
+            if (modelo is Celula)     { var p = (Celula)modelo; id = p.Id; }
+            if (modelo is Reuniao)    { var p = (Reuniao)modelo; id = p.Id; }
 
             modelo.alterar(id);
             MessageBox.Show("Informação atualizada com sucesso.");
@@ -144,51 +144,15 @@ namespace WindowsFormsApp1
 
         private void Deletar_Click(object sender, EventArgs e)
         {
-            var id = 0;
-            if(modelo is Pessoa)
-            {                
-                var p = (Pessoa)modelo; id = p.Id;
-                if(!modelo.recuperar(id))
-                {
-                    MessageBox.Show("Você já apagou este registro");
-                    return;
-                }
-                modelocrud.Modelos.OfType<Pessoa>().ToList().Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id  == id));
-            }
-            if(modelo is Ministerio)
+            var id = modelo.Id;
+            if (!modelo.recuperar(id))
             {
-                var p = (Ministerio)modelo; id = p.Id;
-                if (!modelo.recuperar(id))
-                {
-                    MessageBox.Show("Você já apagou este registro");
-                    return;
-                }
-                modelocrud.Modelos.OfType<Ministerio>().ToList().Remove(modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.Id == id));
-            }
-            if(modelo is Celula)
-            {
-                var p = (Celula)modelo; id = p.Id;
-                if (!modelo.recuperar(id))
-                {
-                    MessageBox.Show("Você já apagou este registro");
-                    return;
-                }
-                modelocrud.Modelos.OfType<Celula>().ToList()
-                    .Remove(modelocrud.Modelos.OfType<Celula>().ToList().First(i => i.Id == id));
-            }
-            if(modelo is Reuniao)
-            {
-                var p = (Reuniao)modelo; id = p.Id;
-                if (!modelo.recuperar(id))
-                {
-                    MessageBox.Show("Você já apagou este registro");
-                    return;
-                }
-                modelocrud.Modelos.OfType<Reuniao>().ToList()
-                    .Remove(modelocrud.Modelos.OfType<Reuniao>().ToList().First(i => i.Id == id));
+                MessageBox.Show("Você já apagou este registro");
+                return;
             }
 
             modelo.excluir(id);
+            modelocrud.Modelos.Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id  == id));
             MessageBox.Show("Informação removida do banco de dados com sucesso.");
         }
 

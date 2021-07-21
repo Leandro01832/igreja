@@ -15,6 +15,13 @@ namespace business.classes.Intermediario
 {
     public class MinisterioCelula : modelocrud
     {
+        public MinisterioCelula() : base()
+        {
+        }
+        public MinisterioCelula(int id) : base(id)
+        {
+        }
+
         public int CelulaId { get; set; }
         [JsonIgnore]
         public virtual Abstrato.Celula Celula { get; set; }
@@ -37,15 +44,10 @@ namespace business.classes.Intermediario
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from MinisterioCelula as MC where MC.Id='{id}'";            
-            var conexao = bd.obterconexao();
-
             if(conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

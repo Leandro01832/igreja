@@ -14,6 +14,13 @@ namespace business.classes.Intermediario
 {
     public class ReuniaoPessoa : modelocrud
     {
+        public ReuniaoPessoa() : base()
+        {
+        }
+        public ReuniaoPessoa(int id) : base(id)
+        {
+        }
+
         public int PessoaId { get; set; }
         [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
@@ -36,15 +43,10 @@ namespace business.classes.Intermediario
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from ReuniaoPessoa as RP where RP.Id='{id}'";
-            var conexao = bd.obterconexao();
-
             if(conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();

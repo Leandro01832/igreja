@@ -28,14 +28,15 @@ namespace business.classes.Pessoas
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_mae { get; set; }
 
-
-
         public Crianca() : base()
         {
         }
 
+        public Crianca(int m) : base(m) { }
+
         public override string alterar(int id)
         {
+            
             Update_padrao = base.alterar(id);
             Update_padrao += $" update Crianca set Nome_pai='{Nome_pai}', Nome_mae='{Nome_mae}' " +
                 $" where Id='{id}' " + BDcomum.addNaLista;
@@ -46,35 +47,28 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Crianca where Id='{id}' " + base.excluir(id);
+            Delete_padrao += base.excluir(id);
             bd.Excluir(this);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Crianca as C where C.Id='{id}'";
-
-            var conexao = bd.obterconexao();
-
             if (conexao != null)
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-                    SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
                     {
                         dr.Close();
                         bd.fecharconexao(conexao);
                         return false;
                     }
-                    base.recuperar(id);
-
                     dr.Read();
                     this.Nome_mae = Convert.ToString(dr["Nome_mae"]);
                     this.Nome_pai = Convert.ToString(dr["Nome_pai"]);
                     dr.Close();
+                    base.recuperar(id);
                 }
 
                 catch (Exception ex)
@@ -106,6 +100,5 @@ namespace business.classes.Pessoas
         {
             return base.Codigo + " - " + base.NomePessoa;
         }
-
     }
 }

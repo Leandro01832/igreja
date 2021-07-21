@@ -64,6 +64,8 @@ namespace business.classes.Abstrato
             Desligamento = false;
         }
 
+        protected Membro(int m) : base(m) { }
+
         public override string alterar(int id)
         {
             Update_padrao = base.alterar(id);

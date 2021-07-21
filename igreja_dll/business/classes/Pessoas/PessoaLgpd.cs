@@ -21,6 +21,8 @@ namespace business.classes.Pessoas
             AddNalista = new AddNalista();
         }
 
+        protected PessoaLgpd(int m) : base(m) { }
+
         AddNalista AddNalista;
 
         private MudancaEstado MudancaEstado;
