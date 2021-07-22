@@ -60,9 +60,10 @@ namespace business.classes.Intermediario
                     dr.Close();
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    TratarExcessao(ex);
+                    return false;
                 }
                 finally
                 {

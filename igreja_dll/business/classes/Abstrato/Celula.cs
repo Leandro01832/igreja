@@ -77,18 +77,14 @@ namespace business.classes.Abstrato
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete Celula from Celula where Id='{id}'"
-                + " delete EnderecoCelula from EnderecoCelula "
-                + " as E inner join Celula as C on E.Id=C.Id"
-                + $" where C.Id='{id}'";
-
+            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.Name)
+                + new EnderecoCelula(id).excluir(id);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Celula as C "
-            + $" inner join EnderecoCelula as E on E.Id=C.Id where C.Id='{id}'";
+            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
@@ -107,15 +103,9 @@ namespace business.classes.Abstrato
             this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
             this.Horario = TimeSpan.Parse(dr["Horario"].ToString());
             this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-            this.EnderecoCelula = new EnderecoCelula();
-            this.EnderecoCelula.Bairro = Convert.ToString(dr["Bairro"]);
-            this.EnderecoCelula.Cidade = Convert.ToString(dr["Cidade"]);
-            this.EnderecoCelula.Complemento = Convert.ToString(dr["Complemento"]);
-            this.EnderecoCelula.Estado = Convert.ToString(dr["Estado"]);
-            this.EnderecoCelula.Rua = Convert.ToString(dr["Rua"]);
-            this.EnderecoCelula.Pais = Convert.ToString(dr["Pais"]);
-            this.EnderecoCelula.Numero_casa = int.Parse(dr["Numero_casa"].ToString());
-            this.EnderecoCelula.Cep = long.Parse(dr["Cep"].ToString());
+            this.EnderecoCelula = new EnderecoCelula(id);
+            this.EnderecoCelula.recuperar(id);
+
             dr.Close();
 
             bd.fecharconexao(conexao);

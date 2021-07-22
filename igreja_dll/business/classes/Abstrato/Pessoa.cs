@@ -141,18 +141,19 @@ namespace business.classes.Abstrato
 
         public override string excluir(int id)
         {
-            Delete_padrao = " delete Chamada from Chamada as CH inner " +
-                "join Pessoa as P on CH.Id=P.Id " +
-                $" where P.Id='{id}' " +
-                $" delete Pessoa from Pessoa as P where P.Id='{id}' ";
+            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.BaseType.Name)
+                + new Chamada(id).excluir(id);
 
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = "select * from Pessoa as P "
-                 + $" inner join Chamada as CH on CH.Id=P.Id where P.Id='{id}' ";
+            if(this is Membro || this is MembroLgpd)
+            Select_padrao = Select_padrao.Replace(GetType().BaseType.BaseType.Name, GetType().BaseType.BaseType.BaseType.Name);
+            else
+            Select_padrao = Select_padrao.Replace(GetType().BaseType.Name, GetType().BaseType.BaseType.Name);
+
 
             List<modelocrud> modelos = new List<modelocrud>();
             var conexao = bd.obterconexao();
@@ -172,14 +173,12 @@ namespace business.classes.Abstrato
             this.Email = Convert.ToString(dr["Email"]);
             this.NomePessoa = Convert.ToString(dr["NomePessoa"]);
             this.Falta = int.Parse(dr["Falta"].ToString());
-            this.Chamada = new Chamada();
-            this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
-            this.Chamada.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
 
             if (retornoDados(dr, "celula_"))
-                this.celula_ = int.Parse(dr["celula_"].ToString());
-
+            this.celula_ = int.Parse(dr["celula_"].ToString());
             dr.Close();
+            this.Chamada = new Chamada(id);
+            this.Chamada.recuperar(id);
 
             bd.fecharconexao(conexao);
             this.Ministerios = new List<PessoaMinisterio>();

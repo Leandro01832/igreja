@@ -51,7 +51,6 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Telefone where Id='{id}' ";
             return Delete_padrao;
         }
 
@@ -64,6 +63,7 @@ namespace business.classes
                     if (dr.HasRows == false)
                     {
                         dr.Close();
+                        bd.fecharconexao(conexao);
                         return false;
                     }
 
@@ -75,9 +75,10 @@ namespace business.classes
                     dr.Close();
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    TratarExcessao(ex);
+                    return false;
                 }
                 finally
                 {

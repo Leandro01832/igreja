@@ -60,17 +60,44 @@ namespace Tests
             // CadastrarMembroAclamacaoLgpdTest();
             // CadastrarCriancaLgpdTest();
             // CadastrarVisitanteLgpdTest();
-            
 
 
 
-            Type type = typeof(Leandro);
 
-            foreach (PropertyInfo property in type.GetProperties())
-            {
-                Console.WriteLine(property.PropertyType + " - " + property.Name);
-                Console.WriteLine(property.ReflectedType.Name);
-            }
+            //  Type type = typeof(Leandro);
+            //
+            //  foreach (PropertyInfo property in type.GetProperties())
+            //  {
+            //      Console.WriteLine(property.PropertyType + " - " + property.Name);
+            //      Console.WriteLine(property.ReflectedType.Name);
+            //  }
+
+            //var visitante = typeof(Visitante);
+
+            //var v = new Visitante();
+
+            //var pessoa = Activator.CreateInstance(v.GetType());
+
+            //PropertyInfo property = visitante.GetProperty("Email");
+            //property.SetValue(v, "Leo");
+            //Console.WriteLine(property.GetValue(v, null));
+
+            //foreach (var t in typeof(Pessoa).Assembly.GetTypes())
+            //{
+            //    Console.WriteLine("{0} derived from: ", t.Name);
+            //    var derived = t;
+            //    do
+            //    {
+            //        derived = derived.BaseType;
+            //        if (derived != null)
+            //            Console.WriteLine("   {0}", derived.Name);
+            //    } while (derived != null);
+            //    Console.WriteLine();
+            //}
+
+            Type pessoaLgpd = typeof(PessoaLgpd);
+
+            Console.WriteLine(pessoaLgpd.BaseType.Name);
 
             Console.ReadLine();
         }

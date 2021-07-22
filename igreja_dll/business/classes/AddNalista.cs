@@ -130,9 +130,9 @@ namespace business.classes
 
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    TratarExcessao(ex);
                 }
                 finally
                 {

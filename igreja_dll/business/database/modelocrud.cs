@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace database
@@ -26,22 +27,28 @@ namespace database
             this.bd = new BDcomum();
             Erro_Conexao = false;
             QuantErro = 0;
+            properties = this.GetType().GetProperties();
         }
 
         public modelocrud(int id)
         {
+            SqlCommand comando = null;
             this.bd = new BDcomum();
             Select_padrao = $"select * from {this.GetType().Name} as C where C.Id='{id}'";
-            Delete_padrao = $" delete from {this.GetType().Name} as C where C.Id='{Id}' ";
-            SqlCommand comando = new SqlCommand(Select_padrao, this.bd.obterconexao());
-            this.dr =  comando.ExecuteReader();
+            Delete_padrao = $" delete from {this.GetType().Name} as C where C.Id='{id}' ";
             this.conexao = this.bd.obterconexao();
+            comando = new SqlCommand(Select_padrao, this.conexao);
+            this.dr =  comando.ExecuteReader();
+            Erro_Conexao = false;
+            QuantErro = 0;
         }
 
         private string insert_padrao;
         private string update_padrao;
         private string delete_padrao;
         private string select_padrao;
+
+        private PropertyInfo[] properties;
         
         public BDcomum bd;
         public SqlDataReader dr;
@@ -58,8 +65,6 @@ namespace database
         public static string textoPorcentagem = "0%";
         [NotMapped]
         public static int QuantErro;
-        [NotMapped]
-        protected string Comando { get; set; }
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
         [NotMapped]
@@ -240,10 +245,14 @@ namespace database
             {
                 MessageBox.Show("A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
             }
+            else if (ex.Message.Contains("ExecuteReader"))
+            {
+                MessageBox.Show(" Verifique sua ExecuteReader!!! " + this.GetType().Name);
+            }
             else if (!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não está respondendo")
                 && !ex.Message.Contains("não foi inicializada")
                 && !ex.Message.Contains("conexão é fechada"))
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + " - " + this.GetType().Name);
 
             else if (ex.Message.Contains("transporte") || ex.Message.Contains("servidor não está respondendo")
                 || ex.Message.Contains("não foi inicializada")
@@ -254,7 +263,7 @@ namespace database
                 QuantErro++;
 
                 if (QuantErro == 1)
-                    MessageBox.Show("Verifique sua conexão");
+                    MessageBox.Show("Verifique sua conexão" + this.GetType().Name);
 
             }
         }

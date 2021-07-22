@@ -77,14 +77,14 @@ namespace business.classes.Abstrato
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from Ministerio where Id='{id}' ";
+            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.Name);
 
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from Ministerio as M where M.Id='{id}'";            
+            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);

@@ -49,7 +49,6 @@ namespace business.classes
 
         public override string excluir(int id)
         {
-            Delete_padrao = $"delete from Chamada where Id={id} ";
             return Delete_padrao;
         }
 
@@ -73,9 +72,10 @@ namespace business.classes
                     dr.Close();
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    TratarExcessao(ex);
+                    return false;
                 }
                 finally
                 {

@@ -26,6 +26,7 @@ namespace business.classes.Pessoas
 
         public Visitante() : base()
         {
+            
         }
 
         public Visitante(int m) : base(m){ }

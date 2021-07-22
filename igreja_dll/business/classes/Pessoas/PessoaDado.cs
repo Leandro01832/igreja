@@ -103,25 +103,20 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            
-            Delete_padrao =
-            " delete Telefone from Telefone as T inner " +
-            " join PessoaDado as PD on T.Id=PD.Id" +
-            $" where PD.Id='{id}' " +
-            "delete Endereco from Endereco as E inner " +
-            "join PessoaDado as PD on E.Id=PD.Id" +
-            $" where PD.Id='{id}' " +
-            $" delete PessoaDado from PessoaDado as PD where PD.Id='{id}' ";
-            Delete_padrao += base.excluir(id);
+            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.Name)
+                + new Endereco(id).excluir(id)
+                + new Telefone(id).excluir(id);
 
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = "select * from PessoaDado as PD "
-        + " inner join Endereco as EN on EN.Id=PD.Id "
-        + $" inner join Telefone as TE on TE.Id=PD.Id where PD.Id='{id}'";
+            if(this is Membro)
+            Select_padrao = Select_padrao.Replace(GetType().BaseType.Name, GetType().BaseType.BaseType.Name);
+            else
+            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
+
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -142,25 +137,14 @@ namespace business.classes.Pessoas
             this.Rg = Convert.ToString(dr["Rg"]);
             this.Cpf = Convert.ToString(dr["Cpf"]);
             this.Status = Convert.ToString(dr["Status"]);
-            this.Endereco = new Endereco();
-            this.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
-            this.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
-            this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-            this.Endereco.Estado = Convert.ToString(dr["Estado"]);
-            this.Endereco.Rua = Convert.ToString(dr["Rua"]);
-            this.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-            this.Endereco.Id = int.Parse(Convert.ToString(dr["Id"]));
-            this.Telefone = new Telefone();
-            this.Telefone.Fone = Convert.ToString(dr["Fone"]);
-            this.Telefone.Celular = Convert.ToString(dr["Celular"]);
-            this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-            this.Telefone.Id = int.Parse(Convert.ToString(dr["Id"]));
+            this.Endereco = new Endereco(id);
+            this.Endereco.recuperar(id);
+            this.Telefone = new Telefone(id);
+            this.Telefone.recuperar(id);
 
             dr.Close();
             bd.fecharconexao(conexao);
             return true;
         }
-
-
     }
 }

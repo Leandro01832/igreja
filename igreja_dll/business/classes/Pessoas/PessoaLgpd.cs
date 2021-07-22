@@ -44,15 +44,17 @@ namespace business.classes.Pessoas
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete PessoaLgpd from PessoaLgpd as PL where PL.Id='{id}' "
-            + base.excluir(id);
-
+            base.excluir(id);
             return Delete_padrao;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from PessoaLgpd as PL where PL.Id='{id}'";
+            if(this is MembroLgpd)
+            Select_padrao = Select_padrao.Replace(GetType().BaseType.Name, GetType().BaseType.BaseType.Name);
+            else
+            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
+
             var conexao = bd.obterconexao();
 
             SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -63,8 +65,8 @@ namespace business.classes.Pessoas
                 bd.fecharconexao(conexao);
                 return false;
             }
-            base.recuperar(id);
             dr.Close();
+            base.recuperar(id);
             bd.fecharconexao(conexao);
             return true;
         }
