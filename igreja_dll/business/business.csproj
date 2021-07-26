@@ -114,9 +114,9 @@
     <Compile Include="database\dadosmysql.cs" />
     <Compile Include="database\IgrejaDB.cs" />
     <Compile Include="database\modelocrud.cs" />
-    <Compile Include="Migrations\202107192155169_Iniciando.cs" />
-    <Compile Include="Migrations\202107192155169_Iniciando.Designer.cs">
-      <DependentUpon>202107192155169_Iniciando.cs</DependentUpon>
+    <Compile Include="Migrations\202107260119187_Inicio.cs" />
+    <Compile Include="Migrations\202107260119187_Inicio.Designer.cs">
+      <DependentUpon>202107260119187_Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,8 +141,8 @@
     <Content Include="conexao\MySql.Data.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107192155169_Iniciando.resx">
-      <DependentUpon>202107192155169_Iniciando.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107260119187_Inicio.resx">
+      <DependentUpon>202107260119187_Inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

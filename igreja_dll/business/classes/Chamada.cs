@@ -42,8 +42,7 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            Update_padrao = $"update Chamada set Data_inicio={Data_inicio.ToString()},"
-               + $" Numero_chamada={Numero_chamada} where Id={id} ";
+            UpdateProperties(GetType(), id);
             return Update_padrao;
         }
 
@@ -54,43 +53,14 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            if(conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.Data_inicio = Convert.ToDateTime(Convert.ToString(dr["Data_inicio"]));
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    this.Numero_chamada = int.Parse(Convert.ToString(dr["Numero_chamada"]));
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }
         
         public override string salvar()
         {
-            Insert_padrao = $"insert into Chamada "
-            + " (Data_inicio, Numero_chamada, Id) values"
-            + $" ('{DateTime.Now.ToString("yyyy-MM-dd")}', '{Numero_chamada.ToString()}', IDENT_CURRENT('Pessoa'))";
+            GetProperties(GetType());
             return Insert_padrao;
         }
     }

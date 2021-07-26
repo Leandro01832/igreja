@@ -57,10 +57,7 @@ namespace business.classes.Celula
 
         public override string salvar()
         {
-            Insert_padrao =
-        $"insert into EnderecoCelula (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, " +
-        $" Id) values ('{this.Pais}', '{Estado}', '{Cidade}', '{Bairro}', '{Rua}', '{Numero_casa}', " +
-        $" '{Cep}', '{Complemento}', IDENT_CURRENT('Celula'))";
+            GetProperties(GetType());
             return Insert_padrao;
         }
 
@@ -79,41 +76,8 @@ namespace business.classes.Celula
 
         public override bool recuperar(int id)
         {
-            if(conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.Pais = Convert.ToString(dr["Pais"]);
-                    this.Estado = Convert.ToString(dr["Estado"]);
-                    this.Cidade = Convert.ToString(dr["Cidade"]);
-                    this.Bairro = Convert.ToString(dr["Bairro"]);
-                    this.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    this.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
-                    this.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }
         

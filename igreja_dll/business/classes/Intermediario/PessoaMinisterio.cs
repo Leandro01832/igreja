@@ -46,34 +46,8 @@ namespace business.classes.Intermediario
 
         public override bool recuperar(int id)
         {
-            if(conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.MinisterioId = int.Parse(Convert.ToString(dr["MinisterioId"]));
-                    this.PessoaId = int.Parse(Convert.ToString(dr["PessoaId"]));
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }
         

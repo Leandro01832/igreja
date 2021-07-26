@@ -1,6 +1,7 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
+using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
@@ -73,11 +74,16 @@ namespace WindowsFormsApp1
 
                 var lr = await Task.Run(() => new Reuniao().recuperar());
 
+                var pm = await Task.Run(() => new PessoaMinisterio().recuperar());
+
+                var rp = await Task.Run(() => new ReuniaoPessoa().recuperar());
+
+                var lh = await Task.Run(() => new Historico().recuperar());
+
                 var lp = await Task.Run(() => Pessoa.recuperarTodos());
 
                 await Task.Run(() =>
                 {
-
                     while (int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99)
                     { executar = false; podeVerificar = false; }
                 });

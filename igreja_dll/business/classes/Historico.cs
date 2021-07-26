@@ -44,11 +44,7 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            Update_padrao = $"update Historico set Data_inicio={Data_inicio.ToString()}, " +
-            $"pessoaid={pessoaid}, Falta={Falta} " +
-            $"  where Id={id} ";
-
-            bd.Editar(this);
+            UpdateProperties(GetType(), id);
             return Update_padrao;
         }
 
@@ -60,45 +56,14 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            if(conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
-                    this.pessoaid = int.Parse(Convert.ToString(dr["pessoaid"]));
-                    this.Falta = int.Parse(Convert.ToString(dr["Falta"]));
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }
         
         public override string salvar()
         {
-            Insert_padrao =
-        $"insert into Historico (Data_inicio, pessoaid, Falta) " +
-        $"values ({Data_inicio.ToString()}, {pessoaid}, {Falta})";
-
+            GetProperties(GetType());
             bd.SalvarModelo(this);
             return Insert_padrao;
         }

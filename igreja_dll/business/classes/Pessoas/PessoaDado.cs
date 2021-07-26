@@ -22,9 +22,8 @@ namespace business.classes.Pessoas
         protected PessoaDado(int m) : base(m)
         {
         }
-
-        //propriedades
-        #region
+        
+        #region Properties
 
         AddNalista AddNalista;
 
@@ -71,80 +70,45 @@ namespace business.classes.Pessoas
 
         public override string salvar()
         {
-            Telefone t = new Telefone(); t = this.Telefone;
-            Endereco e = new Endereco(); e = this.Endereco;
-
-            Insert_padrao = base.salvar();
-            Insert_padrao +=
-            "insert into PessoaDado ( Data_nascimento, Estado_civil, Sexo_masculino, " +
-            "Rg, Cpf, Sexo_feminino, Falescimento, " +
-            "Status, Id)" +
-            $" values ('{this.Data_nascimento.ToString("yyyy-MM-dd")}', '{this.Estado_civil}', " +
-            $" '{this.Sexo_masculino.ToString()}', '{this.Rg}', '{this.Cpf}', " +
-            $" '{this.Sexo_feminino.ToString()}', '{this.Falescimento.ToString()}',  " +
-            $" '{this.Status}', IDENT_CURRENT('Pessoa')) " +
-            e.salvar() + " " +
-            t.salvar() + " ";
-
+            base.salvar();
+            GetProperties(T);
+            Insert_padrao += this.Endereco.salvar();
+            Insert_padrao += this.Telefone.salvar();
             return Insert_padrao;
         }
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
-            Update_padrao += $"update PessoaDado set Estado_civil='{Estado_civil}', " +
-            $"Rg='{Rg}', Cpf='{Cpf}', Falescimento='{Falescimento.ToString()}', Status='{Status}', " +
-            $" Data_nascimento='{this.Data_nascimento.ToString("yyyy-MM-dd")}', " +
-            $" Sexo_masculino='{Sexo_masculino.ToString()}', Sexo_feminino='{Sexo_feminino.ToString()}', " +
-            $"  where Id='{id}' " + this.Telefone.alterar(id) + this.Endereco.alterar(id);
-
+            base.alterar(id);
+            UpdateProperties(T, id);
+            Update_padrao += this.Endereco.alterar(id);
+            Update_padrao += this.Telefone.alterar(id);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.Name)
-                + new Endereco(id).excluir(id)
-                + new Telefone(id).excluir(id);
-
-            return Delete_padrao;
+            T = T.BaseType;
+            var delete = 
+                 new Endereco(id).excluir(id)
+                + new Telefone(id).excluir(id)
+                + Delete_padrao.Replace(GetType().Name, T.Name)
+                + base.excluir(id);
+            return delete;
         }
 
         public override bool recuperar(int id)
         {
-            if(this is Membro)
-            Select_padrao = Select_padrao.Replace(GetType().BaseType.Name, GetType().BaseType.BaseType.Name);
-            else
-            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
-
-            var conexao = bd.obterconexao();
-
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return false;
-            }
-            base.recuperar(id);
-            dr.Read();
-            this.Data_nascimento = Convert.ToDateTime(dr["Data_nascimento"]);
-            this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
-            this.Sexo_masculino = Convert.ToBoolean(dr["Sexo_masculino"]);
-            this.Sexo_feminino = Convert.ToBoolean(dr["Sexo_feminino"]);
-            this.Falescimento = Convert.ToBoolean(dr["Falescimento"]);
-            this.Rg = Convert.ToString(dr["Rg"]);
-            this.Cpf = Convert.ToString(dr["Cpf"]);
-            this.Status = Convert.ToString(dr["Status"]);
             this.Endereco = new Endereco(id);
             this.Endereco.recuperar(id);
             this.Telefone = new Telefone(id);
             this.Telefone.recuperar(id);
 
-            dr.Close();
-            bd.fecharconexao(conexao);
-            return true;
+            if (SetProperties(T))
+            {
+                base.recuperar(id); return true;
+            }
+            return false;
         }
     }
 }

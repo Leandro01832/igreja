@@ -44,8 +44,7 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            Update_padrao = $"update Telefone set Fone='{Fone}', Celular='{Celular}', " +
-            $"Whatsapp='{Whatsapp}' where Id='{id}' ";
+            UpdateProperties(GetType(), id);
             return Update_padrao;
         }
 
@@ -56,44 +55,14 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            if(conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    this.Fone = Convert.ToString(dr["Fone"]);
-                    this.Celular = Convert.ToString(dr["Celular"]);
-                    this.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }
         
         public override string salvar()
         {
-            Insert_padrao =
-            $" insert into Telefone (Fone, Celular, Whatsapp, Id) " +
-            $" values ('{Fone}', '{Celular}', '{Whatsapp}', IDENT_CURRENT('Pessoa')) ";
+            GetProperties(GetType());
             return Insert_padrao;
         }
 

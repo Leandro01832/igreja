@@ -1,7 +1,4 @@
-﻿using business.classes.Abstrato;
-using business.classes.Intermediario;
-using business.classes.Pessoas;
-using business.classes.PessoasLgpd;
+﻿using business.classes.Intermediario;
 using database;
 using database.banco;
 using Newtonsoft.Json;
@@ -10,14 +7,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using System.Linq;
-
 
 namespace business.classes
 {
     public class Reuniao : modelocrud, IAddNalista
     {
-
         #region Properties
 
         [Display(Name = "Data da reunião")]
@@ -64,10 +58,8 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            Update_padrao = $"update Reuniao set Data_reuniao='{Data_reuniao.ToString("yyyy-MM-dd")}', " +
-            $" Horario_inicio='{Horario_inicio}', Horario_fim='{Horario_fim}' where Id='{id}'"
-            + BDcomum.addNaLista;
-
+            UpdateProperties(null, id);
+            Update_padrao += BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -80,59 +72,16 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            if (conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.Data_reuniao = Convert.ToDateTime(dr["Data_reuniao"].ToString());
-                    this.Horario_inicio = TimeSpan.Parse(dr["Horario_inicio"].ToString());
-                    this.Horario_fim = TimeSpan.Parse(dr["Horario_fim"].ToString());
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    this.Local_reuniao = Convert.ToString(dr["Local_reuniao"]);
-
-                    dr.Close();
-
-                    bd.fecharconexao(conexao);
-                    this.Pessoas = new List<ReuniaoPessoa>();
-                    var listaPessoas = recuperarPessoas(id);
-                    if (listaPessoas != null)
-                        foreach (var item in listaPessoas)
-                        {
-                            this.Pessoas.Add((ReuniaoPessoa)item);
-                        }
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }        
 
         public override string salvar()
         {
-            Insert_padrao = $"insert into Reuniao (Data_reuniao," +
-        " Horario_inicio, Horario_fim, Local_reuniao) values " +
-        $" ('{Data_reuniao.ToString("yyyy-MM-dd")}', '{Horario_inicio.ToString()}', " +
-        $" '{Horario_fim.ToString()}', '{Local_reuniao}')" + BDcomum.addNaLista;
-
+            GetProperties(null);
+            Insert_padrao += BDcomum.addNaLista;
             bd.SalvarModelo(this);
-
             return Insert_padrao;
         }
 

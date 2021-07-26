@@ -64,43 +64,19 @@ namespace business.classes.Abstrato
         #region Methods
         public override string alterar(int id)
         {
-            string ministro = "";
-            if (this.Ministro_ == null) ministro = "null";
-            else ministro = this.Ministro_.ToString();
-
-            Update_padrao = $" update Ministerio set Nome='{Nome}', " +
-            $" Proposito='{Proposito}', Ministro_={ministro} " +
-            $"  where Id='{id}' ";
-
+            UpdateProperties(T, id);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.Name);
-
-            return Delete_padrao;
+            T = T.BaseType;
+            var delete = Delete_padrao.Replace(GetType().Name, T.Name);
+            return delete;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
-            var conexao = bd.obterconexao();
-
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                dr.Close();
-                return false;
-            }
-            dr.Read();
-            this.Id = int.Parse(dr["Id"].ToString());
-            this.Nome = Convert.ToString(dr["Nome"]);
-            this.Proposito = Convert.ToString(dr["Proposito"]);
-            this.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-            dr.Close();
-
             bd.fecharconexao(conexao);
             this.Pessoas = new List<PessoaMinisterio>();
             var listaPessoas = buscarPessoas(id);
@@ -114,19 +90,14 @@ namespace business.classes.Abstrato
                 foreach (var item in listaCelulas)
                     this.Celulas.Add((MinisterioCelula)item);
 
-            return true;
+            if (SetProperties(T))
+                return true;
+            return false;
         }
 
         public override string salvar()
         {
-            string ministro = "";
-            if (this.Ministro_ == null) ministro = "null";
-            else ministro = this.Ministro_.ToString();
-
-            Insert_padrao = "insert into Ministerio (Nome, Proposito, Maximo_pessoa, Ministro_)" +
-                $" values ('{Nome}', '{Proposito}', '{Maximo_pessoa}', {ministro}) ";
-
-
+            GetProperties(T);
             return Insert_padrao;
         }
 
@@ -207,79 +178,28 @@ namespace business.classes.Abstrato
 
         private List<modelocrud> buscarPessoas(int? id)
         {
-            Select_padrao = "select * from Pessoa as P "
-                + " inner join PessoaMinisterio as PEMI on P.Id=PEMI.PessoaId"
-                + " inner join Ministerio as M on PEMI.MinisterioId=M.Id"
-                + $" where PEMI.MinisterioId='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            List<PessoaMinisterio> lista = new List<PessoaMinisterio>();
-            var conexao = bd.obterconexao();
-                        
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            List<modelocrud> lista = new List<modelocrud>();
+            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return modelos;
-            }
-            
-            while (dr.Read())
-            {
-                var m = new PessoaMinisterio { Id = int.Parse(Convert.ToString(dr["Id"])) };                
-                lista.Add(m);
-            }
-            dr.Close();
-            bd.fecharconexao(conexao);
-
-            foreach (var item in lista)
-            {
-                var model = new PessoaMinisterio();
-                if(model.recuperar(item.Id))
-                modelos.Add(model);
-            }
-                
-
-            return modelos;
+                while (Modelos.OfType<Pessoa>().ToList().Count != GeTotalRegistrosPessoas()) { }
+                lista = Modelos.OfType<Pessoa>().Where(m => m.celula_ == id).Cast<modelocrud>().ToList();
+                return lista;
+            });
+            Task.WaitAll(t);
+            return t.Result;
         }
 
         private List<modelocrud> buscarCelulas(int? id)
         {
-            Select_padrao = "select * from Celula as C "
-                + " inner join MinisterioCelula as MICE on C.Id=MICE.CelulaId"
-                + " inner join Ministerio as M on MICE.MinisterioId=M.Id"
-                + $" where MICE.MinisterioId='{id}'";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            List<MinisterioCelula> lista = new List<MinisterioCelula>();
-            var conexao = bd.obterconexao();
-            
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            List<modelocrud> lista = new List<modelocrud>();
+            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return modelos;
-            }            
-
-            while (dr.Read())
-            {
-                var m = new MinisterioCelula { Id = int.Parse(Convert.ToString(dr["CelulaId"])) };
-                lista.Add(m);
-            }
-            dr.Close();
-            bd.fecharconexao(conexao);
-
-            foreach (var item in lista)
-            {
-                var model = new MinisterioCelula();
-                if (model.recuperar(item.Id))
-                    modelos.Add(model);
-            }
-
-            return modelos;
+                while (Modelos.OfType<MinisterioCelula>().ToList().Count != GeTotalRegistrosMinisterioCelula()) { }
+                lista = Modelos.OfType<MinisterioCelula>().Where(m => m.MinisterioId == id).Cast<modelocrud>().ToList();
+                return lista;
+            });
+            Task.WaitAll(t);
+            return t.Result;
         }
         
         public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
@@ -292,6 +212,11 @@ namespace business.classes.Abstrato
             modelocrud modeloQPreenche, string numeros)
         {
             AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
+        }
+
+        public override string ToString()
+        {
+            return this.Id.ToString() + " - " + this.Nome;
         }
     }
 }

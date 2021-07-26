@@ -2,18 +2,13 @@
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
-using database.banco;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -35,7 +30,6 @@ namespace business.classes.Abstrato
 
 
         #region Properties
-
         AddNalista AddNalista;
 
         [NotMapped]
@@ -73,10 +67,10 @@ namespace business.classes.Abstrato
         public int Codigo { get; set; }
 
         [NotMapped]
-        public static int UltimoRegistro { get; set; }
+        public static int UltimoRegistro;
 
         [NotMapped]
-        public string password { get; set; }
+        public string password;
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [Index("EMAIL", 2, IsUnique = true)]
@@ -106,77 +100,34 @@ namespace business.classes.Abstrato
 
         [JsonIgnore]
         private MudancaEstado MudancaEstado;
-
         #endregion
 
         #region Methods
         public override string salvar()
         {
-            string celula = "";
-            if (this.celula_ == null) celula = "null";
-            else celula = this.celula_.ToString();
-
-            Insert_padrao =
-    "insert into Pessoa (NomePessoa, Email, Falta, celula_, Img, Codigo) " +
-    $" values ( '{this.NomePessoa}', '{this.Email}',  '{this.Falta}', {celula}, '{this.Img}', '{Codigo}') " +
-    new Chamada().salvar() + " ";
-
+            GetProperties(T);
+            Insert_padrao += this.Chamada.salvar();
             return Insert_padrao;
         }
 
         public override string alterar(int id)
         {
-            string celula = "";
-            if (this.celula_ == null) celula = "null";
-            else celula = this.celula_.ToString();
-
-            Update_padrao = $"update Pessoa set NomePessoa='{NomePessoa}',  " +
-            $" Email='{Email}',  " +
-            $" celula_={celula}, " +
-            $" Falta='{Falta}', Img='{this.Img}' " +
-            $"  where Id='{id}' ";
-
+            UpdateProperties(T, id);
+            Update_padrao += this.Chamada.alterar(id);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = Delete_padrao.Replace(GetType().Name, GetType().BaseType.BaseType.Name)
-                + new Chamada(id).excluir(id);
-
-            return Delete_padrao;
+            T = T.BaseType;
+            var delete =
+              new Chamada(id).excluir(id) +
+              Delete_padrao.Replace(GetType().Name, T.Name);
+            return delete;
         }
 
         public override bool recuperar(int id)
-        {
-            if(this is Membro || this is MembroLgpd)
-            Select_padrao = Select_padrao.Replace(GetType().BaseType.BaseType.Name, GetType().BaseType.BaseType.BaseType.Name);
-            else
-            Select_padrao = Select_padrao.Replace(GetType().BaseType.Name, GetType().BaseType.BaseType.Name);
-
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conexao = bd.obterconexao();
-
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
-            {
-                dr.Close();
-                return false;
-            }
-
-            dr.Read();
-            this.Img = Convert.ToString(dr["Img"]);
-            this.Id = int.Parse(Convert.ToString(dr["Id"]));
-            this.Codigo = int.Parse(Convert.ToString(dr["Codigo"]));
-            this.Email = Convert.ToString(dr["Email"]);
-            this.NomePessoa = Convert.ToString(dr["NomePessoa"]);
-            this.Falta = int.Parse(dr["Falta"].ToString());
-
-            if (retornoDados(dr, "celula_"))
-            this.celula_ = int.Parse(dr["celula_"].ToString());
-            dr.Close();
+        {            
             this.Chamada = new Chamada(id);
             this.Chamada.recuperar(id);
 
@@ -203,8 +154,9 @@ namespace business.classes.Abstrato
                 {
                     this.Historico.Add((Historico)item);
                 }
-            modelos.Add(this);
-            return true;
+            
+            if (SetProperties(T)) return true;
+            return false;
         }
         #endregion
 
@@ -312,113 +264,43 @@ namespace business.classes.Abstrato
             return t12.Result;
         }
 
-        private List<modelocrud> recuperarMinisterios(int? id)
+        private List<modelocrud> recuperarMinisterios(int id)
         {
-            var select = "select * from Ministerio as m inner join " +
-                " PessoaMinisterio as mipe on m.Id=mipe.MinisterioId  inner join Pessoa as p" + 
-                $" on mipe.PessoaId=p.Id where mipe.PessoaId='{id}' ";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            List<PessoaMinisterio> lista = new List<PessoaMinisterio>();
-            var conexao = bd.obterconexao();
-            
-            SqlCommand comando = new SqlCommand(select, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            List<modelocrud> lista = new List<modelocrud>();
+            Task<List<modelocrud>> t =  Task.Factory.StartNew(() =>
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return modelos;
-            }
-            
-            while (dr.Read())
-            {
-               var m = new PessoaMinisterio { Id = int.Parse(Convert.ToString(dr["MinisterioId"])) };
-                lista.Add(m);
-            }
-            dr.Close();
-            bd.fecharconexao(conexao);
-
-            foreach (var item in lista)
-            {
-                var model = new PessoaMinisterio();
-                if(model.recuperar(item.Id))
-                  modelos.Add(model);
-            }
-                
-
-            return modelos;
+                while (Modelos.OfType<PessoaMinisterio>().ToList().Count != GeTotalRegistrosPessoasEmMinisterios()) { }
+                lista = Modelos.OfType<PessoaMinisterio>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
+                return lista;
+            });
+            Task.WaitAll(t);
+            return t.Result;
         }
 
         private List<modelocrud> recuperarReuniao(int? id)
         {
-            var select = "select * from Reuniao as R inner join " +
-                " ReuniaoPessoa as PERE on R.Id=PERE.ReuniaoId  inner join Pessoa as P" +
-                $" on PERE.PessoaId=P.Id where PERE.PessoaId='{id}' ";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
-            var conexao = bd.obterconexao();
-            
-            SqlCommand comando = new SqlCommand(select, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            List<modelocrud> lista = new List<modelocrud>();
+            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return modelos;
-            }
-
-            while (dr.Read())
-            {
-                var r = new ReuniaoPessoa { Id = int.Parse(Convert.ToString(dr["Id"])) };
-                lista.Add(r);
-            }
-            dr.Close();
-            bd.fecharconexao(conexao);
-
-            foreach(var item in lista)
-            {
-                var model = new ReuniaoPessoa();
-                if(model.recuperar(item.Id))
-                modelos.Add(model);
-            }
-            
-
-            return modelos;
+                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != GeTotalRegistrosPessoasEmReunioes()) { }
+                lista = Modelos.OfType<ReuniaoPessoa>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
+                return lista;
+            });
+            Task.WaitAll(t);
+            return t.Result;
         }
 
         private List<modelocrud> recuperarHistorico(int? id)
         {
-            var select = "select * from Historico as H " +
-                " inner join Pessoa as P" +
-                $" on P.Id=H.pessoaid where P.Id='{id}' ";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            var conexao = bd.obterconexao();
-            
-            SqlCommand comando = new SqlCommand(select, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            List<modelocrud> lista = new List<modelocrud>();
+            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return modelos;
-            }
-
-            while (dr.Read())
-            {
-                Historico h = new Historico();
-                h.pessoaid = int.Parse(dr["pessoaid"].ToString());
-                h.Id = int.Parse(dr["Id"].ToString());
-                h.Falta = int.Parse(dr["Falta"].ToString());
-                h.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
-                modelos.Add(h);
-            }
-            dr.Close();
-            bd.fecharconexao(conexao);
-
-            return modelos;
+                while (Modelos.OfType<Historico>().ToList().Count != GeTotalRegistrosHistoricos()) { }
+                lista = Modelos.OfType<Historico>().Where(m => m.pessoaid == id).Cast<modelocrud>().ToList();
+                return lista;
+            });
+            Task.WaitAll(t);
+            return t.Result;
         }
         
         public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
@@ -452,6 +334,11 @@ namespace business.classes.Abstrato
             }
 
             return true;
+        }
+
+        public override string ToString()
+        {
+            return this.Codigo + " - " + this.NomePessoa;
         }
     }
 }

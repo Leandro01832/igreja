@@ -115,5 +115,5 @@ D:\Downloads\copia-igreja\igreja_dll\business\obj\Debug\business.csproj.CoreComp
 D:\Downloads\copia-igreja\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
 D:\Downloads\copia-igreja\igreja_dll\business\obj\Debug\business.dll
 D:\Downloads\copia-igreja\igreja_dll\business\obj\Debug\business.pdb
-D:\codigo-github\Igreja\igreja\igreja_dll\business\obj\Debug\business.Migrations.Iniciando.resources
+D:\codigo-github\Igreja\igreja\igreja_dll\business\obj\Debug\business.Migrations.Inicio.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\business\obj\Debug\business.csproj.GenerateResource.cache

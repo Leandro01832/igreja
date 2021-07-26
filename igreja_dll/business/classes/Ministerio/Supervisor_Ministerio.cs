@@ -27,9 +27,9 @@ namespace business.classes.Ministerio
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
-            Update_padrao += $" update  Supervisor_Ministerio set Maximo_celula='{Maximo_celula}' where Id='{id}' "
-            + BDcomum.addNaLista;
+            base.alterar(id);
+            UpdateProperties(null, id);
+            Update_padrao += BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -43,50 +43,20 @@ namespace business.classes.Ministerio
 
         public override bool recuperar(int id)
         {
-            if (conexao != null)
+            if (SetProperties(GetType()))
             {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-                    dr.Read();
-                    this.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
-                    dr.Close();
-                    base.recuperar(id);
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
+                base.recuperar(id); T = GetType(); return true;
             }
             return false;
         }
         
         public override string salvar()
         {
-            Insert_padrao = base.salvar();
-            Insert_padrao += $" insert into Supervisor_Ministerio " +
-           $" (Id, Maximo_celula) values (IDENT_CURRENT('Ministerio'), '{Maximo_celula}')" + BDcomum.addNaLista;
-
+            base.salvar();
+            GetProperties(null);
+            Insert_padrao += BDcomum.addNaLista;
             bd.SalvarModelo(this);
-
             return Insert_padrao;
         }
-
-        public override string ToString()
-        {
-            return base.Id.ToString() + " - " + base.Nome;
-        }
-
     }
 }

@@ -29,46 +29,33 @@ namespace business.classes.Pessoas
 
         public override string salvar()
         {
-            Insert_padrao = base.salvar();
-            Insert_padrao += " insert into PessoaLgpd (Id) values (IDENT_CURRENT('Pessoa')) ";
-
+            base.salvar();
+            GetProperties(T);
             return Insert_padrao;
         }
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
-
+            base.alterar(id);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            base.excluir(id);
-            return Delete_padrao;
+            T = T.BaseType;
+            var delete =
+                 Delete_padrao.Replace(GetType().Name, T.Name)
+                + base.excluir(id);
+            return delete;
         }
 
         public override bool recuperar(int id)
         {
-            if(this is MembroLgpd)
-            Select_padrao = Select_padrao.Replace(GetType().BaseType.Name, GetType().BaseType.BaseType.Name);
-            else
-            Select_padrao = Select_padrao.Replace(GetType().Name, GetType().BaseType.Name);
-
-            var conexao = bd.obterconexao();
-
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            if (SetProperties(T))
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return false;
+                base.recuperar(id); return true;
             }
-            dr.Close();
-            base.recuperar(id);
-            bd.fecharconexao(conexao);
-            return true;
+            return false;
         }
     }
 }

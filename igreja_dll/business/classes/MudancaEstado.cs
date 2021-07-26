@@ -38,18 +38,18 @@ namespace business.classes
         public void MudarEstado(int idVelhoEstado, modelocrud m)
         {
             string estado = "";
-            var model1 = new Visitante(); var p1 = model1.recuperar(idVelhoEstado);
-            var model2 = new VisitanteLgpd(); var p2 = model2.recuperar(idVelhoEstado);
-            var model3 = new Crianca(); var p3 = model3.recuperar(idVelhoEstado);
-            var model4 = new CriancaLgpd(); var p4 = model4.recuperar(idVelhoEstado);
-            var model5 = new Membro_Aclamacao(); var p5 = model5.recuperar(idVelhoEstado);
-            var model6 = new Membro_AclamacaoLgpd(); var p6 = model6.recuperar(idVelhoEstado);
-            var model7 = new Membro_Batismo(); var p7 = model7.recuperar(idVelhoEstado);
-            var model8 = new Membro_BatismoLgpd(); var p8 = model8.recuperar(idVelhoEstado);
-            var model9 = new Membro_Reconciliacao(); var p9 = model9.recuperar(idVelhoEstado);
-            var model10 = new Membro_ReconciliacaoLgpd(); var p10 = model10.recuperar(idVelhoEstado);
-            var model11 = new Membro_Transferencia(); var p11 = model11.recuperar(idVelhoEstado);
-            var model12 = new Membro_TransferenciaLgpd(); var p12 = model12.recuperar(idVelhoEstado);
+            var model1 = new Visitante                (idVelhoEstado); var p1 = model1.recuperar  (idVelhoEstado);
+            var model2 = new VisitanteLgpd            (idVelhoEstado); var p2 = model2.recuperar  (idVelhoEstado);
+            var model3 = new Crianca                  (idVelhoEstado); var p3 = model3.recuperar  (idVelhoEstado);
+            var model4 = new CriancaLgpd              (idVelhoEstado); var p4 = model4.recuperar  (idVelhoEstado);
+            var model5 = new Membro_Aclamacao         (idVelhoEstado); var p5 = model5.recuperar  (idVelhoEstado);
+            var model6 = new Membro_AclamacaoLgpd     (idVelhoEstado); var p6 = model6.recuperar  (idVelhoEstado);
+            var model7 = new Membro_Batismo           (idVelhoEstado); var p7 = model7.recuperar  (idVelhoEstado);
+            var model8 = new Membro_BatismoLgpd       (idVelhoEstado); var p8 = model8.recuperar  (idVelhoEstado);
+            var model9 = new Membro_Reconciliacao     (idVelhoEstado); var p9 = model9.recuperar  (idVelhoEstado);
+            var model10 = new Membro_ReconciliacaoLgpd(idVelhoEstado); var p10 = model10.recuperar(idVelhoEstado);
+            var model11 = new Membro_Transferencia    (idVelhoEstado); var p11 = model11.recuperar(idVelhoEstado);
+            var model12 = new Membro_TransferenciaLgpd(idVelhoEstado); var p12 = model12.recuperar(idVelhoEstado);
             Pessoa p = null;
             if (p1) p = model1;
             if (p2) p = model2;
@@ -438,10 +438,7 @@ namespace business.classes
 
         public override string alterar(int id)
         {
-            Update_padrao = $"update MudancaEstado set velhoEstado='{velhoEstado}', " +
-           $" novoEstado='{novoEstado}', DataMudanca='{DataMudanca}', CodigoPessoa='{CodigoPessoa}' " +
-           $"  where Id='{id}' ";
-
+            UpdateProperties(null, id);
             bd.Editar(this);
             return Update_padrao;
         }
@@ -454,45 +451,15 @@ namespace business.classes
 
         public override bool recuperar(int id)
         {
-            if (conexao != null)
-            {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-
-                    dr.Read();
-                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
-                    this.velhoEstado = Convert.ToString(dr["velhoEstado"]);
-                    this.CodigoPessoa = int.Parse(Convert.ToString(dr["CodigoPessoa"]));
-                    this.novoEstado = Convert.ToString(dr["novoEstado"]);
-                    this.DataMudanca = Convert.ToDateTime(dr["DataMudanca"]);
-                    dr.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
-            }
+            if (SetProperties(GetType()))
+            { T = GetType(); return true; }
             return false;
         }
         
         public override string salvar()
         {
-            Insert_padrao = "insert into MudancaEstado (velhoEstado, novoEstado, DataMudanca, CodigoPessoa) " +
-                $" values ('{velhoEstado}', '{novoEstado}', '{DateTime.Now.ToString("yyyy-MM-dd")}', '{CodigoPessoa}')";
-
+            GetProperties(null);
+            Insert_padrao += BDcomum.addNaLista;
             bd.SalvarModelo(this);
             return Insert_padrao;
         }

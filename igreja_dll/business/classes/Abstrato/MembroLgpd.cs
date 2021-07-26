@@ -19,38 +19,12 @@ namespace business.classes.Abstrato
     [Table("MembroLgpd")]
     public abstract class MembroLgpd : PessoaLgpd
     {        
-        
-        private int data_batismo;
-        private bool desligamento;
-
         [Display(Name = "Ano de batismo")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         // Verificar se propriedade fica nesta classe abstrata. provavelmente não.
-        public int Data_batismo
-        {
-            get
-            {
-                return data_batismo;
-            }
+        public int Data_batismo { get; set; }
 
-            set
-            {
-                data_batismo = value;
-            }
-        }
-
-        public bool Desligamento
-        {
-            get
-            {
-                return desligamento;
-            }
-
-            set
-            {
-                desligamento = value;
-            }
-        }
+        public bool Desligamento { get; set; }
 
         public bool Save()
         {
@@ -67,50 +41,33 @@ namespace business.classes.Abstrato
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
-            Update_padrao += $" update MembroLgpd set Data_batismo='{Data_batismo}', " +
-            $" Desligamento='{Desligamento.ToString()}', Motivo_desligamento='{Motivo_desligamento}' where Id='{id}'";
-            
+            base.alterar(id);
+            UpdateProperties(T, id);
             return Update_padrao;
         }
 
         public override string excluir(int id)
         {
-            Delete_padrao = $" delete from MembroLgpd where Id='{id}' " + base.excluir(id);
-
-            
-            return Delete_padrao;
+            T = T.BaseType;
+            var delete =
+            Delete_padrao.Replace(GetType().Name, T.Name)
+            + base.excluir(id);
+            return delete;
         }
 
         public override bool recuperar(int id)
         {
-            Select_padrao = $"select * from MembroLgpd as P where P.Id='{id}'";
-            var conexao = bd.obterconexao();
-
-            SqlCommand comando = new SqlCommand(Select_padrao, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            if (SetProperties(T))
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return false;
+                base.recuperar(id); return true;
             }
-            base.recuperar(id);
-            dr.Read();
-            this.Data_batismo = int.Parse(dr["Data_batismo"].ToString());
-            this.Desligamento = Convert.ToBoolean(dr["Desligamento"]);
-            this.Motivo_desligamento = Convert.ToString(dr["Motivo_desligamento"]);
-            dr.Close();
-            bd.fecharconexao(conexao);
-            return true;
+            return false;
         }
 
         public override string salvar()
         {
-            Insert_padrao = base.salvar();
-            Insert_padrao += " insert into MembroLgpd (Data_batismo, Desligamento, Motivo_desligamento, Id) values" +
-                $" ('{this.Data_batismo}', '{this.Desligamento}', '{this.Motivo_desligamento}', IDENT_CURRENT('Pessoa'))";
-            
+            base.salvar();
+            GetProperties(T);            
             return Insert_padrao;
         }
     }

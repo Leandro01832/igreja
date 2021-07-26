@@ -33,11 +33,9 @@ namespace business.classes.Pessoas
 
         public override string alterar(int id)
         {
-            Update_padrao = base.alterar(id);
-            Update_padrao += $" update Membro_Transferencia set Nome_igreja_transferencia='{Nome_igreja_transferencia}', " +
-            $" Estado_transferencia='{Estado_transferencia}', Nome_cidade_transferencia='{Nome_cidade_transferencia}', " +
-            $"  where Id='{id}' " + BDcomum.addNaLista;
-
+            base.alterar(id);
+            UpdateProperties(null, id);
+            Update_padrao += BDcomum.addNaLista;
             bd.Editar(this);
             return Update_padrao;
         }
@@ -51,54 +49,20 @@ namespace business.classes.Pessoas
 
         public override bool recuperar(int id)
         {
-            if (conexao != null)
+            if (SetProperties(GetType()))
             {
-                try
-                {
-                    if (dr.HasRows == false)
-                    {
-                        dr.Close();
-                        bd.fecharconexao(conexao);
-                        return false;
-                    }
-                    base.recuperar(id);
-                    dr.Read();
-                    this.Nome_cidade_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
-                    this.Estado_transferencia = Convert.ToString(dr["Estado_transferencia"]);
-                    this.Nome_igreja_transferencia = Convert.ToString(dr["Nome_cidade_transferencia"]);
-                    dr.Close();
-                }
-                catch (Exception ex)
-                {
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-                return true;
+                base.recuperar(id); T = GetType(); return true;
             }
             return false;
         }
         
         public override string salvar()
         {
-            Insert_padrao = base.salvar();
-            Insert_padrao += " insert into Membro_transferencia (Nome_cidade_transferencia, " +
-              " Estado_transferencia, Nome_igreja_transferencia, Id) " +
-              $" values ('{Nome_cidade_transferencia}', '{Estado_transferencia}', '{Nome_igreja_transferencia}', " +
-              " IDENT_CURRENT('Pessoa'))" + BDcomum.addNaLista;
-
+            base.salvar();
+            GetProperties(null);
+            Insert_padrao += BDcomum.addNaLista;
             bd.SalvarModelo(this);
-
             return Insert_padrao;
         }
-
-        public override string ToString()
-        {
-            return base.Codigo + " - " + base.NomePessoa;
-        }
-
     }
 }
