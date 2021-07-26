@@ -91,7 +91,7 @@ namespace WindowsFormsApp1.Formulario.Celula
                             catch
                             {
                                 AddNaListaCelulaMinisterios = "";
-                                var num = modelocrud.GeTotalRegistrosMinisterios();
+                                var num = Ministerio.GeTotalRegistrosMinisterios();
                                 if (num != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

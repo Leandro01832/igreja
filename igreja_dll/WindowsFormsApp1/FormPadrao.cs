@@ -108,9 +108,9 @@ namespace WindowsFormsApp1
 
         private async Task verificarListagem()
         {
-            var registrosMinisterios = modelocrud.GeTotalRegistrosMinisterios();
-            var registrosPessoas = modelocrud.GeTotalRegistrosPessoas();
-            var registrosCelulas = modelocrud.GeTotalRegistrosCelulas();
+            var registrosMinisterios = Ministerio.GeTotalRegistrosMinisterios();
+            var registrosPessoas = Pessoa.GeTotalRegistrosPessoas();
+            var registrosCelulas = Celula.GeTotalRegistrosCelulas();
             try
             {
                 if (registrosMinisterios != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)

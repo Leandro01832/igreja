@@ -4,6 +4,7 @@ using business.classes.Intermediario;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
+using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -164,7 +165,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<MinisterioCelula>().ToList().Count != GeTotalRegistrosMinisterioCelula()) { }
+                while (Modelos.OfType<MinisterioCelula>().ToList().Count != MinisterioCelula.GeTotalRegistrosMinisterioCelula()) { }
                 lista = Modelos.OfType<MinisterioCelula>().Where(m => m.CelulaId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -177,7 +178,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<Pessoa>().ToList().Count != GeTotalRegistrosPessoas()) { }
+                while (Modelos.OfType<Pessoa>().ToList().Count != Pessoa.GeTotalRegistrosPessoas()) { }
                 lista = Modelos.OfType<Pessoa>().Where(m => m.celula_ == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -200,6 +201,34 @@ namespace business.classes.Abstrato
         public List<int> buscarLista(modelocrud TipoDaLista, modelocrud Ligacao, string nomeDaChave, int id)
         {
            return  BuscaLista.buscarLista(TipoDaLista, Ligacao, nomeDaChave, id);
+        }
+
+        public static int GeTotalRegistrosCelulas()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
         }
 
         public override string ToString()

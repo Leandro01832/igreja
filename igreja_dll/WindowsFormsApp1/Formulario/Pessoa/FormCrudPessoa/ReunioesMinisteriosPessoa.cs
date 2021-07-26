@@ -134,7 +134,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                             {
                                 AddNaListaPessoaReunioes = "";
                                 txt_reunioes.Text = "";
-                                var numero = modelocrud.GeTotalRegistrosReunioes();
+                                var numero = business.classes.Reuniao.GeTotalRegistrosReunioes();
                                 if(numero != modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count)
                                 MessageBox.Show("Aguarde o processamento.");
                                 else
@@ -182,7 +182,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
                             catch (Exception)
                             {
                                 AddNaListaPessoaMinsterios = "";
-                                var numero = modelocrud.GeTotalRegistrosMinisterios();
+                                var numero = business.classes.Abstrato.Ministerio.GeTotalRegistrosMinisterios();
                                 if (numero != modelocrud.Modelos.OfType<business.classes.Abstrato.Ministerio>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

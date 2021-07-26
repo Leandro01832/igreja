@@ -54,7 +54,7 @@ namespace Site
                     Numero_chamada = 0
                 },
                 Img = "",
-                Historico = new List<business.classes.Historico>(),
+                Historicos = new List<business.classes.Historico>(),
                 Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                 NomePessoa = "",
                 Condicao_religiosa = " - ",

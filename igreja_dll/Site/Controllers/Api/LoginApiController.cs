@@ -63,7 +63,7 @@ namespace Site.Controllers.Api
             .Include(p => p.Ministerios)
             .Include(p => p.Celula)
             .Include(p => p.Chamada)
-            .Include(p => p.Historico)
+            .Include(p => p.Historicos)
             .Include(p => p.Reuniao)
             .Include(x => x.Reuniao.Select(y => y.Pessoa))
             .Include(x => x.Reuniao.Select(y => y.Reuniao))
@@ -76,7 +76,7 @@ namespace Site.Controllers.Api
 
             PessoaApi PessoaApi = new PessoaApi
             {
-                Historico = user.Historico,
+                Historico = user.Historicos,
                 Reuniao = user.Reuniao,                
                 Chamada = user.Chamada,
                 Celula = user.Celula,

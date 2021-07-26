@@ -91,7 +91,7 @@ namespace Tests
                         Numero_chamada = 0
                     },                    
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Condicao_religiosa = " - ",
@@ -163,7 +163,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
@@ -235,7 +235,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
@@ -309,7 +309,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
@@ -382,7 +382,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
@@ -459,7 +459,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
@@ -533,7 +533,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Condicao_religiosa = " - ",
@@ -580,7 +580,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
@@ -627,7 +627,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
@@ -676,7 +676,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
@@ -724,7 +724,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
@@ -776,7 +776,7 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historico = new List<business.classes.Historico>(),
+                    Historicos = new List<business.classes.Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",

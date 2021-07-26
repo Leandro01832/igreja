@@ -1,5 +1,6 @@
 ﻿using business.classes.Abstrato;
 using database;
+using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,34 @@ namespace business.classes.Intermediario
         public override string salvar()
         {
             throw new NotImplementedException();
+        }
+
+        public static int GeTotalRegistrosPessoasEmMinisterios()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM PessoaMinisterio", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
         }
     }
 

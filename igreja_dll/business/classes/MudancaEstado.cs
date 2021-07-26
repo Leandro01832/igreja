@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using business.classes.Abstrato;
+﻿using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using database.banco;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 
 namespace business.classes
 {
@@ -105,7 +100,7 @@ namespace business.classes
                         Endereco = pd.Endereco,
                         Estado_civil = pd.Estado_civil,
                         Falta = pd.Falta,
-                        Historico = pd.Historico,
+                        Historicos = pd.Historicos,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
                         NomePessoa = pd.NomePessoa,
@@ -138,7 +133,7 @@ namespace business.classes
                         Endereco = pd.Endereco,
                         Estado_civil = pd.Estado_civil,
                         Falta = pd.Falta,
-                        Historico = pd.Historico,
+                        Historicos = pd.Historicos,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
                         NomePessoa = pd.NomePessoa,
@@ -172,7 +167,7 @@ namespace business.classes
                         Endereco = pd.Endereco,
                         Estado_civil = pd.Estado_civil,
                         Falta = pd.Falta,
-                        Historico = pd.Historico,
+                        Historicos = pd.Historicos,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
                         NomePessoa = pd.NomePessoa,
@@ -208,7 +203,7 @@ namespace business.classes
                         Endereco = pd.Endereco,
                         Estado_civil = pd.Estado_civil,
                         Falta = pd.Falta,
-                        Historico = pd.Historico,
+                        Historicos = pd.Historicos,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
                         NomePessoa = pd.NomePessoa,
@@ -240,7 +235,7 @@ namespace business.classes
                         Endereco = pd.Endereco,
                         Estado_civil = pd.Estado_civil,
                         Falta = pd.Falta,
-                        Historico = pd.Historico,
+                        Historicos = pd.Historicos,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
                         NomePessoa = pd.NomePessoa,
@@ -272,7 +267,7 @@ namespace business.classes
                         Endereco = pd.Endereco,
                         Estado_civil = pd.Estado_civil,
                         Falta = pd.Falta,
-                        Historico = pd.Historico,
+                        Historicos = pd.Historicos,
                         Img = pd.Img,
                         Falescimento = pd.Falescimento,
                         NomePessoa = pd.NomePessoa,
@@ -305,7 +300,7 @@ namespace business.classes
                         Chamada = p.Chamada,
                         Email = p.Email,
                         Falta = p.Falta,
-                        Historico = p.Historico,
+                        Historicos = p.Historicos,
                         Img = p.Img,
                         Reuniao = p.Reuniao,
                         Ministerios = p.Ministerios,
@@ -327,7 +322,7 @@ namespace business.classes
                         Chamada = p.Chamada,
                         Email = p.Email,
                         Falta = p.Falta,
-                        Historico = p.Historico,
+                        Historicos = p.Historicos,
                         Img = p.Img,
                         Reuniao = p.Reuniao,
                         Ministerios = p.Ministerios,
@@ -350,7 +345,7 @@ namespace business.classes
                         Chamada = p.Chamada,
                         Email = p.Email,
                         Falta = p.Falta,
-                        Historico = p.Historico,
+                        Historicos = p.Historicos,
                         Img = p.Img,
                         Reuniao = p.Reuniao,
                         Ministerios = p.Ministerios,
@@ -375,7 +370,7 @@ namespace business.classes
                         Chamada = p.Chamada,
                         Email = p.Email,
                         Falta = p.Falta,
-                        Historico = p.Historico,
+                        Historicos = p.Historicos,
                         Img = p.Img,
                         Reuniao = p.Reuniao,
                         Ministerios = p.Ministerios,
@@ -396,7 +391,7 @@ namespace business.classes
                         Chamada = p.Chamada,
                         Email = p.Email,
                         Falta = p.Falta,
-                        Historico = p.Historico,
+                        Historicos = p.Historicos,
                         Img = p.Img,
                         Reuniao = p.Reuniao,
                         Ministerios = p.Ministerios,
@@ -417,7 +412,7 @@ namespace business.classes
                         Chamada = p.Chamada,
                         Email = p.Email,
                         Falta = p.Falta,
-                        Historico = p.Historico,
+                        Historicos = p.Historicos,
                         Img = p.Img,
                         Reuniao = p.Reuniao,
                         Ministerios = p.Ministerios,
@@ -462,6 +457,34 @@ namespace business.classes
             Insert_padrao += BDcomum.addNaLista;
             bd.SalvarModelo(this);
             return Insert_padrao;
+        }
+
+        public static int GeTotalRegistrosMudancaEstado()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM MudancaEstado", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
         }
 
         public override string ToString()

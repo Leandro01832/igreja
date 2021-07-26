@@ -1,4 +1,5 @@
-﻿using business.classes.Intermediario;
+﻿using business.classes.Abstrato;
+using business.classes.Intermediario;
 using database;
 using database.banco;
 using Newtonsoft.Json;
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace business.classes
 {
@@ -87,39 +90,15 @@ namespace business.classes
 
         private List<modelocrud> recuperarPessoas(int? id)
         {
-            var select = "select * from Pessoa as P inner join " +
-                " ReuniaoPessoa as PERE on P.Id=PERE.PessoaId  inner join Reuniao as R" +
-                $" on PERE.ReuniaoId=R.Id where PERE.ReuniaoId='{id}' ";
-
-            List<modelocrud> modelos = new List<modelocrud>();
-            List<ReuniaoPessoa> lista = new List<ReuniaoPessoa>();
-            var conexao = bd.obterconexao();
-
-
-            SqlCommand comando = new SqlCommand(select, conexao);
-            SqlDataReader dr = comando.ExecuteReader();
-            if (dr.HasRows == false)
+            List<modelocrud> lista = new List<modelocrud>();
+            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                dr.Close();
-                bd.fecharconexao(conexao);
-                return modelos;
-            }
-
-            while (dr.Read())
-            {
-                lista.Add(new ReuniaoPessoa { Id = int.Parse(Convert.ToString(dr["Id"])) });
-            }
-            dr.Close();
-            bd.fecharconexao(conexao);
-
-            foreach (var item in lista)
-            {
-                var model = new ReuniaoPessoa();
-                if (model.recuperar(item.Id))
-                    modelos.Add(model);
-            }
-
-            return modelos;
+                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != Pessoa.GeTotalRegistrosPessoas()) { }
+                lista = Modelos.OfType<ReuniaoPessoa>().Where(m => m.ReuniaoId == id).Cast<modelocrud>().ToList();
+                return lista;
+            });
+            Task.WaitAll(t);
+            return t.Result;
         }
 
         public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
@@ -137,6 +116,34 @@ namespace business.classes
         public override string ToString()
         {
             return this.Id.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
+        }
+
+        public static int GeTotalRegistrosReunioes()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
         }
     }
 }

@@ -455,32 +455,64 @@ namespace database
             if (property.Name == "Id")
                 values += $"IDENT_CURRENT('{ClassBase}'), ";
             else
-            if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
+            if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
             {
-                var time = TimeSpan.Parse(property.GetValue(this, null).ToString());
-                values += "'" + time.ToString() + "', ";
-            }
-            else
-             if (property.PropertyType == typeof(DateTime))
-            {
-                var data = DateTime.Parse(property.GetValue(this, null).ToString());
-                values += "'" + data.ToString("yyyy-MM-dd") + "', ";
-            }
-            else
-             if (property.PropertyType == typeof(int?))
-            {
+                double? prop = null;
                 if (property.GetValue(this, null) != null)
-                    values += property.GetValue(this, null).ToString() + ", ";
+                    prop = double.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values += "" + prop.ToString() + ", ";
                 else
                     values += "" + "null" + ", ";
             }
             else
-            if (property.PropertyType == typeof(int))
-                values += property.GetValue(this, null).ToString() + ", ";
+            if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
+            {
+                long? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = long.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values += "" + prop.ToString() + ", ";
+                else
+                    values += "" + "null" + ", ";
+            }
+            else
+            if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
+            {
+                TimeSpan? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = TimeSpan.Parse(property.GetValue(this, null).ToString());                
+                if (prop != null)
+                    values += "'" + prop.ToString() + "', ";
+                else
+                    values += "" + "null" + ", ";
+            }
+            else
+             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(TimeSpan))
+            {
+                DateTime? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = Convert.ToDateTime(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values += "'" + prop?.ToString("yyyy-MM-dd") + "', ";
+                else
+                    values += "" + "null" + ", ";
+            }
+            else
+             if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
+            {
+                int? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = int.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values += "'" + prop.ToString() + "', ";
+                else
+                    values += "" + "null" + ", ";
+            }
             else
             {
                 if (property.GetValue(this, null) == null)
-                    values += "'" + "null" + "', ";
+                    values += "" + "null" + ", ";
                 else
                     values += "'" + property.GetValue(this, null).ToString() + "', ";
             }
@@ -491,32 +523,64 @@ namespace database
         private string VerificaUpdateProperties(PropertyInfo property)
         {
             string values = "";
+            if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
+            {
+                double? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = double.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values = "" + prop.ToString() + ", ";
+                else
+                    values = "" + "null" + ", ";
+            }
+            else
+            if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
+            {
+                long? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = long.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values = "" + prop.ToString() + ", ";
+                else
+                    values = "" + "null" + ", ";
+            }
+            else
             if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
             {
-                var time = TimeSpan.Parse(property.GetValue(this, null).ToString());
-                values = "'" + time.ToString() + "', ";
-            }
-            else
-            if (property.PropertyType == typeof(DateTime))
-            {
-                var data = DateTime.Parse(property.GetValue(this, null).ToString());
-                values = "'" + data.ToString("yyyy-MM-dd") + "', ";
-            }
-            else
-            if (property.PropertyType == typeof(int?))
-            {
+                TimeSpan? prop = null;
                 if (property.GetValue(this, null) != null)
-                    values = property.GetValue(this, null).ToString() + ", ";
+                    prop = TimeSpan.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values = "'" + prop.ToString() + "', ";
                 else
-                    values = "'" + "null" + "', ";
+                    values = "" + "null" + ", ";
             }
             else
-            if (property.PropertyType == typeof(int))
-                values = property.GetValue(this, null).ToString() + ", ";
+             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(TimeSpan))
+            {
+                DateTime? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = Convert.ToDateTime(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values = "'" + prop?.ToString("yyyy-MM-dd") + "', ";
+                else
+                    values = "" + "null" + ", ";
+            }
+            else
+             if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
+            {
+                int? prop = null;
+                if (property.GetValue(this, null) != null)
+                    prop = int.Parse(property.GetValue(this, null).ToString());
+                if (prop != null)
+                    values = "'" + prop.ToString() + "', ";
+                else
+                    values = "" + "null" + ", ";
+            }
             else
             {
                 if (property.GetValue(this, null) == null)
-                    values = "'" + "null" + "', ";
+                    values = "" + "null" + ", ";
                 else
                     values = "'" + property.GetValue(this, null).ToString() + "', ";
             }
@@ -685,273 +749,19 @@ namespace database
         }
         #endregion
 
-        #region MethodsPorcentagem
-        public static int GeTotalRegistrosPessoas()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-
-
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosCelulas()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosMinisterios()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosReunioes()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosMudancaEstado()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM MudancaEstado", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosPessoasEmMinisterios()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM PessoaMinisterio", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosPessoasEmReunioes()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM ReuniaoPessoa", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosHistoricos()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Historico", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
-        public static int GeTotalRegistrosMinisterioCelula()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM MinisterioCelula", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
+        #region MethodPorcentagem          
         public static void calcularPorcentagem()
         {
             try
             {
-                var pessoas = GeTotalRegistrosPessoas();
-                var PessoasEmMinisterios = GeTotalRegistrosPessoasEmMinisterios();
-                var PessoasEmReunioes = GeTotalRegistrosPessoasEmReunioes();
-                var Historicos = GeTotalRegistrosHistoricos();
-                var celulas = GeTotalRegistrosCelulas();
-                var ministerios = GeTotalRegistrosMinisterios();
-                var reunioes = GeTotalRegistrosReunioes();
-                var mudancas = GeTotalRegistrosMudancaEstado();
+                var pessoas = Pessoa.GeTotalRegistrosPessoas();
+                var PessoasEmMinisterios = PessoaMinisterio.GeTotalRegistrosPessoasEmMinisterios();
+                var PessoasEmReunioes = ReuniaoPessoa.GeTotalRegistrosPessoasEmReunioes();
+                var Historicos = Historico.GeTotalRegistrosHistoricos();
+                var celulas = Celula.GeTotalRegistrosCelulas();
+                var ministerios = Ministerio.GeTotalRegistrosMinisterios();
+                var reunioes = Reuniao.GeTotalRegistrosReunioes();
+                var mudancas = MudancaEstado.GeTotalRegistrosMudancaEstado();
                 var totalRegistros = pessoas + celulas + ministerios + reunioes + mudancas
                     + PessoasEmMinisterios  + PessoasEmReunioes + Historicos;
 

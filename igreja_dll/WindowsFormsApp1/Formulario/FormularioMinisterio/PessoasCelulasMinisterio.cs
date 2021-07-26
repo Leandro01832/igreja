@@ -120,7 +120,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                             catch
                             {
                                 AddNaListaReuniaoPessoas = "";
-                                var num = modelocrud.GeTotalRegistrosPessoas();
+                                var num = business.classes.Abstrato.Pessoa.GeTotalRegistrosPessoas();
                                 if (num != modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
@@ -172,7 +172,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                             {
                                 AddNaListaMinisterioCelulas = "";
                                 txt_celulas.Text = "";
-                                var num = modelocrud.GeTotalRegistrosCelulas();
+                                var num = business.classes.Abstrato.Celula.GeTotalRegistrosCelulas();
                                 if (num != modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

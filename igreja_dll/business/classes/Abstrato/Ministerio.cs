@@ -181,7 +181,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<Pessoa>().ToList().Count != GeTotalRegistrosPessoas()) { }
+                while (Modelos.OfType<Pessoa>().ToList().Count != Pessoa.GeTotalRegistrosPessoas()) { }
                 lista = Modelos.OfType<Pessoa>().Where(m => m.celula_ == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -194,7 +194,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<MinisterioCelula>().ToList().Count != GeTotalRegistrosMinisterioCelula()) { }
+                while (Modelos.OfType<MinisterioCelula>().ToList().Count != MinisterioCelula.GeTotalRegistrosMinisterioCelula()) { }
                 lista = Modelos.OfType<MinisterioCelula>().Where(m => m.MinisterioId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -212,6 +212,34 @@ namespace business.classes.Abstrato
             modelocrud modeloQPreenche, string numeros)
         {
             AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
+        }
+
+        public static int GeTotalRegistrosMinisterios()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
         }
 
         public override string ToString()

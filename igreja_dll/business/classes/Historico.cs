@@ -1,19 +1,11 @@
-﻿using database.banco;
+﻿using business.classes.Abstrato;
+using database;
+using database.banco;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Collections;
-
 using System.Data.SqlClient;
-using database;
-using business.classes.Abstrato;
-using business.classes.Pessoas;
-using Newtonsoft.Json;
 
 namespace business.classes
 {
@@ -66,6 +58,34 @@ namespace business.classes
             GetProperties(GetType());
             bd.SalvarModelo(this);
             return Insert_padrao;
+        }
+
+        public static int GeTotalRegistrosHistoricos()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Historico", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return _TotalRegistros;
         }
 
     }

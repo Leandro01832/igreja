@@ -2,10 +2,13 @@
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
+using database.banco;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -87,7 +90,7 @@ namespace business.classes.Abstrato
         [JsonIgnore]
         public virtual List<PessoaMinisterio> Ministerios { get; set; }
         [JsonIgnore]
-        public virtual List<Historico> Historico { get; set; }
+        public virtual List<Historico> Historicos { get; set; }
 
         [JsonIgnore]
         public virtual List<ReuniaoPessoa> Reuniao { get; set; }
@@ -147,12 +150,12 @@ namespace business.classes.Abstrato
                     this.Reuniao.Add((ReuniaoPessoa)item);
                 }
 
-            this.Historico = new List<Historico>();
+            this.Historicos = new List<Historico>();
             var listaHistoricos = recuperarHistorico(id);
             if (listaHistoricos != null)
                 foreach (var item in listaHistoricos)
                 {
-                    this.Historico.Add((Historico)item);
+                    this.Historicos.Add((Historico)item);
                 }
             
             if (SetProperties(T)) return true;
@@ -269,7 +272,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t =  Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<PessoaMinisterio>().ToList().Count != GeTotalRegistrosPessoasEmMinisterios()) { }
+                while (Modelos.OfType<PessoaMinisterio>().ToList().Count != PessoaMinisterio.GeTotalRegistrosPessoasEmMinisterios()) { }
                 lista = Modelos.OfType<PessoaMinisterio>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -282,7 +285,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != GeTotalRegistrosPessoasEmReunioes()) { }
+                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != ReuniaoPessoa.GeTotalRegistrosPessoasEmReunioes()) { }
                 lista = Modelos.OfType<ReuniaoPessoa>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -295,7 +298,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<Historico>().ToList().Count != GeTotalRegistrosHistoricos()) { }
+                while (Modelos.OfType<Historico>().ToList().Count != Historico.GeTotalRegistrosHistoricos()) { }
                 lista = Modelos.OfType<Historico>().Where(m => m.pessoaid == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -334,6 +337,36 @@ namespace business.classes.Abstrato
             }
 
             return true;
+        }
+
+        public static int GeTotalRegistrosPessoas()
+        {
+            var _TotalRegistros = 0;
+            SqlConnection con;
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    var stringConexao = "";
+                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                    else stringConexao = BDcomum.conecta2;
+                    using (con = new SqlConnection(stringConexao))
+                    {
+                        cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
+                        con.Open();
+                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                        con.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+
+
+            return _TotalRegistros;
         }
 
         public override string ToString()
