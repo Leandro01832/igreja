@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes;
 using System.Web.Http.OData;
+using business.implementacao;
 
 namespace Site.Controllers.Api
 {

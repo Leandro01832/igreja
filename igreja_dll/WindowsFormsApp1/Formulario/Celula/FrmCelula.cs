@@ -1,14 +1,10 @@
-﻿using database;
-using System;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using WindowsFormsApp1.ListViews;
+﻿using System;
 
 namespace WindowsFormsApp1.Formulario.Celula
 {
     public partial class FrmCelula : FormularioListView
     {
-        public FrmCelula() : base(new ListViewCelula(typeof(business.classes.Abstrato.Celula)))
+        public FrmCelula(Type tipo) : base(tipo)
         {
             InitializeComponent();
         }

@@ -231,7 +231,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 
         private void listaministerios_Click(object sender, EventArgs e)
         {
-            FrmMinisterio form = new FrmMinisterio();
+            FrmMinisterio form = new FrmMinisterio(typeof(business.classes.Abstrato.Ministerio));
             form.MdiParent = this.MdiParent;
             form.Text = "lista de ministérios";
             form.Show();
@@ -239,7 +239,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 
         private void listacelulas_Click(object sender, EventArgs e)
         {
-            FrmCelula form = new FrmCelula();
+            FrmCelula form = new FrmCelula(typeof(business.classes.Abstrato.Celula));
             form.MdiParent = this.MdiParent;
             form.Text = "Lista de Celulas";
             form.Show();

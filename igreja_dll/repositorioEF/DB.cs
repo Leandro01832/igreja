@@ -5,6 +5,7 @@ using business.classes.Celulas;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.PessoasLgpd;
+using business.implementacao;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

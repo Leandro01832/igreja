@@ -1,27 +1,16 @@
-﻿using database.banco;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using business.classes.Abstrato;
+using business.implementacao;
+using database.banco;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-
-using database;
-using business.classes.Abstrato;
-using System.Windows.Forms;
 
 namespace business.classes.Pessoas
 {
     [Table("Membro_Batismo")]
     public class Membro_Batismo : Membro
     {
-        public Membro_Batismo() : base()
-        {
-        }
+        public Membro_Batismo() : base() { }
 
-        public Membro_Batismo(int m) : base(m) { }
+        public Membro_Batismo(int m) : base(m) {  }
 
         public override string alterar(int id)
         {
@@ -39,7 +28,6 @@ namespace business.classes.Pessoas
             return Delete_padrao;
         }
 
-
         public override bool recuperar(int id)
         {
             if (SetProperties(GetType()))
@@ -48,7 +36,7 @@ namespace business.classes.Pessoas
             }
             return false;
         }
-        
+
         public override string salvar()
         {
             base.salvar();

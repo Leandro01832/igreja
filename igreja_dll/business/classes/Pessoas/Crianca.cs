@@ -1,25 +1,13 @@
-﻿using database.banco;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using business.implementacao;
+using database.banco;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using database;
-using business.classes.Abstrato;
-using business.classes.Ministerio;
-using System.Windows.Forms;
 
 namespace business.classes.Pessoas
 {
     [Table("Crianca")]
     public class Crianca : PessoaDado
     {
-
         [Display(Name = "Nome do pai")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_pai { get; set; }
@@ -27,12 +15,12 @@ namespace business.classes.Pessoas
         [Display(Name = "Nome da mãe")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_mae { get; set; }
-
+        
         public Crianca() : base()
         {
         }
 
-        public Crianca(int m) : base(m) { }
+        public Crianca(int m) : base(m) {  }
 
         public override string alterar(int id)
         {
@@ -58,7 +46,7 @@ namespace business.classes.Pessoas
             }
             return false;
         }
-        
+
         public override string salvar()
         {
             base.salvar();
@@ -66,6 +54,6 @@ namespace business.classes.Pessoas
             Insert_padrao += BDcomum.addNaLista;
             bd.SalvarModelo(this);
             return Insert_padrao;
-        }        
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using business.classes.Pessoas;
+using business.implementacao;
 using database.banco;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,12 +16,10 @@ namespace business.classes.PessoasLgpd
         [Display(Name = "Nome da mãe")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_mae { get; set; }
+        
 
-        public CriancaLgpd() : base()
-        {
-        }
-
-        public CriancaLgpd(int m) : base(m){ }
+        public CriancaLgpd() : base() { }
+        public CriancaLgpd(int m) : base(m)    {  }
 
         public override string alterar(int id)
         {
@@ -46,7 +45,7 @@ namespace business.classes.PessoasLgpd
             }
             return false;
         }
-        
+
         public override string salvar()
         {
             base.salvar();

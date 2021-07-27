@@ -120,36 +120,6 @@
     <Compile Include="Formulario\Celula\FrmCelula.Designer.cs">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celula\CelulaAdolescente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaAdolescente.Designer.cs">
-      <DependentUpon>CelulaAdolescente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaAdulto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaAdulto.Designer.cs">
-      <DependentUpon>CelulaAdulto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaCasado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaCasado.Designer.cs">
-      <DependentUpon>CelulaCasado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaCrianca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaCrianca.Designer.cs">
-      <DependentUpon>CelulaCrianca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaJovem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Celula\CelulaJovem.Designer.cs">
-      <DependentUpon>CelulaJovem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formulario\Celula\DadoCelula.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,30 +168,6 @@
     <Compile Include="Formulario\FormularioMinisterio\FinalizarCadastroMinisterio.Designer.cs">
       <DependentUpon>FinalizarCadastroMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderCelula.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderCelula.Designer.cs">
-      <DependentUpon>LiderCelula.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderCelulaTreinamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderCelulaTreinamento.Designer.cs">
-      <DependentUpon>LiderCelulaTreinamento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterio.Designer.cs">
-      <DependentUpon>LiderMinisterio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterioTreinamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\LiderMinisterioTreinamento.Designer.cs">
-      <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formulario\FormularioMinisterio\FrmMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,30 +179,6 @@
     </Compile>
     <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.Designer.cs">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelula.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelula.Designer.cs">
-      <DependentUpon>SupervisorCelula.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelulaTreinamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorCelulaTreinamento.Designer.cs">
-      <DependentUpon>SupervisorCelulaTreinamento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterio.Designer.cs">
-      <DependentUpon>SupervisorMinisterio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.Designer.cs">
-      <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\DetalhesMudancaEstado.cs">
       <SubType>Form</SubType>
@@ -330,12 +252,6 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.Designer.cs">
       <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmCrianca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmCrianca.Designer.cs">
-      <DependentUpon>FrmCrianca.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,47 +270,11 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.Designer.cs">
       <DependentUpon>FinalizarCadastroPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembro.Designer.cs">
-      <DependentUpon>FrmMembro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroAclamacao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroAclamacao.Designer.cs">
-      <DependentUpon>FrmMembroAclamacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroBatismo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroBatismo.Designer.cs">
-      <DependentUpon>FrmMembroBatismo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroReconciliacao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroReconciliacao.Designer.cs">
-      <DependentUpon>FrmMembroReconciliacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroTransferencia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmMembroTransferencia.Designer.cs">
-      <DependentUpon>FrmMembroTransferencia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formulario\Pessoa\FormListView\FrmPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormListView\FrmPessoa.Designer.cs">
       <DependentUpon>FrmPessoa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmVisitante.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmVisitante.Designer.cs">
-      <DependentUpon>FrmVisitante.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FrmMudancaEstado.cs">
       <SubType>Form</SubType>
@@ -439,84 +319,6 @@
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="ImprimirRelatorio.cs" />
-    <Compile Include="ListViews\ListViewCelula.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewCelulaAdolescente.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewCelulaAdulto.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewCelulaCasado.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewCelulaCrianca.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewCelulaJovem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewCrianca.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewLiderCelula.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewLiderCelulaTtreinamento.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewLiderMinisterio.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewLiderMinisterioTreinamento.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMembro.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMembroAclamacao.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMembroBatismo.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMembroReconciliacao.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMembroTransferencia.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMinisterio.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewMudanca.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewPessoa.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewReuniao.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewSupervisorCelula.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewSupervisorCelulaTreinamento.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewSupervisorMinisterio.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewSupervisorMinisterioTreinanemnto.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\ListViewVisitante.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ListViews\TodosListViews.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -562,21 +364,6 @@
     <EmbeddedResource Include="Formulario\Celula\FrmCelula.resx">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\CelulaAdolescente.resx">
-      <DependentUpon>CelulaAdolescente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\CelulaAdulto.resx">
-      <DependentUpon>CelulaAdulto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\CelulaCasado.resx">
-      <DependentUpon>CelulaCasado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\CelulaCrianca.resx">
-      <DependentUpon>CelulaCrianca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\CelulaJovem.resx">
-      <DependentUpon>CelulaJovem.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Celula\DadoCelula.resx">
       <DependentUpon>DadoCelula.cs</DependentUpon>
     </EmbeddedResource>
@@ -607,35 +394,11 @@
     <EmbeddedResource Include="Formulario\FormularioMinisterio\FinalizarCadastroMinisterio.resx">
       <DependentUpon>FinalizarCadastroMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderCelula.resx">
-      <DependentUpon>LiderCelula.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderCelulaTreinamento.resx">
-      <DependentUpon>LiderCelulaTreinamento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderMinisterio.resx">
-      <DependentUpon>LiderMinisterio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\LiderMinisterioTreinamento.resx">
-      <DependentUpon>LiderMinisterioTreinamento.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmMinisterio.resx">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.resx">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorCelula.resx">
-      <DependentUpon>SupervisorCelula.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorCelulaTreinamento.resx">
-      <DependentUpon>SupervisorCelulaTreinamento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorMinisterio.resx">
-      <DependentUpon>SupervisorMinisterio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\SupervisorMinisterioTreinamento.resx">
-      <DependentUpon>SupervisorMinisterioTreinamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\DetalhesMudancaEstado.resx">
       <DependentUpon>DetalhesMudancaEstado.cs</DependentUpon>
@@ -673,9 +436,6 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.resx">
       <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmCrianca.resx">
-      <DependentUpon>FrmCrianca.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.resx">
       <DependentUpon>DadoPessoal.cs</DependentUpon>
     </EmbeddedResource>
@@ -685,26 +445,8 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.resx">
       <DependentUpon>FinalizarCadastroPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembro.resx">
-      <DependentUpon>FrmMembro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroAclamacao.resx">
-      <DependentUpon>FrmMembroAclamacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroBatismo.resx">
-      <DependentUpon>FrmMembroBatismo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroReconciliacao.resx">
-      <DependentUpon>FrmMembroReconciliacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmMembroTransferencia.resx">
-      <DependentUpon>FrmMembroTransferencia.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmPessoa.resx">
       <DependentUpon>FrmPessoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmVisitante.resx">
-      <DependentUpon>FrmVisitante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FrmMudancaEstado.resx">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>

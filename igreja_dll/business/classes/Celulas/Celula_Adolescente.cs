@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using database.banco;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using database;
-using database.banco;
 
 namespace business.classes.Celulas
 {

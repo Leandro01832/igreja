@@ -1,19 +1,14 @@
-﻿using database.banco;
+﻿using business.implementacao;
+using database.banco;
 using System;
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-using System.Collections.Generic;
-using database;
-using business.classes.Abstrato;
 
 namespace business.classes.Pessoas
 {
     [Table("Visitante")]
     public class Visitante : PessoaDado
     {
-
         [Display(Name = "Data da visita")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -22,16 +17,13 @@ namespace business.classes.Pessoas
         [Display(Name = "Condição religiosa")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Condicao_religiosa { get; set; }
+        
 
+        public Visitante() : base() { }
 
-        public Visitante() : base()
-        {
-            
-        }
+        public Visitante(int m) : base(m) {  }
 
-        public Visitante(int m) : base(m){ }
-
-    public override string alterar(int id)
+        public override string alterar(int id)
         {
             base.alterar(id);
             UpdateProperties(null, id);
@@ -54,7 +46,7 @@ namespace business.classes.Pessoas
                 base.recuperar(id); T = GetType(); return true;
             }
             return false;
-        }       
+        }
 
         public override string salvar()
         {

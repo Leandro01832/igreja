@@ -1,4 +1,5 @@
 ﻿using business.classes.Abstrato;
+using business.implementacao;
 using database.banco;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,11 +8,10 @@ namespace business.classes.PessoasLgpd
     [Table("Membro_BatismoLgpd")]
     public class Membro_BatismoLgpd : MembroLgpd
     {
-        public Membro_BatismoLgpd() : base()
-        {
-        }
 
-        public Membro_BatismoLgpd(int m) : base(m) { }
+        public Membro_BatismoLgpd() : base(){}
+
+        public Membro_BatismoLgpd(int m) : base(m) {  }
 
         public override string alterar(int id)
         {
@@ -36,7 +36,7 @@ namespace business.classes.PessoasLgpd
                 base.recuperar(id); T = GetType(); return true;
             }
             return false;
-        }        
+        }
 
         public override string salvar()
         {

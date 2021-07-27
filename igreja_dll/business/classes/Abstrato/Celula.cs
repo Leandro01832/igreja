@@ -3,6 +3,8 @@ using business.classes.Celulas;
 using business.classes.Intermediario;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using business.contrato;
+using business.implementacao;
 using database;
 using database.banco;
 using Newtonsoft.Json;

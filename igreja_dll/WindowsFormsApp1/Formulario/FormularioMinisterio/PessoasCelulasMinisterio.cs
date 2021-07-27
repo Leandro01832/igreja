@@ -203,7 +203,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void listacelulas_Click(object sender, EventArgs e)
         {
-            FrmCelula form = new FrmCelula();
+            FrmCelula form = new FrmCelula(typeof(business.classes.Abstrato.Celula));
             form.MdiParent = this.MdiParent;
             form.Text = "Lista de Celulas";
             form.Show();

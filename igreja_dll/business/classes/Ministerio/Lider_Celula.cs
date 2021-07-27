@@ -1,25 +1,14 @@
-﻿using database;
-using database.banco;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using database.banco;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-
 
 namespace business.classes.Ministerio
 {
-
     [Table("Lider_Celula")]
     public class Lider_Celula : Abstrato.Ministerio
     {
-        public Lider_Celula() : base()
-        {
-        }
+        public Lider_Celula() : base(){ }
 
-        public Lider_Celula(int m) : base(m)
-        {
-        }
+        public Lider_Celula(int m) : base(m){ }
 
         public override string salvar()
         {
@@ -54,8 +43,5 @@ namespace business.classes.Ministerio
             bd.Editar(this);
             return Update_padrao;
         }
-
-        
-
     }
 }

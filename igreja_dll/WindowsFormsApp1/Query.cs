@@ -1,5 +1,6 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.implementacao;
 using database;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_ano_batismo_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_ano_batismo.Checked)
+            if (AnoBatismo.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 txt_pesquisa_numero1.Enabled = true;
@@ -31,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_nome_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_nome.Checked)
+            if (Nome.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito pesquisa.");
                 txt_pesquisa_texto.Enabled = true;
@@ -46,7 +47,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_data_visita_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_data_visita.Checked)
+            if (DataVisita.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_data_valor1.Enabled = true;
@@ -63,7 +64,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_data_reuniao_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_data_reuniao.Checked)
+            if (DataReuniao.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_data_valor1.Enabled = true;
@@ -80,7 +81,7 @@ namespace WindowsFormsApp1
 
         private void check_data_mudanca_estado_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_data_mudanca_estado.Checked)
+            if (DataMudancaEstado.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_data_valor1.Enabled = true;
@@ -97,7 +98,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_email_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_email.Checked)
+            if (Email.Checked)
             {
                 MessageBox.Show("Digite um email parecido com o que lembra para ser feito a pesquisa.");
                 txt_pesquisa_texto.Enabled = true;
@@ -112,7 +113,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_nome_pai_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_nome_pai.Checked)
+            if (NomePai.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
                 txt_pesquisa_texto.Enabled = true;
@@ -127,7 +128,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_nome_mae_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_nome_mae.Checked)
+            if (NomeMae.Checked)
             {
                 MessageBox.Show("Digite um nome parecido com o que lembra para ser feito a pesquisa.");
                 txt_pesquisa_texto.Enabled = true;
@@ -142,7 +143,7 @@ namespace WindowsFormsApp1
 
         private void check_pesquisa_id_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_pesquisa_id.Checked)
+            if (Id.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 txt_pesquisa_numero1.Enabled = true;
@@ -160,7 +161,7 @@ namespace WindowsFormsApp1
 
         private void check_horario_celula_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_horario_celula.Checked)
+            if (HorarioCelula.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_horario_valor1.Enabled = true;
@@ -178,7 +179,7 @@ namespace WindowsFormsApp1
 
         private void check_horario_reuniao_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_horario_reuniao.Checked)
+            if (HorarioInicioReuniao.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_horario_valor1.Enabled = true;
@@ -196,7 +197,7 @@ namespace WindowsFormsApp1
 
         private void check_horario_final_reuniao_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_horario_final_reuniao.Checked)
+            if (HorarioFinalReuniao.Checked)
             {
                 MessageBox.Show("Digite dois valores e o resultado da pesquisa será entre esses dois valores.");
                 mask_horario_valor1.Enabled = true;
@@ -214,7 +215,7 @@ namespace WindowsFormsApp1
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (check_horario_final_reuniao.Checked)
+            if (HorarioFinalReuniao.Checked)
             {
                 try
                 {
@@ -229,7 +230,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (check_horario_reuniao.Checked)
+            if (HorarioInicioReuniao.Checked)
             {
                 try
                 {
@@ -244,7 +245,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (check_horario_celula.Checked)
+            if (HorarioCelula.Checked)
             {
                 try
                 {
@@ -259,22 +260,22 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (check_pesquisa_nome_mae.Checked)
+            if (NomeMae.Checked)
             {
                 Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Nome_mae");
             }
 
-            if (check_pesquisa_nome_pai.Checked)
+            if (NomePai.Checked)
             {
                 Resultado= Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Nome_pai");
             }
 
-            if (check_pesquisa_email.Checked)
+            if (Email.Checked)
             {
                 Resultado= Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Email");
             }
 
-            if (check_pesquisa_data_reuniao.Checked)
+            if (DataReuniao.Checked)
             {
                 try
                 {
@@ -289,7 +290,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (check_pesquisa_data_visita.Checked)
+            if (DataVisita.Checked)
             {
                 try
                 {
@@ -304,7 +305,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (check_data_mudanca_estado.Checked)
+            if (DataMudancaEstado.Checked)
             {
                 try
                 {
@@ -319,9 +320,9 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (check_pesquisa_id.Checked)
+            if (Id.Checked)
             {
-                string id = retornarStringId();
+                string id = "Id";
                 try
                 {
                     var v1 = int.Parse(txt_pesquisa_numero1.Text);
@@ -337,7 +338,7 @@ namespace WindowsFormsApp1
 
             if (tipo == typeof(Membro))
             {
-                if (check_pesquisa_ano_batismo.Checked)
+                if (AnoBatismo.Checked)
                 {
                     try
                     {
@@ -355,12 +356,12 @@ namespace WindowsFormsApp1
 
             if (tipo == typeof(Pessoa))
             {
-                if (check_pesquisa_email.Checked)
+                if (Email.Checked)
                 {
                     Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Email");
                 }
 
-                if (check_pesquisa_nome.Checked)
+                if (Nome.Checked)
                 {
                     Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "NomePessoa");
                 }
@@ -368,28 +369,11 @@ namespace WindowsFormsApp1
 
             if (tipo == typeof(Celula) || tipo == typeof(Ministerio))
             {
-                if (check_pesquisa_nome.Checked)
+                if (Nome.Checked)
                 {
                     Resultado = Resultado[0].PesquisarPorTexto(Resultado, txt_pesquisa_texto.Text, "Nome");
                 }
             }
-        }
-
-        private string retornarStringId()
-        {
-            string id = "";
-            if (Resultado[0] is Pessoa)
-                id = "IdPessoa";
-            if (Resultado[0] is Celula)
-                id = "Id";
-            if (Resultado[0] is Ministerio)
-                id = "IdMinisterio";
-            if (Resultado[0] is Reuniao)
-                id = "Id";
-            if (Resultado[0] is MudancaEstado)
-                id = "Id";
-            return id;
-        }
-        
+        }       
     }
 }

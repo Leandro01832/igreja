@@ -1,6 +1,8 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Pessoas;
+using business.implementacao;
+using database;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
@@ -12,8 +14,7 @@ namespace WindowsFormsApp1
 {
     public class ImprimirRelatorio
     {
-        public ImprimirRelatorio(List<Pessoa> Pessoas, List<Ministerio> Ministerios,
-            List<Celula> Celulas, List<Reuniao> Reuniao, List<MudancaEstado> MudancaEstado)
+        public ImprimirRelatorio(List<modelocrud> modelos)
         {
             this.Pessoas = Pessoas;
             this.Ministerios = Ministerios;

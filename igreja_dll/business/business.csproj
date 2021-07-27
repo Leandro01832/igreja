@@ -65,8 +65,8 @@
     <Compile Include="classes\Abstrato\MembroLgpd.cs" />
     <Compile Include="classes\Abstrato\Ministerio.cs" />
     <Compile Include="classes\Abstrato\Pessoa.cs" />
-    <Compile Include="classes\AddNalista.cs" />
-    <Compile Include="classes\BuscaLista.cs" />
+    <Compile Include="implementacao\AddNalista.cs" />
+    <Compile Include="implementacao\BuscaLista.cs" />
     <Compile Include="classes\Celulas\Celula_Adolescente.cs" />
     <Compile Include="classes\Celulas\Celula_Adulto.cs" />
     <Compile Include="classes\Celulas\Celula_Casado.cs" />
@@ -76,13 +76,13 @@
     <Compile Include="classes\ConfiguraRota.cs" />
     <Compile Include="classes\Endereco.cs" />
     <Compile Include="classes\Historico.cs" />
-    <Compile Include="classes\IAddNalista.cs" />
-    <Compile Include="classes\IBuscaLista.cs" />
-    <Compile Include="classes\IMudancaEstado.cs" />
+    <Compile Include="contrato\IAddNalista.cs" />
+    <Compile Include="contrato\IBuscaLista.cs" />
+    <Compile Include="contrato\IMudancaEstado.cs" />
     <Compile Include="classes\Intermediario\MinisterioCelula.cs" />
     <Compile Include="classes\Intermediario\PessoaMinisterio.cs" />
     <Compile Include="classes\Intermediario\ReuniaoPessoa.cs" />
-    <Compile Include="classes\IPesquisar.cs" />
+    <Compile Include="contrato\IPesquisar.cs" />
     <Compile Include="classes\Ministerio\Lider_Celula.cs" />
     <Compile Include="classes\Ministerio\Lider_Celula_Treinamento.cs" />
     <Compile Include="classes\Ministerio\Lider_Ministerio.cs" />
@@ -91,7 +91,7 @@
     <Compile Include="classes\Ministerio\Supervisor_Celula_Treinamento.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
-    <Compile Include="classes\MudancaEstado.cs" />
+    <Compile Include="implementacao\MudancaEstado.cs" />
     <Compile Include="classes\PessoasLgpd\CriancaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\Membro_BatismoLgpd.cs" />
@@ -109,11 +109,11 @@
     <Compile Include="classes\PhotoRequest.cs" />
     <Compile Include="classes\Reuniao.cs" />
     <Compile Include="classes\Telefone.cs" />
-    <Compile Include="contrato\Interface.cs" />
     <Compile Include="database\BDcomum.cs" />
     <Compile Include="database\dadosmysql.cs" />
     <Compile Include="database\IgrejaDB.cs" />
     <Compile Include="database\modelocrud.cs" />
+    <Compile Include="implementacao\Pesquisar.cs" />
     <Compile Include="Migrations\202107260119187_Inicio.cs" />
     <Compile Include="Migrations\202107260119187_Inicio.Designer.cs">
       <DependentUpon>202107260119187_Inicio.cs</DependentUpon>

@@ -1,15 +1,11 @@
-﻿using database;
-using System;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using WindowsFormsApp1.ListViews;
+﻿using System;
 
 namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class FrmMinisterio : FormularioListView
     {
 
-        public FrmMinisterio() : base(new ListViewMinisterio(typeof(business.classes.Abstrato.Ministerio)))
+        public FrmMinisterio(Type tipo) : base(tipo)
         {
             InitializeComponent();
         }       

@@ -14,6 +14,8 @@ using business.classes.Ministerio;
 using database;
 using business.classes.Intermediario;
 using Newtonsoft.Json;
+using business.contrato;
+using business.implementacao;
 
 namespace business.classes.Abstrato
 {

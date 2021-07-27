@@ -1,11 +1,9 @@
 ﻿using business.classes.Abstrato;
-using database;
+using business.implementacao;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
 
 
 namespace business.classes.Pessoas

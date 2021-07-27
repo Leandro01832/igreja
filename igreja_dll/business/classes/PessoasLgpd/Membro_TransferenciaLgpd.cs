@@ -1,4 +1,5 @@
 ﻿using business.classes.Abstrato;
+using business.implementacao;
 using database.banco;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,6 @@ namespace business.classes.PessoasLgpd
     [Table("Membro_TransferenciaLgpd")]
     public class Membro_TransferenciaLgpd : MembroLgpd
     {
-
         [Display(Name = "Nome da cidade onde morava")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_cidade_transferencia { get; set; }
@@ -21,12 +21,13 @@ namespace business.classes.PessoasLgpd
         [Display(Name = "Igreja onde congregava")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome_igreja_transferencia { get; set; }
+        
 
         public Membro_TransferenciaLgpd() : base()
         {
         }
 
-        public Membro_TransferenciaLgpd(int m) : base(m) { }
+        public Membro_TransferenciaLgpd(int m) : base(m) {  }
 
         public override string alterar(int id)
         {
@@ -52,7 +53,7 @@ namespace business.classes.PessoasLgpd
             }
             return false;
         }
-        
+
         public override string salvar()
         {
             base.salvar();

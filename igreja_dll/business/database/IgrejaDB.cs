@@ -3,6 +3,7 @@ using business.classes.Abstrato;
 using business.classes.Celula;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
+using business.implementacao;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

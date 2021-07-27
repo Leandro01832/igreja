@@ -118,7 +118,7 @@ namespace WindowsFormsApp1
         {
             PessoaDado p2 = new Membro_Reconciliacao();
             p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new business.classes.Telefone();
+            p2.Telefone = new Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -129,280 +129,106 @@ namespace WindowsFormsApp1
         {
             PessoaDado p2 = new Membro_Transferencia();
             p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new business.classes.Telefone();
+            p2.Telefone = new Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
             cv.Show();
         }
-
-        private void toolStripMenuItem10_Click_1(object sender, EventArgs e)
-        {
-            if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)
-            {
-                FrmPessoa p = new FrmPessoa(typeof(PessoaLgpd));
-                p.MdiParent = this;
-                p.Text = "Janela " + childFormNumber++;
-                p.Show(); 
-            }
-            else MessageBox.Show("Aguarde o processamento");
-        }
-
-        private void pessoasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)
-            {
-                FrmPessoa p = new FrmPessoa(typeof(Pessoa));
-                p.MdiParent = this;
-                p.Text = "Janela " + childFormNumber++;
-                p.Show();
-            }
-            else MessageBox.Show("Aguarde o processamento");
-            
-        }
-
-        private void pessoaToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)
-            {
-                FrmPessoa p = new FrmPessoa(typeof(PessoaDado));
-                p.MdiParent = this;
-                p.Text = "Janela " + childFormNumber++;
-                p.Show(); 
-            }
-            else MessageBox.Show("Aguarde o processamento");
-        }
-
-        private void visitanteToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            FrmVisitante m = new FrmVisitante(typeof(Visitante));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void toolStripMenuItem11_Click_1(object sender, EventArgs e)
-        {
-            FrmVisitante m = new FrmVisitante(typeof(VisitanteLgpd));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void membroToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)
-            {
-                FrmMembro m = new FrmMembro(typeof(Membro));
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();  
-            }
-            else MessageBox.Show("Aguarde o processamento");
-        }
-
-        private void toolStripMenuItem12_Click_1(object sender, EventArgs e)
-        {
-            if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)
-            {
-                FrmMembro m = new FrmMembro(typeof(MembroLgpd));
-                m.MdiParent = this;
-                m.Text = "Janela " + childFormNumber++;
-                m.Show();  
-            }
-            else MessageBox.Show("Aguarde o processamento");
-        }
-
-        private void criançaToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            FrmCrianca m = new FrmCrianca(typeof(Crianca));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void toolStripMenuItem17_Click_1(object sender, EventArgs e)
-        {
-            FrmCrianca m = new FrmCrianca(typeof(CriancaLgpd));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void membroPorAclamaçãoToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            FrmMembroAclamacao m = new FrmMembroAclamacao(typeof(Membro_Aclamacao));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void toolStripMenuItem13_Click_1(object sender, EventArgs e)
-        {
-            FrmMembroAclamacao m = new FrmMembroAclamacao(typeof(Membro_AclamacaoLgpd));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void membroPorBatismoToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            MembroBatismo m = new MembroBatismo(typeof(Membro_Batismo));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void toolStripMenuItem14_Click_1(object sender, EventArgs e)
-        {
-            MembroBatismo m = new MembroBatismo(typeof(Membro_BatismoLgpd));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void membroPorReconciliaçãoToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            MembroReconciliacao m = new MembroReconciliacao(typeof(Membro_Reconciliacao));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void toolStripMenuItem15_Click_1(object sender, EventArgs e)
-        {
-            MembroReconciliacao m = new MembroReconciliacao(typeof(Membro_ReconciliacaoLgpd));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void membroPorTransferênciaToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            MembroTransferencia m = new MembroTransferencia(typeof(Membro_Transferencia));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-        }
-
-        private void toolStripMenuItem16_Click_1(object sender, EventArgs e)
-        {
-            MembroTransferencia m = new MembroTransferencia(typeof(Membro_TransferenciaLgpd));
-            m.MdiParent = this;
-            m.Text = "Janela " + childFormNumber++;
-            m.Show();
-
-        }
-
+        
         private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(PessoaLgpd)); 
         }
 
         private void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(PessoaDado)); 
         }
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(CriancaLgpd)); 
         }
 
         private void toolStripMenuItem32_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(VisitanteLgpd)); 
         }
 
         private void toolStripMenuItem27_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(MembroLgpd)); 
         }
 
         private void toolStripMenuItem28_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_AclamacaoLgpd)); 
         }
 
         private void toolStripMenuItem29_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_BatismoLgpd)); 
         }
 
         private void toolStripMenuItem30_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_TransferenciaLgpd)); 
         }
 
         private void toolStripMenuItem31_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_ReconciliacaoLgpd)); 
         }
 
         private void toolStripMenuItem33_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Crianca)); 
         }
 
         private void toolStripMenuItem39_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Visitante)); 
         }
 
         private void toolStripMenuItem34_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro)); 
         }
 
         private void toolStripMenuItem35_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_Aclamacao)); 
         }
 
         private void toolStripMenuItem36_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_Batismo)); 
         }
 
         private void toolStripMenuItem37_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_Transferencia)); 
         }
 
         private void toolStripMenuItem38_Click(object sender, EventArgs e)
         {
-                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos.OfType<Pessoa>().ToList(), modelocrud.Modelos.OfType<Ministerio>().ToList(), modelocrud.Modelos.OfType<Celula>().ToList(),
-                    modelocrud.Modelos.OfType<Reuniao>().ToList(), modelocrud.Modelos.OfType<MudancaEstado>().ToList());
+                ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
                 ir.imprimir(typeof(Membro_Reconciliacao)); 
         }
 

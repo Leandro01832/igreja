@@ -1,6 +1,8 @@
 ﻿using business.classes.Intermediario;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using business.contrato;
+using business.implementacao;
 using database;
 using database.banco;
 using Newtonsoft.Json;
@@ -130,9 +132,20 @@ namespace business.classes.Abstrato
         }
 
         public override bool recuperar(int id)
-        {            
+        {
+            bool retorno = false;
             this.Chamada = new Chamada(id);
             this.Chamada.recuperar(id);
+
+            if (SetProperties(T)) retorno = true;
+
+            if (DateTime.Now.AddDays(-182) /*dias de um semestre*/ > this.Chamada.Data_inicio && this.Chamada.Numero_chamada != 0)
+            {
+                new Historico { pessoaid = id, Data_inicio = this.Chamada.Data_inicio, Falta = this.Falta }.salvar();
+                this.Chamada.Data_inicio = DateTime.Now;
+                this.Chamada.alterar(id);
+                this.Falta = 0; this.alterar(id);
+            }
 
             bd.fecharconexao(conexao);
             this.Ministerios = new List<PessoaMinisterio>();
@@ -157,9 +170,8 @@ namespace business.classes.Abstrato
                 {
                     this.Historicos.Add((Historico)item);
                 }
-            
-            if (SetProperties(T)) return true;
-            return false;
+
+            return retorno;
         }
         #endregion
 
@@ -293,7 +305,7 @@ namespace business.classes.Abstrato
             return t.Result;
         }
 
-        private List<modelocrud> recuperarHistorico(int? id)
+        private List<modelocrud> recuperarHistorico(int id)
         {
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>

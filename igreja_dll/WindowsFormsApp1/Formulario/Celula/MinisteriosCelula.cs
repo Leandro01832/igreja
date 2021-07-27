@@ -114,7 +114,7 @@ namespace WindowsFormsApp1.Formulario.Celula
 
         private void ListaMinisterios_Click(object sender, EventArgs e)
         {
-            FrmMinisterio form = new FrmMinisterio();
+            FrmMinisterio form = new FrmMinisterio(typeof(Ministerio));
             form.MdiParent = this.MdiParent;
             form.Text = "lista de ministérios";
             form.Show();

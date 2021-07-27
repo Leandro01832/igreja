@@ -1,32 +1,20 @@
-﻿using database.banco;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using business.classes.Abstrato;
+using database.banco;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using database;
-using business.classes.Abstrato;
 
 namespace business.classes.Pessoas
 {
     [Table("Membro_Aclamacao")]
     public class Membro_Aclamacao : Membro
     {
-
         [Display(Name = "Denominação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Denominacao { get; set; }
+        public string Denominacao { get; set; }        
 
-        public Membro_Aclamacao() : base()
-        {
-        }
+        public Membro_Aclamacao() : base() { }
 
-        public Membro_Aclamacao(int m) : base(m) { }
+        public Membro_Aclamacao(int m) : base(m) {  }
 
         public override string alterar(int id)
         {
@@ -52,7 +40,7 @@ namespace business.classes.Pessoas
             }
             return false;
         }
-        
+
         public override string salvar()
         {
             base.salvar();

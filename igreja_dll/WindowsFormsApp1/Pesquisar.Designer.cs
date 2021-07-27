@@ -29,28 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pesquisar));
-            this.radio_pessoa = new System.Windows.Forms.RadioButton();
-            this.radio_ministerio = new System.Windows.Forms.RadioButton();
-            this.radio_celula = new System.Windows.Forms.RadioButton();
-            this.radio_reuniao = new System.Windows.Forms.RadioButton();
             this.dgdados = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btn_pesquisar = new System.Windows.Forms.Button();
-            this.check_pesquisa_id = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_nome_mae = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_nome_pai = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_email = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_data_reuniao = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_data_visita = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_ano_batismo = new System.Windows.Forms.CheckBox();
-            this.check_pesquisa_nome = new System.Windows.Forms.CheckBox();
             this.btn_todos = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_pesquisa_numero1 = new System.Windows.Forms.TextBox();
             this.txt_pesquisa_numero2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.radio_mudanca = new System.Windows.Forms.RadioButton();
             this.mask_horario_valor1 = new System.Windows.Forms.MaskedTextBox();
             this.mask_horario_valor2 = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,67 +47,11 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.mask_data_valor2 = new System.Windows.Forms.MaskedTextBox();
-            this.check_horario_celula = new System.Windows.Forms.CheckBox();
-            this.check_horario_reuniao = new System.Windows.Forms.CheckBox();
-            this.check_horario_final_reuniao = new System.Windows.Forms.CheckBox();
-            this.check_data_mudanca_estado = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txt_pesquisa_texto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgdados)).BeginInit();
             this.SuspendLayout();
-            // 
-            // radio_pessoa
-            // 
-            this.radio_pessoa.AutoSize = true;
-            this.radio_pessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_pessoa.Location = new System.Drawing.Point(67, 20);
-            this.radio_pessoa.Name = "radio_pessoa";
-            this.radio_pessoa.Size = new System.Drawing.Size(115, 33);
-            this.radio_pessoa.TabIndex = 0;
-            this.radio_pessoa.TabStop = true;
-            this.radio_pessoa.Text = "Pessoa";
-            this.radio_pessoa.UseVisualStyleBackColor = true;
-            this.radio_pessoa.CheckedChanged += new System.EventHandler(this.radio_pessoa_CheckedChanged);
-            // 
-            // radio_ministerio
-            // 
-            this.radio_ministerio.AutoSize = true;
-            this.radio_ministerio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_ministerio.Location = new System.Drawing.Point(205, 20);
-            this.radio_ministerio.Name = "radio_ministerio";
-            this.radio_ministerio.Size = new System.Drawing.Size(139, 33);
-            this.radio_ministerio.TabIndex = 1;
-            this.radio_ministerio.TabStop = true;
-            this.radio_ministerio.Text = "Ministério";
-            this.radio_ministerio.UseVisualStyleBackColor = true;
-            this.radio_ministerio.CheckedChanged += new System.EventHandler(this.radio_ministerio_CheckedChanged);
-            // 
-            // radio_celula
-            // 
-            this.radio_celula.AutoSize = true;
-            this.radio_celula.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_celula.Location = new System.Drawing.Point(67, 68);
-            this.radio_celula.Name = "radio_celula";
-            this.radio_celula.Size = new System.Drawing.Size(103, 33);
-            this.radio_celula.TabIndex = 2;
-            this.radio_celula.TabStop = true;
-            this.radio_celula.Text = "Celula";
-            this.radio_celula.UseVisualStyleBackColor = true;
-            this.radio_celula.CheckedChanged += new System.EventHandler(this.radio_celula_CheckedChanged);
-            // 
-            // radio_reuniao
-            // 
-            this.radio_reuniao.AutoSize = true;
-            this.radio_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_reuniao.Location = new System.Drawing.Point(205, 68);
-            this.radio_reuniao.Name = "radio_reuniao";
-            this.radio_reuniao.Size = new System.Drawing.Size(124, 33);
-            this.radio_reuniao.TabIndex = 4;
-            this.radio_reuniao.TabStop = true;
-            this.radio_reuniao.Text = "Reunião";
-            this.radio_reuniao.UseVisualStyleBackColor = true;
-            this.radio_reuniao.CheckedChanged += new System.EventHandler(this.radio_reuniao_CheckedChanged);
             // 
             // dgdados
             // 
@@ -133,16 +63,6 @@
             this.dgdados.TabIndex = 6;
             this.dgdados.SelectionChanged += new System.EventHandler(this.dgdados_SelectionChanged);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(37, 242);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(487, 37);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // btn_pesquisar
             // 
             this.btn_pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,107 +73,6 @@
             this.btn_pesquisar.Text = "Pesquisar";
             this.btn_pesquisar.UseVisualStyleBackColor = true;
             this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
-            // 
-            // check_pesquisa_id
-            // 
-            this.check_pesquisa_id.AutoSize = true;
-            this.check_pesquisa_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_id.Location = new System.Drawing.Point(599, 20);
-            this.check_pesquisa_id.Name = "check_pesquisa_id";
-            this.check_pesquisa_id.Size = new System.Drawing.Size(175, 29);
-            this.check_pesquisa_id.TabIndex = 9;
-            this.check_pesquisa_id.Text = "Pesquisar por Id";
-            this.check_pesquisa_id.UseVisualStyleBackColor = true;
-            this.check_pesquisa_id.CheckedChanged += new System.EventHandler(this.check_pesquisa_id_CheckedChanged);
-            // 
-            // check_pesquisa_nome_mae
-            // 
-            this.check_pesquisa_nome_mae.AutoSize = true;
-            this.check_pesquisa_nome_mae.Enabled = false;
-            this.check_pesquisa_nome_mae.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_nome_mae.Location = new System.Drawing.Point(599, 55);
-            this.check_pesquisa_nome_mae.Name = "check_pesquisa_nome_mae";
-            this.check_pesquisa_nome_mae.Size = new System.Drawing.Size(278, 29);
-            this.check_pesquisa_nome_mae.TabIndex = 10;
-            this.check_pesquisa_nome_mae.Text = "Pesquisar por nome da mãe";
-            this.check_pesquisa_nome_mae.UseVisualStyleBackColor = true;
-            this.check_pesquisa_nome_mae.CheckedChanged += new System.EventHandler(this.check_pesquisa_nome_mae_CheckedChanged);
-            // 
-            // check_pesquisa_nome_pai
-            // 
-            this.check_pesquisa_nome_pai.AutoSize = true;
-            this.check_pesquisa_nome_pai.Enabled = false;
-            this.check_pesquisa_nome_pai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_nome_pai.Location = new System.Drawing.Point(599, 90);
-            this.check_pesquisa_nome_pai.Name = "check_pesquisa_nome_pai";
-            this.check_pesquisa_nome_pai.Size = new System.Drawing.Size(266, 29);
-            this.check_pesquisa_nome_pai.TabIndex = 11;
-            this.check_pesquisa_nome_pai.Text = "Pesquisar por nome do pai";
-            this.check_pesquisa_nome_pai.UseVisualStyleBackColor = true;
-            this.check_pesquisa_nome_pai.CheckedChanged += new System.EventHandler(this.check_pesquisa_nome_pai_CheckedChanged);
-            // 
-            // check_pesquisa_email
-            // 
-            this.check_pesquisa_email.AutoSize = true;
-            this.check_pesquisa_email.Enabled = false;
-            this.check_pesquisa_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_email.Location = new System.Drawing.Point(599, 131);
-            this.check_pesquisa_email.Name = "check_pesquisa_email";
-            this.check_pesquisa_email.Size = new System.Drawing.Size(205, 29);
-            this.check_pesquisa_email.TabIndex = 12;
-            this.check_pesquisa_email.Text = "Pesquisar por email";
-            this.check_pesquisa_email.UseVisualStyleBackColor = true;
-            this.check_pesquisa_email.CheckedChanged += new System.EventHandler(this.check_pesquisa_email_CheckedChanged);
-            // 
-            // check_pesquisa_data_reuniao
-            // 
-            this.check_pesquisa_data_reuniao.AutoSize = true;
-            this.check_pesquisa_data_reuniao.Enabled = false;
-            this.check_pesquisa_data_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_data_reuniao.Location = new System.Drawing.Point(917, 24);
-            this.check_pesquisa_data_reuniao.Name = "check_pesquisa_data_reuniao";
-            this.check_pesquisa_data_reuniao.Size = new System.Drawing.Size(294, 29);
-            this.check_pesquisa_data_reuniao.TabIndex = 13;
-            this.check_pesquisa_data_reuniao.Text = "Pesquisar por data da reunião";
-            this.check_pesquisa_data_reuniao.UseVisualStyleBackColor = true;
-            // 
-            // check_pesquisa_data_visita
-            // 
-            this.check_pesquisa_data_visita.AutoSize = true;
-            this.check_pesquisa_data_visita.Enabled = false;
-            this.check_pesquisa_data_visita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_data_visita.Location = new System.Drawing.Point(917, 55);
-            this.check_pesquisa_data_visita.Name = "check_pesquisa_data_visita";
-            this.check_pesquisa_data_visita.Size = new System.Drawing.Size(273, 29);
-            this.check_pesquisa_data_visita.TabIndex = 14;
-            this.check_pesquisa_data_visita.Text = "Pesquisar por data da visita";
-            this.check_pesquisa_data_visita.UseVisualStyleBackColor = true;
-            // 
-            // check_pesquisa_ano_batismo
-            // 
-            this.check_pesquisa_ano_batismo.AutoSize = true;
-            this.check_pesquisa_ano_batismo.Enabled = false;
-            this.check_pesquisa_ano_batismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_ano_batismo.Location = new System.Drawing.Point(917, 119);
-            this.check_pesquisa_ano_batismo.Name = "check_pesquisa_ano_batismo";
-            this.check_pesquisa_ano_batismo.Size = new System.Drawing.Size(292, 29);
-            this.check_pesquisa_ano_batismo.TabIndex = 17;
-            this.check_pesquisa_ano_batismo.Text = "Pesquisar por ano de batismo";
-            this.check_pesquisa_ano_batismo.UseVisualStyleBackColor = true;
-            this.check_pesquisa_ano_batismo.CheckedChanged += new System.EventHandler(this.check_pesquisa_ano_batismo_CheckedChanged);
-            // 
-            // check_pesquisa_nome
-            // 
-            this.check_pesquisa_nome.AutoSize = true;
-            this.check_pesquisa_nome.Enabled = false;
-            this.check_pesquisa_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_pesquisa_nome.Location = new System.Drawing.Point(599, 166);
-            this.check_pesquisa_nome.Name = "check_pesquisa_nome";
-            this.check_pesquisa_nome.Size = new System.Drawing.Size(208, 29);
-            this.check_pesquisa_nome.TabIndex = 18;
-            this.check_pesquisa_nome.Text = "Pesquisar por nome";
-            this.check_pesquisa_nome.UseVisualStyleBackColor = true;
-            this.check_pesquisa_nome.CheckedChanged += new System.EventHandler(this.check_pesquisa_nome_CheckedChanged);
             // 
             // btn_todos
             // 
@@ -308,19 +127,6 @@
             this.label7.Size = new System.Drawing.Size(29, 17);
             this.label7.TabIndex = 32;
             this.label7.Text = "Até";
-            // 
-            // radio_mudanca
-            // 
-            this.radio_mudanca.AutoSize = true;
-            this.radio_mudanca.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_mudanca.Location = new System.Drawing.Point(67, 120);
-            this.radio_mudanca.Name = "radio_mudanca";
-            this.radio_mudanca.Size = new System.Drawing.Size(245, 33);
-            this.radio_mudanca.TabIndex = 40;
-            this.radio_mudanca.TabStop = true;
-            this.radio_mudanca.Text = "Mudança de estado";
-            this.radio_mudanca.UseVisualStyleBackColor = true;
-            this.radio_mudanca.CheckedChanged += new System.EventHandler(this.radio_mudanca_CheckedChanged);
             // 
             // mask_horario_valor1
             // 
@@ -428,58 +234,6 @@
             this.mask_data_valor2.TabIndex = 284;
             this.mask_data_valor2.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
-            // check_horario_celula
-            // 
-            this.check_horario_celula.AutoSize = true;
-            this.check_horario_celula.Enabled = false;
-            this.check_horario_celula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_horario_celula.Location = new System.Drawing.Point(917, 158);
-            this.check_horario_celula.Name = "check_horario_celula";
-            this.check_horario_celula.Size = new System.Drawing.Size(302, 29);
-            this.check_horario_celula.TabIndex = 285;
-            this.check_horario_celula.Text = "Pesquisar por horario da celula";
-            this.check_horario_celula.UseVisualStyleBackColor = true;
-            this.check_horario_celula.CheckedChanged += new System.EventHandler(this.check_horario_celula_CheckedChanged);
-            // 
-            // check_horario_reuniao
-            // 
-            this.check_horario_reuniao.AutoSize = true;
-            this.check_horario_reuniao.Enabled = false;
-            this.check_horario_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_horario_reuniao.Location = new System.Drawing.Point(917, 193);
-            this.check_horario_reuniao.Name = "check_horario_reuniao";
-            this.check_horario_reuniao.Size = new System.Drawing.Size(392, 29);
-            this.check_horario_reuniao.TabIndex = 286;
-            this.check_horario_reuniao.Text = "Pesquisar por horario de inicio de reunião";
-            this.check_horario_reuniao.UseVisualStyleBackColor = true;
-            this.check_horario_reuniao.CheckedChanged += new System.EventHandler(this.check_horario_reuniao_CheckedChanged);
-            // 
-            // check_horario_final_reuniao
-            // 
-            this.check_horario_final_reuniao.AutoSize = true;
-            this.check_horario_final_reuniao.Enabled = false;
-            this.check_horario_final_reuniao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_horario_final_reuniao.Location = new System.Drawing.Point(917, 229);
-            this.check_horario_final_reuniao.Name = "check_horario_final_reuniao";
-            this.check_horario_final_reuniao.Size = new System.Drawing.Size(356, 29);
-            this.check_horario_final_reuniao.TabIndex = 287;
-            this.check_horario_final_reuniao.Text = "Pesquisar por horario final de reunião";
-            this.check_horario_final_reuniao.UseVisualStyleBackColor = true;
-            this.check_horario_final_reuniao.CheckedChanged += new System.EventHandler(this.check_horario_final_reuniao_CheckedChanged);
-            // 
-            // check_data_mudanca_estado
-            // 
-            this.check_data_mudanca_estado.AutoSize = true;
-            this.check_data_mudanca_estado.Enabled = false;
-            this.check_data_mudanca_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_data_mudanca_estado.Location = new System.Drawing.Point(917, 90);
-            this.check_data_mudanca_estado.Name = "check_data_mudanca_estado";
-            this.check_data_mudanca_estado.Size = new System.Drawing.Size(401, 29);
-            this.check_data_mudanca_estado.TabIndex = 288;
-            this.check_data_mudanca_estado.Text = "Pesquisar por data da mudança de estado";
-            this.check_data_mudanca_estado.UseVisualStyleBackColor = true;
-            this.check_data_mudanca_estado.CheckedChanged += new System.EventHandler(this.check_data_mudanca_estado_CheckedChanged);
-            // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(1666, 496);
@@ -516,10 +270,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_pesquisa_texto);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.check_data_mudanca_estado);
-            this.Controls.Add(this.check_horario_final_reuniao);
-            this.Controls.Add(this.check_horario_reuniao);
-            this.Controls.Add(this.check_horario_celula);
             this.Controls.Add(this.mask_data_valor2);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -530,28 +280,14 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.mask_horario_valor2);
             this.Controls.Add(this.mask_horario_valor1);
-            this.Controls.Add(this.radio_mudanca);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_pesquisa_numero2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_pesquisa_numero1);
             this.Controls.Add(this.btn_todos);
-            this.Controls.Add(this.check_pesquisa_nome);
-            this.Controls.Add(this.check_pesquisa_ano_batismo);
-            this.Controls.Add(this.check_pesquisa_data_visita);
-            this.Controls.Add(this.check_pesquisa_data_reuniao);
-            this.Controls.Add(this.check_pesquisa_email);
-            this.Controls.Add(this.check_pesquisa_nome_pai);
-            this.Controls.Add(this.check_pesquisa_nome_mae);
-            this.Controls.Add(this.check_pesquisa_id);
             this.Controls.Add(this.btn_pesquisar);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dgdados);
-            this.Controls.Add(this.radio_reuniao);
-            this.Controls.Add(this.radio_celula);
-            this.Controls.Add(this.radio_ministerio);
-            this.Controls.Add(this.radio_pessoa);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pesquisar";
             this.Text = "Pesquisar";
@@ -564,29 +300,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RadioButton radio_pessoa;
-        private System.Windows.Forms.RadioButton radio_ministerio;
-        private System.Windows.Forms.RadioButton radio_celula;
-        private System.Windows.Forms.RadioButton radio_reuniao;
         private System.Windows.Forms.DataGridView dgdados;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btn_pesquisar;
-        private System.Windows.Forms.CheckBox check_pesquisa_id;
-        private System.Windows.Forms.CheckBox check_pesquisa_nome_mae;
-        private System.Windows.Forms.CheckBox check_pesquisa_nome_pai;
-        private System.Windows.Forms.CheckBox check_pesquisa_email;
-        private System.Windows.Forms.CheckBox check_pesquisa_data_reuniao;
-        private System.Windows.Forms.CheckBox check_pesquisa_data_visita;
-        private System.Windows.Forms.CheckBox check_pesquisa_ano_batismo;
-        private System.Windows.Forms.CheckBox check_pesquisa_nome;
         private System.Windows.Forms.Button btn_todos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_pesquisa_numero1;
         private System.Windows.Forms.TextBox txt_pesquisa_numero2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RadioButton radio_mudanca;
         private System.Windows.Forms.MaskedTextBox mask_horario_valor1;
         private System.Windows.Forms.MaskedTextBox mask_horario_valor2;
         private System.Windows.Forms.Label label11;
@@ -597,10 +318,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.MaskedTextBox mask_data_valor2;
-        private System.Windows.Forms.CheckBox check_horario_celula;
-        private System.Windows.Forms.CheckBox check_horario_reuniao;
-        private System.Windows.Forms.CheckBox check_horario_final_reuniao;
-        private System.Windows.Forms.CheckBox check_data_mudanca_estado;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txt_pesquisa_texto;
         private System.Windows.Forms.Label label2;

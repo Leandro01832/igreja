@@ -1,4 +1,5 @@
 ﻿using business.classes.Abstrato;
+using business.implementacao;
 using database.banco;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,12 +13,9 @@ namespace business.classes.PessoasLgpd
         [Display(Name = "Denominação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Denominacao { get; set; }
-
-        public Membro_AclamacaoLgpd() : base()
-        {
-        }
-
-        public Membro_AclamacaoLgpd(int m) : base(m) { }
+        
+        public Membro_AclamacaoLgpd() : base(){ }
+        public Membro_AclamacaoLgpd(int m) : base(m) {  }
 
         public override string alterar(int id)
         {
@@ -42,7 +40,7 @@ namespace business.classes.PessoasLgpd
                 base.recuperar(id); T = GetType(); return true;
             }
             return false;
-        }        
+        }
 
         public override string salvar()
         {
