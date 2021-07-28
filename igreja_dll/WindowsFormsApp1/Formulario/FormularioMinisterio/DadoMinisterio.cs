@@ -46,7 +46,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             var m = (Ministerio)modelo;
             try
             {
-                var modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().FirstOrDefault(i => i.Codigo == int.Parse(txt_ministro.Text));
+                var modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Codigo == int.Parse(txt_ministro.Text));
                 if(modelo != null)
                 m.Ministro_ = modelo.Id;
             }

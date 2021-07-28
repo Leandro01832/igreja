@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.Formulario.Pessoa
+﻿namespace WindowsFormsApp1.Formulario.Pessoas
 {
     partial class ListaMudancaEstado
     {

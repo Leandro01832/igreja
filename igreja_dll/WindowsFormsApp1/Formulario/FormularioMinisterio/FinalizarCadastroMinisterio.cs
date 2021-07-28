@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Abstrato;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
     public partial class FinalizarCadastroMinisterio : FormCrudMinisterio
     {
-        public FinalizarCadastroMinisterio(business.classes.Abstrato.Ministerio p,
+        public FinalizarCadastroMinisterio(Ministerio p,
             bool Deletar, bool Atualizar, bool Detalhes)
           : base(p, Deletar, Atualizar, Detalhes)
         {

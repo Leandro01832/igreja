@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
 
 namespace WindowsFormsApp1
 {

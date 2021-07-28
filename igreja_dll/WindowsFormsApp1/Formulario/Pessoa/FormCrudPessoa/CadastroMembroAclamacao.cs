@@ -5,7 +5,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Formulario.Pessoa
+namespace WindowsFormsApp1.Formulario.Pessoas
 {
     public partial class CadastroMembroAclamacao : Formulario.FormCrudPessoa
     {

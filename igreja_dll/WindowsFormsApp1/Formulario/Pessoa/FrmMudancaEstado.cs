@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Formulario.Pessoa
+namespace WindowsFormsApp1.Formulario.Pessoas
 {
     public partial class FrmMudancaEstado : FormPadrao
     {

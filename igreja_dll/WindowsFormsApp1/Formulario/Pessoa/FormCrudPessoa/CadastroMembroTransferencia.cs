@@ -3,9 +3,9 @@ using business.classes.PessoasLgpd;
 using database;
 using System;
 
-namespace WindowsFormsApp1.Formulario.Pessoa
+namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroMembroTransferencia : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class CadastroMembroTransferencia : FormCrudPessoa
     {
         public CadastroMembroTransferencia(modelocrud p, bool Deletar, bool Atualizar, bool Detalhes)            
         : base(p, Deletar, Atualizar, Detalhes)

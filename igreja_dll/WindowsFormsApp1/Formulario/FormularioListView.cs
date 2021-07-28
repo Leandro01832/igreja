@@ -11,8 +11,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
 
 
@@ -102,26 +103,26 @@ namespace WindowsFormsApp1.Formulario
 
         private async void BotaoAtualizarLista_Click(object sender, EventArgs e)
         {
-            if ( Tipo == typeof(business.classes.Abstrato.Pessoa) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Pessoa)))
+            if ( Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)))
             {
-                if (Tipo == typeof(business.classes.Abstrato.Pessoa))
-                    ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<business.classes.Abstrato.Pessoa>().ToList();
+                if (Tipo == typeof(Pessoa))
+                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Pessoa>().ToList();
 
                 if (Tipo == typeof(PessoaDado))
-                    ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<PessoaDado>().ToList();
+                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaDado>().ToList();
 
                 if (Tipo == typeof(PessoaLgpd))
-                    ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<PessoaLgpd>().ToList();
+                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaLgpd>().ToList();
 
                 if (Tipo == typeof(MembroLgpd))
-                    ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<MembroLgpd>().ToList();
+                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<MembroLgpd>().ToList();
 
                 if (Tipo == typeof(Membro))
-                    ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<Membro>().ToList();
+                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro>().ToList();
             }
 
-            if (modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().Count > 0  && Tipo.IsAbstract)
-            ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList();            
+            if (modelocrud.Modelos.OfType<Celula>().ToList().Count > 0  && Tipo.IsAbstract)
+            ListView.DataSource = modelocrud.Modelos.OfType<Celula>().ToList();            
 
             if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0  && Tipo.IsAbstract)
             ListView.DataSource = modelocrud.Modelos.OfType<Ministerio>().ToList();            
@@ -140,7 +141,7 @@ namespace WindowsFormsApp1.Formulario
             }
             try
             {
-               var Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Codigo == this.numero);
+               var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Codigo == this.numero);
                 FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -164,11 +165,11 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            if (Tipo == typeof(business.classes.Abstrato.Pessoa) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Pessoa)))
+            if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)))
             {
                 try
                 {
-                   var Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Codigo == this.numero);
+                   var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Codigo == this.numero);
                     FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa(Modelo,
                      false, false, true);
                     fc.MdiParent = this.MdiParent;
@@ -177,20 +178,20 @@ namespace WindowsFormsApp1.Formulario
                 catch {  }
             }
 
-            if (Tipo == typeof(business.classes.Abstrato.Celula) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Celula)))
+            if (Tipo == typeof(Celula) || Tipo.IsSubclassOf(typeof(Celula)))
             {
                 try
                 {
-                  var  Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().First(i => i.Id == this.numero);
-                    Celula.FinalizarCadastro dp =
-                new Celula.FinalizarCadastro(Modelo, false, false, true);
+                  var  Modelo = modelocrud.Modelos.OfType<Celula>().ToList().First(i => i.Id == this.numero);
+                    FinalizarCadastro dp =
+                new FinalizarCadastro(Modelo, false, false, true);
                     dp.MdiParent = this.MdiParent;
                     dp.Show();
                 }
                 catch {  }
             }
 
-            if (Tipo == typeof(Ministerio) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Ministerio)))
+            if (Tipo == typeof(Ministerio) || Tipo.IsSubclassOf(typeof(Ministerio)))
             {
                 try
                 {
@@ -235,11 +236,11 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            if (Tipo == typeof(business.classes.Abstrato.Pessoa) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Pessoa)))
+            if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)))
             {
                 try
                 {
-                  var  Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Codigo == this.numero);
+                  var  Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Codigo == this.numero);
                     FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa(Modelo
                     , false, true, false);
                     fc.MdiParent = this.MdiParent;
@@ -248,13 +249,13 @@ namespace WindowsFormsApp1.Formulario
                 catch {  }
             }
 
-            if (Tipo == typeof(business.classes.Abstrato.Celula) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Celula)))
+            if (Tipo == typeof(Celula) || Tipo.IsSubclassOf(typeof(Celula)))
             {
                 try
                 {
-                   var Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().First(i => i.Id == this.numero);
-                    Celula.FinalizarCadastro dp =
-                new Celula.FinalizarCadastro(Modelo
+                   var Modelo = modelocrud.Modelos.OfType<Celula>().ToList().First(i => i.Id == this.numero);
+                    FinalizarCadastro dp =
+                new FinalizarCadastro(Modelo
                 , false, true, false);
                     dp.MdiParent = this.MdiParent;
                     dp.Show();
@@ -296,11 +297,11 @@ namespace WindowsFormsApp1.Formulario
                 return;
             }
 
-            if (Tipo == typeof(business.classes.Abstrato.Pessoa) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Pessoa)))
+            if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)))
             {
                 try
                 {
-                   var Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Codigo == this.numero);
+                   var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Codigo == this.numero);
                     FinalizarCadastroPessoa fc = new FinalizarCadastroPessoa(Modelo
                     , true, false, false);
                     fc.MdiParent = this.MdiParent;
@@ -309,13 +310,13 @@ namespace WindowsFormsApp1.Formulario
                 catch {  }
             }
 
-            if (Tipo == typeof(business.classes.Abstrato.Celula) || Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Celula)))
+            if (Tipo == typeof(Celula) || Tipo.IsSubclassOf(typeof(Celula)))
             {
                 try
                 {
-                   var Modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().First(i => i.Id == this.numero);
-                    Celula.FinalizarCadastro dp =
-                new Celula.FinalizarCadastro(Modelo, true, false, false);
+                   var Modelo = modelocrud.Modelos.OfType<Celula>().ToList().First(i => i.Id == this.numero);
+                    FinalizarCadastro dp =
+                new FinalizarCadastro(Modelo, true, false, false);
                     dp.MdiParent = this.MdiParent;
                     dp.Show();
                 }
@@ -371,34 +372,34 @@ namespace WindowsFormsApp1.Formulario
                 Mudanca.Enabled = atualizar;
 
 
-                if (Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Pessoa)))
+                if (Tipo.IsSubclassOf(typeof(Pessoa)))
                 {
                     Mudanca.Visible = true;
-                    foreach (var m in modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList())
+                    foreach (var m in modelocrud.Modelos.OfType<Pessoa>().ToList())
                         if (Tipo.Name == m.GetType().Name)
                         {
                             condicao = true;
                             break;
                         }
 
-                    if (modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Count > 0 && condicao)
-                        ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Where(p => p.GetType().Name == Tipo.Name)
+                    if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0 && condicao)
+                        ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().Where(p => p.GetType().Name == Tipo.Name)
                             .OrderBy(p => p.Codigo).ToList();
                     else
                         ListView.DataSource = await AtualizarComProgressBar(Tipo);
                 }
 
-                if (Tipo.IsSubclassOf(typeof(business.classes.Abstrato.Celula)))
+                if (Tipo.IsSubclassOf(typeof(Celula)))
                 {
-                    foreach (var m in modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList())
+                    foreach (var m in modelocrud.Modelos.OfType<Celula>().ToList())
                         if (Tipo.Name == m.GetType().Name)
                         {
                             condicao = true;
                             break;
                         }
 
-                    if (modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().Count > 0 && condicao)
-                        ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().Where(p => p.GetType().Name == Tipo.Name)
+                    if (modelocrud.Modelos.OfType<Celula>().ToList().Count > 0 && condicao)
+                        ListView.DataSource = modelocrud.Modelos.OfType<Celula>().ToList().Where(p => p.GetType().Name == Tipo.Name)
                             .OrderBy(p => p.Id).ToList();
                     else
                         ListView.DataSource = await AtualizarComProgressBar(Tipo);
@@ -437,33 +438,33 @@ namespace WindowsFormsApp1.Formulario
                 }
             }
             else 
-            if (Tipo == typeof(business.classes.Abstrato.Celula) || Tipo == typeof(Ministerio))
+            if (Tipo == typeof(Celula) || Tipo == typeof(Ministerio))
             {
-                if (Tipo == typeof(business.classes.Abstrato.Celula))
-                ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Celula>().ToList().OrderBy(p => p.Id).ToList();
+                if (Tipo == typeof(Celula))
+                ListView.DataSource = modelocrud.Modelos.OfType<Celula>().ToList().OrderBy(p => p.Id).ToList();
 
                 if (Tipo == typeof(Ministerio))                
                  ListView.DataSource = modelocrud.Modelos.OfType<Ministerio>().ToList().OrderBy(p => p.Id).ToList();                
             }
             else 
-            if(Tipo == typeof(business.classes.Abstrato.Pessoa) || Tipo == typeof(PessoaDado) || Tipo == typeof(PessoaLgpd)
+            if(Tipo == typeof(Pessoa) || Tipo == typeof(PessoaDado) || Tipo == typeof(PessoaLgpd)
             || Tipo == typeof(MembroLgpd) || Tipo == typeof(Membro))
             {
                 Mudanca.Visible = true;
-                if (Tipo == typeof(business.classes.Abstrato.Pessoa))
-                ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OrderBy(p => p.Id).ToList();                
+                if (Tipo == typeof(Pessoa))
+                ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OrderBy(p => p.Id).ToList();                
 
                 if (Tipo == typeof(PessoaDado))
-                ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<PessoaDado>().OrderBy(p => p.Codigo).ToList();
+                ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaDado>().OrderBy(p => p.Codigo).ToList();
 
                 if (Tipo == typeof(PessoaLgpd))
-                ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<PessoaLgpd>().OrderBy(p => p.Codigo).ToList();
+                ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaLgpd>().OrderBy(p => p.Codigo).ToList();
 
                 if (Tipo == typeof(MembroLgpd))
-                ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<MembroLgpd>().OrderBy(p => p.Codigo).ToList();
+                ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<MembroLgpd>().OrderBy(p => p.Codigo).ToList();
 
                 if (Tipo == typeof(Membro))
-                ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().OfType<Membro>().OrderBy(p => p.Codigo).ToList();
+                ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro>().OrderBy(p => p.Codigo).ToList();
             }
 
             atualizar = true;

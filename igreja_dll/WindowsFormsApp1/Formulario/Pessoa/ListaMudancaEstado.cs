@@ -2,7 +2,7 @@
 using business.implementacao;
 using System;
 
-namespace WindowsFormsApp1.Formulario.Pessoa
+namespace WindowsFormsApp1.Formulario.Pessoas
 {
     public partial class ListaMudancaEstado : FormularioListView
     {

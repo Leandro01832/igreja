@@ -8,19 +8,14 @@ using business.implementacao;
 using database;
 using database.banco;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Celula;
+using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Pessoa;
-using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
+using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
-using Endereco = WindowsFormsApp1.Formulario.Pessoa.Endereco;
-using FinalizarCadastro = WindowsFormsApp1.Formulario.Celula.FinalizarCadastro;
 
 namespace WindowsFormsApp1
 {
@@ -88,7 +83,7 @@ namespace WindowsFormsApp1
         public Button Atualizar { get => atualizar; set => atualizar = value; }
         public modelocrud ModeloNovo { get => modeloNovo; set => modeloNovo = value; }
         public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
-        public Button FinalizarCadastro { get => finalizarCadastro; set => finalizarCadastro = value; }
+        public Button FinalizaCadastro { get => finalizarCadastro; set => finalizarCadastro = value; }
 
         private bool condicaoDeletar;
         private bool condicaoAtualizar;
@@ -240,17 +235,17 @@ namespace WindowsFormsApp1
             Atualizar.Size = new Size(100, 50);
             Atualizar.Visible = false;
 
-            FinalizarCadastro = new Button();
-            FinalizarCadastro.Click += FinalizarCadastro_Click;
-            FinalizarCadastro.Text = "Finalizar Cadastro";
-            FinalizarCadastro.Location = new Point(650, 250);
-            FinalizarCadastro.Size = new Size(100, 50);
-            FinalizarCadastro.Visible = false;
+            FinalizaCadastro = new Button();
+            FinalizaCadastro.Click += FinalizarCadastro_Click;
+            FinalizaCadastro.Text = "Finalizar Cadastro";
+            FinalizaCadastro.Location = new Point(650, 250);
+            FinalizaCadastro.Size = new Size(100, 50);
+            FinalizaCadastro.Visible = false;
 
             this.Controls.Add(Proximo);
             this.Controls.Add(Deletar);
             this.Controls.Add(Atualizar);
-            this.Controls.Add(FinalizarCadastro);
+            this.Controls.Add(FinalizaCadastro);
 
             this.Controls.Add(dadoPessoal);
             this.Controls.Add(dadoEnderecoPessoa);
@@ -278,7 +273,7 @@ namespace WindowsFormsApp1
             {
                 InfoForm.Visible = true;
                 Proximo.Visible = false;
-                FinalizarCadastro.Visible = false;
+                FinalizaCadastro.Visible = false;
 
                 if (modelo is PessoaDado)
                 {
@@ -361,7 +356,7 @@ namespace WindowsFormsApp1
                 this is FinalizarCadastroReuniao)
             {
                 Proximo.Visible = false;
-                FinalizarCadastro.Visible = true;
+                FinalizaCadastro.Visible = true;
             }
 
             if (condicaoAtualizar)
@@ -548,7 +543,7 @@ namespace WindowsFormsApp1
 
         private void DadoEnderecoCelula_Click(object sender, EventArgs e)
         {
-            EnderecoCelula dc = new EnderecoCelula((Celula)modelo, condicaoDeletar,
+            FrmEnderecoCelula dc = new FrmEnderecoCelula((Celula)modelo, condicaoDeletar,
             condicaoAtualizar, condicaoDetalhes);
             dc.MdiParent = this.MdiParent;
             dc.Show();
@@ -608,7 +603,7 @@ namespace WindowsFormsApp1
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
-            Endereco dp = new Endereco((PessoaDado)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
+            FrmEndereco dp = new FrmEndereco((PessoaDado)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             dp.MdiParent = this.MdiParent;
             dp.Show();
         }
@@ -632,7 +627,7 @@ namespace WindowsFormsApp1
 
         private async void FinalizarCadastro_Click(object sender, EventArgs e)
         {
-            FinalizarCadastro.Enabled = false;
+            FinalizaCadastro.Enabled = false;
             if (modelo is Celula)
             {
                 var p = (Celula)modelo;

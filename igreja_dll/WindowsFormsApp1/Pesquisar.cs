@@ -8,13 +8,13 @@ using business.classes.Ministerio;
 using business.classes.Abstrato;
 using System.Collections.Generic;
 using System.Linq;
-using WindowsFormsApp1.Formulario.Pessoa;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Celula;
 using business.classes;
 using WindowsFormsApp1.Formulario.Reuniao;
 using business.classes.Celulas;
 using business.implementacao;
+using WindowsFormsApp1.Formulario.Pessoas;
+using WindowsFormsApp1.Formulario.Celulas;
 
 namespace WindowsFormsApp1
 {

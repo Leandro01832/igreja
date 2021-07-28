@@ -3,7 +3,7 @@ using business.classes.PessoasLgpd;
 using database;
 using System;
 
-namespace WindowsFormsApp1.Formulario.Pessoa
+namespace WindowsFormsApp1.Formulario.Pessoas
 {
     public partial class CadastroCrianca : Formulario.FormCrudPessoa
     {

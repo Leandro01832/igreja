@@ -1,4 +1,5 @@
-﻿using System;
+﻿using business.classes.Abstrato;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace WindowsFormsApp1
 
         }
 
-        public FormularioCrudCelula(business.classes.Abstrato.Celula p,
+        public FormularioCrudCelula(Celula p,
             bool Deletar, bool Atualizar, bool Detalhes)
            : base(p, Deletar, Atualizar, Detalhes)
         {

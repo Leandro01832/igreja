@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
+﻿namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
     partial class Foto
     {

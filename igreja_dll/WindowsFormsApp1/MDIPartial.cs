@@ -4,11 +4,8 @@ using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Pessoa;
-using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
+using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 
 namespace WindowsFormsApp1
 {

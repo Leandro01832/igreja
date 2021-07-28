@@ -1,4 +1,5 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
+namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
     public partial class Foto : Formulario.FormCrudPessoa
     {
@@ -40,12 +41,12 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         {
             this.Text = "Foto da pessoa";
             this.Proximo.Location = new Point(900, 150);
-            var p = (business.classes.Abstrato.Pessoa)modelo;
+            var p = (Pessoa)modelo;
             if (p !=  null)
             {
                 this.Atualizar.Location = new Point(900, 250);
 
-                if (modelo is business.classes.Abstrato.Pessoa && !BDcomum.BancoEnbarcado)
+                if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
                 ptrb_foto.ImageLocation = "http://www.igrejadeusbom.somee.com" + p.Img;
                 else
                 ptrb_foto.ImageLocation = p.Img;
@@ -56,7 +57,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
         {
             if(modelo != null)
             {
-                var p = (business.classes.Abstrato.Pessoa)modelo;
+                var p = (Pessoa)modelo;
                 try
                 {
 
@@ -92,7 +93,7 @@ namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
 
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
+                var p = (Pessoa)ModeloNovo;
                 try
                 {
 

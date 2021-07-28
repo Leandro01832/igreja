@@ -11,7 +11,7 @@ using business.classes.Abstrato;
 using business.classes.Pessoas;
 using database;
 
-namespace WindowsFormsApp1.Formulario.Pessoa
+namespace WindowsFormsApp1.Formulario.Pessoas
 {
     public partial class DadoPessoal : WindowsFormsApp1.Formulario.FormCrudPessoa
     {

@@ -30,6 +30,7 @@ namespace database
             Erro_Conexao = false;
             QuantErro = 0;
             this.T = GetType();
+            pesquisar = new Pesquisar();
         }
 
         public modelocrud(int id)
@@ -41,6 +42,7 @@ namespace database
             this.T = GetType();
             Erro_Conexao = false;
             QuantErro = 0;
+            pesquisar = new Pesquisar();
         }
 
         private string insert_padrao;
@@ -48,7 +50,7 @@ namespace database
         private string delete_padrao;
         private string select_padrao;
 
-        Pesquisar pesquisar;
+        static Pesquisar pesquisar;
         public BDcomum bd;
         public SqlDataReader dr;
         public SqlConnection conexao;
@@ -93,51 +95,51 @@ namespace database
                 {
                     if (this is Pessoa)
                     {
-                        if (this is Visitante) Pessoa.visitantes = new List<Visitante>();
-                        if (this is Crianca) Pessoa.criancas = new List<Crianca>();
-                        if (this is Membro_Aclamacao) Pessoa.membros_Aclamacao = new List<Membro_Aclamacao>();
-                        if (this is Membro_Batismo) Pessoa.membros_Batismo = new List<Membro_Batismo>();
-                        if (this is Membro_Reconciliacao) Pessoa.membros_Reconciliacao = new List<Membro_Reconciliacao>();
-                        if (this is Membro_Transferencia) Pessoa.membros_Transferencia = new List<Membro_Transferencia>();
-                        if (this is VisitanteLgpd) Pessoa.visitantesLgpd = new List<VisitanteLgpd>();
-                        if (this is CriancaLgpd) Pessoa.criancasLgpd = new List<CriancaLgpd>();
-                        if (this is Membro_AclamacaoLgpd) Pessoa.membros_AclamacaoLgpd = new List<Membro_AclamacaoLgpd>();
-                        if (this is Membro_BatismoLgpd) Pessoa.membros_BatismoLgpd = new List<Membro_BatismoLgpd>();
+                        if (this is Visitante               ) Pessoa.visitantes = new List<Visitante>();
+                        if (this is Crianca                 ) Pessoa.criancas = new List<Crianca>();
+                        if (this is Membro_Aclamacao        ) Pessoa.membros_Aclamacao = new List<Membro_Aclamacao>();
+                        if (this is Membro_Batismo          ) Pessoa.membros_Batismo = new List<Membro_Batismo>();
+                        if (this is Membro_Reconciliacao    ) Pessoa.membros_Reconciliacao = new List<Membro_Reconciliacao>();
+                        if (this is Membro_Transferencia    ) Pessoa.membros_Transferencia = new List<Membro_Transferencia>();
+                        if (this is VisitanteLgpd           ) Pessoa.visitantesLgpd = new List<VisitanteLgpd>();
+                        if (this is CriancaLgpd             ) Pessoa.criancasLgpd = new List<CriancaLgpd>();
+                        if (this is Membro_AclamacaoLgpd    ) Pessoa.membros_AclamacaoLgpd = new List<Membro_AclamacaoLgpd>();
+                        if (this is Membro_BatismoLgpd      ) Pessoa.membros_BatismoLgpd = new List<Membro_BatismoLgpd>();
                         if (this is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = new List<Membro_ReconciliacaoLgpd>();
                         if (this is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = new List<Membro_TransferenciaLgpd>();
                     }
                     else
                     if (this is Ministerio)
                     {
-                        if (this is Lider_Celula) Ministerio.lideresCelula = new List<Lider_Celula>();
-                        if (this is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
-                        if (this is Lider_Ministerio) Ministerio.lideresMinisterio = new List<Lider_Ministerio>();
-                        if (this is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
-                        if (this is Supervisor_Celula) Ministerio.supervisoresCelula = new List<Supervisor_Celula>();
-                        if (this is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
-                        if (this is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = new List<Supervisor_Ministerio>();
+                        if (this is Lider_Celula                     ) Ministerio.lideresCelula = new List<Lider_Celula>();
+                        if (this is Lider_Celula_Treinamento         ) Ministerio.LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
+                        if (this is Lider_Ministerio                 ) Ministerio.lideresMinisterio = new List<Lider_Ministerio>();
+                        if (this is Lider_Ministerio_Treinamento     ) Ministerio.lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
+                        if (this is Supervisor_Celula                ) Ministerio.supervisoresCelula = new List<Supervisor_Celula>();
+                        if (this is Supervisor_Celula_Treinamento    ) Ministerio.supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
+                        if (this is Supervisor_Ministerio            ) Ministerio.supervisoresMinisterio = new List<Supervisor_Ministerio>();
                         if (this is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
                     }
                     else
                     if (this is Celula)
                     {
                         if (this is Celula_Adolescente) Celula.celulasAdolescente = new List<Celula_Adolescente>();
-                        if (this is Celula_Adulto) Celula.celulasAdulto = new List<Celula_Adulto>();
-                        if (this is Celula_Casado) Celula.celulasCasado = new List<Celula_Casado>();
-                        if (this is Celula_Jovem) Celula.celulasJovem = new List<Celula_Jovem>();
-                        if (this is Celula_Crianca) Celula.celulasCrianca = new List<Celula_Crianca>();
+                        if (this is Celula_Adulto     ) Celula.celulasAdulto = new List<Celula_Adulto>();
+                        if (this is Celula_Casado     ) Celula.celulasCasado = new List<Celula_Casado>();
+                        if (this is Celula_Jovem      ) Celula.celulasJovem = new List<Celula_Jovem>();
+                        if (this is Celula_Crianca    ) Celula.celulasCrianca = new List<Celula_Crianca>();
                     }
                     else
-                    if (this is Reuniao) Reuniao.Reunioes = new List<Reuniao>();
-                    if (this is MudancaEstado) MudancaEstado.Mudancas = new List<MudancaEstado>();
-                    if (this is Historico) Historico.Historicos = new List<Historico>();
-                    if (this is Chamada) Chamada.Chamadas = new List<Chamada>();
-                    if (this is Telefone) Telefone.Telefones = new List<Telefone>();
-                    if (this is Endereco) Endereco.Enderecos = new List<Endereco>();
-                    if (this is EnderecoCelula) EnderecoCelula.EnderecosCelula = new List<EnderecoCelula>();
+                    if (this is Reuniao         ) Reuniao.Reunioes = new List<Reuniao>();
+                    if (this is MudancaEstado   ) MudancaEstado.Mudancas = new List<MudancaEstado>();
+                    if (this is Historico       ) Historico.Historicos = new List<Historico>();
+                    if (this is Chamada         ) Chamada.Chamadas = new List<Chamada>();
+                    if (this is Telefone        ) Telefone.Telefones = new List<Telefone>();
+                    if (this is Endereco        ) Endereco.Enderecos = new List<Endereco>();
+                    if (this is EnderecoCelula  ) EnderecoCelula.EnderecosCelula = new List<EnderecoCelula>();
                     if (this is MinisterioCelula) MinisterioCelula.MinisterioCelulas = new List<MinisterioCelula>();
                     if (this is PessoaMinisterio) PessoaMinisterio.PessoaMinisterios = new List<PessoaMinisterio>();
-                    if (this is ReuniaoPessoa) ReuniaoPessoa.ReuniaoPessoas = new List<ReuniaoPessoa>();
+                    if (this is ReuniaoPessoa   ) ReuniaoPessoa.ReuniaoPessoas = new List<ReuniaoPessoa>();
 
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();

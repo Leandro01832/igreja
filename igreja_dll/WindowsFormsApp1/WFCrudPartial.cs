@@ -6,22 +6,18 @@ using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario;
-using WindowsFormsApp1.Formulario.Celula;
+using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Pessoa;
-using WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
+using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
-using Endereco = WindowsFormsApp1.Formulario.Pessoa.Endereco;
 
 namespace WindowsFormsApp1
 {
-  public partial  class  WFCrud
+    public partial  class  WFCrud
     {
         private void DadoFoto_Click(object sender, EventArgs e)
         {
@@ -113,7 +109,7 @@ namespace WindowsFormsApp1
                     p.RemoverDaLista("MinisterioCelula", p, new Celula_Adolescente(), AddNaListaMinisterioCelulas);
             }
 
-            if (modelo is business.classes.Abstrato.Pessoa)
+            if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
@@ -166,7 +162,7 @@ namespace WindowsFormsApp1
                     {
                         if(ModeloNovo != null)
                         {
-                            Endereco end = new Endereco(condicaoAtualizar, condicaoDeletar, CondicaoDetalhes,
+                            FrmEndereco end = new FrmEndereco(condicaoAtualizar, condicaoDeletar, CondicaoDetalhes,
                             ModeloVelho, ModeloNovo);
                             end.MdiParent = this.MdiParent;
                             this.Close();
@@ -174,17 +170,15 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            Endereco end = new Endereco((PessoaDado)modelo,
+                            FrmEndereco end = new FrmEndereco((PessoaDado)modelo,
                             condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
                             end.MdiParent = this.MdiParent;
                             this.Close();
                             end.Show();
-                        } 
-
-                       
+                        }                        
                     }
 
-                    if (this is Endereco)
+                    if (this is FrmEndereco)
                     {
                         if(ModeloNovo != null)
                         {
@@ -484,14 +478,14 @@ namespace WindowsFormsApp1
             {
                 if (this is DadoCelula)
                 {
-                    EnderecoCelula end = new EnderecoCelula((Celula)modelo,
+                    FrmEnderecoCelula end = new FrmEnderecoCelula((Celula)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);
                     end.MdiParent = this.MdiParent;
                     this.Close();
                     end.Show();
                 }
 
-                if (this is EnderecoCelula)
+                if (this is FrmEnderecoCelula)
                 {
                     MinisteriosCelula con = new MinisteriosCelula((Celula)modelo,
                         CondicaoAtualizar, condicaoDeletar, condicaoDetalhes);

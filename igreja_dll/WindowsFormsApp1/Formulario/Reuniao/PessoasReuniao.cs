@@ -1,8 +1,9 @@
-﻿using database;
+﻿using business.classes.Abstrato;
+using database;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
@@ -35,7 +36,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     {
                         if(item != "")
                         {
-                            var modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
+                            var modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
                             txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
                         }
                         
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                 if (pessoas != null)
                 foreach (var item in pessoas)
                 {
-                        var pes = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Id == item.PessoaId);
+                        var pes = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == item.PessoaId);
                         txt_pessoas.Text += pes.Codigo + ", ";
                 }
                 
@@ -82,14 +83,14 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                             
                         try
                         {
-                                var modelo = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
+                                var modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
                                 AddNaListaReuniaoPessoas += modelo.Id.ToString() + ", ";
                         }
                         catch
                         {
                             AddNaListaReuniaoPessoas = "";
-                                var numero = business.classes.Abstrato.Pessoa.GeTotalRegistrosPessoas();
-                                if (numero != modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Count)
+                                var numero = Pessoa.GeTotalRegistrosPessoas();
+                                if (numero != modelocrud.Modelos.OfType<Pessoa>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else
                                     MessageBox.Show("Este registro não existe no banco de dados");
@@ -108,7 +109,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void listapessoas_Click(object sender, EventArgs e)
         {
-            FrmPessoa form = new FrmPessoa(typeof(business.classes.Abstrato.Pessoa));
+            FrmPessoa form = new FrmPessoa(typeof(Pessoa));
             form.MdiParent = this.MdiParent;
             form.Text = "Lista de Pessoas";
             form.Show();

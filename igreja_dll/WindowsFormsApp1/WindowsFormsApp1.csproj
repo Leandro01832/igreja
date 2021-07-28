@@ -99,10 +99,10 @@
     <Compile Include="FormProgressBar2.Designer.cs">
       <DependentUpon>FormProgressBar2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celula\MinisteriosCelula.cs">
+    <Compile Include="Formulario\Celulas\MinisteriosCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\MinisteriosCelula.Designer.cs">
+    <Compile Include="Formulario\Celulas\MinisteriosCelula.Designer.cs">
       <DependentUpon>MinisteriosCelula.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormCrudReuniao.cs">
@@ -114,28 +114,28 @@
     <Compile Include="Formulario\FormularioCrudCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\FrmCelula.cs">
+    <Compile Include="Formulario\Celulas\FrmCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\FrmCelula.Designer.cs">
+    <Compile Include="Formulario\Celulas\FrmCelula.Designer.cs">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celula\DadoCelula.cs">
+    <Compile Include="Formulario\Celulas\DadoCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\DadoCelula.Designer.cs">
+    <Compile Include="Formulario\Celulas\DadoCelula.Designer.cs">
       <DependentUpon>DadoCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celula\EnderecoCelula.cs">
+    <Compile Include="Formulario\Celulas\FrmEnderecoCelula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\EnderecoCelula.Designer.cs">
-      <DependentUpon>EnderecoCelula.cs</DependentUpon>
+    <Compile Include="Formulario\Celulas\FrmEnderecoCelula.Designer.cs">
+      <DependentUpon>FrmEnderecoCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celula\FinalizarCadastro.cs">
+    <Compile Include="Formulario\Celulas\FinalizarCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celula\FinalizarCadastro.Designer.cs">
+    <Compile Include="Formulario\Celulas\FinalizarCadastro.Designer.cs">
       <DependentUpon>FinalizarCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormCrudMinisterio.cs">
@@ -258,11 +258,11 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.Designer.cs">
       <DependentUpon>DadoPessoal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Endereco.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Endereco.Designer.cs">
-      <DependentUpon>Endereco.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.Designer.cs">
+      <DependentUpon>FrmEndereco.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.cs">
       <SubType>Form</SubType>
@@ -351,26 +351,29 @@
     </Compile>
     <EmbeddedResource Include="FormPadrao.resx">
       <DependentUpon>FormPadrao.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProcessamento.resx">
       <DependentUpon>FormProcessamento.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProgressBar.resx">
       <DependentUpon>FormProgressBar.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProgressBar2.resx">
       <DependentUpon>FormProgressBar2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\FrmCelula.resx">
+    <EmbeddedResource Include="Formulario\Celulas\FrmCelula.resx">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\DadoCelula.resx">
+    <EmbeddedResource Include="Formulario\Celulas\DadoCelula.resx">
       <DependentUpon>DadoCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\FinalizarCadastro.resx">
+    <EmbeddedResource Include="Formulario\Celulas\FinalizarCadastro.resx">
       <DependentUpon>FinalizarCadastro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celula\MinisteriosCelula.resx">
+    <EmbeddedResource Include="Formulario\Celulas\MinisteriosCelula.resx">
       <DependentUpon>MinisteriosCelula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormCrudMinisterio.resx">
@@ -439,8 +442,8 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.resx">
       <DependentUpon>DadoPessoal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Endereco.resx">
-      <DependentUpon>Endereco.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.resx">
+      <DependentUpon>FrmEndereco.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FinalizarCadastroPessoa.resx">
       <DependentUpon>FinalizarCadastroPessoa.cs</DependentUpon>

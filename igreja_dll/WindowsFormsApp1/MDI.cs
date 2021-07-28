@@ -7,13 +7,12 @@ using business.classes.PessoasLgpd;
 using business.implementacao;
 using database;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Celula;
+using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1

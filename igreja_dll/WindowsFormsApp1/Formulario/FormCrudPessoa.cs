@@ -1,8 +1,9 @@
-﻿using database;
+﻿using business.classes.Abstrato;
+using database;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Pessoa;
+using WindowsFormsApp1.Formulario.Pessoas;
 
 namespace WindowsFormsApp1.Formulario
 {
@@ -52,13 +53,13 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
-            var m = (business.classes.Abstrato.Pessoa)ModeloVelho;
-            var p = (business.classes.Abstrato.Pessoa)ModeloNovo;
+            var m = (Pessoa)ModeloVelho;
+            var p = (Pessoa)ModeloNovo;
             p.MudarEstado(m.Id, ModeloNovo);            
 
-            modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList()
-           .Remove(modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().First(i => i.Id == m.Id));
-            modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Add(p);            
+            modelocrud.Modelos.OfType<Pessoa>().ToList()
+           .Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == m.Id));
+            modelocrud.Modelos.OfType<Pessoa>().ToList().Add(p);            
 
             MessageBox.Show("Mudança realizada com sucesso!!!");
         }

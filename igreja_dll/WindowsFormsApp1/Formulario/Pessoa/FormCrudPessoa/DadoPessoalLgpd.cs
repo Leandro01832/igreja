@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Formulario.Pessoa.FormCrudPessoa
+namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
     public partial class DadoPessoalLgpd : WindowsFormsApp1.Formulario.FormCrudPessoa
     {
