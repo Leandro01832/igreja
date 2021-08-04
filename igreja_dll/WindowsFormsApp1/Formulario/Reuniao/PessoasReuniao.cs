@@ -89,7 +89,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                         catch
                         {
                             AddNaListaReuniaoPessoas = "";
-                                var numero = Pessoa.GeTotalRegistrosPessoas();
+                                var numero = Pessoa.TotalRegistro();
                                 if (numero != modelocrud.Modelos.OfType<Pessoa>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

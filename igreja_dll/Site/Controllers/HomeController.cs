@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using repositorioEF;
 using Site.Models;
 using Site.Models.Repository;
 using System.Linq;
@@ -10,12 +9,10 @@ using business.classes.Abstrato;
 using business.classes.PessoasLgpd;
 using business.classes.Intermediario;
 using business.classes;
-using business.classes.Ministerio;
 using RepositorioEF;
 using System.Threading.Tasks;
 using Ecommerce.Classes;
 using business.classes.Pessoas;
-using System.Web;
 
 namespace Site.Controllers
 {
@@ -91,9 +88,8 @@ namespace Site.Controllers
             {
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Ministerio ministerio = banco.ministerio.Find(Id);
-                ministerio.RemoverDaLista("PessoaMinisterio", ministerio, new VisitanteLgpd(), pessoa.Id + ", ");
-
-                ministerio.alterar(Id);
+                PessoaMinisterio pm = new PessoaMinisterio { PessoaId = pessoa.Id, MinisterioId = ministerio.Id };
+                pm.salvar();
             }
 
             ViewBag.mensagem = "Parabêns você esta participando do ministério!!!";
@@ -114,9 +110,8 @@ namespace Site.Controllers
             {
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Reuniao reuniao = banco.reuniao.Find(Id);
-                reuniao.RemoverDaLista("ReuniaoPessoa", reuniao, new VisitanteLgpd(), pessoa.Id + ", ");
-
-                reuniao.alterar(Id);
+                ReuniaoPessoa rp = new ReuniaoPessoa { PessoaId = pessoa.Id, ReuniaoId = reuniao.Id };
+                rp.salvar();
             }
 
             ViewBag.mensagem = "Parabêns você esta participando da reunião!!!";

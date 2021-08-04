@@ -1,16 +1,10 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Celula;
+using business.classes.Celulas;
 using business.classes.Intermediario;
-using business.classes.Ministerio;
 using business.implementacao;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace business.database
 {

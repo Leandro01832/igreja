@@ -53,15 +53,22 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
-            var m = (Pessoa)ModeloVelho;
-            var p = (Pessoa)ModeloNovo;
-            p.MudarEstado(m.Id, ModeloNovo);            
+            if (executar)
+            {
+                var m = (Pessoa)ModeloVelho;
+                var p = (Pessoa)ModeloNovo;
+                p.MudarEstado(m.Id, ModeloNovo);
 
-            modelocrud.Modelos.OfType<Pessoa>().ToList()
-           .Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == m.Id));
-            modelocrud.Modelos.OfType<Pessoa>().ToList().Add(p);            
+                modelocrud.Modelos.OfType<Pessoa>().ToList()
+               .Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == m.Id));
+                modelocrud.Modelos.OfType<Pessoa>().ToList().Add(p);
 
-            MessageBox.Show("Mudança realizada com sucesso!!!");
+                MessageBox.Show("Mudança realizada com sucesso!!!"); 
+            }
+            else
+            {
+                MessageBox.Show("Aguarde o processamento!!!");
+            }
         }
 
         public FormCrudPessoa(modelocrud modelo,

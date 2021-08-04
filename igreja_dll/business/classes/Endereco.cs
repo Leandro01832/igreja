@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.ComponentModel.DataAnnotations;
-using database.banco;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using System.Collections;
-using System.Data.SqlClient;
+﻿using business.classes.Pessoas;
 using database;
-using business.classes.Abstrato;
-using business.classes.Pessoas;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace business.classes
 {
@@ -50,40 +40,10 @@ namespace business.classes
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Complemento { get; set; }
 
-        [NotMapped]
-        public static List<Endereco> Enderecos { get; set; }
+        public static List<Endereco> Enderecos;
 
-        public Endereco()
-        {
-        }
+        public Endereco(){ }
 
-        public Endereco(int id) : base(id)
-        {
-        }
-
-        public override string salvar()
-        {
-            GetProperties(GetType());
-            return Insert_padrao;
-        }
-
-        public override string alterar(int id)
-        {
-            UpdateProperties(GetType(), id);
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            return Delete_padrao;
-        }
-
-        public override bool recuperar(int id)
-        {
-            if (SetProperties(GetType()))
-            { T = GetType(); return true; }
-            return false;
-        }
-        
+        public Endereco(int id) : base(id){ }
     }
 }

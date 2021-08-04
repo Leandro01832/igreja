@@ -18,12 +18,8 @@ namespace business.classes.Intermediario
     [Table("PessoaMinisterio")]
     public class PessoaMinisterio : modelocrud
     {
-        public PessoaMinisterio() : base()
-        {
-        }
-        public PessoaMinisterio(int id) : base(id)
-        {
-        }
+        public PessoaMinisterio() : base(){ }
+        public PessoaMinisterio(int id) : base(id){ }
 
         public int PessoaId { get; set; }
         [JsonIgnore]
@@ -32,32 +28,9 @@ namespace business.classes.Intermediario
         [JsonIgnore]
         public virtual Abstrato.Ministerio Ministerio { get; set; }
 
-        [NotMapped]
-        public static List<PessoaMinisterio> PessoaMinisterios { get; set; }
-
-        public override string alterar(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool recuperar(int id)
-        {
-            if (SetProperties(GetType()))
-            { T = GetType(); return true; }
-            return false;
-        }
-        
-        public override string salvar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int GeTotalRegistrosPessoasEmMinisterios()
+        public static List<PessoaMinisterio> PessoaMinisterios;
+                        
+        public static int TotalRegistro()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

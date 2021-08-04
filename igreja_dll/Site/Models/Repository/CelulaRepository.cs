@@ -1,7 +1,4 @@
-﻿using business.classes.Celula;
-using repositorioEF;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using business.classes.Abstrato;
 using System.Linq;

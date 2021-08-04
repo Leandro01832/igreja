@@ -65,8 +65,6 @@
     <Compile Include="classes\Abstrato\MembroLgpd.cs" />
     <Compile Include="classes\Abstrato\Ministerio.cs" />
     <Compile Include="classes\Abstrato\Pessoa.cs" />
-    <Compile Include="implementacao\AddNalista.cs" />
-    <Compile Include="implementacao\BuscaLista.cs" />
     <Compile Include="classes\Celulas\Celula_Adolescente.cs" />
     <Compile Include="classes\Celulas\Celula_Adulto.cs" />
     <Compile Include="classes\Celulas\Celula_Casado.cs" />
@@ -76,8 +74,6 @@
     <Compile Include="classes\ConfiguraRota.cs" />
     <Compile Include="classes\Endereco.cs" />
     <Compile Include="classes\Historico.cs" />
-    <Compile Include="contrato\IAddNalista.cs" />
-    <Compile Include="contrato\IBuscaLista.cs" />
     <Compile Include="contrato\IMudancaEstado.cs" />
     <Compile Include="classes\Intermediario\MinisterioCelula.cs" />
     <Compile Include="classes\Intermediario\PessoaMinisterio.cs" />
@@ -114,9 +110,9 @@
     <Compile Include="database\IgrejaDB.cs" />
     <Compile Include="database\modelocrud.cs" />
     <Compile Include="implementacao\Pesquisar.cs" />
-    <Compile Include="Migrations\202107260119187_Inicio.cs" />
-    <Compile Include="Migrations\202107260119187_Inicio.Designer.cs">
-      <DependentUpon>202107260119187_Inicio.cs</DependentUpon>
+    <Compile Include="Migrations\202108030159089_Inicio.cs" />
+    <Compile Include="Migrations\202108030159089_Inicio.Designer.cs">
+      <DependentUpon>202108030159089_Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,8 +137,8 @@
     <Content Include="conexao\MySql.Data.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107260119187_Inicio.resx">
-      <DependentUpon>202107260119187_Inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108030159089_Inicio.resx">
+      <DependentUpon>202108030159089_Inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

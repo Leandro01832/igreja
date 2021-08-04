@@ -12,7 +12,6 @@ namespace business.classes
     [Table("Historico")]
     public class Historico : modelocrud
     {
-
         public DateTime Data_inicio { get; set; }
 
         public int pessoaid { get; set; }
@@ -23,44 +22,13 @@ namespace business.classes
 
         public int Falta { get; set; }
 
-        [NotMapped]
-        public static List<Historico> Historicos { get; set; }
+        public static List<Historico> Historicos;
 
-        public Historico() : base()
-        {
-        }
+        public Historico() : base(){ }
 
-        public Historico(int id) : base(id)
-        {
-        }
+        public Historico(int id) : base(id){ }
 
-        public override string alterar(int id)
-        {
-            UpdateProperties(GetType(), id);
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            bd.Excluir(this);
-            return Delete_padrao;
-        }
-
-        public override bool recuperar(int id)
-        {
-            if (SetProperties(GetType()))
-            { T = GetType(); return true; }
-            return false;
-        }
-        
-        public override string salvar()
-        {
-            GetProperties(GetType());
-            bd.SalvarModelo(this);
-            return Insert_padrao;
-        }
-
-        public static int GeTotalRegistrosHistoricos()
+        public static int TotalRegistro()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

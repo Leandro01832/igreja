@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
 
         private static bool verificarLista = true;
         private static bool podeVerificar = false;
-        private static bool executar = true;
+        public static bool executar = true;
         private static bool verificarTimer = true;
 
         private BDcomum bd = new BDcomum();
@@ -66,6 +66,11 @@ namespace WindowsFormsApp1
                 form.StartPosition = FormStartPosition.CenterScreen;
                 form.Text = "Barra de processamento - Processando dados";
                 form.Show();
+                var pm = await Task.Run(() => new PessoaMinisterio().recuperar());
+
+                var rp = await Task.Run(() => new ReuniaoPessoa().recuperar());
+
+                var mc = await Task.Run(() => new MinisterioCelula().recuperar());
 
                 var lc = await Task.Run(() => Celula.recuperarTodasCelulas());
 
@@ -75,19 +80,31 @@ namespace WindowsFormsApp1
 
                 var lr = await Task.Run(() => new Reuniao().recuperar());
 
-                var pm = await Task.Run(() => new PessoaMinisterio().recuperar());
-
-                var rp = await Task.Run(() => new ReuniaoPessoa().recuperar());
-
                 var lh = await Task.Run(() => new Historico().recuperar());
 
                 var lp = await Task.Run(() => Pessoa.recuperarTodos());
+
+                
 
                 await Task.Run(() =>
                 {
                     while (int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99)
                     { executar = false; podeVerificar = false; }
                 });
+
+                modelocrud.Modelos.AddRange(PessoaMinisterio.PessoaMinisterios);
+                modelocrud.Modelos.AddRange(ReuniaoPessoa.ReuniaoPessoas);
+                modelocrud.Modelos.AddRange(MinisterioCelula.MinisterioCelulas);
+                modelocrud.Modelos.AddRange(Reuniao.Reunioes);
+
+                modelocrud.Modelos.AddRange(MudancaEstado.Mudancas);
+                modelocrud.Modelos.AddRange(Historico.Historicos);
+               // modelocrud.Modelos.AddRange(Chamada.Chamadas);
+              //  modelocrud.Modelos.AddRange(Telefone.Telefones);
+               // modelocrud.Modelos.AddRange(Endereco.Enderecos);
+              //  modelocrud.Modelos.AddRange(EnderecoCelula.EnderecosCelula);
+
+                await Task.Run(() => modelocrud.buscarListas());
 
 
                 if (!form.IsDisposed)
@@ -109,9 +126,9 @@ namespace WindowsFormsApp1
 
         private async Task verificarListagem()
         {
-            var registrosMinisterios = Ministerio.GeTotalRegistrosMinisterios();
-            var registrosPessoas = Pessoa.GeTotalRegistrosPessoas();
-            var registrosCelulas = Celula.GeTotalRegistrosCelulas();
+            var registrosMinisterios = Ministerio.TotalRegistro();
+            var registrosPessoas = Pessoa.TotalRegistro();
+            var registrosCelulas = Celula.TotalRegistro();
             try
             {
                 if (registrosMinisterios != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
@@ -512,16 +529,16 @@ namespace WindowsFormsApp1
 
         private List<modelocrud> RetornaModelos(modelocrud modelo)
         {
-            if (modelo is Visitante) return Pessoa.visitantes.Cast<modelocrud>().ToList();
-            if (modelo is Crianca) return Pessoa.criancas.Cast<modelocrud>().ToList();
-            if (modelo is Membro_Aclamacao) return Pessoa.membros_Aclamacao.Cast<modelocrud>().ToList();
-            if (modelo is Membro_Batismo) return Pessoa.membros_Batismo.Cast<modelocrud>().ToList();
-            if (modelo is Membro_Reconciliacao) return Pessoa.membros_Reconciliacao.Cast<modelocrud>().ToList();
-            if (modelo is Membro_Transferencia) return Pessoa.membros_Transferencia.Cast<modelocrud>().ToList();
-            if (modelo is VisitanteLgpd) return Pessoa.visitantesLgpd.Cast<modelocrud>().ToList();
-            if (modelo is CriancaLgpd) return Pessoa.criancasLgpd.Cast<modelocrud>().ToList();
-            if (modelo is Membro_AclamacaoLgpd) return Pessoa.membros_AclamacaoLgpd.Cast<modelocrud>().ToList();
-            if (modelo is Membro_BatismoLgpd) return Pessoa.membros_BatismoLgpd.Cast<modelocrud>().ToList();
+            if (modelo is Visitante)                return Pessoa.visitantes.Cast<modelocrud>().ToList();
+            if (modelo is Crianca)                  return Pessoa.criancas.Cast<modelocrud>().ToList();
+            if (modelo is Membro_Aclamacao)         return Pessoa.membros_Aclamacao.Cast<modelocrud>().ToList();
+            if (modelo is Membro_Batismo)           return Pessoa.membros_Batismo.Cast<modelocrud>().ToList();
+            if (modelo is Membro_Reconciliacao)     return Pessoa.membros_Reconciliacao.Cast<modelocrud>().ToList();
+            if (modelo is Membro_Transferencia)     return Pessoa.membros_Transferencia.Cast<modelocrud>().ToList();
+            if (modelo is VisitanteLgpd)            return Pessoa.visitantesLgpd.Cast<modelocrud>().ToList();
+            if (modelo is CriancaLgpd)              return Pessoa.criancasLgpd.Cast<modelocrud>().ToList();
+            if (modelo is Membro_AclamacaoLgpd)     return Pessoa.membros_AclamacaoLgpd.Cast<modelocrud>().ToList();
+            if (modelo is Membro_BatismoLgpd)       return Pessoa.membros_BatismoLgpd.Cast<modelocrud>().ToList();
             if (modelo is Membro_ReconciliacaoLgpd) return Pessoa.membros_ReconciliacaoLgpd.Cast<modelocrud>().ToList();
             if (modelo is Membro_TransferenciaLgpd) return Pessoa.membros_TransferenciaLgpd.Cast<modelocrud>().ToList();
 

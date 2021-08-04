@@ -11,12 +11,8 @@ namespace business.classes.Intermediario
 {
     public class MinisterioCelula : modelocrud
     {
-        public MinisterioCelula() : base()
-        {
-        }
-        public MinisterioCelula(int id) : base(id)
-        {
-        }
+        public MinisterioCelula() : base(){  }
+        public MinisterioCelula(int id) : base(id){ }
 
         public int CelulaId { get; set; }
         [JsonIgnore]
@@ -25,32 +21,9 @@ namespace business.classes.Intermediario
         [JsonIgnore]
         public virtual Abstrato.Ministerio Ministerio { get; set; }
 
-        [NotMapped]
-        public static List<MinisterioCelula> MinisterioCelulas { get; set; }
-
-        public override string alterar(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool recuperar(int id)
-        {
-            if (SetProperties(GetType()))
-            { T = GetType(); return true; }
-            return false;
-        }
-        
-        public override string salvar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int GeTotalRegistrosMinisterioCelula()
+        public static List<MinisterioCelula> MinisterioCelulas;
+                        
+        public static int TotalRegistro()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

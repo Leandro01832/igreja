@@ -44,7 +44,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
             }
             else
             {
-                var lista = c.buscarLista(new business.classes.Pessoas.Crianca(), c, "celula_", c.Id);
+                var lista = modelocrud.Modelos.OfType<Pessoa>().Where(p => p.celula_ == c.Id).ToList();
                 if (lista != null) lbl_pessoas.Text = "Pessoas: ";
                 foreach (var numero in lista)
                 {
@@ -91,7 +91,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
                             catch
                             {
                                 AddNaListaCelulaMinisterios = "";
-                                var num = Ministerio.GeTotalRegistrosMinisterios();
+                                var num = Ministerio.TotalRegistro();
                                 if (num != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
                                     MessageBox.Show("Aguarde o processamento.");
                                 else

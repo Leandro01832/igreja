@@ -1,4 +1,7 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
+using business.classes.Celulas;
+using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
@@ -20,7 +23,7 @@ namespace Tests
        static string[] arr2 = new string[10];
         static Random randNum = new Random();
        private static BDcomum  bd = new BDcomum();
-        static int loop = 10;
+        static int loop = 40;
         
 
         static void Main(string[] args)
@@ -48,29 +51,90 @@ namespace Tests
             arr2[8] = "Menezes";
             arr2[9] = "Reimon";
 
-            CadastrarMembroReconciliacaoDadoTest();
-            CadastrarMembroTransferenciaDadoTest();
-            CadastrarMembroBatismoDadoTest();
-            CadastrarMembroAclamacaoDadoTest();
-            CadastrarCriancaDadoTest();
-            CadastrarVisitanteDadoTest();
+            //CadastrarMembroReconciliacaoDadoTest();
+            //CadastrarMembroTransferenciaDadoTest();
+            //CadastrarMembroBatismoDadoTest();
+            //CadastrarMembroAclamacaoDadoTest();
+            //CadastrarCriancaDadoTest();
+            //CadastrarVisitanteDadoTest();
 
-            CadastrarMembroReconciliacaoLgpdTest();
-            CadastrarMembroTransferenciaLgpdTest();
-            CadastrarMembroBatismoLgpdTest();
-            CadastrarMembroAclamacaoLgpdTest();
-            CadastrarCriancaLgpdTest();
-            CadastrarVisitanteLgpdTest();
+            //CadastrarMembroReconciliacaoLgpdTest();
+            //CadastrarMembroTransferenciaLgpdTest();
+            //CadastrarMembroBatismoLgpdTest();
+            //CadastrarMembroAclamacaoLgpdTest();
+            //CadastrarCriancaLgpdTest();
+            //CadastrarVisitanteLgpdTest();
 
-            Console.WriteLine("OK");
+            //CadastrarLiderCelula();
+            //CadastrarLiderCelulaTreinamento();
+            //CadastrarLiderMinisterio();
+            //CadastrarLiderMinisterioTreinamento();
+            //CadastrarSupervisorCelula();
+            //CadastrarSupervisorCelulaTreinamento();
+            //CadastrarSupervisorMinisterio();
+            //CadastrarSupervisorMinisterioTreinamento();
 
+            //CadastrarCelulaAdolescente();
+            //CadastrarCelulaCasados();
+            //CadastrarCelulaJovem();
+            //CadastrarCelulaCrianca();
+            //CadastrarCelulaAdulto();
+
+            //CadastrarReunioes();
+            //CadastrarPessoasEmMinisterios();
+            //CadastrarPessoasEmReunioes();
+            //CadastrarMinisteriosEmCelulas();
+
+            Visitante pes = new Visitante();
+            
+                pes.Codigo = bd.GetUltimoRegistroPessoa() + 1;
+                pes.celula_ = null;
+                pes.Chamada = new Chamada();
+                pes.Chamada. Data_inicio = DateTime.Now;
+                pes.Chamada.Numero_chamada = 0;
+                pes.Img = "";
+                pes.Historicos = new List<Historico>();
+                pes.Ministerios = new List<PessoaMinisterio>();
+                pes.NomePessoa = arr[10] + " " + arr2[9];
+                pes.Condicao_religiosa = " - ";
+                pes.Cpf = "08270839639";
+                pes.Data_nascimento = DateTime.Now.AddYears(-20);
+                pes.Data_visita = DateTime.Now;
+                pes.Email = arr2[5].Replace(" ", "") + "08270839639" + "@gmail.com";
+                pes.Endereco = new Endereco();
+                pes.Endereco.Bairro = "Vila";
+                pes.Endereco.Cep = 36774016;
+                pes.Endereco.Cidade = "Cataguases";
+                pes.Endereco.Complemento = "residencia";
+                pes.Endereco.Estado = "MG";
+                pes.Endereco.Numero_casa = 117;
+                pes.Endereco.Pais = "Brasil";
+                pes.Endereco.Rua = "Jose";
+                pes.Estado_civil = "solteiro";
+                pes.Falta = 0;
+                pes.Falescimento = false;
+                pes.Sexo_feminino = false;
+                pes.Sexo_masculino = true;
+                pes.Reuniao = new List<ReuniaoPessoa>();
+                pes.Rg = "MG-" + "08270839639";
+                pes.Status = "moro longe";
+                pes.Telefone = new Telefone();
+                pes.Telefone.Celular = "(11)23412-8912";
+                pes.Telefone.Fone = "(21)29412-1917";
+                pes.Telefone.Whatsapp = "(31)34985-6734";
+                
+            //Act - metodo sob teste
+            pes.salvar();
+
+            Console.WriteLine("Ok. Tudo Certo!!!");
             Console.ReadLine();
         }
-        
+
+        #region People
         public static void CadastrarVisitanteDadoTest()
         {
             //Arranje - cenario
-            Pessoa pes = null;              
+            Pessoa pes = null;
             var num = randNum.Next(100000000, 900000000);
 
             for (var i = 0; i < loop; i++)
@@ -89,10 +153,10 @@ namespace Tests
                     {
                         Data_inicio = DateTime.Now,
                         Numero_chamada = 0
-                    },                    
+                    },
                     Img = "",
-                    Historicos = new List<business.classes.Historico>(),
-                    Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Historicos = new List<Historico>(),
+                    Ministerios = new List<PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Condicao_religiosa = " - ",
                     Cpf = numero.ToString(),
@@ -127,7 +191,7 @@ namespace Tests
                 };
 
                 //Act - metodo sob teste
-                pes.salvar();                
+                pes.salvar();
             }
 
             //Assert
@@ -142,7 +206,7 @@ namespace Tests
         public static void CadastrarCriancaDadoTest()
         {
             //Arranje - cenario
-            Pessoa pes = null;           
+            Pessoa pes = null;
             var num = randNum.Next(100000000, 900000000);
 
             for (var i = 0; i < loop; i++)
@@ -235,13 +299,13 @@ namespace Tests
                         Numero_chamada = 0
                     },
                     Img = "",
-                    Historicos = new List<business.classes.Historico>(),
+                    Historicos = new List<Historico>(),
                     Ministerios = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     NomePessoa = arr[v1] + " " + arr2[v2],
                     Cpf = numero.ToString(),
                     Data_nascimento = DateTime.Now.AddYears(-ano),
                     Email = arr2[v2].Replace(" ", "") + numeroGrande.ToString() + "@gmail.com",
-                    Endereco = new business.classes.Endereco
+                    Endereco = new Endereco
                     {
                         Bairro = "Vila",
                         Cep = 36774016,
@@ -269,7 +333,7 @@ namespace Tests
                     Data_batismo = 1991,
                     Desligamento = false,
                     Denominacao = "Evagelico",
-                    Motivo_desligamento = " - "                     
+                    Motivo_desligamento = " - "
                 };
 
                 //Act - metodo sob teste
@@ -342,7 +406,7 @@ namespace Tests
                     },
                     Data_batismo = 1991,
                     Desligamento = false,
-                    Motivo_desligamento = " - "                     
+                    Motivo_desligamento = " - "
                 };
 
                 //Act - metodo sob teste
@@ -419,7 +483,7 @@ namespace Tests
                     Estado_transferencia = "MG",
                     Nome_cidade_transferencia = "Cataguases",
                     Nome_igreja_transferencia = "Igreja"
-                         
+
                 };
 
                 //Act - metodo sob teste
@@ -493,7 +557,7 @@ namespace Tests
                     Data_batismo = 1991,
                     Desligamento = false,
                     Motivo_desligamento = " - ",
-                     Data_reconciliacao = 1991
+                    Data_reconciliacao = 1991
                 };
 
                 //Act - metodo sob teste
@@ -512,7 +576,7 @@ namespace Tests
         public static void CadastrarVisitanteLgpdTest()
         {
             //Arranje - cenario
-            Pessoa pes = null;            
+            Pessoa pes = null;
             var num = randNum.Next(100000000, 900000000);
 
             for (var i = 0; i < loop; i++)
@@ -800,5 +864,480 @@ namespace Tests
             else
                 Console.WriteLine("aconteceu um erro.");
         }
+        #endregion
+
+        #region Ministry
+        public static void CadastrarLiderCelula()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Lider_Celula
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - "
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarLiderCelulaTreinamento()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Lider_Celula_Treinamento
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - "
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarLiderMinisterio()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Lider_Ministerio
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - "
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarLiderMinisterioTreinamento()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Lider_Ministerio_Treinamento
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - "
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarSupervisorCelula()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Supervisor_Celula
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - ",
+                    Maximo_celula = randNum.Next(1, 5)
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarSupervisorCelulaTreinamento()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Supervisor_Celula_Treinamento
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - ",
+                    Maximo_celula = randNum.Next(1, 5)
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarSupervisorMinisterio()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Supervisor_Ministerio
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - ",
+                    Maximo_celula = randNum.Next(1, 5)
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarSupervisorMinisterioTreinamento()
+        {
+            Ministerio minis = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                minis = new Supervisor_Ministerio_Treinamento
+                {
+                    Celulas = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Maximo_pessoa = 5,
+                    Ministro_ = null,
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
+                    Proposito = " - ",
+                    Maximo_celula = randNum.Next(1, 5)
+                };
+                minis.salvar();                
+            }
+            var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
+            var valorObtido = minis.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+        #endregion
+
+        #region Celula
+        public static void CadastrarCelulaAdolescente()
+        {
+            Celula cel = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new Celula_Adolescente
+                {
+                    Dia_semana = "Segunda",
+                    Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0),
+                    Maximo_pessoa = randNum.Next(0, 50),
+                    Ministerios = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<Pessoa>(),
+                    EnderecoCelula = new EnderecoCelula
+                    {
+                        Bairro = "Vila",
+                        Cep = 36774016,
+                        Cidade = "Cataguases",
+                        Complemento = "residencia",
+                        Estado = "MG",
+                        Numero_casa = 117,
+                        Pais = "Brasil",
+                        Rua = "Jose"
+                    }
+                };
+                cel.salvar();
+            }
+            var ValorEsperado = cel.bd.GetUltimoRegistroCelula();
+            var valorObtido = cel.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarCelulaCasados()
+        {
+            Celula cel = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new Celula_Casado
+                {
+                    Dia_semana = "Terça",
+                    Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0),
+                    Maximo_pessoa = randNum.Next(0, 50),
+                    Ministerios = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<Pessoa>(),
+                    EnderecoCelula = new EnderecoCelula
+                    {
+                        Bairro = "Vila",
+                        Cep = 36774016,
+                        Cidade = "Cataguases",
+                        Complemento = "residencia",
+                        Estado = "MG",
+                        Numero_casa = 117,
+                        Pais = "Brasil",
+                        Rua = "Jose"
+                    }
+                };
+                cel.salvar();
+            }
+            var ValorEsperado = cel.bd.GetUltimoRegistroCelula();
+            var valorObtido = cel.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarCelulaJovem()
+        {
+            Celula cel = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new Celula_Jovem
+                {
+                    Dia_semana = "Quarta",
+                    Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0),
+                    Maximo_pessoa = randNum.Next(0, 50),
+                    Ministerios = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<Pessoa>(),
+                    EnderecoCelula = new EnderecoCelula
+                    {
+                        Bairro = "Vila",
+                        Cep = 36774016,
+                        Cidade = "Cataguases",
+                        Complemento = "residencia",
+                        Estado = "MG",
+                        Numero_casa = 117,
+                        Pais = "Brasil",
+                        Rua = "Jose"
+                    }
+                };
+                cel.salvar();
+            }
+            var ValorEsperado = cel.bd.GetUltimoRegistroCelula();
+            var valorObtido = cel.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarCelulaCrianca()
+        {
+            Celula cel = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new Celula_Crianca
+                {
+                    Dia_semana = "Quinta",
+                    Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0),
+                    Maximo_pessoa = randNum.Next(0, 50),
+                    Ministerios = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<Pessoa>(),
+                    EnderecoCelula = new EnderecoCelula
+                    {
+                        Bairro = "Vila",
+                        Cep = 36774016,
+                        Cidade = "Cataguases",
+                        Complemento = "residencia",
+                        Estado = "MG",
+                        Numero_casa = 117,
+                        Pais = "Brasil",
+                        Rua = "Jose"
+                    }
+                };
+                cel.salvar();
+            }
+            var ValorEsperado = cel.bd.GetUltimoRegistroCelula();
+            var valorObtido = cel.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarCelulaAdulto()
+        {
+            Celula cel = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new Celula_Adulto
+                {
+                    Dia_semana = "Sexta",
+                    Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0),
+                    Maximo_pessoa = randNum.Next(0, 50),
+                    Ministerios = new List<business.classes.Intermediario.MinisterioCelula>(),
+                    Nome = arr[randNum.Next(0, 49)],
+                    Pessoas = new List<Pessoa>(),
+                    EnderecoCelula = new EnderecoCelula
+                    {
+                        Bairro = "Vila",
+                        Cep = 36774016,
+                        Cidade = "Cataguases",
+                        Complemento = "residencia",
+                        Estado = "MG",
+                        Numero_casa = 117,
+                        Pais = "Brasil",
+                        Rua = "Jose"
+                    }
+                };
+                cel.salvar();
+            }
+            var ValorEsperado = cel.bd.GetUltimoRegistroCelula();
+            var valorObtido = cel.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+        #endregion
+
+        #region Lists
+        public static void CadastrarReunioes()
+        {
+            Reuniao cel = null;
+
+            for (var i = 0; i < loop; i++)
+            {
+                int num = randNum.Next(0, 23);
+                cel = new Reuniao
+                {
+                    Data_reuniao = new DateTime(2021, randNum.Next(8, 12), randNum.Next(5, 28)),
+                    Horario_inicio = new TimeSpan(num, randNum.Next(0, 59), 0),
+                    Horario_fim = new TimeSpan(num + 1, randNum.Next(0, 59), 0),
+                    Pessoas = new List<ReuniaoPessoa>(),
+                    Local_reuniao = " - "
+                };
+                cel.salvar();
+            }
+            var ValorEsperado = cel.bd.GetUltimoRegistroReuniao();
+            var valorObtido = cel.Id;
+            if (valorObtido == ValorEsperado)
+                Console.WriteLine("Ok");
+            else
+                Console.WriteLine("aconteceu um erro.");
+        }
+
+        public static void CadastrarPessoasEmMinisterios()
+        {
+            PessoaMinisterio cel = null;
+            var num = randNum.Next(100000000, 900000000);
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new PessoaMinisterio
+                {
+                    MinisterioId = randNum.Next(1, 16),
+                    PessoaId = randNum.Next(2, 121)
+                };
+                cel.salvar();
+            }
+        }
+
+        public static void CadastrarPessoasEmReunioes()
+        {
+            ReuniaoPessoa cel = null;
+            var num = randNum.Next(100000000, 900000000);
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new ReuniaoPessoa
+                {
+                    ReuniaoId = randNum.Next(1, 50),
+                    PessoaId = randNum.Next(2, 121)
+                };
+                cel.salvar();
+            }
+        }
+
+        public static void CadastrarMinisteriosEmCelulas()
+        {
+            MinisterioCelula cel = null;
+            var num = randNum.Next(100000000, 900000000);
+
+            for (var i = 0; i < loop; i++)
+            {
+                cel = new MinisterioCelula
+                {
+                    MinisterioId = randNum.Next(1, 16),
+                    CelulaId = randNum.Next(1, 15)
+                };
+                cel.salvar();
+            }
+        } 
+        #endregion
     }
 }

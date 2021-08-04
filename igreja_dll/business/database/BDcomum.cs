@@ -14,9 +14,7 @@ namespace database.banco
         static string path = Directory.GetCurrentDirectory();
         public static string conecta1 = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
         public static string conecta2 = $@"Data Source=database-igreja.mssql.somee.com;packet size=4096;user id=lls01833_SQLLogin_1;pwd=tsobwjtsix;data source=database-igreja.mssql.somee.com;persist security info=False;initial catalog=database-igreja";
-
-
-        public static string addNaLista;
+        
         public static bool podeAbrir = true;
         public static bool BancoEnbarcado = true;
 
@@ -103,31 +101,18 @@ namespace database.banco
         public void SalvarModelo(modelocrud modelo)
         {
             ExecutarComandoSqlServer(modelo.Insert_padrao);
-            addNaLista = "";
 
             if (modelo is Pessoa)
-            {
-                var p = (Pessoa)modelo;
-                p.Id = GetUltimoRegistroPessoa();
-            }
+                modelo.Id = GetUltimoRegistroPessoa();
             else
             if (modelo is Celula)
-            {
-                var p = (Celula)modelo;
-                p.Id = GetUltimoRegistroCelula();
-            }
+                modelo.Id = GetUltimoRegistroCelula();
             else
             if (modelo is Ministerio)
-            {
-                var p = (Ministerio)modelo;
-                p.Id = GetUltimoRegistroMinisterio();
-            }
+                modelo.Id = GetUltimoRegistroMinisterio();
             else
             if (modelo is Reuniao)
-            {
-                var p = (Reuniao)modelo;
-                p.Id = GetUltimoRegistroReuniao();
-            }
+                modelo.Id = GetUltimoRegistroReuniao();
         }
 
         public int GetUltimoRegistroPessoa()
@@ -242,7 +227,6 @@ namespace database.banco
         public void Editar(modelocrud modelo)
         {
             ExecutarComandoSqlServer(modelo.Update_padrao);
-            addNaLista = "";
         }
 
         public void Excluir(modelocrud modelo)

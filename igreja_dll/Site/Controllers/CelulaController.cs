@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using RepositorioEF;
 using business.classes.Abstrato;
 using business.classes.Celulas;
-using business.classes.Ministerio;
-using business.classes.Celula;
 
 namespace Site.Controllers
 {

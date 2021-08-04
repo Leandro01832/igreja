@@ -1,10 +1,8 @@
 ﻿using business.classes.Abstrato;
-using business.classes.Celula;
+using business.classes.Celulas;
 using business.classes.Intermediario;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Site.Models.Api
 {

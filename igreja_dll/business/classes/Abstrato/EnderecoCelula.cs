@@ -1,14 +1,10 @@
-﻿using database;
-using database.banco;
+﻿using business.classes.Abstrato;
+using database;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-
-
-namespace business.classes.Celula
+namespace business.classes.Celulas
 {
     public class EnderecoCelula : modelocrud
     {
@@ -16,7 +12,7 @@ namespace business.classes.Celula
         [Key, ForeignKey("Celula")]
         public new int Id { get; set; }
         [JsonIgnore]
-        public virtual Abstrato.Celula Celula { get; set; }
+        public virtual Celula Celula { get; set; }
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Pais { get; set; }
@@ -43,44 +39,11 @@ namespace business.classes.Celula
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Complemento { get; set; }
-
-        [NotMapped]
-        public static List<EnderecoCelula> EnderecosCelula = new List<EnderecoCelula>();
-
-        public EnderecoCelula() : base()
-        {
-        }
-
-        public EnderecoCelula(int id) : base(id)
-        {
-        }
-
-        public override string salvar()
-        {
-            GetProperties(GetType());
-            return Insert_padrao;
-        }
-
-        public override string alterar(int id)
-        {
-            Update_padrao = $"update EnderecoCelula set Pais='{Pais}', Estado='{Estado}', Complemento='{Complemento}', " +
-            $"Cidade='{Cidade}',Bairro='{Bairro}', Rua='{Rua}', Numero_casa='{Numero_casa}', Cep='{Cep}' " +
-            $"  where Id='{id}' ";
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            return Delete_padrao;
-        }
-
-        public override bool recuperar(int id)
-        {
-            if (SetProperties(GetType()))
-            { T = GetType(); return true; }
-            return false;
-        }
         
-    }
+        public static List<EnderecoCelula> EnderecosCelula;
 
+        public EnderecoCelula() : base(){ }
+
+        public EnderecoCelula(int id) : base(id){ }
+    }
 }

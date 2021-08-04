@@ -1,6 +1,5 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Celula;
 using business.classes.Celulas;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
@@ -23,10 +22,11 @@ namespace database
 {
     public abstract class modelocrud : IPesquisar
     {
-        //construtor para Entity Framework
         public modelocrud()
         {
             this.bd = new BDcomum();
+            Select_padrao = $"select * from {this.GetType().Name} as C where C.Id='{this.Id}'";
+            Delete_padrao = $" delete from {this.GetType().Name} where Id='{this.Id}' ";
             Erro_Conexao = false;
             QuantErro = 0;
             this.T = GetType();
@@ -43,6 +43,7 @@ namespace database
             Erro_Conexao = false;
             QuantErro = 0;
             pesquisar = new Pesquisar();
+            Id = id;
         }
 
         private string insert_padrao;
@@ -55,19 +56,15 @@ namespace database
         public SqlDataReader dr;
         public SqlConnection conexao;
         public Type T;
-        private static int indice = 0;
+        public bool existeLista;
         private static string classe = "";
-
-        [NotMapped]
+        
         public static List<modelocrud> Modelos = new List<modelocrud>();
 
         [Key]
-        public int Id { get; set; }
-        [NotMapped]
-        public static bool Erro_Conexao;
-        [NotMapped]
-        public static string textoPorcentagem = "0%";
-        [NotMapped]
+        public int Id { get; set; }        
+        public static bool Erro_Conexao;        
+        public static string textoPorcentagem = "0%";        
         public static int QuantErro;
         [NotMapped]
         public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
@@ -79,10 +76,134 @@ namespace database
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
 
         #region MethodsCrud
-        public abstract string salvar();
-        public abstract string alterar(int id);
-        public abstract string excluir(int id);
-        public abstract bool recuperar(int id);
+      //  public abstract string salvar();
+
+        public string salvar()
+        {
+            var ClassBase = GetType();
+            while (ClassBase != typeof(modelocrud))
+            if (ClassBase.BaseType == typeof(modelocrud))
+            break;
+            else
+            ClassBase = ClassBase.BaseType;
+            T = ClassBase;
+            classe = T.Name;
+            while (T != GetType())
+            GetProperties(T);
+            GetProperties(null);                           
+            bd.SalvarModelo(this);
+            return Insert_padrao;
+        }
+
+        public string alterar(int id)
+        {            
+            while (T != typeof(modelocrud))
+            UpdateProperties(T);
+            UpdateProperties(null);
+            bd.Editar(this);
+            return Update_padrao;
+        }
+
+        public string excluir(int id)
+        {
+            string comando = "";
+            while (T != typeof(modelocrud))
+            comando += DeleteProperties(T);
+            delete_padrao = comando;
+            bd.Excluir(this);
+            return Delete_padrao;
+        }
+
+        public bool recuperar(int id)
+        {
+            bool retorno = false;
+            while (T != typeof(modelocrud))
+            {
+                if (SetProperties(T))
+                    retorno = true;
+                else retorno = false;
+            }
+            T = GetType();
+            return retorno;
+        }
+
+        public static void buscarListas()
+        {
+            for (int j = 0; j < 5; j++)
+                for (var i = 0; i < Modelos.Count; i++)
+                {
+                    if (Modelos[i].GetType().GetProperties().ToList().FirstOrDefault(p => p.PropertyType.IsClass &&
+                      p.GetValue(Modelos[i]) == null && p.PropertyType.IsAbstract ||
+                      p.PropertyType.IsClass && p.GetValue(Modelos[i]) == null &&
+                      p.PropertyType.BaseType == typeof(modelocrud)) != null)
+                    {
+                        var prop = Modelos[i].GetType().GetProperties().ToList().FirstOrDefault(p => p.PropertyType.IsClass &&
+                            p.GetValue(Modelos[i]) == null && p.PropertyType.IsAbstract ||
+                            p.PropertyType.IsClass && p.GetValue(Modelos[i]) == null &&
+                            p.PropertyType.BaseType == typeof(modelocrud));
+
+                        var propInt = Modelos[i].GetType().GetProperties().ToList()
+                            .First(p => p.Name.ToLower().Contains(prop.Name.ToLower()));
+
+                        int? valor = (int?)propInt.GetValue(Modelos[i], null);
+
+                        modelocrud model = null;
+                        if (valor != null)
+                            model = Modelos.First(m => m.GetType().IsSubclassOf(prop.PropertyType) && m.Id == valor ||
+                            m.GetType() == prop.PropertyType && m.Id == valor);
+
+                        prop.SetValue(Modelos[i], model);
+                    }
+                }
+
+            List<object> lista = new List<object>();
+            for (var i = 0; i < Modelos.Count; i++)
+            {
+                
+                for (var k = 0; k < Modelos.Count; k++)
+                {
+                    var props = Modelos[k].GetType().GetProperties();
+
+                    foreach (var prop in props)
+                    {
+                        if (prop.GetValue(Modelos[k]) == Modelos[i])
+                            lista.Add(Modelos[k]);
+                    }
+
+
+                    if (k == Modelos.Count - 1 && lista.Count > 0)
+                    {
+                        var propLista = Modelos[i].GetType().GetProperties()
+                        .Where(p => p.PropertyType.Name == "List`1").ToList();
+
+                       if(propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)) != null)
+                       propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)).SetValue(Modelos[i], lista.OfType<MinisterioCelula>().ToList());
+
+                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(PessoaMinisterio)) != null)
+                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(PessoaMinisterio)).SetValue(Modelos[i], lista.OfType<PessoaMinisterio>().ToList());
+
+                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(ReuniaoPessoa)) != null)
+                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(ReuniaoPessoa)).SetValue(Modelos[i], lista.OfType<ReuniaoPessoa>().ToList());
+
+                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(Pessoa)) != null)
+                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(Pessoa)).SetValue(Modelos[i], lista.OfType<Pessoa>().ToList());
+
+                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(Historico)) != null)
+                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(Historico)).SetValue(Modelos[i], lista.OfType<Historico>().ToList());
+
+                        lista.Clear();
+                    }
+                }
+            }
+
+            var listaPessoas = Modelos.OfType<Pessoa>().OrderBy(m => m.Id).ToList();
+            var listaMinisterios = Modelos.OfType<Ministerio>().OrderBy(m => m.Id).ToList();
+            var listaCelulas = Modelos.OfType<Celula>().OrderBy(m => m.Id).ToList();
+            var listaReuniao = Modelos.OfType<Reuniao>().OrderBy(m => m.Id).ToList();
+            var listaPessoasEmReuniao = Modelos.OfType<ReuniaoPessoa>().OrderBy(m => m.Id).ToList();
+            var listaPessoasEmMinisterio = Modelos.OfType<PessoaMinisterio>().OrderBy(m => m.Id).ToList();
+            var listaMinisteriosEmCelulas = Modelos.OfType<MinisterioCelula>().OrderBy(m => m.Id).ToList();
+        }
 
         public bool recuperar()
         {
@@ -91,56 +212,68 @@ namespace database
 
             if (conexao != null)
             {
+                if (this is Pessoa)
+                {
+                    if (this is Visitante) Pessoa.visitantes = new List<Visitante>();
+                    if (this is Crianca) Pessoa.criancas = new List<Crianca>();
+                    if (this is Membro_Aclamacao) Pessoa.membros_Aclamacao = new List<Membro_Aclamacao>();
+                    if (this is Membro_Batismo) Pessoa.membros_Batismo = new List<Membro_Batismo>();
+                    if (this is Membro_Reconciliacao) Pessoa.membros_Reconciliacao = new List<Membro_Reconciliacao>();
+                    if (this is Membro_Transferencia) Pessoa.membros_Transferencia = new List<Membro_Transferencia>();
+                    if (this is VisitanteLgpd) Pessoa.visitantesLgpd = new List<VisitanteLgpd>();
+                    if (this is CriancaLgpd) Pessoa.criancasLgpd = new List<CriancaLgpd>();
+                    if (this is Membro_AclamacaoLgpd) Pessoa.membros_AclamacaoLgpd = new List<Membro_AclamacaoLgpd>();
+                    if (this is Membro_BatismoLgpd) Pessoa.membros_BatismoLgpd = new List<Membro_BatismoLgpd>();
+                    if (this is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = new List<Membro_ReconciliacaoLgpd>();
+                    if (this is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = new List<Membro_TransferenciaLgpd>();
+                }
+                else
+                    if (this is Ministerio)
+                {
+                    if (this is Lider_Celula) Ministerio.lideresCelula = new List<Lider_Celula>();
+                    if (this is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
+                    if (this is Lider_Ministerio) Ministerio.lideresMinisterio = new List<Lider_Ministerio>();
+                    if (this is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
+                    if (this is Supervisor_Celula) Ministerio.supervisoresCelula = new List<Supervisor_Celula>();
+                    if (this is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
+                    if (this is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = new List<Supervisor_Ministerio>();
+                    if (this is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
+                }
+                else
+                    if (this is Celula)
+                {
+                    if (this is Celula_Adolescente) Celula.celulasAdolescente = new List<Celula_Adolescente>();
+                    if (this is Celula_Adulto) Celula.celulasAdulto = new List<Celula_Adulto>();
+                    if (this is Celula_Casado) Celula.celulasCasado = new List<Celula_Casado>();
+                    if (this is Celula_Jovem) Celula.celulasJovem = new List<Celula_Jovem>();
+                    if (this is Celula_Crianca) Celula.celulasCrianca = new List<Celula_Crianca>();
+                }
+                else
+                {
+
+                    if (this is Reuniao) Reuniao.Reunioes = new List<Reuniao>();
+                    else
+                    if (this is MudancaEstado) MudancaEstado.Mudancas = new List<MudancaEstado>();
+                    else
+                    if (this is Historico) Historico.Historicos = new List<Historico>();
+                    else
+                    if (this is Chamada) Chamada.Chamadas = new List<Chamada>();
+                    else
+                    if (this is Telefone) Telefone.Telefones = new List<Telefone>();
+                    else
+                    if (this is Endereco) Endereco.Enderecos = new List<Endereco>();
+                    else
+                    if (this is EnderecoCelula) EnderecoCelula.EnderecosCelula = new List<EnderecoCelula>();
+                    else
+                    if (this is MinisterioCelula) MinisterioCelula.MinisterioCelulas = new List<MinisterioCelula>();
+                    else
+                    if (this is PessoaMinisterio) PessoaMinisterio.PessoaMinisterios = new List<PessoaMinisterio>();
+                    else
+                    if (this is ReuniaoPessoa) ReuniaoPessoa.ReuniaoPessoas = new List<ReuniaoPessoa>();
+                }
+
                 try
                 {
-                    if (this is Pessoa)
-                    {
-                        if (this is Visitante               ) Pessoa.visitantes = new List<Visitante>();
-                        if (this is Crianca                 ) Pessoa.criancas = new List<Crianca>();
-                        if (this is Membro_Aclamacao        ) Pessoa.membros_Aclamacao = new List<Membro_Aclamacao>();
-                        if (this is Membro_Batismo          ) Pessoa.membros_Batismo = new List<Membro_Batismo>();
-                        if (this is Membro_Reconciliacao    ) Pessoa.membros_Reconciliacao = new List<Membro_Reconciliacao>();
-                        if (this is Membro_Transferencia    ) Pessoa.membros_Transferencia = new List<Membro_Transferencia>();
-                        if (this is VisitanteLgpd           ) Pessoa.visitantesLgpd = new List<VisitanteLgpd>();
-                        if (this is CriancaLgpd             ) Pessoa.criancasLgpd = new List<CriancaLgpd>();
-                        if (this is Membro_AclamacaoLgpd    ) Pessoa.membros_AclamacaoLgpd = new List<Membro_AclamacaoLgpd>();
-                        if (this is Membro_BatismoLgpd      ) Pessoa.membros_BatismoLgpd = new List<Membro_BatismoLgpd>();
-                        if (this is Membro_ReconciliacaoLgpd) Pessoa.membros_ReconciliacaoLgpd = new List<Membro_ReconciliacaoLgpd>();
-                        if (this is Membro_TransferenciaLgpd) Pessoa.membros_TransferenciaLgpd = new List<Membro_TransferenciaLgpd>();
-                    }
-                    else
-                    if (this is Ministerio)
-                    {
-                        if (this is Lider_Celula                     ) Ministerio.lideresCelula = new List<Lider_Celula>();
-                        if (this is Lider_Celula_Treinamento         ) Ministerio.LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
-                        if (this is Lider_Ministerio                 ) Ministerio.lideresMinisterio = new List<Lider_Ministerio>();
-                        if (this is Lider_Ministerio_Treinamento     ) Ministerio.lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
-                        if (this is Supervisor_Celula                ) Ministerio.supervisoresCelula = new List<Supervisor_Celula>();
-                        if (this is Supervisor_Celula_Treinamento    ) Ministerio.supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
-                        if (this is Supervisor_Ministerio            ) Ministerio.supervisoresMinisterio = new List<Supervisor_Ministerio>();
-                        if (this is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
-                    }
-                    else
-                    if (this is Celula)
-                    {
-                        if (this is Celula_Adolescente) Celula.celulasAdolescente = new List<Celula_Adolescente>();
-                        if (this is Celula_Adulto     ) Celula.celulasAdulto = new List<Celula_Adulto>();
-                        if (this is Celula_Casado     ) Celula.celulasCasado = new List<Celula_Casado>();
-                        if (this is Celula_Jovem      ) Celula.celulasJovem = new List<Celula_Jovem>();
-                        if (this is Celula_Crianca    ) Celula.celulasCrianca = new List<Celula_Crianca>();
-                    }
-                    else
-                    if (this is Reuniao         ) Reuniao.Reunioes = new List<Reuniao>();
-                    if (this is MudancaEstado   ) MudancaEstado.Mudancas = new List<MudancaEstado>();
-                    if (this is Historico       ) Historico.Historicos = new List<Historico>();
-                    if (this is Chamada         ) Chamada.Chamadas = new List<Chamada>();
-                    if (this is Telefone        ) Telefone.Telefones = new List<Telefone>();
-                    if (this is Endereco        ) Endereco.Enderecos = new List<Endereco>();
-                    if (this is EnderecoCelula  ) EnderecoCelula.EnderecosCelula = new List<EnderecoCelula>();
-                    if (this is MinisterioCelula) MinisterioCelula.MinisterioCelulas = new List<MinisterioCelula>();
-                    if (this is PessoaMinisterio) PessoaMinisterio.PessoaMinisterios = new List<PessoaMinisterio>();
-                    if (this is ReuniaoPessoa   ) ReuniaoPessoa.ReuniaoPessoas = new List<ReuniaoPessoa>();
-
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
                     SqlDataReader dr = comando.ExecuteReader();
                     if (dr.HasRows == false)
@@ -200,25 +333,28 @@ namespace database
                             if (this is Celula_Crianca) { var c = new Celula_Crianca(m); if (c.recuperar(m)) Celula.celulasCrianca.Add(c); else { Celula.celulasCrianca = null; return false; } }
                         }
                         else
-                        if (this is Reuniao) { var c = new Reuniao(m); if (c.recuperar(m)) Reuniao.Reunioes.Add(c); else { Reuniao.Reunioes = null; return false; } }
-                        else
-                        if (this is MudancaEstado) { var c = new MudancaEstado(m); if (c.recuperar(m)) MudancaEstado.Mudancas.Add(c); else { MudancaEstado.Mudancas = null; return false; } }
-                        else
-                        if (this is Historico) { var c = new Historico(m); if (c.recuperar(m)) Historico.Historicos.Add(c); else { Historico.Historicos = null; return false; } }
-                        else
-                        if (this is Chamada) { var c = new Chamada(m); if (c.recuperar(m)) Chamada.Chamadas.Add(c); else { Chamada.Chamadas = null; return false; } }
-                        else
-                        if (this is Telefone) { var c = new Telefone(m); if (c.recuperar(m)) Telefone.Telefones.Add(c); else { Telefone.Telefones = null; return false; } }
-                        else
-                        if (this is Endereco) { var c = new Endereco(m); if (c.recuperar(m)) Endereco.Enderecos.Add(c); else { Endereco.Enderecos = null; return false; } }
-                        else
-                        if (this is EnderecoCelula) { var c = new EnderecoCelula(m); if (c.recuperar(m)) EnderecoCelula.EnderecosCelula.Add(c); else { EnderecoCelula.EnderecosCelula = null; return false; } }
-                        else
-                        if (this is MinisterioCelula) { var c = new MinisterioCelula(m); if (c.recuperar(m)) MinisterioCelula.MinisterioCelulas.Add(c); else { MinisterioCelula.MinisterioCelulas = null; return false; } }
-                        else
-                        if (this is PessoaMinisterio) { var c = new PessoaMinisterio(m); if (c.recuperar(m)) PessoaMinisterio.PessoaMinisterios.Add(c); else { PessoaMinisterio.PessoaMinisterios = null; return false; } }
-                        else
-                        if (this is ReuniaoPessoa) { var c = new ReuniaoPessoa(m); if (c.recuperar(m)) ReuniaoPessoa.ReuniaoPessoas.Add(c); else { ReuniaoPessoa.ReuniaoPessoas = null; return false; } }
+                        {
+                            if (this is Reuniao) { var c = new Reuniao(m); if (c.recuperar(m)) Reuniao.Reunioes.Add(c); else { Reuniao.Reunioes = null; return false; } }
+                            else
+                            if (this is MudancaEstado) { var c = new MudancaEstado(m); if (c.recuperar(m)) MudancaEstado.Mudancas.Add(c); else { MudancaEstado.Mudancas = null; return false; } }
+                            else
+                            if (this is Historico) { var c = new Historico(m); if (c.recuperar(m)) Historico.Historicos.Add(c); else { Historico.Historicos = null; return false; } }
+                            else
+                            if (this is Chamada) { var c = new Chamada(m); if (c.recuperar(m)) Chamada.Chamadas.Add(c); else { Chamada.Chamadas = null; return false; } }
+                            else
+                            if (this is Telefone) { var c = new Telefone(m); if (c.recuperar(m)) Telefone.Telefones.Add(c); else { Telefone.Telefones = null; return false; } }
+                            else
+                            if (this is Endereco) { var c = new Endereco(m); if (c.recuperar(m)) Endereco.Enderecos.Add(c); else { Endereco.Enderecos = null; return false; } }
+                            else
+                            if (this is EnderecoCelula) { var c = new EnderecoCelula(m); if (c.recuperar(m)) EnderecoCelula.EnderecosCelula.Add(c); else { EnderecoCelula.EnderecosCelula = null; return false; } }
+                            else
+                            if (this is MinisterioCelula) { var c = new MinisterioCelula(m); if (c.recuperar(m)) MinisterioCelula.MinisterioCelulas.Add(c); else { MinisterioCelula.MinisterioCelulas = null; return false; } }
+                            else
+                            if (this is PessoaMinisterio) { var c = new PessoaMinisterio(m); if (c.recuperar(m)) PessoaMinisterio.PessoaMinisterios.Add(c); else { PessoaMinisterio.PessoaMinisterios = null; return false; } }
+                            else
+                            if (this is ReuniaoPessoa) { var c = new ReuniaoPessoa(m); if (c.recuperar(m)) ReuniaoPessoa.ReuniaoPessoas.Add(c); else { ReuniaoPessoa.ReuniaoPessoas = null; return false; } }
+
+                        }
                     }
                 }
 
@@ -238,6 +374,13 @@ namespace database
         #endregion
 
         #region MethodsProperties
+
+        public static object ConvertList(List<object> value, Type type)
+        {
+            var containedType = type.GenericTypeArguments[0];
+            return value.Select(item => Convert.ChangeType(item, containedType)).ToList();
+        }
+
         public bool SetProperties(Type tipo)
         {
             Type t = GetType();
@@ -255,8 +398,12 @@ namespace database
 
             var propertiesDeclaring = tipo.GetProperties().Where(e => e.ReflectedType == e.DeclaringType);
 
+            if (this.conexao == null)
+                this.conexao = this.bd.obterconexao();
+
             if (this.conexao.State == ConnectionState.Closed)
                 this.conexao = this.bd.obterconexao();
+
             SqlCommand comando = new SqlCommand(Select_padrao, this.conexao);
             try
             {
@@ -264,7 +411,7 @@ namespace database
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + this.GetType());
+                MessageBox.Show(ex.Message + " - " + this.GetType());
             }
 
             if (conexao != null)
@@ -281,22 +428,73 @@ namespace database
                     dr.Read();
                     foreach (var property in propertiesDeclaring)
                     {
-                        if (property.Name == "UltimoRegistro" || property.Name == "password") { }
+                        if (property.PropertyType.Name == "List`1")
+                        {
+                            Type itemType = property.PropertyType.GetGenericArguments()[0];
+                        }
                         else
-                        if (property.PropertyType == typeof(DateTime))
-                            property.SetValue(this, DateTime.Parse(Convert.ToString(dr[property.Name])));
+                        if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
+                        {
+                            try
+                            {
+                                property.SetValue(this, long.Parse(Convert.ToString(dr[property.Name])));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
                         else
-                        if (property.PropertyType == typeof(int))
-                            property.SetValue(this, int.Parse(Convert.ToString(dr[property.Name])));
+                        if (property.PropertyType == typeof(double) || property.PropertyType == typeof(double?))
+                        {
+                            try
+                            {
+                                property.SetValue(this, double.Parse(Convert.ToString(dr[property.Name])));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
+                        else
+                        if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
+                        {
+                            try
+                            {
+                                property.SetValue(this, DateTime.Parse(Convert.ToString(dr[property.Name])));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
+                        else
+                        if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
+                        {
+                            try
+                            {
+                                property.SetValue(this, int.Parse(Convert.ToString(dr[property.Name])));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
                         else
                         if (property.PropertyType == typeof(string))
-                            property.SetValue(this, Convert.ToString(dr[property.Name]));
+                        {
+                            try
+                            {
+                                property.SetValue(this, Convert.ToString(dr[property.Name]));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
                         else
                         if (property.PropertyType == typeof(bool))
-                            property.SetValue(this, Convert.ToBoolean(dr[property.Name]));
+                        {
+                            try
+                            {
+                                property.SetValue(this, Convert.ToBoolean(dr[property.Name]));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
                         else
-                        if (property.PropertyType == typeof(TimeSpan))
-                            property.SetValue(this, TimeSpan.Parse(Convert.ToString(dr[property.Name])));
+                        if (property.PropertyType == typeof(TimeSpan) || property.PropertyType == typeof(TimeSpan?))
+                        {
+                            try
+                            {
+                                property.SetValue(this, TimeSpan.Parse(Convert.ToString(dr[property.Name])));
+                            }
+                            catch { property.SetValue(this, null); }
+                        }
                     }
                     dr.Close();
                 }
@@ -311,10 +509,78 @@ namespace database
                     bd.fecharconexao(conexao);
                 }
 
+                if (this.GetType().GetProperties().Where(p =>
+                p.PropertyType.GetProperties().Where(pr => pr.ReflectedType ==
+                pr.DeclaringType && pr.Name == "Id").ToList().Count != 0)
+                .ToList().Count != 0)
+                {
+                    VerficaPropertyClassSetProperties(this.GetType());
+                }
+                
                 T = T.BaseType;
                 return true;
             }
             return false;
+        }
+
+        public string DeleteProperties(Type tipo)
+        {
+            string delete = "";
+            delete += Delete_padrao.Replace(GetType().Name, tipo.Name);
+            T = tipo.BaseType;
+            
+            if (tipo == GetType())
+                if (this.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                    p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                    && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
+                {
+                    delete += VerficaPropertyClassDeleteProperties(this.GetType());
+                }
+            return delete;
+        }
+
+        private string VerficaPropertyClassDeleteProperties(Type type)
+        {
+            string delete = "";
+            foreach (var item in type.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                 p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                  && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList())
+            {
+                object objeto = Activator.CreateInstance(item.PropertyType);
+                modelocrud modelo = (modelocrud)objeto;
+                modelo.Id = this.Id;
+                if (modelo.GetType().GetProperties()
+                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
+                {
+                    delete += $" delete from {modelo.GetType().Name} where Id='{this.Id}' ";
+                   // modelo.excluir(this.Id);
+                }
+            }
+            return delete;
+        }
+
+        private void VerficaPropertyClassSetProperties(Type tipo)
+        {
+            foreach (var item in tipo.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                 p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                  && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList())
+            {
+                object objeto = Activator.CreateInstance(item.PropertyType);
+                modelocrud modelo = (modelocrud)objeto;
+                modelo.Id = this.Id;
+                if (modelo.GetType().GetProperties()
+                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
+                {
+                    modelo.select_padrao = $"select * from {modelo.GetType().Name} as C where C.Id='{this.Id}'";
+                    modelo.recuperar(this.Id);
+                }
+
+                foreach (var item2 in this.GetType().GetProperties())
+                {
+                    if (item == item2)
+                        item2.SetValue(this, modelo);
+                }
+            }
         }
 
         public void GetProperties(Type tipo)
@@ -323,53 +589,32 @@ namespace database
             string insert = "";
             string properties = "";
             string values = "";
-            
-            
+
             while (ClassBase != typeof(modelocrud))
             {
                 if (ClassBase.BaseType == typeof(modelocrud))
-                {
-                    if (T == GetType())
-                    {
-                        T = ClassBase;
-                        indice++;
-                        if(indice == 1)
-                        classe = T.Name;
-                     }
                     break;
-                }
                 else
                     ClassBase = ClassBase.BaseType;
             }
 
             if (tipo == null)
-            { T = GetType(); indice = 0; }
+                T = GetType();
 
-            var propertiesDeclaring = T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList();
-
+            var propertiesDeclaring = T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
+            && !e.PropertyType.IsAbstract && e.PropertyType.Name != "List`1"
+            && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
 
             foreach (var property in propertiesDeclaring)
             {
-                if (property.Name != "UltimoRegistro" && property.PropertyType.Name != "List`1"
-                    && property.PropertyType.IsPublic)
-                {
-                    if (property.PropertyType.IsClass && property.PropertyType == typeof(string))
-                    {
-                        properties += property.Name + ", ";
-                        values = VerificaProperties(values, property, classe);
-                    }
-                    else if (!property.PropertyType.IsClass)
-                    {
-                        properties += property.Name + ", ";
-                        values = VerificaProperties(values, property, classe);
-                    }
-                }
+                properties += property.Name + ", ";
+                values = VerificaProperties(values, property, classe, this);
             }
 
-            if(values != "")
-            values = values.Remove(values.Length - 2, 2);
-            if(properties != "")
-            properties = properties.Remove(properties.Length - 2, 2);
+            if (values != "")
+                values = values.Remove(values.Length - 2, 2);
+            if (properties != "")
+                properties = properties.Remove(properties.Length - 2, 2);
 
             if (T != typeof(modelocrud))
             {
@@ -381,20 +626,73 @@ namespace database
                 else
                     insert = $"insert into {T.Name} ( {properties} ) values ( {values} ) ";
 
-                Insert_padrao += insert;
+                Insert_padrao += insert.Replace("Insert_padrao, Update_padrao, Delete_padrao, Select_padrao,", "");
             }
+
+            if (tipo == null)
+            {
+                if (this.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                   p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                   && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
+                {
+                    VerficaPropertyClassInsertProperties(this.GetType());
+                }
+            }
+
 
             tipo = GetType();
             while (tipo != typeof(modelocrud))
             {
                 if (tipo.BaseType == T)
-                { T = tipo;  break; }
+                { T = tipo; break; }
                 else
                     tipo = tipo.BaseType;
             }
         }
 
-        public void UpdateProperties(Type tipo, int id)
+        private void VerficaPropertyClassInsertProperties(Type type)
+        {
+            Type ClassBase = GetType();
+            while (ClassBase != typeof(modelocrud))
+            {
+                if (ClassBase.BaseType == typeof(modelocrud))
+                    break;
+                else
+                    ClassBase = ClassBase.BaseType;
+            }
+            foreach (var property in type.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                 p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                  && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass &&
+                  p.PropertyType.GetProperties().Where(pr => pr.ReflectedType ==
+                pr.DeclaringType && pr.Name == "Id").ToList().Count != 0).ToList())
+            {
+                string properties = "";
+                string values = "";
+                object objeto = property.GetValue(this, null);
+                modelocrud model = (modelocrud)objeto;
+                model.Select_padrao = "Teste123";
+                model.Update_padrao = "Teste123";
+                model.Delete_padrao = "Teste123";
+                model.Insert_padrao = "Teste123";
+                foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
+                {
+                    properties += item.Name + ", ";
+                    values = VerificaProperties(values, item, classe, property.GetValue(this));
+                }
+                properties = properties.Replace(", Insert_padrao, Update_padrao, Delete_padrao, Select_padrao", "");
+                values = values.Replace(", 'Teste123'", "");
+                if (values != "")
+                {
+                    if (values != "")
+                        values = values.Remove(values.Length - 2, 2);
+                    if (properties != "")
+                        properties = properties.Remove(properties.Length - 2, 2);
+                    Insert_padrao += $"insert into {property.PropertyType.Name} ( {properties} ) values ( {values} ) ";
+                }
+            }
+        }
+
+        public void UpdateProperties(Type tipo)
         {
             Type ClassBase = GetType();
             string update = "";
@@ -415,25 +713,15 @@ namespace database
             if (tipo == null)
                 T = GetType();
 
-            var propertiesDeclaring = T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList();
+            var propertiesDeclaring = T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
+            && !e.PropertyType.IsAbstract && e.PropertyType.Name != "List`1"
+            && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
 
 
             foreach (var property in propertiesDeclaring)
             {
-                if (property.Name != "UltimoRegistro" && property.PropertyType.Name != "List`1"
-                    && property.PropertyType.IsPublic)
-                {
-                    if (property.PropertyType.IsClass && property.PropertyType == typeof(string))
-                    {
-                        properties = property.Name + "=";
-                        values += properties + VerificaUpdateProperties(property);
-                    }
-                    else if (!property.PropertyType.IsClass)
-                    {
-                        properties = property.Name + "=";
-                        values += properties + VerificaUpdateProperties(property);
-                    }
-                }
+                properties = property.Name + "=";
+                values += properties + VerificaUpdateProperties(property, this);
             }
 
             values = values.Remove(values.Length - 2, 2);
@@ -441,30 +729,92 @@ namespace database
 
             if (T != typeof(modelocrud) && propertiesDeclaring.Count > 0)
             {
-                update = $" update {T.Name} set {values} " + $" where Id='{id}' ";
+                update = $" update {T.Name} set {values} " + $" where Id='{this.Id}' ";
                 Update_padrao += update;
             }
+
+            if (tipo == null)
+            {
+                if (this.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                   p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                   && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
+                {
+                    VerficaPropertyClassUpdateProperties(this.GetType(), this.Id);
+                }
+            }
+
+            if (tipo != null)
+                while (tipo != typeof(modelocrud))
+                {
+                    if (tipo.BaseType == T)
+                        break;
+                    else
+                        tipo = tipo.BaseType;
+                }
 
             T = GetType();
             while (T != typeof(modelocrud))
             {
-                if (T.BaseType == tipo)
+                if (T == tipo)
                     break;
                 else
                     T = T.BaseType;
             }
+
         }
 
-        private string VerificaProperties(string values, PropertyInfo property, string ClassBase)
+        private void VerficaPropertyClassUpdateProperties(Type type, int id)
         {
+            var propertiesDeclaring = type.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
+                   p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
+                   && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList();
+
+            foreach (var property in propertiesDeclaring.Where(p =>
+                  p.PropertyType.GetProperties().Where(pr => pr.ReflectedType ==
+                pr.DeclaringType && pr.Name == "Id").ToList().Count != 0))
+            {
+                object objeto = property.GetValue(this, null);
+                modelocrud model = (modelocrud)objeto;
+                model.select_padrao = "";
+                model.update_padrao = "";
+                model.delete_padrao = "";
+                model.insert_padrao = "";
+                string update = "";
+                string properties = "";
+                string values = "";
+
+                foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
+                {
+                    properties = item.Name + "=";
+                    values += properties + VerificaUpdateProperties(item, objeto);
+                }
+
+                values = values.Remove(values.Length - 2, 2);
+                properties = properties.Remove(properties.Length - 2, 2);
+
+                if (T != typeof(modelocrud) && propertiesDeclaring.Count > 0)
+                {
+                    update = $" update {property.PropertyType.Name} set {values} " + $" where Id='{id}' ";
+                    Update_padrao += update.Replace(", Insert_padrao='', Update_padrao='', Delete_padrao='', Select_padrao=''", "");
+                }
+            }
+        }
+
+        private string VerificaProperties(string values, PropertyInfo property, string classe, object objeto)
+        {
+            if (property.PropertyType.Name == "List`1")
+            {
+                existeLista = true;
+            }
+            else
             if (property.Name == "Id")
-                values += $"IDENT_CURRENT('{ClassBase}'), ";
+                values += $"IDENT_CURRENT('{classe}'), ";
             else
             if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
             {
                 double? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = double.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = double.Parse(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values += "" + prop.ToString() + ", ";
                 else
@@ -474,8 +824,8 @@ namespace database
             if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
             {
                 long? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = long.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = long.Parse(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values += "" + prop.ToString() + ", ";
                 else
@@ -485,19 +835,19 @@ namespace database
             if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
             {
                 TimeSpan? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = TimeSpan.Parse(property.GetValue(this, null).ToString());                
+                if (property.GetValue(objeto, null) != null)
+                    prop = TimeSpan.Parse(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values += "'" + prop.ToString() + "', ";
                 else
                     values += "" + "null" + ", ";
             }
             else
-             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(TimeSpan))
+             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(DateTime))
             {
                 DateTime? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = Convert.ToDateTime(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = Convert.ToDateTime(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values += "'" + prop?.ToString("yyyy-MM-dd") + "', ";
                 else
@@ -507,32 +857,52 @@ namespace database
              if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
             {
                 int? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = int.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = int.Parse(property.GetValue(objeto, null).ToString());
+                if (prop != null)
+                    values += "" + prop.ToString() + ", ";
+                else
+                    values += "" + "null" + ", ";
+            }
+            else
+             if (property.PropertyType == typeof(string))
+            {
+                string prop = null;
+                if (property.GetValue(objeto, null) != null)
+                    prop = property.GetValue(objeto, null).ToString();
                 if (prop != null)
                     values += "'" + prop.ToString() + "', ";
                 else
                     values += "" + "null" + ", ";
             }
             else
+             if (property.PropertyType == typeof(bool))
             {
-                if (property.GetValue(this, null) == null)
-                    values += "" + "null" + ", ";
-                else
-                    values += "'" + property.GetValue(this, null).ToString() + "', ";
+                bool prop = Convert.ToBoolean(property.GetValue(objeto, null));
+                if (prop) values += "'True', ";
+                else values += "'False', ";
+            }
+            else
+            {
+
             }
 
             return values;
         }
 
-        private string VerificaUpdateProperties(PropertyInfo property)
+        private string VerificaUpdateProperties(PropertyInfo property, object objeto)
         {
             string values = "";
+            if (property.PropertyType.Name == "List`1")
+            {
+                existeLista = true;
+            }
+            else
             if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
             {
                 double? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = double.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = double.Parse(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values = "" + prop.ToString() + ", ";
                 else
@@ -542,8 +912,8 @@ namespace database
             if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
             {
                 long? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = long.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = long.Parse(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values = "" + prop.ToString() + ", ";
                 else
@@ -553,19 +923,19 @@ namespace database
             if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
             {
                 TimeSpan? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = TimeSpan.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = TimeSpan.Parse(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values = "'" + prop.ToString() + "', ";
                 else
                     values = "" + "null" + ", ";
             }
             else
-             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(TimeSpan))
+             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(DateTime))
             {
                 DateTime? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = Convert.ToDateTime(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = Convert.ToDateTime(property.GetValue(objeto, null).ToString());
                 if (prop != null)
                     values = "'" + prop?.ToString("yyyy-MM-dd") + "', ";
                 else
@@ -575,23 +945,38 @@ namespace database
              if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
             {
                 int? prop = null;
-                if (property.GetValue(this, null) != null)
-                    prop = int.Parse(property.GetValue(this, null).ToString());
+                if (property.GetValue(objeto, null) != null)
+                    prop = int.Parse(property.GetValue(objeto, null).ToString());
+                if (prop != null)
+                    values = "" + prop.ToString() + ", ";
+                else
+                    values = "" + "null" + ", ";
+            }
+            else
+             if (property.PropertyType == typeof(string))
+            {
+                string prop = null;
+                if (property.GetValue(objeto, null) != null)
+                    prop = property.GetValue(objeto, null).ToString();
                 if (prop != null)
                     values = "'" + prop.ToString() + "', ";
                 else
                     values = "" + "null" + ", ";
             }
             else
+             if (property.PropertyType == typeof(bool))
             {
-                if (property.GetValue(this, null) == null)
-                    values = "" + "null" + ", ";
-                else
-                    values = "'" + property.GetValue(this, null).ToString() + "', ";
+                bool prop = Convert.ToBoolean(property.GetValue(objeto, null));
+                if (prop) values = "'True', ";
+                else values += "'False', ";
+            }
+            else
+            {
+
             }
 
             return values;
-        } 
+        }
         #endregion
 
         public bool retornoDados(SqlDataReader dr, string pesquisa)
@@ -636,7 +1021,6 @@ namespace database
 
                 if (QuantErro == 1)
                     MessageBox.Show("Verifique sua conexão" + this.GetType().Name);
-
             }
         }
 
@@ -682,16 +1066,17 @@ namespace database
         {
             try
             {
-                var pessoas = Pessoa.GeTotalRegistrosPessoas();
-                var PessoasEmMinisterios = PessoaMinisterio.GeTotalRegistrosPessoasEmMinisterios();
-                var PessoasEmReunioes = ReuniaoPessoa.GeTotalRegistrosPessoasEmReunioes();
-                var Historicos = Historico.GeTotalRegistrosHistoricos();
-                var celulas = Celula.GeTotalRegistrosCelulas();
-                var ministerios = Ministerio.GeTotalRegistrosMinisterios();
-                var reunioes = Reuniao.GeTotalRegistrosReunioes();
-                var mudancas = MudancaEstado.GeTotalRegistrosMudancaEstado();
+                var pessoas = Pessoa.TotalRegistro();
+                var PessoasEmMinisterios = PessoaMinisterio.TotalRegistro();
+                var PessoasEmReunioes = ReuniaoPessoa.TotalRegistro();
+                var MinisteriosEmCelulas = MinisterioCelula.TotalRegistro();
+                var Historicos = Historico.TotalRegistro();
+                var celulas = Celula.TotalRegistro();
+                var ministerios = Ministerio.TotalRegistro();
+                var reunioes = Reuniao.TotalRegistro();
+                var mudancas = MudancaEstado.TotalRegistro();
                 var totalRegistros = pessoas + celulas + ministerios + reunioes + mudancas
-                    + PessoasEmMinisterios  + PessoasEmReunioes + Historicos;
+                    + PessoasEmMinisterios + PessoasEmReunioes + Historicos + MinisteriosEmCelulas;
 
                 var quantVisitante = 0; var quamtCelula_Jovem = 0; var quantLider_Celula = 0;
                 var quantCrianca = 0; var quamtCelula_Adolescente = 0; var quantLider_Celula_Treinamento = 0;
@@ -708,6 +1093,10 @@ namespace database
 
                 var quantMudancas = 0;
                 var quantReunioes = 0;
+                var quantPessoasEmMinisterios = 0;
+                var quantPessoasEmReunioes = 0;
+                var quantMinisteriosEmCelulas = 0;
+                var quantHistoricos = 0;
 
                 if (Pessoa.visitantes != null) quantVisitante += Pessoa.visitantes.Count;
                 if (Pessoa.criancas != null) quantCrianca += Pessoa.criancas.Count;
@@ -739,6 +1128,10 @@ namespace database
 
                 if (Reuniao.Reunioes != null) quantReunioes += Reuniao.Reunioes.Count;
                 if (MudancaEstado.Mudancas != null) quantMudancas += MudancaEstado.Mudancas.Count;
+                if (PessoaMinisterio.PessoaMinisterios != null) quantPessoasEmMinisterios += PessoaMinisterio.PessoaMinisterios.Count;
+                if (ReuniaoPessoa.ReuniaoPessoas != null) quantPessoasEmReunioes += ReuniaoPessoa.ReuniaoPessoas.Count;
+                if (MinisterioCelula.MinisterioCelulas != null) quantMinisteriosEmCelulas += MinisterioCelula.MinisterioCelulas.Count;
+                if (Historico.Historicos != null) quantHistoricos += Historico.Historicos.Count;
 
                 var quantidadeCarregada = quantMudancas + quantReunioes +
                 quantVisitante + quantLider_Celula + quamtCelula_Jovem +
@@ -749,16 +1142,16 @@ namespace database
                 quantMembro_Transferencia + quantSupervisor_Celula_Treinamento +
                 quantVisitanteLgpd + quantSupervisor_Ministerio +
                 quantCriancaLgpd + quantSupervisor_Ministerio_Treinamento +
-                quantMembro_TransferenciaLgpd +
-                quantMembro_BatismoLgpd +
-                quantMembro_AclamacaoLgpd +
-                quantMembro_ReconciliacaoLgpd;
+                quantMembro_TransferenciaLgpd + quantPessoasEmMinisterios +
+                quantMembro_BatismoLgpd + quantPessoasEmReunioes +
+                quantMembro_AclamacaoLgpd + quantMinisteriosEmCelulas +
+                quantMembro_ReconciliacaoLgpd + quantHistoricos;
 
                 var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
                 textoPorcentagem = porcentagem.ToString() + "%";
             }
             catch { }
-        } 
+        }
         #endregion
     }
 }

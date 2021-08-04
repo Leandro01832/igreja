@@ -232,8 +232,8 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdultosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var celula = new business.classes.Celulas.Celula_Adulto();
-            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            var celula = new Celula_Adulto();
+            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -243,7 +243,7 @@ namespace WindowsFormsApp1
 
         private void liderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Lider_Celula(),
+            DadoMinisterio m = new DadoMinisterio(new Lider_Celula(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -252,7 +252,7 @@ namespace WindowsFormsApp1
 
         private void lIiderEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Lider_Celula_Treinamento(),
+            DadoMinisterio m = new DadoMinisterio(new Lider_Celula_Treinamento(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -262,7 +262,7 @@ namespace WindowsFormsApp1
 
         private void liderToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Lider_Ministerio(),
+            DadoMinisterio m = new DadoMinisterio(new Lider_Ministerio(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -271,7 +271,7 @@ namespace WindowsFormsApp1
 
         private void liderDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Lider_Ministerio_Treinamento(),
+            DadoMinisterio m = new DadoMinisterio(new Lider_Ministerio_Treinamento(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -280,7 +280,7 @@ namespace WindowsFormsApp1
 
         private void supervisorDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Supervisor_Celula(),
+            DadoMinisterio m = new DadoMinisterio(new Supervisor_Celula(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -289,7 +289,7 @@ namespace WindowsFormsApp1
 
         private void supervisorDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Supervisor_Celula_Treinamento(),
+            DadoMinisterio m = new DadoMinisterio(new Supervisor_Celula_Treinamento(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -298,7 +298,7 @@ namespace WindowsFormsApp1
 
         private void supervisorDeMinistérioEmTreianmentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Supervisor_Ministerio(),
+            DadoMinisterio m = new DadoMinisterio(new Supervisor_Ministerio(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -307,7 +307,7 @@ namespace WindowsFormsApp1
 
         private void supervisorDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DadoMinisterio m = new DadoMinisterio(new business.classes.Ministerio.Supervisor_Ministerio_Treinamento(),
+            DadoMinisterio m = new DadoMinisterio(new Supervisor_Ministerio_Treinamento(),
                 false, false, false);
             m.MdiParent = this;
             m.Text = "Janela " + childFormNumber++;
@@ -316,8 +316,8 @@ namespace WindowsFormsApp1
 
         private void celulaParaCriançasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var celula = new business.classes.Celulas.Celula_Crianca();
-            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            var celula = new Celula_Crianca();
+            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -327,8 +327,8 @@ namespace WindowsFormsApp1
 
         private void celulaParaAdolescentesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var celula = new business.classes.Celulas.Celula_Adolescente();
-            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            var celula = new Celula_Adolescente();
+            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -338,8 +338,8 @@ namespace WindowsFormsApp1
 
         private void celulaParaJovensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var celula = new business.classes.Celulas.Celula_Jovem();
-            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            var celula = new Celula_Jovem();
+            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -349,8 +349,8 @@ namespace WindowsFormsApp1
 
         private void celulaParaCasadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var celula = new business.classes.Celulas.Celula_Casado();
-            celula.EnderecoCelula = new business.classes.Celula.EnderecoCelula();
+            var celula = new Celula_Casado();
+            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;

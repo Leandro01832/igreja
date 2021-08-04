@@ -444,7 +444,6 @@ D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsForm
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.Foto.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.ReunioesMinisteriosPessoa.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.DadoPessoal.resources
-D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.Endereco.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FinalizarCadastroPessoa.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmPessoa.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmMudancaEstado.resources

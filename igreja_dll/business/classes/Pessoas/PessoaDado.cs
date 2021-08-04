@@ -5,7 +5,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace business.classes.Pessoas
 {
     [Table("PessoaDado")]
@@ -14,18 +13,11 @@ namespace business.classes.Pessoas
         public PessoaDado() : base()
         {
             MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();
         }
 
-        protected PessoaDado(int m) : base(m)
-        {
-        }
+        protected PessoaDado(int m) : base(m){}
         
         #region Properties
-
-        AddNalista AddNalista;
-
-
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -63,50 +55,6 @@ namespace business.classes.Pessoas
         public virtual Telefone Telefone { get; set; }
 
         private MudancaEstado MudancaEstado;
-
         #endregion
-
-        public override string salvar()
-        {
-            base.salvar();
-            GetProperties(T);
-            Insert_padrao += this.Endereco.salvar();
-            Insert_padrao += this.Telefone.salvar();
-            return Insert_padrao;
-        }
-
-        public override string alterar(int id)
-        {
-            base.alterar(id);
-            UpdateProperties(T, id);
-            Update_padrao += this.Endereco.alterar(id);
-            Update_padrao += this.Telefone.alterar(id);
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            T = T.BaseType;
-            var delete = 
-                 new Endereco(id).excluir(id)
-                + new Telefone(id).excluir(id)
-                + Delete_padrao.Replace(GetType().Name, T.Name)
-                + base.excluir(id);
-            return delete;
-        }
-
-        public override bool recuperar(int id)
-        {
-            this.Endereco = new Endereco(id);
-            this.Endereco.recuperar(id);
-            this.Telefone = new Telefone(id);
-            this.Telefone.recuperar(id);
-
-            if (SetProperties(T))
-            {
-                base.recuperar(id); return true;
-            }
-            return false;
-        }
     }
 }

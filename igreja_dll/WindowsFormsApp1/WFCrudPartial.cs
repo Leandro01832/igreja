@@ -1,9 +1,11 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
+using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using business.implementacao;
 using database;
 using System;
 using System.Linq;
@@ -17,11 +19,11 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public partial  class  WFCrud
+    public partial class WFCrud
     {
         private void DadoFoto_Click(object sender, EventArgs e)
         {
-            Foto c = new Foto((Pessoa)modelo, condicaoDeletar , condicaoAtualizar, condicaoDetalhes);
+            Foto c = new Foto((Pessoa)modelo, condicaoDeletar, condicaoAtualizar, condicaoDetalhes);
             c.MdiParent = this.MdiParent;
             c.Show();
         }
@@ -84,18 +86,21 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = modelocrud.Modelos.OfType<Ministerio>().ToList().ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
-                    foreach (var item in arr)
-                    {
-                        try
-                        {
-                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
-                                AddNaListaCelulaMinisterios.Replace(item, "");
-                        }
-                        catch { }
-                    }
-                    p.RemoverDaLista("MinisterioCelula", p, new Lider_Celula(), AddNaListaCelulaMinisterios);
+                    int[] arrNum = new int[arr.Length];
+                    for (int i = 0; i < arr.Length; i++)
+                    arrNum[i] = int.Parse(arr[i]);
+                    int[] numeros = new int[p.Ministerios.Count];
+                    for (int i = 0; i < numeros.Length; i++)
+                    numeros[i] = p.Ministerios[i].MinisterioId;
+
+                    foreach (var item in arrNum)
+                    if (!numeros.Contains(item))
+                    p.Ministerios.Add(new MinisterioCelula { MinisterioId= item, CelulaId=p.Id  });
+
+                    foreach (var item in numeros)
+                     if (!arrNum.Contains(item))
+                     p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
                 }
             }
 
@@ -103,20 +108,84 @@ namespace WindowsFormsApp1
             {
                 var p = (Ministerio)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
-                    p.RemoverDaLista("PessoaMinisterio", p, new Visitante(), AddNaListaMinisterioPessoas);
+                {
+                    var arr = AddNaListaMinisterioPessoas.Replace(" ", "").Split(',');
+                    int[] arrNum = new int[arr.Length];
+                    for (int i = 0; i < arr.Length; i++)
+                        arrNum[i] = int.Parse(arr[i]);
+                    int[] numeros = new int[p.Pessoas.Count];
+                    for (int i = 0; i < numeros.Length; i++)
+                        numeros[i] = p.Pessoas[i].PessoaId;
+
+                    foreach (var item in arrNum)
+                        if (!numeros.Contains(item))
+                            p.Pessoas.Add(new PessoaMinisterio { MinisterioId = p.Id, PessoaId = item });
+
+                    foreach (var item in numeros)
+                        if (!arrNum.Contains(item))
+                            p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
+                }
 
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
-                    p.RemoverDaLista("MinisterioCelula", p, new Celula_Adolescente(), AddNaListaMinisterioCelulas);
+                {
+                    var arr = AddNaListaMinisterioCelulas.Replace(" ", "").Split(',');
+                    int[] arrNum = new int[arr.Length];
+                    for (int i = 0; i < arr.Length; i++)
+                        arrNum[i] = int.Parse(arr[i]);
+                    int[] numeros = new int[p.Pessoas.Count];
+                    for (int i = 0; i < numeros.Length; i++)
+                        numeros[i] = p.Celulas[i].CelulaId;
+
+                    foreach (var item in arrNum)
+                        if (!numeros.Contains(item))
+                            p.Celulas.Add(new MinisterioCelula { MinisterioId = p.Id, CelulaId = item });
+
+                    foreach (var item in numeros)
+                        if (!arrNum.Contains(item))
+                            p.Celulas.Remove(p.Celulas.First(i => i.CelulaId == item));
+                }
             }
 
             if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
-                    p.RemoverDaLista("PessoaMinisterio", p, new Lider_Celula(), AddNaListaPessoaMinsterios);
+                {
+                    var arr = AddNaListaPessoaMinsterios.Replace(" ", "").Split(',');
+                    int[] arrNum = new int[arr.Length];
+                    for (int i = 0; i < arr.Length; i++)
+                        arrNum[i] = int.Parse(arr[i]);
+                    int[] numeros = new int[p.Ministerios.Count];
+                    for (int i = 0; i < numeros.Length; i++)
+                        numeros[i] = p.Ministerios[i].MinisterioId;
+
+                    foreach (var item in arrNum)
+                        if (!numeros.Contains(item))
+                            p.Ministerios.Add(new PessoaMinisterio { MinisterioId = item, PessoaId = p.Id });
+
+                    foreach (var item in numeros)
+                        if (!arrNum.Contains(item))
+                            p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
+                }
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
-                    p.RemoverDaLista("ReuniaoPessoa", p, new Reuniao(), AddNaListaPessoaReunioes);
+                {
+                    var arr = AddNaListaPessoaReunioes.Replace(" ", "").Split(',');
+                    int[] arrNum = new int[arr.Length];
+                    for (int i = 0; i < arr.Length; i++)
+                        arrNum[i] = int.Parse(arr[i]);
+                    int[] numeros = new int[p.Reuniao.Count];
+                    for (int i = 0; i < numeros.Length; i++)
+                        numeros[i] = p.Reuniao[i].ReuniaoId;
+
+                    foreach (var item in arrNum)
+                        if (!numeros.Contains(item))
+                            p.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item, PessoaId = p.Id });
+
+                    foreach (var item in numeros)
+                        if (!arrNum.Contains(item))
+                            p.Reuniao.Remove(p.Reuniao.First(i => i.ReuniaoId == item));
+                }
 
             }
 
@@ -124,23 +193,76 @@ namespace WindowsFormsApp1
             {
                 var p = (Reuniao)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                    p.RemoverDaLista("ReuniaoPessoa", p, new Visitante(), AddNaListaReuniaoPessoas);
+                {
+                    var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
+                    int[] arrNum = new int[arr.Length];
+                    for (int i = 0; i < arr.Length; i++)
+                        arrNum[i] = int.Parse(arr[i]);
+                    int[] numeros = new int[p.Pessoas.Count];
+                    for (int i = 0; i < numeros.Length; i++)
+                        numeros[i] = p.Pessoas[i].PessoaId;
 
+                    foreach (var item in arrNum)
+                        if (!numeros.Contains(item))
+                            p.Pessoas.Add(new ReuniaoPessoa { ReuniaoId = p.Id, PessoaId = item });
+
+                    foreach (var item in numeros)
+                        if (!arrNum.Contains(item))
+                            p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
+                }
             }
 
-            var id = 0;
-            if (modelo is Pessoa)     { var p = (Pessoa)modelo; id = p.Id; }
-            if (modelo is Ministerio) { var p = (Ministerio)modelo; id = p.Id; }
-            if (modelo is Celula)     { var p = (Celula)modelo; id = p.Id; }
-            if (modelo is Reuniao)    { var p = (Reuniao)modelo; id = p.Id; }
-
-            modelo.alterar(id);
+            modelo.alterar(modelo.Id);
             MessageBox.Show("Informação atualizada com sucesso.");
         }
 
         private void Deletar_Click(object sender, EventArgs e)
         {
             var id = modelo.Id;
+
+            if (modelo is Visitante) modelo = new Visitante(id);
+            if (modelo is Crianca) modelo = new Crianca(id);
+            if (modelo is Membro_Aclamacao) modelo = new Membro_Aclamacao(id);
+            if (modelo is Membro_Batismo) modelo = new Membro_Batismo(id);
+            if (modelo is Membro_Reconciliacao) modelo = new Membro_Reconciliacao(id);
+            if (modelo is Membro_Transferencia) modelo = new Membro_Transferencia(id);
+            if (modelo is VisitanteLgpd) modelo = new VisitanteLgpd(id);
+            if (modelo is CriancaLgpd) modelo = new CriancaLgpd(id);
+            if (modelo is Membro_AclamacaoLgpd) modelo = new Membro_AclamacaoLgpd(id);
+            if (modelo is Membro_BatismoLgpd) modelo = new Membro_BatismoLgpd(id);
+            if (modelo is Membro_ReconciliacaoLgpd) modelo = new Membro_ReconciliacaoLgpd(id);
+            if (modelo is Membro_TransferenciaLgpd) modelo = new Membro_TransferenciaLgpd(id);
+
+            if (modelo is Celula_Adolescente) modelo = new Celula_Adolescente(id);
+            if (modelo is Celula_Adulto) modelo = new Celula_Adulto(id);
+            if (modelo is Celula_Casado) modelo = new Celula_Casado(id);
+            if (modelo is Celula_Jovem) modelo = new Celula_Jovem(id);
+            if (modelo is Celula_Crianca) modelo = new Celula_Crianca(id);
+
+            if (modelo is Lider_Celula) modelo = new Lider_Celula(id);
+            if (modelo is Lider_Celula_Treinamento) modelo = new Lider_Celula_Treinamento(id);
+            if (modelo is Lider_Ministerio) modelo = new Lider_Ministerio(id);
+            if (modelo is Lider_Ministerio_Treinamento) modelo = new Lider_Ministerio_Treinamento(id);
+            if (modelo is Supervisor_Celula) modelo = new Supervisor_Celula(id);
+            if (modelo is Supervisor_Celula_Treinamento) modelo = new Supervisor_Celula_Treinamento(id);
+            if (modelo is Supervisor_Ministerio) modelo = new Supervisor_Ministerio(id);
+            if (modelo is Supervisor_Ministerio_Treinamento) modelo = new Supervisor_Ministerio_Treinamento(id);
+
+
+            if (modelo is Reuniao) modelo = new Reuniao(id);
+            if (modelo is MudancaEstado) modelo = new MudancaEstado(id);
+            if (modelo is Historico) modelo = new Historico(id);
+            if (modelo is business.classes.Chamada) modelo = new business.classes.Chamada(id);
+            if (modelo is Telefone) modelo = new Telefone(id);
+            if (modelo is Endereco) modelo = new Endereco(id);
+            if (modelo is EnderecoCelula) modelo = new EnderecoCelula(id);
+            if (modelo is MinisterioCelula) modelo = new MinisterioCelula(id);
+            if (modelo is PessoaMinisterio) modelo = new PessoaMinisterio(id);
+            if (modelo is ReuniaoPessoa) modelo = new ReuniaoPessoa(id);
+
+
+
+
             if (!modelo.recuperar(id))
             {
                 MessageBox.Show("Você já apagou este registro");
@@ -148,7 +270,7 @@ namespace WindowsFormsApp1
             }
 
             modelo.excluir(id);
-            modelocrud.Modelos.Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id  == id));
+            modelocrud.Modelos.Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == id));
             MessageBox.Show("Informação removida do banco de dados com sucesso.");
         }
 
@@ -160,7 +282,7 @@ namespace WindowsFormsApp1
                 {
                     if (this is DadoPessoal)
                     {
-                        if(ModeloNovo != null)
+                        if (ModeloNovo != null)
                         {
                             FrmEndereco end = new FrmEndereco(condicaoAtualizar, condicaoDeletar, CondicaoDetalhes,
                             ModeloVelho, ModeloNovo);
@@ -175,12 +297,12 @@ namespace WindowsFormsApp1
                             end.MdiParent = this.MdiParent;
                             this.Close();
                             end.Show();
-                        }                        
+                        }
                     }
 
                     if (this is FrmEndereco)
                     {
-                        if(ModeloNovo != null)
+                        if (ModeloNovo != null)
                         {
                             Contato con = new Contato(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
                             ModeloVelho, ModeloNovo);
@@ -196,12 +318,12 @@ namespace WindowsFormsApp1
                             this.Close();
                             con.Show();
                         }
-                        
+
                     }
 
                     if (this is Contato)
                     {
-                        if(ModeloNovo != null)
+                        if (ModeloNovo != null)
                         {
                             Foto con = new Foto(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
                             ModeloVelho, ModeloNovo);
@@ -217,12 +339,12 @@ namespace WindowsFormsApp1
                             this.Close();
                             con.Show();
                         }
-                        
+
                     }
 
                     if (this is Foto)
                     {
-                        if(ModeloNovo != null)
+                        if (ModeloNovo != null)
                         {
                             ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa
                             (condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
@@ -239,7 +361,7 @@ namespace WindowsFormsApp1
                             this.Close();
                             con.Show();
                         }
-                        
+
                     }
 
                     if (this is ReunioesMinisteriosPessoa)
@@ -298,7 +420,7 @@ namespace WindowsFormsApp1
                                 cmt.MdiParent = this.MdiParent;
                                 this.Close();
                                 cmt.Show();
-                            } 
+                            }
                         }
                         else
                         {
@@ -322,7 +444,7 @@ namespace WindowsFormsApp1
 
                             if (ModeloNovo is Membro_Aclamacao)
                             {
-                                CadastroMembroAclamacao cma = new CadastroMembroAclamacao( CondicaoAtualizar,
+                                CadastroMembroAclamacao cma = new CadastroMembroAclamacao(CondicaoAtualizar,
                                     condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
                                 cma.MdiParent = this.MdiParent;
                                 this.Close();
@@ -331,7 +453,7 @@ namespace WindowsFormsApp1
 
                             if (ModeloNovo is Membro_Reconciliacao)
                             {
-                                CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao( CondicaoAtualizar,
+                                CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao(CondicaoAtualizar,
                                     condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
                                 cmr.MdiParent = this.MdiParent;
                                 this.Close();
@@ -349,7 +471,7 @@ namespace WindowsFormsApp1
 
                             if (ModeloNovo is Membro_Transferencia)
                             {
-                                CadastroMembroTransferencia cmt = new CadastroMembroTransferencia( CondicaoAtualizar,
+                                CadastroMembroTransferencia cmt = new CadastroMembroTransferencia(CondicaoAtualizar,
                                     condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
                                 cmt.MdiParent = this.MdiParent;
                                 this.Close();
@@ -362,7 +484,7 @@ namespace WindowsFormsApp1
                         this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                         this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                     {
-                        if(ModeloNovo != null)
+                        if (ModeloNovo != null)
                         {
                             FinalizarCadastroPessoa fn = new
                         FinalizarCadastroPessoa(CondicaoAtualizar, condicaoDeletar, condicaoDetalhes, ModeloVelho,
@@ -526,9 +648,9 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if(this is FormCrudReuniao)
+            if (this is FormCrudReuniao)
             {
-                if(this is DadoReuniao)
+                if (this is DadoReuniao)
                 {
                     PessoasReuniao frm = new PessoasReuniao(modelo,
                     condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);
@@ -537,7 +659,7 @@ namespace WindowsFormsApp1
                     frm.Show();
                 }
 
-                if(this is PessoasReuniao)
+                if (this is PessoasReuniao)
                 {
                     FinalizarCadastroReuniao frm = new FinalizarCadastroReuniao(modelo,
                     condicaoAtualizar, condicaoDeletar, CondicaoDetalhes);

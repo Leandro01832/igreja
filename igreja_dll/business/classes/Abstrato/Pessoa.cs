@@ -21,57 +21,51 @@ using System.Web;
 namespace business.classes.Abstrato
 {
     [Table("Pessoa")]
-    public abstract class Pessoa : modelocrud, IAddNalista, IMudancaEstado
+    public abstract class Pessoa : modelocrud, IMudancaEstado
     {
         public Pessoa() : base()
         {
-            MudancaEstado = new MudancaEstado();
-            AddNalista = new AddNalista();            
+            MudancaEstado = new MudancaEstado();     
         }
 
         protected Pessoa(int m) : base(m)
         {
         }
 
-
         #region Properties
-        AddNalista AddNalista;
+        [NotMapped]
+        public HttpPostedFileBase FiguraFile;
 
-        [NotMapped]
-        public HttpPostedFileBase FiguraFile { get; set; }
+        public static List<Visitante> visitantes;
 
-        [NotMapped]
-        public static List<Visitante> visitantes { get; set; }
-        [NotMapped]
-        public static List<VisitanteLgpd> visitantesLgpd { get; set; }
-        [NotMapped]
-        public static List<Crianca> criancas { get; set; }
-        [NotMapped]
-        public static List<CriancaLgpd> criancasLgpd { get; set; }
-        [NotMapped]
-        public static List<Membro_Aclamacao> membros_Aclamacao { get; set; }
-        [NotMapped]
-        public static List<Membro_AclamacaoLgpd> membros_AclamacaoLgpd { get; set; }
-        [NotMapped]
-        public static List<Membro_Transferencia> membros_Transferencia { get; set; }
-        [NotMapped]
-        public static List<Membro_TransferenciaLgpd> membros_TransferenciaLgpd { get; set; }
-        [NotMapped]
-        public static List<Membro_Reconciliacao> membros_Reconciliacao { get; set; }
-        [NotMapped]
-        public static List<Membro_ReconciliacaoLgpd> membros_ReconciliacaoLgpd { get; set; }
-        [NotMapped]
-        public static List<Membro_Batismo> membros_Batismo { get; set; }
-        [NotMapped]
-        public static List<Membro_BatismoLgpd> membros_BatismoLgpd { get; set; }
+        public static List<VisitanteLgpd> visitantesLgpd;
+
+        public static List<Crianca> criancas;
+
+        public static List<CriancaLgpd> criancasLgpd;
+
+        public static List<Membro_Aclamacao> membros_Aclamacao;
+
+        public static List<Membro_AclamacaoLgpd> membros_AclamacaoLgpd;
+
+        public static List<Membro_Transferencia> membros_Transferencia;
+
+        public static List<Membro_TransferenciaLgpd> membros_TransferenciaLgpd;
+
+        public static List<Membro_Reconciliacao> membros_Reconciliacao;
+
+        public static List<Membro_ReconciliacaoLgpd> membros_ReconciliacaoLgpd;
+
+        public static List<Membro_Batismo> membros_Batismo;
+
+        public static List<Membro_BatismoLgpd> membros_BatismoLgpd;
 
         [Display(Name ="Nome completo")]
         public string NomePessoa { get; set; }
         
         [Index("CODIGO", 2, IsUnique = true)]
         public int Codigo { get; set; }
-
-        [NotMapped]
+        
         public static int UltimoRegistro;
 
         [NotMapped]
@@ -101,78 +95,10 @@ namespace business.classes.Abstrato
         public string Img { get; set; }
 
         [NotMapped]
-        public byte[] ImgArrayBytes { get; set; }
+        public byte[] ImgArrayBytes;
 
         [JsonIgnore]
         private MudancaEstado MudancaEstado;
-        #endregion
-
-        #region Methods
-        public override string salvar()
-        {
-            GetProperties(T);
-            Insert_padrao += this.Chamada.salvar();
-            return Insert_padrao;
-        }
-
-        public override string alterar(int id)
-        {
-            UpdateProperties(T, id);
-            Update_padrao += this.Chamada.alterar(id);
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            T = T.BaseType;
-            var delete =
-              new Chamada(id).excluir(id) +
-              Delete_padrao.Replace(GetType().Name, T.Name);
-            return delete;
-        }
-
-        public override bool recuperar(int id)
-        {
-            bool retorno = false;
-            this.Chamada = new Chamada(id);
-            this.Chamada.recuperar(id);
-
-            if (SetProperties(T)) retorno = true;
-
-            if (DateTime.Now.AddDays(-182) /*dias de um semestre*/ > this.Chamada.Data_inicio && this.Chamada.Numero_chamada != 0)
-            {
-                new Historico { pessoaid = id, Data_inicio = this.Chamada.Data_inicio, Falta = this.Falta }.salvar();
-                this.Chamada.Data_inicio = DateTime.Now;
-                this.Chamada.alterar(id);
-                this.Falta = 0; this.alterar(id);
-            }
-
-            bd.fecharconexao(conexao);
-            this.Ministerios = new List<PessoaMinisterio>();
-            var listaMinisterios = recuperarMinisterios(id);
-            if (listaMinisterios != null)
-                foreach (var item in listaMinisterios)
-                {
-                    this.Ministerios.Add((PessoaMinisterio)item);
-                }
-            this.Reuniao = new List<ReuniaoPessoa>();
-            var listaReunioes = recuperarReuniao(id);
-            if (listaReunioes != null)
-                foreach (var item in listaReunioes)
-                {
-                    this.Reuniao.Add((ReuniaoPessoa)item);
-                }
-
-            this.Historicos = new List<Historico>();
-            var listaHistoricos = recuperarHistorico(id);
-            if (listaHistoricos != null)
-                foreach (var item in listaHistoricos)
-                {
-                    this.Historicos.Add((Historico)item);
-                }
-
-            return retorno;
-        }
         #endregion
 
         public static List<modelocrud> recuperarTodos()
@@ -284,7 +210,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t =  Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<PessoaMinisterio>().ToList().Count != PessoaMinisterio.GeTotalRegistrosPessoasEmMinisterios()) { }
+                while (Modelos.OfType<PessoaMinisterio>().ToList().Count != PessoaMinisterio.TotalRegistro()) { }
                 lista = Modelos.OfType<PessoaMinisterio>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -297,7 +223,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != ReuniaoPessoa.GeTotalRegistrosPessoasEmReunioes()) { }
+                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != ReuniaoPessoa.TotalRegistro()) { }
                 lista = Modelos.OfType<ReuniaoPessoa>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -310,24 +236,12 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<Historico>().ToList().Count != Historico.GeTotalRegistrosHistoricos()) { }
+                while (Modelos.OfType<Historico>().ToList().Count != Historico.TotalRegistro()) { }
                 lista = Modelos.OfType<Historico>().Where(m => m.pessoaid == id).Cast<modelocrud>().ToList();
                 return lista;
             });
             Task.WaitAll(t);
             return t.Result;
-        }
-        
-        public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
-            modelocrud modeloQPreenche, string numeros)
-        {
-            AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
-        }
-
-        public void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe,
-            modelocrud modeloQPreenche, string numeros)
-        {
-            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
         }
 
         public void MudarEstado(int id, modelocrud m)
@@ -351,7 +265,7 @@ namespace business.classes.Abstrato
             return true;
         }
 
-        public static int GeTotalRegistrosPessoas()
+        public static int TotalRegistro()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

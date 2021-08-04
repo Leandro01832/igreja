@@ -20,7 +20,7 @@ using business.implementacao;
 namespace business.classes.Abstrato
 {
     [Table("Ministerio")]
-    public abstract class Ministerio : modelocrud, IAddNalista
+    public abstract class Ministerio : modelocrud
     {
         #region Properties
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -38,72 +38,25 @@ namespace business.classes.Abstrato
         [Display(Name = "Maximo de pessoas")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public int Maximo_pessoa { get; set; }
+        
+        public static int UltimoRegistro;
 
-        [NotMapped]
-        public static int UltimoRegistro { get; set; }
-
-        public static List<Lider_Celula> lideresCelula { get; set; }
-        public static List<Lider_Celula_Treinamento> LideresCelulaTreinamento { get; set; }
-        public static List<Lider_Ministerio> lideresMinisterio { get; set; }
-        public static List<Lider_Ministerio_Treinamento> lideresMinisterioTreinamento { get; set; }
-        public static List<Supervisor_Celula> supervisoresCelula { get; set; }
-        public static List<Supervisor_Celula_Treinamento> supervisoresCelulaTreinamento { get; set; }
-        public static List<Supervisor_Ministerio> supervisoresMinisterio { get; set; }
-        public static List<Supervisor_Ministerio_Treinamento> supervisoresMinisterioTreinamento { get; set; }
+        public static List<Lider_Celula> lideresCelula;
+        public static List<Lider_Celula_Treinamento> LideresCelulaTreinamento;
+        public static List<Lider_Ministerio> lideresMinisterio;
+        public static List<Lider_Ministerio_Treinamento> lideresMinisterioTreinamento;
+        public static List<Supervisor_Celula> supervisoresCelula;
+        public static List<Supervisor_Celula_Treinamento> supervisoresCelulaTreinamento;
+        public static List<Supervisor_Ministerio> supervisoresMinisterio;
+        public static List<Supervisor_Ministerio_Treinamento> supervisoresMinisterioTreinamento;
         #endregion
-
-        AddNalista AddNalista;
+        
         public Ministerio() : base()
         {
             this.Maximo_pessoa = 50;
-            AddNalista = new AddNalista();
         }
 
-        protected Ministerio(int m) : base(m)
-        {
-        }
-
-        #region Methods
-        public override string alterar(int id)
-        {
-            UpdateProperties(T, id);
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            T = T.BaseType;
-            var delete = Delete_padrao.Replace(GetType().Name, T.Name);
-            return delete;
-        }
-
-        public override bool recuperar(int id)
-        {
-            bd.fecharconexao(conexao);
-            this.Pessoas = new List<PessoaMinisterio>();
-            var listaPessoas = buscarPessoas(id);
-            if (listaPessoas != null)
-                foreach (var item in listaPessoas)
-                    this.Pessoas.Add((PessoaMinisterio)item);
-
-            this.Celulas = new List<MinisterioCelula>();
-            var listaCelulas = buscarCelulas(id);
-            if (listaCelulas != null)
-                foreach (var item in listaCelulas)
-                    this.Celulas.Add((MinisterioCelula)item);
-
-            if (SetProperties(T))
-                return true;
-            return false;
-        }
-
-        public override string salvar()
-        {
-            GetProperties(T);
-            return Insert_padrao;
-        }
-
-        #endregion
+        protected Ministerio(int m) : base(m){ }
 
         public static List<modelocrud> recuperarTodosMinisterios()
         {
@@ -183,7 +136,7 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<Pessoa>().ToList().Count != Pessoa.GeTotalRegistrosPessoas()) { }
+                while (Modelos.OfType<Pessoa>().ToList().Count != Pessoa.TotalRegistro()) { }
                 lista = Modelos.OfType<Pessoa>().Where(m => m.celula_ == id).Cast<modelocrud>().ToList();
                 return lista;
             });
@@ -196,27 +149,15 @@ namespace business.classes.Abstrato
             List<modelocrud> lista = new List<modelocrud>();
             Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
             {
-                while (Modelos.OfType<MinisterioCelula>().ToList().Count != MinisterioCelula.GeTotalRegistrosMinisterioCelula()) { }
+                while (Modelos.OfType<MinisterioCelula>().ToList().Count != MinisterioCelula.TotalRegistro()) { }
                 lista = Modelos.OfType<MinisterioCelula>().Where(m => m.MinisterioId == id).Cast<modelocrud>().ToList();
                 return lista;
             });
             Task.WaitAll(t);
             return t.Result;
-        }
-        
-        public void AdicionarNaLista(string NomeTabela, modelocrud modeloQRecebe,
-            modelocrud modeloQPreenche, string numeros)
-        {
-            AddNalista.AdicionarNaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
-        }
-        
-        public void RemoverDaLista(string NomeTabela, modelocrud modeloQRecebe,
-            modelocrud modeloQPreenche, string numeros)
-        {
-            AddNalista.RemoverDaLista(NomeTabela, modeloQRecebe, modeloQPreenche, numeros);
-        }
+        }        
 
-        public static int GeTotalRegistrosMinisterios()
+        public static int TotalRegistro()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

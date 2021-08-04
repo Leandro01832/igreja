@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace business.implementacao
 {
@@ -18,9 +19,8 @@ namespace business.implementacao
         public string novoEstado { get; set; }
         public DateTime DataMudanca { get; set; }
         public int CodigoPessoa { get; set; }
-
-        [NotMapped]
-        public static List<MudancaEstado> Mudancas = new List<MudancaEstado>();
+        
+        public static List<MudancaEstado> Mudancas;
 
         public MudancaEstado() : base()
         {
@@ -63,23 +63,10 @@ namespace business.implementacao
 
             p.excluir(idVelhoEstado);
 
-            var addMinisterios = "";
-            var minis = p.Ministerios;
-            if (minis != null)
-                foreach (var itemMinisterio in minis)
-                    addMinisterios += itemMinisterio.Ministerio.Id.ToString() + ", ";
-            if (minis != null)
-                if (minis.Count != 0)
-                    p.AdicionarNaLista("PessoaMinsterio", p, minis[0], addMinisterios);
-
-            var addReunioes = "";
-            var reu = p.Reuniao;
-            if (reu != null)
-                foreach (var itemReuniao in reu)
-                    addReunioes += itemReuniao.Reuniao.Id.ToString() + ", ";
-            if (reu != null)
-                if (reu.Count != 0)
-                    p.AdicionarNaLista("ReuniaoPessoa", p, reu[0], addReunioes);
+            var model = Modelos.First(i => i.Id == p.Id);
+            var valor = (Pessoa)model;
+            p.Ministerios = valor.Ministerios;
+            p.Reuniao = valor.Reuniao;
 
             if (m is PessoaDado)
             {
@@ -432,35 +419,7 @@ namespace business.implementacao
             }.salvar();
         }
 
-        public override string alterar(int id)
-        {
-            UpdateProperties(null, id);
-            bd.Editar(this);
-            return Update_padrao;
-        }
-
-        public override string excluir(int id)
-        {
-            bd.Excluir(this);
-            return Delete_padrao;
-        }
-
-        public override bool recuperar(int id)
-        {
-            if (SetProperties(GetType()))
-            { T = GetType(); return true; }
-            return false;
-        }
-        
-        public override string salvar()
-        {
-            GetProperties(null);
-            Insert_padrao += BDcomum.addNaLista;
-            bd.SalvarModelo(this);
-            return Insert_padrao;
-        }
-
-        public static int GeTotalRegistrosMudancaEstado()
+        public static int TotalRegistro()
         {
             var _TotalRegistros = 0;
             SqlConnection con;

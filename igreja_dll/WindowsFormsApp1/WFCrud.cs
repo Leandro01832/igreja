@@ -1,6 +1,7 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
+using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
@@ -8,6 +9,7 @@ using business.implementacao;
 using database;
 using database.banco;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -426,18 +428,18 @@ namespace WindowsFormsApp1
                 {
                     Pessoa pes = null;
                     var p = (Pessoa)modelo;
-                    if (p is Visitante           )     { var model = new  Visitante           ();    if (model.recuperar(p.Id)) pes = model; }
-                    if (p is Crianca             )     { var model = new Crianca             ();     if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_Aclamacao    )     { var model = new Membro_Aclamacao    ();     if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_Batismo      )     { var model = new Membro_Batismo      ();     if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_Reconciliacao)     { var model = new Membro_Reconciliacao();     if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_Transferencia)     { var model = new Membro_Transferencia();     if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is VisitanteLgpd       )     { var model = new VisitanteLgpd();            if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is CriancaLgpd         )     { var model = new CriancaLgpd();              if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_AclamacaoLgpd)     { var model = new Membro_AclamacaoLgpd();     if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_BatismoLgpd  )     { var model = new Membro_BatismoLgpd();       if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_ReconciliacaoLgpd) { var model = new Membro_ReconciliacaoLgpd(); if (model.recuperar(p.Id)) pes = model;  }
-                    if (p is Membro_TransferenciaLgpd) { var model = new Membro_TransferenciaLgpd(); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Visitante           )     { var model = new  Visitante              (p.Id); if (model.recuperar(p.Id)) pes = model; }
+                    if (p is Crianca             )     { var model = new Crianca                 (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_Aclamacao    )     { var model = new Membro_Aclamacao        (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_Batismo      )     { var model = new Membro_Batismo          (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_Reconciliacao)     { var model = new Membro_Reconciliacao    (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_Transferencia)     { var model = new Membro_Transferencia    (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is VisitanteLgpd       )     { var model = new VisitanteLgpd           (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is CriancaLgpd         )     { var model = new CriancaLgpd             (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_AclamacaoLgpd)     { var model = new Membro_AclamacaoLgpd    (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_BatismoLgpd  )     { var model = new Membro_BatismoLgpd      (p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_ReconciliacaoLgpd) { var model = new Membro_ReconciliacaoLgpd(p.Id); if (model.recuperar(p.Id)) pes = model;  }
+                    if (p is Membro_TransferenciaLgpd) { var model = new Membro_TransferenciaLgpd(p.Id); if (model.recuperar(p.Id)) pes = model;  }
                         
                     
 
@@ -449,14 +451,14 @@ namespace WindowsFormsApp1
                 {
                     Ministerio minis = null;
                     var m = (Ministerio)modelo;
-                    if (m is Lider_Celula                     ) { var model = new Lider_Celula                     (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Lider_Celula_Treinamento         ) { var model = new Lider_Celula_Treinamento         (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Lider_Ministerio                 ) { var model = new Lider_Ministerio                 (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Lider_Ministerio_Treinamento     ) { var model = new Lider_Ministerio_Treinamento     (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Supervisor_Celula                ) { var model = new Supervisor_Celula                (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Supervisor_Celula_Treinamento    ) { var model = new Supervisor_Celula_Treinamento    (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Supervisor_Ministerio            ) { var model = new Supervisor_Ministerio            (); if (model.recuperar(m.Id)) minis = model; }
-                    if (m is Supervisor_Ministerio_Treinamento) { var model = new Supervisor_Ministerio_Treinamento(); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Lider_Celula                     ) { var model = new Lider_Celula                     (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Lider_Celula_Treinamento         ) { var model = new Lider_Celula_Treinamento         (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Lider_Ministerio                 ) { var model = new Lider_Ministerio                 (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Lider_Ministerio_Treinamento     ) { var model = new Lider_Ministerio_Treinamento     (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Supervisor_Celula                ) { var model = new Supervisor_Celula                (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Supervisor_Celula_Treinamento    ) { var model = new Supervisor_Celula_Treinamento    (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Supervisor_Ministerio            ) { var model = new Supervisor_Ministerio            (m.Id); if (model.recuperar(m.Id)) minis = model; }
+                    if (m is Supervisor_Ministerio_Treinamento) { var model = new Supervisor_Ministerio_Treinamento(m.Id); if (model.recuperar(m.Id)) minis = model; }
                                         
                     modelocrud.Modelos.OfType<Ministerio>().ToList().Remove(modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.Id == m.Id));
                     modelocrud.Modelos.OfType<Ministerio>().ToList().Add(minis);
@@ -467,11 +469,11 @@ namespace WindowsFormsApp1
                     Celula cel = null;
                     var c = (Celula)modelo;
 
-                    if (c is Celula_Adolescente) { var model = new Celula_Adolescente(); if (model.recuperar(c.Id)) cel = model; }
-                    if (c is Celula_Jovem      ) { var model = new Celula_Jovem      (); if (model.recuperar(c.Id)) cel = model; }
-                    if (c is Celula_Adulto     ) { var model = new Celula_Adulto     (); if (model.recuperar(c.Id)) cel = model; }
-                    if (c is Celula_Casado     ) { var model = new Celula_Casado     (); if (model.recuperar(c.Id)) cel = model; }
-                    if (c is Celula_Crianca    ) { var model = new Celula_Crianca();     if (model.recuperar(c.Id)) cel = model; }
+                    if (c is Celula_Adolescente) { var model = new Celula_Adolescente(c.Id); if (model.recuperar(c.Id)) cel = model; }
+                    if (c is Celula_Jovem      ) { var model = new Celula_Jovem      (c.Id); if (model.recuperar(c.Id)) cel = model; }
+                    if (c is Celula_Adulto     ) { var model = new Celula_Adulto     (c.Id); if (model.recuperar(c.Id)) cel = model; }
+                    if (c is Celula_Casado     ) { var model = new Celula_Casado     (c.Id); if (model.recuperar(c.Id)) cel = model; }
+                    if (c is Celula_Crianca    ) { var model = new Celula_Crianca    (c.Id); if (model.recuperar(c.Id)) cel = model; }
                     
                     modelocrud.Modelos.OfType<Celula>().ToList().Remove(modelocrud.Modelos.OfType<Celula>().ToList().First(i => i.Id == c.Id));
                     modelocrud.Modelos.OfType<Celula>().ToList().Add(cel);
@@ -481,7 +483,7 @@ namespace WindowsFormsApp1
                 {
                     Reuniao reu = null;
                     var r = (Reuniao)modelo;
-                    var model = new Reuniao(); if (model.recuperar(r.Id)) reu = model;
+                    var model = new Reuniao(r.Id); if (model.recuperar(r.Id)) reu = model;
                     modelocrud.Modelos.OfType<Reuniao>().ToList().Remove(r);
                     modelocrud.Modelos.OfType<Reuniao>().ToList().Add(reu);
                 }
@@ -633,18 +635,12 @@ namespace WindowsFormsApp1
                 var p = (Celula)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
                 {
-                    var listaMinisterio = modelocrud.Modelos.OfType<Ministerio>().ToList().ToList();
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
+                    p.Ministerios = new List<MinisterioCelula>();
                     foreach (var item in arr)
                     {
-                        try
-                        {
-                            if (listaMinisterio.FirstOrDefault(i => i.Id == int.Parse(item)) == null)
-                                AddNaListaCelulaMinisterios.Replace(item, "");
-                        }
-                        catch { }
+                        p.Ministerios.Add(new MinisterioCelula { CelulaId = p.Id, MinisterioId = int.Parse(item) });
                     }
-                    p.AdicionarNaLista("MinisterioCelula", p, new Lider_Celula(), AddNaListaCelulaMinisterios);
                 }
             }
 
@@ -652,20 +648,48 @@ namespace WindowsFormsApp1
             {
                 var p = (Ministerio)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
-                    p.AdicionarNaLista("PessoaMinisterio", p, new Visitante(), AddNaListaMinisterioPessoas);
+                {
+                    var arr = AddNaListaMinisterioPessoas.Replace(" ", "").Split(',');
+                    p.Pessoas = new List<PessoaMinisterio>();
+                    foreach (var item in arr)
+                    {
+                        p.Pessoas.Add(new PessoaMinisterio { PessoaId = int.Parse(item), MinisterioId = p.Id });
+                    }
+                }
 
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
-                    p.AdicionarNaLista("MinisterioCelula", p, new Visitante(), AddNaListaMinisterioCelulas);
+                {
+                    var arr = AddNaListaMinisterioCelulas.Replace(" ", "").Split(',');
+                    p.Celulas = new List<MinisterioCelula>();
+                    foreach (var item in arr)
+                    {
+                        p.Celulas.Add(new MinisterioCelula { CelulaId = int.Parse(item), MinisterioId = p.Id });
+                    }
+                }
             }
 
             if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
-                    p.AdicionarNaLista("PessoaMinisterio", p, new Lider_Celula(), AddNaListaPessoaMinsterios);
+                {
+                    var arr = AddNaListaPessoaMinsterios.Replace(" ", "").Split(',');
+                    p.Ministerios = new List<PessoaMinisterio>();
+                    foreach (var item in arr)
+                    {
+                        p.Ministerios.Add(new PessoaMinisterio { PessoaId = p.Id, MinisterioId = int.Parse(item) });
+                    }
+                }
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
-                    p.AdicionarNaLista("ReuniaoPessoa", p, new Reuniao(), AddNaListaPessoaReunioes);
+                {
+                    var arr = AddNaListaPessoaReunioes.Replace(" ", "").Split(',');
+                    p.Reuniao = new List<ReuniaoPessoa>();
+                    foreach (var item in arr)
+                    {
+                        p.Reuniao.Add(new ReuniaoPessoa { PessoaId = p.Id, ReuniaoId = int.Parse(item) });
+                    }
+                }
 
                 var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
                 p.Codigo = ultimoRegistro + 1;
@@ -675,27 +699,50 @@ namespace WindowsFormsApp1
             {
                 var p = (Reuniao)modelo;
                 if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                    p.AdicionarNaLista("ReuniaoPessoa", p, new Visitante(),
-                    AddNaListaReuniaoPessoas);
+                {
+                    var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
+                    p.Pessoas = new List<ReuniaoPessoa>();
+                    foreach (var item in arr)
+                    {
+                        p.Pessoas.Add(new ReuniaoPessoa { PessoaId = int.Parse(item), ReuniaoId = p.Id });
+                    }
+                }
             }
 
             modelo.salvar();
 
-            if (modelo is Pessoa && modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)
-                modelocrud.Modelos.OfType<Pessoa>().ToList().Add((Pessoa)modelo);
-
-            if (modelo is Reuniao && modelocrud.Modelos.OfType<Reuniao>().ToList().Count > 0)
-                modelocrud.Modelos.OfType<Reuniao>().ToList().Add((Reuniao)modelo);
-
-            if (modelo is Ministerio && modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0)
-                modelocrud.Modelos.OfType<Ministerio>().ToList().Add((Ministerio)modelo);
-
-            if (modelo is Celula && modelocrud.Modelos.OfType<Celula>().ToList().Count > 0)
-                modelocrud.Modelos.OfType<Celula>().ToList().Add((Celula)modelo);
-
-            if (modelo is MudancaEstado && modelocrud.Modelos.OfType<MudancaEstado>().ToList().Count > 0)
-                modelocrud.Modelos.OfType<MudancaEstado>().ToList().Add((MudancaEstado)modelo);
-
+            if (modelo.existeLista)
+            {
+                if (modelo is Celula    )
+                {
+                    var p = (Celula)modelo;
+                    foreach (var item in p.Ministerios)
+                    item.salvar();
+                }
+                if (modelo is Ministerio)
+                {
+                    var p = (Ministerio)modelo;
+                    foreach (var item in p.Pessoas)
+                        item.salvar();
+                    foreach (var item in p.Celulas)
+                        item.salvar();
+                }
+                if (modelo is Pessoa    )
+                {
+                    var p = (Pessoa)modelo;
+                    foreach (var item in p.Ministerios)
+                        item.salvar();
+                    foreach (var item in p.Reuniao)
+                        item.salvar();
+                }
+                if (modelo is Reuniao   )
+                {
+                    var p = (Reuniao)modelo;
+                    foreach (var item in p.Pessoas)
+                        item.salvar();
+                }
+            }
+            
             if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
             {
                 var p = (Pessoa)modelo;
