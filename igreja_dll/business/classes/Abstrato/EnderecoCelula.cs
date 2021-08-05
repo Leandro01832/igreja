@@ -20,7 +20,6 @@ namespace business.classes.Celulas
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Estado { get; set; }
 
-
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Cidade { get; set; }
 

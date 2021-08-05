@@ -16,8 +16,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-
-
 namespace business.classes.Abstrato
 {
     [Table("Pessoa")]
@@ -25,15 +23,16 @@ namespace business.classes.Abstrato
     {
         public Pessoa() : base()
         {
-            MudancaEstado = new MudancaEstado();     
+            MudancaEstado = new MudancaEstado();
+            Chamada = new Chamada();
         }
 
         protected Pessoa(int m) : base(m)
         {
+            
         }
 
         #region Properties
-        [NotMapped]
         public HttpPostedFileBase FiguraFile;
 
         public static List<Visitante> visitantes;
@@ -67,8 +66,7 @@ namespace business.classes.Abstrato
         public int Codigo { get; set; }
         
         public static int UltimoRegistro;
-
-        [NotMapped]
+        
         public string password;
 
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -203,45 +201,6 @@ namespace business.classes.Abstrato
             Task.WaitAll(t, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12);
 
             return t12.Result;
-        }
-
-        private List<modelocrud> recuperarMinisterios(int id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t =  Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<PessoaMinisterio>().ToList().Count != PessoaMinisterio.TotalRegistro()) { }
-                lista = Modelos.OfType<PessoaMinisterio>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        private List<modelocrud> recuperarReuniao(int? id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<ReuniaoPessoa>().ToList().Count != ReuniaoPessoa.TotalRegistro()) { }
-                lista = Modelos.OfType<ReuniaoPessoa>().Where(m => m.PessoaId == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        private List<modelocrud> recuperarHistorico(int id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<Historico>().ToList().Count != Historico.TotalRegistro()) { }
-                lista = Modelos.OfType<Historico>().Where(m => m.pessoaid == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
         }
 
         public void MudarEstado(int id, modelocrud m)

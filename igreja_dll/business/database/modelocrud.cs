@@ -23,14 +23,14 @@ namespace database
     public abstract class modelocrud : IPesquisar
     {
         public modelocrud()
-        {
+        {    
             this.bd = new BDcomum();
             Select_padrao = $"select * from {this.GetType().Name} as C where C.Id='{this.Id}'";
             Delete_padrao = $" delete from {this.GetType().Name} where Id='{this.Id}' ";
             Erro_Conexao = false;
             QuantErro = 0;
             this.T = GetType();
-            pesquisar = new Pesquisar();
+            property = new PropertiesCrud(this);
         }
 
         public modelocrud(int id)
@@ -42,22 +42,23 @@ namespace database
             this.T = GetType();
             Erro_Conexao = false;
             QuantErro = 0;
-            pesquisar = new Pesquisar();
             Id = id;
+            property = new PropertiesCrud(this);
         }
 
         private string insert_padrao;
         private string update_padrao;
         private string delete_padrao;
         private string select_padrao;
-
-        static Pesquisar pesquisar;
+        static Calculo calculo = new Calculo();
+        PropertiesCrud property;
+        static Pesquisar pesquisar = new Pesquisar();
         public BDcomum bd;
         public SqlDataReader dr;
         public SqlConnection conexao;
         public Type T;
-        public bool existeLista;
-        private static string classe = "";
+        public string ErroNalista = "";
+        public static string classe = "";
         
         public static List<modelocrud> Modelos = new List<modelocrud>();
 
@@ -75,9 +76,39 @@ namespace database
         [NotMapped]
         public string Select_padrao { get => select_padrao; set => select_padrao = value; }
 
-        #region MethodsCrud
-      //  public abstract string salvar();
+         public void TratarExcessao(Exception ex)
+        {
+            if (ex.Message.Contains("instância"))
+            {
+                BDcomum.podeAbrir = false;
+            }
+            else if (ex.Message.Contains("reader"))
+            {
+                MessageBox.Show("A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
+            }
+            else if (ex.Message.Contains("ExecuteReader"))
+            {
+                MessageBox.Show(" Verifique sua ExecuteReader!!! " + this.GetType().Name);
+            }
+            else if (!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não está respondendo")
+                && !ex.Message.Contains("não foi inicializada")
+                && !ex.Message.Contains("conexão é fechada"))
+                MessageBox.Show(ex.Message + " - " + this.GetType().Name);
 
+            else if (ex.Message.Contains("transporte") || ex.Message.Contains("servidor não está respondendo")
+                || ex.Message.Contains("não foi inicializada")
+                || ex.Message.Contains("conexão é fechada"))
+            {
+
+                Erro_Conexao = true;
+                QuantErro++;
+
+                if (QuantErro == 1)
+                    MessageBox.Show("Verifique sua conexão" + this.GetType().Name);
+            }
+        }
+
+        #region MethodsCrud
         public string salvar()
         {
             var ClassBase = GetType();
@@ -89,8 +120,8 @@ namespace database
             T = ClassBase;
             classe = T.Name;
             while (T != GetType())
-            GetProperties(T);
-            GetProperties(null);                           
+            GetProperty(T);
+            GetProperty(null);                           
             bd.SalvarModelo(this);
             return Insert_padrao;
         }
@@ -98,8 +129,8 @@ namespace database
         public string alterar(int id)
         {            
             while (T != typeof(modelocrud))
-            UpdateProperties(T);
-            UpdateProperties(null);
+            UpdateProperty(T);
+            UpdateProperty(null);
             bd.Editar(this);
             return Update_padrao;
         }
@@ -108,7 +139,7 @@ namespace database
         {
             string comando = "";
             while (T != typeof(modelocrud))
-            comando += DeleteProperties(T);
+            comando += DeleteProperty(T);
             delete_padrao = comando;
             bd.Excluir(this);
             return Delete_padrao;
@@ -119,7 +150,7 @@ namespace database
             bool retorno = false;
             while (T != typeof(modelocrud))
             {
-                if (SetProperties(T))
+                if (SetProperty(T))
                     retorno = true;
                 else retorno = false;
             }
@@ -230,13 +261,13 @@ namespace database
                 else
                     if (this is Ministerio)
                 {
-                    if (this is Lider_Celula) Ministerio.lideresCelula = new List<Lider_Celula>();
-                    if (this is Lider_Celula_Treinamento) Ministerio.LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
-                    if (this is Lider_Ministerio) Ministerio.lideresMinisterio = new List<Lider_Ministerio>();
-                    if (this is Lider_Ministerio_Treinamento) Ministerio.lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
-                    if (this is Supervisor_Celula) Ministerio.supervisoresCelula = new List<Supervisor_Celula>();
-                    if (this is Supervisor_Celula_Treinamento) Ministerio.supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
-                    if (this is Supervisor_Ministerio) Ministerio.supervisoresMinisterio = new List<Supervisor_Ministerio>();
+                    if (this is Lider_Celula                     ) Ministerio.lideresCelula = new List<Lider_Celula>();
+                    if (this is Lider_Celula_Treinamento         ) Ministerio.LideresCelulaTreinamento = new List<Lider_Celula_Treinamento>();
+                    if (this is Lider_Ministerio                 ) Ministerio.lideresMinisterio = new List<Lider_Ministerio>();
+                    if (this is Lider_Ministerio_Treinamento     ) Ministerio.lideresMinisterioTreinamento = new List<Lider_Ministerio_Treinamento>();
+                    if (this is Supervisor_Celula                ) Ministerio.supervisoresCelula = new List<Supervisor_Celula>();
+                    if (this is Supervisor_Celula_Treinamento    ) Ministerio.supervisoresCelulaTreinamento = new List<Supervisor_Celula_Treinamento>();
+                    if (this is Supervisor_Ministerio            ) Ministerio.supervisoresMinisterio = new List<Supervisor_Ministerio>();
                     if (this is Supervisor_Ministerio_Treinamento) Ministerio.supervisoresMinisterioTreinamento = new List<Supervisor_Ministerio_Treinamento>();
                 }
                 else
@@ -374,655 +405,56 @@ namespace database
         #endregion
 
         #region MethodsProperties
-
-        public static object ConvertList(List<object> value, Type type)
+        private bool SetProperty(Type tipo)
         {
-            var containedType = type.GenericTypeArguments[0];
-            return value.Select(item => Convert.ChangeType(item, containedType)).ToList();
+            return property.SetProperties(tipo);
         }
 
-        public bool SetProperties(Type tipo)
+        private string DeleteProperty(Type tipo)
         {
-            Type t = GetType();
-            if (tipo != GetType())
-            {
-                while (t != typeof(modelocrud))
-                {
-                    if (t.BaseType == tipo)
-                        break;
-                    else
-                        t = t.BaseType;
-                }
-                Select_padrao = Select_padrao.Replace(t.Name, tipo.Name);
-            }
-
-            var propertiesDeclaring = tipo.GetProperties().Where(e => e.ReflectedType == e.DeclaringType);
-
-            if (this.conexao == null)
-                this.conexao = this.bd.obterconexao();
-
-            if (this.conexao.State == ConnectionState.Closed)
-                this.conexao = this.bd.obterconexao();
-
-            SqlCommand comando = new SqlCommand(Select_padrao, this.conexao);
-            try
-            {
-                this.dr = comando.ExecuteReader();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + " - " + this.GetType());
-            }
-
-            if (conexao != null)
-            {
-                if (dr.HasRows == false)
-                {
-                    dr.Close();
-                    bd.fecharconexao(conexao);
-                    return false;
-                }
-
-                try
-                {
-                    dr.Read();
-                    foreach (var property in propertiesDeclaring)
-                    {
-                        if (property.PropertyType.Name == "List`1")
-                        {
-                            Type itemType = property.PropertyType.GetGenericArguments()[0];
-                        }
-                        else
-                        if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
-                        {
-                            try
-                            {
-                                property.SetValue(this, long.Parse(Convert.ToString(dr[property.Name])));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                        else
-                        if (property.PropertyType == typeof(double) || property.PropertyType == typeof(double?))
-                        {
-                            try
-                            {
-                                property.SetValue(this, double.Parse(Convert.ToString(dr[property.Name])));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                        else
-                        if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
-                        {
-                            try
-                            {
-                                property.SetValue(this, DateTime.Parse(Convert.ToString(dr[property.Name])));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                        else
-                        if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
-                        {
-                            try
-                            {
-                                property.SetValue(this, int.Parse(Convert.ToString(dr[property.Name])));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                        else
-                        if (property.PropertyType == typeof(string))
-                        {
-                            try
-                            {
-                                property.SetValue(this, Convert.ToString(dr[property.Name]));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                        else
-                        if (property.PropertyType == typeof(bool))
-                        {
-                            try
-                            {
-                                property.SetValue(this, Convert.ToBoolean(dr[property.Name]));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                        else
-                        if (property.PropertyType == typeof(TimeSpan) || property.PropertyType == typeof(TimeSpan?))
-                        {
-                            try
-                            {
-                                property.SetValue(this, TimeSpan.Parse(Convert.ToString(dr[property.Name])));
-                            }
-                            catch { property.SetValue(this, null); }
-                        }
-                    }
-                    dr.Close();
-                }
-                catch (Exception ex)
-                {
-                    dr.Close();
-                    TratarExcessao(ex);
-                    return false;
-                }
-                finally
-                {
-                    bd.fecharconexao(conexao);
-                }
-
-                if (this.GetType().GetProperties().Where(p =>
-                p.PropertyType.GetProperties().Where(pr => pr.ReflectedType ==
-                pr.DeclaringType && pr.Name == "Id").ToList().Count != 0)
-                .ToList().Count != 0)
-                {
-                    VerficaPropertyClassSetProperties(this.GetType());
-                }
-                
-                T = T.BaseType;
-                return true;
-            }
-            return false;
+            return property.DeleteProperties(tipo);
         }
 
-        public string DeleteProperties(Type tipo)
+        private string VerficaPropertyClassDeleteProperty(Type type)
         {
-            string delete = "";
-            delete += Delete_padrao.Replace(GetType().Name, tipo.Name);
-            T = tipo.BaseType;
-            
-            if (tipo == GetType())
-                if (this.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                    p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                    && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
-                {
-                    delete += VerficaPropertyClassDeleteProperties(this.GetType());
-                }
-            return delete;
+            return property.VerficaPropertyClassDeleteProperties(type);
         }
 
-        private string VerficaPropertyClassDeleteProperties(Type type)
+        private void VerficaPropertyClassSetProperty(Type tipo)
         {
-            string delete = "";
-            foreach (var item in type.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                 p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                  && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList())
-            {
-                object objeto = Activator.CreateInstance(item.PropertyType);
-                modelocrud modelo = (modelocrud)objeto;
-                modelo.Id = this.Id;
-                if (modelo.GetType().GetProperties()
-                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
-                {
-                    delete += $" delete from {modelo.GetType().Name} where Id='{this.Id}' ";
-                   // modelo.excluir(this.Id);
-                }
-            }
-            return delete;
+            property.VerficaPropertyClassSetProperties(tipo);
         }
 
-        private void VerficaPropertyClassSetProperties(Type tipo)
+        private void GetProperty(Type tipo)
         {
-            foreach (var item in tipo.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                 p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                  && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList())
-            {
-                object objeto = Activator.CreateInstance(item.PropertyType);
-                modelocrud modelo = (modelocrud)objeto;
-                modelo.Id = this.Id;
-                if (modelo.GetType().GetProperties()
-                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
-                {
-                    modelo.select_padrao = $"select * from {modelo.GetType().Name} as C where C.Id='{this.Id}'";
-                    modelo.recuperar(this.Id);
-                }
-
-                foreach (var item2 in this.GetType().GetProperties())
-                {
-                    if (item == item2)
-                        item2.SetValue(this, modelo);
-                }
-            }
+            property.GetProperties(tipo);
         }
 
-        public void GetProperties(Type tipo)
+        private void VerficaPropertyClassInsertProperty(Type type)
         {
-            Type ClassBase = GetType();
-            string insert = "";
-            string properties = "";
-            string values = "";
-
-            while (ClassBase != typeof(modelocrud))
-            {
-                if (ClassBase.BaseType == typeof(modelocrud))
-                    break;
-                else
-                    ClassBase = ClassBase.BaseType;
-            }
-
-            if (tipo == null)
-                T = GetType();
-
-            var propertiesDeclaring = T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
-            && !e.PropertyType.IsAbstract && e.PropertyType.Name != "List`1"
-            && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
-
-            foreach (var property in propertiesDeclaring)
-            {
-                properties += property.Name + ", ";
-                values = VerificaProperties(values, property, classe, this);
-            }
-
-            if (values != "")
-                values = values.Remove(values.Length - 2, 2);
-            if (properties != "")
-                properties = properties.Remove(properties.Length - 2, 2);
-
-            if (T != typeof(modelocrud))
-            {
-                if (T != ClassBase && values != "")
-                    insert = $"insert into {T.Name} (Id, {properties} ) values (IDENT_CURRENT('{ClassBase.Name}'), {values} ) ";
-                else
-                    if (T != ClassBase && values == "")
-                    insert = $"insert into {T.Name} (Id) values (IDENT_CURRENT('{ClassBase.Name}') ) ";
-                else
-                    insert = $"insert into {T.Name} ( {properties} ) values ( {values} ) ";
-
-                Insert_padrao += insert.Replace("Insert_padrao, Update_padrao, Delete_padrao, Select_padrao,", "");
-            }
-
-            if (tipo == null)
-            {
-                if (this.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                   p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                   && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
-                {
-                    VerficaPropertyClassInsertProperties(this.GetType());
-                }
-            }
-
-
-            tipo = GetType();
-            while (tipo != typeof(modelocrud))
-            {
-                if (tipo.BaseType == T)
-                { T = tipo; break; }
-                else
-                    tipo = tipo.BaseType;
-            }
+            property.VerficaPropertyClassInsertProperties(type);
         }
 
-        private void VerficaPropertyClassInsertProperties(Type type)
+        private void UpdateProperty(Type tipo)
         {
-            Type ClassBase = GetType();
-            while (ClassBase != typeof(modelocrud))
-            {
-                if (ClassBase.BaseType == typeof(modelocrud))
-                    break;
-                else
-                    ClassBase = ClassBase.BaseType;
-            }
-            foreach (var property in type.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                 p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                  && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass &&
-                  p.PropertyType.GetProperties().Where(pr => pr.ReflectedType ==
-                pr.DeclaringType && pr.Name == "Id").ToList().Count != 0).ToList())
-            {
-                string properties = "";
-                string values = "";
-                object objeto = property.GetValue(this, null);
-                modelocrud model = (modelocrud)objeto;
-                model.Select_padrao = "Teste123";
-                model.Update_padrao = "Teste123";
-                model.Delete_padrao = "Teste123";
-                model.Insert_padrao = "Teste123";
-                foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
-                {
-                    properties += item.Name + ", ";
-                    values = VerificaProperties(values, item, classe, property.GetValue(this));
-                }
-                properties = properties.Replace(", Insert_padrao, Update_padrao, Delete_padrao, Select_padrao", "");
-                values = values.Replace(", 'Teste123'", "");
-                if (values != "")
-                {
-                    if (values != "")
-                        values = values.Remove(values.Length - 2, 2);
-                    if (properties != "")
-                        properties = properties.Remove(properties.Length - 2, 2);
-                    Insert_padrao += $"insert into {property.PropertyType.Name} ( {properties} ) values ( {values} ) ";
-                }
-            }
+            property.UpdateProperties(tipo);
         }
 
-        public void UpdateProperties(Type tipo)
+        private void VerficaPropertyClassUpdateProperty(Type type, int id)
         {
-            Type ClassBase = GetType();
-            string update = "";
-            string properties = "";
-            string values = "";
-            while (ClassBase != typeof(modelocrud))
-            {
-                if (ClassBase.BaseType == typeof(modelocrud))
-                {
-                    if (T == GetType())
-                        T = ClassBase;
-                    break;
-                }
-                else
-                    ClassBase = ClassBase.BaseType;
-            }
-
-            if (tipo == null)
-                T = GetType();
-
-            var propertiesDeclaring = T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
-            && !e.PropertyType.IsAbstract && e.PropertyType.Name != "List`1"
-            && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
-
-
-            foreach (var property in propertiesDeclaring)
-            {
-                properties = property.Name + "=";
-                values += properties + VerificaUpdateProperties(property, this);
-            }
-
-            values = values.Remove(values.Length - 2, 2);
-            properties = properties.Remove(properties.Length - 2, 2);
-
-            if (T != typeof(modelocrud) && propertiesDeclaring.Count > 0)
-            {
-                update = $" update {T.Name} set {values} " + $" where Id='{this.Id}' ";
-                Update_padrao += update;
-            }
-
-            if (tipo == null)
-            {
-                if (this.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                   p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                   && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
-                {
-                    VerficaPropertyClassUpdateProperties(this.GetType(), this.Id);
-                }
-            }
-
-            if (tipo != null)
-                while (tipo != typeof(modelocrud))
-                {
-                    if (tipo.BaseType == T)
-                        break;
-                    else
-                        tipo = tipo.BaseType;
-                }
-
-            T = GetType();
-            while (T != typeof(modelocrud))
-            {
-                if (T == tipo)
-                    break;
-                else
-                    T = T.BaseType;
-            }
-
+            property.VerficaPropertyClassUpdateProperties(type, id);
         }
 
-        private void VerficaPropertyClassUpdateProperties(Type type, int id)
+        private string VerificaProperty(string values, PropertyInfo prop, string classe, object objeto)
         {
-            var propertiesDeclaring = type.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
-                   p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                   && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList();
-
-            foreach (var property in propertiesDeclaring.Where(p =>
-                  p.PropertyType.GetProperties().Where(pr => pr.ReflectedType ==
-                pr.DeclaringType && pr.Name == "Id").ToList().Count != 0))
-            {
-                object objeto = property.GetValue(this, null);
-                modelocrud model = (modelocrud)objeto;
-                model.select_padrao = "";
-                model.update_padrao = "";
-                model.delete_padrao = "";
-                model.insert_padrao = "";
-                string update = "";
-                string properties = "";
-                string values = "";
-
-                foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
-                {
-                    properties = item.Name + "=";
-                    values += properties + VerificaUpdateProperties(item, objeto);
-                }
-
-                values = values.Remove(values.Length - 2, 2);
-                properties = properties.Remove(properties.Length - 2, 2);
-
-                if (T != typeof(modelocrud) && propertiesDeclaring.Count > 0)
-                {
-                    update = $" update {property.PropertyType.Name} set {values} " + $" where Id='{id}' ";
-                    Update_padrao += update.Replace(", Insert_padrao='', Update_padrao='', Delete_padrao='', Select_padrao=''", "");
-                }
-            }
+            return property.VerificaProperties(values, prop, classe, objeto);
         }
 
-        private string VerificaProperties(string values, PropertyInfo property, string classe, object objeto)
+        private string VerificaUpdateProperty(PropertyInfo prop, object objeto)
         {
-            if (property.PropertyType.Name == "List`1")
-            {
-                existeLista = true;
-            }
-            else
-            if (property.Name == "Id")
-                values += $"IDENT_CURRENT('{classe}'), ";
-            else
-            if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
-            {
-                double? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = double.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values += "" + prop.ToString() + ", ";
-                else
-                    values += "" + "null" + ", ";
-            }
-            else
-            if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
-            {
-                long? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = long.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values += "" + prop.ToString() + ", ";
-                else
-                    values += "" + "null" + ", ";
-            }
-            else
-            if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
-            {
-                TimeSpan? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = TimeSpan.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values += "'" + prop.ToString() + "', ";
-                else
-                    values += "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(DateTime))
-            {
-                DateTime? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = Convert.ToDateTime(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values += "'" + prop?.ToString("yyyy-MM-dd") + "', ";
-                else
-                    values += "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
-            {
-                int? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = int.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values += "" + prop.ToString() + ", ";
-                else
-                    values += "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(string))
-            {
-                string prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = property.GetValue(objeto, null).ToString();
-                if (prop != null)
-                    values += "'" + prop.ToString() + "', ";
-                else
-                    values += "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(bool))
-            {
-                bool prop = Convert.ToBoolean(property.GetValue(objeto, null));
-                if (prop) values += "'True', ";
-                else values += "'False', ";
-            }
-            else
-            {
-
-            }
-
-            return values;
+            return property.VerificaUpdateProperties(prop, objeto);
         }
-
-        private string VerificaUpdateProperties(PropertyInfo property, object objeto)
-        {
-            string values = "";
-            if (property.PropertyType.Name == "List`1")
-            {
-                existeLista = true;
-            }
-            else
-            if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
-            {
-                double? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = double.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values = "" + prop.ToString() + ", ";
-                else
-                    values = "" + "null" + ", ";
-            }
-            else
-            if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
-            {
-                long? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = long.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values = "" + prop.ToString() + ", ";
-                else
-                    values = "" + "null" + ", ";
-            }
-            else
-            if (property.PropertyType == typeof(TimeSpan?) || property.PropertyType == typeof(TimeSpan))
-            {
-                TimeSpan? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = TimeSpan.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values = "'" + prop.ToString() + "', ";
-                else
-                    values = "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(DateTime))
-            {
-                DateTime? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = Convert.ToDateTime(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values = "'" + prop?.ToString("yyyy-MM-dd") + "', ";
-                else
-                    values = "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
-            {
-                int? prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = int.Parse(property.GetValue(objeto, null).ToString());
-                if (prop != null)
-                    values = "" + prop.ToString() + ", ";
-                else
-                    values = "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(string))
-            {
-                string prop = null;
-                if (property.GetValue(objeto, null) != null)
-                    prop = property.GetValue(objeto, null).ToString();
-                if (prop != null)
-                    values = "'" + prop.ToString() + "', ";
-                else
-                    values = "" + "null" + ", ";
-            }
-            else
-             if (property.PropertyType == typeof(bool))
-            {
-                bool prop = Convert.ToBoolean(property.GetValue(objeto, null));
-                if (prop) values = "'True', ";
-                else values += "'False', ";
-            }
-            else
-            {
-
-            }
-
-            return values;
-        }
-        #endregion
-
-        public bool retornoDados(SqlDataReader dr, string pesquisa)
-        {
-            try
-            {
-                int valor = int.Parse(Convert.ToString(dr[pesquisa]));
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public void TratarExcessao(Exception ex)
-        {
-            if (ex.Message.Contains("instância"))
-            {
-                BDcomum.podeAbrir = false;
-            }
-            else if (ex.Message.Contains("reader"))
-            {
-                MessageBox.Show("A leitura dos dados não esta sendo realizada. Verifique sua conexão!!! " + this.GetType().Name);
-            }
-            else if (ex.Message.Contains("ExecuteReader"))
-            {
-                MessageBox.Show(" Verifique sua ExecuteReader!!! " + this.GetType().Name);
-            }
-            else if (!ex.Message.Contains("transporte") && !ex.Message.Contains("servidor não está respondendo")
-                && !ex.Message.Contains("não foi inicializada")
-                && !ex.Message.Contains("conexão é fechada"))
-                MessageBox.Show(ex.Message + " - " + this.GetType().Name);
-
-            else if (ex.Message.Contains("transporte") || ex.Message.Contains("servidor não está respondendo")
-                || ex.Message.Contains("não foi inicializada")
-                || ex.Message.Contains("conexão é fechada"))
-            {
-
-                Erro_Conexao = true;
-                QuantErro++;
-
-                if (QuantErro == 1)
-                    MessageBox.Show("Verifique sua conexão" + this.GetType().Name);
-            }
-        }
+        #endregion        
 
         #region MethodsQuery
         public List<modelocrud> PesquisarPorData(List<modelocrud> modelos, DateTime comecar, DateTime terminar, string campo)
@@ -1064,93 +496,7 @@ namespace database
         #region MethodPorcentagem          
         public static void calcularPorcentagem()
         {
-            try
-            {
-                var pessoas = Pessoa.TotalRegistro();
-                var PessoasEmMinisterios = PessoaMinisterio.TotalRegistro();
-                var PessoasEmReunioes = ReuniaoPessoa.TotalRegistro();
-                var MinisteriosEmCelulas = MinisterioCelula.TotalRegistro();
-                var Historicos = Historico.TotalRegistro();
-                var celulas = Celula.TotalRegistro();
-                var ministerios = Ministerio.TotalRegistro();
-                var reunioes = Reuniao.TotalRegistro();
-                var mudancas = MudancaEstado.TotalRegistro();
-                var totalRegistros = pessoas + celulas + ministerios + reunioes + mudancas
-                    + PessoasEmMinisterios + PessoasEmReunioes + Historicos + MinisteriosEmCelulas;
-
-                var quantVisitante = 0; var quamtCelula_Jovem = 0; var quantLider_Celula = 0;
-                var quantCrianca = 0; var quamtCelula_Adolescente = 0; var quantLider_Celula_Treinamento = 0;
-                var quantMembro_Batismo = 0; var quamtCelula_Casado = 0; var quantLider_Ministerio = 0;
-                var quantMembro_Aclamacao = 0; var quamtCelula_Crianca = 0; var quantLider_Ministerio_Treinamento = 0;
-                var quantMembro_Reconciliacao = 0; var quamtCelula_Adulto = 0; var quantSupervisor_Celula = 0;
-                var quantMembro_Transferencia = 0; var quantSupervisor_Celula_Treinamento = 0;
-                var quantVisitanteLgpd = 0; var quantSupervisor_Ministerio = 0;
-                var quantCriancaLgpd = 0; var quantSupervisor_Ministerio_Treinamento = 0;
-                var quantMembro_TransferenciaLgpd = 0;
-                var quantMembro_BatismoLgpd = 0;
-                var quantMembro_AclamacaoLgpd = 0;
-                var quantMembro_ReconciliacaoLgpd = 0;
-
-                var quantMudancas = 0;
-                var quantReunioes = 0;
-                var quantPessoasEmMinisterios = 0;
-                var quantPessoasEmReunioes = 0;
-                var quantMinisteriosEmCelulas = 0;
-                var quantHistoricos = 0;
-
-                if (Pessoa.visitantes != null) quantVisitante += Pessoa.visitantes.Count;
-                if (Pessoa.criancas != null) quantCrianca += Pessoa.criancas.Count;
-                if (Pessoa.membros_Aclamacao != null) quantMembro_Aclamacao += Pessoa.membros_Aclamacao.Count;
-                if (Pessoa.membros_Batismo != null) quantMembro_Batismo += Pessoa.membros_Batismo.Count;
-                if (Pessoa.membros_Reconciliacao != null) quantMembro_Reconciliacao += Pessoa.membros_Reconciliacao.Count;
-                if (Pessoa.membros_Transferencia != null) quantMembro_Transferencia += Pessoa.membros_Transferencia.Count;
-                if (Pessoa.visitantesLgpd != null) quantVisitanteLgpd += Pessoa.visitantesLgpd.Count;
-                if (Pessoa.criancasLgpd != null) quantCriancaLgpd += Pessoa.criancasLgpd.Count;
-                if (Pessoa.membros_AclamacaoLgpd != null) quantMembro_AclamacaoLgpd += Pessoa.membros_AclamacaoLgpd.Count;
-                if (Pessoa.membros_BatismoLgpd != null) quantMembro_BatismoLgpd += Pessoa.membros_BatismoLgpd.Count;
-                if (Pessoa.membros_ReconciliacaoLgpd != null) quantMembro_ReconciliacaoLgpd += Pessoa.membros_ReconciliacaoLgpd.Count;
-                if (Pessoa.membros_TransferenciaLgpd != null) quantMembro_TransferenciaLgpd += Pessoa.membros_TransferenciaLgpd.Count;
-
-                if (Celula.celulasAdolescente != null) quamtCelula_Adolescente += Celula.celulasAdolescente.Count;
-                if (Celula.celulasAdulto != null) quamtCelula_Adulto += Celula.celulasAdulto.Count;
-                if (Celula.celulasCasado != null) quamtCelula_Casado += Celula.celulasCasado.Count;
-                if (Celula.celulasJovem != null) quamtCelula_Jovem += Celula.celulasJovem.Count;
-                if (Celula.celulasCrianca != null) quamtCelula_Crianca += Celula.celulasCrianca.Count;
-
-                if (Ministerio.lideresCelula != null) quantLider_Celula += Ministerio.lideresCelula.Count;
-                if (Ministerio.LideresCelulaTreinamento != null) quantLider_Celula_Treinamento += Ministerio.LideresCelulaTreinamento.Count;
-                if (Ministerio.lideresMinisterio != null) quantLider_Ministerio += Ministerio.lideresMinisterio.Count;
-                if (Ministerio.lideresMinisterioTreinamento != null) quantLider_Ministerio_Treinamento += Ministerio.lideresMinisterioTreinamento.Count;
-                if (Ministerio.supervisoresCelula != null) quantSupervisor_Celula += Ministerio.supervisoresCelula.Count;
-                if (Ministerio.supervisoresCelulaTreinamento != null) quantSupervisor_Celula_Treinamento += Ministerio.supervisoresCelulaTreinamento.Count;
-                if (Ministerio.supervisoresMinisterio != null) quantSupervisor_Ministerio += Ministerio.supervisoresMinisterio.Count;
-                if (Ministerio.supervisoresMinisterioTreinamento != null) quantSupervisor_Ministerio_Treinamento += Ministerio.supervisoresMinisterioTreinamento.Count;
-
-                if (Reuniao.Reunioes != null) quantReunioes += Reuniao.Reunioes.Count;
-                if (MudancaEstado.Mudancas != null) quantMudancas += MudancaEstado.Mudancas.Count;
-                if (PessoaMinisterio.PessoaMinisterios != null) quantPessoasEmMinisterios += PessoaMinisterio.PessoaMinisterios.Count;
-                if (ReuniaoPessoa.ReuniaoPessoas != null) quantPessoasEmReunioes += ReuniaoPessoa.ReuniaoPessoas.Count;
-                if (MinisterioCelula.MinisterioCelulas != null) quantMinisteriosEmCelulas += MinisterioCelula.MinisterioCelulas.Count;
-                if (Historico.Historicos != null) quantHistoricos += Historico.Historicos.Count;
-
-                var quantidadeCarregada = quantMudancas + quantReunioes +
-                quantVisitante + quantLider_Celula + quamtCelula_Jovem +
-                quantCrianca + quantLider_Celula_Treinamento + quamtCelula_Adolescente +
-                quantMembro_Batismo + quantLider_Ministerio + quamtCelula_Casado +
-                quantMembro_Aclamacao + quantLider_Ministerio_Treinamento + quamtCelula_Crianca +
-                quantMembro_Reconciliacao + quantSupervisor_Celula + quamtCelula_Adulto +
-                quantMembro_Transferencia + quantSupervisor_Celula_Treinamento +
-                quantVisitanteLgpd + quantSupervisor_Ministerio +
-                quantCriancaLgpd + quantSupervisor_Ministerio_Treinamento +
-                quantMembro_TransferenciaLgpd + quantPessoasEmMinisterios +
-                quantMembro_BatismoLgpd + quantPessoasEmReunioes +
-                quantMembro_AclamacaoLgpd + quantMinisteriosEmCelulas +
-                quantMembro_ReconciliacaoLgpd + quantHistoricos;
-
-                var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
-                textoPorcentagem = porcentagem.ToString() + "%";
-            }
-            catch { }
+            calculo.CalcularPorcentagem();            
         }
         #endregion
     }

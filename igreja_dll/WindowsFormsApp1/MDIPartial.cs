@@ -70,8 +70,6 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem19_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Visitante();
-            p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -81,8 +79,6 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem25_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Crianca();
-            p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -92,8 +88,6 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem21_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Aclamacao();
-            p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -103,8 +97,6 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem22_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Batismo();
-            p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new business.classes.Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -114,8 +106,6 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem23_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Reconciliacao();
-            p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;
@@ -125,8 +115,6 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem24_Click(object sender, EventArgs e)
         {
             PessoaDado p2 = new Membro_Transferencia();
-            p2.Endereco = new business.classes.Endereco();
-            p2.Telefone = new Telefone();
             DadoPessoal cv = new DadoPessoal(p2, false, false, false);
             cv.MdiParent = this;
             cv.Text = "Janela " + childFormNumber++;

@@ -1,22 +1,14 @@
-﻿using business.classes;
+﻿using business.classes.Intermediario;
+using business.classes.Ministerio;
+using database;
 using database.banco;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using business.classes.Ministerio;
-using database;
-using business.classes.Intermediario;
-using Newtonsoft.Json;
-using business.contrato;
-using business.implementacao;
-
+using System.Threading.Tasks;
 namespace business.classes.Abstrato
 {
     [Table("Ministerio")]
@@ -130,33 +122,7 @@ namespace business.classes.Abstrato
 
             return t8.Result;
         }
-
-        private List<modelocrud> buscarPessoas(int? id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<Pessoa>().ToList().Count != Pessoa.TotalRegistro()) { }
-                lista = Modelos.OfType<Pessoa>().Where(m => m.celula_ == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        private List<modelocrud> buscarCelulas(int? id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<MinisterioCelula>().ToList().Count != MinisterioCelula.TotalRegistro()) { }
-                lista = Modelos.OfType<MinisterioCelula>().Where(m => m.MinisterioId == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
-        }        
-
+        
         public static int TotalRegistro()
         {
             var _TotalRegistros = 0;

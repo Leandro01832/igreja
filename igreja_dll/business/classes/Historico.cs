@@ -25,7 +25,6 @@ namespace business.classes
         public static List<Historico> Historicos;
 
         public Historico() : base(){ }
-
         public Historico(int id) : base(id){ }
 
         public static int TotalRegistro()
@@ -55,6 +54,5 @@ namespace business.classes
             }
             return _TotalRegistros;
         }
-
     }
 }

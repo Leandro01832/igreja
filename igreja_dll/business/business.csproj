@@ -87,6 +87,8 @@
     <Compile Include="classes\Ministerio\Supervisor_Celula_Treinamento.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio.cs" />
     <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
+    <Compile Include="contrato\IPropertiesCrud.cs" />
+    <Compile Include="implementacao\Calculo.cs" />
     <Compile Include="implementacao\MudancaEstado.cs" />
     <Compile Include="classes\PessoasLgpd\CriancaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="database\IgrejaDB.cs" />
     <Compile Include="database\modelocrud.cs" />
     <Compile Include="implementacao\Pesquisar.cs" />
+    <Compile Include="implementacao\PropertiesCrud.cs" />
     <Compile Include="Migrations\202108030159089_Inicio.cs" />
     <Compile Include="Migrations\202108030159089_Inicio.Designer.cs">
       <DependentUpon>202108030159089_Inicio.cs</DependentUpon>

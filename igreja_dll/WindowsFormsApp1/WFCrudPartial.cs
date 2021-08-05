@@ -8,6 +8,7 @@ using business.classes.PessoasLgpd;
 using business.implementacao;
 using database;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario;
@@ -81,6 +82,8 @@ namespace WindowsFormsApp1
 
         private void Atualizar_Click(object sender, EventArgs e)
         {
+            List<modelocrud> remover = new List<modelocrud>();
+
             if (modelo is Celula)
             {
                 var p = (Celula)modelo;
@@ -100,7 +103,10 @@ namespace WindowsFormsApp1
 
                     foreach (var item in numeros)
                      if (!arrNum.Contains(item))
-                     p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
+                     {
+                         p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
+                         remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
+                     }
                 }
             }
 
@@ -123,7 +129,10 @@ namespace WindowsFormsApp1
 
                     foreach (var item in numeros)
                         if (!arrNum.Contains(item))
+                        {
                             p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
+                            remover.Add(p.Pessoas.First(i => i.PessoaId == item));
+                        }
                 }
 
                 if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
@@ -141,8 +150,11 @@ namespace WindowsFormsApp1
                             p.Celulas.Add(new MinisterioCelula { MinisterioId = p.Id, CelulaId = item });
 
                     foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                            p.Celulas.Remove(p.Celulas.First(i => i.CelulaId == item));
+                    if (!arrNum.Contains(item))
+                    {
+                        p.Celulas.Remove(p.Celulas.First(i => i.CelulaId == item));
+                        remover.Add(p.Celulas.First(i => i.CelulaId == item));
+                    }
                 }
             }
 
@@ -165,7 +177,10 @@ namespace WindowsFormsApp1
 
                     foreach (var item in numeros)
                         if (!arrNum.Contains(item))
+                        {
                             p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
+                            remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
+                        }
                 }
 
                 if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
@@ -183,8 +198,11 @@ namespace WindowsFormsApp1
                             p.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item, PessoaId = p.Id });
 
                     foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                            p.Reuniao.Remove(p.Reuniao.First(i => i.ReuniaoId == item));
+                    if (!arrNum.Contains(item))
+                    {
+                        p.Reuniao.Remove(p.Reuniao.First(i => i.ReuniaoId == item));
+                        remover.Add(p.Reuniao.First(i => i.ReuniaoId == item));
+                    }
                 }
 
             }
@@ -208,12 +226,61 @@ namespace WindowsFormsApp1
 
                     foreach (var item in numeros)
                         if (!arrNum.Contains(item))
+                        {
                             p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
+                            remover.Add(p.Pessoas.First(i => i.PessoaId == item));
+                        }
                 }
             }
 
-            modelo.alterar(modelo.Id);
-            MessageBox.Show("Informação atualizada com sucesso.");
+            if (modelo.ErroNalista == "")
+            {
+                modelo.alterar(modelo.Id);
+
+                foreach (var item in remover)
+                    item.excluir(item.Id);
+
+                if (modelo is Celula)
+                {
+                    var p = (Celula)modelo;
+                    if (p.Ministerios != null)
+                        foreach (var item in p.Ministerios)
+                            item.salvar();
+                }
+                if (modelo is Ministerio)
+                {
+                    var p = (Ministerio)modelo;
+                    if (p.Pessoas != null)
+                        foreach (var item in p.Pessoas)
+                            item.salvar();
+                    if (p.Celulas != null)
+                        foreach (var item in p.Celulas)
+                            item.salvar();
+                }
+                if (modelo is Pessoa)
+                {
+                    var p = (Pessoa)modelo;
+                    if (p.Ministerios != null)
+                        foreach (var item in p.Ministerios)
+                            item.salvar();
+                    if (p.Reuniao != null)
+                        foreach (var item in p.Reuniao)
+                            item.salvar();
+                }
+                if (modelo is Reuniao)
+                {
+                    var p = (Reuniao)modelo;
+                    if (p.Pessoas != null)
+                        foreach (var item in p.Pessoas)
+                            item.salvar();
+                }
+                MessageBox.Show("Informação atualizada com sucesso.");
+            }
+            else
+            {
+                MessageBox.Show(modelo.ErroNalista);
+                modelo.ErroNalista = "";
+            }
         }
 
         private void Deletar_Click(object sender, EventArgs e)

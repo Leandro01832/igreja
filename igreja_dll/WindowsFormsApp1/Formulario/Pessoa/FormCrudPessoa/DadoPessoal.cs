@@ -31,14 +31,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         private void DadoPessoal_Load(object sender, EventArgs e)
         {
             this.Text = "Daddos pessoais.";
-
-            if (ModeloNovo != null)
-            {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Telefone = new business.classes.Telefone();
-                p.Endereco = new business.classes.Endereco();                
-            }
-
+            
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;

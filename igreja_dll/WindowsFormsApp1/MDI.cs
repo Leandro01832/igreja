@@ -233,7 +233,6 @@ namespace WindowsFormsApp1
         private void celulaParaAdultosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var celula = new Celula_Adulto();
-            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -317,7 +316,6 @@ namespace WindowsFormsApp1
         private void celulaParaCriançasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var celula = new Celula_Crianca();
-            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -328,7 +326,6 @@ namespace WindowsFormsApp1
         private void celulaParaAdolescentesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var celula = new Celula_Adolescente();
-            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -339,7 +336,6 @@ namespace WindowsFormsApp1
         private void celulaParaJovensToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var celula = new Celula_Jovem();
-            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;
@@ -350,7 +346,6 @@ namespace WindowsFormsApp1
         private void celulaParaCasadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var celula = new Celula_Casado();
-            celula.EnderecoCelula = new EnderecoCelula();
             DadoCelula dc = new DadoCelula(celula,
                 false, false, false);
             dc.MdiParent = this;

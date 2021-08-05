@@ -13,9 +13,14 @@ namespace business.classes.Pessoas
         public PessoaDado() : base()
         {
             MudancaEstado = new MudancaEstado();
+            Endereco = new Endereco();
+            Telefone = new Telefone();
         }
 
-        protected PessoaDado(int m) : base(m){}
+        protected PessoaDado(int m) : base(m)
+        {
+            
+        }
         
         #region Properties
         [Display(Name = "Data de nascimento")]

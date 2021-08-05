@@ -1,5 +1,6 @@
 ﻿using business.classes.Celulas;
 using business.classes.Intermediario;
+using business.classes.Ministerio;
 using database;
 using database.banco;
 using Newtonsoft.Json;
@@ -10,8 +11,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-
-
 namespace business.classes.Abstrato
 {
     [Table("Celula")]
@@ -36,8 +35,39 @@ namespace business.classes.Abstrato
 
         [Display(Name = "Máximo de pessoas")]
         public int Maximo_pessoa { get; set; }
+        
+        private List<MinisterioCelula> ministerios;
         [JsonIgnore]
-        public virtual List<MinisterioCelula> Ministerios { get; set; }
+        public virtual List<MinisterioCelula> Ministerios
+        {
+            get { return ministerios; }
+            set
+            {
+                if (value.Count <= 1)
+                    ErroNalista = @"Celula precisa de pelo menos um líder de celula e um líder de celula em treinamento.
+                                    Verifique a lista de ministérios";
+                else
+                {
+                    bool condicao1 = false;
+                    bool condicao2 = false;
+                    foreach(var item in value)
+                    {
+                        var model1 = new Lider_Celula            (item.MinisterioId); var p1 = model1.recuperar(item.MinisterioId);
+                        var model2 = new Lider_Celula_Treinamento(item.MinisterioId); var p2 = model2.recuperar(item.MinisterioId);
+
+                        if (p1) condicao1 = true;
+                        if (p2) condicao2 = true;
+                        if(condicao1 && condicao2)
+                        {
+                            ErroNalista = "";
+                            break;
+                        }
+                    }
+
+                }
+                ministerios = value;
+            }
+        }
         [JsonIgnore]
         public virtual EnderecoCelula EnderecoCelula { get; set; }
         
@@ -48,12 +78,14 @@ namespace business.classes.Abstrato
         public static List<Celula_Adulto> celulasAdulto;
         public static List<Celula_Crianca> celulasCrianca;
         public static List<Celula_Casado> celulasCasado;
-        #endregion
-        
+        #endregion        
 
         public Celula() : base()
         {
             this.Maximo_pessoa = 50;
+            EnderecoCelula = new EnderecoCelula();
+            ErroNalista = @"Celula precisa de pelo menos um lider de celula e um lider de celula em treinamento.
+                            Verifique a lista de ministérios da celula";
         }
 
         protected Celula(int m) : base(m) { }
@@ -104,32 +136,6 @@ namespace business.classes.Abstrato
             Task.WaitAll(t, t2, t3, t4, t5);
 
             return t5.Result;
-        }
-
-        private List<modelocrud> recuperarMinisterios(int id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<MinisterioCelula>().ToList().Count != MinisterioCelula.TotalRegistro()) { }
-                lista = Modelos.OfType<MinisterioCelula>().Where(m => m.CelulaId == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
-        }
-
-        private List<modelocrud> buscarPessoas(int id)
-        {
-            List<modelocrud> lista = new List<modelocrud>();
-            Task<List<modelocrud>> t = Task.Factory.StartNew(() =>
-            {
-                while (Modelos.OfType<Pessoa>().ToList().Count != Pessoa.TotalRegistro()) { }
-                lista = Modelos.OfType<Pessoa>().Where(m => m.celula_ == id).Cast<modelocrud>().ToList();
-                return lista;
-            });
-            Task.WaitAll(t);
-            return t.Result;
         }
         
         public static int TotalRegistro()
