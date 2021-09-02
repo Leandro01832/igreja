@@ -68,8 +68,6 @@ D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.
 D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.CopyComplete
 D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.dll
 D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.pdb
-D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.Migrations.Inicial.resources
-D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.GenerateResource.cache
 D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\bin\Debug\RepositorioEF.dll.config
 D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\bin\Debug\RepositorioEF.dll
 D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\bin\Debug\RepositorioEF.pdb
@@ -90,3 +88,5 @@ D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.cspro
 D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.CopyComplete
 D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.dll
 D:\Downloads\copia-igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.pdb
+D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.Migrations.Inicio.resources
+D:\codigo-github\Igreja\igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csproj.GenerateResource.cache

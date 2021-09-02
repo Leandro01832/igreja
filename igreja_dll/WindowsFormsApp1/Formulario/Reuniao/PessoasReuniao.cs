@@ -19,7 +19,17 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void Txt_pessoas_Leave(object sender, EventArgs e)
         {
-            AddNaListaReuniaoPessoas = txt_pessoas.Text;
+            var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
+            try
+            {
+                int teste = int.Parse(arr[arr.Length - 1]);
+                AddNaListaReuniaoPessoas = txt_pessoas.Text;
+            }
+            catch
+            {
+                AddNaListaReuniaoPessoas = "";
+                txt_pessoas.Text = "";
+            }
         }
 
         private void PessoasReuniao_Load(object sender, EventArgs e)

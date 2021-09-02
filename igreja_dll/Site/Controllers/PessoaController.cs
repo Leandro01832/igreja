@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using business.classes.Abstrato;
+using database;
 using Microsoft.AspNet.Identity;
 using repositorioEF;
 using RepositorioEF;
@@ -21,6 +22,7 @@ namespace Site.Controllers
         // GET: Pessoa
         public ActionResult Index()
         {
+            modelocrud.EntityCrud = true;
             var pessoas = db.pessoas.Include(p => p.Celula);
             return View(pessoas.ToList());
         }
@@ -28,6 +30,7 @@ namespace Site.Controllers
         // GET: Pessoa/Details/5
         public ActionResult Details(int? id)
         {
+            modelocrud.EntityCrud = true;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -54,6 +57,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Codigo,Email,Falta,celula_,Img")] Pessoa pessoa)
         {
+            modelocrud.EntityCrud = true;
             if (ModelState.IsValid)
             {
                 db.pessoas.Add(pessoa);
@@ -88,7 +92,8 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Pessoa pessoa)
         {
-                db.Entry(pessoa).State = EntityState.Modified;
+            modelocrud.EntityCrud = true;
+            db.Entry(pessoa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
         }
@@ -113,6 +118,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            modelocrud.EntityCrud = true;
             Pessoa pessoa = db.pessoas.Find(id);
             db.pessoas.Remove(pessoa);
             db.SaveChanges();

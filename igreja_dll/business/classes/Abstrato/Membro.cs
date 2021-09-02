@@ -13,12 +13,7 @@ namespace business.classes.Abstrato
         public int Data_batismo { get; set; }
 
         [ScaffoldColumn(false)]
-        public bool Desligamento { get; set; }
-
-        public bool Save()
-        {
-            return true;
-        }
+        public bool Desligamento { get; set; }        
 
         public string Motivo_desligamento { get; set; }
 

@@ -74,6 +74,7 @@
     <Compile Include="classes\ConfiguraRota.cs" />
     <Compile Include="classes\Endereco.cs" />
     <Compile Include="classes\Historico.cs" />
+    <Compile Include="contrato\IEntity.cs" />
     <Compile Include="contrato\IMudancaEstado.cs" />
     <Compile Include="classes\Intermediario\MinisterioCelula.cs" />
     <Compile Include="classes\Intermediario\PessoaMinisterio.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
     <Compile Include="contrato\IPropertiesCrud.cs" />
     <Compile Include="implementacao\Calculo.cs" />
+    <Compile Include="implementacao\Entity.cs" />
     <Compile Include="implementacao\MudancaEstado.cs" />
     <Compile Include="classes\PessoasLgpd\CriancaLgpd.cs" />
     <Compile Include="classes\PessoasLgpd\Membro_AclamacaoLgpd.cs" />
@@ -118,6 +120,7 @@
       <DependentUpon>202108030159089_Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="OpcoesBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

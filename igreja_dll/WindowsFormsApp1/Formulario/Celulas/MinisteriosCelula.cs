@@ -30,7 +30,17 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void Txt_ministerio_Leave(object sender, EventArgs e)
         {
-            AddNaListaCelulaMinisterios = txt_ministerio.Text;
+            var arr = txt_ministerio.Text.Replace(" ", "").Split(',');
+            try
+            {
+                int teste = int.Parse(arr[arr.Length - 1]);
+                AddNaListaCelulaMinisterios = txt_ministerio.Text;
+            }
+            catch
+            {
+                txt_ministerio.Text = "";
+                AddNaListaCelulaMinisterios = "";
+            }
         }
 
         private void MinisteriosCelula_Load(object sender, EventArgs e)

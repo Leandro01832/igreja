@@ -25,12 +25,32 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void Txt_celulas_Leave(object sender, EventArgs e)
         {
-            AddNaListaMinisterioCelulas = txt_celulas.Text;
+            var arr = txt_celulas.Text.Replace(" ", "").Split(',');
+            try
+            {
+                int teste = int.Parse(arr[arr.Length - 1]);
+                AddNaListaMinisterioCelulas = txt_celulas.Text;
+            }
+            catch
+            {
+                AddNaListaMinisterioCelulas = "";
+                txt_celulas.Text = "";
+            }
         }
 
         private void Txt_pessoas_Leave(object sender, EventArgs e)
         {
-            AddNaListaMinisterioPessoas = txt_pessoas.Text;
+            var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
+            try
+            {
+                int teste = int.Parse(arr[arr.Length - 1]);
+                AddNaListaMinisterioPessoas = txt_pessoas.Text;
+            }
+            catch
+            {
+                AddNaListaMinisterioPessoas = "";
+                txt_pessoas.Text = "";
+            }
         }
 
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)

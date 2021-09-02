@@ -5,7 +5,7 @@ using database;
 
 namespace business.implementacao
 {
-   public class Calculo : modelocrud
+   public class Calculo 
     {
         public void CalcularPorcentagem()
         {
@@ -93,7 +93,7 @@ namespace business.implementacao
                 quantMembro_ReconciliacaoLgpd + quantHistoricos;
 
                 var porcentagem = (int)((100 * quantidadeCarregada) / totalRegistros);
-                textoPorcentagem = porcentagem.ToString() + "%";
+                modelocrud.textoPorcentagem = porcentagem.ToString() + "%";
             }
             catch { }
         }

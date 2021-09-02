@@ -34,16 +34,26 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             
             if (modelo != null)
             {
-                var p = (PessoaDado)modelo;
-                text_nome.Text = p.NomePessoa;
-                text_rg.Text = p.Rg;
-                text_cpf.Text = p.Cpf;
-                listestado_civil.Text = p.Estado_civil;
-                listBox_status.Text = p.Status;
-                mask_data_nascimento.Text = p.Data_nascimento.ToString("dd/MM/yyyy");
-                textemail.Text = p.Email;
-                radioButton_masculino.Checked = p.Sexo_masculino;
-                radioButton_feminino.Checked = p.Sexo_feminino; 
+                try
+                {
+                    var p = (PessoaDado)modelo;
+                    text_nome.Text = p.NomePessoa;
+                    text_rg.Text = p.Rg;
+                    text_cpf.Text = p.Cpf;
+                    listestado_civil.Text = p.Estado_civil;
+                    listBox_status.Text = p.Status;
+                    mask_data_nascimento.Text = p.Data_nascimento.ToString("dd/MM/yyyy");
+                    textemail.Text = p.Email;
+                    radioButton_masculino.Checked = p.Sexo_masculino;
+                    radioButton_feminino.Checked = p.Sexo_feminino;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message == "Error_Data_Nascimento")
+                    {
+                        MessageBox.Show("Informe a data de nascimento.");
+                    }
+                }
             }
         }
 

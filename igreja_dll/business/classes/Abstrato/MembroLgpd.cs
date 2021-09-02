@@ -1,11 +1,9 @@
-﻿
-using business.classes.Pessoas;
+﻿using business.classes.Pessoas;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace business.classes.Abstrato
 {
-
     [Table("MembroLgpd")]
     public abstract class MembroLgpd : PessoaLgpd
     {        
@@ -15,12 +13,7 @@ namespace business.classes.Abstrato
         public int Data_batismo { get; set; }
 
         public bool Desligamento { get; set; }
-
-        public bool Save()
-        {
-            return true;
-        }
-
+        
         public string Motivo_desligamento { get; set; }
 
         public MembroLgpd() : base(){ }

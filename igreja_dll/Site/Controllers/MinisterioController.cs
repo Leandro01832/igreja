@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using RepositorioEF;
 using business.classes.Abstrato;
 using business.classes.Ministerio;
+using database;
 
 namespace Site.Controllers
 {
@@ -21,6 +17,7 @@ namespace Site.Controllers
         // GET: Ministerio
         public async Task<ActionResult> Index()
         {
+            modelocrud.EntityCrud = true;
             return View(await db.ministerio.ToListAsync());
         }
 
@@ -28,6 +25,7 @@ namespace Site.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Details(int? id)
         {
+            modelocrud.EntityCrud = true;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,6 +107,7 @@ namespace Site.Controllers
         
         private async Task<ActionResult> Editar(Ministerio ministerio)
         {
+            modelocrud.EntityCrud = true;
             db.Entry(ministerio).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -117,6 +116,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         private async Task<ActionResult> Create(Ministerio ministerio)
         {
+            modelocrud.EntityCrud = true;
             db.ministerio.Add((Ministerio)ministerio);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -159,6 +159,7 @@ namespace Site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            modelocrud.EntityCrud = true;
             Ministerio ministerio = await db.ministerio.FindAsync(id);
             db.ministerio.Remove(ministerio);
             await db.SaveChangesAsync();

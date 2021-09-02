@@ -92,21 +92,22 @@ namespace WindowsFormsApp1
                     var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
                     int[] arrNum = new int[arr.Length];
                     for (int i = 0; i < arr.Length; i++)
-                    arrNum[i] = int.Parse(arr[i]);
+                        arrNum[i] = int.Parse(arr[i]);
                     int[] numeros = new int[p.Ministerios.Count];
                     for (int i = 0; i < numeros.Length; i++)
-                    numeros[i] = p.Ministerios[i].MinisterioId;
+                        numeros[i] = p.Ministerios[i].MinisterioId;
 
                     foreach (var item in arrNum)
-                    if (!numeros.Contains(item))
-                    p.Ministerios.Add(new MinisterioCelula { MinisterioId= item, CelulaId=p.Id  });
-
+                        if (!numeros.Contains(item))
+                            p.Ministerios.Add(new MinisterioCelula { MinisterioId = item, CelulaId = p.Id });
+                    p.Ministerios = p.Ministerios;
                     foreach (var item in numeros)
-                     if (!arrNum.Contains(item))
-                     {
-                         p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
-                         remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
-                     }
+                        if (!arrNum.Contains(item))
+                        {
+                            p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
+                            remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
+                            p.Ministerios = p.Ministerios;
+                        }
                 }
             }
 
@@ -126,12 +127,13 @@ namespace WindowsFormsApp1
                     foreach (var item in arrNum)
                         if (!numeros.Contains(item))
                             p.Pessoas.Add(new PessoaMinisterio { MinisterioId = p.Id, PessoaId = item });
-
+                    p.Pessoas = p.Pessoas;
                     foreach (var item in numeros)
                         if (!arrNum.Contains(item))
                         {
                             p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
                             remover.Add(p.Pessoas.First(i => i.PessoaId == item));
+                            p.Pessoas = p.Pessoas;
                         }
                 }
 
@@ -148,13 +150,14 @@ namespace WindowsFormsApp1
                     foreach (var item in arrNum)
                         if (!numeros.Contains(item))
                             p.Celulas.Add(new MinisterioCelula { MinisterioId = p.Id, CelulaId = item });
-
+                    p.Celulas = p.Celulas;
                     foreach (var item in numeros)
-                    if (!arrNum.Contains(item))
-                    {
-                        p.Celulas.Remove(p.Celulas.First(i => i.CelulaId == item));
-                        remover.Add(p.Celulas.First(i => i.CelulaId == item));
-                    }
+                        if (!arrNum.Contains(item))
+                        {
+                            p.Celulas.Remove(p.Celulas.First(i => i.CelulaId == item));
+                            remover.Add(p.Celulas.First(i => i.CelulaId == item));
+                            p.Celulas = p.Celulas;
+                        }
                 }
             }
 
@@ -174,12 +177,13 @@ namespace WindowsFormsApp1
                     foreach (var item in arrNum)
                         if (!numeros.Contains(item))
                             p.Ministerios.Add(new PessoaMinisterio { MinisterioId = item, PessoaId = p.Id });
-
+                    p.Ministerios = p.Ministerios;
                     foreach (var item in numeros)
                         if (!arrNum.Contains(item))
                         {
                             p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
                             remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
+                            p.Ministerios = p.Ministerios;
                         }
                 }
 
@@ -196,13 +200,14 @@ namespace WindowsFormsApp1
                     foreach (var item in arrNum)
                         if (!numeros.Contains(item))
                             p.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item, PessoaId = p.Id });
-
+                    p.Reuniao = p.Reuniao;
                     foreach (var item in numeros)
-                    if (!arrNum.Contains(item))
-                    {
-                        p.Reuniao.Remove(p.Reuniao.First(i => i.ReuniaoId == item));
-                        remover.Add(p.Reuniao.First(i => i.ReuniaoId == item));
-                    }
+                        if (!arrNum.Contains(item))
+                        {
+                            p.Reuniao.Remove(p.Reuniao.First(i => i.ReuniaoId == item));
+                            remover.Add(p.Reuniao.First(i => i.ReuniaoId == item));
+                            p.Reuniao = p.Reuniao;
+                        }
                 }
 
             }
@@ -223,12 +228,13 @@ namespace WindowsFormsApp1
                     foreach (var item in arrNum)
                         if (!numeros.Contains(item))
                             p.Pessoas.Add(new ReuniaoPessoa { ReuniaoId = p.Id, PessoaId = item });
-
+                    p.Pessoas = p.Pessoas;
                     foreach (var item in numeros)
                         if (!arrNum.Contains(item))
                         {
                             p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
                             remover.Add(p.Pessoas.First(i => i.PessoaId == item));
+                            p.Pessoas = p.Pessoas;
                         }
                 }
             }

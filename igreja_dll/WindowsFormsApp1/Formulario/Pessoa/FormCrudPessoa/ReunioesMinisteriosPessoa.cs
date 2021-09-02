@@ -59,12 +59,32 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void Txt_reunioes_Leave(object sender, EventArgs e)
         {
-            AddNaListaPessoaReunioes = txt_reunioes.Text;
+            var arr = txt_reunioes.Text.Replace(" ", "").Split(',');
+            try
+            {
+                int teste = int.Parse(arr[arr.Length - 1]);
+                AddNaListaPessoaReunioes = txt_reunioes.Text;
+            }
+            catch
+            {
+                AddNaListaPessoaReunioes = "";
+                txt_reunioes.Text = "";
+            }
         }
 
         private void Txt_ministerios_Leave(object sender, EventArgs e)
         {
-            AddNaListaPessoaMinsterios = txt_ministerios.Text;
+            var arr = txt_ministerios.Text.Replace(" ", "").Split(',');
+            try
+            {
+                int teste = int.Parse(arr[arr.Length - 1]);
+                AddNaListaPessoaMinsterios = txt_ministerios.Text;
+            }
+            catch
+            {
+                txt_ministerios.Text = "";
+                AddNaListaPessoaMinsterios = "";
+            }
         }
 
         private void ReunioesMinisteriosPessoa_Load(object sender, EventArgs e)

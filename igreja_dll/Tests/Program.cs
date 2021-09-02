@@ -13,18 +13,19 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tests
 {
     class Program
     {
 
-       static string[] arr = new string[50];
-       static string[] arr2 = new string[10];
+        static string[] arr = new string[50];
+        static string[] arr2 = new string[10];
         static Random randNum = new Random();
-       private static BDcomum  bd = new BDcomum();
+        private static BDcomum bd = new BDcomum();
         static int loop = 40;
-        
+
 
         static void Main(string[] args)
         {
@@ -86,7 +87,7 @@ namespace Tests
             //CadastrarMinisteriosEmCelulas();
 
             Visitante pes = new Visitante();
-            
+
                 pes.Codigo = bd.GetUltimoRegistroPessoa() + 1;
                 pes.celula_ = null;
                 pes.Chamada = new Chamada();
@@ -98,7 +99,7 @@ namespace Tests
                 pes.NomePessoa = arr[10] + " " + arr2[9];
                 pes.Condicao_religiosa = " - ";
                 pes.Cpf = "08270839639";
-                pes.Data_nascimento = DateTime.Now.AddYears(-20);
+              //  pes.Data_nascimento = DateTime.Now.AddYears(-20);
                 pes.Data_visita = DateTime.Now;
                 pes.Email = arr2[5].Replace(" ", "") + "08270839639" + "@gmail.com";
                 pes.Endereco = new Endereco();
@@ -122,12 +123,40 @@ namespace Tests
                 pes.Telefone.Celular = "(11)23412-8912";
                 pes.Telefone.Fone = "(21)29412-1917";
                 pes.Telefone.Whatsapp = "(31)34985-6734";
-                
-            //Act - metodo sob teste
-            pes.salvar();
 
-            Console.WriteLine("Ok. Tudo Certo!!!");
-            Console.ReadLine();
+            //Act - metodo sob teste
+            try { pes.salvar(); }
+            catch (Exception ex)
+            {
+                
+                    MessageBox.Show(pes.exibirMensagemErro(ex, 2));
+                
+               // return;
+            }
+
+            //List<PropertyInfo> listaprop = new List<PropertyInfo>();
+            //List<PropertyInfo> lista2 = new List<PropertyInfo>();
+            //string valores = " ";
+
+            //var listaTypes = typeof(modelocrud).Assembly.GetTypes()
+            //    .Where(type => type.IsSubclassOf(typeof(modelocrud)))
+            //    .Select(type => type).ToList();
+
+            //foreach (var item in listaTypes)
+            //    listaprop.AddRange(item.GetProperties().Where(p => p.PropertyType.Name == "List`1").ToList());
+
+            //foreach (var proper in listaprop)
+            //{
+            //    if (!valores.Contains(" " + proper.PropertyType.GetGenericArguments()[0].Name + ","))
+            //    {
+            //        lista2.Add(proper);
+            //        valores += proper.PropertyType.GetGenericArguments()[0].Name + ", ";
+            //    }
+            //}
+
+            //foreach (var pr in lista2)
+            Console.WriteLine("ok");
+            Console.Read();
         }
 
         #region People
@@ -883,7 +912,7 @@ namespace Tests
                     Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     Proposito = " - "
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -909,7 +938,7 @@ namespace Tests
                     Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     Proposito = " - "
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -935,7 +964,7 @@ namespace Tests
                     Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     Proposito = " - "
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -961,7 +990,7 @@ namespace Tests
                     Pessoas = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     Proposito = " - "
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -988,7 +1017,7 @@ namespace Tests
                     Proposito = " - ",
                     Maximo_celula = randNum.Next(1, 5)
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -1015,7 +1044,7 @@ namespace Tests
                     Proposito = " - ",
                     Maximo_celula = randNum.Next(1, 5)
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -1042,7 +1071,7 @@ namespace Tests
                     Proposito = " - ",
                     Maximo_celula = randNum.Next(1, 5)
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -1069,7 +1098,7 @@ namespace Tests
                     Proposito = " - ",
                     Maximo_celula = randNum.Next(1, 5)
                 };
-                minis.salvar();                
+                minis.salvar();
             }
             var ValorEsperado = minis.bd.GetUltimoRegistroMinisterio();
             var valorObtido = minis.Id;
@@ -1337,7 +1366,7 @@ namespace Tests
                 };
                 cel.salvar();
             }
-        } 
+        }
         #endregion
     }
 }

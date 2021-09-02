@@ -23,8 +23,12 @@ namespace business.classes.Abstrato
     {
         public Pessoa() : base()
         {
-            MudancaEstado = new MudancaEstado();
-            Chamada = new Chamada();
+            if (!EntityCrud)
+            {
+                MudancaEstado = new MudancaEstado();
+                Chamada = new Chamada();
+            }
+            
         }
 
         protected Pessoa(int m) : base(m)

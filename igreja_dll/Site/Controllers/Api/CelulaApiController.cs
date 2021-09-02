@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
 using business.classes.Abstrato;
+using database;
 using repositorioEF;
 using RepositorioEF;
 using Site.Models.Api;
@@ -25,6 +26,7 @@ namespace Site.Controllers.Api
         [EnableQuery]
         public IQueryable<CelulaApi> Getcelula()
         {
+            modelocrud.EntityCrud = true;
             var celulas = db.celula
                 .Include(c => c.EnderecoCelula)
                 .Include(c => c.Pessoas)
@@ -57,6 +59,7 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(Celula))]
         public async Task<IHttpActionResult> GetCelula(int id)
         {
+            modelocrud.EntityCrud = true;
             Celula item = await db.celula
                 .Include(c => c.Pessoas)
                 .Include(c => c.Ministerios)
@@ -85,6 +88,7 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutCelula(int id, Celula celula)
         {
+            modelocrud.EntityCrud = true;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -120,6 +124,7 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(Celula))]
         public async Task<IHttpActionResult> PostCelula(Celula celula)
         {
+            modelocrud.EntityCrud = true;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -135,6 +140,7 @@ namespace Site.Controllers.Api
         [ResponseType(typeof(Celula))]
         public async Task<IHttpActionResult> DeleteCelula(int id)
         {
+            modelocrud.EntityCrud = true;
             Celula celula = await db.celula.FindAsync(id);
             if (celula == null)
             {

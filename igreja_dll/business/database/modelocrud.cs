@@ -1,4 +1,5 @@
-﻿using business.classes;
+﻿using business;
+using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
 using business.classes.Intermediario;
@@ -10,17 +11,18 @@ using business.implementacao;
 using database.banco;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace database
 {
-    public abstract class modelocrud : IPesquisar
+    public abstract class modelocrud : IPesquisar, IEntity<modelocrud>
     {
         public modelocrud()
         {    
@@ -45,17 +47,15 @@ namespace database
             Id = id;
             property = new PropertiesCrud(this);
         }
-
-        private string insert_padrao;
-        private string update_padrao;
-        private string delete_padrao;
-        private string select_padrao;
+        
         static Calculo calculo = new Calculo();
         PropertiesCrud property;
         static Pesquisar pesquisar = new Pesquisar();
+        static Entity entity = new Entity();
         public BDcomum bd;
         public SqlDataReader dr;
         public SqlConnection conexao;
+        public modelocrud ModelEntity;
         public Type T;
         public string ErroNalista = "";
         public static string classe = "";
@@ -67,16 +67,29 @@ namespace database
         public static bool Erro_Conexao;        
         public static string textoPorcentagem = "0%";        
         public static int QuantErro;
-        [NotMapped]
-        public string Insert_padrao { get => insert_padrao; set => insert_padrao = value; }
-        [NotMapped]
-        public string Update_padrao { get => update_padrao; set => update_padrao = value; }
-        [NotMapped]
-        public string Delete_padrao { get => delete_padrao; set => delete_padrao = value; }
-        [NotMapped]
-        public string Select_padrao { get => select_padrao; set => select_padrao = value; }
+        public static bool  EntityCrud = false;
+        public string Insert_padrao;
+        public string Update_padrao;
+        public string Delete_padrao;
+        public string Select_padrao;
 
-         public void TratarExcessao(Exception ex)
+        public string exibirMensagemErro(Exception ex, int condicao)
+        {
+            string mensagem = "";
+            var props = this.GetType().GetProperties();
+            foreach (var item in props)
+            if (item.Name == ex.Message && condicao == 1)
+            mensagem = "Erro no campo " + item.Name + ". Corrija o erro para fazer o cadastro.";
+            else if (item.Name == ex.Message && condicao == 2)
+            {
+                    OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
+                if (opc.Obrigatorio) mensagem = "Erro no campo " + item.Name + ". Este Campo é Obrigatório."; 
+                
+            }
+           return mensagem;
+        }
+
+        public void TratarExcessao(Exception ex)
         {
             if (ex.Message.Contains("instância"))
             {
@@ -111,82 +124,86 @@ namespace database
         #region MethodsCrud
         public string salvar()
         {
-            var ClassBase = GetType();
-            while (ClassBase != typeof(modelocrud))
-            if (ClassBase.BaseType == typeof(modelocrud))
-            break;
+            if (!EntityCrud)
+            {
+                try
+                {
+                    var ClassBase = GetType();
+                    while (ClassBase != typeof(modelocrud))
+                        if (ClassBase.BaseType == typeof(modelocrud))
+                        break;
+                        else
+                        ClassBase = ClassBase.BaseType;
+                    T = ClassBase;
+                    classe = T.Name;
+                    while (T != GetType())
+                        GetProperty(T);
+                    GetProperty(null);
+                    bd.SalvarModelo(this);
+                    return Insert_padrao;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
             else
-            ClassBase = ClassBase.BaseType;
-            T = ClassBase;
-            classe = T.Name;
-            while (T != GetType())
-            GetProperty(T);
-            GetProperty(null);                           
-            bd.SalvarModelo(this);
-            return Insert_padrao;
+                salvarEntity(this); return "";            
         }
 
         public string alterar(int id)
-        {            
-            while (T != typeof(modelocrud))
-            UpdateProperty(T);
-            UpdateProperty(null);
-            bd.Editar(this);
-            return Update_padrao;
+        {
+            if (!EntityCrud)
+            {
+                while (T != typeof(modelocrud))
+                    UpdateProperty(T);
+                UpdateProperty(null);
+                bd.Editar(this);
+                return Update_padrao;
+            }
+            else
+                alterarEntity(this); return "";            
         }
 
         public string excluir(int id)
         {
-            string comando = "";
-            while (T != typeof(modelocrud))
-            comando += DeleteProperty(T);
-            delete_padrao = comando;
-            bd.Excluir(this);
-            return Delete_padrao;
+            if (!EntityCrud)
+            {
+                string comando = "";
+                while (T != typeof(modelocrud))
+                    comando += DeleteProperty(T);
+                Delete_padrao = comando;
+                bd.Excluir(this);
+                return Delete_padrao;
+            }
+            else
+                excluirEntity(this); return "";            
         }
 
         public bool recuperar(int id)
         {
-            bool retorno = false;
-            while (T != typeof(modelocrud))
+            if (!EntityCrud)
             {
-                if (SetProperty(T))
-                    retorno = true;
-                else retorno = false;
+                bool retorno = false;
+                while (T != typeof(modelocrud))
+                {
+                    if (SetProperty(T))
+                        retorno = true;
+                    else { retorno = false; break; };
+                }
+                T = GetType();
+                return retorno;
             }
-            T = GetType();
-            return retorno;
+            else
+            {
+              var model = recuperarEntity(id, this);
+                if (model == null) return false;
+                else return true;
+            }
         }
 
         public static void buscarListas()
         {
-            for (int j = 0; j < 5; j++)
-                for (var i = 0; i < Modelos.Count; i++)
-                {
-                    if (Modelos[i].GetType().GetProperties().ToList().FirstOrDefault(p => p.PropertyType.IsClass &&
-                      p.GetValue(Modelos[i]) == null && p.PropertyType.IsAbstract ||
-                      p.PropertyType.IsClass && p.GetValue(Modelos[i]) == null &&
-                      p.PropertyType.BaseType == typeof(modelocrud)) != null)
-                    {
-                        var prop = Modelos[i].GetType().GetProperties().ToList().FirstOrDefault(p => p.PropertyType.IsClass &&
-                            p.GetValue(Modelos[i]) == null && p.PropertyType.IsAbstract ||
-                            p.PropertyType.IsClass && p.GetValue(Modelos[i]) == null &&
-                            p.PropertyType.BaseType == typeof(modelocrud));
-
-                        var propInt = Modelos[i].GetType().GetProperties().ToList()
-                            .First(p => p.Name.ToLower().Contains(prop.Name.ToLower()));
-
-                        int? valor = (int?)propInt.GetValue(Modelos[i], null);
-
-                        modelocrud model = null;
-                        if (valor != null)
-                            model = Modelos.First(m => m.GetType().IsSubclassOf(prop.PropertyType) && m.Id == valor ||
-                            m.GetType() == prop.PropertyType && m.Id == valor);
-
-                        prop.SetValue(Modelos[i], model);
-                    }
-                }
-
             List<object> lista = new List<object>();
             for (var i = 0; i < Modelos.Count; i++)
             {
@@ -197,17 +214,23 @@ namespace database
 
                     foreach (var prop in props)
                     {
-                        if (prop.GetValue(Modelos[k]) == Modelos[i])
-                            lista.Add(Modelos[k]);
+                        modelocrud model = null;
+                        if(prop.PropertyType.IsClass && prop.PropertyType.IsSubclassOf(typeof(modelocrud)))
+                        {
+                            model = (modelocrud)prop.GetValue(Modelos[k]);
+                            if (model != null && model.Id == Modelos[i].Id && model.GetType().Name == Modelos[i].GetType().Name)
+                                lista.Add(Modelos[k]);
+                        }
+                        
                     }
 
 
                     if (k == Modelos.Count - 1 && lista.Count > 0)
                     {
                         var propLista = Modelos[i].GetType().GetProperties()
-                        .Where(p => p.PropertyType.Name == "List`1").ToList();
+                            .Where(p => p.PropertyType.Name == "List`1").ToList();                        
 
-                       if(propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)) != null)
+                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)) != null)
                        propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)).SetValue(Modelos[i], lista.OfType<MinisterioCelula>().ToList());
 
                         if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(PessoaMinisterio)) != null)
@@ -402,9 +425,41 @@ namespace database
             }
             return false;
         }
+
+        public void salvarEntity(modelocrud model)
+        {
+            EntityCrud = true;
+            entity.salvarEntity(model);
+        }
+
+        public void alterarEntity(modelocrud model)
+        {
+            EntityCrud = true;
+            entity.alterarEntity(model);
+        }
+
+        public void excluirEntity(modelocrud model)
+        {
+            EntityCrud = true;
+            entity.excluirEntity(model);
+        }
+
+        public modelocrud recuperarEntity(int id, modelocrud model)
+        {
+            EntityCrud = true;
+            ModelEntity = entity.recuperarEntity(id, model);
+            return ModelEntity;
+        }
+
+        public static Task<List<modelocrud>> recuperarEntity(Type type)
+        {
+            EntityCrud = true;
+            return Entity.recuperarEntity(type);
+        }
         #endregion
 
         #region MethodsProperties
+        //
         private bool SetProperty(Type tipo)
         {
             return property.SetProperties(tipo);
@@ -415,44 +470,18 @@ namespace database
             return property.DeleteProperties(tipo);
         }
 
-        private string VerficaPropertyClassDeleteProperty(Type type)
-        {
-            return property.VerficaPropertyClassDeleteProperties(type);
-        }
-
-        private void VerficaPropertyClassSetProperty(Type tipo)
-        {
-            property.VerficaPropertyClassSetProperties(tipo);
-        }
-
         private void GetProperty(Type tipo)
         {
-            property.GetProperties(tipo);
-        }
-
-        private void VerficaPropertyClassInsertProperty(Type type)
-        {
-            property.VerficaPropertyClassInsertProperties(type);
+            try
+            {
+                property.GetProperties(tipo);
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
         private void UpdateProperty(Type tipo)
         {
             property.UpdateProperties(tipo);
-        }
-
-        private void VerficaPropertyClassUpdateProperty(Type type, int id)
-        {
-            property.VerficaPropertyClassUpdateProperties(type, id);
-        }
-
-        private string VerificaProperty(string values, PropertyInfo prop, string classe, object objeto)
-        {
-            return property.VerificaProperties(values, prop, classe, objeto);
-        }
-
-        private string VerificaUpdateProperty(PropertyInfo prop, object objeto)
-        {
-            return property.VerificaUpdateProperties(prop, objeto);
         }
         #endregion        
 
@@ -498,6 +527,8 @@ namespace database
         {
             calculo.CalcularPorcentagem();            
         }
+
+        
         #endregion
     }
 }

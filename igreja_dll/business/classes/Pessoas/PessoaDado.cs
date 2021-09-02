@@ -12,21 +12,35 @@ namespace business.classes.Pessoas
     {
         public PessoaDado() : base()
         {
-            MudancaEstado = new MudancaEstado();
-            Endereco = new Endereco();
-            Telefone = new Telefone();
+            if (!EntityCrud)
+            {
+                Endereco = new Endereco();
+                Telefone = new Telefone();
+            }
+            
         }
 
         protected PessoaDado(int m) : base(m)
         {
             
         }
-        
+
         #region Properties
+        private DateTime data_nascimento;
+        [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Data_nascimento { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]        
+        public DateTime Data_nascimento
+        {
+            get
+            {
+                if (data_nascimento.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
+                throw new Exception("Data_nascimento");
+                return data_nascimento;
+            }
+            set {data_nascimento = value; }
+        }
 
         [Display(Name = "RG")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -58,8 +72,7 @@ namespace business.classes.Pessoas
         public virtual Endereco Endereco { get; set; }
         [JsonIgnore]
         public virtual Telefone Telefone { get; set; }
-
-        private MudancaEstado MudancaEstado;
+        
         #endregion
     }
 }

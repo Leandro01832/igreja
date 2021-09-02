@@ -30,6 +30,7 @@ namespace business.classes.Abstrato
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
         public TimeSpan? Horario { get; set; }
+
         [JsonIgnore]
         public virtual List<Pessoa> Pessoas { get; set; }
 
@@ -78,14 +79,16 @@ namespace business.classes.Abstrato
         public static List<Celula_Adulto> celulasAdulto;
         public static List<Celula_Crianca> celulasCrianca;
         public static List<Celula_Casado> celulasCasado;
-        #endregion        
+        #endregion
 
         public Celula() : base()
         {
             this.Maximo_pessoa = 50;
+            if(!EntityCrud)
             EnderecoCelula = new EnderecoCelula();
             ErroNalista = @"Celula precisa de pelo menos um lider de celula e um lider de celula em treinamento.
                             Verifique a lista de ministérios da celula";
+            
         }
 
         protected Celula(int m) : base(m) { }

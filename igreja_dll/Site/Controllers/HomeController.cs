@@ -13,6 +13,7 @@ using RepositorioEF;
 using System.Threading.Tasks;
 using Ecommerce.Classes;
 using business.classes.Pessoas;
+using database;
 
 namespace Site.Controllers
 {
@@ -28,6 +29,7 @@ namespace Site.Controllers
         public HomeController(ICelulaRepository celulaRepository, IMinisterioRepository ministerioRepository,
             IReuniaoRepository reuniaoRepository)
         {
+            modelocrud.EntityCrud = true;
             CelulaRepository = celulaRepository;
             MinisterioRepository = ministerioRepository;
             ReuniaoRepository = reuniaoRepository;

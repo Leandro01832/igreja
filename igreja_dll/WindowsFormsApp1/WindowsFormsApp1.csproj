@@ -48,7 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -541,6 +542,7 @@
     </Content>
     <Content Include="bin\Debug\EntityFramework.dll" />
     <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\favicon.ico" />
     <Content Include="bin\Debug\Fotos\foto.jpg" />
     <Content Include="bin\Debug\itextsharp.dll" />
     <Content Include="bin\Debug\itextsharp.xml" />
@@ -548,7 +550,6 @@
     <Content Include="bin\Debug\relatorio\relatorio.jpg" />
     <Content Include="bin\Debug\WindowsFormsApp1.exe" />
     <Content Include="bin\Debug\WindowsFormsApp1.pdb" />
-    <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

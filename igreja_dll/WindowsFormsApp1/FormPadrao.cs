@@ -10,12 +10,10 @@ using database;
 using database.banco;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario;
@@ -48,12 +46,11 @@ namespace WindowsFormsApp1
         private static bool verificarTimer = true;
 
         private BDcomum bd = new BDcomum();
+        private static string path = Directory.GetCurrentDirectory();
 
         private void FormPadrao_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("D:\\Downloads\\favicon.ico");
-
-
+            this.Icon = new Icon($@"{path}\favicon.ico");
         }
 
         public async void UltimoRegistro()

@@ -1,6 +1,5 @@
-﻿using repositorioEF;
+﻿using database;
 using RepositorioEF;
-using System.Configuration;
 using System.Data.Entity;
 
 namespace Site.Models.Repository
@@ -12,6 +11,7 @@ namespace Site.Models.Repository
 
         public BaseRepository(DB contexto)
         {
+            modelocrud.EntityCrud = true;
             this.contexto = contexto;
             dbSet = contexto.Set<T>();
         }

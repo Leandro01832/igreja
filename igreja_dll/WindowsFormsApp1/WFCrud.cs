@@ -714,7 +714,15 @@ namespace WindowsFormsApp1
 
             if (modelo.ErroNalista == "")
             {
-                modelo.salvar();
+                try { modelo.salvar(); }
+                catch(Exception ex)
+                {
+                    if(ex.Message == "Error_Data_Nascimento")
+                    {
+                        MessageBox.Show(modelo.exibirMensagemErro(ex, 1));
+                    }
+                    return;
+                }
 
 
                 if (modelo is Celula)
