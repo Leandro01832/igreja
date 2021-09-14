@@ -66,6 +66,7 @@ namespace business.classes.Abstrato
         [Display(Name ="Nome completo")]
         public string NomePessoa { get; set; }
         
+        [OpcoesBase(ChavePrimaria =false, Index =true, Obrigatorio =true)]
         [Index("CODIGO", 2, IsUnique = true)]
         public int Codigo { get; set; }
         
@@ -79,6 +80,7 @@ namespace business.classes.Abstrato
         [ScaffoldColumn(false)]
         public string Email { get; set; }
         public int Falta { get; set; }        
+        [OpcoesBase(ChaveEstrangeira =true, ChavePrimaria =false, Index =false, Obrigatorio =false  )]
         public int? celula_ { get; set; }
         [ForeignKey("celula_")]
         [JsonIgnore]

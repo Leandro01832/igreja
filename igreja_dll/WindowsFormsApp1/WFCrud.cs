@@ -712,112 +712,101 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo.ErroNalista == "")
+            try { modelo.salvar(); }
+            catch (Exception ex)
             {
-                try { modelo.salvar(); }
-                catch(Exception ex)
-                {
-                    if(ex.Message == "Error_Data_Nascimento")
-                    {
-                        MessageBox.Show(modelo.exibirMensagemErro(ex, 1));
-                    }
-                    return;
-                }
-
-
-                if (modelo is Celula)
-                {
-                    var p = (Celula)modelo;
-                    if (p.Ministerios != null)
-                        foreach (var item in p.Ministerios)
-                        {
-                            if (item.CelulaId == 0) item.CelulaId = item.Celula.Id;
-                            if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                            item.salvar();
-                        }
-                }
-                if (modelo is Ministerio)
-                {
-                    var p = (Ministerio)modelo;
-                    if (p.Pessoas != null)
-                        foreach (var item in p.Pessoas)
-                        {
-                            if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                            if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                            item.salvar();
-                        }
-                    if (p.Celulas != null)
-                        foreach (var item in p.Celulas)
-                        {
-                            if (item.CelulaId == 0) item.CelulaId = item.Celula.Id;
-                            if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                            item.salvar();
-                        }
-                }
-                if (modelo is Pessoa)
-                {
-                    var p = (Pessoa)modelo;
-                    if (p.Ministerios != null)
-                        foreach (var item in p.Ministerios)
-                        {
-                            if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                            if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                            item.salvar();
-                        }
-                    if (p.Reuniao != null)
-                        foreach (var item in p.Reuniao)
-                        {
-                            if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                            if (item.ReuniaoId == 0) item.ReuniaoId = item.Reuniao.Id;
-                            item.salvar();
-                        }
-                }
-                if (modelo is Reuniao)
-                {
-                    var p = (Reuniao)modelo;
-                    if (p.Pessoas != null)
-                        foreach (var item in p.Pessoas)
-                        {
-                            if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                            if (item.ReuniaoId == 0) item.ReuniaoId = item.Reuniao.Id;
-                            item.salvar();
-                        }
-                }
-
-
-                if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
-                {
-                    var p = (Pessoa)modelo;
-                    {
-                        try
-                        {
-                            var photoRequest = new PhotoRequest
-                            {
-                                Id = p.Id,
-                                Array = p.ImgArrayBytes
-                            };
-                            var resultado = await p.EnviarFoto(photoRequest);
-
-                            if (!resultado) MessageBox.Show("Foto não enviada.");
-                            else
-                            {
-                                p.Img = "/Content/Imagens/" + p.Id.ToString() + ".jpg";
-                                p.alterar(p.Id);
-                            }
-
-                        }
-                        catch { MessageBox.Show("Foto não enviada."); }
-                    }
-                }
-
-                MessageBox.Show("Cadastro realiado com sucesso.");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show(modelo.ErroNalista);
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 1));
                 FinalizaCadastro.Enabled = true;
+                return;
             }
+
+            if (modelo is Celula)
+            {
+                var p = (Celula)modelo;
+                if (p.Ministerios != null)
+                    foreach (var item in p.Ministerios)
+                    {
+                        if (item.CelulaId == 0) item.CelulaId = item.Celula.Id;
+                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
+                        item.salvar();
+                    }
+            }
+            if (modelo is Ministerio)
+            {
+                var p = (Ministerio)modelo;
+                if (p.Pessoas != null)
+                    foreach (var item in p.Pessoas)
+                    {
+                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
+                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
+                        item.salvar();
+                    }
+                if (p.Celulas != null)
+                    foreach (var item in p.Celulas)
+                    {
+                        if (item.CelulaId == 0) item.CelulaId = item.Celula.Id;
+                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
+                        item.salvar();
+                    }
+            }
+            if (modelo is Pessoa)
+            {
+                var p = (Pessoa)modelo;
+                if (p.Ministerios != null)
+                    foreach (var item in p.Ministerios)
+                    {
+                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
+                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
+                        item.salvar();
+                    }
+                if (p.Reuniao != null)
+                    foreach (var item in p.Reuniao)
+                    {
+                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
+                        if (item.ReuniaoId == 0) item.ReuniaoId = item.Reuniao.Id;
+                        item.salvar();
+                    }
+            }
+            if (modelo is Reuniao)
+            {
+                var p = (Reuniao)modelo;
+                if (p.Pessoas != null)
+                    foreach (var item in p.Pessoas)
+                    {
+                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
+                        if (item.ReuniaoId == 0) item.ReuniaoId = item.Reuniao.Id;
+                        item.salvar();
+                    }
+            }
+
+            if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
+            {
+                var p = (Pessoa)modelo;
+                {
+                    try
+                    {
+                        var photoRequest = new PhotoRequest
+                        {
+                            Id = p.Id,
+                            Array = p.ImgArrayBytes
+                        };
+                        var resultado = await p.EnviarFoto(photoRequest);
+
+                        if (!resultado) MessageBox.Show("Foto não enviada.");
+                        else
+                        {
+                            p.Img = "/Content/Imagens/" + p.Id.ToString() + ".jpg";
+                            p.alterar(p.Id);
+                        }
+
+                    }
+                    catch { MessageBox.Show("Foto não enviada."); }
+                }
+            }
+
+            MessageBox.Show("Cadastro realiado com sucesso.");
+            this.Close();
+
         }
     }
 }

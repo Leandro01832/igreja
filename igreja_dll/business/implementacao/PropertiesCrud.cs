@@ -237,11 +237,11 @@ namespace business.implementacao
                     Model.T = Model.GetType();
 
                 var propertiesDeclaring = Model.T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
-                && !e.PropertyType.IsAbstract && e.PropertyType.Name != "List`1"
-                && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
+                && !e.PropertyType.IsAbstract  && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
 
                 foreach (var property in propertiesDeclaring)
                 {
+                    if(property.PropertyType.Name != "List`1")
                     properties += property.Name + ", ";
                     values = VerificaProperties(values, property, modelocrud.classe, Model);
                 }
@@ -311,12 +311,12 @@ namespace business.implementacao
                     Model.T = Model.GetType();
 
                 var propertiesDeclaring = Model.T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
-                && !e.PropertyType.IsAbstract && e.PropertyType.Name != "List`1"
-                && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
+                && !e.PropertyType.IsAbstract && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
 
 
                 foreach (var property in propertiesDeclaring)
                 {
+                    if(property.PropertyType.Name != "List`1")
                     properties = property.Name + "=";
                     values += properties + VerificaUpdateProperties(property, Model);
                 }
@@ -537,6 +537,11 @@ namespace business.implementacao
                         values += "" + "null" + ", ";
                 }
                 else
+                if (property.PropertyType.Name == "List`1")
+                {
+                      var  prop = property.GetValue(objeto, null);
+                }
+                else
                     if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
                 {
                     long? prop = null;
@@ -622,6 +627,11 @@ namespace business.implementacao
                         values = "" + prop.ToString() + ", ";
                     else
                         values = "" + "null" + ", ";
+                }
+                else
+                if (property.PropertyType.Name == "List`1")
+                {
+                    var prop = property.GetValue(objeto, null);
                 }
                 else
                 if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))

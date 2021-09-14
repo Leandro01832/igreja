@@ -41,33 +41,42 @@ namespace business.classes.Abstrato
         [JsonIgnore]
         public virtual List<MinisterioCelula> Ministerios
         {
-            get { return ministerios; }
-            set
-            {
-                if (value.Count <= 1)
-                    ErroNalista = @"Celula precisa de pelo menos um líder de celula e um líder de celula em treinamento.
-                                    Verifique a lista de ministérios";
+            get {
+                if (ministerios.Count <= 1)
+                {
+                    ErroCadastro = "Celula precisa de pelo menos um líder de celula e um líder de celula em treinamento." +
+                    " Verifique a lista de ministérios";
+                    throw new Exception("Ministerios");
+                }
                 else
                 {
                     bool condicao1 = false;
                     bool condicao2 = false;
-                    foreach(var item in value)
+                    foreach (var item in ministerios)
                     {
-                        var model1 = new Lider_Celula            (item.MinisterioId); var p1 = model1.recuperar(item.MinisterioId);
+                        var model1 = new Lider_Celula(item.MinisterioId); var p1 = model1.recuperar(item.MinisterioId);
                         var model2 = new Lider_Celula_Treinamento(item.MinisterioId); var p2 = model2.recuperar(item.MinisterioId);
 
                         if (p1) condicao1 = true;
                         if (p2) condicao2 = true;
-                        if(condicao1 && condicao2)
+                        if (condicao1 && condicao2)
                         {
-                            ErroNalista = "";
+                            ErroCadastro = "";
                             break;
                         }
                     }
-
+                    if (!condicao1 || !condicao2)
+                    {
+                        ErroCadastro = "Celula precisa de pelo menos um líder de celula e um líder de celula em treinamento." +
+                        " Verifique a lista de ministérios";
+                        throw new Exception("Ministerios");
+                    }
                 }
-                ministerios = value;
+
+                return ministerios;
             }
+            set
+            {  ministerios = value; }
         }
         [JsonIgnore]
         public virtual EnderecoCelula EnderecoCelula { get; set; }
@@ -86,8 +95,7 @@ namespace business.classes.Abstrato
             this.Maximo_pessoa = 50;
             if(!EntityCrud)
             EnderecoCelula = new EnderecoCelula();
-            ErroNalista = @"Celula precisa de pelo menos um lider de celula e um lider de celula em treinamento.
-                            Verifique a lista de ministérios da celula";
+            Ministerios = new List<MinisterioCelula>();
             
         }
 

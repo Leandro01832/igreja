@@ -57,11 +57,12 @@ namespace database
         public SqlConnection conexao;
         public modelocrud ModelEntity;
         public Type T;
-        public string ErroNalista = "";
+        public string ErroCadastro = "";
         public static string classe = "";
         
         public static List<modelocrud> Modelos = new List<modelocrud>();
 
+        [OpcoesBase(ChavePrimaria = true, Obrigatorio = true)]
         [Key]
         public int Id { get; set; }        
         public static bool Erro_Conexao;        
@@ -83,7 +84,8 @@ namespace database
             else if (item.Name == ex.Message && condicao == 2)
             {
                     OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
-                if (opc.Obrigatorio) mensagem = "Erro no campo " + item.Name + ". Este Campo é Obrigatório."; 
+                if (opc != null && opc.Obrigatorio) mensagem += "Erro no campo " + item.Name + ". Este Campo é Obrigatório.\n"; 
+                if (this.ErroCadastro != "") mensagem += "Erro no campo " + item.Name + ". " + this.ErroCadastro; 
                 
             }
            return mensagem;

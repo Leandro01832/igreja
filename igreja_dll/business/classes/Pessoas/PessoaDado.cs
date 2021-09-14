@@ -42,19 +42,57 @@ namespace business.classes.Pessoas
             set {data_nascimento = value; }
         }
 
+        private string rg;
         [Display(Name = "RG")]
+        [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Rg { get; set; }
+        public string Rg
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(rg))
+                throw new Exception("Rg");
+                return rg;
+            }
+            set { rg = value; }
+        }
 
+        private string cpf;
+        [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "CPF")]
         [StringLength(11)]
         [Index("CPF", 2, IsUnique = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Cpf { get; set; }
+        public string Cpf
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(cpf))
+                    throw new Exception("Cpf");
+                if(cpf.Length != 11)
+                {
+                    this.ErroCadastro = "Esta campo precisa ter 11 caracteres.";
+                    throw new Exception("Cpf");
+                }
+                return cpf;
+            }
+            set { cpf = value; }
+        }
 
+        private string estado_civil;
+        [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Estado Civil")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Estado_civil { get; set; }
+        public string Estado_civil
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(estado_civil))
+                throw new Exception("Estado_civil");
+                return estado_civil;
+            }
+            set { estado_civil = value; }
+        }
 
         [Display(Name = "Sexo masculino")]
         public bool Sexo_masculino { get; set; }
@@ -65,8 +103,19 @@ namespace business.classes.Pessoas
         [ScaffoldColumn(false)]
         public bool Falescimento { get; set; }
 
+        private string status;
+        [OpcoesBase(Obrigatorio =true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Status { get; set; }
+        public string Status
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(status))
+                throw new Exception("Status");
+                return status;
+            }
+            set { status = value; }
+        }
 
         [JsonIgnore]
         public virtual Endereco Endereco { get; set; }

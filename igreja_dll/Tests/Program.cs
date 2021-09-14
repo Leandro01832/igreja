@@ -86,53 +86,86 @@ namespace Tests
             //CadastrarPessoasEmReunioes();
             //CadastrarMinisteriosEmCelulas();
 
-            Visitante pes = new Visitante();
+               Visitante pes = new Visitante();
+             
+                   pes.Codigo = bd.GetUltimoRegistroPessoa() + 1;
+                   pes.celula_ = null;
+                   pes.Chamada = new Chamada();
+                   pes.Chamada. Data_inicio = DateTime.Now;
+                   pes.Chamada.Numero_chamada = 0;
+                   pes.Img = "";
+                   pes.Historicos = new List<Historico>();
+                   pes.Ministerios = new List<PessoaMinisterio>();
+                   pes.NomePessoa = arr[10] + " " + arr2[9];
+                   pes.Condicao_religiosa = " - ";
+                   pes.Cpf = "123";
+                   pes.Data_nascimento = DateTime.Now.AddYears(-20);
+                   pes.Data_visita = DateTime.Now;
+                   pes.Email = arr2[5].Replace(" ", "") + "08270839639" + "@gmail.com";
+                   pes.Endereco = new Endereco();
+                   pes.Endereco.Bairro = "Vila";
+                   pes.Endereco.Cep = 36774016;
+                   pes.Endereco.Cidade = "Cataguases";
+                   pes.Endereco.Complemento = "residencia";
+                   pes.Endereco.Estado = "MG";
+                   pes.Endereco.Numero_casa = 117;
+                   pes.Endereco.Pais = "Brasil";
+                   pes.Endereco.Rua = "Jose";
+                   pes.Estado_civil = "solteiro";
+                   pes.Falta = 0;
+                   pes.Falescimento = false;
+                   pes.Sexo_feminino = false;
+                   pes.Sexo_masculino = true;
+                   pes.Reuniao = new List<ReuniaoPessoa>();
+                   pes.Rg = "MG-" + "08270839639";
+                   pes.Status = "moro longe";
+                   pes.Telefone = new Telefone();
+                   pes.Telefone.Celular = "(11)23412-8912";
+                   pes.Telefone.Fone = "(21)29412-1917";
+                   pes.Telefone.Whatsapp = "(31)34985-6734";
+             
+               //Act - metodo sob teste
+               try { pes.salvar(); }
+               catch (Exception ex)
+               {
+                   
+                       MessageBox.Show(pes.exibirMensagemErro(ex, 2));
+                   
+                  // return;
+               }
 
-                pes.Codigo = bd.GetUltimoRegistroPessoa() + 1;
-                pes.celula_ = null;
-                pes.Chamada = new Chamada();
-                pes.Chamada. Data_inicio = DateTime.Now;
-                pes.Chamada.Numero_chamada = 0;
-                pes.Img = "";
-                pes.Historicos = new List<Historico>();
-                pes.Ministerios = new List<PessoaMinisterio>();
-                pes.NomePessoa = arr[10] + " " + arr2[9];
-                pes.Condicao_religiosa = " - ";
-                pes.Cpf = "08270839639";
-              //  pes.Data_nascimento = DateTime.Now.AddYears(-20);
-                pes.Data_visita = DateTime.Now;
-                pes.Email = arr2[5].Replace(" ", "") + "08270839639" + "@gmail.com";
-                pes.Endereco = new Endereco();
-                pes.Endereco.Bairro = "Vila";
-                pes.Endereco.Cep = 36774016;
-                pes.Endereco.Cidade = "Cataguases";
-                pes.Endereco.Complemento = "residencia";
-                pes.Endereco.Estado = "MG";
-                pes.Endereco.Numero_casa = 117;
-                pes.Endereco.Pais = "Brasil";
-                pes.Endereco.Rua = "Jose";
-                pes.Estado_civil = "solteiro";
-                pes.Falta = 0;
-                pes.Falescimento = false;
-                pes.Sexo_feminino = false;
-                pes.Sexo_masculino = true;
-                pes.Reuniao = new List<ReuniaoPessoa>();
-                pes.Rg = "MG-" + "08270839639";
-                pes.Status = "moro longe";
-                pes.Telefone = new Telefone();
-                pes.Telefone.Celular = "(11)23412-8912";
-                pes.Telefone.Fone = "(21)29412-1917";
-                pes.Telefone.Whatsapp = "(31)34985-6734";
+          //  var cel = new Celula_Adolescente();
+          //  cel.Dia_semana = "Segunda";
+          //  cel.Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0);
+          //  cel.Maximo_pessoa = randNum.Next(0, 50);
+          //  cel.Ministerios = new List<MinisterioCelula>();
+          //  cel.Nome = arr[randNum.Next(0, 49)];
+          //  cel.Pessoas = new List<Pessoa>();
+          //      cel.EnderecoCelula = new EnderecoCelula
+          //      {
+          //          Bairro = "Vila",
+          //          Cep = 36774016,
+          //          Cidade = "Cataguases",
+          //          Complemento = "residencia",
+          //          Estado = "MG",
+          //          Numero_casa = 117,
+          //          Pais = "Brasil",
+          //          Rua = "Jose"
+          //      };
+          //
+          //  try
+          //  {
+          //      cel.salvar();
+          //  }
+          //  catch (Exception ex)
+          //  {
+          //      MessageBox.Show(cel.exibirMensagemErro(ex, 2));
+          //  }
 
-            //Act - metodo sob teste
-            try { pes.salvar(); }
-            catch (Exception ex)
-            {
-                
-                    MessageBox.Show(pes.exibirMensagemErro(ex, 2));
-                
-               // return;
-            }
+            // string teste = "    a    ";
+            //
+            // if(string.IsNullOrWhiteSpace(teste))
+            //     Console.WriteLine("tem somente espaço");
 
             //List<PropertyInfo> listaprop = new List<PropertyInfo>();
             //List<PropertyInfo> lista2 = new List<PropertyInfo>();
