@@ -74,11 +74,23 @@ namespace business.classes.Abstrato
         
         public string password;
 
+        private string email;
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [Index("EMAIL", 2, IsUnique = true)]
         [MaxLength(80, ErrorMessage ="No maximo 80 caracteres!!!")]
         [ScaffoldColumn(false)]
-        public string Email { get; set; }
+        public string Email
+        {
+            get
+            {
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(email) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(email))
+                    throw new Exception("Email");
+                return email;
+            }
+            set { email = value; }
+        }
+
         public int Falta { get; set; }        
         [OpcoesBase(ChaveEstrangeira =true, ChavePrimaria =false, Index =false, Obrigatorio =false  )]
         public int? celula_ { get; set; }

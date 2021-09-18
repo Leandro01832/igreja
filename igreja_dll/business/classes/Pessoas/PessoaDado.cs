@@ -50,7 +50,8 @@ namespace business.classes.Pessoas
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(rg))
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(rg) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(rg))
                 throw new Exception("Rg");
                 return rg;
             }
@@ -67,9 +68,11 @@ namespace business.classes.Pessoas
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(cpf))
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(cpf) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(cpf))
                     throw new Exception("Cpf");
-                if(cpf.Length != 11)
+                if(this.Operacao == "insert" && cpf.Length != 11 || 
+                    this.Operacao == "update" && cpf.Length != 11)
                 {
                     this.ErroCadastro = "Esta campo precisa ter 11 caracteres.";
                     throw new Exception("Cpf");
@@ -87,8 +90,9 @@ namespace business.classes.Pessoas
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(estado_civil))
-                throw new Exception("Estado_civil");
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(estado_civil) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(estado_civil))
+                    throw new Exception("Estado_civil");
                 return estado_civil;
             }
             set { estado_civil = value; }
@@ -110,8 +114,9 @@ namespace business.classes.Pessoas
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(status))
-                throw new Exception("Status");
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(status) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(status))
+                    throw new Exception("Status");
                 return status;
             }
             set { status = value; }

@@ -58,6 +58,7 @@ namespace database
         public modelocrud ModelEntity;
         public Type T;
         public string ErroCadastro = "";
+        public string Operacao = "";
         public static string classe = "";
         
         public static List<modelocrud> Modelos = new List<modelocrud>();
@@ -128,6 +129,7 @@ namespace database
         {
             if (!EntityCrud)
             {
+                this.Operacao = "insert";
                 try
                 {
                     var ClassBase = GetType();
@@ -142,6 +144,7 @@ namespace database
                         GetProperty(T);
                     GetProperty(null);
                     bd.SalvarModelo(this);
+                    this.Operacao = "";
                     return Insert_padrao;
                 }
                 catch (Exception ex)
@@ -157,10 +160,12 @@ namespace database
         {
             if (!EntityCrud)
             {
+                this.Operacao = "update";
                 while (T != typeof(modelocrud))
                     UpdateProperty(T);
                 UpdateProperty(null);
                 bd.Editar(this);
+                this.Operacao = "";
                 return Update_padrao;
             }
             else

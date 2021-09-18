@@ -1,5 +1,7 @@
 ﻿using business.classes.Intermediario;
 using business.classes.Ministerio;
+using business.contrato;
+using business.implementacao;
 using database;
 using database.banco;
 using Newtonsoft.Json;
@@ -12,25 +14,87 @@ using System.Threading.Tasks;
 namespace business.classes.Abstrato
 {
     [Table("Ministerio")]
-    public abstract class Ministerio : modelocrud
+    public abstract class Ministerio : modelocrud, IMudancaEstado
     {
         #region Properties
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Nome { get; set; }
+        [OpcoesBase(ChavePrimaria = false, Index = true, Obrigatorio = true)]
+        [Index("CODIGO", 2, IsUnique = true)]
+        public int Codigo { get; set; }
 
+        private string nome;
+        [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Proposito { get; set; }
+        public string Nome
+        {
+            get
+            {
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(nome) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(nome))
+                    throw new Exception("Nome");
+                return nome;
+            }
+            set { nome = value; }
+        }
+
+        private string proposito;
+        [OpcoesBase(Obrigatorio = true)]
+        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        public string Proposito
+        {
+            get
+            {
+                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(proposito) ||
+                    this.Operacao == "update" && string.IsNullOrWhiteSpace(proposito))
+                    throw new Exception("Proposito");
+                return proposito;
+            }
+            set { proposito = value; }
+        }
+
+        private List<PessoaMinisterio> pessoas;
         [JsonIgnore]
-        public virtual List<PessoaMinisterio> Pessoas { get; set; }
+        public virtual List<PessoaMinisterio> Pessoas
+        {
+            get
+            {
+                try
+                {
+                    if (this.Operacao == "insert" && pessoas.Count > Maximo_pessoa ||
+                        this.Operacao == "update" && pessoas.Count > Maximo_pessoa)
+                    {
+                        ErroCadastro = "Pessoas não podem mais participar deste ministério." +
+                        " Nº total de pessoas que podem participar deste ministério: " + Maximo_pessoa;
+                        throw new Exception("Pessoas");
+                    }
+                }
+                catch { }
+
+                return pessoas;
+            }
+            set
+            { pessoas = value; }
+        }
 
         public int? Ministro_ { get; set; }
         [JsonIgnore]
         public virtual List<MinisterioCelula> Celulas { get; set; }
 
+        private int maximo_pessoa;
+        [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Maximo de pessoas")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public int Maximo_pessoa { get; set; }
-        
+        public int Maximo_pessoa
+        {
+            get
+            {
+                if (this.Operacao == "insert" && maximo_pessoa == 0 ||
+                    this.Operacao == "update" && maximo_pessoa == 0)
+                    throw new Exception("Maximo_pessoa");
+                return maximo_pessoa;
+            }
+            set { maximo_pessoa = value; }
+        }
+
         public static int UltimoRegistro;
 
         public static List<Lider_Celula> lideresCelula;
@@ -41,14 +105,17 @@ namespace business.classes.Abstrato
         public static List<Supervisor_Celula_Treinamento> supervisoresCelulaTreinamento;
         public static List<Supervisor_Ministerio> supervisoresMinisterio;
         public static List<Supervisor_Ministerio_Treinamento> supervisoresMinisterioTreinamento;
+
+        private MudancaEstado mudanca;
         #endregion
         
         public Ministerio() : base()
         {
             this.Maximo_pessoa = 50;
+            mudanca = new MudancaEstado();
         }
 
-        protected Ministerio(int m) : base(m){ }
+        protected Ministerio(int m) : base(m){ mudanca = new MudancaEstado(); }
 
         public static List<modelocrud> recuperarTodosMinisterios()
         {
@@ -154,6 +221,11 @@ namespace business.classes.Abstrato
         public override string ToString()
         {
             return this.Id.ToString() + " - " + this.Nome;
+        }
+
+        public void MudarEstado(int id, modelocrud m)
+        {
+            mudanca.MudarEstado(id, m);
         }
     }
 }

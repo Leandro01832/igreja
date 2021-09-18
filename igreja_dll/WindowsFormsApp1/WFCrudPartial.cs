@@ -239,54 +239,54 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (modelo.ErroNalista == "")
+            try
             {
                 modelo.alterar(modelo.Id);
-
-                foreach (var item in remover)
-                    item.excluir(item.Id);
-
-                if (modelo is Celula)
-                {
-                    var p = (Celula)modelo;
-                    if (p.Ministerios != null)
-                        foreach (var item in p.Ministerios)
-                            item.salvar();
-                }
-                if (modelo is Ministerio)
-                {
-                    var p = (Ministerio)modelo;
-                    if (p.Pessoas != null)
-                        foreach (var item in p.Pessoas)
-                            item.salvar();
-                    if (p.Celulas != null)
-                        foreach (var item in p.Celulas)
-                            item.salvar();
-                }
-                if (modelo is Pessoa)
-                {
-                    var p = (Pessoa)modelo;
-                    if (p.Ministerios != null)
-                        foreach (var item in p.Ministerios)
-                            item.salvar();
-                    if (p.Reuniao != null)
-                        foreach (var item in p.Reuniao)
-                            item.salvar();
-                }
-                if (modelo is Reuniao)
-                {
-                    var p = (Reuniao)modelo;
-                    if (p.Pessoas != null)
-                        foreach (var item in p.Pessoas)
-                            item.salvar();
-                }
-                MessageBox.Show("Informação atualizada com sucesso.");
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(modelo.ErroNalista);
-                modelo.ErroNalista = "";
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 1));
+                return;
             }
+
+            foreach (var item in remover)
+                item.excluir(item.Id);
+
+            if (modelo is Celula)
+            {
+                var p = (Celula)modelo;
+                if (p.Ministerios != null)
+                    foreach (var item in p.Ministerios)
+                        item.salvar();
+            }
+            if (modelo is Ministerio)
+            {
+                var p = (Ministerio)modelo;
+                if (p.Pessoas != null)
+                    foreach (var item in p.Pessoas)
+                        item.salvar();
+                if (p.Celulas != null)
+                    foreach (var item in p.Celulas)
+                        item.salvar();
+            }
+            if (modelo is Pessoa)
+            {
+                var p = (Pessoa)modelo;
+                if (p.Ministerios != null)
+                    foreach (var item in p.Ministerios)
+                        item.salvar();
+                if (p.Reuniao != null)
+                    foreach (var item in p.Reuniao)
+                        item.salvar();
+            }
+            if (modelo is Reuniao)
+            {
+                var p = (Reuniao)modelo;
+                if (p.Pessoas != null)
+                    foreach (var item in p.Pessoas)
+                        item.salvar();
+            }
+            MessageBox.Show("Informação atualizada com sucesso.");
         }
 
         private void Deletar_Click(object sender, EventArgs e)

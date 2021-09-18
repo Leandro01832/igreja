@@ -217,7 +217,7 @@ namespace WindowsFormsApp1
                 table.AddCell("Data da mudança: " + item.DataMudanca.ToString("dd/MM/yyyy"));
                 table.AddCell("antigo estado: " + item.velhoEstado);
                 table.AddCell("novo estado: " + item.novoEstado);
-                table.AddCell("Id da pessoa: " + item.CodigoPessoa);
+                table.AddCell("Id da pessoa: " + item.Codigo);
             }
 
             doc.Add(table);
