@@ -223,9 +223,6 @@ namespace Site.Controllers
                 if (model.Crianca) p = new CriancaLgpd();
             }
 
-            
-
-
             ViewBag.celula_ = new SelectList(banco.celula.ToList(), "Id", "Nome");
 
             return View("CadastrarPerfil", p);

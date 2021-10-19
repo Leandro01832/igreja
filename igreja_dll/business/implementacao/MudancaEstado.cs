@@ -458,7 +458,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -474,7 +474,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -490,7 +490,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -506,7 +506,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -522,7 +522,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -539,7 +539,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -556,7 +556,7 @@ namespace business.implementacao
                     {
                         Pessoas = p.Pessoas,
                         Celulas = p.Celulas,
-                        Codigo = modelo.Codigo,
+                        CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
                         Maximo_pessoa = modelo.Maximo_pessoa,
                         Nome = modelo.Nome,
@@ -571,7 +571,7 @@ namespace business.implementacao
                     novoEstado = m.GetType().Name,
                     velhoEstado = estado,
                     DataMudanca = DateTime.Now,
-                    Codigo = p.Codigo
+                    Codigo = p.CodigoMinisterio
                 }.salvar();
             }
         }

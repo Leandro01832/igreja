@@ -18,8 +18,8 @@ namespace business.classes.Abstrato
     {
         #region Properties
         [OpcoesBase(ChavePrimaria = false, Index = true, Obrigatorio = true)]
-        [Index("CODIGO", 2, IsUnique = true)]
-        public int Codigo { get; set; }
+        [Index("CODIGOMINISTERIO", 2, IsUnique = true)]
+        public int CodigoMinisterio { get; set; }
 
         private string nome;
         [OpcoesBase(Obrigatorio = true)]

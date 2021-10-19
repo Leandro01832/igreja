@@ -175,6 +175,12 @@
     <Compile Include="Formulario\FormularioMinisterio\FrmMinisterio.Designer.cs">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\FormularioMinisterio\FrmMudancaEstadoMinisterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioMinisterio\FrmMudancaEstadoMinisterio.Designer.cs">
+      <DependentUpon>FrmMudancaEstadoMinisterio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmMinisterio.resx">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmMudancaEstadoMinisterio.resx">
+      <DependentUpon>FrmMudancaEstadoMinisterio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.resx">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>

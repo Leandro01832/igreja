@@ -449,3 +449,4 @@ D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsForm
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmMudancaEstado.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.ListaMudancaEstado.resources
 D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmEndereco.resources
+D:\codigo-github\Igreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.FrmMudancaEstadoMinisterio.resources

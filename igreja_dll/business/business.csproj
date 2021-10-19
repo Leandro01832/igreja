@@ -121,6 +121,10 @@
     <Compile Include="Migrations\202108030159089_Inicio.Designer.cs">
       <DependentUpon>202108030159089_Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110191923380_Mudanca-Ministerio.cs" />
+    <Compile Include="Migrations\202110191923380_Mudanca-Ministerio.Designer.cs">
+      <DependentUpon>202110191923380_Mudanca-Ministerio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OpcoesBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +151,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202108030159089_Inicio.resx">
       <DependentUpon>202108030159089_Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110191923380_Mudanca-Ministerio.resx">
+      <DependentUpon>202110191923380_Mudanca-Ministerio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

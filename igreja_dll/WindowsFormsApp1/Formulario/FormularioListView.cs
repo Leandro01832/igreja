@@ -139,14 +139,29 @@ namespace WindowsFormsApp1.Formulario
                 MessageBox.Show("Escolha um item da lista.");
                 return;
             }
-            try
+            if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)))
             {
-               var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Codigo == this.numero);
-                FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                try
+                {
+                    var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Codigo == this.numero);
+                    FrmMudancaEstado frm = new FrmMudancaEstado(Modelo);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                catch { } 
             }
-            catch {  }
+
+            if (Tipo == typeof(Ministerio) || Tipo.IsSubclassOf(typeof(Ministerio)))
+            {
+                try
+                {
+                    var Modelo = modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.CodigoMinisterio == this.numero);
+                    FrmMudancaEstadoMinisterio frm = new FrmMudancaEstadoMinisterio(Modelo);
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                catch { }
+            }
         }
 
         private Button Mudanca { get; }
@@ -407,6 +422,7 @@ namespace WindowsFormsApp1.Formulario
 
                 if (Tipo.IsSubclassOf(typeof(Ministerio)))
                 {
+                    Mudanca.Visible = true;
                     foreach (var m in modelocrud.Modelos.OfType<Ministerio>().ToList())
                         if (Tipo.Name == m.GetType().Name)
                         {
