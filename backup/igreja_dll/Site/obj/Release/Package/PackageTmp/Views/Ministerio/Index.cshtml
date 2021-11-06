@@ -1,0 +1,51 @@
+﻿@model IEnumerable<business.classes.Abstrato.Ministerio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proposito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ministro_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maximo_pessoa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proposito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ministro_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdMinisterio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdMinisterio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdMinisterio })
+        </td>
+    </tr>
+}
+
+</table>

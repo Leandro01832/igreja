@@ -1,0 +1,24 @@
+﻿@model business.classes.Abstrato.Celula
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+<h4>Celula</h4>
+
+@{
+
+    if (Model is business.classes.Celulas.Celula_Adolescente)
+    {<div>@Html.Partial("_Celula_Adolescente", Model)</div>}
+if (Model is business.classes.Celulas.Celula_Adulto)
+{<div>@Html.Partial("_Celula_Adulto", Model)</div>}
+if (Model is business.classes.Celulas.Celula_Casado)
+{<div>@Html.Partial("_Celula_Casado", Model)</div>}
+if (Model is business.classes.Celulas.Celula_Crianca)
+{<div>@Html.Partial("_Celula_Crianca", Model)</div>}
+if (Model is business.classes.Celulas.Celula_Jovem)
+{<div>@Html.Partial("_Celula_Jovem", Model)</div>}
+
+
+}

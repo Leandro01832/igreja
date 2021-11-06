@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.LogoutMeetingView"
+             Title="Reunião"
+             >
+
+    <StackLayout Orientation="Vertical" Padding="20" Spacing="20">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="ID:" FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.Id}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Data: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.Data_reuniao}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Local: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.Local_reuniao}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Horário de inicio: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.inicio}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Horário final: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Reuniao.final}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        
+
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+        </ActivityIndicator>
+
+        <Button Text="Pessoas desta reuniao" Command="{Binding ViewPeopleMeeting}"></Button>
+
+        <Button Text="Sair desta reunião" Command="{Binding SaindoReuniao}"></Button>
+
+    </StackLayout>
+</ContentPage>

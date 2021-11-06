@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="AplicativoXamarin.Views.LogoutMinistryView"
+             Title="Ministério"
+             >
+
+    <StackLayout Orientation="Vertical" Padding="10" Spacing="30">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="ID: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Ministerio.IdMinisterio}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Nome: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Ministerio.Nome}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Proposito: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Ministerio.Proposito}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Ministro: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Ministerio.Ministro_}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Maximo de pessoas: " FontAttributes="Bold" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Ministerio.Maximo_pessoa}" FontAttributes="Bold" VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+        </ActivityIndicator>
+
+        <Button Text="Pessoas deste ministério" Command="{Binding ViewPeopleMinistry}"></Button>
+        <Button Text="Celulas deste ministério" Command="{Binding ViewCellMinistry}"></Button>
+
+        <Button Text="Sair deste ministério" Command="{Binding SaindoMinisterio}"></Button>
+
+    </StackLayout>
+
+</ContentPage>

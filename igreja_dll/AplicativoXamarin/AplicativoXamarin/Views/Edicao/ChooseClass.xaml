@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.Edicao.ChooseClass"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Identificação"
+             >
+
+    <StackLayout BindingContext="{Binding Editar}">
+        <TableView>
+            <TableRoot>
+
+                <TableSection Title="Identificação">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é uma criança?" VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Crianca, Mode=TwoWay}" 
+                            VerticalOptions="Center"></Switch>
+                        </StackLayout>
+
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um visitante?" VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End"
+                            IsToggled="{Binding Visitante, Mode=TwoWay}"
+                            VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por aclamação?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroAclamacao, Mode=TwoWay}"
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por batismo?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroBatismo, Mode=TwoWay}" 
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+
+
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Você é um membro por reconciliação?" VerticalOptions="CenterAndExpand" 
+                                HorizontalOptions="CenterAndExpand" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding MembroReconciliacao, Mode=TwoWay}" 
+                                VerticalOptions="Center"></Switch>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Você é um membro por transferência?" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+                            <Switch HorizontalOptions="End" IsToggled="{Binding MembroTransferencia, Mode=TwoWay}" 
+                    VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+
+        </TableView>
+
+        <StackLayout>
+            <ActivityIndicator IsRunning="{Binding Aguarde}"
+                            HorizontalOptions="Center" VerticalOptions="Center">
+            </ActivityIndicator>
+            <Button Text="Proximo" Command="{Binding NextDataCommand}" ></Button>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

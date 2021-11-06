@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoXamarin.Views.Confirm.ConfirmEnterCell">
+
+    <StackLayout Orientation="Vertical">
+        <Label Text="Celula:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Id: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding Id}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Nome: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding Nome}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Dia da semana: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding Dia_semana}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Horario da reunião: " HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding HorarioCelula}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Maximo de pessoas: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding Maximo_pessoa}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <Label Text="Endereço da celula: " HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="País: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Pais}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Estado: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Estado}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Cidade: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Cidade}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Bairro: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Bairro}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Rua: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Rua}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Numero da casa: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Numero_casa}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Cep: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Cep}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Complemento: " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding EnderecoCelula.Complemento}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <Button Text="Pessoas da celula"  Command="{Binding ViewPeoples}"></Button>
+        <Button Text="Ministérios da celula"  Command="{Binding ViewMinistries}"></Button>
+        <Button Text="Entrar na celula"  Command="{Binding ConfirmJoinCell}"></Button>
+
+    </StackLayout>
+
+</ContentPage>
