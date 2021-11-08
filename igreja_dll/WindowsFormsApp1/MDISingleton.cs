@@ -13,14 +13,14 @@ namespace WindowsFormsApp1
 
         }
 
-        private static MDI instancia;
+        private static MDIFinanceiro instancia;
 
-        public static MDI InstanciaMDI()
+        public static MDIFinanceiro InstanciaMDI()
         {
             {
                 if (instancia == null)
                 {
-                    instancia = new MDI();
+                    instancia = new MDIFinanceiro();
                     return instancia;
                 }
                 return instancia;

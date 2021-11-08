@@ -34,7 +34,7 @@ namespace WindowsFormsApp1.Formulario
         public FormCrudPessoa(bool deletar, bool atualizar, bool detalhes, modelocrud modelo, modelocrud modeloNovo)
             : base(deletar, atualizar, detalhes, modelo, modeloNovo)
         {
-            if(this is FormPessoa)
+            if(this is FrmPessoa)
             {
                 Proximo.Visible = false;
 

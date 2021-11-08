@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
 
         private void fileMenu_Click(object sender, EventArgs e)
         {
-            MDI mdi = MDISingleton.InstanciaMDI();
+            MDIFinanceiro mdi = MDISingleton.InstanciaMDI();
             mdi.Show();
         }
 

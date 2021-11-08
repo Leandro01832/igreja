@@ -38,6 +38,9 @@
             this.lbl_horario = new System.Windows.Forms.Label();
             this.Principal = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.sistemaFinanceiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.esboçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sistemaDeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +62,10 @@
             this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenu});
+            this.fileMenu,
+            this.sistemaFinanceiroToolStripMenuItem,
+            this.esboçoToolStripMenuItem,
+            this.sistemaDeEmailToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -72,8 +78,8 @@
             // 
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(92, 32);
-            this.fileMenu.Text = "Sistema";
+            this.fileMenu.Size = new System.Drawing.Size(355, 32);
+            this.fileMenu.Text = "Sistema de gerenciamento de pessoas";
             this.fileMenu.Click += new System.EventHandler(this.fileMenu_Click);
             // 
             // label1
@@ -123,6 +129,24 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             // 
+            // sistemaFinanceiroToolStripMenuItem
+            // 
+            this.sistemaFinanceiroToolStripMenuItem.Name = "sistemaFinanceiroToolStripMenuItem";
+            this.sistemaFinanceiroToolStripMenuItem.Size = new System.Drawing.Size(187, 32);
+            this.sistemaFinanceiroToolStripMenuItem.Text = "Sistema Financeiro";
+            // 
+            // esboçoToolStripMenuItem
+            // 
+            this.esboçoToolStripMenuItem.Name = "esboçoToolStripMenuItem";
+            this.esboçoToolStripMenuItem.Size = new System.Drawing.Size(87, 32);
+            this.esboçoToolStripMenuItem.Text = "Esboço";
+            // 
+            // sistemaDeEmailToolStripMenuItem
+            // 
+            this.sistemaDeEmailToolStripMenuItem.Name = "sistemaDeEmailToolStripMenuItem";
+            this.sistemaDeEmailToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
+            this.sistemaDeEmailToolStripMenuItem.Text = "Sistema de e-mail";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,5 +181,8 @@
         private System.Windows.Forms.Label lbl_horario;
         private System.Windows.Forms.Timer Principal;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ToolStripMenuItem sistemaFinanceiroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem esboçoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sistemaDeEmailToolStripMenuItem;
     }
 }

@@ -517,8 +517,8 @@ namespace WindowsFormsApp1
                     {
                         if (ModeloNovo != null)
                         {
-                            FormPessoa fn = new
-                        FormPessoa(CondicaoAtualizar, condicaoDeletar, condicaoDetalhes, ModeloVelho,
+                            FrmPessoa fn = new
+                        FrmPessoa(CondicaoAtualizar, condicaoDeletar, condicaoDetalhes, ModeloVelho,
                         ModeloNovo);
                             fn.MdiParent = this.MdiParent;
                             this.Close();
@@ -526,7 +526,7 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            FormPessoa fn = new  FormPessoa();
+                            FrmPessoa fn = new  FrmPessoa();
                             fn.MdiParent = this.MdiParent;
                             this.Close();
                             fn.Show();
@@ -589,7 +589,7 @@ namespace WindowsFormsApp1
                         this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                         this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                     {
-                        frm = new FormPessoa();
+                        frm = new FrmPessoa();
                         LoadFormCrud();
 
                     }

@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -151,6 +152,18 @@
     <Compile Include="Formulario\FormCrudPessoa.Designer.cs">
       <DependentUpon>FormCrudPessoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\formularioFinanceiroPessoa\FrmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioFinanceiroPessoa\FrmAdmin.Designer.cs">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioFinanceiroPessoa\FrmComprador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioFinanceiroPessoa\FrmComprador.Designer.cs">
+      <DependentUpon>FrmComprador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\FormularioListView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +199,66 @@
     </Compile>
     <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.Designer.cs">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmAluguel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmAluguel.Designer.cs">
+      <DependentUpon>FrmAluguel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmCompra.Designer.cs">
+      <DependentUpon>FrmCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmRetiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmRetiro.Designer.cs">
+      <DependentUpon>FrmRetiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmTransacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmTransacao.Designer.cs">
+      <DependentUpon>FrmTransacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmTransporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoSaida\FrmTransporte.Designer.cs">
+      <DependentUpon>FrmTransporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmBazar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmBazar.Designer.cs">
+      <DependentUpon>FrmBazar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmCantina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmCantina.Designer.cs">
+      <DependentUpon>FrmCantina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmDizimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmDizimo.Designer.cs">
+      <DependentUpon>FrmDizimo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmLavaRapido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmLavaRapido.Designer.cs">
+      <DependentUpon>FrmLavaRapido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.Designer.cs">
+      <DependentUpon>FrmOferta.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\DetalhesMudancaEstado.cs">
       <SubType>Form</SubType>
@@ -271,17 +344,17 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.Designer.cs">
       <DependentUpon>FrmEndereco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FormPessoa.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FormPessoa.Designer.cs">
-      <DependentUpon>FormPessoa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmPessoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\FrmPessoa.Designer.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmPessoa.Designer.cs">
       <DependentUpon>FrmPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\ListPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\Pessoa\FormListView\ListPessoa.Designer.cs">
+      <DependentUpon>ListPessoa.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FrmMudancaEstado.cs">
       <SubType>Form</SubType>
@@ -319,6 +392,24 @@
     <Compile Include="Formulario\Reuniao\PessoasReuniao.Designer.cs">
       <DependentUpon>PessoasReuniao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDescrimina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDescrimina.Designer.cs">
+      <DependentUpon>FrmDescrimina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGrafico.Designer.cs">
+      <DependentUpon>FrmGrafico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGraficoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGraficoCaixa.Designer.cs">
+      <DependentUpon>FrmGraficoCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +422,12 @@
     </Compile>
     <Compile Include="MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIFinanceiro.Designer.cs">
+      <DependentUpon>MDIFinanceiro.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIPartial.cs">
       <SubType>Form</SubType>
@@ -395,6 +492,12 @@
     <EmbeddedResource Include="Formulario\FormularioCrudCelula.resx">
       <DependentUpon>FormularioCrudCelula.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioFinanceiroPessoa\FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioFinanceiroPessoa\FrmComprador.resx">
+      <DependentUpon>FrmComprador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioListView.resx">
       <DependentUpon>FormularioListView.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,6 +515,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.resx">
       <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoSaida\FrmAluguel.resx">
+      <DependentUpon>FrmAluguel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoSaida\FrmCompra.resx">
+      <DependentUpon>FrmCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoSaida\FrmRetiro.resx">
+      <DependentUpon>FrmRetiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoSaida\FrmTransacao.resx">
+      <DependentUpon>FrmTransacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoSaida\FrmTransporte.resx">
+      <DependentUpon>FrmTransporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmBazar.resx">
+      <DependentUpon>FrmBazar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmCantina.resx">
+      <DependentUpon>FrmCantina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmDizimo.resx">
+      <DependentUpon>FrmDizimo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmLavaRapido.resx">
+      <DependentUpon>FrmLavaRapido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.resx">
+      <DependentUpon>FrmOferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\DetalhesMudancaEstado.resx">
       <DependentUpon>DetalhesMudancaEstado.cs</DependentUpon>
@@ -455,11 +588,11 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.resx">
       <DependentUpon>FrmEndereco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FormPessoa.resx">
-      <DependentUpon>FormPessoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\FrmPessoa.resx">
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmPessoa.resx">
       <DependentUpon>FrmPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\Pessoa\FormListView\ListPessoa.resx">
+      <DependentUpon>ListPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FrmMudancaEstado.resx">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
@@ -479,11 +612,23 @@
     <EmbeddedResource Include="Formulario\Reuniao\PessoasReuniao.resx">
       <DependentUpon>PessoasReuniao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDescrimina.resx">
+      <DependentUpon>FrmDescrimina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGrafico.resx">
+      <DependentUpon>FrmGrafico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGraficoCaixa.resx">
+      <DependentUpon>FrmGraficoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIFinanceiro.resx">
+      <DependentUpon>MDIFinanceiro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisar.resx">
       <DependentUpon>Pesquisar.cs</DependentUpon>

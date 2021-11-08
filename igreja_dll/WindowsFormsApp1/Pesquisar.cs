@@ -1,24 +1,14 @@
-﻿using database;
+﻿using business.classes.Abstrato;
+using database;
 using System;
-using System.Drawing;
-using System.Windows.Forms;
-using business.classes.PessoasLgpd;
-using business.classes.Pessoas;
-using business.classes.Ministerio;
-using business.classes.Abstrato;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using business.classes;
-using WindowsFormsApp1.Formulario.Reuniao;
-using business.classes.Celulas;
-using business.implementacao;
-using WindowsFormsApp1.Formulario.Pessoas;
-using WindowsFormsApp1.Formulario.Celulas;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Pesquisar : FormPadrao
+    public partial class Pesquisar : Form
     {
         public Pesquisar(Type tipo)
         {
@@ -55,78 +45,55 @@ namespace WindowsFormsApp1
         {
             
         }
-        
+
+        private Type ReturnBase(Type type)
+        {
+            if (type.BaseType != typeof(modelocrud))
+                ReturnBase(type.BaseType);
+            return type;
+        }
+
         private void dgdados_SelectionChanged(object sender, EventArgs e)
         {
             
-            var id = dgdados.CurrentRow.Cells[0];
-            var value = int.Parse(id.Value.ToString());
+            DataGridViewRow row = dgdados.CurrentRow;
+            var modelo = (modelocrud) row.DataBoundItem;
+            var value = int.Parse(modelo.Id.ToString());
             WFCrud form = null;
-            if (tipo.IsAbstract)
-            {
-                if (tipo == typeof(Pessoa))
+            
+                var Modelo = modelocrud.Modelos.Where(m => m.GetType() == tipo
+            || m.GetType().IsSubclassOf(tipo)).ToList().FirstOrDefault(i => i.Id == value);
+
+                if(Modelo != null)
                 {
-                    var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Codigo == value);
-                    if (Modelo != null)
-                    form = new FormPessoa();
-                    
+                var lista = modelocrud.listTypes(typeof(WFCrud));
+                var listaTypes = modelocrud.listTypes(typeof(modelocrud));
+
+                if (Modelo.GetType().BaseType == typeof(modelocrud))
+                    foreach (var item in listaTypes)
+                        foreach (var item2 in lista)
+                            if ("Frm" + Modelo.GetType().Name == item2.Name)
+                                form = (WFCrud)Activator.CreateInstance(item2);
+
+                if (Modelo.GetType().BaseType != typeof(modelocrud))
+                {
+                    Type BaseModel = ReturnBase(Modelo.GetType());
+
+                    foreach (var item in listaTypes)
+                        foreach (var item2 in lista)
+                            if ("Frm" + BaseModel.Name == item2.Name)
+                                form = (WFCrud)Activator.CreateInstance(item2);
                 }
 
-                if (tipo == typeof(Ministerio))
-                {
-                    var Modelo = modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == value);
-                    if (Modelo != null)
-                    form = new FrmMinisterio();                        
-                    
-                }
-
-                if (tipo == typeof(Celula))
-                {
-                    var Modelo = modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == value);
-                    if (Modelo != null)
-                        form = new FrmCelula();  
-                    
-                }                
+                form.modelo = Modelo;
+                form.CondicaoAtualizar = false;
+                form.CondicaoDeletar = false;
+                form.CondicaoDetalhes = true;
+                form.MdiParent = this.MdiParent;
+                form.Show();
             }
 
-            else if (tipo.IsSubclassOf(typeof(Pessoa)))
-            {
-                var Modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Codigo == value);
-                if (Modelo != null)
-                    form = new FormPessoa();
-            }
-            else if (tipo.IsSubclassOf(typeof(Ministerio)))
-            {
-                var Modelo = modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == value);
-                if (Modelo != null)
-                    form = new FrmMinisterio();
-            }
-            else if (tipo.IsSubclassOf(typeof(Celula)))
-            {
-                var Modelo = modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == value);
-                if (Modelo != null)
-                    form = new FrmCelula();
-            }
-
-            else if (tipo == typeof(Reuniao))
-            {
-                var Modelo = modelocrud.Modelos.OfType<Reuniao>().ToList().FirstOrDefault(i => i.Id == value);
-                if (Modelo != null)
-                    form = new FrmReuniao();
-            }
-
-            else if (tipo == typeof(MudancaEstado))
-            {
-                var Modelo = modelocrud.Modelos.OfType<MudancaEstado>().ToList().FirstOrDefault(i => i.Id == value);
-                if (Modelo != null)
-                    form = new DetalhesMudancaEstado();
-            }
-
-            form.CondicaoAtualizar = false;
-            form.CondicaoDeletar = false;
-            form.CondicaoDetalhes = true;
-            form.MdiParent = this.MdiParent;
-            form.Show();
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,213 +109,17 @@ namespace WindowsFormsApp1
 
         private void verifica()
         {
-            if (tipo == typeof(VisitanteLgpd))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<VisitanteLgpd>().ToList());
-                ModificaDataGridView(Resultado);
-            }
-
-            if (tipo == typeof(CriancaLgpd))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<CriancaLgpd>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_AclamacaoLgpd))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_AclamacaoLgpd>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_BatismoLgpd))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_BatismoLgpd>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_ReconciliacaoLgpd))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_ReconciliacaoLgpd>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_TransferenciaLgpd))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_TransferenciaLgpd>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Visitante))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Visitante>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Crianca))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Crianca>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_Aclamacao))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Aclamacao>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_Batismo))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Batismo>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_Reconciliacao))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Reconciliacao>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Membro_Transferencia))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro_Transferencia>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Lider_Celula))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Celula>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Lider_Celula_Treinamento))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Celula_Treinamento>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Lider_Ministerio))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Ministerio>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Lider_Ministerio_Treinamento))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Lider_Ministerio_Treinamento>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Supervisor_Celula))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Celula>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Supervisor_Celula_Treinamento))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Celula_Treinamento>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Supervisor_Ministerio))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Ministerio>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Supervisor_Ministerio_Treinamento))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Supervisor_Ministerio_Treinamento>().ToList());
-                ModificaDataGridView(Resultado);
-            }
-
-            if (tipo == typeof(Celula_Adolescente))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Adolescente>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Celula_Adulto))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Adulto>().ToList());
-                ModificaDataGridView(  Resultado);
-            }
-
-            if (tipo == typeof(Celula_Jovem))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Jovem>().ToList());
-                ModificaDataGridView(  Resultado);
-            }
-
-            if (tipo == typeof(Celula_Crianca))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Crianca>().ToList());
-                ModificaDataGridView( Resultado);
-            }
-
-            if (tipo == typeof(Celula_Casado))
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList().OfType<Celula_Casado>().ToList());
-                ModificaDataGridView( Resultado);
-            }
+            Resultado.Clear();
+            Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().Where(m => m.GetType() == tipo
+            || m.GetType().IsSubclassOf(tipo)).ToList());
+            ModificaDataGridView(Resultado);
         }
 
         private void btn_todos_Click(object sender, EventArgs e)
         {
-            if (Resultado[0] is Pessoa)
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Pessoa>().ToList());
-            }
-
-            if (Resultado[0] is Celula)
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Celula>().ToList());
-            }
-
-            if (Resultado[0] is Ministerio)
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Ministerio>().ToList());
-            }
-
-            if (Resultado[0] is MudancaEstado)
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<MudancaEstado>().ToList());
-            }
-
-            if (Resultado[0] is Reuniao)
-            {
-                Resultado.Clear();
-                Resultado.AddRange(modelocrud.Modelos.OfType<Reuniao>().ToList());
-            }
+            Resultado.Clear();
+            Resultado.AddRange(modelocrud.Modelos.Where(m => m.GetType() == Resultado[0].GetType()
+            || m.GetType().IsSubclassOf(Resultado[0].GetType())).ToList());
         }
     }
 }

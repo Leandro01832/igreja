@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    partial class FormPessoa
+    partial class ListPessoa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListPessoa));
             this.SuspendLayout();
             // 
-            // FinalizarCadastro
+            // FrmPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 450);
-            this.Name = "FinalizarCadastro";
-            this.Text = "FinalizarCadastro";
-            this.Load += new System.EventHandler(this.FinalizarCadastro_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmPessoa";
+            this.Text = "Pessoa";
+            this.Load += new System.EventHandler(this.Pessoa_Load);
             this.ResumeLayout(false);
 
         }

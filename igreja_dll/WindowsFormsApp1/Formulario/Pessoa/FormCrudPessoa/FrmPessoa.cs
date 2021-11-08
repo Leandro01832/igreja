@@ -3,14 +3,14 @@ using System;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class FormPessoa : FormCrudPessoa
+    public partial class FrmPessoa : FormCrudPessoa
     {
-        public FormPessoa():base()
+        public FrmPessoa():base()
         {
             InitializeComponent();
         }
 
-        public FormPessoa(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
+        public FrmPessoa(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
             modelocrud modeloNovo)
             : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
         {

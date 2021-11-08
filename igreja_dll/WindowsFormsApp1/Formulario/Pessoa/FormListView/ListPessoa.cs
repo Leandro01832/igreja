@@ -5,10 +5,10 @@ using System;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class FrmPessoa : FormularioListView
+    public partial class ListPessoa : FormularioListView
     {
 
-        public FrmPessoa(Type Tipo) : base(Tipo)
+        public ListPessoa(Type Tipo) : base(Tipo)
         {     
             InitializeComponent();
             this.Tipo = Tipo;

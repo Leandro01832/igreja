@@ -297,7 +297,7 @@ namespace WindowsFormsApp1
 
             }
 
-            if (modelo is Pessoa && this is FormPessoa)
+            if (modelo is Pessoa && this is FrmPessoa)
             {
                 dadoPessoal.Visible = true;
                 dadoClasse.Visible = true;
@@ -339,7 +339,7 @@ namespace WindowsFormsApp1
                 !condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
                 this is FrmMinisterio ||
                 !condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
-                this is FormPessoa ||
+                this is FrmPessoa ||
                 !condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
                 this is FrmReuniao)
             {
@@ -370,7 +370,7 @@ namespace WindowsFormsApp1
                     }
 
                     if (item is Button && !(this is FrmMinisterio) &&
-                        !(this is FormPessoa) && !(this is FrmCelula) &&
+                        !(this is FrmPessoa) && !(this is FrmCelula) &&
                         !(this is FrmReuniao))
                     {
                         var t = (Button)item;

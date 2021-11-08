@@ -118,7 +118,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void listapessoas_Click(object sender, EventArgs e)
         {
-            FrmPessoa form = new FrmPessoa(typeof(Pessoa));
+            ListPessoa form = new ListPessoa(typeof(Pessoa));
             form.MdiParent = this.MdiParent;
             form.Text = "Lista de Pessoas";
             form.Show();

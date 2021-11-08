@@ -4,15 +4,49 @@ using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
+using System.Windows.Forms;
+using WindowsFormsApp1.Formulario;
+using WindowsFormsApp1.Formulario.Celulas;
+using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoas;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 
 namespace WindowsFormsApp1
 {
-    public partial class MDI
+    public partial class MDI 
     {
         WFCrud frm = null;
         ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
+
+        private void OpenListPessoa(Type tipo)
+        {
+            FormularioListView frm = new ListPessoa(tipo);
+            frm.MdiParent = this;
+            frm.Text = "Janela " + childFormNumber++;
+            frm.Show();
+        }
+        private void OpenListMinisterio(Type tipo)
+        {
+            FormularioListView frm = new ListMinisterio(tipo);
+            frm.MdiParent = this;
+            frm.Text = "Janela " + childFormNumber++;
+            frm.Show();
+        }
+        private void OpenListCelula(Type tipo)
+        {
+            FormularioListView frm = new ListCelula(tipo);
+            frm.MdiParent = this;
+            frm.Text = "Janela " + childFormNumber++;
+            frm.Show();
+        }
+
+        private void OpenQuery(Type tipo)
+        {
+            Pesquisar query = new Pesquisar(tipo);
+            query.MdiParent = this;
+            query.Text = "Janela " + childFormNumber++;
+            query.Show();
+        }
 
         private void LoadFormCreate(modelocrud modelo)
         {
@@ -99,13 +133,11 @@ namespace WindowsFormsApp1
 
         private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
             ir.imprimir(typeof(PessoaLgpd));
         }
 
         private void pessoaDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
             ir.imprimir(typeof(PessoaDado));
         }
 
@@ -126,7 +158,6 @@ namespace WindowsFormsApp1
 
         private void toolStripMenuItem28_Click(object sender, EventArgs e)
         {
-
             ir.imprimir(typeof(Membro_AclamacaoLgpd));
         }
 
