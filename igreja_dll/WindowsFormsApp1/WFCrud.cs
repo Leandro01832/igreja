@@ -1,5 +1,6 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.financeiro;
 using business.classes.Intermediario;
 using business.classes.Pessoas;
 using database;
@@ -257,127 +258,7 @@ namespace WindowsFormsApp1
             InfoForm.Visible = false;
             this.Controls.Add(InfoForm);
 
-            if (condicaoAtualizar || condicaoDeletar || condicaoDetalhes)
-            {
-                InfoForm.Visible = true;
-                Proximo.Visible = false;
-                FinalizaCadastro.Visible = false;
 
-                if (modelo is PessoaDado)
-                {
-                    var pessoa = (PessoaDado)modelo;
-                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
-                    " - " + pessoa.NomePessoa;
-                }
-                else
-                if (modelo is PessoaLgpd)
-                {
-                    var pessoa = (PessoaLgpd)modelo;
-                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
-                        " - " + pessoa.Email;
-                }
-                else
-                if (modelo is Celula)
-                {
-                    var celula = (Celula)modelo;
-                    InfoForm.Text = "Identificação: " + celula.Id.ToString() +
-                    " - " + celula.Nome;
-                }
-                else if (modelo is Ministerio)
-                {
-                    var m = (Ministerio)modelo;
-                    InfoForm.Text = "Identificação: " + m.Id.ToString() +
-                    " - " + m.Nome;
-                }
-                else if (modelo is Reuniao)
-                {
-                    var p = (Reuniao)modelo;
-                    InfoForm.Text = "Identificação: " + p.Id.ToString() + " - ";
-                }
-
-            }
-
-            if (modelo is Pessoa && this is FrmPessoa)
-            {
-                dadoPessoal.Visible = true;
-                dadoClasse.Visible = true;
-                dadoMinisteriosPessoa.Visible = true;
-                dadoFoto.Visible = true;
-                if (modelo is PessoaDado)
-                {
-                    dadoEnderecoPessoa.Visible = true;
-                    dadoContato.Visible = true;
-                }
-            }
-
-            if (modelo is Ministerio && this is FrmMinisterio)
-            {
-                dadoMinisterio.Visible = true;
-                dadoMinisterioPessoas.Visible = true;
-                dadoMinistro.Visible = true;
-            }
-
-            if (modelo is Celula && this is FrmCelula)
-            {
-                dadoCelula.Visible = true;
-                dadoEnderecoCelula.Visible = true;
-                dadoCelulaMinisterio.Visible = true;
-                dadoCelulaPessoas.Visible = true;
-            }
-
-            if (modelo is Reuniao && this is FrmReuniao)
-            {
-                dadoReuniao.Visible = true;
-                dadoReuniaoPessoas.Visible = true;
-            }
-
-            if (!condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes)
-                Proximo.Visible = true;
-
-            if (!condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
-                this is FrmCelula ||
-                !condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
-                this is FrmMinisterio ||
-                !condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
-                this is FrmPessoa ||
-                !condicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
-                this is FrmReuniao)
-            {
-                Proximo.Visible = false;
-                FinalizaCadastro.Visible = true;
-            }
-
-            if (condicaoAtualizar)
-                Atualizar.Visible = true;
-
-
-            if (condicaoDeletar)
-                Deletar.Visible = true;
-
-            if (CondicaoDetalhes)
-            {
-                foreach (var item in this.Controls)
-                {
-                    if (item is TextBox)
-                    {
-                        var t = (TextBox)item;
-                        t.ReadOnly = true;
-                    }
-                    if (item is MaskedTextBox)
-                    {
-                        var t = (MaskedTextBox)item;
-                        t.ReadOnly = true;
-                    }
-
-                    if (item is Button && !(this is FrmMinisterio) &&
-                        !(this is FrmPessoa) && !(this is FrmCelula) &&
-                        !(this is FrmReuniao))
-                    {
-                        var t = (Button)item;
-                        t.Enabled = false;
-                    }
-                }
-            }
         }
 
         private void WFCrud_FormClosing(object sender, FormClosingEventArgs e)
@@ -386,35 +267,20 @@ namespace WindowsFormsApp1
 
             if (CondicaoDeletar)
             {
-                if (modelo is Pessoa)
-                {
-                    var p = (Pessoa)modelo;
-                    if (modelo.recuperar(p.Id)) deletar = true;
-                }
-                if (modelo is Ministerio)
-                {
-                    var p = (Ministerio)modelo;
-                    if (modelo.recuperar(p.Id)) deletar = true;
-                }
-                if (modelo is Celula)
-                {
-                    var p = (Celula)modelo;
-                    if (modelo.recuperar(p.Id)) deletar = true;
-                }
-                if (modelo is Reuniao)
-                {
-                    var p = (Reuniao)modelo;
-                    if (modelo.recuperar(p.Id)) deletar = true;
-                }
+                var p = (Pessoa)modelo;
+                if (modelo.recuperar(modelo.Id)) deletar = true;
             }
 
-            if (condicaoAtualizar || condicaoDetalhes || deletar)
+            if (CondicaoAtualizar || CondicaoDetalhes || deletar)
             {
                 modelocrud pes = null;
-                var p = modelo;
                 var model = (modelocrud)Activator.CreateInstance(modelo.GetType());
-                if (model.recuperar(p.Id)) pes = model;
-                modelocrud.Modelos.Remove(modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == p.Id));
+                model.Id = modelo.Id;
+                model.Select_padrao = $"select * from {model.GetType().Name} as C where C.Id='{modelo.Id}'";
+                model.Delete_padrao = $" delete from {model.GetType().Name} where Id='{modelo.Id}' ";
+                if (model.recuperar(modelo.Id)) pes = model;
+                modelocrud.Modelos.Remove(modelocrud.Modelos.Where(m => m.GetType() == modelo.GetType())
+                .ToList().First(i => i.Id == modelo.Id));
                 modelocrud.Modelos.Add(pes);
             }
 
@@ -525,10 +391,136 @@ namespace WindowsFormsApp1
         private void DadoPessoal_Click(object sender, EventArgs e)
         {
             if (modelo is PessoaDado)
-             frm = new DadoPessoal();
+                frm = new DadoPessoal();
             if (modelo is PessoaLgpd)
-            frm = new DadoPessoalLgpd();
+                frm = new DadoPessoalLgpd();
             LoadFormCrud();
+        }
+
+        public void LoadForm()
+        {
+            if (condicaoAtualizar || condicaoDeletar || condicaoDetalhes)
+            {
+                InfoForm.Visible = true;
+                Proximo.Visible = false;
+                FinalizaCadastro.Visible = false;
+
+                if (modelo is PessoaDado)
+                {
+                    var pessoa = (PessoaDado)modelo;
+                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
+                    " - " + pessoa.NomePessoa;
+                }
+                else
+                if (modelo is PessoaLgpd)
+                {
+                    var pessoa = (PessoaLgpd)modelo;
+                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
+                        " - " + pessoa.Email;
+                }
+                else
+                if (modelo is Celula)
+                {
+                    var celula = (Celula)modelo;
+                    InfoForm.Text = "Identificação: " + celula.Id.ToString() +
+                    " - " + celula.Nome;
+                }
+                else if (modelo is Ministerio)
+                {
+                    var m = (Ministerio)modelo;
+                    InfoForm.Text = "Identificação: " + m.Id.ToString() +
+                    " - " + m.Nome;
+                }
+                else if (modelo is Reuniao)
+                {
+                    var p = (Reuniao)modelo;
+                    InfoForm.Text = "Identificação: " + p.Id.ToString() + " - ";
+                }
+
+            }
+
+            if (modelo is Pessoa && this is FrmPessoa)
+            {
+                dadoPessoal.Visible = true;
+                dadoClasse.Visible = true;
+                dadoMinisteriosPessoa.Visible = true;
+                dadoFoto.Visible = true;
+                if (modelo is PessoaDado)
+                {
+                    dadoEnderecoPessoa.Visible = true;
+                    dadoContato.Visible = true;
+                }
+            }
+
+            if (modelo is Ministerio && this is FrmMinisterio)
+            {
+                dadoMinisterio.Visible = true;
+                dadoMinisterioPessoas.Visible = true;
+                dadoMinistro.Visible = true;
+            }
+
+            if (modelo is Celula && this is FrmCelula)
+            {
+                dadoCelula.Visible = true;
+                dadoEnderecoCelula.Visible = true;
+                dadoCelulaMinisterio.Visible = true;
+                dadoCelulaPessoas.Visible = true;
+            }
+
+            if (modelo is Reuniao && this is FrmReuniao)
+            {
+                dadoReuniao.Visible = true;
+                dadoReuniaoPessoas.Visible = true;
+            }
+
+            if (!CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes)
+                Proximo.Visible = true;
+
+            if (!CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                this is FrmCelula ||
+                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                this is FrmMinisterio ||
+                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                this is FrmPessoa ||
+                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                this is FrmReuniao || modelo.GetType().IsSubclassOf(typeof(Movimentacao)) &&
+                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes)
+            {
+                Proximo.Visible = false;
+                FinalizaCadastro.Visible = true;
+            }
+
+            if (CondicaoAtualizar)
+                Atualizar.Visible = true;
+
+
+            if (condicaoDeletar)
+                Deletar.Visible = true;
+
+            if (CondicaoDetalhes)
+            {
+                foreach (var item in this.Controls)
+                {
+                    if (item is TextBox)
+                    {
+                        var t = (TextBox)item;
+                        t.ReadOnly = true;
+                    }
+                    if (item is MaskedTextBox)
+                    {
+                        var t = (MaskedTextBox)item;
+                        t.ReadOnly = true;
+                    }
+
+                    if (item is Button && !(this is FrmMinisterio) &&
+                        !(this is FrmPessoa) && !(this is FrmCelula) &&
+                        !(this is FrmReuniao))
+                    {
+                        var t = (Button)item;
+                        t.Enabled = false;
+                    }
+                }
+            }
         }
 
         private void LoadFormCrud()

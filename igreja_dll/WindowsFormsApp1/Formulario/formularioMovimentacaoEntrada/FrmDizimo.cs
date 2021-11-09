@@ -1,4 +1,5 @@
 ﻿using business.Classe.financeiro;
+using business.classes.financeiro;
 using database;
 using System;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
 
         private void FrmCadastrarDizimo_Load(object sender, EventArgs e)
         {
+            LoadForm();
             var form = "Dízimo";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

@@ -1,5 +1,6 @@
 ﻿using business.Classe;
 using business.Classe.financeiro;
+using business.classes.financeiro;
 using database;
 using System;
 using System.Collections.Generic;

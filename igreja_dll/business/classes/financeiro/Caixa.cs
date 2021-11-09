@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace business.Classe.financeiro
+namespace business.classes.financeiro
 {
-    public class Caixa : modelocrud
+    public class Caixa 
     {
         [NotMapped]
         public static int DiaMesFechamento { get; set; }
@@ -22,8 +22,8 @@ namespace business.Classe.financeiro
         {
             double valorPagar = 0;
             double valorReceber = 0;
-            var contasPagar = Modelos.OfType<MovimentacaoSaida>();
-            var contasReceber = Modelos.OfType<MovimentacaoEntrada>();
+            var contasPagar = modelocrud.Modelos.OfType<MovimentacaoSaida>();
+            var contasReceber = modelocrud.Modelos.OfType<MovimentacaoEntrada>();
 
             if(contasPagar != null)
             foreach (var item in contasPagar.Where(c => !c.Pago && c.Data.Day < DiaMesFechamento))

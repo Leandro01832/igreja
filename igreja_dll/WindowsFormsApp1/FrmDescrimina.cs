@@ -1,4 +1,4 @@
-﻿using business.Classe.financeiro;
+﻿using business.classes.financeiro;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

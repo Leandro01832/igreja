@@ -109,12 +109,11 @@
             this.txtValor.Location = new System.Drawing.Point(257, 69);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
-            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtValor.Size = new System.Drawing.Size(128, 30);
             this.txtValor.TabIndex = 290;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
-            // FrmCadastrarBazar
+            // FrmBazar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,7 +125,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.mask_data_recebimento);
-            this.Name = "FrmCadastrarBazar";
+            this.Name = "FrmBazar";
             this.Text = "FrmCadastrarBazar";
             this.Load += new System.EventHandler(this.FrmCadastrarBazar_Load);
             this.ResumeLayout(false);

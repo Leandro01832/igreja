@@ -199,6 +199,10 @@ namespace WindowsFormsApp1
             }
         }
 
-        
+        private void sistemaFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MDIFinanceiro form = new MDIFinanceiro();
+            form.Show();
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace business.Classe.financeiro
+namespace business.classes.financeiro
 {
     [Table("Lava_Rapido")]
     public class Lava_Rapido : MovimentacaoEntrada

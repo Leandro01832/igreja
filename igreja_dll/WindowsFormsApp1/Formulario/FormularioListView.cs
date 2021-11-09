@@ -1,5 +1,4 @@
 ﻿using business.classes.Abstrato;
-using business.classes.Pessoas;
 using business.implementacao;
 using database;
 using System;
@@ -93,23 +92,9 @@ namespace WindowsFormsApp1.Formulario
 
         private async void BotaoAtualizarLista_Click(object sender, EventArgs e)
         {
-            if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)))
-            {
-                if (Tipo == typeof(Pessoa))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Pessoa>().ToList();
 
-                if (Tipo == typeof(PessoaDado))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaDado>().ToList();
+            ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo || m.GetType().IsSubclassOf(Tipo)).ToList();
 
-                if (Tipo == typeof(PessoaLgpd))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaLgpd>().ToList();
-
-                if (Tipo == typeof(MembroLgpd))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<MembroLgpd>().ToList();
-
-                if (Tipo == typeof(Membro))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro>().ToList();
-            }
 
             if (modelocrud.Modelos.OfType<Celula>().ToList().Count > 0 && Tipo.IsAbstract)
                 ListView.DataSource = modelocrud.Modelos.OfType<Celula>().ToList();
@@ -172,111 +157,22 @@ namespace WindowsFormsApp1.Formulario
                 botaoDeletar.Visible = false;
             }
 
-            if (!Tipo.IsAbstract)
+
+            atualizar = false;
+            botaoAtualizarLista.Enabled = atualizar;
+            botaoDetalhes.Enabled = atualizar;
+            botaoAtualizar.Enabled = atualizar;
+            botaoDeletar.Enabled = atualizar;
+            Mudanca.Enabled = atualizar;
+
+            ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo
+            || m.GetType().IsSubclassOf(Tipo)).OrderBy(m => m.Id).ToList();
+
+
+            if (modelocrud.Modelos.Where(m => m.GetType() == Tipo || m.GetType().IsSubclassOf(Tipo)).ToList().Count == 0)
             {
-                bool condicao = false;
-                atualizar = false;
-                botaoAtualizarLista.Enabled = atualizar;
-                botaoDetalhes.Enabled = atualizar;
-                botaoAtualizar.Enabled = atualizar;
-                botaoDeletar.Enabled = atualizar;
-                Mudanca.Enabled = atualizar;
-
-
-                if (Tipo.IsSubclassOf(typeof(Pessoa)))
-                {
-                    Mudanca.Visible = true;
-                    foreach (var m in modelocrud.Modelos.OfType<Pessoa>().ToList())
-                        if (Tipo.Name == m.GetType().Name)
-                        {
-                            condicao = true;
-                            break;
-                        }
-
-                    if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0 && condicao)
-                        ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().Where(p => p.GetType().Name == Tipo.Name)
-                            .OrderBy(p => p.Codigo).ToList();
-                    else
-                        ListView.DataSource = await FormPadrao.AtualizarComProgressBar(Tipo);
-                }
-
-                if (Tipo.IsSubclassOf(typeof(Celula)))
-                {
-                    foreach (var m in modelocrud.Modelos.OfType<Celula>().ToList())
-                        if (Tipo.Name == m.GetType().Name)
-                        {
-                            condicao = true;
-                            break;
-                        }
-
-                    if (modelocrud.Modelos.OfType<Celula>().ToList().Count > 0 && condicao)
-                        ListView.DataSource = modelocrud.Modelos.OfType<Celula>().ToList().Where(p => p.GetType().Name == Tipo.Name)
-                            .OrderBy(p => p.Id).ToList();
-                    else
-                        ListView.DataSource = await FormPadrao.AtualizarComProgressBar(Tipo);
-                }
-
-                if (Tipo.IsSubclassOf(typeof(Ministerio)))
-                {
-                    Mudanca.Visible = true;
-                    foreach (var m in modelocrud.Modelos.OfType<Ministerio>().ToList())
-                        if (Tipo.Name == m.GetType().Name)
-                        {
-                            condicao = true;
-                            break;
-                        }
-
-                    if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0 && condicao)
-                        ListView.DataSource = modelocrud.Modelos.OfType<Ministerio>().ToList().Where(p => p.GetType().Name == Tipo.Name)
-                            .OrderBy(p => p.Id).ToList();
-                    else
-                        ListView.DataSource = await FormPadrao.AtualizarComProgressBar(Tipo);
-                }
-
-                if (Tipo == typeof(business.classes.Reuniao))
-                {
-                    if (modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count > 0)
-                        ListView.DataSource = modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().OrderBy(p => p.Id).ToList();
-                    else
-                        ListView.DataSource = await FormPadrao.AtualizarComProgressBar(Tipo);
-                }
-
-                if (Tipo == typeof(MudancaEstado))
-                {
-                    if (modelocrud.Modelos.OfType<MudancaEstado>().ToList().Count > 0)
-                        ListView.DataSource = modelocrud.Modelos.OfType<MudancaEstado>().ToList().OrderBy(p => p.Id).ToList();
-                    else
-                        ListView.DataSource = await FormPadrao.AtualizarComProgressBar(Tipo);
-                }
-            }
-            else
-            if (Tipo == typeof(Celula) || Tipo == typeof(Ministerio))
-            {
-                if (Tipo == typeof(Celula))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Celula>().ToList().OrderBy(p => p.Id).ToList();
-
-                if (Tipo == typeof(Ministerio))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Ministerio>().ToList().OrderBy(p => p.Id).ToList();
-            }
-            else
-            if (Tipo == typeof(Pessoa) || Tipo == typeof(PessoaDado) || Tipo == typeof(PessoaLgpd)
-            || Tipo == typeof(MembroLgpd) || Tipo == typeof(Membro))
-            {
-                Mudanca.Visible = true;
-                if (Tipo == typeof(Pessoa))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OrderBy(p => p.Id).ToList();
-
-                if (Tipo == typeof(PessoaDado))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaDado>().OrderBy(p => p.Codigo).ToList();
-
-                if (Tipo == typeof(PessoaLgpd))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<PessoaLgpd>().OrderBy(p => p.Codigo).ToList();
-
-                if (Tipo == typeof(MembroLgpd))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<MembroLgpd>().OrderBy(p => p.Codigo).ToList();
-
-                if (Tipo == typeof(Membro))
-                    ListView.DataSource = modelocrud.Modelos.OfType<Pessoa>().ToList().OfType<Membro>().OrderBy(p => p.Codigo).ToList();
+                var lista = await FormPadrao.AtualizarComProgressBar(Tipo);
+                ListView.DataSource = lista.OrderBy(m => m.Id).ToList();
             }
 
             atualizar = true;
@@ -296,21 +192,24 @@ namespace WindowsFormsApp1.Formulario
                 var lista = modelocrud.listTypes(typeof(WFCrud));
                 var listaTypes = modelocrud.listTypes(typeof(modelocrud));
 
-                if (ListView.SelectedItem.GetType().BaseType == typeof(modelocrud))
-                    foreach (var item in listaTypes)
-                        foreach (var item2 in lista)
-                            if ("Frm" + ListView.SelectedItem.GetType().Name == item2.Name)
-                                result = (WFCrud)Activator.CreateInstance(item2);
+                Type BaseModel = ReturnBase(ListView.SelectedItem.GetType());
 
-                if (ListView.SelectedItem.GetType().BaseType != typeof(modelocrud))
+                foreach (var item in listaTypes)
                 {
-                    Type BaseModel = ReturnBase(ListView.SelectedItem.GetType());
-
-                    foreach (var item in listaTypes)
-                        foreach (var item2 in lista)
-                            if ("Frm" + BaseModel.Name == item2.Name)
-                                result = (WFCrud)Activator.CreateInstance(item2);
+                    foreach (var item2 in lista)
+                        if ("Frm" + BaseModel.Name == item2.Name)
+                        {
+                            result = (WFCrud)Activator.CreateInstance(item2);
+                            break;
+                        }
+                        else if ("Frm" + ListView.SelectedItem.GetType().Name == item2.Name)
+                        {
+                            result = (WFCrud)Activator.CreateInstance(item2);
+                            break;
+                        }
+                    if (result != null) break;
                 }
+
 
                 result.modelo = (modelocrud)ListView.SelectedItem;
                 result.CondicaoDetalhes = detalhes;
@@ -325,8 +224,8 @@ namespace WindowsFormsApp1.Formulario
         private Type ReturnBase(Type type)
         {
             if (type.BaseType != typeof(modelocrud))
-                ReturnBase(type.BaseType);         
-                return type;
+                ReturnBase(type.BaseType);
+            return type;
         }
     }
 }

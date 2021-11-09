@@ -65,7 +65,6 @@
             this.txtValor.Location = new System.Drawing.Point(187, 110);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
-            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtValor.Size = new System.Drawing.Size(128, 30);
             this.txtValor.TabIndex = 283;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
@@ -108,7 +107,7 @@
             this.radioDiesel.UseVisualStyleBackColor = true;
             this.radioDiesel.CheckedChanged += new System.EventHandler(this.radioDiesel_CheckedChanged);
             // 
-            // FrmCadastrarTransporte
+            // FrmTransporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,7 +119,7 @@
             this.Controls.Add(this.checkBoxPagou);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmCadastrarTransporte";
+            this.Name = "FrmTransporte";
             this.Text = "FrmCadastrarTransporte";
             this.Load += new System.EventHandler(this.FrmCadastrarTransporte_Load);
             this.ResumeLayout(false);

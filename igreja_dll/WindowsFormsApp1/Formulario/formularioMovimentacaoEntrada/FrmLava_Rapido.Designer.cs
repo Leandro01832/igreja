@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
 {
-    partial class FrmLavaRapido
+    partial class FrmLava_Rapido
     {
         /// <summary>
         /// Required designer variable.
@@ -107,12 +107,11 @@
             this.txtValor.Location = new System.Drawing.Point(268, 60);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
-            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtValor.Size = new System.Drawing.Size(128, 30);
             this.txtValor.TabIndex = 290;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
-            // FrmCadastrarLavaRapido
+            // FrmLava_Rapido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +123,7 @@
             this.Controls.Add(this.checkBoxPagou);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Name = "FrmCadastrarLavaRapido";
+            this.Name = "FrmLava_Rapido";
             this.Text = "FrmCadastrarLavaRapido";
             this.Load += new System.EventHandler(this.FrmCadastrarLavaRapido_Load);
             this.ResumeLayout(false);

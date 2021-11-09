@@ -33,14 +33,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.sistemaFinanceiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.esboçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sistemaDeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lbl_horario = new System.Windows.Forms.Label();
             this.Principal = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.sistemaFinanceiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.esboçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sistemaDeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,25 @@
             this.fileMenu.Size = new System.Drawing.Size(355, 32);
             this.fileMenu.Text = "Sistema de gerenciamento de pessoas";
             this.fileMenu.Click += new System.EventHandler(this.fileMenu_Click);
+            // 
+            // sistemaFinanceiroToolStripMenuItem
+            // 
+            this.sistemaFinanceiroToolStripMenuItem.Name = "sistemaFinanceiroToolStripMenuItem";
+            this.sistemaFinanceiroToolStripMenuItem.Size = new System.Drawing.Size(187, 32);
+            this.sistemaFinanceiroToolStripMenuItem.Text = "Sistema Financeiro";
+            this.sistemaFinanceiroToolStripMenuItem.Click += new System.EventHandler(this.sistemaFinanceiroToolStripMenuItem_Click);
+            // 
+            // esboçoToolStripMenuItem
+            // 
+            this.esboçoToolStripMenuItem.Name = "esboçoToolStripMenuItem";
+            this.esboçoToolStripMenuItem.Size = new System.Drawing.Size(87, 32);
+            this.esboçoToolStripMenuItem.Text = "Esboço";
+            // 
+            // sistemaDeEmailToolStripMenuItem
+            // 
+            this.sistemaDeEmailToolStripMenuItem.Name = "sistemaDeEmailToolStripMenuItem";
+            this.sistemaDeEmailToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
+            this.sistemaDeEmailToolStripMenuItem.Text = "Sistema de e-mail";
             // 
             // label1
             // 
@@ -128,24 +147,6 @@
             this.notifyIcon.Text = "PIB Cataguases";
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
-            // 
-            // sistemaFinanceiroToolStripMenuItem
-            // 
-            this.sistemaFinanceiroToolStripMenuItem.Name = "sistemaFinanceiroToolStripMenuItem";
-            this.sistemaFinanceiroToolStripMenuItem.Size = new System.Drawing.Size(187, 32);
-            this.sistemaFinanceiroToolStripMenuItem.Text = "Sistema Financeiro";
-            // 
-            // esboçoToolStripMenuItem
-            // 
-            this.esboçoToolStripMenuItem.Name = "esboçoToolStripMenuItem";
-            this.esboçoToolStripMenuItem.Size = new System.Drawing.Size(87, 32);
-            this.esboçoToolStripMenuItem.Text = "Esboço";
-            // 
-            // sistemaDeEmailToolStripMenuItem
-            // 
-            this.sistemaDeEmailToolStripMenuItem.Name = "sistemaDeEmailToolStripMenuItem";
-            this.sistemaDeEmailToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
-            this.sistemaDeEmailToolStripMenuItem.Text = "Sistema de e-mail";
             // 
             // FrmPrincipal
             // 

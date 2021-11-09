@@ -1,10 +1,13 @@
-﻿using business.classes;
+﻿using business.classes.financeiro;
+using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
 using business.classes.Intermediario;
 using business.implementacao;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using business.classes.Esboco;
+using business.classes.Esboco.Abstrato;
 
 namespace business.database
 {
@@ -15,6 +18,10 @@ namespace business.database
              Database.SetInitializer<IgrejaDB>(null);
         }
 
+        public DbSet<Mensagem> Mensagem { get; set; }
+
+        public DbSet<Fonte> Fonte { get; set; }
+
         public DbSet<Chamada> Chamadas { get; set; }
         public DbSet<MudancaEstado> MudancaEstado { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }
@@ -24,6 +31,7 @@ namespace business.database
         public DbSet<EnderecoCelula> EnderecoCelula { get; set; }
         public DbSet<Telefone> telefone { get; set; }
         public DbSet<Celula> celula { get; set; }
+        public DbSet<Movimentacao> Movimentacao { get; set; }
 
         public DbSet<Ministerio> ministerio { get; set; }
         public DbSet<Historico> historico { get; set; }

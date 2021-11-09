@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace business.Classe.financeiro
+namespace business.classes.financeiro
 {
     [Table("Compra")]
     public class Compra : MovimentacaoSaida

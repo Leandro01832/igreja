@@ -1,4 +1,5 @@
 ﻿using business.Classe.financeiro;
+using business.classes.financeiro;
 using database;
 using System;
 using System.Windows.Forms;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace business.Classe.financeiro
+namespace business.classes.financeiro
 {
     [Table("Transporte")]
     public class Transporte : MovimentacaoSaida

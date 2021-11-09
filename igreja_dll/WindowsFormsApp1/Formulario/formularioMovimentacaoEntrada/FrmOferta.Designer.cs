@@ -48,19 +48,18 @@
             this.txtValor.Location = new System.Drawing.Point(253, 156);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
-            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtValor.Size = new System.Drawing.Size(128, 30);
             this.txtValor.TabIndex = 287;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
-            // FrmCadastrarOferta
+            // FrmOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label2);
-            this.Name = "FrmCadastrarOferta";
+            this.Name = "FrmOferta";
             this.Text = "FrmCadastrarOferta";
             this.Load += new System.EventHandler(this.FrmCadastrarOferta_Load);
             this.ResumeLayout(false);

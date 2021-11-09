@@ -8,8 +8,7 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 {
     public partial class FrmAdmin : WFCrud
     {
-        public FrmAdmin()
-            : base()
+        public FrmAdmin() : base()
         {
             InitializeComponent();
         }

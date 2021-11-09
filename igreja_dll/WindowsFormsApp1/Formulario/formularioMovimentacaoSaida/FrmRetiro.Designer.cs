@@ -64,7 +64,6 @@
             this.txtValor.Location = new System.Drawing.Point(204, 149);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
-            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtValor.Size = new System.Drawing.Size(128, 30);
             this.txtValor.TabIndex = 283;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
@@ -88,7 +87,7 @@
             this.label1.TabIndex = 286;
             this.label1.Text = "Local:";
             // 
-            // FrmCadastrarRetiro
+            // FrmRetiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,7 +98,7 @@
             this.Controls.Add(this.checkBoxPagou);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmCadastrarRetiro";
+            this.Name = "FrmRetiro";
             this.Text = "FrmCadastrarRetiro";
             this.Load += new System.EventHandler(this.FrmCadastrarRetiro_Load);
             this.ResumeLayout(false);

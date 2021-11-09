@@ -1,4 +1,6 @@
 ﻿using business.classes.Abstrato;
+using business.classes.Esboco.Abstrato;
+using business.classes.financeiro;
 using database;
 using database.banco;
 using System;
@@ -69,6 +71,12 @@ namespace WindowsFormsApp1
                  await Task.Run(() => Ministerio.recuperarTodosMinisterios());                
 
                  await Task.Run(() => Pessoa.recuperarTodos());                
+
+                 await Task.Run(() => Movimentacao.recuperarTodos());
+
+                 await Task.Run(() => Fonte.recuperarTodasFontes());
+
+                var models = modelocrud.Modelos;
 
                 await Task.Run(() =>
                 {

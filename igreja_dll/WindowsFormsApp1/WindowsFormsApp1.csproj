@@ -58,6 +58,10 @@
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -164,11 +168,89 @@
     <Compile Include="Formulario\formularioFinanceiroPessoa\FrmComprador.Designer.cs">
       <DependentUpon>FrmComprador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmCanalTv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmCanalTv.Designer.cs">
+      <DependentUpon>FrmCanalTv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmLivro.Designer.cs">
+      <DependentUpon>FrmLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmVersiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmVersiculo.Designer.cs">
+      <DependentUpon>FrmVersiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListCanalTv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListCanalTv.Designer.cs">
+      <DependentUpon>ListCanalTv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmDadoFonte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmDadoFonte.Designer.cs">
+      <DependentUpon>FrmDadoFonte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmFonte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\FrmFonte.Designer.cs">
+      <DependentUpon>FrmFonte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListFonte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListFonte.Designer.cs">
+      <DependentUpon>ListFonte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListLivro.Designer.cs">
+      <DependentUpon>ListLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListVersiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioFonte\ListVersiculo.Designer.cs">
+      <DependentUpon>ListVersiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\FormularioListView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulario\FormularioListView.Designer.cs">
       <DependentUpon>FormularioListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\FrmCadastrarMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\FrmCadastrarMensagem.Designer.cs">
+      <DependentUpon>FrmCadastrarMensagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\FrmMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\FrmMensagem.Designer.cs">
+      <DependentUpon>FrmMensagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\FrmFontes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\FrmFontes.Designer.cs">
+      <DependentUpon>FrmFontes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\ListMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioMensagem\ListMensagem.Designer.cs">
+      <DependentUpon>ListMensagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormularioMinisterio\DadoMinisterio.cs">
       <SubType>Form</SubType>
@@ -248,11 +330,11 @@
     <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmDizimo.Designer.cs">
       <DependentUpon>FrmDizimo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmLavaRapido.cs">
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmLava_Rapido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmLavaRapido.Designer.cs">
-      <DependentUpon>FrmLavaRapido.cs</DependentUpon>
+    <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmLava_Rapido.Designer.cs">
+      <DependentUpon>FrmLava_Rapido.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.cs">
       <SubType>Form</SubType>
@@ -423,6 +505,12 @@
     <Compile Include="MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDIEsboco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIEsboco.Designer.cs">
+      <DependentUpon>MDIEsboco.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIFinanceiro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -498,8 +586,47 @@
     <EmbeddedResource Include="Formulario\formularioFinanceiroPessoa\FrmComprador.resx">
       <DependentUpon>FrmComprador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\FrmCanalTv.resx">
+      <DependentUpon>FrmCanalTv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\FrmLivro.resx">
+      <DependentUpon>FrmLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\FrmVersiculo.resx">
+      <DependentUpon>FrmVersiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\ListCanalTv.resx">
+      <DependentUpon>ListCanalTv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\FrmDadoFonte.resx">
+      <DependentUpon>FrmDadoFonte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\FrmFonte.resx">
+      <DependentUpon>FrmFonte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\ListFonte.resx">
+      <DependentUpon>ListFonte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\ListLivro.resx">
+      <DependentUpon>ListLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioFonte\ListVersiculo.resx">
+      <DependentUpon>ListVersiculo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioListView.resx">
       <DependentUpon>FormularioListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioMensagem\FrmCadastrarMensagem.resx">
+      <DependentUpon>FrmCadastrarMensagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioMensagem\FrmMensagem.resx">
+      <DependentUpon>FrmMensagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioMensagem\FrmFontes.resx">
+      <DependentUpon>FrmFontes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioMensagem\ListMensagem.resx">
+      <DependentUpon>ListMensagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\DadoMinisterio.resx">
       <DependentUpon>DadoMinisterio.cs</DependentUpon>
@@ -540,8 +667,8 @@
     <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmDizimo.resx">
       <DependentUpon>FrmDizimo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmLavaRapido.resx">
-      <DependentUpon>FrmLavaRapido.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmLava_Rapido.resx">
+      <DependentUpon>FrmLava_Rapido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.resx">
       <DependentUpon>FrmOferta.cs</DependentUpon>
@@ -626,6 +753,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIEsboco.resx">
+      <DependentUpon>MDIEsboco.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIFinanceiro.resx">
       <DependentUpon>MDIFinanceiro.cs</DependentUpon>

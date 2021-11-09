@@ -21,9 +21,7 @@ namespace database
     {
         public modelocrud()
         {    
-            this.bd = new BDcomum();
-            Select_padrao = $"select * from {this.GetType().Name} as C where C.Id='{this.Id}'";
-            Delete_padrao = $" delete from {this.GetType().Name} where Id='{this.Id}' ";
+            this.bd = new BDcomum();            
             Erro_Conexao = false;
             QuantErro = 0;
             this.T = GetType();
@@ -281,6 +279,8 @@ namespace database
                         modelocrud mod = null;                        
                         mod = (modelocrud)Activator.CreateInstance(GetType());
                         mod.Id = num;
+                        mod.Select_padrao = $"select * from {GetType().Name} as C where C.Id='{mod.Id}'";
+                        mod.Delete_padrao = $" delete from {GetType().Name} where Id='{mod.Id}' ";
                         if (mod.recuperar(mod.Id))
                             Modelos.Add(mod);
                     }

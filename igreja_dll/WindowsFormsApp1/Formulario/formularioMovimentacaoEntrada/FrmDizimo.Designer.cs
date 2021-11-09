@@ -48,19 +48,18 @@
             this.txtValor.Location = new System.Drawing.Point(270, 162);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
-            this.txtValor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtValor.Size = new System.Drawing.Size(128, 30);
             this.txtValor.TabIndex = 287;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
-            // FrmCadastrarDizimo
+            // FrmDizimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label2);
-            this.Name = "FrmCadastrarDizimo";
+            this.Name = "FrmDizimo";
             this.Text = "FrmCadastrarDizimo";
             this.Load += new System.EventHandler(this.FrmCadastrarDizimo_Load);
             this.ResumeLayout(false);

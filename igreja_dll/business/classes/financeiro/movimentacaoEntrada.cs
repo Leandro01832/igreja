@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace business.Classe.financeiro
+namespace business.classes.financeiro
 {
     [Table("MovimentacaoEntrada")]
     public abstract class MovimentacaoEntrada : Movimentacao

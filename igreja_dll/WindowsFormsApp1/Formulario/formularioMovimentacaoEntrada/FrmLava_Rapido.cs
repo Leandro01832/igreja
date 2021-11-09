@@ -1,5 +1,6 @@
 ﻿using business.Classe;
 using business.Classe.financeiro;
+using business.classes.financeiro;
 using database;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
 {
-    public partial class FrmLavaRapido : WFCrud
+    public partial class FrmLava_Rapido : WFCrud
     {
-        public FrmLavaRapido() : base()
+        public FrmLava_Rapido() : base()
         {
             InitializeComponent();
         }
