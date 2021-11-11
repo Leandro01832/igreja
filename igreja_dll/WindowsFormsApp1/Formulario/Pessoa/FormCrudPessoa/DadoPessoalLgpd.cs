@@ -20,7 +20,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void DadoPessoalLgpd_Load(object sender, EventArgs e)
         {
-            if(modelo != null)
+            LoadCrudForm();
+            if (modelo != null)
             {
                 var pessoa = (PessoaLgpd)modelo;
                 txt_email.Text = pessoa.Email;

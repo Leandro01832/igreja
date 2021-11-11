@@ -1,17 +1,18 @@
-﻿using business.classes.Abstrato;
+﻿using business;
+using business.classes.Abstrato;
 using business.classes.Esboco.Abstrato;
 using business.classes.financeiro;
 using database;
 using database.banco;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario;
 
 namespace WindowsFormsApp1
 {
@@ -22,18 +23,11 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        public static bool carregandoVisitanteLgpd = false;
-        public static bool carregandoCriancaLgpd = false;
-        public static bool carregandoMembroBatismoLgpd = false;
-        public static bool carregandoMembroReconciliacaoLgpd = false;
-        public static bool carregandoMembroTransferenciaLgpd = false;
-        public static bool carregandoMembroAclamacaoLgpd = false;
-        public static bool carregandoVisitante = false;
-        public static bool carregandoCrianca = false;
-        public static bool carregandoMembroBatismo = false;
-        public static bool carregandoMembroReconciliacao = false;
-        public static bool carregandoMembroTransferencia = false;
-        public static bool carregandoMembroAclamacao = false;
+        public static string Email;
+        public static string SenhaEmail;
+        public static string PrimeiroAdminEmail = "leandro123";
+        public static string PrimeiroAdminSenha = "sistema123";
+               
 
         private static bool verificarLista = true;
         private static bool podeVerificar = false;
@@ -41,23 +35,38 @@ namespace WindowsFormsApp1
         private static bool verificarTimer = true;
 
         private BDcomum bd = new BDcomum();
-        private static string path = Directory.GetCurrentDirectory();
+        public static string path = Directory.GetCurrentDirectory();
+
+        Timer timer;
 
         private void FormPadrao_Load(object sender, EventArgs e)
         {
             this.Icon = new Icon($@"{path}\favicon.ico");
+            notifyIcon1.Icon = new Icon($@"{path}\favicon.ico");
+            timer = new Timer();
+            timer.Interval = 60000;
+            timer.Enabled = true;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public static async void UltimoRegistro()
         {
+            FrmAutenticacao form = new FrmAutenticacao();
+            form.Show();
+
             if (executar)
             {
                 executar = false;
 
-                FormProgressBar form = new FormProgressBar();
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Text = "Barra de processamento - Processando dados";
-                form.Show();
+                FormProgressBar frm = new FormProgressBar();
+                frm.StartPosition = FormStartPosition.CenterScreen;
+                frm.Text = "Barra de processamento - Processando dados";
+                frm.Show();
 
                 var listaTypes = modelocrud.listTypes(typeof(modelocrud));
                 foreach(var item in listaTypes.Where(e => e.BaseType == typeof(modelocrud)))
@@ -87,10 +96,30 @@ namespace WindowsFormsApp1
                 await Task.Run(() => modelocrud.buscarListas());
 
 
-                if (!form.IsDisposed)
-                    form.Dispose();
+                if (!frm.IsDisposed)
+                    frm.Dispose();
 
                 executar = true; podeVerificar = true;
+            }
+                        
+            var appSettings = ConfigurationManager.AppSettings;
+            Email = appSettings["Email"];
+            SenhaEmail = appSettings["Senha"];
+                       
+            if (modelocrud.Modelos.OfType<Permissao>().FirstOrDefault() == null)
+            {
+                var arr = new string[]
+                {
+                    "EnviarEmail", "LerEmail", "AtualizarEmail", "DeletarEmail", "CadastrarAtualizarBody",
+                    "CadastrarPessoa", "AtulizarPessoa", "BuscarPessoa", "DeletarPessoa"
+                };
+
+                foreach (var item in arr)
+                {
+                    var permissao = new Permissao { Nome = item };
+                    permissao.salvar();
+                    modelocrud.Modelos.Add(permissao);
+                }
             }
         }
 
@@ -249,8 +278,6 @@ namespace WindowsFormsApp1
            //     Width = 470;
         }
 
-
-
         public static async Task<List<modelocrud>> AtualizarComModelo(Type Tipo)
         {
             modelocrud modelo = retornaModelo(Tipo);
@@ -311,6 +338,33 @@ namespace WindowsFormsApp1
                 if (modelo.GetType() == i) return modelocrud.Modelos.Where(m => m.GetType() == i).ToList(); 
 
             return null;
+        }
+
+        public static void LoadForm(Form form, string textoSufixo = "", string textoPrefixo = "")
+        {
+            form.Icon = new Icon($@"{path}\appEmail.ico");
+
+            string textoFormulario = form.GetType().Name;
+            
+                textoFormulario = textoFormulario.Replace("Frm", "");
+
+                textoFormulario = textoFormulario.Replace("_", " ");
+
+            if (textoFormulario.Contains("Form") && !textoFormulario.Contains("Formulario"))
+                textoFormulario = textoFormulario.Replace("Form", "");
+            
+                textoFormulario = textoFormulario.Replace("MDI", "");
+
+            for (var i = 0; i < textoFormulario.Length; i++)
+                if (i > 0 && textoFormulario.Any(c1 => char.IsUpper(textoFormulario[i])) &&
+                textoFormulario.Any(c2 => char.IsLower(textoFormulario[i - 1])))
+                    textoFormulario = textoFormulario.Replace(textoFormulario[i - 1].ToString(), textoFormulario[i - 1] + " ");
+
+            if (textoPrefixo != "") textoFormulario = textoPrefixo + " " + textoFormulario;
+            if (textoSufixo != "") textoFormulario = textoFormulario + " " + textoSufixo;
+
+
+            form.Text = textoFormulario;
         }
     }
 }

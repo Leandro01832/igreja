@@ -1,16 +1,16 @@
 ﻿using business.classes.Abstrato;
-using business.classes.Celulas;
+using business.classes.Intermediario;
 using database;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Celulas;
-using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Reuniao;
+using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    public partial class ReunioesMinisteriosPessoa : Formulario.FormCrudPessoa
+    public partial class ReunioesMinisteriosPessoa : FormCrudPessoa
     {
 
         public ReunioesMinisteriosPessoa(bool Deletar, bool Atualizar, bool Detalhes,
@@ -18,247 +18,108 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
         {
             InitializeComponent();
-            txt_ministerios.Leave += Txt_ministerios_Leave;
-            txt_reunioes.Leave += Txt_reunioes_Leave;
-            txt_celula.Leave += Txt_celula_Leave;
+
         }
 
         public ReunioesMinisteriosPessoa() : base()
         {
             InitializeComponent();
-            txt_ministerios.Leave += Txt_ministerios_Leave;
-            txt_reunioes.Leave += Txt_reunioes_Leave;
-            txt_celula.Leave += Txt_celula_Leave;
+
         }
 
-        private void Txt_celula_Leave(object sender, EventArgs e)
-        {
-            var p = (Pessoa)modelo;
-            bool condicao = false;
-
-            try
-            {
-                if (new Celula_Adolescente().recuperar(int.Parse(txt_celula.Text))) condicao = true;
-                if (new Celula_Adulto().recuperar(int.Parse(txt_celula.Text))) condicao = true;
-                if (new Celula_Jovem().recuperar(int.Parse(txt_celula.Text))) condicao = true;
-                if (new Celula_Crianca().recuperar(int.Parse(txt_celula.Text))) condicao = true;
-                if (new Celula_Casado().recuperar(int.Parse(txt_celula.Text))) condicao = true;
-            }
-            catch { p.celula_ = null; }
-
-            if (condicao)
-                p.celula_ = int.Parse(txt_celula.Text);
-            else
-                p.celula_ = null;
-        }
-
-        private void Txt_reunioes_Leave(object sender, EventArgs e)
-        {
-            var arr = txt_reunioes.Text.Replace(" ", "").Split(',');
-            try
-            {
-                int teste = int.Parse(arr[arr.Length - 1]);
-                AddNaListaPessoaReunioes = txt_reunioes.Text;
-            }
-            catch
-            {
-                AddNaListaPessoaReunioes = "";
-                txt_reunioes.Text = "";
-            }
-        }
-
-        private void Txt_ministerios_Leave(object sender, EventArgs e)
-        {
-            var arr = txt_ministerios.Text.Replace(" ", "").Split(',');
-            try
-            {
-                int teste = int.Parse(arr[arr.Length - 1]);
-                AddNaListaPessoaMinsterios = txt_ministerios.Text;
-            }
-            catch
-            {
-                txt_ministerios.Text = "";
-                AddNaListaPessoaMinsterios = "";
-            }
-        }
+        // variavel para evitar bug
+        bool condicao = false;
 
         private void ReunioesMinisteriosPessoa_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
+
+            this.Proximo.Location = new Point(900, 150);
+
+            lstBoxCelula.DataSource = modelocrud.Modelos.OfType<Celula>().OrderBy(m => m.Id).ToList();
+            if(modelocrud.Modelos.OfType<Celula>().ToList().Count > 0) lstBoxCelula.SetSelected(0, false);
+            lstBoxMinisterio.DataSource = modelocrud.Modelos.OfType<Ministerio>().OrderBy(m => m.Id).ToList();
+            if(modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0) lstBoxMinisterio.SetSelected(0, false);
+            lstBoxReuniao.DataSource = modelocrud.Modelos.OfType<business.classes.Reuniao>().OrderBy(m => m.Id).ToList();
+            if(modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count > 0) lstBoxReuniao.SetSelected(0, false);
+
             this.Text = "Reuniões, celula e ministérios da pessoa.";
             var pessoa = (Pessoa)modelo;
-            if(pessoa != null)
-            if (pessoa.Id == 0)
+            if (pessoa.Id != 0)
             {
-                txt_reunioes.Text = AddNaListaPessoaReunioes;
-                txt_ministerios.Text = AddNaListaPessoaMinsterios;
+                this.Atualizar.Location = new Point(900, 250);
+                this.Deletar.Location = new Point(900, 350);
 
-                txt_celula.Text = pessoa.celula_.ToString();
-            }
-            else
-            {
-                
-                var ministerios = pessoa.Ministerios;
-                if (ministerios != null)
-                    foreach (var item in ministerios)
-                    {
-                        var mini = modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.Id == item.MinisterioId);
-                        txt_ministerios.Text += mini.Id.ToString() + ", ";
-                    }
+                if (pessoa.celula_ != null)
+                {
+                    var indice = lstBoxCelula.Items.IndexOf(pessoa.Celula);
+                    lstBoxCelula.SetSelected(indice, true);
+                }
 
-                var reunioes = pessoa.Reuniao;
-                if (reunioes != null)
-                    foreach (var item in reunioes)
-                    {
-                        var reu = modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().First(i => i.Id == item.ReuniaoId);
-                        txt_reunioes.Text += reu.Id.ToString() + ", ";
-                    }
-                        
+                foreach (var item in pessoa.Ministerios)
+                {
+                    var indice = lstBoxMinisterio.Items.IndexOf(item);
+                    lstBoxMinisterio.SetSelected(indice, true);
+                }
 
-                txt_celula.Text = pessoa.celula_.ToString();
+                foreach (var item in pessoa.Reuniao)
+                {
+                    var indice = lstBoxReuniao.Items.IndexOf(item);
+                    lstBoxReuniao.SetSelected(indice, true);
+                }
             }
 
 
+            condicao = true;
         }
 
-        private void txt_reunioes_TextChanged(object sender, EventArgs e)
+        private void lstBoxMinisterio_SelectedValueChanged(object sender, EventArgs e)
         {
+            var pessoa = (Pessoa)modelo;
             try
             {
-                var arr = txt_reunioes.Text.Replace(" ", "").Split(',');
-
-                try { int teste = int.Parse(arr[0]); }
-                catch
+                if (condicao)
                 {
-                    AddNaListaPessoaReunioes = "";
-                    txt_reunioes.Text = "";
-                    txt_reunioes.Focus();
-                    MessageBox.Show("Informe numeros de identificação de reuniões.");
+                    SelectedObjectCollection valor = lstBoxMinisterio.SelectedItems;
+                    var objetos = valor.Cast<Ministerio>().ToList();
+                    pessoa.Ministerios = new List<PessoaMinisterio>();
+                    foreach (var item in objetos)
+                    pessoa.Ministerios.Add(new PessoaMinisterio { MinisterioId = item.Id });
                 }
 
-                if (arr[arr.Length - 1] == "")
-                foreach (var valor in arr)
-                {                        
-                    if (valor != "")
-                    {
-                            int teste = int.Parse(valor);
-                            try
-                            {
-                                var v = modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().First(i => i.Id == int.Parse(valor));
-                                AddNaListaPessoaReunioes = v.Id.ToString() + ", ";
-                            }
-                            catch (Exception)
-                            {
-                                AddNaListaPessoaReunioes = "";
-                                txt_reunioes.Text = "";
-                                var numero = business.classes.Reuniao.TotalRegistro();
-                                if(numero != modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count)
-                                MessageBox.Show("Aguarde o processamento.");
-                                else
-                                MessageBox.Show("Este registro não existe no banco de dados");
-                            }
-                    }
-                }
-                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                AddNaListaPessoaReunioes = "";
-                txt_reunioes.Text = "";
-                MessageBox.Show("Informe numeros de identificação de reuniões.");
+                MessageBox.Show("Um erro aconteceu " + ex.Message);
             }
         }
 
-        private void txt_ministerios_TextChanged(object sender, EventArgs e)
+        private void lstBoxCelula_SelectedValueChanged(object sender, EventArgs e)
         {
+            var pessoa = (Pessoa)modelo;
+            Celula cel = (Celula) lstBoxCelula.SelectedItem;
+            pessoa.celula_ = cel.Id;
+        }
+
+        private void lstBoxReuniao_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var pessoa = (Pessoa)modelo;
             try
             {
-                AddNaListaPessoaMinsterios = "";
-                var arr = txt_ministerios.Text.Replace(" ", "").Split(',');
-
-                try { int teste = int.Parse(arr[0]); }
-                catch
+                if (condicao)
                 {
-                    AddNaListaPessoaMinsterios = "";
-                    txt_ministerios.Text = "";
-                    txt_ministerios.Focus();
-                    MessageBox.Show("Informe numeros de identificação de ministérios.");
-                }
-
-                if (arr[arr.Length - 1] == "")
-                foreach (var valor in arr)
-                {
-                    if (valor != "")
-                    {
-                            int teste = int.Parse(valor);
-                            try
-                            {
-                                var v = modelocrud.Modelos.OfType<Ministerio>().ToList().First(i => i.Id == int.Parse(valor));
-                                AddNaListaPessoaMinsterios += v.Id.ToString() + ", ";
-                            }
-                            catch (Exception)
-                            {
-                                AddNaListaPessoaMinsterios = "";
-                                var numero = Ministerio.TotalRegistro();
-                                if (numero != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
-                                    MessageBox.Show("Aguarde o processamento.");
-                                else
-                                    MessageBox.Show("Este registro não existe no banco de dados");
-                            }
-                    }
-
-                }
-                
-            }
-            catch (Exception)
-            {
-                AddNaListaPessoaMinsterios = "";
-                txt_ministerios.Text = "";
-                MessageBox.Show("Informe numeros de identificação de ministérios.");
-            }
-        }
-
-        private void txt_celula_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (modelo is Pessoa)
-                {
-                    var p = (Pessoa)modelo;
-                    var m = modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == int.Parse(txt_celula.Text));
-                    if(m != null)
-                    p.celula_ = m.Id;
+                    SelectedObjectCollection valor = lstBoxReuniao.SelectedItems;
+                    var objetos = valor.Cast<business.classes.Reuniao>().ToList();
+                    pessoa.Reuniao = new List<ReuniaoPessoa>();
+                    foreach (var item in objetos)
+                        pessoa.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item.Id });
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                txt_celula.Text = "";
-                MessageBox.Show("Informe um numero de identificação de celula.");
+                MessageBox.Show("Um erro aconteceu " + ex.Message);
             }
-        }
-
-        private void listareuniao_Click(object sender, EventArgs e)
-        {
-            ListReuniao form = new ListReuniao();
-            form.MdiParent = this.MdiParent;
-            form.Text = "lista de reuniões";
-            form.Show();
-        }
-
-        private void listaministerios_Click(object sender, EventArgs e)
-        {
-            ListMinisterio form = new ListMinisterio(typeof(Ministerio));
-            form.MdiParent = this.MdiParent;
-            form.Text = "lista de ministérios";
-            form.Show();
-        }
-
-        private void listacelulas_Click(object sender, EventArgs e)
-        {
-            ListCelula form = new ListCelula(typeof(Celula));
-            form.MdiParent = this.MdiParent;
-            form.Text = "Lista de Celulas";
-            form.Show();
         }
     }
 }

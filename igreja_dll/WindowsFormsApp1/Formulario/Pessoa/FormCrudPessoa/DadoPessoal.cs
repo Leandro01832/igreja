@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void DadoPessoal_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             this.Text = "Daddos pessoais.";
             
             if (modelo != null)

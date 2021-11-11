@@ -13,6 +13,7 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
 
         private void FrmCadastrarTransacao_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             var form = "Transação";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

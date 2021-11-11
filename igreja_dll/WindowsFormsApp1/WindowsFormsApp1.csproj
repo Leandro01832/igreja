@@ -63,6 +63,7 @@
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -86,12 +87,6 @@
     </Compile>
     <Compile Include="FormPadrao.Designer.cs">
       <DependentUpon>FormPadrao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormProcessamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormProcessamento.Designer.cs">
-      <DependentUpon>FormProcessamento.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProgressBar.cs">
       <SubType>Form</SubType>
@@ -156,6 +151,54 @@
     <Compile Include="Formulario\FormCrudPessoa.Designer.cs">
       <DependentUpon>FormCrudPessoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailIgreja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailIgreja.Designer.cs">
+      <DependentUpon>FrmEmailIgreja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailPessoa.Designer.cs">
+      <DependentUpon>FrmEmailPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FormularioPessoa\FrmAtendente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FormularioPessoa\FrmAtendente.Designer.cs">
+      <DependentUpon>FrmAtendente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FrmEnviaEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FrmEnviaEmail.Designer.cs">
+      <DependentUpon>FrmEnviaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FrmOpenEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FrmOpenEmail.Designer.cs">
+      <DependentUpon>FrmOpenEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FrmPermissao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario\FormularioEmail\FrmPermissao.Designer.cs">
+      <DependentUpon>FrmPermissao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIEmail.Designer.cs">
+      <DependentUpon>MDIEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIAdmin.Designer.cs">
+      <DependentUpon>MDIAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulario\formularioFinanceiroPessoa\FrmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,12 +229,6 @@
     <Compile Include="Formulario\FormularioFonte\FrmVersiculo.Designer.cs">
       <DependentUpon>FrmVersiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListCanalTv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListCanalTv.Designer.cs">
-      <DependentUpon>ListCanalTv.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formulario\FormularioFonte\FrmDadoFonte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,24 +240,6 @@
     </Compile>
     <Compile Include="Formulario\FormularioFonte\FrmFonte.Designer.cs">
       <DependentUpon>FrmFonte.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListFonte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListFonte.Designer.cs">
-      <DependentUpon>ListFonte.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListLivro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListLivro.Designer.cs">
-      <DependentUpon>ListLivro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListVersiculo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioFonte\ListVersiculo.Designer.cs">
-      <DependentUpon>ListVersiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormularioListView.cs">
       <SubType>Form</SubType>
@@ -245,12 +264,6 @@
     </Compile>
     <Compile Include="Formulario\FormularioMensagem\FrmFontes.Designer.cs">
       <DependentUpon>FrmFontes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormularioMensagem\ListMensagem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMensagem\ListMensagem.Designer.cs">
-      <DependentUpon>ListMensagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormularioMinisterio\DadoMinisterio.cs">
       <SubType>Form</SubType>
@@ -474,6 +487,12 @@
     <Compile Include="Formulario\Reuniao\PessoasReuniao.Designer.cs">
       <DependentUpon>PessoasReuniao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAutenticacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutenticacao.Designer.cs">
+      <DependentUpon>FrmAutenticacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDescrimina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -545,10 +564,6 @@
       <DependentUpon>FormPadrao.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProcessamento.resx">
-      <DependentUpon>FormProcessamento.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormProgressBar.resx">
       <DependentUpon>FormProgressBar.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -580,6 +595,30 @@
     <EmbeddedResource Include="Formulario\FormularioCrudCelula.resx">
       <DependentUpon>FormularioCrudCelula.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailIgreja.resx">
+      <DependentUpon>FrmEmailIgreja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailPessoa.resx">
+      <DependentUpon>FrmEmailPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioEmail\FormularioPessoa\FrmAtendente.resx">
+      <DependentUpon>FrmAtendente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioEmail\FrmEnviaEmail.resx">
+      <DependentUpon>FrmEnviaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioEmail\FrmOpenEmail.resx">
+      <DependentUpon>FrmOpenEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario\FormularioEmail\FrmPermissao.resx">
+      <DependentUpon>FrmPermissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIEmail.resx">
+      <DependentUpon>MDIEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIAdmin.resx">
+      <DependentUpon>MDIAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\formularioFinanceiroPessoa\FrmAdmin.resx">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -595,23 +634,11 @@
     <EmbeddedResource Include="Formulario\FormularioFonte\FrmVersiculo.resx">
       <DependentUpon>FrmVersiculo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioFonte\ListCanalTv.resx">
-      <DependentUpon>ListCanalTv.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioFonte\FrmDadoFonte.resx">
       <DependentUpon>FrmDadoFonte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioFonte\FrmFonte.resx">
       <DependentUpon>FrmFonte.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioFonte\ListFonte.resx">
-      <DependentUpon>ListFonte.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioFonte\ListLivro.resx">
-      <DependentUpon>ListLivro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioFonte\ListVersiculo.resx">
-      <DependentUpon>ListVersiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioListView.resx">
       <DependentUpon>FormularioListView.cs</DependentUpon>
@@ -624,9 +651,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMensagem\FrmFontes.resx">
       <DependentUpon>FrmFontes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMensagem\ListMensagem.resx">
-      <DependentUpon>ListMensagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\DadoMinisterio.resx">
       <DependentUpon>DadoMinisterio.cs</DependentUpon>
@@ -738,6 +762,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Reuniao\PessoasReuniao.resx">
       <DependentUpon>PessoasReuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutenticacao.resx">
+      <DependentUpon>FrmAutenticacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDescrimina.resx">
       <DependentUpon>FrmDescrimina.cs</DependentUpon>

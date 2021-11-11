@@ -10,6 +10,7 @@ namespace WindowsFormsApp1.Formulario
     public partial class FormCrudPessoa : WFCrud
     {
         private Button MudarEstado;
+        
 
         public FormCrudPessoa() : base()
         {
@@ -53,7 +54,7 @@ namespace WindowsFormsApp1.Formulario
 
         private void MudarEstado_Click(object sender, EventArgs e)
         {
-            if (executar)
+            if (FormPadrao.executar)
             {
                 var m = (Pessoa)ModeloVelho;
                 var p = (Pessoa)ModeloNovo;

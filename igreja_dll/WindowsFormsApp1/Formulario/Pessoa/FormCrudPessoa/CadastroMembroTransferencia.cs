@@ -27,6 +27,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void CadastroMembroTransferencia_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             this.Text = "Cadastro de membro por transferência.";
             if(modelo != null)
             {

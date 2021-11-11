@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Formulario.FormularioFonte
+﻿namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
 {
-    partial class ListVersiculo
+    partial class FrmEmailPessoa
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // FrmVersiculo
+            // FrmEmailCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "FrmVersiculo";
-            this.Text = "FrmVersiculo";
-            this.Load += new System.EventHandler(this.FrmVersiculo_Load);
+            this.Name = "FrmEmailCliente";
+            this.Text = "FrmEmailCliente";
+            this.Load += new System.EventHandler(this.FrmEmailCliente_Load);
             this.ResumeLayout(false);
 
         }

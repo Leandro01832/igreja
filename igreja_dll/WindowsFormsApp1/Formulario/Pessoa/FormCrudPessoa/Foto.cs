@@ -33,6 +33,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void Foto_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             this.Text = "Foto da pessoa";
             this.Proximo.Location = new Point(900, 150);
             var p = (Pessoa)modelo;

@@ -1,18 +1,22 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
+using business.classes.Esboco.Fontes;
+using business.classes.Fontes;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using business.implementacao;
 using database;
+using database.banco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario;
 using WindowsFormsApp1.Formulario.Celulas;
+using WindowsFormsApp1.Formulario.FormularioFonte;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoas;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
@@ -25,7 +29,7 @@ namespace WindowsFormsApp1
         private void DadoFoto_Click(object sender, EventArgs e)
         {
             Foto c = new Foto();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoClasse_Click(object sender, EventArgs e)
@@ -33,37 +37,37 @@ namespace WindowsFormsApp1
             if (modelo is Crianca || modelo is CriancaLgpd)
             {
                 frm = new CadastroCrianca();
-                LoadFormCrud();
+                LoadForm();
             }
 
             if (modelo is Visitante || modelo is VisitanteLgpd)
             {
-                frm =  new CadastroVisitante();
-                LoadFormCrud();
+                frm = new CadastroVisitante();
+                LoadForm();
             }
 
             if (modelo is Membro_Aclamacao || modelo is Membro_AclamacaoLgpd)
             {
                 frm = new CadastroMembroAclamacao();
-                LoadFormCrud();
+                LoadForm();
             }
 
             if (modelo is Membro_Batismo || modelo is Membro_BatismoLgpd)
             {
-                frm =  new CadastroMembroBatismo();
-                LoadFormCrud();
+                frm = new CadastroMembroBatismo();
+                LoadForm();
             }
 
             if (modelo is Membro_Reconciliacao || modelo is Membro_ReconciliacaoLgpd)
             {
-                frm =  new CadastroMembroReconciliacao();
-                LoadFormCrud();
+                frm = new CadastroMembroReconciliacao();
+                LoadForm();
             }
 
             if (modelo is Membro_Transferencia || modelo is Membro_TransferenciaLgpd)
             {
                 frm = new CadastroMembroTransferencia();
-                LoadFormCrud();
+                LoadForm();
             }
 
         }
@@ -75,156 +79,46 @@ namespace WindowsFormsApp1
             if (modelo is Celula)
             {
                 var p = (Celula)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
+                foreach (var item in p.Ministerios)
                 {
-                    var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
-                    int[] arrNum = new int[arr.Length];
-                    for (int i = 0; i < arr.Length; i++)
-                        arrNum[i] = int.Parse(arr[i]);
-                    int[] numeros = new int[p.Ministerios.Count];
-                    for (int i = 0; i < numeros.Length; i++)
-                        numeros[i] = p.Ministerios[i].MinisterioId;
-
-                    foreach (var item in arrNum)
-                        if (!numeros.Contains(item))
-                            p.Ministerios.Add(new MinisterioCelula { MinisterioId = item, CelulaId = p.Id });
-                    p.Ministerios = p.Ministerios;
-                    foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                        {
-                            p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
-                            remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
-                            p.Ministerios = p.Ministerios;
-                        }
+                    item.CelulaId = modelo.Id;
+                    item.salvar();
                 }
+
             }
 
             if (modelo is Ministerio)
             {
                 var p = (Ministerio)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
+                foreach (var item in p.Pessoas)
                 {
-                    var arr = AddNaListaMinisterioPessoas.Replace(" ", "").Split(',');
-                    int[] arrNum = new int[arr.Length];
-                    for (int i = 0; i < arr.Length; i++)
-                        arrNum[i] = int.Parse(arr[i]);
-                    int[] numeros = new int[p.Pessoas.Count];
-                    for (int i = 0; i < numeros.Length; i++)
-                        numeros[i] = p.Pessoas[i].PessoaId;
-
-                    foreach (var item in arrNum)
-                        if (!numeros.Contains(item))
-                            p.Pessoas.Add(new PessoaMinisterio { MinisterioId = p.Id, PessoaId = item });
-                    p.Pessoas = p.Pessoas;
-                    foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                        {
-                            p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
-                            remover.Add(p.Pessoas.First(i => i.PessoaId == item));
-                            p.Pessoas = p.Pessoas;
-                        }
+                    item.MinisterioId = modelo.Id;
+                    item.salvar();
                 }
 
-                if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
+                foreach (var item in p.Celulas)
                 {
-                    var arr = AddNaListaMinisterioCelulas.Replace(" ", "").Split(',');
-                    int[] arrNum = new int[arr.Length];
-                    for (int i = 0; i < arr.Length; i++)
-                        arrNum[i] = int.Parse(arr[i]);
-                    int[] numeros = new int[p.Pessoas.Count];
-                    for (int i = 0; i < numeros.Length; i++)
-                        numeros[i] = p.Celulas[i].CelulaId;
-
-                    foreach (var item in arrNum)
-                        if (!numeros.Contains(item))
-                            p.Celulas.Add(new MinisterioCelula { MinisterioId = p.Id, CelulaId = item });
-                    p.Celulas = p.Celulas;
-                    foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                        {
-                            p.Celulas.Remove(p.Celulas.First(i => i.CelulaId == item));
-                            remover.Add(p.Celulas.First(i => i.CelulaId == item));
-                            p.Celulas = p.Celulas;
-                        }
+                    item.MinisterioId = modelo.Id;
+                    item.salvar();
                 }
             }
 
             if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
-                {
-                    var arr = AddNaListaPessoaMinsterios.Replace(" ", "").Split(',');
-                    int[] arrNum = new int[arr.Length];
-                    for (int i = 0; i < arr.Length; i++)
-                        arrNum[i] = int.Parse(arr[i]);
-                    int[] numeros = new int[p.Ministerios.Count];
-                    for (int i = 0; i < numeros.Length; i++)
-                        numeros[i] = p.Ministerios[i].MinisterioId;
+                foreach (var item in p.Ministerios)
+                    item.alterar(item.Id);
 
-                    foreach (var item in arrNum)
-                        if (!numeros.Contains(item))
-                            p.Ministerios.Add(new PessoaMinisterio { MinisterioId = item, PessoaId = p.Id });
-                    p.Ministerios = p.Ministerios;
-                    foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                        {
-                            p.Ministerios.Remove(p.Ministerios.First(i => i.MinisterioId == item));
-                            remover.Add(p.Ministerios.First(i => i.MinisterioId == item));
-                            p.Ministerios = p.Ministerios;
-                        }
-                }
-
-                if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
-                {
-                    var arr = AddNaListaPessoaReunioes.Replace(" ", "").Split(',');
-                    int[] arrNum = new int[arr.Length];
-                    for (int i = 0; i < arr.Length; i++)
-                        arrNum[i] = int.Parse(arr[i]);
-                    int[] numeros = new int[p.Reuniao.Count];
-                    for (int i = 0; i < numeros.Length; i++)
-                        numeros[i] = p.Reuniao[i].ReuniaoId;
-
-                    foreach (var item in arrNum)
-                        if (!numeros.Contains(item))
-                            p.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item, PessoaId = p.Id });
-                    p.Reuniao = p.Reuniao;
-                    foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                        {
-                            p.Reuniao.Remove(p.Reuniao.First(i => i.ReuniaoId == item));
-                            remover.Add(p.Reuniao.First(i => i.ReuniaoId == item));
-                            p.Reuniao = p.Reuniao;
-                        }
-                }
+                foreach (var item in p.Reuniao)
+                    item.alterar(item.Id);
 
             }
 
             if (modelo is Reuniao)
             {
                 var p = (Reuniao)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                {
-                    var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
-                    int[] arrNum = new int[arr.Length];
-                    for (int i = 0; i < arr.Length; i++)
-                        arrNum[i] = int.Parse(arr[i]);
-                    int[] numeros = new int[p.Pessoas.Count];
-                    for (int i = 0; i < numeros.Length; i++)
-                        numeros[i] = p.Pessoas[i].PessoaId;
-
-                    foreach (var item in arrNum)
-                        if (!numeros.Contains(item))
-                            p.Pessoas.Add(new ReuniaoPessoa { ReuniaoId = p.Id, PessoaId = item });
-                    p.Pessoas = p.Pessoas;
-                    foreach (var item in numeros)
-                        if (!arrNum.Contains(item))
-                        {
-                            p.Pessoas.Remove(p.Pessoas.First(i => i.PessoaId == item));
-                            remover.Add(p.Pessoas.First(i => i.PessoaId == item));
-                            p.Pessoas = p.Pessoas;
-                        }
-                }
+                foreach (var item in p.Pessoas)
+                    item.alterar(item.Id);
             }
 
             try
@@ -237,43 +131,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            foreach (var item in remover)
-                item.excluir(item.Id);
-
-            if (modelo is Celula)
-            {
-                var p = (Celula)modelo;
-                if (p.Ministerios != null)
-                    foreach (var item in p.Ministerios)
-                        item.salvar();
-            }
-            if (modelo is Ministerio)
-            {
-                var p = (Ministerio)modelo;
-                if (p.Pessoas != null)
-                    foreach (var item in p.Pessoas)
-                        item.salvar();
-                if (p.Celulas != null)
-                    foreach (var item in p.Celulas)
-                        item.salvar();
-            }
-            if (modelo is Pessoa)
-            {
-                var p = (Pessoa)modelo;
-                if (p.Ministerios != null)
-                    foreach (var item in p.Ministerios)
-                        item.salvar();
-                if (p.Reuniao != null)
-                    foreach (var item in p.Reuniao)
-                        item.salvar();
-            }
-            if (modelo is Reuniao)
-            {
-                var p = (Reuniao)modelo;
-                if (p.Pessoas != null)
-                    foreach (var item in p.Pessoas)
-                        item.salvar();
-            }
+            
             MessageBox.Show("Informação atualizada com sucesso.");
         }
 
@@ -281,45 +139,45 @@ namespace WindowsFormsApp1
         {
             var id = modelo.Id;
 
-            if (modelo is Visitante) modelo = new Visitante                              ();
-            if (modelo is Crianca) modelo = new Crianca                                  ();
-            if (modelo is Membro_Aclamacao) modelo = new Membro_Aclamacao                ();
-            if (modelo is Membro_Batismo) modelo = new Membro_Batismo                    ();
-            if (modelo is Membro_Reconciliacao) modelo = new Membro_Reconciliacao        ();
-            if (modelo is Membro_Transferencia) modelo = new Membro_Transferencia        ();
-            if (modelo is VisitanteLgpd) modelo = new VisitanteLgpd                      ();
-            if (modelo is CriancaLgpd) modelo = new CriancaLgpd                          ();
-            if (modelo is Membro_AclamacaoLgpd) modelo = new Membro_AclamacaoLgpd        ();
-            if (modelo is Membro_BatismoLgpd) modelo = new Membro_BatismoLgpd            ();
+            if (modelo is Visitante) modelo = new Visitante();
+            if (modelo is Crianca) modelo = new Crianca();
+            if (modelo is Membro_Aclamacao) modelo = new Membro_Aclamacao();
+            if (modelo is Membro_Batismo) modelo = new Membro_Batismo();
+            if (modelo is Membro_Reconciliacao) modelo = new Membro_Reconciliacao();
+            if (modelo is Membro_Transferencia) modelo = new Membro_Transferencia();
+            if (modelo is VisitanteLgpd) modelo = new VisitanteLgpd();
+            if (modelo is CriancaLgpd) modelo = new CriancaLgpd();
+            if (modelo is Membro_AclamacaoLgpd) modelo = new Membro_AclamacaoLgpd();
+            if (modelo is Membro_BatismoLgpd) modelo = new Membro_BatismoLgpd();
             if (modelo is Membro_ReconciliacaoLgpd) modelo = new Membro_ReconciliacaoLgpd();
             if (modelo is Membro_TransferenciaLgpd) modelo = new Membro_TransferenciaLgpd();
 
             if (modelo is Celula_Adolescente) modelo = new Celula_Adolescente();
-            if (modelo is Celula_Adulto) modelo = new Celula_Adulto          ();
-            if (modelo is Celula_Casado) modelo = new Celula_Casado          ();
-            if (modelo is Celula_Jovem) modelo = new Celula_Jovem            ();
-            if (modelo is Celula_Crianca) modelo = new Celula_Crianca        ();
+            if (modelo is Celula_Adulto) modelo = new Celula_Adulto();
+            if (modelo is Celula_Casado) modelo = new Celula_Casado();
+            if (modelo is Celula_Jovem) modelo = new Celula_Jovem();
+            if (modelo is Celula_Crianca) modelo = new Celula_Crianca();
 
-            if (modelo is Lider_Celula) modelo = new Lider_Celula                                          ();
-            if (modelo is Lider_Celula_Treinamento) modelo = new Lider_Celula_Treinamento                  ();
-            if (modelo is Lider_Ministerio) modelo = new Lider_Ministerio                                  ();
-            if (modelo is Lider_Ministerio_Treinamento) modelo = new Lider_Ministerio_Treinamento          ();
-            if (modelo is Supervisor_Celula) modelo = new Supervisor_Celula                                ();
-            if (modelo is Supervisor_Celula_Treinamento) modelo = new Supervisor_Celula_Treinamento        ();
-            if (modelo is Supervisor_Ministerio) modelo = new Supervisor_Ministerio                        ();
+            if (modelo is Lider_Celula) modelo = new Lider_Celula();
+            if (modelo is Lider_Celula_Treinamento) modelo = new Lider_Celula_Treinamento();
+            if (modelo is Lider_Ministerio) modelo = new Lider_Ministerio();
+            if (modelo is Lider_Ministerio_Treinamento) modelo = new Lider_Ministerio_Treinamento();
+            if (modelo is Supervisor_Celula) modelo = new Supervisor_Celula();
+            if (modelo is Supervisor_Celula_Treinamento) modelo = new Supervisor_Celula_Treinamento();
+            if (modelo is Supervisor_Ministerio) modelo = new Supervisor_Ministerio();
             if (modelo is Supervisor_Ministerio_Treinamento) modelo = new Supervisor_Ministerio_Treinamento();
 
 
-            if (modelo is Reuniao) modelo = new Reuniao                                  ();
-            if (modelo is MudancaEstado) modelo = new MudancaEstado                      ();
-            if (modelo is Historico) modelo = new Historico                              ();
+            if (modelo is Reuniao) modelo = new Reuniao();
+            if (modelo is MudancaEstado) modelo = new MudancaEstado();
+            if (modelo is Historico) modelo = new Historico();
             if (modelo is business.classes.Chamada) modelo = new business.classes.Chamada();
-            if (modelo is Telefone) modelo = new Telefone                                ();
-            if (modelo is Endereco) modelo = new Endereco                                ();
-            if (modelo is EnderecoCelula) modelo = new EnderecoCelula                    ();
-            if (modelo is MinisterioCelula) modelo = new MinisterioCelula                ();
-            if (modelo is PessoaMinisterio) modelo = new PessoaMinisterio                ();
-            if (modelo is ReuniaoPessoa) modelo = new ReuniaoPessoa                      ();
+            if (modelo is Telefone) modelo = new Telefone();
+            if (modelo is Endereco) modelo = new Endereco();
+            if (modelo is EnderecoCelula) modelo = new EnderecoCelula();
+            if (modelo is MinisterioCelula) modelo = new MinisterioCelula();
+            if (modelo is PessoaMinisterio) modelo = new PessoaMinisterio();
+            if (modelo is ReuniaoPessoa) modelo = new ReuniaoPessoa();
 
 
 
@@ -337,6 +195,33 @@ namespace WindowsFormsApp1
 
         private void Proximo_Click(object sender, EventArgs e)
         {
+            
+            if (this is FrmCadastrarMensagem)
+            {
+                frm = new FrmMensagem();
+                LoadForm();
+            }
+
+            if (this is FrmDadoFonte)
+            {
+                if (modelo is Versiculo)
+                frm = new FrmVersiculo();
+
+                if (modelo is CanalTv)
+                frm = new FrmCanalTv();
+
+                if (modelo is Livro)                
+                frm = new FrmLivro();
+
+                LoadForm();
+            }
+
+            if (this is FrmVersiculo || this is FrmCanalTv || this is FrmLivro)
+            {
+                frm = new FrmFonte();
+                LoadForm();
+            }
+
             if (this is FormCrudPessoa)
             {
                 if (modelo is PessoaDado || ModeloNovo is PessoaDado)
@@ -354,7 +239,7 @@ namespace WindowsFormsApp1
                         else
                         {
                             frm = new FrmEndereco();
-                            LoadFormCrud();
+                            LoadForm();
                         }
                     }
 
@@ -371,7 +256,7 @@ namespace WindowsFormsApp1
                         else
                         {
                             frm = new Contato();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                     }
@@ -389,7 +274,7 @@ namespace WindowsFormsApp1
                         else
                         {
                             frm = new Foto();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                     }
@@ -408,7 +293,7 @@ namespace WindowsFormsApp1
                         else
                         {
                             frm = new ReunioesMinisteriosPessoa();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                     }
@@ -420,37 +305,37 @@ namespace WindowsFormsApp1
                             if (modelo is Crianca)
                             {
                                 CadastroCrianca cc = new CadastroCrianca();
-                                LoadFormCrud();
+                                LoadForm();
                             }
 
                             if (modelo is Visitante)
                             {
                                 CadastroVisitante cv = new CadastroVisitante();
-                                LoadFormCrud();
+                                LoadForm();
                             }
 
                             if (modelo is Membro_Aclamacao)
                             {
                                 CadastroMembroAclamacao cma = new CadastroMembroAclamacao();
-                                LoadFormCrud();
+                                LoadForm();
                             }
 
                             if (modelo is Membro_Reconciliacao)
                             {
                                 CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao();
-                                LoadFormCrud();
+                                LoadForm();
                             }
 
                             if (modelo is Membro_Batismo)
                             {
                                 CadastroMembroBatismo cmb = new CadastroMembroBatismo();
-                                LoadFormCrud();
+                                LoadForm();
                             }
 
                             if (modelo is Membro_Transferencia)
                             {
                                 CadastroMembroTransferencia cmt = new CadastroMembroTransferencia();
-                                LoadFormCrud();
+                                LoadForm();
                             }
                         }
                         else
@@ -526,7 +411,7 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            FrmPessoa fn = new  FrmPessoa();
+                            FrmPessoa fn = new FrmPessoa();
                             fn.MdiParent = this.MdiParent;
                             this.Close();
                             fn.Show();
@@ -539,49 +424,49 @@ namespace WindowsFormsApp1
                     if (this is DadoPessoalLgpd)
                     {
                         Foto con = new Foto();
-                        LoadFormCrud();
+                        LoadForm();
                     }
                     if (this is Foto)
                     {
                         frm = new ReunioesMinisteriosPessoa();
-                        LoadFormCrud();
+                        LoadForm();
                     }
                     if (this is ReunioesMinisteriosPessoa)
                     {
                         if (modelo is CriancaLgpd)
                         {
                             frm = new CadastroCrianca();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                         if (modelo is VisitanteLgpd)
                         {
                             frm = new CadastroVisitante();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                         if (modelo is Membro_AclamacaoLgpd)
                         {
                             frm = new CadastroMembroAclamacao();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                         if (modelo is Membro_ReconciliacaoLgpd)
                         {
                             frm = new CadastroMembroReconciliacao();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                         if (modelo is Membro_BatismoLgpd)
                         {
                             frm = new CadastroMembroBatismo();
-                            LoadFormCrud();
+                            LoadForm();
                         }
 
                         if (modelo is Membro_TransferenciaLgpd)
                         {
                             frm = new CadastroMembroTransferencia();
-                            LoadFormCrud();
+                            LoadForm();
                         }
                     }
 
@@ -590,7 +475,7 @@ namespace WindowsFormsApp1
                         this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                     {
                         frm = new FrmPessoa();
-                        LoadFormCrud();
+                        LoadForm();
 
                     }
                 }
@@ -602,18 +487,18 @@ namespace WindowsFormsApp1
                 if (this is DadoCelula)
                 {
                     frm = new FrmEnderecoCelula();
-                    LoadFormCrud();
+                    LoadForm();
                 }
 
                 if (this is FrmEnderecoCelula)
                 {
                     frm = new MinisteriosCelula();
-                    LoadFormCrud();
+                    LoadForm();
                 }
                 if (this is MinisteriosCelula)
                 {
                     frm = new FrmCelula();
-                    LoadFormCrud();
+                    LoadForm();
                 }
             }
 
@@ -622,13 +507,13 @@ namespace WindowsFormsApp1
                 if (this is DadoMinisterio)
                 {
                     frm = new PessoasCelulasMinisterio();
-                    LoadFormCrud();
+                    LoadForm();
                 }
 
                 if (this is PessoasCelulasMinisterio)
                 {
                     frm = new FrmMinisterio();
-                    LoadFormCrud();
+                    LoadForm();
                 }
             }
 
@@ -637,16 +522,17 @@ namespace WindowsFormsApp1
                 if (this is DadoReuniao)
                 {
                     frm = new PessoasReuniao();
-                    LoadFormCrud();
+                    LoadForm();
                 }
 
                 if (this is PessoasReuniao)
                 {
                     frm = new FrmReuniao();
-                    LoadFormCrud();
+                    LoadForm();
                 }
             }
 
+            this.Close();
         }
 
     }

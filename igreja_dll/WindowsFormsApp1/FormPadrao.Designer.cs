@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timerPadrao = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // timerPadrao
@@ -37,6 +38,11 @@
             this.timerPadrao.Enabled = true;
             this.timerPadrao.Interval = 30000;
             this.timerPadrao.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // FormPadrao
             // 
@@ -53,5 +59,6 @@
         #endregion
 
         private System.Windows.Forms.Timer timerPadrao;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

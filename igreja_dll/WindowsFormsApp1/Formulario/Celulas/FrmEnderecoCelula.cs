@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void EnderecoCelula_Load(object sender, EventArgs e)
         {
-            this.Text = " - Endereço da celula";
+            FormPadrao.LoadForm(this);
 
             if (modelo != null)
             {

@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void FinalizarCadastroReuniao_Load(object sender, EventArgs e)
         {
-
+            LoadCrudForm();
         }
     }
 }

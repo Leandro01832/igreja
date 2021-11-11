@@ -94,6 +94,7 @@
             this.esboçoToolStripMenuItem.Name = "esboçoToolStripMenuItem";
             this.esboçoToolStripMenuItem.Size = new System.Drawing.Size(87, 32);
             this.esboçoToolStripMenuItem.Text = "Esboço";
+            this.esboçoToolStripMenuItem.Click += new System.EventHandler(this.esboçoToolStripMenuItem_Click);
             // 
             // sistemaDeEmailToolStripMenuItem
             // 

@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void Endereco_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             this.Text = "Endereço da pessoa.";
 
 

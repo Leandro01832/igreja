@@ -2,6 +2,7 @@
 using business.classes;
 using business.classes.Abstrato;
 using business.classes.Intermediario;
+using business.classes.Pessoas;
 using business.contrato;
 using business.implementacao;
 using database.banco;
@@ -54,6 +55,8 @@ namespace database
         public string Update_padrao;
         public string Delete_padrao;
         public string Select_padrao;
+        public static bool ativar;
+        public static Pessoa pessoa;
 
         public string exibirMensagemErro(Exception ex, int condicao)
         {

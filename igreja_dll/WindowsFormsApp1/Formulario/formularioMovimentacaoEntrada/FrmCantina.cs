@@ -16,6 +16,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
 
         private void FrmCadastrarCantina_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
+            FormPadrao.LoadForm(this);
             var form = "Cantina";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

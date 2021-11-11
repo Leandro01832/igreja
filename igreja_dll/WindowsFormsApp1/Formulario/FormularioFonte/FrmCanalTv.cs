@@ -14,7 +14,9 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmCadastrarCanalTv_Load(object sender, EventArgs e)
         {
-            if(modelo != null)
+            LoadCrudForm();
+            FormPadrao.LoadForm(this);
+            if (modelo != null)
             {
                 var fonte = (CanalTv)modelo;
                 txt_nome_canal.Text = fonte.NomeCanal;

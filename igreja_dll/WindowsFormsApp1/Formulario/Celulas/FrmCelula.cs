@@ -20,14 +20,15 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void FinalizarCadastro_Load(object sender, EventArgs e)
         {
-            if(CondicaoDeletar)
-            this.Text = " - Deletar celula.";
+            FormPadrao.LoadForm(this);
+            if (CondicaoDeletar)
+            this.Text += " - Deletar celula.";
 
             if(CondicaoAtualizar)
-                this.Text = " - Atualizar celula.";
+                this.Text += " - Atualizar celula.";
 
             if (CondicaoDetalhes)
-                this.Text = " - Detalhes de celula.";
+                this.Text += " - Detalhes de celula.";
         }
     }
 }

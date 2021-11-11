@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 
         private void FrmCadastrarComprador_Load(object sender, EventArgs e)
         {
-            
+            FormPadrao.LoadForm(this);
         }
 
         private void maskedWhatsapp_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)

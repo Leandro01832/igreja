@@ -12,7 +12,9 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmMensagem_Load(object sender, EventArgs e)
         {
-            if(modelo.Id != 0)
+            LoadCrudForm();
+            FormPadrao.LoadForm(this);
+            if (modelo.Id != 0)
             {
                 var m = (Mensagem)modelo;
                 txt_tipo.Text = m.Tipo;

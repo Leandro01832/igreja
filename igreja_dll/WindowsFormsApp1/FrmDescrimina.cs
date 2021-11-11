@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
 
         private void FrmDescrimina_Load(object sender, EventArgs e)
         {
+            FormPadrao.LoadForm(this);
             label1.Text = "Identificações de movimento de entrada: ";
             label2.Text = "Identificações de movimento de saída: ";
             this.Text = "Movimentações da data :" + Data.ToString("dd/MM/yyyy");

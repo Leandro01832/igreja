@@ -190,5 +190,10 @@ namespace WFEsboco
         {
             LoadFormList(typeof(Livro));
         }
+
+        private void MDIEsboco_Load(object sender, EventArgs e)
+        {
+            FormPadrao.LoadForm(this);
+        }
     }
 }

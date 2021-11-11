@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Formulario.FormularioFonte
+﻿namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
 {
-    partial class ListMensagem
+    partial class FrmEmailIgreja
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // FrmMensagem
+            // FrmEmailAdvocacia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "FrmMensagem";
-            this.Text = "FrmMensagem";
-            this.Load += new System.EventHandler(this.FrmMensagem_Load);
+            this.Name = "FrmEmailAdvocacia";
+            this.Text = "FrmEmailAdvocacia";
+            this.Load += new System.EventHandler(this.FrmEmailAdvocacia_Load);
             this.ResumeLayout(false);
 
         }

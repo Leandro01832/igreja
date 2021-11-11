@@ -41,8 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtPermissao = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -162,32 +160,11 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Senha:";
             // 
-            // txtPermissao
-            // 
-            this.txtPermissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPermissao.Location = new System.Drawing.Point(161, 399);
-            this.txtPermissao.Name = "txtPermissao";
-            this.txtPermissao.Size = new System.Drawing.Size(199, 30);
-            this.txtPermissao.TabIndex = 13;
-            this.txtPermissao.TextChanged += new System.EventHandler(this.txtPermissao_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(14, 404);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 25);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Permissões:";
-            // 
-            // FrmCadastrarAdmin
+            // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtPermissao);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtUsuario);
@@ -201,7 +178,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmCadastrarAdmin";
+            this.Name = "FrmAdmin";
             this.Text = "FrmCadastrarAdmin";
             this.Load += new System.EventHandler(this.FrmCadastrarAdmin_Load);
             this.ResumeLayout(false);
@@ -223,7 +200,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPermissao;
-        private System.Windows.Forms.Label label7;
     }
 }

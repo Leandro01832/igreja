@@ -150,7 +150,7 @@
             // mensagemToolStripMenuItem1
             // 
             this.mensagemToolStripMenuItem1.Name = "mensagemToolStripMenuItem1";
-            this.mensagemToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
+            this.mensagemToolStripMenuItem1.Size = new System.Drawing.Size(186, 32);
             this.mensagemToolStripMenuItem1.Text = "Mensagem";
             this.mensagemToolStripMenuItem1.Click += new System.EventHandler(this.mensagemToolStripMenuItem1_Click);
             // 
@@ -161,7 +161,7 @@
             this.canalDeTvToolStripMenuItem,
             this.livroToolStripMenuItem1});
             this.fonteToolStripMenuItem1.Name = "fonteToolStripMenuItem1";
-            this.fonteToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
+            this.fonteToolStripMenuItem1.Size = new System.Drawing.Size(186, 32);
             this.fonteToolStripMenuItem1.Text = "Fonte";
             this.fonteToolStripMenuItem1.Click += new System.EventHandler(this.fonteToolStripMenuItem1_Click);
             // 
@@ -640,6 +640,7 @@
             this.Name = "MDIEsboco";
             this.Text = "Esboçamento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MDIEsboco_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);

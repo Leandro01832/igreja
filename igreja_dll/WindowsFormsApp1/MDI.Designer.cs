@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIFinanceiro));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDI));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,7 +176,6 @@
             this.chamadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mudançaDeEstadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.processamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -228,8 +227,7 @@
             this.toolStripSeparator5,
             this.exitToolStripMenuItem,
             this.pesquisarToolStripMenuItem,
-            this.relatórioToolStripMenuItem,
-            this.processamentoToolStripMenuItem});
+            this.relatórioToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(94, 32);
@@ -1400,13 +1398,6 @@
             this.mudançaDeEstadoToolStripMenuItem1.Text = "Mudança de estado";
             this.mudançaDeEstadoToolStripMenuItem1.Click += new System.EventHandler(this.mudançaDeEstadoToolStripMenuItem1_Click);
             // 
-            // processamentoToolStripMenuItem
-            // 
-            this.processamentoToolStripMenuItem.Name = "processamentoToolStripMenuItem";
-            this.processamentoToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
-            this.processamentoToolStripMenuItem.Text = "Processamento";
-            this.processamentoToolStripMenuItem.Click += new System.EventHandler(this.processamentoToolStripMenuItem_Click);
-            // 
             // viewMenu
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1736,7 +1727,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem39;
         private System.Windows.Forms.ToolStripMenuItem mudançaDeEstadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mudançaDeEstadoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem processamentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem40;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem41;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem42;

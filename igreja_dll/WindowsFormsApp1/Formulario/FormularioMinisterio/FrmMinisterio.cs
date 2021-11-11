@@ -11,7 +11,8 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void FinalizarCadastro_Load(object sender, EventArgs e)
         {
-            if(CondicaoAtualizar)
+            LoadCrudForm();
+            if (CondicaoAtualizar)
             this.Text = "Atualizar ministério.";
 
             if (CondicaoDeletar)

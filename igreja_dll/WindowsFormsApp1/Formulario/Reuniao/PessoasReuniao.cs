@@ -1,127 +1,61 @@
 ﻿using business.classes.Abstrato;
-using database;
+using business.classes.Intermediario;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formulario.Pessoas;
+using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
-    public partial class PessoasReuniao : FormCrudReuniao
+    public partial class PessoasReuniao :  FormCrudReuniao
     {
         public PessoasReuniao(): base()
-        {
-            
+        {            
             InitializeComponent();
-            txt_pessoas.Leave += Txt_pessoas_Leave;
         }
 
-        private void Txt_pessoas_Leave(object sender, EventArgs e)
-        {
-            var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
-            try
-            {
-                int teste = int.Parse(arr[arr.Length - 1]);
-                AddNaListaReuniaoPessoas = txt_pessoas.Text;
-            }
-            catch
-            {
-                AddNaListaReuniaoPessoas = "";
-                txt_pessoas.Text = "";
-            }
-        }
+        // variavel para evitar bug
+        bool condicao = false;
 
         private void PessoasReuniao_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             var p = (business.classes.Reuniao)modelo;
 
-            if(p.Id == 0)
+            if(p.Id != 0)
             {
+                foreach (var item in p.Pessoas)
+                {
+                    var indice = lstBoxPessoa.Items.IndexOf(item);
+                    lstBoxPessoa.SetSelected(indice, true);
+                }
+            }
 
-                if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                {
-                    var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
-                    foreach (var item in arr)
-                    {
-                        if(item != "")
-                        {
-                            var modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
-                            txt_pessoas.Text += modelo.Codigo.ToString() + ", ";
-                        }
-                        
-                    }
-                }
-                    
-            }
-            else 
-            {
-                var reuniao = (business.classes.Reuniao)modelo;
-                var pessoas = reuniao.Pessoas;
-                if (pessoas != null)
-                foreach (var item in pessoas)
-                {
-                        var pes = modelocrud.Modelos.OfType<Pessoa>().ToList().First(i => i.Id == item.PessoaId);
-                        txt_pessoas.Text += pes.Codigo + ", ";
-                }
-                
-            }
+            condicao = true;            
         }
+        
+        
 
-        private void txt_pessoas_TextChanged(object sender, EventArgs e)
+        private void lstBoxPessoa_SelectedValueChanged(object sender, EventArgs e)
         {
-            AddNaListaReuniaoPessoas = "";
-            var arr = txt_pessoas.Text.Replace(" ", "").Split(',');
-
-            try { int teste = int.Parse(arr[0]); }
-            catch
+            var reuniao = (business.classes.Reuniao)modelo;
+            try
             {
-                AddNaListaReuniaoPessoas = "";
-                txt_pessoas.Text = "";
-                txt_pessoas.Focus();
-                MessageBox.Show("Informe numeros de identificação de pessoas.");
-            }
+                if (condicao)
+                {
+                    SelectedObjectCollection valor = lstBoxPessoa.SelectedItems;
+                    var objetos = valor.Cast<Pessoa>().ToList();
+                    reuniao.Pessoas = new List<ReuniaoPessoa>();
+                    foreach (var item in objetos)
+                        reuniao.Pessoas.Add(new ReuniaoPessoa { PessoaId = item.Id });
+                }
 
-            if (arr[arr.Length - 1] == "")
-            foreach (var item in arr)
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    if (item != "")
-                    {
-                            int teste = int.Parse(item);
-                            
-                        try
-                        {
-                                var modelo = modelocrud.Modelos.OfType<Pessoa>().ToList().First(m => m.Codigo == int.Parse(item));
-                                AddNaListaReuniaoPessoas += modelo.Id.ToString() + ", ";
-                        }
-                        catch
-                        {
-                            AddNaListaReuniaoPessoas = "";
-                                var numero = Pessoa.TotalRegistro();
-                                if (numero != modelocrud.Modelos.OfType<Pessoa>().ToList().Count)
-                                    MessageBox.Show("Aguarde o processamento.");
-                                else
-                                    MessageBox.Show("Este registro não existe no banco de dados");
-                        }
-                    }
-
-                }
-                catch
-                {
-                        txt_pessoas.Text = "";
-                        AddNaListaReuniaoPessoas = "";
-                        MessageBox.Show("Informe numeros de identificação de pessoas.");
-                }
+                MessageBox.Show("Um erro aconteceu " + ex.Message);
             }
-        }
-
-        private void listapessoas_Click(object sender, EventArgs e)
-        {
-            ListPessoa form = new ListPessoa(typeof(Pessoa));
-            form.MdiParent = this.MdiParent;
-            form.Text = "Lista de Pessoas";
-            form.Show();
         }
     }
 }

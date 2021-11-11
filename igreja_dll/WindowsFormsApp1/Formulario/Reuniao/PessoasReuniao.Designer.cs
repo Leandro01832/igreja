@@ -28,20 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_pessoas = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.listapessoas = new System.Windows.Forms.Button();
+            this.lstBoxPessoa = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // txt_pessoas
-            // 
-            this.txt_pessoas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pessoas.Location = new System.Drawing.Point(33, 82);
-            this.txt_pessoas.Multiline = true;
-            this.txt_pessoas.Name = "txt_pessoas";
-            this.txt_pessoas.Size = new System.Drawing.Size(418, 278);
-            this.txt_pessoas.TabIndex = 284;
-            this.txt_pessoas.TextChanged += new System.EventHandler(this.txt_pessoas_TextChanged);
             // 
             // label5
             // 
@@ -49,28 +38,27 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(28, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(334, 25);
+            this.label5.Size = new System.Drawing.Size(94, 25);
             this.label5.TabIndex = 283;
-            this.label5.Text = "Identificação das pessoas da reuniao";
+            this.label5.Text = "Pessoas:";
             // 
-            // listapessoas
+            // lstBoxPessoa
             // 
-            this.listapessoas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listapessoas.Location = new System.Drawing.Point(33, 366);
-            this.listapessoas.Name = "listapessoas";
-            this.listapessoas.Size = new System.Drawing.Size(272, 41);
-            this.listapessoas.TabIndex = 285;
-            this.listapessoas.Text = "abrir lista de pessoas";
-            this.listapessoas.UseVisualStyleBackColor = true;
-            this.listapessoas.Click += new System.EventHandler(this.listapessoas_Click);
+            this.lstBoxPessoa.FormattingEnabled = true;
+            this.lstBoxPessoa.ItemHeight = 16;
+            this.lstBoxPessoa.Location = new System.Drawing.Point(136, 37);
+            this.lstBoxPessoa.Name = "lstBoxPessoa";
+            this.lstBoxPessoa.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstBoxPessoa.Size = new System.Drawing.Size(346, 388);
+            this.lstBoxPessoa.TabIndex = 284;
+            this.lstBoxPessoa.SelectedValueChanged += new System.EventHandler(this.lstBoxPessoa_SelectedValueChanged);
             // 
             // PessoasReuniao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listapessoas);
-            this.Controls.Add(this.txt_pessoas);
+            this.Controls.Add(this.lstBoxPessoa);
             this.Controls.Add(this.label5);
             this.Name = "PessoasReuniao";
             this.Text = "PessoasReuniao";
@@ -81,9 +69,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_pessoas;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button listapessoas;
+        private System.Windows.Forms.ListBox lstBoxPessoa;
     }
 }

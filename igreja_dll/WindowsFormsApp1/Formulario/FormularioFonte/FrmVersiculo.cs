@@ -14,15 +14,16 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         Book livro;
         Objeto obj;
 
-        public FrmVersiculo()
-            : base()
+        public FrmVersiculo() : base()
         {
             InitializeComponent();
         }
 
         private void FrmCadastrarVersiculo_Load(object sender, EventArgs e)
         {
-             buscarVersiculosBiblia();
+            LoadCrudForm();
+            FormPadrao.LoadForm(this);
+            buscarVersiculosBiblia();
             if (modelo != null)
             {
                 var v = (business.classes.Fontes.Versiculo)modelo;

@@ -5,12 +5,16 @@ using business.classes.Ministerio;
 using database;
 using database.banco;
 using System;
+using System.Configuration;
+using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WFEsboco;
 
 namespace WindowsFormsApp1
 {
-    public partial class FrmPrincipal : Form
+    public partial class FrmPrincipal : FormPadrao
     {
         public FrmPrincipal()
         {
@@ -19,6 +23,8 @@ namespace WindowsFormsApp1
         }
 
         BDcomum bd = new BDcomum();
+
+        Timer timer;
 
         #region IdentityRegistryNews
         bool notifica;
@@ -172,6 +178,7 @@ namespace WindowsFormsApp1
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             FormPadrao.UltimoRegistro();
+            FormPadrao.LoadForm(this);
 
             try { Pessoa.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
             catch { Pessoa.UltimoRegistro = 0; }
@@ -180,7 +187,7 @@ namespace WindowsFormsApp1
             try { Ministerio.UltimoRegistro = bd.GetUltimoRegistroMinisterio(); }
             catch { Ministerio.UltimoRegistro = 0; }
             try { Celula.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
-            catch { Celula.UltimoRegistro = 0; }
+            catch { Celula.UltimoRegistro = 0; }           
 
 
         }
@@ -202,6 +209,12 @@ namespace WindowsFormsApp1
         private void sistemaFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MDIFinanceiro form = new MDIFinanceiro();
+            form.Show();
+        }
+
+        private void esboçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MDIEsboco form = new MDIEsboco();
             form.Show();
         }
     }

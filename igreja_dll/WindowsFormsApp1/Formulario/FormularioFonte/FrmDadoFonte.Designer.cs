@@ -29,34 +29,36 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_id_mensagem = new System.Windows.Forms.TextBox();
+            this.lstBoxMensagem = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 198);
+            this.label1.Location = new System.Drawing.Point(12, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 25);
+            this.label1.Size = new System.Drawing.Size(110, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Id da Mensagem";
+            this.label1.Text = "Mensagem";
             // 
-            // txt_id_mensagem
+            // lstBoxMensagem
             // 
-            this.txt_id_mensagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_id_mensagem.Location = new System.Drawing.Point(223, 193);
-            this.txt_id_mensagem.Name = "txt_id_mensagem";
-            this.txt_id_mensagem.Size = new System.Drawing.Size(199, 30);
-            this.txt_id_mensagem.TabIndex = 1;
-            this.txt_id_mensagem.TextChanged += new System.EventHandler(this.txt_id_mensagem_TextChanged);
+            this.lstBoxMensagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBoxMensagem.FormattingEnabled = true;
+            this.lstBoxMensagem.ItemHeight = 25;
+            this.lstBoxMensagem.Location = new System.Drawing.Point(128, 47);
+            this.lstBoxMensagem.Name = "lstBoxMensagem";
+            this.lstBoxMensagem.Size = new System.Drawing.Size(320, 354);
+            this.lstBoxMensagem.TabIndex = 1;
+            this.lstBoxMensagem.SelectedValueChanged += new System.EventHandler(this.lstBoxMensagem_SelectedValueChanged);
             // 
             // FrmDadoFonte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txt_id_mensagem);
+            this.Controls.Add(this.lstBoxMensagem);
             this.Controls.Add(this.label1);
             this.Name = "FrmDadoFonte";
             this.Text = "FrmDadoFonte";
@@ -69,6 +71,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_id_mensagem;
+        private System.Windows.Forms.ListBox lstBoxMensagem;
     }
 }

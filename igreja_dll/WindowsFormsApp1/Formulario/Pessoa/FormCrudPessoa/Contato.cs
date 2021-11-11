@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void Contato_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             this.Text = "Contatos.";
 
             if(modelo != null)

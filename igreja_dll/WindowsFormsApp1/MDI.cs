@@ -89,6 +89,7 @@ namespace WindowsFormsApp1
 
         private void MDI_Load(object sender, EventArgs e)
         {
+            FormPadrao.LoadForm(this, "Gerenciamento de pessoas");
             toolStrip.Visible = false;
             visitanteToolStripMenuItem1.BackColor = Color.Aqua;
             criançaToolStripMenuItem1.BackColor = Color.Bisque;
@@ -366,14 +367,7 @@ namespace WindowsFormsApp1
         {
                 ir.imprimir(typeof(Reuniao));
         }
-
-        private void processamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormProcessamento processos = new FormProcessamento();
-            processos.MdiParent = this;
-            processos.Show();
-        }
-
+        
         private void toolStripMenuItem40_Click(object sender, EventArgs e)
         {
             OpenQuery(typeof(Ministerio));

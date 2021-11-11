@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
 
         private void FrmGraficoCaixa_Load(object sender, EventArgs e)
         {
+            FormPadrao.LoadForm(this);
             chart1.Legends.Clear();
             chart1.Series.Clear();
 

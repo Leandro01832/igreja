@@ -19,7 +19,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void FinalizarCadastro_Load(object sender, EventArgs e)
         {
-            if(CondicaoAtualizar)
+            LoadCrudForm();
+            if (CondicaoAtualizar)
             this.Text = "Atualizar dados de pessoa.";
 
             if (CondicaoDeletar)

@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
 
         private void FormProgressBar_Load(object sender, EventArgs e)
         {
+            FormPadrao.LoadForm(this);
         }
 
         private void ProgressBar_Tick(object sender, EventArgs e)

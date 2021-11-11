@@ -13,8 +13,12 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             InitializeComponent();
         }
 
+
+
         private void FrmCadastrarBazar_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
+            FormPadrao.LoadForm(this);
             var form = "Bazar";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

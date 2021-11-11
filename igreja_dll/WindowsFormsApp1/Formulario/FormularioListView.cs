@@ -2,6 +2,7 @@
 using business.implementacao;
 using database;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace WindowsFormsApp1.Formulario
         bool atualizar = true;
 
         WFCrud result = null;
+        private List<modelocrud> list;
 
         private Button Mudanca { get; }
         private Button botaoDetalhes { get; }
@@ -88,6 +90,11 @@ namespace WindowsFormsApp1.Formulario
             Controls.Add(botaoAtualizarLista);
             this.ListView = ListView;
             InitializeComponent();
+        }
+
+        public FormularioListView(List<modelocrud> list)
+        {
+            this.list = list;
         }
 
         private async void BotaoAtualizarLista_Click(object sender, EventArgs e)

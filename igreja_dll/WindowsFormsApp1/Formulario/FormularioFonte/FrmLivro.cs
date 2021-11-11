@@ -13,7 +13,9 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmCadastrarLivro_Load(object sender, EventArgs e)
         {
-            if(modelo != null)
+            LoadCrudForm();
+            FormPadrao.LoadForm(this);
+            if (modelo != null)
             {
                 var fonte = (Livro)modelo;
                 txt_autor.Text = fonte.NomeAutor;

@@ -1,6 +1,7 @@
 ﻿using business.Classe.financeiro;
 using business.classes.Abstrato;
 using business.classes.financeiro;
+using business.classes.Pessoas;
 using database;
 using System;
 using System.Windows.Forms;
@@ -202,7 +203,7 @@ namespace WindowsFormsApp1
 
         private void MDI_Load(object sender, EventArgs e)
         {
-
+            FormPadrao.LoadForm(this);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

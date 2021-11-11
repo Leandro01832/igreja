@@ -19,6 +19,11 @@ namespace business.database
         }
 
         public DbSet<Mensagem> Mensagem { get; set; }
+        public DbSet<Email> Email { get; set; }
+        public DbSet<Body> Body { get; set; }
+        public DbSet<Permissao> Permissao { get; set; }
+        public DbSet<PermissaoPessoa> PermissaoPessoa { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
 
         public DbSet<Fonte> Fonte { get; set; }
 

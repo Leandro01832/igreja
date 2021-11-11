@@ -14,6 +14,7 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
 
         private void FrmCadastrarTransporte_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             var form = "Transporte";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

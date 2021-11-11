@@ -1,5 +1,6 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Esboco.Abstrato;
 using business.classes.financeiro;
 using business.classes.Intermediario;
 using business.classes.Pessoas;
@@ -11,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celulas;
+using WindowsFormsApp1.Formulario.FormularioFonte;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoas;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
@@ -18,7 +20,7 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public partial class WFCrud : FormPadrao
+    public partial class WFCrud : Form
     {
 
         private Label InfoForm;
@@ -26,7 +28,7 @@ namespace WindowsFormsApp1
 
         // botões para crud
         private Button proximo;
-        private Button Deletar;
+        private Button deletar;
         private Button atualizar;
         private Button finalizarCadastro;
 
@@ -60,33 +62,18 @@ namespace WindowsFormsApp1
         public bool CondicaoDeletar { get => condicaoDeletar; set => condicaoDeletar = value; }
         public bool CondicaoAtualizar { get => condicaoAtualizar; set => condicaoAtualizar = value; }
         public bool CondicaoDetalhes { get => condicaoDetalhes; set => condicaoDetalhes = value; }
-        public static string AddNaListaCelulaMinisterios
-        { get => addNaListaCelulaMinisterios; set => addNaListaCelulaMinisterios = value; }
-        public static string AddNaListaMinisterioPessoas
-        { get => addNaListaMinisterioPessoas; set => addNaListaMinisterioPessoas = value; }
-        public static string AddNaListaMinisterioCelulas
-        { get => addNaListaMinisterioCelulas; set => addNaListaMinisterioCelulas = value; }
-        public static string AddNaListaPessoaMinsterios
-        { get => addNaListaPessoaMinsterios; set => addNaListaPessoaMinsterios = value; }
-        public static string AddNaListaPessoaReunioes
-        { get => addNaListaPessoaReunioes; set => addNaListaPessoaReunioes = value; }
-        public static string AddNaListaReuniaoPessoas
-        { get => addNaListaReuniaoPessoas; set => addNaListaReuniaoPessoas = value; }
+        
+
         public Button Proximo { get => proximo; set => proximo = value; }
         public Button Atualizar { get => atualizar; set => atualizar = value; }
         public modelocrud ModeloNovo { get => modeloNovo; set => modeloNovo = value; }
         public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
         public Button FinalizaCadastro { get => finalizarCadastro; set => finalizarCadastro = value; }
+        public Button Deletar { get => deletar; set => deletar = value; }
 
         private bool condicaoDeletar;
         private bool condicaoAtualizar;
         private bool condicaoDetalhes;
-        private static string addNaListaCelulaMinisterios;
-        private static string addNaListaMinisterioCelulas;
-        private static string addNaListaMinisterioPessoas;
-        private static string addNaListaPessoaMinsterios;
-        private static string addNaListaPessoaReunioes;
-        private static string addNaListaReuniaoPessoas;
 
 
         public WFCrud()
@@ -290,13 +277,13 @@ namespace WindowsFormsApp1
         private void DadoReuniao_Click(object sender, EventArgs e)
         {
             DadoReuniao frm = new DadoReuniao();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoReuniaoPessoas_Click(object sender, EventArgs e)
         {
             frm = new PessoasReuniao();
-            LoadFormCrud();
+            LoadForm();
         }
 
         public WFCrud(modelocrud modelo, modelocrud modeloNovo)
@@ -331,61 +318,61 @@ namespace WindowsFormsApp1
         private void DadoCelula_Click(object sender, EventArgs e)
         {
             frm = new DadoCelula();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoEnderecoCelula_Click(object sender, EventArgs e)
         {
             frm = new FrmEnderecoCelula();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoCelulaMinisterio_Click(object sender, EventArgs e)
         {
             frm = new MinisteriosCelula();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoCelulaPessoas_Click(object sender, EventArgs e)
         {
             frm = new MinisteriosCelula();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoMinisterio_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoMinisterioPessoas_Click(object sender, EventArgs e)
         {
             frm = new PessoasCelulasMinisterio();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoMinistro_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
             frm = new ReunioesMinisteriosPessoa();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoContato_Click(object sender, EventArgs e)
         {
             frm = new Contato();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
             frm = new FrmEndereco();
-            LoadFormCrud();
+            LoadForm();
         }
 
         private void DadoPessoal_Click(object sender, EventArgs e)
@@ -394,12 +381,12 @@ namespace WindowsFormsApp1
                 frm = new DadoPessoal();
             if (modelo is PessoaLgpd)
                 frm = new DadoPessoalLgpd();
-            LoadFormCrud();
+            LoadForm();
         }
 
-        public void LoadForm()
+        public void LoadCrudForm()
         {
-            if (condicaoAtualizar || condicaoDeletar || condicaoDetalhes)
+            if (CondicaoAtualizar || CondicaoDeletar || CondicaoDetalhes)
             {
                 InfoForm.Visible = true;
                 Proximo.Visible = false;
@@ -473,18 +460,20 @@ namespace WindowsFormsApp1
                 dadoReuniaoPessoas.Visible = true;
             }
 
-            if (!CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes)
+            if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes)
                 Proximo.Visible = true;
 
-            if (!CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+            if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is FrmCelula ||
-                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is FrmMinisterio ||
-                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is FrmPessoa ||
-                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes &&
+                !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is FrmReuniao || modelo.GetType().IsSubclassOf(typeof(Movimentacao)) &&
-                !CondicaoAtualizar && !condicaoDeletar && !condicaoDetalhes)
+                !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes ||
+                this is FrmFonte &&
+                !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes)
             {
                 Proximo.Visible = false;
                 FinalizaCadastro.Visible = true;
@@ -523,8 +512,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void LoadFormCrud()
+        private void LoadForm()
         {
+            
             frm.modelo = modelo;
             frm.CondicaoDetalhes = CondicaoDetalhes;
             frm.CondicaoDeletar = CondicaoDeletar;
@@ -535,92 +525,7 @@ namespace WindowsFormsApp1
 
         private async void FinalizarCadastro_Click(object sender, EventArgs e)
         {
-            FinalizaCadastro.Enabled = false;
-
-            if (modelo is Celula)
-            {
-                var p = (Celula)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaCelulaMinisterios))
-                {
-                    var arr = AddNaListaCelulaMinisterios.Replace(" ", "").Split(',');
-                    p.Ministerios = new List<MinisterioCelula>();
-                    foreach (var item in arr)
-                    {
-                        p.Ministerios.Add(new MinisterioCelula { CelulaId = p.Id, MinisterioId = int.Parse(item), Celula = p });
-                        p.Ministerios = p.Ministerios;
-                    }
-                }
-            }
-
-            if (modelo is Ministerio)
-            {
-                var p = (Ministerio)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaMinisterioPessoas))
-                {
-                    var arr = AddNaListaMinisterioPessoas.Replace(" ", "").Split(',');
-                    p.Pessoas = new List<PessoaMinisterio>();
-                    foreach (var item in arr)
-                    {
-                        p.Pessoas.Add(new PessoaMinisterio { PessoaId = int.Parse(item), MinisterioId = p.Id, Ministerio = p });
-                        p.Pessoas = p.Pessoas;
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(AddNaListaMinisterioCelulas))
-                {
-                    var arr = AddNaListaMinisterioCelulas.Replace(" ", "").Split(',');
-                    p.Celulas = new List<MinisterioCelula>();
-                    foreach (var item in arr)
-                    {
-                        p.Celulas.Add(new MinisterioCelula { CelulaId = int.Parse(item), MinisterioId = p.Id, Ministerio = p });
-                        p.Celulas = p.Celulas;
-                    }
-                }
-            }
-
-            if (modelo is Pessoa)
-            {
-                var p = (Pessoa)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaPessoaMinsterios))
-                {
-                    var arr = AddNaListaPessoaMinsterios.Replace(" ", "").Split(',');
-                    p.Ministerios = new List<PessoaMinisterio>();
-                    foreach (var item in arr)
-                    {
-                        p.Ministerios.Add(new PessoaMinisterio { PessoaId = p.Id, MinisterioId = int.Parse(item), Pessoa = p });
-                        p.Ministerios = p.Ministerios;
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(AddNaListaPessoaReunioes))
-                {
-                    var arr = AddNaListaPessoaReunioes.Replace(" ", "").Split(',');
-                    p.Reuniao = new List<ReuniaoPessoa>();
-                    foreach (var item in arr)
-                    {
-                        p.Reuniao.Add(new ReuniaoPessoa { PessoaId = p.Id, ReuniaoId = int.Parse(item), Pessoa = p });
-                        p.Reuniao = p.Reuniao;
-                    }
-                }
-
-                var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
-                p.Codigo = ultimoRegistro + 1;
-            }
-
-            if (modelo is Reuniao)
-            {
-                var p = (Reuniao)modelo;
-                if (!string.IsNullOrEmpty(AddNaListaReuniaoPessoas))
-                {
-                    var arr = AddNaListaReuniaoPessoas.Replace(" ", "").Split(',');
-                    p.Pessoas = new List<ReuniaoPessoa>();
-                    foreach (var item in arr)
-                    {
-                        p.Pessoas.Add(new ReuniaoPessoa { PessoaId = int.Parse(item), ReuniaoId = p.Id });
-                        p.Pessoas = p.Pessoas;
-                    }
-                }
-            }
+            FinalizaCadastro.Enabled = false;            
 
             try { modelo.salvar(); }
             catch (Exception ex)
@@ -633,60 +538,57 @@ namespace WindowsFormsApp1
             if (modelo is Celula)
             {
                 var p = (Celula)modelo;
-                if (p.Ministerios != null)
-                    foreach (var item in p.Ministerios)
-                    {
-                        if (item.CelulaId == 0) item.CelulaId = item.Celula.Id;
-                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                        item.salvar();
-                    }
+                foreach (var item in p.Ministerios)
+                {
+                    item.CelulaId = modelo.Id;
+                    item.salvar();
+                }
+                
             }
+
             if (modelo is Ministerio)
             {
                 var p = (Ministerio)modelo;
-                if (p.Pessoas != null)
-                    foreach (var item in p.Pessoas)
-                    {
-                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                        item.salvar();
-                    }
-                if (p.Celulas != null)
-                    foreach (var item in p.Celulas)
-                    {
-                        if (item.CelulaId == 0) item.CelulaId = item.Celula.Id;
-                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                        item.salvar();
-                    }
+                foreach (var item in p.Pessoas)
+                {
+                    item.MinisterioId = modelo.Id;
+                    item.salvar();
+                }
+
+                foreach (var item in p.Celulas)
+                {
+                    item.MinisterioId = modelo.Id;
+                    item.salvar();
+                }
             }
+
             if (modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
-                if (p.Ministerios != null)
-                    foreach (var item in p.Ministerios)
-                    {
-                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                        if (item.MinisterioId == 0) item.MinisterioId = item.Ministerio.Id;
-                        item.salvar();
-                    }
-                if (p.Reuniao != null)
-                    foreach (var item in p.Reuniao)
-                    {
-                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                        if (item.ReuniaoId == 0) item.ReuniaoId = item.Reuniao.Id;
-                        item.salvar();
-                    }
+                foreach (var item in p.Ministerios)
+                {
+                    item.PessoaId = modelo.Id;
+                    item.salvar();
+                }
+
+                foreach (var item in p.Reuniao)
+                {
+                    item.PessoaId = modelo.Id;
+                    item.salvar();
+                }
+
+                var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
+                p.Codigo = ultimoRegistro + 1;
             }
+
             if (modelo is Reuniao)
             {
                 var p = (Reuniao)modelo;
-                if (p.Pessoas != null)
-                    foreach (var item in p.Pessoas)
-                    {
-                        if (item.PessoaId == 0) item.PessoaId = item.Pessoa.Id;
-                        if (item.ReuniaoId == 0) item.ReuniaoId = item.Reuniao.Id;
-                        item.salvar();
-                    }
+                foreach (var item in p.Pessoas)
+                {
+                    item.ReuniaoId = modelo.Id;
+                    item.salvar();
+                }
             }
 
             if (modelo is Pessoa && !BDcomum.BancoEnbarcado)

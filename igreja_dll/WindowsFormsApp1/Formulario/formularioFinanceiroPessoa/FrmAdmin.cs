@@ -1,4 +1,5 @@
 ﻿using business.Classe.financeiro;
+using business.classes.Pessoas;
 using database;
 using System;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 
         private void FrmCadastrarAdmin_Load(object sender, EventArgs e)
         {
-
+            FormPadrao.LoadForm(this);
         }
 
         private void maskedWhatsapp_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -52,13 +53,8 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
             Admin c = (Admin)modelo;
-            c.User = txtUsuario.Text;
+            c.Email = txtUsuario.Text;
         }
-
-        private void txtPermissao_TextChanged(object sender, EventArgs e)
-        {
-            Admin c = (Admin)modelo;
-            c.Permissao = txtPermissao.Text;
-        }
+        
     }
 }

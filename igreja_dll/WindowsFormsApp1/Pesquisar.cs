@@ -38,6 +38,7 @@ namespace WindowsFormsApp1
 
         private void Pesquisar_Load(object sender, EventArgs e)
         {
+            FormPadrao.LoadForm(this);
             dgdados.Font = new Font("Arial", 18);
         }
 
