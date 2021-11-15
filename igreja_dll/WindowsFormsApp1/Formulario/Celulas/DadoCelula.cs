@@ -1,17 +1,10 @@
 ﻿using business.classes.Abstrato;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Celulas
 {
-    public partial class DadoCelula : FormularioCrudCelula
+    public partial class DadoCelula : WFCrud
     {
         public DadoCelula() : base()
         {
@@ -20,16 +13,18 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void DadoCelula_Load(object sender, EventArgs e)
         {
-                this.Text = " - Dados de celula.";
+            this.Text = " - Dados de celula.";
 
-            if (modelo != null)
-            {
-                var p = (Celula)modelo;
-                txt_nome_celula.Text = p.Nome;
-                txt_dia_semana.Text = p.Dia_semana;
-                mask_horario.Text = p.Horario.ToString();
 
-            }
+            var p = (Celula)modelo;
+            try { txt_nome_celula.Text = p.Nome; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txt_dia_semana.Text = p.Dia_semana; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { mask_horario.Text = p.Horario.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
+
         }
 
         private void txt_nome_celula_TextChanged(object sender, EventArgs e)

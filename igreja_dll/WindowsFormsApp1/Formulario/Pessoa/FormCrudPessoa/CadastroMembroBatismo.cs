@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroMembroBatismo :  Formulario.FormCrudPessoa
+    public partial class CadastroMembroBatismo :  WFCrud
     {
 
         public CadastroMembroBatismo(modelocrud modelo, modelocrud modeloNovo)
@@ -32,21 +32,19 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             LoadCrudForm();
             this.Text = "Cadastro de membro por batismo.";
-
-            if (modelo != null)
-            {
+            
                 if (modelo is Membro_Batismo)
                 {
                     var p = (Membro_Batismo)modelo;
-                    txt_ano.Text = p.Data_batismo.ToString();
+                try { txt_ano.Text = p.Data_batismo.ToString(); } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is Membro_BatismoLgpd)
                 {
                     var p = (Membro_BatismoLgpd)modelo;
-                    txt_ano.Text = p.Data_batismo.ToString();
-                }
-
+                try { txt_ano.Text = p.Data_batismo.ToString(); } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
+
+            
         }
 
         private void txt_ano_TextChanged(object sender, EventArgs e)

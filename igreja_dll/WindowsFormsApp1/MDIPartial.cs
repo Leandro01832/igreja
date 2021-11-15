@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
 
         private void LoadFormCreate(modelocrud modelo)
         {
-            frm.modelo = new Membro_AclamacaoLgpd();
+            frm.modelo = modelo;
             frm.CondicaoAtualizar = false;
             frm.CondicaoDeletar = false;
             frm.CondicaoDetalhes = false;

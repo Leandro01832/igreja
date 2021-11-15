@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class FrmEndereco : FormCrudPessoa
+    public partial class FrmEndereco : WFCrud
     {
         public FrmEndereco() : base()
         {
-            
+
             InitializeComponent();
         }
 
@@ -24,38 +24,44 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             this.Text = "Endereço da pessoa.";
 
 
-            if (modelo != null)
-            {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
-                textpais.Text = p.Endereco.Pais;
-                text_cep.Text = p.Endereco.Cep.ToString();
-                text_estado.Text = p.Endereco.Estado;
-                text_cidade.Text = p.Endereco.Cidade;
-                text_bairro.Text = p.Endereco.Bairro;
-                text_rua.Text = p.Endereco.Rua;
-                text_complemento.Text = p.Endereco.Complemento;
-                text_numero.Text = p.Endereco.Numero_casa.ToString(); 
-            }
+            var p = (business.classes.Pessoas.PessoaDado)modelo;
+            try { textpais.Text = p.Endereco.Pais; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_cep.Text = p.Endereco.Cep.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_estado.Text = p.Endereco.Estado; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_cidade.Text = p.Endereco.Cidade; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_bairro.Text = p.Endereco.Bairro; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_rua.Text = p.Endereco.Rua; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_complemento.Text = p.Endereco.Complemento; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_numero.Text = p.Endereco.Numero_casa.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
         }
 
         private void textpais_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Pais = textpais.Text;
             }
-            if(ModeloNovo != null)
+            if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
                 p.Endereco.Pais = textpais.Text;
             }
-            
+
         }
 
         private void text_cep_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 try
                 {
@@ -85,7 +91,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_estado_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Estado = text_estado.Text;
@@ -99,7 +105,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_cidade_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Cidade = text_cidade.Text;
@@ -113,7 +119,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_bairro_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Bairro = text_bairro.Text;
@@ -127,7 +133,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_rua_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Rua = text_rua.Text;
@@ -141,7 +147,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_complemento_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 p.Endereco.Complemento = text_complemento.Text;
@@ -155,7 +161,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_numero_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
                 try

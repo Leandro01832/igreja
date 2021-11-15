@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using business.classes.Esboco;
 using business.classes.Esboco.Abstrato;
+using business.classes.Pessoas;
 
 namespace business.database
 {
@@ -24,9 +25,9 @@ namespace business.database
         public DbSet<Permissao> Permissao { get; set; }
         public DbSet<PermissaoPessoa> PermissaoPessoa { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
-
+        public DbSet<Admin> Admin { get; set; }
+        public DbSet<Atendente> Atendente { get; set; }
         public DbSet<Fonte> Fonte { get; set; }
-
         public DbSet<Chamada> Chamadas { get; set; }
         public DbSet<MudancaEstado> MudancaEstado { get; set; }
         public DbSet<Reuniao> reuniao { get; set; }

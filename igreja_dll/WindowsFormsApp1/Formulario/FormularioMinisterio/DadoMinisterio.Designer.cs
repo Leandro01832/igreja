@@ -107,6 +107,12 @@
             this.Name = "DadoMinisterio";
             this.Text = "DadoMinisterio";
             this.Load += new System.EventHandler(this.DadoMinisterio_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.txt_nome_ministerio, 0);
+            this.Controls.SetChildIndex(this.txt_proposito, 0);
+            this.Controls.SetChildIndex(this.txt_ministro, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

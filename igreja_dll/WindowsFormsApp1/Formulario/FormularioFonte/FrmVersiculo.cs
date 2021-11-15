@@ -24,13 +24,12 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
             LoadCrudForm();
             FormPadrao.LoadForm(this);
             buscarVersiculosBiblia();
-            if (modelo != null)
-            {
+            
                 var v = (business.classes.Fontes.Versiculo)modelo;
-                txt_texto.Text = v.Texto;
-                combo_livro.Text = v.Livro;
-                combo_capitulo.Text = v.Capitulo.ToString();                
-            }
+            try { txt_texto.Text = v.Texto;                    } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try {  combo_livro.Text = v.Livro;                 } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { combo_capitulo.Text = v.Capitulo.ToString(); } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }              
+            
         }
 
         private void txt_texto_TextChanged(object sender, EventArgs e)

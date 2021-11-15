@@ -1,5 +1,6 @@
 ﻿using business.classes.Esboco.Fontes;
 using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.FormularioFonte
 {
@@ -15,12 +16,11 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         {
             LoadCrudForm();
             FormPadrao.LoadForm(this);
-            if (modelo != null)
-            {
+            
                 var fonte = (Livro)modelo;
-                txt_autor.Text = fonte.NomeAutor;
-                txt_livro.Text = fonte.NomeLivro;
-            }
+              try{  txt_autor.Text = fonte.NomeAutor; } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+            try { txt_livro.Text = fonte.NomeLivro; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); } 
+            
         }
 
         private void txt_autor_TextChanged(object sender, EventArgs e)

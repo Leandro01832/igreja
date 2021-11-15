@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
-    public partial class DadoReuniao : FormCrudReuniao
+    public partial class DadoReuniao : WFCrud
     {
         public DadoReuniao() : base()
         {
@@ -14,14 +14,17 @@ namespace WindowsFormsApp1.Formulario.Reuniao
         private void Reuniao_Load(object sender, EventArgs e)
         {
             LoadCrudForm();
-            if (modelo != null)
-            {
-                var reuniao = (business.classes.Reuniao)modelo;
-                txt_local_reuniao.Text = reuniao.Local_reuniao;
-                mask_horario_final.Text = reuniao.Horario_fim.ToString();
-                mask_horario_inicio.Text = reuniao.Horario_inicio.ToString();
-                mask_data_reuniao.Text = reuniao.Data_reuniao.ToString("dd/MM/yyyy");
-            }
+
+            var reuniao = (business.classes.Reuniao)modelo;
+            try { txt_local_reuniao.Text = reuniao.Local_reuniao; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { mask_horario_final.Text = reuniao.Horario_fim.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { mask_horario_inicio.Text = reuniao.Horario_inicio.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { mask_data_reuniao.Text = reuniao.Data_reuniao.ToString("dd/MM/yyyy"); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
         }
 
         private void txt_local_reuniao_TextChanged(object sender, EventArgs e)
@@ -32,7 +35,7 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void mask_horario_final_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            mask_horario_final.Text = "";            
+            mask_horario_final.Text = "";
         }
 
         private void mask_horario_inicio_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)

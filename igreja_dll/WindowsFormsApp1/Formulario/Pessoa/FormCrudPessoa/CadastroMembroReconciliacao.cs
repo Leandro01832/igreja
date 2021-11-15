@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroMembroReconciliacao : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class CadastroMembroReconciliacao : WFCrud
     {
 
         public CadastroMembroReconciliacao(modelocrud modelo, modelocrud modeloNovo)
-            :base(modelo, modeloNovo)
+            : base(modelo, modeloNovo)
         {
             InitializeComponent();
         }
@@ -31,29 +31,30 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             LoadCrudForm();
             this.Text = "Cadastro de membro por reconciliação.";
-            if(modelo != null)
-            {
-                if(modelo is Membro_Reconciliacao)
-                {
-                    var p = (Membro_Reconciliacao)modelo;
-                    txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
-                }
-                if (modelo is Membro_ReconciliacaoLgpd)
-                {
-                    var p = (Membro_ReconciliacaoLgpd)modelo;
-                    txt_reconciliacao.Text = p.Data_reconciliacao.ToString();
-                }
 
+            if (modelo is Membro_Reconciliacao)
+            {
+                var p = (Membro_Reconciliacao)modelo;
+                try { txt_reconciliacao.Text = p.Data_reconciliacao.ToString(); }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
-            
-            
+            if (modelo is Membro_ReconciliacaoLgpd)
+            {
+                var p = (Membro_ReconciliacaoLgpd)modelo;
+                try { txt_reconciliacao.Text = p.Data_reconciliacao.ToString(); }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            }
+
+
+
+
         }
 
         private void txt_reconciliacao_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
-                if(modelo is Membro_Reconciliacao)
+                if (modelo is Membro_Reconciliacao)
                 {
                     var p = (Membro_Reconciliacao)modelo;
                     try

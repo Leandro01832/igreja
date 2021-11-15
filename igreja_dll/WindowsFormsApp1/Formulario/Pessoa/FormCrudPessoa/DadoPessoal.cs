@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class DadoPessoal : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class DadoPessoal : WFCrud
     {
         public DadoPessoal() : base()
-        {            
+        {
             InitializeComponent();
         }
 
@@ -22,35 +22,36 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             LoadCrudForm();
             this.Text = "Daddos pessoais.";
-            
-            if (modelo != null)
-            {
-                try
-                {
-                    var p = (PessoaDado)modelo;
-                    text_nome.Text = p.NomePessoa;
-                    text_rg.Text = p.Rg;
-                    text_cpf.Text = p.Cpf;
-                    listestado_civil.Text = p.Estado_civil;
-                    listBox_status.Text = p.Status;
-                    mask_data_nascimento.Text = p.Data_nascimento.ToString("dd/MM/yyyy");
-                    textemail.Text = p.Email;
-                    radioButton_masculino.Checked = p.Sexo_masculino;
-                    radioButton_feminino.Checked = p.Sexo_feminino;
-                }
-                catch (Exception ex)
-                {
-                    if (ex.Message == "Error_Data_Nascimento")
-                    {
-                        MessageBox.Show("Informe a data de nascimento.");
-                    }
-                }
-            }
+
+
+
+            var p = (PessoaDado)modelo;
+            try { text_nome.Text = p.NomePessoa; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_rg.Text = p.Rg; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_cpf.Text = p.Cpf; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { listestado_civil.Text = p.Estado_civil; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { listBox_status.Text = p.Status; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { mask_data_nascimento.Text = p.Data_nascimento.ToString("dd/MM/yyyy"); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { textemail.Text = p.Email; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { radioButton_masculino.Checked = p.Sexo_masculino; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { radioButton_feminino.Checked = p.Sexo_feminino; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
+
+
         }
 
         private void text_nome_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.NomePessoa = text_nome.Text;
@@ -65,7 +66,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_rg_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Rg = text_rg.Text;
@@ -80,7 +81,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void text_cpf_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Cpf = text_cpf.Text;
@@ -95,22 +96,22 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void listestado_civil_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Estado_civil = listestado_civil.Text;
             }
-            if(ModeloNovo != null)
+            if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
                 p.Estado_civil = listestado_civil.Text;
             }
-            
+
         }
 
         private void listBox_status_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Status = listBox_status.Text;
@@ -130,7 +131,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void textemail_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Email = textemail.Text;
@@ -145,7 +146,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void radioButton_masculino_CheckedChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Sexo_masculino = radioButton_masculino.Checked;
@@ -159,7 +160,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void radioButton_feminino_CheckedChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 p.Sexo_feminino = radioButton_feminino.Checked;
@@ -177,7 +178,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void mask_data_nascimento_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
                 try

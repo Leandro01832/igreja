@@ -70,12 +70,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.checkBoxPagou);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label2);
             this.Name = "FrmTransacao";
             this.Text = "FrmCadastrarTransacao";
             this.Load += new System.EventHandler(this.FrmCadastrarTransacao_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
+            this.Controls.SetChildIndex(this.checkBoxPagou, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

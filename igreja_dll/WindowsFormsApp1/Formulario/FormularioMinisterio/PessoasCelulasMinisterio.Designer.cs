@@ -38,7 +38,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(260, 30);
+            this.label2.Location = new System.Drawing.Point(364, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(192, 25);
             this.label2.TabIndex = 5;
@@ -62,7 +62,7 @@
             this.lstBoxPessoa.Location = new System.Drawing.Point(12, 77);
             this.lstBoxPessoa.Name = "lstBoxPessoa";
             this.lstBoxPessoa.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstBoxPessoa.Size = new System.Drawing.Size(224, 354);
+            this.lstBoxPessoa.Size = new System.Drawing.Size(339, 354);
             this.lstBoxPessoa.TabIndex = 6;
             this.lstBoxPessoa.SelectedValueChanged += new System.EventHandler(this.lstBoxPessoa_SelectedValueChanged);
             // 
@@ -71,10 +71,10 @@
             this.lstBoxCelula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBoxCelula.FormattingEnabled = true;
             this.lstBoxCelula.ItemHeight = 25;
-            this.lstBoxCelula.Location = new System.Drawing.Point(265, 77);
+            this.lstBoxCelula.Location = new System.Drawing.Point(369, 77);
             this.lstBoxCelula.Name = "lstBoxCelula";
             this.lstBoxCelula.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstBoxCelula.Size = new System.Drawing.Size(233, 354);
+            this.lstBoxCelula.Size = new System.Drawing.Size(338, 354);
             this.lstBoxCelula.TabIndex = 7;
             this.lstBoxCelula.SelectedValueChanged += new System.EventHandler(this.lstBoxCelula_SelectedValueChanged);
             // 
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 477);
+            this.ClientSize = new System.Drawing.Size(1006, 477);
             this.Controls.Add(this.lstBoxCelula);
             this.Controls.Add(this.lstBoxPessoa);
             this.Controls.Add(this.label2);
@@ -90,6 +90,10 @@
             this.Name = "PessoasCelulasMinisterio";
             this.Text = "PessoasCelulasMinisterio";
             this.Load += new System.EventHandler(this.PessoasCelulasMinisterio_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.lstBoxPessoa, 0);
+            this.Controls.SetChildIndex(this.lstBoxCelula, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,8 +13,6 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             InitializeComponent();
         }
 
-
-
         private void FrmCadastrarBazar_Load(object sender, EventArgs e)
         {
             LoadCrudForm();
@@ -26,8 +24,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             if (!CondicaoDeletar && !CondicaoAtualizar && !CondicaoDetalhes) this.Text = "Cadastro - " + form;
 
             Bazar a = (Bazar)modelo;
-            txtValor.Text = a.Valor.ToString();
-            checkBoxPagou.Checked = a.Pago;
+           try{ txtValor.Text = a.Valor.ToString(); } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+            try { checkBoxPagou.Checked = a.Pago; } catch (Exception ex)  { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)

@@ -2,7 +2,7 @@
 
 namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
-    public partial class FrmMinisterio : FormCrudMinisterio
+    public partial class FrmMinisterio : WFCrud
     {
         public FrmMinisterio(): base()
         {

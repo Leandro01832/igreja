@@ -121,11 +121,18 @@
             this.Controls.Add(this.txt_numero_id);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBoxPagou);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Name = "FrmLava_Rapido";
             this.Text = "FrmCadastrarLavaRapido";
             this.Load += new System.EventHandler(this.FrmCadastrarLavaRapido_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.checkBoxPagou, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.txt_numero_id, 0);
+            this.Controls.SetChildIndex(this.mask_data_recebimento, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

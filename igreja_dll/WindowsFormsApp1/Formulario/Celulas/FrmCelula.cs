@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Celulas
 {
-    public partial class FrmCelula : FormularioCrudCelula
+    public partial class FrmCelula : WFCrud
     {
         public FrmCelula(): base()
         {
@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void FinalizarCadastro_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             FormPadrao.LoadForm(this);
             if (CondicaoDeletar)
             this.Text += " - Deletar celula.";

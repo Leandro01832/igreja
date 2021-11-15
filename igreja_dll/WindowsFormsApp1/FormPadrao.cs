@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         public static async void UltimoRegistro()
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
                     { executar = false; podeVerificar = false; }
                 });
 
-                await Task.Run(() => modelocrud.buscarListas());
+               // await Task.Run(() => modelocrud.buscarListas());
 
 
                 if (!frm.IsDisposed)
@@ -342,7 +342,7 @@ namespace WindowsFormsApp1
 
         public static void LoadForm(Form form, string textoSufixo = "", string textoPrefixo = "")
         {
-            form.Icon = new Icon($@"{path}\appEmail.ico");
+            form.Icon = new Icon($@"{path}\favicon.ico");
 
             string textoFormulario = form.GetType().Name;
             

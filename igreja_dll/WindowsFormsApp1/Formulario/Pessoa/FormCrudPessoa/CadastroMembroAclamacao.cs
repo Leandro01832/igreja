@@ -7,54 +7,53 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroMembroAclamacao : Formulario.FormCrudPessoa
+    public partial class CadastroMembroAclamacao : WFCrud
     {
 
         public CadastroMembroAclamacao(modelocrud modelo, modelocrud modeloNovo)
-            :base(modelo, modeloNovo)
+            : base(modelo, modeloNovo)
         {
             InitializeComponent();
         }
 
-        public CadastroMembroAclamacao(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, 
+        public CadastroMembroAclamacao(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
             modelocrud modeloNovo)
             : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
         {
             InitializeComponent();
         }
 
-        public CadastroMembroAclamacao():base()
+        public CadastroMembroAclamacao() : base()
         {
             InitializeComponent();
         }
-        
+
 
         private void CadastroMembroAclamacao_Load(object sender, EventArgs e)
         {
             LoadCrudForm();
             this.Text = "Cadastro de membro por aclamação.";
-             this.Size = new Size(new Point(850, 750));
-            if(modelo != null)
-            {
-                if(modelo is Membro_Aclamacao)
-                {
-                    var p = (Membro_Aclamacao)modelo;
-                    txt_denominacao.Text = p.Denominacao;
-                }
-                if (modelo is Membro_AclamacaoLgpd)
-                {
-                    var p = (Membro_AclamacaoLgpd)modelo;
-                    txt_denominacao.Text = p.Denominacao;
-                }
+            this.Size = new Size(new Point(850, 750));
 
+            if (modelo is Membro_Aclamacao)
+            {
+                var p = (Membro_Aclamacao)modelo;
+                try { txt_denominacao.Text = p.Denominacao; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
+            if (modelo is Membro_AclamacaoLgpd)
+            {
+                var p = (Membro_AclamacaoLgpd)modelo;
+                try { txt_denominacao.Text = p.Denominacao; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            }
+
+
         }
 
         private void txt_denominacao_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
-                if(modelo is Membro_Aclamacao)
+                if (modelo is Membro_Aclamacao)
                 {
                     var p = (Membro_Aclamacao)modelo;
                     p.Denominacao = txt_denominacao.Text;

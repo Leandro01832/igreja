@@ -102,8 +102,14 @@ namespace business.classes.Abstrato
         
         public Ministerio() : base()
         {
-            this.Maximo_pessoa = 50;
-            mudanca = new MudancaEstado();
+            
+            if (!EntityCrud)
+            {
+                this.Maximo_pessoa = 50;
+                mudanca = new MudancaEstado();
+                Pessoas = new List<PessoaMinisterio>();
+                Celulas = new List<MinisterioCelula>();
+            }
         }
         
 

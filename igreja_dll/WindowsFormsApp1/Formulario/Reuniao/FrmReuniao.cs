@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
-    public partial class FrmReuniao : FormCrudReuniao
+    public partial class FrmReuniao : WFCrud
     {
         public FrmReuniao() : base()
         {

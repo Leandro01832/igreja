@@ -61,6 +61,8 @@
             this.Name = "CadastroMembroBatismo";
             this.Text = "CadastroMembroBatismo";
             this.Load += new System.EventHandler(this.CadastroMembroBatismo_Load);
+            this.Controls.SetChildIndex(this.txt_ano, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -2,15 +2,11 @@
 using business.classes.Abstrato;
 using database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1;
 
@@ -36,19 +32,24 @@ namespace DesktopEmail.Formulario
 
             lstCategoria.DataSource = modelocrud.Modelos
             .OfType<Permissao>().Where(p => p.Id > 9).ToList();
+
+
+
         }
 
         private async void btnEnviar_Click(object sender, EventArgs e)
         {
-            btnEnviar.Enabled = false;
-            var pessoa = modelocrud.Modelos.OfType<Pessoa>().FirstOrDefault(p => p.Email == txtEmail.Text);
-
-            email.Enviado = true;
-            var categoria = (Categoria)lstCategoria.SelectedItem;
-            email.Categoria.Permissao.Nome = categoria.Permissao.Nome;
-            email.Categoria.Id = categoria.Id;
+            
             try
             {
+                btnEnviar.Enabled = false;
+                var pessoa = modelocrud.Modelos.OfType<Pessoa>().FirstOrDefault(p => p.Email == txtEmail.Text);
+
+                email.Enviado = true;
+                var categoria = (Categoria)lstCategoria.SelectedItem;
+                email.Categoria.Permissao.Nome = categoria.Permissao.Nome;
+                email.Categoria.Id = categoria.Id;
+
                 email.alterar(email.Id);
                 var valor = email.Body.Html;
 

@@ -121,7 +121,12 @@ namespace business.classes.Pessoas
         public virtual Endereco Endereco { get; set; }
         [JsonIgnore]
         public virtual Telefone Telefone { get; set; }
-        
+
         #endregion
+
+        public override string ToString()
+        {
+            return this.Codigo + " - " + this.NomePessoa;
+        }
     }
 }

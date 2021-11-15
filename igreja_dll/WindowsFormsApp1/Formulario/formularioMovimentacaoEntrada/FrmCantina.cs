@@ -25,10 +25,9 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             if (!CondicaoDeletar && !CondicaoAtualizar && !CondicaoDetalhes) this.Text = "Cadastro - " + form;
 
             Cantina a = (Cantina)modelo;
-            txtValor.Text = a.Valor.ToString();
-            checkBoxPagou.Checked = a.Pago;
-            if (a.Pessoa_ != null)
-                txt_numero_id.Text = a.Pessoa_.ToString();
+            try { txtValor.Text = a.Valor.ToString(); } catch (Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+          try{  checkBoxPagou.Checked = a.Pago;       } catch(Exception  ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+          try{  if (a.Pessoa_ != null)  txt_numero_id.Text = a.Pessoa_.ToString();} catch(Exception  ex){ MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)

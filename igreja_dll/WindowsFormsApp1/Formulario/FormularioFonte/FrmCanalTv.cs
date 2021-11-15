@@ -16,13 +16,13 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         {
             LoadCrudForm();
             FormPadrao.LoadForm(this);
-            if (modelo != null)
-            {
+            
                 var fonte = (CanalTv)modelo;
-                txt_nome_canal.Text = fonte.NomeCanal;
-                txt_nome_programa.Text = fonte.NomePrograma;
-                mask_horario.Text = fonte.Horario.ToString();
-            }
+
+             try { txt_nome_canal.Text = fonte.NomeCanal;         } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+              try{  txt_nome_programa.Text = fonte.NomePrograma;  } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+             try { mask_horario.Text = fonte.Horario.ToString();  } catch(Exception ex){ MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            
         }
 
         private void txt_nome_canal_TextChanged(object sender, EventArgs e)

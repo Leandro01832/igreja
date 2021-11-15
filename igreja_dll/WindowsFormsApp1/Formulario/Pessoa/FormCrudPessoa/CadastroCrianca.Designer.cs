@@ -74,7 +74,6 @@
             // 
             // CadastroCrianca
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(783, 433);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label4);
@@ -82,6 +81,10 @@
             this.Controls.Add(this.label1);
             this.Name = "CadastroCrianca";
             this.Load += new System.EventHandler(this.CadastroCrianca_Load_1);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.textBox2, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

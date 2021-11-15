@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAdmin));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.maskedTelefone = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,7 +45,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 57);
+            this.label1.Location = new System.Drawing.Point(46, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 0;
@@ -56,35 +54,16 @@
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(161, 52);
+            this.txtNome.Location = new System.Drawing.Point(143, 57);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(199, 30);
             this.txtNome.TabIndex = 1;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(161, 225);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(199, 30);
-            this.txtEmail.TabIndex = 3;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(68, 230);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Email:";
-            // 
             // maskedTelefone
             // 
             this.maskedTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTelefone.Location = new System.Drawing.Point(161, 105);
+            this.maskedTelefone.Location = new System.Drawing.Point(143, 110);
             this.maskedTelefone.Mask = "(99) 0000-0000";
             this.maskedTelefone.Name = "maskedTelefone";
             this.maskedTelefone.Size = new System.Drawing.Size(199, 30);
@@ -95,7 +74,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(39, 110);
+            this.label3.Location = new System.Drawing.Point(21, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 25);
             this.label3.TabIndex = 5;
@@ -105,7 +84,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 166);
+            this.label4.Location = new System.Drawing.Point(8, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 25);
             this.label4.TabIndex = 7;
@@ -114,7 +93,7 @@
             // maskedWhatsapp
             // 
             this.maskedWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedWhatsapp.Location = new System.Drawing.Point(161, 161);
+            this.maskedWhatsapp.Location = new System.Drawing.Point(143, 166);
             this.maskedWhatsapp.Mask = "(99) 0000-0000";
             this.maskedWhatsapp.Name = "maskedWhatsapp";
             this.maskedWhatsapp.Size = new System.Drawing.Size(199, 30);
@@ -124,7 +103,7 @@
             // txtUsuario
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(161, 280);
+            this.txtUsuario.Location = new System.Drawing.Point(143, 234);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(199, 30);
             this.txtUsuario.TabIndex = 9;
@@ -134,7 +113,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(49, 285);
+            this.label5.Location = new System.Drawing.Point(31, 239);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 25);
             this.label5.TabIndex = 8;
@@ -143,7 +122,7 @@
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(161, 342);
+            this.txtSenha.Location = new System.Drawing.Point(143, 296);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(199, 30);
             this.txtSenha.TabIndex = 11;
@@ -154,7 +133,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(58, 347);
+            this.label6.Location = new System.Drawing.Point(40, 301);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 25);
             this.label6.TabIndex = 10;
@@ -173,14 +152,22 @@
             this.Controls.Add(this.maskedWhatsapp);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.maskedTelefone);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAdmin";
             this.Text = "FrmCadastrarAdmin";
             this.Load += new System.EventHandler(this.FrmCadastrarAdmin_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtNome, 0);
+            this.Controls.SetChildIndex(this.maskedTelefone, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.maskedWhatsapp, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.txtUsuario, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.txtSenha, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,8 +177,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox maskedTelefone;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

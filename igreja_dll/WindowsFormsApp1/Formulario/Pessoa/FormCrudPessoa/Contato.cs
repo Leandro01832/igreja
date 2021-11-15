@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class Contato :  Formulario.FormCrudPessoa
+    public partial class Contato :  WFCrud
     {
         public Contato() : base()
         {
@@ -22,13 +22,12 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             LoadCrudForm();
             this.Text = "Contatos.";
 
-            if(modelo != null)
-            {
+            
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                mask_tel1.Text = p.Telefone.Fone;
-                mask_tel2.Text = p.Telefone.Celular;
-                mask_tel3.Text = p.Telefone.Whatsapp;
-            }
+             try{   mask_tel1.Text = p.Telefone.Fone;      } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+             try{   mask_tel2.Text = p.Telefone.Celular;   } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+            try { mask_tel3.Text = p.Telefone.Whatsapp; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            
             
         }
 

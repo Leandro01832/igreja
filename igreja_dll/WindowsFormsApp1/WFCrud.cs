@@ -1,13 +1,10 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Esboco.Abstrato;
 using business.classes.financeiro;
-using business.classes.Intermediario;
 using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -23,7 +20,7 @@ namespace WindowsFormsApp1
     public partial class WFCrud : Form
     {
 
-        private Label InfoForm;
+        private Label infoForm;
         private WFCrud frm = null;
 
         // botões para crud
@@ -70,6 +67,23 @@ namespace WindowsFormsApp1
         public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
         public Button FinalizaCadastro { get => finalizarCadastro; set => finalizarCadastro = value; }
         public Button Deletar { get => deletar; set => deletar = value; }
+        public Button DadoPessoal { get => dadoPessoal; set => dadoPessoal = value; }
+        public Button DadoFoto { get => dadoFoto; set => dadoFoto = value; }
+        public Button DadoEnderecoPessoa { get => dadoEnderecoPessoa; set => dadoEnderecoPessoa = value; }
+        public Button DadoContato { get => dadoContato; set => dadoContato = value; }
+        public Button DadoClasse { get => dadoClasse; set => dadoClasse = value; }
+        public Button DadoMinisteriosPessoa { get => dadoMinisteriosPessoa; set => dadoMinisteriosPessoa = value; }
+        public Button DadoCelula { get => dadoCelula; set => dadoCelula = value; }
+        public Button DadoEnderecoCelula { get => dadoEnderecoCelula; set => dadoEnderecoCelula = value; }
+        public Button DadoCelulaMinisterio { get => dadoCelulaMinisterio; set => dadoCelulaMinisterio = value; }
+        public Button DadoCelulaPessoas { get => dadoCelulaPessoas; set => dadoCelulaPessoas = value; }
+        public Button DadoMinisterio { get => dadoMinisterio; set => dadoMinisterio = value; }
+        public Button DadoMinisterioPessoas { get => dadoMinisterioPessoas; set => dadoMinisterioPessoas = value; }
+        public Button DadoMinistro { get => dadoMinistro; set => dadoMinistro = value; }
+        public Button DadoReuniao { get => dadoReuniao; set => dadoReuniao = value; }
+        public Button DadoReuniaoPessoas { get => dadoReuniaoPessoas; set => dadoReuniaoPessoas = value; }
+        public Label InfoForm { get => infoForm; set => infoForm = value; }
+        public WFCrud Frm { get => frm; set => frm = value; }
 
         private bool condicaoDeletar;
         private bool condicaoAtualizar;
@@ -86,110 +100,110 @@ namespace WindowsFormsApp1
             InfoForm.Width = 1200;
             InfoForm.Font = new Font("Arial", 12);
 
-            dadoReuniao = new Button();
-            dadoReuniao.Location = new Point(50, 50);
-            dadoReuniao.Size = new Size(100, 50);
-            dadoReuniao.Text = "Dados da reunião";
-            dadoReuniao.Click += DadoReuniao_Click;
-            dadoReuniao.Visible = false;
+            DadoReuniao = new Button();
+            DadoReuniao.Location = new Point(50, 50);
+            DadoReuniao.Size = new Size(100, 50);
+            DadoReuniao.Text = "Dados da reunião";
+            DadoReuniao.Click += DadoReuniao_Click;
+            DadoReuniao.Visible = false;
 
-            dadoReuniaoPessoas = new Button();
-            dadoReuniaoPessoas.Location = new Point(200, 50);
-            dadoReuniaoPessoas.Size = new Size(100, 50);
-            dadoReuniaoPessoas.Text = "pessoas da reunião";
-            dadoReuniaoPessoas.Click += DadoReuniaoPessoas_Click;
-            dadoReuniaoPessoas.Visible = false;
+            DadoReuniaoPessoas = new Button();
+            DadoReuniaoPessoas.Location = new Point(200, 50);
+            DadoReuniaoPessoas.Size = new Size(100, 50);
+            DadoReuniaoPessoas.Text = "pessoas da reunião";
+            DadoReuniaoPessoas.Click += DadoReuniaoPessoas_Click;
+            DadoReuniaoPessoas.Visible = false;
 
-            dadoPessoal = new Button();
-            dadoPessoal.Location = new Point(50, 50);
-            dadoPessoal.Size = new Size(100, 50);
-            dadoPessoal.Text = "Dados Pessoais";
-            dadoPessoal.Click += DadoPessoal_Click;
-            dadoPessoal.Visible = false;
+            DadoPessoal = new Button();
+            DadoPessoal.Location = new Point(50, 50);
+            DadoPessoal.Size = new Size(100, 50);
+            DadoPessoal.Text = "Dados Pessoais";
+            DadoPessoal.Click += DadoPessoal_Click;
+            DadoPessoal.Visible = false;
 
-            dadoEnderecoPessoa = new Button();
-            dadoEnderecoPessoa.Location = new Point(200, 50);
-            dadoEnderecoPessoa.Size = new Size(100, 50);
-            dadoEnderecoPessoa.Text = "Endereço da pessoa";
-            dadoEnderecoPessoa.Click += DadoEnderecoPessoa_Click;
-            dadoEnderecoPessoa.Visible = false;
+            DadoEnderecoPessoa = new Button();
+            DadoEnderecoPessoa.Location = new Point(200, 50);
+            DadoEnderecoPessoa.Size = new Size(100, 50);
+            DadoEnderecoPessoa.Text = "Endereço da pessoa";
+            DadoEnderecoPessoa.Click += DadoEnderecoPessoa_Click;
+            DadoEnderecoPessoa.Visible = false;
 
-            dadoContato = new Button();
-            dadoContato.Location = new Point(200, 160);
-            dadoContato.Size = new Size(100, 50);
-            dadoContato.Text = "Contatos";
-            dadoContato.Click += DadoContato_Click;
-            dadoContato.Visible = false;
+            DadoContato = new Button();
+            DadoContato.Location = new Point(200, 160);
+            DadoContato.Size = new Size(100, 50);
+            DadoContato.Text = "Contatos";
+            DadoContato.Click += DadoContato_Click;
+            DadoContato.Visible = false;
 
-            dadoClasse = new Button();
-            dadoClasse.Location = new Point(50, 160);
-            dadoClasse.Size = new Size(100, 50);
-            dadoClasse.Text = "Dados de classe";
-            dadoClasse.Click += DadoClasse_Click;
-            dadoClasse.Visible = false;
+            DadoClasse = new Button();
+            DadoClasse.Location = new Point(50, 160);
+            DadoClasse.Size = new Size(100, 50);
+            DadoClasse.Text = "Dados de classe";
+            DadoClasse.Click += DadoClasse_Click;
+            DadoClasse.Visible = false;
 
-            dadoMinisteriosPessoa = new Button();
-            dadoMinisteriosPessoa.Location = new Point(50, 270);
-            dadoMinisteriosPessoa.Size = new Size(100, 50);
-            dadoMinisteriosPessoa.Text = "Ministerios da pessoa";
-            dadoMinisteriosPessoa.Click += DadoMinisterioPessoas_Click1;
-            dadoMinisteriosPessoa.Visible = false;
+            DadoMinisteriosPessoa = new Button();
+            DadoMinisteriosPessoa.Location = new Point(50, 270);
+            DadoMinisteriosPessoa.Size = new Size(100, 50);
+            DadoMinisteriosPessoa.Text = "Ministerios da pessoa";
+            DadoMinisteriosPessoa.Click += DadoMinisterioPessoas_Click1;
+            DadoMinisteriosPessoa.Visible = false;
 
-            dadoFoto = new Button();
-            dadoFoto.Location = new Point(200, 270);
-            dadoFoto.Size = new Size(100, 50);
-            dadoFoto.Text = "Foto da pessoa";
-            dadoFoto.Click += DadoFoto_Click;
-            dadoFoto.Visible = false;
+            DadoFoto = new Button();
+            DadoFoto.Location = new Point(200, 270);
+            DadoFoto.Size = new Size(100, 50);
+            DadoFoto.Text = "Foto da pessoa";
+            DadoFoto.Click += DadoFoto_Click;
+            DadoFoto.Visible = false;
 
-            dadoCelula = new Button();
-            dadoCelula.Location = new Point(50, 50);
-            dadoCelula.Size = new Size(100, 50);
-            dadoCelula.Text = "Dados de celula";
-            dadoCelula.Click += DadoCelula_Click;
-            dadoCelula.Visible = false;
+            DadoCelula = new Button();
+            DadoCelula.Location = new Point(50, 50);
+            DadoCelula.Size = new Size(100, 50);
+            DadoCelula.Text = "Dados de celula";
+            DadoCelula.Click += DadoCelula_Click;
+            DadoCelula.Visible = false;
 
-            dadoEnderecoCelula = new Button();
-            dadoEnderecoCelula.Location = new Point(200, 50);
-            dadoEnderecoCelula.Size = new Size(100, 50);
-            dadoEnderecoCelula.Text = "Endereço da celula";
-            dadoEnderecoCelula.Click += DadoEnderecoCelula_Click;
-            dadoEnderecoCelula.Visible = false;
+            DadoEnderecoCelula = new Button();
+            DadoEnderecoCelula.Location = new Point(200, 50);
+            DadoEnderecoCelula.Size = new Size(100, 50);
+            DadoEnderecoCelula.Text = "Endereço da celula";
+            DadoEnderecoCelula.Click += DadoEnderecoCelula_Click;
+            DadoEnderecoCelula.Visible = false;
 
-            dadoCelulaMinisterio = new Button();
-            dadoCelulaMinisterio.Location = new Point(200, 160);
-            dadoCelulaMinisterio.Size = new Size(100, 50);
-            dadoCelulaMinisterio.Text = "Ministérios da celula";
-            dadoCelulaMinisterio.Click += DadoCelulaMinisterio_Click;
-            dadoCelulaMinisterio.Visible = false;
+            DadoCelulaMinisterio = new Button();
+            DadoCelulaMinisterio.Location = new Point(200, 160);
+            DadoCelulaMinisterio.Size = new Size(100, 50);
+            DadoCelulaMinisterio.Text = "Ministérios da celula";
+            DadoCelulaMinisterio.Click += DadoCelulaMinisterio_Click;
+            DadoCelulaMinisterio.Visible = false;
 
-            dadoCelulaPessoas = new Button();
-            dadoCelulaPessoas.Location = new Point(50, 160);
-            dadoCelulaPessoas.Size = new Size(100, 50);
-            dadoCelulaPessoas.Text = "Pessoas da celula";
-            dadoCelulaPessoas.Click += DadoCelulaPessoas_Click;
-            dadoCelulaPessoas.Visible = false;
+            DadoCelulaPessoas = new Button();
+            DadoCelulaPessoas.Location = new Point(50, 160);
+            DadoCelulaPessoas.Size = new Size(100, 50);
+            DadoCelulaPessoas.Text = "Pessoas da celula";
+            DadoCelulaPessoas.Click += DadoCelulaPessoas_Click;
+            DadoCelulaPessoas.Visible = false;
 
-            dadoMinisterio = new Button();
-            dadoMinisterio.Location = new Point(50, 50);
-            dadoMinisterio.Size = new Size(100, 50);
-            dadoMinisterio.Text = "Dados do Ministério";
-            dadoMinisterio.Click += DadoMinisterio_Click;
-            dadoMinisterio.Visible = false;
+            DadoMinisterio = new Button();
+            DadoMinisterio.Location = new Point(50, 50);
+            DadoMinisterio.Size = new Size(100, 50);
+            DadoMinisterio.Text = "Dados do Ministério";
+            DadoMinisterio.Click += DadoMinisterio_Click;
+            DadoMinisterio.Visible = false;
 
-            dadoMinisterioPessoas = new Button();
-            dadoMinisterioPessoas.Location = new Point(200, 50);
-            dadoMinisterioPessoas.Size = new Size(100, 50);
-            dadoMinisterioPessoas.Text = "Pessoas do ministério";
-            dadoMinisterioPessoas.Click += DadoMinisterioPessoas_Click;
-            dadoMinisterioPessoas.Visible = false;
+            DadoMinisterioPessoas = new Button();
+            DadoMinisterioPessoas.Location = new Point(200, 50);
+            DadoMinisterioPessoas.Size = new Size(100, 50);
+            DadoMinisterioPessoas.Text = "Pessoas do ministério";
+            DadoMinisterioPessoas.Click += DadoMinisterioPessoas_Click;
+            DadoMinisterioPessoas.Visible = false;
 
-            dadoMinistro = new Button();
-            dadoMinistro.Location = new Point(200, 160);
-            dadoMinistro.Size = new Size(100, 50);
-            dadoMinistro.Text = "Ministro do ministério";
-            dadoMinistro.Click += DadoMinistro_Click;
-            dadoMinistro.Visible = false;
+            DadoMinistro = new Button();
+            DadoMinistro.Location = new Point(200, 160);
+            DadoMinistro.Size = new Size(100, 50);
+            DadoMinistro.Text = "Ministro do ministério";
+            DadoMinistro.Click += DadoMinistro_Click;
+            DadoMinistro.Visible = false;
 
             Proximo = new Button();
             Proximo.Click += Proximo_Click;
@@ -203,7 +217,7 @@ namespace WindowsFormsApp1
             Deletar.Location = new Point(650, 250);
             Deletar.Size = new Size(100, 50);
             Deletar.Visible = false;
-
+            
             Atualizar = new Button();
             Atualizar.Click += Atualizar_Click;
             Atualizar.Text = "Atualizar";
@@ -223,29 +237,28 @@ namespace WindowsFormsApp1
             this.Controls.Add(Atualizar);
             this.Controls.Add(FinalizaCadastro);
 
-            this.Controls.Add(dadoPessoal);
-            this.Controls.Add(dadoEnderecoPessoa);
-            this.Controls.Add(dadoClasse);
-            this.Controls.Add(dadoContato);
-            this.Controls.Add(dadoMinisteriosPessoa);
-            this.Controls.Add(dadoFoto);
+            this.Controls.Add(DadoPessoal);
+            this.Controls.Add(DadoEnderecoPessoa);
+            this.Controls.Add(DadoClasse);
+            this.Controls.Add(DadoContato);
+            this.Controls.Add(DadoMinisteriosPessoa);
+            this.Controls.Add(DadoFoto);
 
-            this.Controls.Add(dadoCelula);
-            this.Controls.Add(dadoEnderecoCelula);
-            this.Controls.Add(dadoCelulaMinisterio);
-            this.Controls.Add(dadoCelulaPessoas);
+            this.Controls.Add(DadoCelula);
+            this.Controls.Add(DadoEnderecoCelula);
+            this.Controls.Add(DadoCelulaMinisterio);
+            this.Controls.Add(DadoCelulaPessoas);
 
-            this.Controls.Add(dadoMinisterio);
-            this.Controls.Add(dadoMinisterioPessoas);
-            this.Controls.Add(dadoMinistro);
+            this.Controls.Add(DadoMinisterio);
+            this.Controls.Add(DadoMinisterioPessoas);
+            this.Controls.Add(DadoMinistro);
 
-            this.Controls.Add(dadoReuniao);
-            this.Controls.Add(dadoReuniaoPessoas);
+            this.Controls.Add(DadoReuniao);
+            this.Controls.Add(DadoReuniaoPessoas);
 
             InfoForm.Visible = false;
             this.Controls.Add(InfoForm);
-
-
+            
         }
 
         private void WFCrud_FormClosing(object sender, FormClosingEventArgs e)
@@ -282,7 +295,7 @@ namespace WindowsFormsApp1
 
         private void DadoReuniaoPessoas_Click(object sender, EventArgs e)
         {
-            frm = new PessoasReuniao();
+            Frm = new PessoasReuniao();
             LoadForm();
         }
 
@@ -312,75 +325,74 @@ namespace WindowsFormsApp1
 
         private void WFCrud_Load(object sender, EventArgs e)
         {
-
         }
 
         private void DadoCelula_Click(object sender, EventArgs e)
         {
-            frm = new DadoCelula();
+            Frm = new DadoCelula();
             LoadForm();
         }
 
         private void DadoEnderecoCelula_Click(object sender, EventArgs e)
         {
-            frm = new FrmEnderecoCelula();
+            Frm = new FrmEnderecoCelula();
             LoadForm();
         }
 
         private void DadoCelulaMinisterio_Click(object sender, EventArgs e)
         {
-            frm = new MinisteriosCelula();
+            Frm = new MinisteriosCelula();
             LoadForm();
         }
 
         private void DadoCelulaPessoas_Click(object sender, EventArgs e)
         {
-            frm = new MinisteriosCelula();
+            Frm = new MinisteriosCelula();
             LoadForm();
         }
 
         private void DadoMinisterio_Click(object sender, EventArgs e)
         {
-            frm = new DadoMinisterio();
+            Frm = new DadoMinisterio();
             LoadForm();
         }
 
         private void DadoMinisterioPessoas_Click(object sender, EventArgs e)
         {
-            frm = new PessoasCelulasMinisterio();
+            Frm = new PessoasCelulasMinisterio();
             LoadForm();
         }
 
         private void DadoMinistro_Click(object sender, EventArgs e)
         {
-            frm = new DadoMinisterio();
+            Frm = new DadoMinisterio();
             LoadForm();
         }
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            frm = new ReunioesMinisteriosPessoa();
+            Frm = new ReunioesMinisteriosPessoa();
             LoadForm();
         }
 
         private void DadoContato_Click(object sender, EventArgs e)
         {
-            frm = new Contato();
+            Frm = new Contato();
             LoadForm();
         }
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
-            frm = new FrmEndereco();
+            Frm = new FrmEndereco();
             LoadForm();
         }
 
         private void DadoPessoal_Click(object sender, EventArgs e)
         {
             if (modelo is PessoaDado)
-                frm = new DadoPessoal();
+                Frm = new DadoPessoal();
             if (modelo is PessoaLgpd)
-                frm = new DadoPessoalLgpd();
+                Frm = new DadoPessoalLgpd();
             LoadForm();
         }
 
@@ -428,36 +440,36 @@ namespace WindowsFormsApp1
 
             if (modelo is Pessoa && this is FrmPessoa)
             {
-                dadoPessoal.Visible = true;
-                dadoClasse.Visible = true;
-                dadoMinisteriosPessoa.Visible = true;
-                dadoFoto.Visible = true;
+                DadoPessoal.Visible = true;
+                DadoClasse.Visible = true;
+                DadoMinisteriosPessoa.Visible = true;
+                DadoFoto.Visible = true;
                 if (modelo is PessoaDado)
                 {
-                    dadoEnderecoPessoa.Visible = true;
-                    dadoContato.Visible = true;
+                    DadoEnderecoPessoa.Visible = true;
+                    DadoContato.Visible = true;
                 }
             }
 
             if (modelo is Ministerio && this is FrmMinisterio)
             {
-                dadoMinisterio.Visible = true;
-                dadoMinisterioPessoas.Visible = true;
-                dadoMinistro.Visible = true;
+                DadoMinisterio.Visible = true;
+                DadoMinisterioPessoas.Visible = true;
+                DadoMinistro.Visible = true;
             }
 
             if (modelo is Celula && this is FrmCelula)
             {
-                dadoCelula.Visible = true;
-                dadoEnderecoCelula.Visible = true;
-                dadoCelulaMinisterio.Visible = true;
-                dadoCelulaPessoas.Visible = true;
+                DadoCelula.Visible = true;
+                DadoEnderecoCelula.Visible = true;
+                DadoCelulaMinisterio.Visible = true;
+                DadoCelulaPessoas.Visible = true;
             }
 
             if (modelo is Reuniao && this is FrmReuniao)
             {
-                dadoReuniao.Visible = true;
-                dadoReuniaoPessoas.Visible = true;
+                DadoReuniao.Visible = true;
+                DadoReuniaoPessoas.Visible = true;
             }
 
             if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes)
@@ -515,17 +527,31 @@ namespace WindowsFormsApp1
         private void LoadForm()
         {
             
-            frm.modelo = modelo;
-            frm.CondicaoDetalhes = CondicaoDetalhes;
-            frm.CondicaoDeletar = CondicaoDeletar;
-            frm.CondicaoAtualizar = CondicaoAtualizar;
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+            Frm.modelo = modelo;
+            Frm.CondicaoDetalhes = CondicaoDetalhes;
+            Frm.CondicaoDeletar = CondicaoDeletar;
+            Frm.CondicaoAtualizar = CondicaoAtualizar;
+            Frm.MdiParent = this.MdiParent;
+            Frm.Show();
         }
 
         private async void FinalizarCadastro_Click(object sender, EventArgs e)
         {
             FinalizaCadastro.Enabled = false;            
+
+            if(modelo is Pessoa)
+            {
+                var p = (Pessoa)modelo;
+                var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
+                p.Codigo = ultimoRegistro + 1;
+            }
+
+            if (modelo is Ministerio)
+            {
+                var p = (Ministerio)modelo;
+                var ultimoRegistro = new BDcomum().GetUltimoRegistroMinisterio();
+                p.CodigoMinisterio = ultimoRegistro + 1;
+            }
 
             try { modelo.salvar(); }
             catch (Exception ex)
@@ -534,6 +560,7 @@ namespace WindowsFormsApp1
                 FinalizaCadastro.Enabled = true;
                 return;
             }
+            modelocrud.Modelos.Add(modelo);
 
             if (modelo is Celula)
             {
@@ -577,8 +604,7 @@ namespace WindowsFormsApp1
                     item.salvar();
                 }
 
-                var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
-                p.Codigo = ultimoRegistro + 1;
+                
             }
 
             if (modelo is Reuniao)

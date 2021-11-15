@@ -1,15 +1,16 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
-using business.classes.financeiro;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
+using database;
 using database.banco;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Linq;
+using System.Reflection;
 
 namespace Tests
 {
@@ -21,6 +22,9 @@ namespace Tests
         static Random randNum = new Random();
         private static BDcomum bd = new BDcomum();
         static int loop = 40;
+
+
+
 
 
         static void Main(string[] args)
@@ -120,49 +124,49 @@ namespace Tests
             //    pes.Telefone.Fone = "(21)29412-1917";
             //    pes.Telefone.Whatsapp = "(31)34985-6734";
 
-            var model = new Dizimo();
-            model.Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
-            model.Valor = 130.12;
-            model.Pago = false;
-            model.DataRecebimento = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
-                       
-            //Act - metodo sob teste
-            try { model.salvar(); }
-               catch (Exception ex)
-               {
-                   
-                       MessageBox.Show(ex.Message);
-                   
-                  // return;
-               }
+            //   var model = new Dizimo();
+            //   model.Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
+            //   model.Valor = 130.12;
+            //   model.Pago = false;
+            //   model.DataRecebimento = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
+            //              
+            //   //Act - metodo sob teste
+            //   try { model.salvar(); }
+            //      catch (Exception ex)
+            //      {
+            //          
+            //              MessageBox.Show(ex.Message);
+            //          
+            //          return;
+            //      }
 
-          //  var cel = new Celula_Adolescente();
-          //  cel.Dia_semana = "Segunda";
-          //  cel.Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0);
-          //  cel.Maximo_pessoa = randNum.Next(0, 50);
-          //  cel.Ministerios = new List<MinisterioCelula>();
-          //  cel.Nome = arr[randNum.Next(0, 49)];
-          //  cel.Pessoas = new List<Pessoa>();
-          //      cel.EnderecoCelula = new EnderecoCelula
-          //      {
-          //          Bairro = "Vila",
-          //          Cep = 36774016,
-          //          Cidade = "Cataguases",
-          //          Complemento = "residencia",
-          //          Estado = "MG",
-          //          Numero_casa = 117,
-          //          Pais = "Brasil",
-          //          Rua = "Jose"
-          //      };
-          //
-          //  try
-          //  {
-          //      cel.salvar();
-          //  }
-          //  catch (Exception ex)
-          //  {
-          //      MessageBox.Show(cel.exibirMensagemErro(ex, 2));
-          //  }
+            //  var cel = new Celula_Adolescente();
+            //  cel.Dia_semana = "Segunda";
+            //  cel.Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0);
+            //  cel.Maximo_pessoa = randNum.Next(0, 50);
+            //  cel.Ministerios = new List<MinisterioCelula>();
+            //  cel.Nome = arr[randNum.Next(0, 49)];
+            //  cel.Pessoas = new List<Pessoa>();
+            //      cel.EnderecoCelula = new EnderecoCelula
+            //      {
+            //          Bairro = "Vila",
+            //          Cep = 36774016,
+            //          Cidade = "Cataguases",
+            //          Complemento = "residencia",
+            //          Estado = "MG",
+            //          Numero_casa = 117,
+            //          Pais = "Brasil",
+            //          Rua = "Jose"
+            //      };
+            //
+            //  try
+            //  {
+            //      cel.salvar();
+            //  }
+            //  catch (Exception ex)
+            //  {
+            //      MessageBox.Show(cel.exibirMensagemErro(ex, 2));
+            //  }
 
             // string teste = "    a    ";
             //
@@ -190,6 +194,39 @@ namespace Tests
             //}
 
             //foreach (var pr in lista2)
+
+            Type t = typeof(List<Pessoa>);
+
+            if (t.IsGenericType)
+            {
+                // If this is a generic type, display the type arguments.
+                //
+                Type[] typeArguments = t.GetGenericArguments();
+
+                Console.WriteLine("\tList type arguments ({0}):",
+                    typeArguments.Length);
+
+                foreach (Type tParam in typeArguments)
+                {
+                    // If this is a type parameter, display its
+                    // position.
+                    //
+                    if (tParam.IsGenericParameter)
+                    {
+                        Console.WriteLine("\t\t{0}\t(unassigned - parameter position {1})",
+                            tParam,
+                            tParam.GenericParameterPosition);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\t\t{0}", tParam);
+                    }
+                }
+            }
+
+
+
+
             Console.WriteLine("ok");
             Console.Read();
         }

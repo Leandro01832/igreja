@@ -24,6 +24,9 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
             Transporte a = (Transporte)modelo;
             txtValor.Text = a.Valor.ToString();
             checkBoxPagou.Checked = a.Pago;
+           try{ radioAlcool.Checked = a.Alcool;     }  catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+            try { radioDiesel.Checked = a.Diesel; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { radioGasolina.Checked = a.Gasolina; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void checkBoxPagou_CheckedChanged(object sender, EventArgs e)

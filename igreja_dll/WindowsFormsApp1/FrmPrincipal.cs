@@ -14,7 +14,7 @@ using WFEsboco;
 
 namespace WindowsFormsApp1
 {
-    public partial class FrmPrincipal : FormPadrao
+    public partial class FrmPrincipal : Form
     {
         public FrmPrincipal()
         {
@@ -22,9 +22,7 @@ namespace WindowsFormsApp1
             date = DateTime.Now;
         }
 
-        BDcomum bd = new BDcomum();
-
-        Timer timer;
+        BDcomum bd = new BDcomum();        
 
         #region IdentityRegistryNews
         bool notifica;
@@ -32,10 +30,9 @@ namespace WindowsFormsApp1
         DateTime date;
         #endregion
 
-
         private void fileMenu_Click(object sender, EventArgs e)
         {
-            MDIFinanceiro mdi = MDISingleton.InstanciaMDI();
+            MDI mdi = new MDI();
             mdi.Show();
         }
 

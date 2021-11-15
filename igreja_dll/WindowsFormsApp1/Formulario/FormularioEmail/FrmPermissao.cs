@@ -19,14 +19,14 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail
             AtendentesCategoria = new Button();
             AtendentesCategoria.Click += AtendentesCategoria_Click;
             AtendentesCategoria.Text = "Atendentes desta categoria";
-            AtendentesCategoria.Location = new Point(350, 150);
+            AtendentesCategoria.Location = new Point(350, 350);
             AtendentesCategoria.Size = new Size(250, 50);
             AtendentesCategoria.Visible = false;
 
             EmailCategoria = new Button();
             EmailCategoria.Click += EmailCategoria_Click;     
             EmailCategoria.Text = "E-mails desta categoria";
-            EmailCategoria.Location = new Point(350, 150);
+            EmailCategoria.Location = new Point(650, 350);
             EmailCategoria.Size = new Size(250, 50);
             EmailCategoria.Visible = false;
 

@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new FrmPrincipal());
+            Application.Run(MDISingleton.InstanciaMDI());
         }
     }
 }

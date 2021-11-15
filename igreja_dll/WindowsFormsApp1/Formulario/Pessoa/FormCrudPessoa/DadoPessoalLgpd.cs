@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    public partial class DadoPessoalLgpd : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class DadoPessoalLgpd : WFCrud
     {
-        public DadoPessoalLgpd(): base()
+        public DadoPessoalLgpd() : base()
         {
             InitializeComponent();
         }
@@ -21,12 +21,11 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
         private void DadoPessoalLgpd_Load(object sender, EventArgs e)
         {
             LoadCrudForm();
-            if (modelo != null)
-            {
-                var pessoa = (PessoaLgpd)modelo;
-                txt_email.Text = pessoa.Email;
-            }
-                
+
+            var pessoa = (PessoaLgpd)modelo;
+            try { txt_email.Text = pessoa.Email; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
+
         }
 
         private void txt_email_TextChanged(object sender, EventArgs e)

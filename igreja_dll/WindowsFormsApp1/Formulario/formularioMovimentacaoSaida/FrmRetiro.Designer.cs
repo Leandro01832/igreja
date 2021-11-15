@@ -40,7 +40,7 @@
             // 
             this.checkBoxPagou.AutoSize = true;
             this.checkBoxPagou.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxPagou.Location = new System.Drawing.Point(204, 220);
+            this.checkBoxPagou.Location = new System.Drawing.Point(200, 221);
             this.checkBoxPagou.Name = "checkBoxPagou";
             this.checkBoxPagou.Size = new System.Drawing.Size(91, 29);
             this.checkBoxPagou.TabIndex = 282;
@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(87, 154);
+            this.label2.Location = new System.Drawing.Point(83, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 25);
             this.label2.TabIndex = 281;
@@ -61,7 +61,7 @@
             // txtValor
             // 
             this.txtValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValor.Location = new System.Drawing.Point(204, 149);
+            this.txtValor.Location = new System.Drawing.Point(200, 150);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(128, 30);
@@ -71,7 +71,7 @@
             // txtLocal
             // 
             this.txtLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocal.Location = new System.Drawing.Point(204, 288);
+            this.txtLocal.Location = new System.Drawing.Point(200, 289);
             this.txtLocal.Name = "txtLocal";
             this.txtLocal.Size = new System.Drawing.Size(217, 30);
             this.txtLocal.TabIndex = 287;
@@ -81,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(80, 293);
+            this.label1.Location = new System.Drawing.Point(76, 294);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 286;
@@ -101,6 +101,11 @@
             this.Name = "FrmRetiro";
             this.Text = "FrmCadastrarRetiro";
             this.Load += new System.EventHandler(this.FrmCadastrarRetiro_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.checkBoxPagou, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtLocal, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

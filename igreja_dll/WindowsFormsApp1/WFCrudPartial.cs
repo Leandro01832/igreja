@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
     {
         private void DadoFoto_Click(object sender, EventArgs e)
         {
-            Foto c = new Foto();
+            Frm = new Foto();
             LoadForm();
         }
 
@@ -36,37 +36,37 @@ namespace WindowsFormsApp1
         {
             if (modelo is Crianca || modelo is CriancaLgpd)
             {
-                frm = new CadastroCrianca();
+                Frm = new CadastroCrianca();
                 LoadForm();
             }
 
             if (modelo is Visitante || modelo is VisitanteLgpd)
             {
-                frm = new CadastroVisitante();
+                Frm = new CadastroVisitante();
                 LoadForm();
             }
 
             if (modelo is Membro_Aclamacao || modelo is Membro_AclamacaoLgpd)
             {
-                frm = new CadastroMembroAclamacao();
+                Frm = new CadastroMembroAclamacao();
                 LoadForm();
             }
 
             if (modelo is Membro_Batismo || modelo is Membro_BatismoLgpd)
             {
-                frm = new CadastroMembroBatismo();
+                Frm = new CadastroMembroBatismo();
                 LoadForm();
             }
 
             if (modelo is Membro_Reconciliacao || modelo is Membro_ReconciliacaoLgpd)
             {
-                frm = new CadastroMembroReconciliacao();
+                Frm = new CadastroMembroReconciliacao();
                 LoadForm();
             }
 
             if (modelo is Membro_Transferencia || modelo is Membro_TransferenciaLgpd)
             {
-                frm = new CadastroMembroTransferencia();
+                Frm = new CadastroMembroTransferencia();
                 LoadForm();
             }
 
@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            
+
             MessageBox.Show("Informação atualizada com sucesso.");
         }
 
@@ -195,342 +195,322 @@ namespace WindowsFormsApp1
 
         private void Proximo_Click(object sender, EventArgs e)
         {
-            
+
             if (this is FrmCadastrarMensagem)
             {
-                frm = new FrmMensagem();
+                Frm = new FrmMensagem();
                 LoadForm();
             }
 
             if (this is FrmDadoFonte)
             {
                 if (modelo is Versiculo)
-                frm = new FrmVersiculo();
+                    Frm = new FrmVersiculo();
 
                 if (modelo is CanalTv)
-                frm = new FrmCanalTv();
+                    Frm = new FrmCanalTv();
 
-                if (modelo is Livro)                
-                frm = new FrmLivro();
+                if (modelo is Livro)
+                    Frm = new FrmLivro();
 
                 LoadForm();
             }
 
             if (this is FrmVersiculo || this is FrmCanalTv || this is FrmLivro)
             {
-                frm = new FrmFonte();
+                Frm = new FrmFonte();
                 LoadForm();
             }
 
-            if (this is FormCrudPessoa)
+
+            if (modelo is PessoaDado || ModeloNovo is PessoaDado)
             {
-                if (modelo is PessoaDado || ModeloNovo is PessoaDado)
+                if (this is DadoPessoal)
                 {
-                    if (this is DadoPessoal)
+                    if (ModeloNovo != null)
                     {
-                        if (ModeloNovo != null)
-                        {
-                            FrmEndereco end = new FrmEndereco(condicaoAtualizar, condicaoDeletar, CondicaoDetalhes,
-                            ModeloVelho, ModeloNovo);
-                            end.MdiParent = this.MdiParent;
-                            this.Close();
-                            end.Show();
-                        }
-                        else
-                        {
-                            frm = new FrmEndereco();
-                            LoadForm();
-                        }
+                        FrmEndereco end = new FrmEndereco(condicaoAtualizar, condicaoDeletar, CondicaoDetalhes,
+                        ModeloVelho, ModeloNovo);
+                        end.MdiParent = this.MdiParent;
+                        this.Close();
+                        end.Show();
                     }
-
-                    if (this is FrmEndereco)
+                    else
                     {
-                        if (ModeloNovo != null)
-                        {
-                            Contato con = new Contato(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
-                            ModeloVelho, ModeloNovo);
-                            con.MdiParent = this.MdiParent;
-                            this.Close();
-                            con.Show();
-                        }
-                        else
-                        {
-                            frm = new Contato();
-                            LoadForm();
-                        }
-
-                    }
-
-                    if (this is Contato)
-                    {
-                        if (ModeloNovo != null)
-                        {
-                            Foto con = new Foto(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
-                            ModeloVelho, ModeloNovo);
-                            con.MdiParent = this.MdiParent;
-                            this.Close();
-                            con.Show();
-                        }
-                        else
-                        {
-                            frm = new Foto();
-                            LoadForm();
-                        }
-
-                    }
-
-                    if (this is Foto)
-                    {
-                        if (ModeloNovo != null)
-                        {
-                            ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa
-                            (condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
-                            ModeloVelho, ModeloNovo);
-                            con.MdiParent = this.MdiParent;
-                            this.Close();
-                            con.Show();
-                        }
-                        else
-                        {
-                            frm = new ReunioesMinisteriosPessoa();
-                            LoadForm();
-                        }
-
-                    }
-
-                    if (this is ReunioesMinisteriosPessoa)
-                    {
-                        if (ModeloNovo == null)
-                        {
-                            if (modelo is Crianca)
-                            {
-                                CadastroCrianca cc = new CadastroCrianca();
-                                LoadForm();
-                            }
-
-                            if (modelo is Visitante)
-                            {
-                                CadastroVisitante cv = new CadastroVisitante();
-                                LoadForm();
-                            }
-
-                            if (modelo is Membro_Aclamacao)
-                            {
-                                CadastroMembroAclamacao cma = new CadastroMembroAclamacao();
-                                LoadForm();
-                            }
-
-                            if (modelo is Membro_Reconciliacao)
-                            {
-                                CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao();
-                                LoadForm();
-                            }
-
-                            if (modelo is Membro_Batismo)
-                            {
-                                CadastroMembroBatismo cmb = new CadastroMembroBatismo();
-                                LoadForm();
-                            }
-
-                            if (modelo is Membro_Transferencia)
-                            {
-                                CadastroMembroTransferencia cmt = new CadastroMembroTransferencia();
-                                LoadForm();
-                            }
-                        }
-                        else
-                        {
-                            if (ModeloNovo is Crianca)
-                            {
-                                CadastroCrianca cc = new CadastroCrianca(condicaoAtualizar, condicaoDeletar,
-                                    condicaoDetalhes, modeloVelho, ModeloNovo);
-                                cc.MdiParent = this.MdiParent;
-                                this.Close();
-                                cc.Show();
-                            }
-
-                            if (ModeloNovo is Visitante)
-                            {
-                                CadastroVisitante cv = new CadastroVisitante(condicaoAtualizar, condicaoDeletar,
-                                    condicaoDetalhes, modeloVelho, ModeloNovo);
-                                cv.MdiParent = this.MdiParent;
-                                this.Close();
-                                cv.Show();
-                            }
-
-                            if (ModeloNovo is Membro_Aclamacao)
-                            {
-                                CadastroMembroAclamacao cma = new CadastroMembroAclamacao(CondicaoAtualizar,
-                                    condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
-                                cma.MdiParent = this.MdiParent;
-                                this.Close();
-                                cma.Show();
-                            }
-
-                            if (ModeloNovo is Membro_Reconciliacao)
-                            {
-                                CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao(CondicaoAtualizar,
-                                    condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
-                                cmr.MdiParent = this.MdiParent;
-                                this.Close();
-                                cmr.Show();
-                            }
-
-                            if (ModeloNovo is Membro_Batismo)
-                            {
-                                CadastroMembroBatismo cmb = new CadastroMembroBatismo(CondicaoAtualizar,
-                                    condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
-                                cmb.MdiParent = this.MdiParent;
-                                this.Close();
-                                cmb.Show();
-                            }
-
-                            if (ModeloNovo is Membro_Transferencia)
-                            {
-                                CadastroMembroTransferencia cmt = new CadastroMembroTransferencia(CondicaoAtualizar,
-                                    condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
-                                cmt.MdiParent = this.MdiParent;
-                                this.Close();
-                                cmt.Show();
-                            }
-                        }
-                    }
-
-                    if (this is CadastroCrianca || this is CadastroVisitante ||
-                        this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
-                        this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
-                    {
-                        if (ModeloNovo != null)
-                        {
-                            FrmPessoa fn = new
-                        FrmPessoa(CondicaoAtualizar, condicaoDeletar, condicaoDetalhes, ModeloVelho,
-                        ModeloNovo);
-                            fn.MdiParent = this.MdiParent;
-                            this.Close();
-                            fn.Show();
-                        }
-                        else
-                        {
-                            FrmPessoa fn = new FrmPessoa();
-                            fn.MdiParent = this.MdiParent;
-                            this.Close();
-                            fn.Show();
-                        }
-                    }
-                }
-
-                if (modelo is PessoaLgpd || ModeloNovo is PessoaLgpd)
-                {
-                    if (this is DadoPessoalLgpd)
-                    {
-                        Foto con = new Foto();
+                        Frm = new FrmEndereco();
                         LoadForm();
                     }
-                    if (this is Foto)
+                }
+
+                if (this is FrmEndereco)
+                {
+                    if (ModeloNovo != null)
                     {
-                        frm = new ReunioesMinisteriosPessoa();
+                        Contato con = new Contato(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
+                        ModeloVelho, ModeloNovo);
+                        con.MdiParent = this.MdiParent;
+                        this.Close();
+                        con.Show();
+                    }
+                    else
+                    {
+                        Frm = new Contato();
                         LoadForm();
                     }
-                    if (this is ReunioesMinisteriosPessoa)
+
+                }
+
+                if (this is Contato)
+                {
+                    if (ModeloNovo != null)
                     {
-                        if (modelo is CriancaLgpd)
-                        {
-                            frm = new CadastroCrianca();
-                            LoadForm();
-                        }
-
-                        if (modelo is VisitanteLgpd)
-                        {
-                            frm = new CadastroVisitante();
-                            LoadForm();
-                        }
-
-                        if (modelo is Membro_AclamacaoLgpd)
-                        {
-                            frm = new CadastroMembroAclamacao();
-                            LoadForm();
-                        }
-
-                        if (modelo is Membro_ReconciliacaoLgpd)
-                        {
-                            frm = new CadastroMembroReconciliacao();
-                            LoadForm();
-                        }
-
-                        if (modelo is Membro_BatismoLgpd)
-                        {
-                            frm = new CadastroMembroBatismo();
-                            LoadForm();
-                        }
-
-                        if (modelo is Membro_TransferenciaLgpd)
-                        {
-                            frm = new CadastroMembroTransferencia();
-                            LoadForm();
-                        }
+                        Foto con = new Foto(condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
+                        ModeloVelho, ModeloNovo);
+                        con.MdiParent = this.MdiParent;
+                        this.Close();
+                        con.Show();
                     }
-
-                    if (this is CadastroCrianca || this is CadastroVisitante ||
-                        this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
-                        this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
+                    else
                     {
-                        frm = new FrmPessoa();
+                        Frm = new Foto();
                         LoadForm();
+                    }
 
+                }
+
+                if (this is Foto)
+                {
+                    if (ModeloNovo != null)
+                    {
+                        ReunioesMinisteriosPessoa con = new ReunioesMinisteriosPessoa
+                        (condicaoAtualizar, condicaoDeletar, condicaoDetalhes,
+                        ModeloVelho, ModeloNovo);
+                        con.MdiParent = this.MdiParent;
+                        this.Close();
+                        con.Show();
+                    }
+                    else
+                    {
+                        Frm = new ReunioesMinisteriosPessoa();
+                        LoadForm();
+                    }
+
+                }
+
+                if (this is ReunioesMinisteriosPessoa)
+                {
+                    if (ModeloNovo == null)
+                    {
+                        if (modelo is Crianca)
+                        {
+                            CadastroCrianca cc = new CadastroCrianca();
+                            LoadForm();
+                        }
+
+                        if (modelo is Visitante)
+                        {
+                            CadastroVisitante cv = new CadastroVisitante();
+                            LoadForm();
+                        }
+
+                        if (modelo is Membro_Aclamacao)
+                        {
+                            CadastroMembroAclamacao cma = new CadastroMembroAclamacao();
+                            LoadForm();
+                        }
+
+                        if (modelo is Membro_Reconciliacao)
+                        {
+                            CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao();
+                            LoadForm();
+                        }
+
+                        if (modelo is Membro_Batismo)
+                        {
+                            CadastroMembroBatismo cmb = new CadastroMembroBatismo();
+                            LoadForm();
+                        }
+
+                        if (modelo is Membro_Transferencia)
+                        {
+                            CadastroMembroTransferencia cmt = new CadastroMembroTransferencia();
+                            LoadForm();
+                        }
+                    }
+                    else
+                    {
+                        if (ModeloNovo is Crianca)
+                        {
+                            CadastroCrianca cc = new CadastroCrianca(condicaoAtualizar, condicaoDeletar,
+                                condicaoDetalhes, modeloVelho, ModeloNovo);
+                            cc.MdiParent = this.MdiParent;
+                            this.Close();
+                            cc.Show();
+                        }
+
+                        if (ModeloNovo is Visitante)
+                        {
+                            CadastroVisitante cv = new CadastroVisitante(condicaoAtualizar, condicaoDeletar,
+                                condicaoDetalhes, modeloVelho, ModeloNovo);
+                            cv.MdiParent = this.MdiParent;
+                            this.Close();
+                            cv.Show();
+                        }
+
+                        if (ModeloNovo is Membro_Aclamacao)
+                        {
+                            CadastroMembroAclamacao cma = new CadastroMembroAclamacao(CondicaoAtualizar,
+                                condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
+                            cma.MdiParent = this.MdiParent;
+                            this.Close();
+                            cma.Show();
+                        }
+
+                        if (ModeloNovo is Membro_Reconciliacao)
+                        {
+                            CadastroMembroReconciliacao cmr = new CadastroMembroReconciliacao(CondicaoAtualizar,
+                                condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
+                            cmr.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmr.Show();
+                        }
+
+                        if (ModeloNovo is Membro_Batismo)
+                        {
+                            CadastroMembroBatismo cmb = new CadastroMembroBatismo(CondicaoAtualizar,
+                                condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
+                            cmb.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmb.Show();
+                        }
+
+                        if (ModeloNovo is Membro_Transferencia)
+                        {
+                            CadastroMembroTransferencia cmt = new CadastroMembroTransferencia(CondicaoAtualizar,
+                                condicaoDeletar, condicaoDetalhes, modeloVelho, ModeloNovo);
+                            cmt.MdiParent = this.MdiParent;
+                            this.Close();
+                            cmt.Show();
+                        }
                     }
                 }
 
+                if (this is CadastroCrianca || this is CadastroVisitante ||
+                    this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
+                    this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
+                {
+                    if (ModeloNovo != null)
+                    {
+                        FrmPessoa fn = new
+                    FrmPessoa(CondicaoAtualizar, condicaoDeletar, condicaoDetalhes, ModeloVelho,
+                    ModeloNovo);
+                        fn.MdiParent = this.MdiParent;
+                        this.Close();
+                        fn.Show();
+                    }
+                    else
+                    {
+                        FrmPessoa fn = new FrmPessoa();
+                        fn.MdiParent = this.MdiParent;
+                        this.Close();
+                        fn.Show();
+                    }
+                }
             }
 
-            if (this is FormularioCrudCelula)
+            if (modelo is PessoaLgpd || ModeloNovo is PessoaLgpd)
             {
-                if (this is DadoCelula)
+                if (this is DadoPessoalLgpd)
                 {
-                    frm = new FrmEnderecoCelula();
+                    Frm = new Foto();
+                    LoadForm();
+                }
+                if (this is Foto)
+                {
+                    Frm = new ReunioesMinisteriosPessoa();
+                    LoadForm();
+                }
+                if (this is ReunioesMinisteriosPessoa)
+                {
+                    if (modelo is CriancaLgpd)
+                        Frm = new CadastroCrianca();
+
+                    if (modelo is VisitanteLgpd)
+                        Frm = new CadastroVisitante();
+
+                    if (modelo is Membro_AclamacaoLgpd)
+                        Frm = new CadastroMembroAclamacao();
+
+                    if (modelo is Membro_ReconciliacaoLgpd)
+                        Frm = new CadastroMembroReconciliacao();
+
+                    if (modelo is Membro_BatismoLgpd)
+                        Frm = new CadastroMembroBatismo();
+
+                    if (modelo is Membro_TransferenciaLgpd)
+                        Frm = new CadastroMembroTransferencia();
+
                     LoadForm();
                 }
 
-                if (this is FrmEnderecoCelula)
+                if (this is CadastroCrianca || this is CadastroVisitante ||
+                    this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
+                    this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
                 {
-                    frm = new MinisteriosCelula();
+                    Frm = new FrmPessoa();
                     LoadForm();
-                }
-                if (this is MinisteriosCelula)
-                {
-                    frm = new FrmCelula();
-                    LoadForm();
+
                 }
             }
 
-            if (this is FormCrudMinisterio)
+
+
+
+            if (this is DadoCelula)
             {
-                if (this is DadoMinisterio)
-                {
-                    frm = new PessoasCelulasMinisterio();
-                    LoadForm();
-                }
-
-                if (this is PessoasCelulasMinisterio)
-                {
-                    frm = new FrmMinisterio();
-                    LoadForm();
-                }
+                Frm = new FrmEnderecoCelula();
+                LoadForm();
             }
 
-            if (this is FormCrudReuniao)
+            if (this is FrmEnderecoCelula)
             {
-                if (this is DadoReuniao)
-                {
-                    frm = new PessoasReuniao();
-                    LoadForm();
-                }
-
-                if (this is PessoasReuniao)
-                {
-                    frm = new FrmReuniao();
-                    LoadForm();
-                }
+                Frm = new MinisteriosCelula();
+                LoadForm();
             }
+            if (this is MinisteriosCelula)
+            {
+                Frm = new FrmCelula();
+                LoadForm();
+            }
+
+
+
+            if (this is DadoMinisterio)
+            {
+                Frm = new PessoasCelulasMinisterio();
+                LoadForm();
+            }
+
+            if (this is PessoasCelulasMinisterio)
+            {
+                Frm = new FrmMinisterio();
+                LoadForm();
+            }
+
+
+
+            if (this is DadoReuniao)
+            {
+                Frm = new PessoasReuniao();
+                LoadForm();
+            }
+
+            if (this is PessoasReuniao)
+            {
+                Frm = new FrmReuniao();
+                LoadForm();
+            }
+
 
             this.Close();
         }

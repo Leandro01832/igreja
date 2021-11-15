@@ -72,7 +72,7 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Nome do autor";
             // 
-            // FrmCadastrarLivro
+            // FrmLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,9 +81,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_livro);
             this.Controls.Add(this.label1);
-            this.Name = "FrmCadastrarLivro";
+            this.Name = "FrmLivro";
             this.Text = "FrmCadastrarLivro";
             this.Load += new System.EventHandler(this.FrmCadastrarLivro_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txt_livro, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txt_autor, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

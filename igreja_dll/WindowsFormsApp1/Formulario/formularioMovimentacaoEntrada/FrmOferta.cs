@@ -1,6 +1,4 @@
-﻿using business.Classe.financeiro;
-using business.classes.financeiro;
-using database;
+﻿using business.classes.financeiro;
 using System;
 using System.Windows.Forms;
 
@@ -24,7 +22,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             if (!CondicaoDeletar && !CondicaoAtualizar && !CondicaoDetalhes) this.Text = "Cadastro - " + form;
 
             Oferta a = (Oferta)modelo;
-            txtValor.Text = a.Valor.ToString();
+            try { txtValor.Text = a.Valor.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)

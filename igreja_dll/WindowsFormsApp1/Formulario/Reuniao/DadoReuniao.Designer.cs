@@ -143,6 +143,14 @@
             this.Name = "DadoReuniao";
             this.Text = "Reuniao";
             this.Load += new System.EventHandler(this.Reuniao_Load);
+            this.Controls.SetChildIndex(this.mask_data_reuniao, 0);
+            this.Controls.SetChildIndex(this.mask_horario_inicio, 0);
+            this.Controls.SetChildIndex(this.mask_horario_final, 0);
+            this.Controls.SetChildIndex(this.txt_local_reuniao, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

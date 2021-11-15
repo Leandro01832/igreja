@@ -62,6 +62,8 @@
             this.Name = "FrmOferta";
             this.Text = "FrmCadastrarOferta";
             this.Load += new System.EventHandler(this.FrmCadastrarOferta_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

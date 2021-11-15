@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using business.classes.Abstrato;
 using business.contrato;
 using database;
 
 namespace business.implementacao
 {
-    public class PropertiesCrud :  IPropertiesCrud
+    public class PropertiesCrud   : IPropertiesCrud 
     {
-        public modelocrud Model { get; }
+        public modelocrud Model { get; }        
+
+        public static bool executando = false;
 
         public PropertiesCrud(modelocrud model)
         {
@@ -136,6 +142,61 @@ namespace business.implementacao
                             }
                         }
                         Model.dr.Close();
+
+
+
+                        foreach (var property in propertiesDeclaring)
+                        {
+                            if (property.PropertyType.Name == "List`1" && !executando)
+                            {
+                                executando = true;
+                                Type itemType = property.PropertyType.GetGenericArguments()[0];
+                                    var lista =  Activator.CreateInstance(property.PropertyType);
+                                
+                                bool condicao = false;
+                                for (var i = 0; i < itemType.Name.Length; i++)
+                                    if (i > 0 && char.IsUpper(itemType.Name[i]) && itemType.BaseType == typeof(modelocrud) &&
+                                     itemType.GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList().Count == 4 &&
+                                     itemType.GetProperties().Where(e => e.ReflectedType == e.DeclaringType &&
+                                     e.PropertyType == typeof(int)).ToList().Count == 2)
+                                    {
+                                        condicao = true;
+                                        break;
+                                    }
+
+                                if (condicao)
+                                {
+                                    Type baseModel = ReturnBase();
+                                    var propert = itemType.GetProperties().First(p => p.PropertyType == typeof(int) &&
+                                    p.Name.ToLower().Contains(baseModel.Name.ToLower()));
+
+                                    SqlCommand comando2 = new SqlCommand($"select Id from {itemType.Name} where {propert.Name}={Model.Id}"
+                                      , Model.conexao);
+                                    SqlDataReader dr2 = comando2.ExecuteReader();
+                                    if (dr2.HasRows)
+                                        buscarLista(lista, itemType, dr2);
+                                    dr2.Close();
+                                    property.SetValue(Model, lista);
+                                }
+                                else
+                                {
+                                    Type baseModel = ReturnBase();
+                                    var propert = itemType.GetProperties().First(p => p.PropertyType == typeof(int)
+                                    && p.Name.ToLower().Contains(baseModel.Name.ToLower()) ||
+                                     p.PropertyType == typeof(int?) && p.Name.ToLower().Contains(baseModel.Name.ToLower()));
+
+                                    SqlCommand comando2 = new SqlCommand($"select Id from {itemType.Name} where {propert.Name}={Model.Id}"
+                                    , Model.conexao);
+                                    SqlDataReader dr2 = comando2.ExecuteReader();
+                                    if (dr2.HasRows)
+                                        buscarLista(lista, itemType, dr2);
+                                    dr2.Close();
+                                    property.SetValue(Model, lista);
+                                }
+
+                                executando = false;
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -237,12 +298,12 @@ namespace business.implementacao
                     Model.T = Model.GetType();
 
                 var propertiesDeclaring = Model.T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
-                && !e.PropertyType.IsAbstract  && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
+                && !e.PropertyType.IsAbstract && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
 
                 foreach (var property in propertiesDeclaring)
                 {
-                    if(property.PropertyType.Name != "List`1")
-                    properties += property.Name + ", ";
+                    if (property.PropertyType.Name != "List`1")
+                        properties += property.Name + ", ";
                     values = VerificaProperties(values, property, modelocrud.classe, Model);
                 }
 
@@ -316,8 +377,8 @@ namespace business.implementacao
 
                 foreach (var property in propertiesDeclaring)
                 {
-                    if(property.PropertyType.Name != "List`1")
-                    properties = property.Name + "=";
+                    if (property.PropertyType.Name != "List`1")
+                        properties = property.Name + "=";
                     values += properties + VerificaUpdateProperties(property, Model);
                 }
 
@@ -539,7 +600,7 @@ namespace business.implementacao
                 else
                 if (property.PropertyType.Name == "List`1")
                 {
-                      var  prop = property.GetValue(objeto, null);
+                    var prop = property.GetValue(objeto, null);
                 }
                 else
                     if (property.PropertyType == typeof(long?) || property.PropertyType == typeof(long))
@@ -565,14 +626,14 @@ namespace business.implementacao
                 }
                 else
                      if (property.PropertyType == typeof(DateTime?) || property.PropertyType == typeof(DateTime))
-                {                    
-                        DateTime? prop = null;
-                        if (property.GetValue(objeto, null) != null)
-                            prop = Convert.ToDateTime(property.GetValue(objeto, null).ToString());
-                        if (prop != null)
-                            values += "'" + prop?.ToString("yyyy-MM-dd") + "', ";
-                        else
-                            values += "" + "null" + ", ";                    
+                {
+                    DateTime? prop = null;
+                    if (property.GetValue(objeto, null) != null)
+                        prop = Convert.ToDateTime(property.GetValue(objeto, null).ToString());
+                    if (prop != null)
+                        values += "'" + prop?.ToString("yyyy-MM-dd") + "', ";
+                    else
+                        values += "" + "null" + ", ";
                 }
                 else
                      if (property.PropertyType == typeof(int?) || property.PropertyType == typeof(int))
@@ -610,7 +671,7 @@ namespace business.implementacao
 
                 return values;
             }
-            catch(Exception ex){ throw new Exception(ex.InnerException.Message); }
+            catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
         }
 
         private string VerificaUpdateProperties(PropertyInfo property, object objeto)
@@ -703,6 +764,49 @@ namespace business.implementacao
                 return values;
             }
             catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
+        }
+
+        private modelocrud buscarConcreto(Type itemType, int num)
+        {
+            var listaTypes = modelocrud.listTypes(itemType);
+            foreach (var item in listaTypes)
+            {
+                var model = (modelocrud)Activator.CreateInstance(item);
+                model.Id = num;
+                model.Select_padrao = $"select * from {item.Name} as C where C.Id='{model.Id}'";
+                model.Delete_padrao = $" delete from {item.Name} where Id='{model.Id}' ";
+                if (model.recuperar(num))
+                    return model;
+            }
+            return null;
+        }
+
+        private void buscarLista(object list, Type itemType, SqlDataReader dr2)
+        {
+            IList collection = (IList)list;
+            while (dr2.Read())
+            {
+                var num = int.Parse(Convert.ToString(dr2["Id"]));
+                modelocrud mod = null;
+                if (itemType.IsAbstract)
+                mod = buscarConcreto(itemType, num);
+                mod = (modelocrud)Activator.CreateInstance(itemType);
+                mod.Id = num;
+                mod.Select_padrao = $"select * from {mod.GetType().Name} as C where C.Id='{mod.Id}'";
+                mod.Delete_padrao = $" delete from {mod.GetType().Name} where Id='{mod.Id}' ";
+                if (mod.recuperar(mod.Id))
+                    collection.Add(mod);
+            }
+            
+        }
+
+        private Type ReturnBase()
+        {
+            var type = Model.GetType();
+            while (type.BaseType != typeof(modelocrud))
+            type = type.BaseType;            
+            
+                return type;
         }
     }
 }

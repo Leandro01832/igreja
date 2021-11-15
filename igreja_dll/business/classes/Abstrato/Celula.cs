@@ -59,7 +59,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && horario ==  null ||
+                if (this.Operacao == "insert" && horario == null ||
                     this.Operacao == "update" && horario == null)
                     throw new Exception("Horario");
                 return horario;
@@ -122,32 +122,29 @@ namespace business.classes.Abstrato
         public virtual EnderecoCelula EnderecoCelula { get; set; }
 
         public static int UltimoRegistro;
-
-      //  public static List<Celula_Adolescente> celulasAdolescente;
-      //  public static List<Celula_Jovem> celulasJovem;
-      //  public static List<Celula_Adulto> celulasAdulto;
-      //  public static List<Celula_Crianca> celulasCrianca;
-      //  public static List<Celula_Casado> celulasCasado;
         #endregion
 
         public Celula() : base()
         {
-            this.Maximo_pessoa = 50;
             if (!EntityCrud)
+            {
+                this.Maximo_pessoa = 50;
                 EnderecoCelula = new EnderecoCelula();
-            Ministerios = new List<MinisterioCelula>();
+                Ministerios = new List<MinisterioCelula>();
+                Pessoas = new List<Pessoa>();
+            }
 
         }
-        
+
 
         public async static void recuperarTodasCelulas()
         {
             List<Type> list = listTypes(typeof(Celula));
-            foreach(var item in list)
+            foreach (var item in list)
             {
-                var modelo = (modelocrud) Activator.CreateInstance(item);
+                var modelo = (modelocrud)Activator.CreateInstance(item);
                 await Task.Run(() => modelo.recuperar());
-            }            
+            }
         }
 
         public static int TotalRegistro()

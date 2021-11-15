@@ -2,10 +2,11 @@
 using business.classes.PessoasLgpd;
 using database;
 using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroCrianca : Formulario.FormCrudPessoa
+    public partial class CadastroCrianca : WFCrud
     {
 
         public CadastroCrianca() : base()
@@ -36,23 +37,22 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             LoadCrudForm();
             this.Text = "Cadastro de Criança.";
-            if (modelo != null)
-            {
+            
                 if(modelo is Crianca)
                 {
                     var p = (Crianca)modelo;
-                    textBox1.Text = p.Nome_pai;
-                    textBox2.Text = p.Nome_mae;
+                   try{ textBox1.Text = p.Nome_pai; }  catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
+                try { textBox2.Text = p.Nome_mae; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
 
                 if (modelo is CriancaLgpd)
                 {
                     var p = (CriancaLgpd)modelo;
-                    textBox1.Text = p.Nome_pai;
-                    textBox2.Text = p.Nome_mae;
-                }
-
+                try { textBox1.Text = p.Nome_pai; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { textBox2.Text = p.Nome_mae; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
+
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

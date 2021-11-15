@@ -16,7 +16,15 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 
         private void FrmCadastrarAdmin_Load(object sender, EventArgs e)
         {
+            LoadCrudForm();
             FormPadrao.LoadForm(this);
+
+            Admin c = (Admin)modelo;
+            try { maskedWhatsapp.Text = c.Telefone.Whatsapp; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { maskedTelefone.Text = c.Telefone.Fone; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtUsuario.Text = c.Email; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtNome.Text = c.NomePessoa; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtSenha.Text = c.Password; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void maskedWhatsapp_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -31,12 +39,7 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
             Admin c = (Admin)modelo;
             c.Telefone.Fone = maskedTelefone.Text;
         }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-            Admin c = (Admin)modelo;
-            c.Email = txtEmail.Text;
-        }
+        
 
         private void txtNome_TextChanged(object sender, EventArgs e)
         {

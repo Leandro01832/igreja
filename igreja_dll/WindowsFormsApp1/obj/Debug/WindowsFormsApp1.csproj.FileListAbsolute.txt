@@ -470,10 +470,6 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsF
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.FrmCelula.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.DadoCelula.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.MinisteriosCelula.resources
-C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormCrudMinisterio.resources
-C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormCrudPessoa.resources
-C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormCrudReuniao.resources
-C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormularioCrudCelula.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioListView.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.DadoMinisterio.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.FrmMinisterio.resources

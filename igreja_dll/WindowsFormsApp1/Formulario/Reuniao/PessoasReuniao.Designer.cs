@@ -63,6 +63,8 @@
             this.Name = "PessoasReuniao";
             this.Text = "PessoasReuniao";
             this.Load += new System.EventHandler(this.PessoasReuniao_Load);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.lstBoxPessoa, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

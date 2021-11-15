@@ -51,7 +51,7 @@
             // 
             this.radioButton_feminino.AutoSize = true;
             this.radioButton_feminino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_feminino.Location = new System.Drawing.Point(222, 622);
+            this.radioButton_feminino.Location = new System.Drawing.Point(212, 612);
             this.radioButton_feminino.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_feminino.Name = "radioButton_feminino";
             this.radioButton_feminino.Size = new System.Drawing.Size(106, 29);
@@ -65,7 +65,7 @@
             // 
             this.radioButton_masculino.AutoSize = true;
             this.radioButton_masculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_masculino.Location = new System.Drawing.Point(226, 569);
+            this.radioButton_masculino.Location = new System.Drawing.Point(216, 559);
             this.radioButton_masculino.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_masculino.Name = "radioButton_masculino";
             this.radioButton_masculino.Size = new System.Drawing.Size(121, 29);
@@ -79,7 +79,7 @@
             // 
             this.nome.AutoSize = true;
             this.nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.Location = new System.Drawing.Point(90, 573);
+            this.nome.Location = new System.Drawing.Point(80, 563);
             this.nome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(60, 25);
@@ -95,7 +95,7 @@
             "residente em outra cidade de Minas Gerais",
             "residente em outro estado do Brasil",
             "residente em outro país"});
-            this.listBox_status.Location = new System.Drawing.Point(226, 312);
+            this.listBox_status.Location = new System.Drawing.Point(216, 302);
             this.listBox_status.Margin = new System.Windows.Forms.Padding(4);
             this.listBox_status.Name = "listBox_status";
             this.listBox_status.Size = new System.Drawing.Size(256, 68);
@@ -107,7 +107,7 @@
             this.mask_data_nascimento.BeepOnError = true;
             this.mask_data_nascimento.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.mask_data_nascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mask_data_nascimento.Location = new System.Drawing.Point(226, 426);
+            this.mask_data_nascimento.Location = new System.Drawing.Point(216, 416);
             this.mask_data_nascimento.Margin = new System.Windows.Forms.Padding(4);
             this.mask_data_nascimento.Mask = "00/00/0000";
             this.mask_data_nascimento.Name = "mask_data_nascimento";
@@ -123,7 +123,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(22, 429);
+            this.label11.Location = new System.Drawing.Point(12, 419);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(182, 25);
@@ -134,7 +134,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(86, 344);
+            this.label2.Location = new System.Drawing.Point(76, 334);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 25);
@@ -144,7 +144,7 @@
             // textemail
             // 
             this.textemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textemail.Location = new System.Drawing.Point(226, 501);
+            this.textemail.Location = new System.Drawing.Point(216, 491);
             this.textemail.Margin = new System.Windows.Forms.Padding(4);
             this.textemail.Name = "textemail";
             this.textemail.Size = new System.Drawing.Size(256, 29);
@@ -155,7 +155,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(96, 504);
+            this.label16.Location = new System.Drawing.Point(86, 494);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(58, 25);
@@ -167,7 +167,7 @@
             this.text_cpf.AllowDrop = true;
             this.text_cpf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_cpf.Location = new System.Drawing.Point(226, 181);
+            this.text_cpf.Location = new System.Drawing.Point(216, 171);
             this.text_cpf.Margin = new System.Windows.Forms.Padding(4);
             this.text_cpf.MaxLength = 11;
             this.text_cpf.Name = "text_cpf";
@@ -180,7 +180,7 @@
             this.text_rg.AllowDrop = true;
             this.text_rg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_rg.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_rg.Location = new System.Drawing.Point(226, 120);
+            this.text_rg.Location = new System.Drawing.Point(216, 110);
             this.text_rg.Margin = new System.Windows.Forms.Padding(4);
             this.text_rg.Name = "text_rg";
             this.text_rg.Size = new System.Drawing.Size(257, 29);
@@ -191,7 +191,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(66, 252);
+            this.label5.Location = new System.Drawing.Point(56, 242);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 25);
@@ -207,7 +207,7 @@
             "separado(a)",
             "solteiro(a)",
             "viuvo(a)"});
-            this.listestado_civil.Location = new System.Drawing.Point(226, 242);
+            this.listestado_civil.Location = new System.Drawing.Point(216, 232);
             this.listestado_civil.Margin = new System.Windows.Forms.Padding(4);
             this.listestado_civil.Name = "listestado_civil";
             this.listestado_civil.Size = new System.Drawing.Size(256, 52);
@@ -218,7 +218,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(72, 125);
+            this.label14.Location = new System.Drawing.Point(74, 114);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(40, 25);
@@ -229,7 +229,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(72, 184);
+            this.label13.Location = new System.Drawing.Point(62, 174);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 25);
@@ -241,7 +241,7 @@
             this.text_nome.AllowDrop = true;
             this.text_nome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nome.Location = new System.Drawing.Point(226, 65);
+            this.text_nome.Location = new System.Drawing.Point(216, 55);
             this.text_nome.Margin = new System.Windows.Forms.Padding(4);
             this.text_nome.Name = "text_nome";
             this.text_nome.Size = new System.Drawing.Size(257, 29);
@@ -252,7 +252,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(72, 69);
+            this.label1.Location = new System.Drawing.Point(62, 59);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 25);
@@ -264,6 +264,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 703);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.radioButton_feminino);
             this.Controls.Add(this.radioButton_masculino);
             this.Controls.Add(this.nome);
@@ -277,7 +278,6 @@
             this.Controls.Add(this.text_rg);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listestado_civil);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.text_nome);
             this.Controls.Add(this.label1);
@@ -285,6 +285,23 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DadoPessoal";
             this.Load += new System.EventHandler(this.DadoPessoal_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.text_nome, 0);
+            this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.listestado_civil, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.text_rg, 0);
+            this.Controls.SetChildIndex(this.text_cpf, 0);
+            this.Controls.SetChildIndex(this.label16, 0);
+            this.Controls.SetChildIndex(this.textemail, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label11, 0);
+            this.Controls.SetChildIndex(this.mask_data_nascimento, 0);
+            this.Controls.SetChildIndex(this.listBox_status, 0);
+            this.Controls.SetChildIndex(this.nome, 0);
+            this.Controls.SetChildIndex(this.radioButton_masculino, 0);
+            this.Controls.SetChildIndex(this.radioButton_feminino, 0);
+            this.Controls.SetChildIndex(this.label14, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

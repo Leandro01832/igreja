@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             if (!CondicaoDeletar && !CondicaoAtualizar && !CondicaoDetalhes) this.Text = "Cadastro - " + form;
 
             Dizimo a = (Dizimo)modelo;
-            txtValor.Text = a.Valor.ToString();
+            try { txtValor.Text = a.Valor.ToString(); } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)

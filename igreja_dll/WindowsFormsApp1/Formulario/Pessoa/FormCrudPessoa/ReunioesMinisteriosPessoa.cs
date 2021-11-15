@@ -10,7 +10,7 @@ using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    public partial class ReunioesMinisteriosPessoa : FormCrudPessoa
+    public partial class ReunioesMinisteriosPessoa : WFCrud
     {
 
         public ReunioesMinisteriosPessoa(bool Deletar, bool Atualizar, bool Detalhes,
@@ -24,7 +24,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
         public ReunioesMinisteriosPessoa() : base()
         {
             InitializeComponent();
-
         }
 
         // variavel para evitar bug
@@ -35,39 +34,51 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             LoadCrudForm();
 
             this.Proximo.Location = new Point(900, 150);
+            this.Atualizar.Location = new Point(900, 250);
+            this.Deletar.Location = new Point(900, 350);
 
             lstBoxCelula.DataSource = modelocrud.Modelos.OfType<Celula>().OrderBy(m => m.Id).ToList();
-            if(modelocrud.Modelos.OfType<Celula>().ToList().Count > 0) lstBoxCelula.SetSelected(0, false);
+            if (modelocrud.Modelos.OfType<Celula>().ToList().Count > 0) lstBoxCelula.SetSelected(0, false);
             lstBoxMinisterio.DataSource = modelocrud.Modelos.OfType<Ministerio>().OrderBy(m => m.Id).ToList();
-            if(modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0) lstBoxMinisterio.SetSelected(0, false);
+            if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0) lstBoxMinisterio.SetSelected(0, false);
             lstBoxReuniao.DataSource = modelocrud.Modelos.OfType<business.classes.Reuniao>().OrderBy(m => m.Id).ToList();
-            if(modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count > 0) lstBoxReuniao.SetSelected(0, false);
+            if (modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count > 0) lstBoxReuniao.SetSelected(0, false);
 
             this.Text = "Reuniões, celula e ministérios da pessoa.";
             var pessoa = (Pessoa)modelo;
-            if (pessoa.Id != 0)
+
+            if (pessoa.celula_ != null)
             {
-                this.Atualizar.Location = new Point(900, 250);
-                this.Deletar.Location = new Point(900, 350);
+                var indice = lstBoxCelula.Items.IndexOf(pessoa.Celula);
+                lstBoxCelula.SetSelected(indice, true);
+            }
 
-                if (pessoa.celula_ != null)
-                {
-                    var indice = lstBoxCelula.Items.IndexOf(pessoa.Celula);
-                    lstBoxCelula.SetSelected(indice, true);
-                }
-
+            try
+            {
                 foreach (var item in pessoa.Ministerios)
                 {
                     var indice = lstBoxMinisterio.Items.IndexOf(item);
                     lstBoxMinisterio.SetSelected(indice, true);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+            }
 
+            try
+            {
                 foreach (var item in pessoa.Reuniao)
                 {
                     var indice = lstBoxReuniao.Items.IndexOf(item);
                     lstBoxReuniao.SetSelected(indice, true);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+            }
+
 
 
             condicao = true;
@@ -84,7 +95,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                     var objetos = valor.Cast<Ministerio>().ToList();
                     pessoa.Ministerios = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                    pessoa.Ministerios.Add(new PessoaMinisterio { MinisterioId = item.Id });
+                        pessoa.Ministerios.Add(new PessoaMinisterio { MinisterioId = item.Id });
                 }
 
             }
@@ -97,7 +108,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
         private void lstBoxCelula_SelectedValueChanged(object sender, EventArgs e)
         {
             var pessoa = (Pessoa)modelo;
-            Celula cel = (Celula) lstBoxCelula.SelectedItem;
+            Celula cel = (Celula)lstBoxCelula.SelectedItem;
             pessoa.celula_ = cel.Id;
         }
 

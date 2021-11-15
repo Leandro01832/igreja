@@ -15,13 +15,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    public partial class Foto : Formulario.FormCrudPessoa
+    public partial class Foto : WFCrud
     {
         public Foto()
         {
             InitializeComponent();
         }
-        
+
 
         public Foto(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
@@ -37,20 +37,20 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             this.Text = "Foto da pessoa";
             this.Proximo.Location = new Point(900, 150);
             var p = (Pessoa)modelo;
-            if (p !=  null)
-            {
-                this.Atualizar.Location = new Point(900, 250);
 
-                if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
+            this.Atualizar.Location = new Point(900, 250);
+            this.Deletar.Location = new Point(900, 350);
+
+            if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
                 ptrb_foto.ImageLocation = "http://www.igrejadeusbom.somee.com" + p.Img;
-                else
+            else
                 ptrb_foto.ImageLocation = p.Img;
-            }
+
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
                 var p = (Pessoa)modelo;
                 try
@@ -73,11 +73,11 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                         // Converter em array
                         Image minhaImagem = Image.FromFile(dlg.FileName);
                         byte[] meuArrayBytes = ConverteImagemParaByteArray(minhaImagem);
-                        p.ImgArrayBytes = meuArrayBytes;                        
+                        p.ImgArrayBytes = meuArrayBytes;
 
-                      //  SalvaArrayBytesEmArquivo(meuArrayBytes);
-                      //  ExibirArquivos();
-                      //  picImagem.Image = null;
+                        //  SalvaArrayBytesEmArquivo(meuArrayBytes);
+                        //  ExibirArquivos();
+                        //  picImagem.Image = null;
                     }
                 }
                 catch (Exception ex)

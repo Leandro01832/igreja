@@ -27,8 +27,10 @@ namespace business.classes.Abstrato
             {
                 MudancaEstado = new MudancaEstado();
                 Chamada = new Chamada();
+                Ministerios = new List<PessoaMinisterio>();
+                Reuniao = new List<ReuniaoPessoa>();
             }
-            
+
         }
 
         #region Properties
@@ -149,9 +151,6 @@ namespace business.classes.Abstrato
             return _TotalRegistros;
         }
 
-        public override string ToString()
-        {
-            return this.Codigo + " - " + this.NomePessoa;
-        }
+        
     }
 }

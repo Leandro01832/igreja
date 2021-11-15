@@ -2,10 +2,11 @@
 using business.classes.PessoasLgpd;
 using database;
 using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroMembroTransferencia : FormCrudPessoa
+    public partial class CadastroMembroTransferencia : WFCrud
     {
         public CadastroMembroTransferencia() : base()
         {
@@ -20,7 +21,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         }
 
         public CadastroMembroTransferencia(modelocrud modelo, modelocrud modeloNovo)
-            :base(modelo, modeloNovo)
+            : base(modelo, modeloNovo)
         {
             InitializeComponent();
         }
@@ -29,32 +30,36 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             LoadCrudForm();
             this.Text = "Cadastro de membro por transferência.";
-            if(modelo != null)
-            {
-                if(modelo is Membro_Transferencia)
-                {
-                    var p = (Membro_Transferencia)modelo;
-                    txt_nome_igreja.Text = p.Nome_igreja_transferencia;
-                    txt_nome_estado.Text = p.Estado_transferencia;
-                    txt_nome_cidade.Text = p.Nome_cidade_transferencia;
-                }
-                if (modelo is Membro_TransferenciaLgpd)
-                {
-                    var p = (Membro_TransferenciaLgpd)modelo;
-                    txt_nome_igreja.Text = p.Nome_igreja_transferencia;
-                    txt_nome_estado.Text = p.Estado_transferencia;
-                    txt_nome_cidade.Text = p.Nome_cidade_transferencia;
-                }
 
+            if (modelo is Membro_Transferencia)
+            {
+                var p = (Membro_Transferencia)modelo;
+                try { txt_nome_igreja.Text = p.Nome_igreja_transferencia; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_nome_estado.Text = p.Estado_transferencia; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_nome_cidade.Text = p.Nome_cidade_transferencia; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
-            
+            if (modelo is Membro_TransferenciaLgpd)
+            {
+                var p = (Membro_TransferenciaLgpd)modelo;
+                try { txt_nome_igreja.Text = p.Nome_igreja_transferencia; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_nome_estado.Text = p.Estado_transferencia; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_nome_cidade.Text = p.Nome_cidade_transferencia; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            }
+
+
         }
 
         private void txt_nome_igreja_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
-                if(modelo is Membro_Transferencia)
+                if (modelo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)modelo;
                     p.Nome_igreja_transferencia = txt_nome_igreja.Text;

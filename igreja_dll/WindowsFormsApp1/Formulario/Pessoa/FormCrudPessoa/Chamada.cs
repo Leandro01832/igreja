@@ -2,7 +2,7 @@
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class Chamada : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class Chamada : WFCrud
     {
         public Chamada() : base()
         {

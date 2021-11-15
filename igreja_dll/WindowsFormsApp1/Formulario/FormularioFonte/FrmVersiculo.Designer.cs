@@ -118,7 +118,7 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Versiculo";
             // 
-            // FrmCadastrarVersiculo
+            // FrmVersiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,9 +131,17 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_texto);
             this.Controls.Add(this.label2);
-            this.Name = "FrmCadastrarVersiculo";
+            this.Name = "FrmVersiculo";
             this.Text = "FrmCadastrarVersiculo";
             this.Load += new System.EventHandler(this.FrmCadastrarVersiculo_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txt_texto, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.combo_livro, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.combo_capitulo, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.combo_versiculo, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

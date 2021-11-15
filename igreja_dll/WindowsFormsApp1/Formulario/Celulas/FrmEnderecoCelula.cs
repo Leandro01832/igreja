@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Celulas
 {
-    public partial class FrmEnderecoCelula : FormularioCrudCelula
+    public partial class FrmEnderecoCelula : WFCrud
     {
-        public FrmEnderecoCelula(): base()
+        public FrmEnderecoCelula() : base()
         {
             InitializeComponent();
         }
@@ -15,18 +15,24 @@ namespace WindowsFormsApp1.Formulario.Celulas
         {
             FormPadrao.LoadForm(this);
 
-            if (modelo != null)
-            {
-                var p = (Celula)modelo;
-                textpais.Text = p.EnderecoCelula.Pais;
-                text_cep.Text = p.EnderecoCelula.Cep.ToString();
-                text_estado.Text = p.EnderecoCelula.Estado;
-                text_cidade.Text = p.EnderecoCelula.Cidade;
-                text_bairro.Text = p.EnderecoCelula.Bairro;
-                text_rua.Text = p.EnderecoCelula.Rua;
-                text_complemento.Text = p.EnderecoCelula.Complemento;
-                text_numero.Text = p.EnderecoCelula.Numero_casa.ToString();
-            }
+            var p = (Celula)modelo;
+            try { textpais.Text = p.EnderecoCelula.Pais; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_cep.Text = p.EnderecoCelula.Cep.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_estado.Text = p.EnderecoCelula.Estado; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_cidade.Text = p.EnderecoCelula.Cidade; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_bairro.Text = p.EnderecoCelula.Bairro; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_rua.Text = p.EnderecoCelula.Rua; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_complemento.Text = p.EnderecoCelula.Complemento; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { text_numero.Text = p.EnderecoCelula.Numero_casa.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
         }
 
         private void textpais_TextChanged(object sender, EventArgs e)

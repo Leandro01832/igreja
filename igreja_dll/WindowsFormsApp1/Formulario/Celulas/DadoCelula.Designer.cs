@@ -101,7 +101,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(334, 21);
+            this.label4.Location = new System.Drawing.Point(334, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(187, 29);
             this.label4.TabIndex = 6;
@@ -120,8 +120,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DadoCelula";
-            this.Text = "";
             this.Load += new System.EventHandler(this.DadoCelula_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.txt_nome_celula, 0);
+            this.Controls.SetChildIndex(this.txt_dia_semana, 0);
+            this.Controls.SetChildIndex(this.mask_horario, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

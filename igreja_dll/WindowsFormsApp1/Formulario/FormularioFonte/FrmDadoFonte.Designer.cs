@@ -63,6 +63,8 @@
             this.Name = "FrmDadoFonte";
             this.Text = "FrmDadoFonte";
             this.Load += new System.EventHandler(this.FrmDadoFonte_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lstBoxMensagem, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

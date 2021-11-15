@@ -62,6 +62,8 @@
             this.Name = "FrmDizimo";
             this.Text = "FrmCadastrarDizimo";
             this.Load += new System.EventHandler(this.FrmCadastrarDizimo_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

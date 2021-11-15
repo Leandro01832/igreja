@@ -112,9 +112,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.radioGasolina);
             this.Controls.Add(this.radioDiesel);
             this.Controls.Add(this.radioAlcool);
-            this.Controls.Add(this.radioGasolina);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.checkBoxPagou);
             this.Controls.Add(this.label2);
@@ -122,6 +122,12 @@
             this.Name = "FrmTransporte";
             this.Text = "FrmCadastrarTransporte";
             this.Load += new System.EventHandler(this.FrmCadastrarTransporte_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.checkBoxPagou, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
+            this.Controls.SetChildIndex(this.radioAlcool, 0);
+            this.Controls.SetChildIndex(this.radioDiesel, 0);
+            this.Controls.SetChildIndex(this.radioGasolina, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

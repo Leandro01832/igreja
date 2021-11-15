@@ -3,7 +3,7 @@ using System;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class FrmPessoa : FormCrudPessoa
+    public partial class FrmPessoa : WFCrud
     {
         public FrmPessoa():base()
         {

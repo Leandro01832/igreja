@@ -40,7 +40,7 @@
             // 
             this.checkBoxPagou.AutoSize = true;
             this.checkBoxPagou.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxPagou.Location = new System.Drawing.Point(203, 224);
+            this.checkBoxPagou.Location = new System.Drawing.Point(245, 211);
             this.checkBoxPagou.Name = "checkBoxPagou";
             this.checkBoxPagou.Size = new System.Drawing.Size(91, 29);
             this.checkBoxPagou.TabIndex = 282;
@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(86, 158);
+            this.label2.Location = new System.Drawing.Point(128, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 25);
             this.label2.TabIndex = 281;
@@ -61,7 +61,7 @@
             // txtValor
             // 
             this.txtValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValor.Location = new System.Drawing.Point(203, 153);
+            this.txtValor.Location = new System.Drawing.Point(245, 140);
             this.txtValor.MaxLength = 9;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(128, 30);
@@ -71,7 +71,7 @@
             // txtNomeProduto
             // 
             this.txtNomeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeProduto.Location = new System.Drawing.Point(203, 290);
+            this.txtNomeProduto.Location = new System.Drawing.Point(245, 277);
             this.txtNomeProduto.Name = "txtNomeProduto";
             this.txtNomeProduto.Size = new System.Drawing.Size(217, 30);
             this.txtNomeProduto.TabIndex = 285;
@@ -81,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 295);
+            this.label1.Location = new System.Drawing.Point(54, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 25);
             this.label1.TabIndex = 284;
@@ -95,12 +95,17 @@
             this.Controls.Add(this.txtNomeProduto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtValor);
-            this.Controls.Add(this.checkBoxPagou);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.checkBoxPagou);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCompra";
             this.Text = "FrmCadastrarCompra";
             this.Load += new System.EventHandler(this.FrmCadastrarCompra_Load);
+            this.Controls.SetChildIndex(this.checkBoxPagou, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtNomeProduto, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,8 +1,5 @@
 ﻿using business;
-using business.classes;
 using business.classes.Abstrato;
-using business.classes.Intermediario;
-using business.classes.Pessoas;
 using business.contrato;
 using business.implementacao;
 using database.banco;
@@ -199,64 +196,7 @@ namespace database
                 else return true;
             }
         }
-
-        public static void buscarListas()
-        {
-            List<object> lista = new List<object>();
-            for (var i = 0; i < Modelos.Count; i++)
-            {
-                
-                for (var k = 0; k < Modelos.Count; k++)
-                {
-                    var props = Modelos[k].GetType().GetProperties();
-
-                    foreach (var prop in props)
-                    {
-                        modelocrud model = null;
-                        if(prop.PropertyType.IsClass && prop.PropertyType.IsSubclassOf(typeof(modelocrud)))
-                        {
-                            model = (modelocrud)prop.GetValue(Modelos[k]);
-                            if (model != null && model.Id == Modelos[i].Id && model.GetType().Name == Modelos[i].GetType().Name)
-                                lista.Add(Modelos[k]);
-                        }
-                        
-                    }
-
-
-                    if (k == Modelos.Count - 1 && lista.Count > 0)
-                    {
-                        var propLista = Modelos[i].GetType().GetProperties()
-                            .Where(p => p.PropertyType.Name == "List`1").ToList();                        
-
-                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)) != null)
-                       propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(MinisterioCelula)).SetValue(Modelos[i], lista.OfType<MinisterioCelula>().ToList());
-
-                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(PessoaMinisterio)) != null)
-                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(PessoaMinisterio)).SetValue(Modelos[i], lista.OfType<PessoaMinisterio>().ToList());
-
-                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(ReuniaoPessoa)) != null)
-                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(ReuniaoPessoa)).SetValue(Modelos[i], lista.OfType<ReuniaoPessoa>().ToList());
-
-                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(Pessoa)) != null)
-                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(Pessoa)).SetValue(Modelos[i], lista.OfType<Pessoa>().ToList());
-
-                        if (propLista.FirstOrDefault(p => p.PropertyType.GetGenericArguments()[0] == typeof(Historico)) != null)
-                            propLista.First(p => p.PropertyType.GetGenericArguments()[0] == typeof(Historico)).SetValue(Modelos[i], lista.OfType<Historico>().ToList());
-
-                        lista.Clear();
-                    }
-                }
-            }
-
-            var listaPessoas = Modelos.OfType<Pessoa>().OrderBy(m => m.Id).ToList();
-            var listaMinisterios = Modelos.OfType<Ministerio>().OrderBy(m => m.Id).ToList();
-            var listaCelulas = Modelos.OfType<Celula>().OrderBy(m => m.Id).ToList();
-            var listaReuniao = Modelos.OfType<Reuniao>().OrderBy(m => m.Id).ToList();
-            var listaPessoasEmReuniao = Modelos.OfType<ReuniaoPessoa>().OrderBy(m => m.Id).ToList();
-            var listaPessoasEmMinisterio = Modelos.OfType<PessoaMinisterio>().OrderBy(m => m.Id).ToList();
-            var listaMinisteriosEmCelulas = Modelos.OfType<MinisterioCelula>().OrderBy(m => m.Id).ToList();
-        }
-
+        
         public bool recuperar()
         {
             Select_padrao = $"select M.Id from {this.GetType().Name} as M ";

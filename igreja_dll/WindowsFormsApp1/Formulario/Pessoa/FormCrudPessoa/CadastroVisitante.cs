@@ -6,10 +6,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class CadastroVisitante : WindowsFormsApp1.Formulario.FormCrudPessoa
+    public partial class CadastroVisitante : WFCrud
     {
 
-        public CadastroVisitante():base()
+        public CadastroVisitante() : base()
         {
             InitializeComponent();
         }
@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         }
 
         public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)
-            :base(modelo, modeloNovo)
+            : base(modelo, modeloNovo)
         {
             InitializeComponent();
         }
@@ -31,22 +31,24 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             LoadCrudForm();
             this.Text = "Cadastro de visitante.";
 
-            if(modelo != null)
+            if (modelo is Visitante)
             {
-                if(modelo is Visitante)
-                {
-                    var p = (Visitante)modelo;
-                    mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy");
-                    txt_condicao_religiosa.Text = p.Condicao_religiosa;
-                }
-
-                if (modelo is VisitanteLgpd)
-                {
-                    var p = (VisitanteLgpd)modelo;
-                    mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy");
-                    txt_condicao_religiosa.Text = p.Condicao_religiosa;
-                }
+                var p = (Visitante)modelo;
+                try { mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy"); }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_condicao_religiosa.Text = p.Condicao_religiosa; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
+
+            if (modelo is VisitanteLgpd)
+            {
+                var p = (VisitanteLgpd)modelo;
+                try { mask_data_visita.Text = p.Data_visita.ToString("dd/MM/yyyy"); }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_condicao_religiosa.Text = p.Condicao_religiosa; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            }
+
         }
 
         private void mask_data_visita_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -56,9 +58,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void txt_condicao_religiosa_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
-                if(modelo is Visitante)
+                if (modelo is Visitante)
                 {
                     var p = (Visitante)modelo;
                     p.Condicao_religiosa = txt_condicao_religiosa.Text;
@@ -70,7 +72,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 }
 
             }
-            if(ModeloNovo != null)
+            if (ModeloNovo != null)
             {
                 if (ModeloNovo is Visitante)
                 {
@@ -82,14 +84,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                     var p = (VisitanteLgpd)ModeloNovo;
                     p.Condicao_religiosa = txt_condicao_religiosa.Text;
                 }
-            }            
+            }
         }
 
         private void mask_data_visita_TextChanged(object sender, EventArgs e)
         {
-            if(modelo != null)
+            if (modelo != null)
             {
-                if(modelo is Visitante)
+                if (modelo is Visitante)
                 {
                     var p = (Visitante)modelo;
                     try
@@ -115,7 +117,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
             }
 
-            if(ModeloNovo != null)
+            if (ModeloNovo != null)
             {
                 if (ModeloNovo is Visitante)
                 {
@@ -141,7 +143,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                     }
                 }
             }
-            
+
         }
     }
 }

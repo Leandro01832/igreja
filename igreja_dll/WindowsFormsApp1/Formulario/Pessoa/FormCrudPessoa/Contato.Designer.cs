@@ -122,6 +122,12 @@
             this.Name = "Contato";
             this.Text = "Contato";
             this.Load += new System.EventHandler(this.Contato_Load);
+            this.Controls.SetChildIndex(this.label10, 0);
+            this.Controls.SetChildIndex(this.mask_tel1, 0);
+            this.Controls.SetChildIndex(this.mask_tel2, 0);
+            this.Controls.SetChildIndex(this.label18, 0);
+            this.Controls.SetChildIndex(this.mask_tel3, 0);
+            this.Controls.SetChildIndex(this.label19, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

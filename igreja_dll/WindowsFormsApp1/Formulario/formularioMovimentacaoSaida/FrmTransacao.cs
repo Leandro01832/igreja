@@ -21,8 +21,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
             if (!CondicaoDeletar && !CondicaoAtualizar && !CondicaoDetalhes) this.Text = "Cadastro - " + form;
 
             Transacao a = (Transacao)modelo;
-            txtValor.Text = a.Valor.ToString();
-            checkBoxPagou.Checked = a.Pago;
+           try{ txtValor.Text = a.Valor.ToString(); }   catch(Exception ex){ MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { checkBoxPagou.Checked = a.Pago; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void checkBoxPagou_CheckedChanged(object sender, EventArgs e)

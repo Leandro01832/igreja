@@ -8,10 +8,10 @@ using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
-    public partial class PessoasReuniao :  FormCrudReuniao
+    public partial class PessoasReuniao : WFCrud
     {
-        public PessoasReuniao(): base()
-        {            
+        public PessoasReuniao() : base()
+        {
             InitializeComponent();
         }
 
@@ -23,7 +23,8 @@ namespace WindowsFormsApp1.Formulario.Reuniao
             LoadCrudForm();
             var p = (business.classes.Reuniao)modelo;
 
-            if(p.Id != 0)
+
+            try
             {
                 foreach (var item in p.Pessoas)
                 {
@@ -31,11 +32,16 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     lstBoxPessoa.SetSelected(indice, true);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+            }
 
-            condicao = true;            
+
+            condicao = true;
         }
-        
-        
+
+
 
         private void lstBoxPessoa_SelectedValueChanged(object sender, EventArgs e)
         {

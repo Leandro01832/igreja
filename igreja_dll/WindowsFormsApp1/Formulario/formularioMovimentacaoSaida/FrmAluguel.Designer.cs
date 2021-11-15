@@ -101,6 +101,11 @@
             this.Name = "FrmAluguel";
             this.Text = "FrmCadastrarAluguel";
             this.Load += new System.EventHandler(this.FrmCadastrarAluguel_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.checkBoxPagou, 0);
+            this.Controls.SetChildIndex(this.txtValor, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtNomeProduto, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

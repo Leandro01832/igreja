@@ -6,5 +6,10 @@ namespace business.classes.Pessoas
     public abstract class PessoaLgpd : Pessoa
     {
         public PessoaLgpd() : base(){ }
+
+        public override string ToString()
+        {
+            return this.Codigo + " - " + this.Email;
+        }
     }
 }
