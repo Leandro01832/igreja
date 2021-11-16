@@ -25,8 +25,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(nome) ||
-                    this.Operacao == "update" && string.IsNullOrWhiteSpace(nome))
+                if ( string.IsNullOrWhiteSpace(nome))
                     throw new Exception("Nome");
                 return nome;
             }
@@ -41,8 +40,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(dia_semana) ||
-                    this.Operacao == "update" && string.IsNullOrWhiteSpace(dia_semana))
+                if ( string.IsNullOrWhiteSpace(dia_semana))
                     throw new Exception("Dia_semana");
                 return dia_semana;
             }
@@ -59,8 +57,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && horario == null ||
-                    this.Operacao == "update" && horario == null)
+                if ( horario == null)
                     throw new Exception("Horario");
                 return horario;
             }
@@ -79,16 +76,13 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && ministerios.Count <= 1 ||
-                    this.Operacao == "update" && ministerios.Count <= 1)
+                if ( ministerios.Count <= 1 )
                 {
                     ErroCadastro = "Celula precisa de pelo menos um líder de celula e um líder de celula em treinamento." +
                     " Verifique a lista de ministérios";
                     throw new Exception("Ministerios");
                 }
                 else
-                if (this.Operacao == "insert" ||
-                    this.Operacao == "update")
                 {
                     bool condicao1 = false;
                     bool condicao2 = false;

@@ -136,3 +136,4 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.xml
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
+C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.pdb

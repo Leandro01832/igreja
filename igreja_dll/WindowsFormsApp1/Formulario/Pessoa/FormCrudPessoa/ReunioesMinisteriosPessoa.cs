@@ -13,6 +13,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
     public partial class ReunioesMinisteriosPessoa : WFCrud
     {
 
+        private Button proximoFrom;
+
         public ReunioesMinisteriosPessoa(bool Deletar, bool Atualizar, bool Detalhes,
         modelocrud modeloVelho, modelocrud modeloNovo)
            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)

@@ -41,9 +41,7 @@ namespace business.classes
         {
             get
             {
-                if (this.Operacao == "insert" && horario_inicio.Value.Hours == 0 &&
-                    horario_inicio.Value.Minutes == 0 && horario_inicio.Value.Seconds == 0 ||
-                    this.Operacao == "update" && horario_inicio.Value.Hours == 0 &&
+                if (horario_inicio.Value.Hours == 0 &&
                     horario_inicio.Value.Minutes == 0 && horario_inicio.Value.Seconds == 0)
                     throw new Exception("Horario_inicio");
                 return horario_inicio;
@@ -61,9 +59,7 @@ namespace business.classes
         {
             get
             {
-                if (this.Operacao == "insert" && horario_fim.Value.Hours == 0 &&
-                    horario_fim.Value.Minutes == 0 && horario_fim.Value.Seconds == 0 ||
-                    this.Operacao == "update" && horario_fim.Value.Hours == 0 &&
+                if (horario_fim.Value.Hours == 0 &&
                     horario_fim.Value.Minutes == 0 && horario_fim.Value.Seconds == 0)
                     throw new Exception("Horario_fim");
                 return horario_fim;
@@ -79,8 +75,7 @@ namespace business.classes
         {
             get
             {
-                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(local_reuniao) ||
-                    this.Operacao == "update" && string.IsNullOrWhiteSpace(local_reuniao))
+                if (string.IsNullOrWhiteSpace(local_reuniao))
                     throw new Exception("Local_reuniao");
                 return local_reuniao;
             }

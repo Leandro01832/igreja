@@ -36,7 +36,6 @@ namespace database
         public modelocrud ModelEntity;
         public Type T;
         public string ErroCadastro = "";
-        public string Operacao = "";
         public static string classe = "";
         
         public static List<modelocrud> Modelos = new List<modelocrud>();
@@ -65,8 +64,8 @@ namespace database
             else if (item.Name == ex.Message && condicao == 2)
             {
                     OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
-                if (opc != null && opc.Obrigatorio) mensagem += "Erro no campo " + item.Name + ". Este Campo é Obrigatório.\n"; 
-                if (this.ErroCadastro != "") mensagem += "Erro no campo " + item.Name + ". " + this.ErroCadastro; 
+                if (opc != null && opc.Obrigatorio) mensagem += " O Campo " + item.Name + " é Obrigatório.\n"; 
+                if (this.ErroCadastro != "") mensagem += "Observação no campo " + item.Name + ": " + this.ErroCadastro; 
                 
             }
            return mensagem;
@@ -117,7 +116,6 @@ namespace database
         {
             if (!EntityCrud)
             {
-                this.Operacao = "insert";
                 try
                 {
                     var ClassBase = GetType();
@@ -132,7 +130,6 @@ namespace database
                         GetProperty(T);
                     GetProperty(null);
                     bd.SalvarModelo(this);
-                    this.Operacao = "";
                     return Insert_padrao;
                 }
                 catch (Exception ex)
@@ -148,12 +145,10 @@ namespace database
         {
             if (!EntityCrud)
             {
-                this.Operacao = "update";
                 while (T != typeof(modelocrud))
                     UpdateProperty(T);
                 UpdateProperty(null);
                 bd.Editar(this);
-                this.Operacao = "";
                 return Update_padrao;
             }
             else

@@ -56,8 +56,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(email) ||
-                    this.Operacao == "update" && string.IsNullOrWhiteSpace(email))
+                if (string.IsNullOrWhiteSpace(email))
                     throw new Exception("Email");
                 return email;
             }

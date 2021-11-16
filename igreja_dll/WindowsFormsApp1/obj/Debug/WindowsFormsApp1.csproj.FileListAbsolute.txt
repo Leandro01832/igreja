@@ -543,3 +543,4 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsF
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FrmOpenEmail.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FrmPermissao.resources
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDIAdmin.resources
+C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.pdb

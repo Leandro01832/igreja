@@ -1,5 +1,4 @@
 ﻿using business.classes.Intermediario;
-using business.classes.Ministerio;
 using business.contrato;
 using business.implementacao;
 using database;
@@ -28,8 +27,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(nome) ||
-                    this.Operacao == "update" && string.IsNullOrWhiteSpace(nome))
+                if (string.IsNullOrWhiteSpace(nome))
                     throw new Exception("Nome");
                 return nome;
             }
@@ -43,8 +41,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && string.IsNullOrWhiteSpace(proposito) ||
-                    this.Operacao == "update" && string.IsNullOrWhiteSpace(proposito))
+                if (string.IsNullOrWhiteSpace(proposito))
                     throw new Exception("Proposito");
                 return proposito;
             }
@@ -59,8 +56,7 @@ namespace business.classes.Abstrato
             {
                 try
                 {
-                    if (this.Operacao == "insert" && pessoas.Count > Maximo_pessoa ||
-                        this.Operacao == "update" && pessoas.Count > Maximo_pessoa)
+                    if ( pessoas.Count > Maximo_pessoa )
                     {
                         ErroCadastro = "Pessoas não podem mais participar deste ministério." +
                         " Nº total de pessoas que podem participar deste ministério: " + Maximo_pessoa;
@@ -87,8 +83,7 @@ namespace business.classes.Abstrato
         {
             get
             {
-                if (this.Operacao == "insert" && maximo_pessoa == 0 ||
-                    this.Operacao == "update" && maximo_pessoa == 0)
+                if ( maximo_pessoa == 0)
                     throw new Exception("Maximo_pessoa");
                 return maximo_pessoa;
             }
@@ -110,8 +105,7 @@ namespace business.classes.Abstrato
                 Pessoas = new List<PessoaMinisterio>();
                 Celulas = new List<MinisterioCelula>();
             }
-        }
-        
+        }        
 
         public async static void recuperarTodosMinisterios()
         {
