@@ -571,35 +571,7 @@ namespace business.implementacao
                 }.salvar();
             }
         }
-
-        public static int TotalRegistro()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM MudancaEstado", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
+        
         public override string ToString()
         {
             return "ID da mudança: " + Id.ToString() + " ID da pessoa: " + this.Codigo;

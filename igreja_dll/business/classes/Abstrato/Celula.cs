@@ -2,14 +2,11 @@
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using database;
-using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
 namespace business.classes.Abstrato
 {
@@ -17,7 +14,7 @@ namespace business.classes.Abstrato
     public abstract class Celula : modelocrud
     {
         #region properties        
-        private string nome;
+        private string nome = "nome";
         [Display(Name = "Nome da celula")]
         [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -29,10 +26,15 @@ namespace business.classes.Abstrato
                     throw new Exception("Nome");
                 return nome;
             }
-            set { nome = value; }
+            set
+            {
+                nome = value;
+                if (string.IsNullOrWhiteSpace(nome))
+                    throw new Exception("Nome");
+            }
         }
 
-        private string dia_semana;
+        private string dia_semana = "dia";
         [Display(Name = "Dia da semana")]
         [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -44,16 +46,21 @@ namespace business.classes.Abstrato
                     throw new Exception("Dia_semana");
                 return dia_semana;
             }
-            set { dia_semana = value; }
+            set
+            {
+                dia_semana = value;
+                if (string.IsNullOrWhiteSpace(dia_semana))
+                    throw new Exception("Dia_semana");
+            }
         }
 
-        private TimeSpan? horario;
+        private TimeSpan horario = new TimeSpan(0, 0, 0);
         [Display(Name = "Horário")]
         [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
-        public TimeSpan? Horario
+        public TimeSpan Horario
         {
             get
             {
@@ -70,12 +77,17 @@ namespace business.classes.Abstrato
         [Display(Name = "Máximo de pessoas")]
         public int Maximo_pessoa { get; set; }
 
-        private List<MinisterioCelula> ministerios;
+        private List<MinisterioCelula> ministerios =   new List<MinisterioCelula>
+        {
+            new MinisterioCelula{ Ministerio = new Lider_Celula() },
+            new MinisterioCelula{ Ministerio = new Lider_Celula_Treinamento() }
+        };
         [JsonIgnore]
         public virtual List<MinisterioCelula> Ministerios
         {
             get
             {
+                var m = this;
                 if ( ministerios.Count <= 1 )
                 {
                     ErroCadastro = "Celula precisa de pelo menos um líder de celula e um líder de celula em treinamento." +
@@ -88,11 +100,8 @@ namespace business.classes.Abstrato
                     bool condicao2 = false;
                     foreach (var item in ministerios)
                     {
-                        var model1 = new Lider_Celula(); var p1 = model1.recuperar(item.MinisterioId);
-                        var model2 = new Lider_Celula_Treinamento(); var p2 = model2.recuperar(item.MinisterioId);
-
-                        if (p1) condicao1 = true;
-                        if (p2) condicao2 = true;
+                        if (item.Ministerio is Lider_Celula) condicao1 = true;
+                        if (item.Ministerio is Lider_Celula_Treinamento) condicao2 = true;
                         if (condicao1 && condicao2)
                         {
                             ErroCadastro = "";
@@ -124,6 +133,17 @@ namespace business.classes.Abstrato
             {
                 this.Maximo_pessoa = 50;
                 EnderecoCelula = new EnderecoCelula();
+                Pessoas = new List<Pessoa>();
+            }
+
+        }
+
+        public Celula(bool v) : base(v)
+        {
+            if (!EntityCrud)
+            {
+                this.Maximo_pessoa = 50;
+                EnderecoCelula = new EnderecoCelula();
                 Ministerios = new List<MinisterioCelula>();
                 Pessoas = new List<Pessoa>();
             }
@@ -140,35 +160,7 @@ namespace business.classes.Abstrato
                 await Task.Run(() => modelo.recuperar());
             }
         }
-
-        public static int TotalRegistro()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Celula", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
+        
         public override string ToString()
         {
             return base.Id.ToString() + " - " + this.Nome;

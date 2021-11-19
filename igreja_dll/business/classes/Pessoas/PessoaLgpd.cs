@@ -7,6 +7,10 @@ namespace business.classes.Pessoas
     {
         public PessoaLgpd() : base(){ }
 
+        protected PessoaLgpd(bool v) : base(v)
+        {
+        }
+
         public override string ToString()
         {
             return this.Codigo + " - " + this.Email;

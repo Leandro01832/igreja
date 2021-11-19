@@ -9,18 +9,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
     public partial class CadastroMembroReconciliacao : WFCrud
     {
 
-        public CadastroMembroReconciliacao(modelocrud modelo, modelocrud modeloNovo)
-            : base(modelo, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroMembroReconciliacao(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
-            modelocrud modeloNovo)
-            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
 
         public CadastroMembroReconciliacao() : base()
         {

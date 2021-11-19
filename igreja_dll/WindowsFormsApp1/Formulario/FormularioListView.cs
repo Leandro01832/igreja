@@ -119,9 +119,9 @@ namespace WindowsFormsApp1.Formulario
             {
                 try
                 {
-                    FrmMudancaEstado frm = new FrmMudancaEstado((modelocrud)ListView.SelectedItem);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    result = new FrmMudancaEstado((modelocrud)ListView.SelectedItem);
+                    result.MdiParent = this.MdiParent;
+                    result.Show();
                 }
                 catch { }
             }
@@ -130,9 +130,9 @@ namespace WindowsFormsApp1.Formulario
             {
                 try
                 {
-                    FrmMudancaEstadoMinisterio frm = new FrmMudancaEstadoMinisterio((modelocrud)ListView.SelectedItem);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    result = new FrmMudancaEstadoMinisterio((modelocrud)ListView.SelectedItem);
+                    result.MdiParent = this.MdiParent;
+                    result.Show();
                 }
                 catch { }
             }
@@ -199,7 +199,7 @@ namespace WindowsFormsApp1.Formulario
                 var lista = modelocrud.listTypes(typeof(WFCrud));
                 var listaTypes = modelocrud.listTypes(typeof(modelocrud));
 
-                Type BaseModel = ReturnBase(ListView.SelectedItem.GetType());
+                Type BaseModel = modelocrud.ReturnBase(ListView.SelectedItem.GetType());
 
                 foreach (var item in listaTypes)
                 {
@@ -227,12 +227,6 @@ namespace WindowsFormsApp1.Formulario
             }
             catch { }
         }
-
-        private Type ReturnBase(Type type)
-        {
-            if (type.BaseType != typeof(modelocrud))
-                ReturnBase(type.BaseType);
-            return type;
-        }
+        
     }
 }

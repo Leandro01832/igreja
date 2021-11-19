@@ -201,7 +201,7 @@ namespace WindowsFormsApp1
 
             for (int i = 1; i <= 12; i++)
             {
-                double valor = 0;
+                decimal valor = 0;
                 foreach (var item in modelocrud.Modelos.OfType<MovimentacaoEntrada>()
                 .Where(m => m.Data.Year == dateEscolhida.Value.Year && m.Data.Month == i))
                     valor += item.Valor;
@@ -222,7 +222,7 @@ namespace WindowsFormsApp1
 
             for (int i = 1; i <= 12; i++)
             {
-                double valor = 0;
+                decimal valor = 0;
                 foreach (var item in modelocrud.Modelos.OfType<MovimentacaoSaida>()
                 .Where(m => m.Data.Year == dateEscolhida.Value.Year && m.Data.Month == i))
                     valor += item.Valor;
@@ -241,8 +241,8 @@ namespace WindowsFormsApp1
                 if (i == 12) chart1.Series["MovimentoSaidaAnual"].Points.AddXY("Dezembro", valor);
             }
 
-            double valorEntrada = 0;
-            double valorSaida = 0;
+            decimal valorEntrada = 0;
+            decimal valorSaida = 0;
             DateTime data = DateTime.Now;
 
             for (int i = 1; i <= 28; i++)

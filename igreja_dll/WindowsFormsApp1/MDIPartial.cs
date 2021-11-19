@@ -1,10 +1,8 @@
-﻿using business.classes;
-using business.classes.Abstrato;
+﻿using business.classes.Abstrato;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
-using System.Windows.Forms;
 using WindowsFormsApp1.Formulario;
 using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
@@ -62,73 +60,73 @@ namespace WindowsFormsApp1
         private void membroPorAclamaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoalLgpd();
-            LoadFormCreate(new Membro_AclamacaoLgpd());
+            LoadFormCreate(new Membro_AclamacaoLgpd(true));
         }
 
         private void membroPorBatismoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoalLgpd();
-            LoadFormCreate(new Membro_BatismoLgpd());
+            LoadFormCreate(new Membro_BatismoLgpd(true));
         }
 
         private void membroPorReconciliaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoalLgpd();
-            LoadFormCreate(new Membro_ReconciliacaoLgpd());
+            LoadFormCreate(new Membro_ReconciliacaoLgpd(true));
         }
 
         private void membroPorTransferênciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoalLgpd();
-            LoadFormCreate(new Membro_TransferenciaLgpd());
+            LoadFormCreate(new Membro_TransferenciaLgpd(true));
         }
 
         private void vIsitanteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoalLgpd();
-            LoadFormCreate(new VisitanteLgpd());
+            LoadFormCreate(new VisitanteLgpd(true));
         }
 
         private void criançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoalLgpd();
-            LoadFormCreate(new CriancaLgpd());
+            LoadFormCreate(new CriancaLgpd(true));
         }
 
         private void toolStripMenuItem19_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoal();
-            LoadFormCreate(new Visitante());
+            LoadFormCreate(new Visitante(true));
         }
 
         private void toolStripMenuItem25_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoal();
-            LoadFormCreate(new Crianca());
+            LoadFormCreate(new Crianca(true));
         }
 
         private void toolStripMenuItem21_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoal();
-            LoadFormCreate(new Membro_Aclamacao());
+            LoadFormCreate(new Membro_Aclamacao(true));
         }
 
         private void toolStripMenuItem22_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoal();
-            LoadFormCreate(new Membro_Batismo());
+            LoadFormCreate(new Membro_Batismo(true));
         }
 
         private void toolStripMenuItem23_Click(object sender, EventArgs e)
         {
             frm = new DadoPessoal();
-            LoadFormCreate(new Membro_Reconciliacao());
+            LoadFormCreate(new Membro_Reconciliacao(true));
         }
 
         private void toolStripMenuItem24_Click(object sender, EventArgs e)
         {
             DadoPessoal frm = new DadoPessoal();
-            LoadFormCreate(new Membro_Transferencia());
+            LoadFormCreate(new Membro_Transferencia(true));
         }
 
         private void pessoaLgpdToolStripMenuItem_Click(object sender, EventArgs e)

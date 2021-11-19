@@ -13,19 +13,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             InitializeComponent();
         }
 
-        public CadastroMembroTransferencia(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
-            modelocrud modeloNovo)
-            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroMembroTransferencia(modelocrud modelo, modelocrud modeloNovo)
-            : base(modelo, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
         private void CadastroMembroTransferencia_Load(object sender, EventArgs e)
         {
             LoadCrudForm();

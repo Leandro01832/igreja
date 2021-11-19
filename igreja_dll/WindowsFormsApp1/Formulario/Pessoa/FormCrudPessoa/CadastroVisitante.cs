@@ -13,19 +13,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             InitializeComponent();
         }
-
-        public CadastroVisitante(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
-            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroVisitante(modelocrud modelo, modelocrud modeloNovo)
-            : base(modelo, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
+        
         private void CadastroVisitante_Load(object sender, EventArgs e)
         {
             LoadCrudForm();

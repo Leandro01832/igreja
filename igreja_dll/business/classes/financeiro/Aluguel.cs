@@ -10,6 +10,10 @@ namespace business.classes.financeiro
     [Table("Aluguel")]
     public class Aluguel : MovimentacaoSaida
     {
+
+        public Aluguel(bool v) : base(v){ }
+        public Aluguel() : base(){ }
+
         public string NomeProduto { get; set; }
     }
 }

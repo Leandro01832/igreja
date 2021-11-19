@@ -1,6 +1,4 @@
 ﻿using business.classes.Intermediario;
-using business.classes.Pessoas;
-using business.classes.PessoasLgpd;
 using business.contrato;
 using business.implementacao;
 using database;
@@ -11,7 +9,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +19,17 @@ namespace business.classes.Abstrato
     public abstract class Pessoa : modelocrud, IMudancaEstado
     {
         public Pessoa() : base()
+        {
+            if (!EntityCrud)
+            {
+                MudancaEstado = new MudancaEstado();
+                Chamada = new Chamada();
+                Ministerios = new List<PessoaMinisterio>();
+                Reuniao = new List<ReuniaoPessoa>();
+            }
+
+        }
+        public Pessoa(bool v) : base(v)
         {
             if (!EntityCrud)
             {
@@ -47,7 +55,8 @@ namespace business.classes.Abstrato
         
         public string password;
 
-        private string email;
+        private string email = "email";
+        [OpcoesBase(Obrigatorio =true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [Index("EMAIL", 2, IsUnique = true)]
         [MaxLength(80, ErrorMessage ="No maximo 80 caracteres!!!")]
@@ -60,7 +69,12 @@ namespace business.classes.Abstrato
                     throw new Exception("Email");
                 return email;
             }
-            set { email = value; }
+            set
+            {
+                email = value;
+                if (string.IsNullOrWhiteSpace(email))
+                    throw new Exception("Email");
+            }
         }
 
         public int Falta { get; set; }        
@@ -120,36 +134,7 @@ namespace business.classes.Abstrato
             return true;
         }
 
-        public static int TotalRegistro()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Pessoa", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
 
-
-            return _TotalRegistros;
-        }
-
-        
+                
     }
 }

@@ -110,7 +110,7 @@ namespace WFEsboco
         private void mensagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new FrmCadastrarMensagem();
-            LoadFormCreate(new Mensagem());
+            LoadFormCreate(new Mensagem(true));
         }
 
         private void LoadFormCreate(modelocrud model)
@@ -160,7 +160,7 @@ namespace WFEsboco
         private void versiculoToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             frm = new FrmDadoFonte();
-            LoadFormCreate(new Versiculo());
+            LoadFormCreate(new Versiculo(true));
         }
 
         private void versiculoToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -177,13 +177,13 @@ namespace WFEsboco
         private void canalDeTvToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmDadoFonte frm = new FrmDadoFonte();
-            LoadFormCreate(new CanalTv());
+            LoadFormCreate(new CanalTv(true));
         }
 
         private void livroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDadoFonte frm = new FrmDadoFonte();
-            LoadFormCreate(new Livro());
+            LoadFormCreate(new Livro(true));
         }
 
         private void livroToolStripMenuItem1_Click(object sender, EventArgs e)

@@ -135,12 +135,9 @@ namespace WindowsFormsApp1
 
         private async Task verificarListagem()
         {
-            var registrosMinisterios = Ministerio.TotalRegistro();
-            var registrosPessoas = Pessoa.TotalRegistro();
-            var registrosCelulas = Celula.TotalRegistro();
             try
             {
-                if (registrosMinisterios != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
+                if (modelocrud.TotalRegistro(typeof(Ministerio)) != modelocrud.Modelos.OfType<Ministerio>().ToList().Count)
                 {
                     FormProgressBar2 form = new FormProgressBar2();
 
@@ -160,7 +157,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                if (registrosCelulas != modelocrud.Modelos.OfType<Celula>().ToList().Count)
+                if (modelocrud.TotalRegistro(typeof(Celula)) != modelocrud.Modelos.OfType<Celula>().ToList().Count)
                 {
                     FormProgressBar2 form = new FormProgressBar2();
 
@@ -180,7 +177,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                if (registrosPessoas != modelocrud.Modelos.OfType<Pessoa>().ToList().Count)
+                if (modelocrud.TotalRegistro(typeof(Pessoa)) != modelocrud.Modelos.OfType<Pessoa>().ToList().Count)
                 {
                     FormProgressBar2 form = new FormProgressBar2();
 
@@ -344,25 +341,10 @@ namespace WindowsFormsApp1
         {
             form.Icon = new Icon($@"{path}\favicon.ico");
 
-            string textoFormulario = form.GetType().Name;
-            
-                textoFormulario = textoFormulario.Replace("Frm", "");
-
-                textoFormulario = textoFormulario.Replace("_", " ");
-
-            if (textoFormulario.Contains("Form") && !textoFormulario.Contains("Formulario"))
-                textoFormulario = textoFormulario.Replace("Form", "");
-            
-                textoFormulario = textoFormulario.Replace("MDI", "");
-
-            for (var i = 0; i < textoFormulario.Length; i++)
-                if (i > 0 && textoFormulario.Any(c1 => char.IsUpper(textoFormulario[i])) &&
-                textoFormulario.Any(c2 => char.IsLower(textoFormulario[i - 1])))
-                    textoFormulario = textoFormulario.Replace(textoFormulario[i - 1].ToString(), textoFormulario[i - 1] + " ");
+            string textoFormulario = modelocrud.formatarTexto(form.GetType().Name);
 
             if (textoPrefixo != "") textoFormulario = textoPrefixo + " " + textoFormulario;
             if (textoSufixo != "") textoFormulario = textoFormulario + " " + textoSufixo;
-
 
             form.Text = textoFormulario;
         }

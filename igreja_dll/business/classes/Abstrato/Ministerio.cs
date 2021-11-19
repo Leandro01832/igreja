@@ -2,13 +2,11 @@
 using business.contrato;
 using business.implementacao;
 using database;
-using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 namespace business.classes.Abstrato
 {
@@ -20,7 +18,7 @@ namespace business.classes.Abstrato
         [Index("CODIGOMINISTERIO", 2, IsUnique = true)]
         public int CodigoMinisterio { get; set; }
 
-        private string nome;
+        private string nome = "nome";
         [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Nome
@@ -31,10 +29,15 @@ namespace business.classes.Abstrato
                     throw new Exception("Nome");
                 return nome;
             }
-            set { nome = value; }
+            set
+            {
+                nome = value;
+                if (string.IsNullOrWhiteSpace(nome))
+                    throw new Exception("Nome");
+            }
         }
 
-        private string proposito;
+        private string proposito= "proposito";
         [OpcoesBase(Obrigatorio = true)]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Proposito
@@ -45,7 +48,12 @@ namespace business.classes.Abstrato
                     throw new Exception("Proposito");
                 return proposito;
             }
-            set { proposito = value; }
+            set
+            {
+                proposito = value;
+                if (string.IsNullOrWhiteSpace(proposito))
+                    throw new Exception("Proposito");
+            }
         }
 
         private List<PessoaMinisterio> pessoas;
@@ -105,7 +113,18 @@ namespace business.classes.Abstrato
                 Pessoas = new List<PessoaMinisterio>();
                 Celulas = new List<MinisterioCelula>();
             }
-        }        
+        }
+        public Ministerio(bool v) : base(v)
+        {
+            
+            if (!EntityCrud)
+            {
+                this.Maximo_pessoa = 50;
+                mudanca = new MudancaEstado();
+                Pessoas = new List<PessoaMinisterio>();
+                Celulas = new List<MinisterioCelula>();
+            }
+        }     
 
         public async static void recuperarTodosMinisterios()
         {
@@ -117,34 +136,6 @@ namespace business.classes.Abstrato
             }            
         }
         
-        public static int TotalRegistro()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Ministerio", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
-
         public override string ToString()
         {
             return this.Id.ToString() + " - " + this.Nome;

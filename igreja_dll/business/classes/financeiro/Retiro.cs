@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace business.classes.financeiro
 {
     [Table("Retiro")]
     public class Retiro : MovimentacaoSaida
     {
+
+        public Retiro(bool v) : base(v){  }
+        public Retiro() : base(){  }
+
         public string Local { get; set; }
     }
 }

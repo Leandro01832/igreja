@@ -113,19 +113,19 @@ namespace WindowsFormsApp1
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             form = new FrmAdmin();
-            LoadFormCreate(new Admin());
+            LoadFormCreate(new Admin(true));
         }
 
         private void compradorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             form = new FrmComprador();
-            LoadFormCreate(new Comprador());
+            LoadFormCreate(new Comprador(true));
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
             form = new FrmDizimo();
-            LoadFormCreate(new Dizimo());
+            LoadFormCreate(new Dizimo(true));
         }
 
         private void LoadFormCreate(modelocrud model)
@@ -138,57 +138,57 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
             form = new FrmCantina();
-            LoadFormCreate(new Cantina());
+            LoadFormCreate(new Cantina(true));
         }
 
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
             form = new FrmOferta();
-            LoadFormCreate(new Oferta());
+            LoadFormCreate(new Oferta(true));
         }
 
         private void bazarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             form = new FrmBazar();
-            LoadFormCreate(new Bazar());
+            LoadFormCreate(new Bazar(true));
         }
 
         private void lavaRapidoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             form = new FrmLava_Rapido();
-            LoadFormCreate(new Lava_Rapido());
+            LoadFormCreate(new Lava_Rapido(true));
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
             form = new FrmCompra();
-            LoadFormCreate(new Compra());
+            LoadFormCreate(new Compra(true));
 
         }
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
             form = new FrmTransporte();
-            LoadFormCreate(new Transporte());
+            LoadFormCreate(new Transporte(true));
 
         }
 
         private void toolStripMenuItem13_Click(object sender, EventArgs e)
         {
             form = new FrmTransacao();
-            LoadFormCreate(new Transacao());
+            LoadFormCreate(new Transacao(true));
         }
 
         private void toolStripMenuItem14_Click(object sender, EventArgs e)
         {
             form = new FrmRetiro();
-            LoadFormCreate(new Retiro());
+            LoadFormCreate(new Retiro(true));
         }
 
         private void toolStripMenuItem15_Click(object sender, EventArgs e)
         {
             form = new FrmAluguel();
-            LoadFormCreate(new Aluguel());
+            LoadFormCreate(new Aluguel(true));
         }
 
         private void fileMenu_Click(object sender, EventArgs e)

@@ -11,9 +11,11 @@ namespace business.classes.financeiro
     [Table("Dizimo")]
     public class Dizimo : MovimentacaoEntrada
     {
-        public Dizimo()
+        public Dizimo() : base()
         {
             this.Pessoa_ = null;
         }
+
+        public Dizimo(bool v) : base(v) { this.Pessoa_ = null; }
     }
 }

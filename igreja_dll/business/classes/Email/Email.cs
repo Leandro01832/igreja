@@ -22,14 +22,7 @@ namespace business
 
 
         private static string path = Directory.GetCurrentDirectory();
-
-        public string Caminho
-        {
-            get
-            {
-                return path + @"\Email\" + this.Id.ToString() + ".html";
-            }
-        } 
+        
 
 
         public override string ToString()

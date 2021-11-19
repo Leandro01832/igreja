@@ -7,5 +7,9 @@ namespace business.classes.Pessoas
     public class Membro_Batismo : Membro
     {
         public Membro_Batismo() : base() { }
+
+        public Membro_Batismo(bool v) : base(v)
+        {
+        }
     }
 }

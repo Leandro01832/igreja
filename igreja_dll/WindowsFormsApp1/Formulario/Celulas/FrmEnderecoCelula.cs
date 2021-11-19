@@ -44,7 +44,15 @@ namespace WindowsFormsApp1.Formulario.Celulas
         private void text_cep_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Cep = long.Parse(text_cep.Text);
+            try
+            {
+                c.EnderecoCelula.Cep = long.Parse(text_cep.Text);
+            }
+            catch (Exception)
+            {
+                text_cep.Text = "";
+                MessageBox.Show("Informe apenas numeros.");
+            }
         }
 
         private void text_estado_TextChanged(object sender, EventArgs e)

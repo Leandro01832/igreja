@@ -142,8 +142,8 @@ namespace WindowsFormsApp1
             var ms = modelocrud.Modelos.OfType<MovimentacaoSaida>()
                             .Where(m => m.Data.ToString("dd/MM/yyyy") == dateEscolhida.Value.ToString("dd/MM/yyyy"));
 
-            double valorME = 0;
-            double valorMS = 0;
+            decimal valorME = 0;
+            decimal valorMS = 0;
 
             foreach (var item in me)
                 valorME += item.Valor;
@@ -155,8 +155,8 @@ namespace WindowsFormsApp1
 
             for (int i = 1; i <= 12; i++)
             {
-                double valorMovE = 0;
-                double valorMovS = 0;
+                decimal valorMovE = 0;
+                decimal valorMovS = 0;
                 foreach (var item in modelocrud.Modelos.OfType<MovimentacaoEntrada>()
                 .Where(m => m.Data.Year == dateEscolhida.Value.Year && m.Data.Month == i))
                     valorMovE += item.Valor;
@@ -184,8 +184,8 @@ namespace WindowsFormsApp1
 
             }
             
-            double valorCaixaME = 0;
-            double valorCaixaMS = 0;
+            decimal valorCaixaME = 0;
+            decimal valorCaixaMS = 0;
             DateTime data = DateTime.Now;
 
             for (int i = 1; i <= 31; i++)

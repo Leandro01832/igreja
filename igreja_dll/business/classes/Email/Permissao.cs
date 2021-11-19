@@ -6,7 +6,11 @@ namespace business
 {
     public class Permissao : modelocrud
     {
-        public Permissao():base()
+        public Permissao() : base()
+        {
+
+        }
+        public Permissao(bool v) :base(v)
         {
             if (!EntityCrud)
             {

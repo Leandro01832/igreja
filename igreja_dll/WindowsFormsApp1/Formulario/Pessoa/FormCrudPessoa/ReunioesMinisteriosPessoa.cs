@@ -12,17 +12,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
     public partial class ReunioesMinisteriosPessoa : WFCrud
     {
-
-        private Button proximoFrom;
-
-        public ReunioesMinisteriosPessoa(bool Deletar, bool Atualizar, bool Detalhes,
-        modelocrud modeloVelho, modelocrud modeloNovo)
-           : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-
-        }
-
+        
         public ReunioesMinisteriosPessoa() : base()
         {
             InitializeComponent();
@@ -54,6 +44,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                 var indice = lstBoxCelula.Items.IndexOf(pessoa.Celula);
                 lstBoxCelula.SetSelected(indice, true);
             }
+            else ckBoxNulo.Checked = true;
 
             try
             {
@@ -97,7 +88,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                     var objetos = valor.Cast<Ministerio>().ToList();
                     pessoa.Ministerios = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                        pessoa.Ministerios.Add(new PessoaMinisterio { MinisterioId = item.Id });
+                    pessoa.Ministerios.Add(new PessoaMinisterio { MinisterioId = item.Id });
                 }
 
             }
@@ -111,7 +102,13 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
         {
             var pessoa = (Pessoa)modelo;
             Celula cel = (Celula)lstBoxCelula.SelectedItem;
-            pessoa.celula_ = cel.Id;
+            if(cel != null)
+            {
+                pessoa.celula_ = cel.Id;
+                pessoa.Celula = cel;
+                if (ckBoxNulo.Checked)
+                    ckBoxNulo.Checked = false;
+            }
         }
 
         private void lstBoxReuniao_SelectedValueChanged(object sender, EventArgs e)
@@ -132,6 +129,18 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             catch (Exception ex)
             {
                 MessageBox.Show("Um erro aconteceu " + ex.Message);
+            }
+        }
+
+        private void ckBoxNulo_CheckedChanged(object sender, EventArgs e)
+        {
+            var pessoa = (Pessoa)modelo;
+            if (ckBoxNulo.Checked)
+            {
+                var indice = lstBoxCelula.SelectedIndex;
+                if (indice >= 0)
+                lstBoxCelula.SetSelected(indice, false);
+                pessoa.celula_ = null;
             }
         }
     }

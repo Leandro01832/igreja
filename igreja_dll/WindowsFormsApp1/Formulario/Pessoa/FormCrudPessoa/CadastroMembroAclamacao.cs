@@ -10,25 +10,12 @@ namespace WindowsFormsApp1.Formulario.Pessoas
     public partial class CadastroMembroAclamacao : WFCrud
     {
 
-        public CadastroMembroAclamacao(modelocrud modelo, modelocrud modeloNovo)
-            : base(modelo, modeloNovo)
+        public CadastroMembroAclamacao()
+            : base()
         {
             InitializeComponent();
         }
-
-        public CadastroMembroAclamacao(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
-            modelocrud modeloNovo)
-            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroMembroAclamacao() : base()
-        {
-            InitializeComponent();
-        }
-
-
+               
         private void CadastroMembroAclamacao_Load(object sender, EventArgs e)
         {
             LoadCrudForm();

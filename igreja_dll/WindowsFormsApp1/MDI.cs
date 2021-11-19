@@ -180,79 +180,79 @@ namespace WindowsFormsApp1
         private void celulaParaAdultosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoCelula();
-            LoadFormCreate(new Celula_Adulto());
+            LoadFormCreate(new Celula_Adulto(true));
         }
 
         private void liderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Celula());
+            LoadFormCreate(new Lider_Celula(true));
         }
 
         private void lIiderEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Celula_Treinamento());
+            LoadFormCreate(new Lider_Celula_Treinamento(true));
         }
 
         private void liderToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Ministerio());
+            LoadFormCreate(new Lider_Ministerio(true));
         }
 
         private void liderDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Ministerio_Treinamento());
+            LoadFormCreate(new Lider_Ministerio_Treinamento(true));
         }
 
         private void supervisorDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Celula());
+            LoadFormCreate(new Supervisor_Celula(true));
         }
 
         private void supervisorDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Celula_Treinamento());
+            LoadFormCreate(new Supervisor_Celula_Treinamento(true));
         }
 
         private void supervisorDeMinistérioEmTreianmentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Ministerio());
+            LoadFormCreate(new Supervisor_Ministerio(true));
         }
 
         private void supervisorDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Ministerio_Treinamento());
+            LoadFormCreate(new Supervisor_Ministerio_Treinamento(true));
         }
 
         private void celulaParaCriançasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoCelula();
-            LoadFormCreate(new Celula_Crianca());
+            LoadFormCreate(new Celula_Crianca(true));
         }
 
         private void celulaParaAdolescentesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoCelula();
-            LoadFormCreate(new Celula_Adolescente());
+            LoadFormCreate(new Celula_Adolescente(true));
         }
 
         private void celulaParaJovensToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoCelula();
-            LoadFormCreate(new Celula_Jovem());
+            LoadFormCreate(new Celula_Jovem(true));
         }
 
         private void celulaParaCasadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoCelula();
-            LoadFormCreate(new Celula_Casado());
+            LoadFormCreate(new Celula_Casado(true));
         }
 
         private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e){ }        
@@ -348,7 +348,7 @@ namespace WindowsFormsApp1
         private void reuniãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm = new DadoReuniao();
-            LoadFormCreate(new Reuniao());
+            LoadFormCreate(new Reuniao(true));
         }
 
         private void mudançaDeEstadoToolStripMenuItem_Click(object sender, EventArgs e)

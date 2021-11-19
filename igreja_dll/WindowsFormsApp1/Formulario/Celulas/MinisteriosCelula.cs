@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using static System.Windows.Forms.ListBox;
 
@@ -72,17 +73,23 @@ namespace WindowsFormsApp1.Formulario.Celulas
             {
                 if (condicao)
                 {
+                    var lista = new List<MinisterioCelula>();
                     SelectedObjectCollection valor = lstBoxMinisterio.SelectedItems;
                     var objetos = valor.Cast<Ministerio>().ToList();
                     celula.Ministerios = new List<MinisterioCelula>();
                     foreach (var item in objetos)
-                        celula.Ministerios.Add(new MinisterioCelula { MinisterioId = item.Id, Ministerio = item });
+                    lista.Add(new MinisterioCelula { MinisterioId = item.Id, Ministerio = item });
+                    
+                    PropertyInfo prop = modelo.GetType().GetProperty("Ministerios");
+                    prop.SetValue(modelo, lista);
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Um erro aconteceu " + ex.Message);
+                if(ex.HResult == 1)
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                
             }
         }
 

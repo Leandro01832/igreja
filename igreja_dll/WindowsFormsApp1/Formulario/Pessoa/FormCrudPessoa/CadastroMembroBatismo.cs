@@ -9,18 +9,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
     public partial class CadastroMembroBatismo :  WFCrud
     {
 
-        public CadastroMembroBatismo(modelocrud modelo, modelocrud modeloNovo)
-            :base(modelo, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroMembroBatismo(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho,
-            modelocrud modeloNovo)
-            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
 
         public CadastroMembroBatismo()  : base()
         {

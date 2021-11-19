@@ -15,13 +15,13 @@ namespace business.classes.financeiro
         [NotMapped]
         public static string Status { get; set; }
         [NotMapped]
-        public static double Saldo {get;set;}
+        public static decimal Saldo {get;set;}
 
 
         public void calcularSaldoCaixa(bool liquido)
         {
-            double valorPagar = 0;
-            double valorReceber = 0;
+            decimal valorPagar = 0;
+            decimal valorReceber = 0;
             var contasPagar = modelocrud.Modelos.OfType<MovimentacaoSaida>();
             var contasReceber = modelocrud.Modelos.OfType<MovimentacaoEntrada>();
 

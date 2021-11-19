@@ -1,15 +1,13 @@
-﻿using System;
+﻿using business.contrato;
+using database;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using business.classes.Abstrato;
-using business.contrato;
-using database;
 
 namespace business.implementacao
 {
@@ -41,7 +39,7 @@ namespace business.implementacao
                     Model.Select_padrao = Model.Select_padrao.Replace(t.Name, tipo.Name);
                 }
 
-                var propertiesDeclaring = tipo.GetProperties().Where(e => e.ReflectedType == e.DeclaringType);
+                var propertiesDeclaring = tipo.GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList();
 
                 if (Model.conexao == null)
                     Model.conexao = Model.bd.obterconexao();
@@ -92,6 +90,15 @@ namespace business.implementacao
                                 try
                                 {
                                     property.SetValue(Model, double.Parse(Convert.ToString(Model.dr[property.Name])));
+                                }
+                                catch { property.SetValue(Model, null); }
+                            }
+                            else
+                            if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
+                            {
+                                try
+                                {
+                                    property.SetValue(Model, decimal.Parse(Convert.ToString(Model.dr[property.Name])));
                                 }
                                 catch { property.SetValue(Model, null); }
                             }
@@ -166,7 +173,7 @@ namespace business.implementacao
 
                                 if (condicao)
                                 {
-                                    Type baseModel = ReturnBase();
+                                    Type baseModel = modelocrud.ReturnBase(Model.GetType());
                                     var propert = itemType.GetProperties().First(p => p.PropertyType == typeof(int) &&
                                     p.Name.ToLower().Contains(baseModel.Name.ToLower()));
 
@@ -180,7 +187,7 @@ namespace business.implementacao
                                 }
                                 else
                                 {
-                                    Type baseModel = ReturnBase();
+                                    Type baseModel = modelocrud.ReturnBase(Model.GetType());
                                     var propert = itemType.GetProperties().First(p => p.PropertyType == typeof(int)
                                     && p.Name.ToLower().Contains(baseModel.Name.ToLower()) ||
                                      p.PropertyType == typeof(int?) && p.Name.ToLower().Contains(baseModel.Name.ToLower()));
@@ -598,6 +605,21 @@ namespace business.implementacao
                         values += "" + "null" + ", ";
                 }
                 else
+                if (property.PropertyType == typeof(decimal?) || property.PropertyType == typeof(decimal))
+                {
+                    decimal p = 0;
+                    decimal? prop = null;
+                    if (property.GetValue(objeto, null) != null)
+                    {
+                        prop = (decimal) property.GetValue(objeto, null);
+                        p = (decimal) prop;
+                    }                   
+                    if (prop != null)
+                        values += "" + p.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ", ";
+                    else
+                        values += "" + "null" + ", ";
+                }
+                else
                 if (property.PropertyType.Name == "List`1")
                 {
                     var prop = property.GetValue(objeto, null);
@@ -685,9 +707,24 @@ namespace business.implementacao
                     if (property.GetValue(objeto, null) != null)
                         prop = double.Parse(property.GetValue(objeto, null).ToString());
                     if (prop != null)
-                        values = "" + prop.ToString() + ", ";
+                        values = "'" + prop.ToString() + "', ";
                     else
                         values = "" + "null" + ", ";
+                }
+                else
+                if (property.PropertyType == typeof(decimal?) || property.PropertyType == typeof(decimal))
+                {
+                    decimal p = 0;
+                    decimal? prop = null;
+                    if (property.GetValue(objeto, null) != null)
+                    {
+                        prop = (decimal)property.GetValue(objeto, null);
+                        p = (decimal)prop;
+                    }
+                    if (prop != null)
+                        values += "" + p.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ", ";
+                    else
+                        values += "" + "null" + ", ";
                 }
                 else
                 if (property.PropertyType.Name == "List`1")
@@ -800,13 +837,6 @@ namespace business.implementacao
             
         }
 
-        private Type ReturnBase()
-        {
-            var type = Model.GetType();
-            while (type.BaseType != typeof(modelocrud))
-            type = type.BaseType;            
-            
-                return type;
-        }
+        
     }
 }

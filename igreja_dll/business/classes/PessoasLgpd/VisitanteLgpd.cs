@@ -8,15 +8,50 @@ namespace business.classes.PessoasLgpd
     [Table("VisitanteLgpd")]
     public class VisitanteLgpd : PessoaLgpd
     {
+        private DateTime data_visita = new DateTime(0001, 01, 01);
         [Display(Name = "Data da visita")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Data_visita { get; set; }
+        [OpcoesBase(Obrigatorio =true)]
+        public DateTime Data_visita
+        {
+            get
+            {
+                if (data_visita.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
+                    throw new Exception("Data_visita");
+                return data_visita;
+            }
+            set
+            {
+                data_visita = value;
+            }
+        }
 
+        private string condicao_religiosa = "condicao";
         [Display(Name = "Condição religiosa")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
-        public string Condicao_religiosa { get; set; }
-        
+        [OpcoesBase(Obrigatorio =true)]
+        public string Condicao_religiosa
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(condicao_religiosa))
+                    throw new Exception("Condicao_religiosa");
+                return condicao_religiosa;
+            }
+            set
+            {
+                condicao_religiosa = value;
+                if (string.IsNullOrWhiteSpace(condicao_religiosa))
+                    throw new Exception("Condicao_religiosa");
+            }
+        }
+
+
         public VisitanteLgpd() : base(){ }
+
+        public VisitanteLgpd(bool v) : base(v)
+        {
+        }
     }
 }

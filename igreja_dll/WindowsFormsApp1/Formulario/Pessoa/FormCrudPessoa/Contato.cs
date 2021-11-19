@@ -10,13 +10,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             InitializeComponent();
         }
-
-        public Contato(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
-           : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
+        
         private void Contato_Load(object sender, EventArgs e)
         {
             LoadCrudForm();

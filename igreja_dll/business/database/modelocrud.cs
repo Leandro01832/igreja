@@ -18,14 +18,50 @@ namespace database
     public abstract class modelocrud : IPesquisar, IEntity<modelocrud>
     {
         public modelocrud()
-        {    
-            this.bd = new BDcomum();            
+        {
+            this.bd = new BDcomum();
             Erro_Conexao = false;
             QuantErro = 0;
             this.T = GetType();
             property = new PropertiesCrud(this);
         }
-        
+        public modelocrud(bool anular)
+        {
+            this.bd = new BDcomum();
+            Erro_Conexao = false;
+            QuantErro = 0;
+            this.T = GetType();
+            property = new PropertiesCrud(this);
+            if (anular)
+                anularDados(this);
+        }
+
+        public static Type ReturnBase(Type type)
+        {
+            while (type.BaseType != typeof(modelocrud))
+                type = type.BaseType;
+
+            return type;
+        }
+
+        public void anularDados(modelocrud modelocrud)
+        {
+            var props = modelocrud.GetType().GetProperties();
+            foreach (var item in props)
+                if (item.PropertyType == typeof(DateTime))
+                    item.SetValue(modelocrud, new DateTime(0001, 01, 01));
+                else if (item.PropertyType == typeof(int) ||
+                item.PropertyType == typeof(double) ||
+                item.PropertyType == typeof(decimal))
+                    item.SetValue(modelocrud, 0);
+                else if (item.PropertyType == typeof(TimeSpan))
+                    item.SetValue(modelocrud, new TimeSpan(0, 0, 0));
+                else
+                    try { item.SetValue(modelocrud, null); }
+                    catch { }
+
+        }
+
         static Calculo calculo = new Calculo();
         PropertiesCrud property;
         static Pesquisar pesquisar = new Pesquisar();
@@ -37,16 +73,16 @@ namespace database
         public Type T;
         public string ErroCadastro = "";
         public static string classe = "";
-        
+
         public static List<modelocrud> Modelos = new List<modelocrud>();
 
         [OpcoesBase(ChavePrimaria = true, Obrigatorio = true)]
         [Key]
-        public int Id { get; set; }        
-        public static bool Erro_Conexao;        
-        public static string textoPorcentagem = "0%";        
+        public int Id { get; set; }
+        public static bool Erro_Conexao;
+        public static string textoPorcentagem = "0%";
         public static int QuantErro;
-        public static bool  EntityCrud = false;
+        public static bool EntityCrud = false;
         public string Insert_padrao;
         public string Update_padrao;
         public string Delete_padrao;
@@ -59,16 +95,48 @@ namespace database
             string mensagem = "";
             var props = this.GetType().GetProperties();
             foreach (var item in props)
+                if (item.PropertyType.IsSubclassOf(typeof(modelocrud)))
+                {
+                    foreach (var item2 in item.PropertyType.GetProperties())
+                        if (item2.Name == ex.Message && condicao == 1)
+                            mensagem = "Erro no campo " + formatarTexto(item2.Name) + ". Corrija o erro para fazer o cadastro.";
+                        else if (item2.Name == ex.Message && condicao == 2)
+                        {
+                            OpcoesBase opc = (OpcoesBase)item2.GetCustomAttribute(typeof(OpcoesBase));
+                            if (opc != null && opc.Obrigatorio) mensagem += " O Campo " + formatarTexto(item2.Name) + " é Obrigatório.\n";
+                            if (this.ErroCadastro != "") mensagem += "Observação no campo " + formatarTexto(item2.Name) + ": " + this.ErroCadastro;
+
+                        }
+                }
+                else
             if (item.Name == ex.Message && condicao == 1)
-            mensagem = "Erro no campo " + item.Name + ". Corrija o erro para fazer o cadastro.";
-            else if (item.Name == ex.Message && condicao == 2)
-            {
+                    mensagem = "Erro no campo " + item.Name + ". Corrija o erro para fazer o cadastro.";
+                else if (item.Name == ex.Message && condicao == 2)
+                {
                     OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
-                if (opc != null && opc.Obrigatorio) mensagem += " O Campo " + item.Name + " é Obrigatório.\n"; 
-                if (this.ErroCadastro != "") mensagem += "Observação no campo " + item.Name + ": " + this.ErroCadastro; 
-                
-            }
-           return mensagem;
+                    if (opc != null && opc.Obrigatorio) mensagem += " O Campo " + formatarTexto(item.Name) + " é Obrigatório.\n";
+                    if (this.ErroCadastro != "") mensagem += "Observação no campo " + formatarTexto(item.Name) + ": " + this.ErroCadastro;
+
+                }
+            return mensagem;
+        }
+
+        public static string formatarTexto(string name)
+        {
+            name = name.Replace("Frm", "");
+            name = name.Replace("_", " ");
+
+            if (name.Contains("Form") && !name.Contains("Formulario"))
+                name = name.Replace("Form", "");
+
+            name = name.Replace("MDI", "");
+
+            for (var i = 0; i < name.Length; i++)
+                if (i > 0 && name.Any(c1 => char.IsUpper(name[i])) &&
+                name.Any(c2 => char.IsLower(name[i - 1])))
+                    name = name.Replace(name[i - 1].ToString(), name[i - 1] + " ");
+            
+            return name;
         }
 
         public static List<Type> listTypes(Type tipo)
@@ -121,9 +189,9 @@ namespace database
                     var ClassBase = GetType();
                     while (ClassBase != typeof(modelocrud))
                         if (ClassBase.BaseType == typeof(modelocrud))
-                        break;
+                            break;
                         else
-                        ClassBase = ClassBase.BaseType;
+                            ClassBase = ClassBase.BaseType;
                     T = ClassBase;
                     classe = T.Name;
                     while (T != GetType())
@@ -138,7 +206,7 @@ namespace database
                 }
             }
             else
-                salvarEntity(this); return "";            
+                salvarEntity(this); return "";
         }
 
         public string alterar(int id)
@@ -152,7 +220,7 @@ namespace database
                 return Update_padrao;
             }
             else
-                alterarEntity(this); return "";            
+                alterarEntity(this); return "";
         }
 
         public string excluir(int id)
@@ -167,7 +235,7 @@ namespace database
                 return Delete_padrao;
             }
             else
-                excluirEntity(this); return "";            
+                excluirEntity(this); return "";
         }
 
         public bool recuperar(int id)
@@ -186,12 +254,12 @@ namespace database
             }
             else
             {
-              var model = recuperarEntity(id, this);
+                var model = recuperarEntity(id, this);
                 if (model == null) return false;
                 else return true;
             }
         }
-        
+
         public bool recuperar()
         {
             Select_padrao = $"select M.Id from {this.GetType().Name} as M ";
@@ -210,11 +278,11 @@ namespace database
                         bd.fecharconexao(conexao);
                         return false;
                     }
-                    
+
                     while (dr.Read())
                     {
                         var num = int.Parse(Convert.ToString(dr["Id"]));
-                        modelocrud mod = null;                        
+                        modelocrud mod = null;
                         mod = (modelocrud)Activator.CreateInstance(GetType());
                         mod.Id = num;
                         mod.Select_padrao = $"select * from {GetType().Name} as C where C.Id='{mod.Id}'";
@@ -223,12 +291,13 @@ namespace database
                             Modelos.Add(mod);
                     }
                     dr.Close();
-                    
-                    bd.fecharconexao(conexao);    
+
+                    bd.fecharconexao(conexao);
                 }
 
                 catch (Exception ex)
                 {
+
                     TratarExcessao(ex);
                     return false;
                 }
@@ -294,6 +363,57 @@ namespace database
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
+        public static int TotalRegistro(Type tipo)
+        {
+            var types = listTypes(typeof(modelocrud));
+
+            var _TotalRegistros = 0;
+            SqlConnection conexao = null;
+            SqlCommand cmd = null;
+
+            if (tipo == null)
+                foreach (var item in types)
+                    if (BDcomum.podeAbrir)
+                        _TotalRegistros += buscarCount( _TotalRegistros,  conexao,   cmd, item);
+
+            if (tipo != null)
+            {
+                if (tipo.IsAbstract)
+                {
+                    var t = listTypes(tipo);
+                    foreach(var item in t)
+                    _TotalRegistros = buscarCount( _TotalRegistros, conexao, cmd, item);
+
+                }
+                else
+                    _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, tipo);
+            }
+                    
+            return _TotalRegistros;
+        }
+
+        private static int buscarCount( int _TotalRegistros,  SqlConnection con,  SqlCommand cmd, Type item)
+        {
+            try
+            {
+                var stringConexao = "";
+                if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                else stringConexao = BDcomum.conecta2;
+                using (con = new SqlConnection(stringConexao))
+                {
+                    cmd = new SqlCommand($"SELECT COUNT(*) FROM {item.Name}", con);
+                    con.Open();
+                    _TotalRegistros += int.Parse(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+            }
+            catch (Exception)
+            {
+                BDcomum.podeAbrir = false;
+            }
+            return _TotalRegistros;
+        }
+
         private void UpdateProperty(Type tipo)
         {
             property.UpdateProperties(tipo);
@@ -340,10 +460,10 @@ namespace database
         #region MethodPorcentagem          
         public static void calcularPorcentagem()
         {
-            calculo.CalcularPorcentagem();            
+            calculo.CalcularPorcentagem();
         }
 
-        
+
         #endregion
     }
 }

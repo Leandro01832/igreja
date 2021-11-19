@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace business.classes.financeiro
@@ -13,16 +14,21 @@ namespace business.classes.financeiro
         {
             Data = DateTime.Now;
         }
+        public Movimentacao(bool v) : base(v)
+        {
+            Data = DateTime.Now;
+        }
 
-        private double valor;
+        private decimal valor;
 
-        [NotMapped]
         public static int UltimoRegistro;
 
-        public double Valor
-        {
-
-            get { return double.Parse(valor.ToString().Replace(",", ".")); }
+        public decimal Valor
+        {            
+            get {
+                string texto = valor.ToString("N", CultureInfo.CreateSpecificCulture("en-US"));
+                return decimal.Parse(texto, CultureInfo.CreateSpecificCulture("en-US"));
+            }
             set { valor = value; }
         }
         public DateTime Data { get; set; }

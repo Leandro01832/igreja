@@ -25,8 +25,12 @@ namespace business.classes
 
         public Chamada()
         {
-            Data_inicio = DateTime.Now;
-            Numero_chamada = 0;
+            if (!EntityCrud)
+            {
+                Data_inicio = DateTime.Now;
+                Numero_chamada = 0;
+
+            }
         }
         
     }

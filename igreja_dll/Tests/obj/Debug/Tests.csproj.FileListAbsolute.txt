@@ -46,3 +46,4 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Tests\ob
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Tests\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Tests\obj\Debug\Tests.exe
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Tests\obj\Debug\Tests.pdb
+C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Tests\bin\Debug\Newtonsoft.Json.pdb

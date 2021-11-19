@@ -10,6 +10,7 @@ namespace business.classes.financeiro
     [Table("Lava_Rapido")]
     public class Lava_Rapido : MovimentacaoEntrada
     {
-
+        public Lava_Rapido() : base(){ }
+        public Lava_Rapido(bool v) : base(v){ }
     }
 }

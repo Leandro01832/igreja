@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             form.CondicaoAtualizar = false;
             form.CondicaoDeletar = false;
             form.CondicaoDetalhes = false;
-            form.modelo = new Admin();
+            form.modelo = new Admin(true);
             form.MdiParent = this;
             form.Show();
         }
@@ -117,7 +117,7 @@ namespace WindowsFormsApp1
             form.CondicaoAtualizar = false;
             form.CondicaoDeletar = false;
             form.CondicaoDetalhes = false;
-            form.modelo = new Atendente();
+            form.modelo = new Atendente(true);
             form.MdiParent = this;
             form.Show();
         }
@@ -130,7 +130,7 @@ namespace WindowsFormsApp1
             form.CondicaoAtualizar = false;
             form.CondicaoDeletar = false;
             form.CondicaoDetalhes = false;
-            form.modelo = new Permissao();
+            form.modelo = new Permissao(true);
             form.MdiParent = this;
             form.Show();
         }

@@ -1,7 +1,6 @@
 ﻿using business.classes.Pessoas;
 using database;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace business.classes
@@ -20,6 +19,7 @@ namespace business.classes
         public string Whatsapp { get; set; }
         
 
-        public Telefone(){}
+        public Telefone() : base(){}
+        public Telefone(bool v) : base(v){}
     }
 }

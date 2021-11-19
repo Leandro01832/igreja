@@ -117,7 +117,7 @@ namespace DesktopEmail.Formulario
             form.CondicaoAtualizar = false;
             form.CondicaoDeletar = false;
             form.CondicaoDetalhes = false;
-            form.modelo = new Permissao();
+            form.modelo = new Permissao(true);
             form.MdiParent = this;
             form.Show();
         }

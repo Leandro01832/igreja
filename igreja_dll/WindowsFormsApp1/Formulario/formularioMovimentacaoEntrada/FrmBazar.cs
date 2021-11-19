@@ -33,8 +33,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
             Bazar a = (Bazar)modelo;
             try
             {
-                a.Valor = double.Parse(txtValor.Text);
-                a.Valor = double.Parse(a.Valor.ToString("F2"));
+                a.Valor = decimal.Parse(txtValor.Text);
+                a.Valor = decimal.Parse(a.Valor.ToString("F2"));
             }
             catch { MessageBox.Show("digite numeros"); txtValor.Text = ""; }
         }

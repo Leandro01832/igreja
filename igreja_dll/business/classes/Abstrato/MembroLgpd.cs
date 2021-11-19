@@ -17,6 +17,9 @@ namespace business.classes.Abstrato
         public string Motivo_desligamento { get; set; }
 
         public MembroLgpd() : base(){ }
-     
+
+        protected MembroLgpd(bool v) : base(v)
+        {
+        }
     }
 }

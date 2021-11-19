@@ -13,20 +13,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         {
             InitializeComponent();
         }
+        
 
-        public CadastroCrianca(bool Deletar, bool Atualizar, bool Detalhes, modelocrud modeloVelho, modelocrud modeloNovo)
-            : base(Deletar, Atualizar, Detalhes, modeloVelho, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public CadastroCrianca(modelocrud modelo, modelocrud modeloNovo)
-            : base(modelo, modeloNovo)
-        {
-            InitializeComponent();
-        }
-
-        public business.classes.Pessoas.PessoaDado P { get; }        
+        public PessoaDado P { get; }        
 
         private void Proximo_Click(object sender, EventArgs e)
         {

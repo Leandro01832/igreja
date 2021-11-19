@@ -9,6 +9,16 @@ namespace business.classes.Pessoas
     [Table("Atendente")]
     public class Atendente : PessoaDado
     {
+
+        public Atendente() : base()
+        {
+
+        }
+
+        public Atendente(bool v) : base()
+        {
+        }
+
         public virtual List<EmailPessoa> EmailPessoa { get; set; }
         public virtual List<PermissaoPessoa> Permissao { get; set; }
         public string Senha { get; set; }

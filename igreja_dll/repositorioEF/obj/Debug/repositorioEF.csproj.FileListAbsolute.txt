@@ -110,3 +110,4 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Reposito
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.dll
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.pdb
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\RepositorioEF\obj\Debug\RepositorioEF.csprojAssemblyReference.cache
+C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\RepositorioEF\bin\Debug\Newtonsoft.Json.pdb

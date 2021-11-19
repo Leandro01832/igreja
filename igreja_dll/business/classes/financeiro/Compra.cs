@@ -1,16 +1,13 @@
-﻿using database;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace business.classes.financeiro
 {
     [Table("Compra")]
     public class Compra : MovimentacaoSaida
     {
+        public Compra() : base(){ }
+        public Compra(bool v) : base(v){ }
+
         public string NomeProduto { get; set; }
     }
 }

@@ -16,6 +16,10 @@ namespace business.classes.Esboco.Fontes
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         public TimeSpan? Horario { get; set; }
 
+        public CanalTv(bool v) : base(v)
+        {
+
+        }
         public CanalTv() : base()
         {
 

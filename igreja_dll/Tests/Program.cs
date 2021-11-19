@@ -1,6 +1,8 @@
-﻿using business.classes;
+﻿using business;
+using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
+using business.classes.financeiro;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
@@ -22,11 +24,7 @@ namespace Tests
         static Random randNum = new Random();
         private static BDcomum bd = new BDcomum();
         static int loop = 40;
-
-
-
-
-
+        
         static void Main(string[] args)
         {
             arr[0] = "Paulo"; arr[10] = "Sandra"; arr[20] = "Sebastião"; arr[30] = "Thais"; arr[40] = "Adriana";
@@ -52,6 +50,16 @@ namespace Tests
             arr2[8] = "Menezes";
             arr2[9] = "Reimon";
 
+            // decimal valor;
+            // if (decimal.TryParse("123.45", out valor)) Console.WriteLine(valor);
+            // if (decimal.TryParse("123,45", NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, new CultureInfo("pt-BR"), out valor))
+
+            // Console.WriteLine(valor);
+
+            // double preco = 56.2;
+            // Console.WriteLine( preco.ToString("C"));
+
+            // CadastrarMovimentacaoEntradaDizimo();
             //CadastrarMembroReconciliacaoDadoTest();
             //CadastrarMembroTransferenciaDadoTest();
             //CadastrarMembroBatismoDadoTest();
@@ -193,42 +201,65 @@ namespace Tests
             //    }
             //}
 
-            //foreach (var pr in lista2)
+            //      List<string> strings = new List<string>();
+            //
+            //    var lista =  modelocrud.listTypes(typeof(modelocrud));
+            //      foreach (var t in lista)
+            //          foreach (var pr in t.GetProperties())
+            //              if (!strings.Contains(pr.Name))
+            //                  strings.Add(pr.Name);
+            //
+            //      foreach(var item in strings)
+            //          Console.WriteLine(item);
 
-            Type t = typeof(List<Pessoa>);
+            List<string> props = new List<string>();
 
-            if (t.IsGenericType)
-            {
-                // If this is a generic type, display the type arguments.
-                //
-                Type[] typeArguments = t.GetGenericArguments();
+            var types = modelocrud.listTypes(typeof(modelocrud));
 
-                Console.WriteLine("\tList type arguments ({0}):",
-                    typeArguments.Length);
-
-                foreach (Type tParam in typeArguments)
+            foreach (var t in types)
+                foreach(var item in t.GetProperties())
+                if (item.PropertyType.IsSubclassOf(typeof(modelocrud)))
                 {
-                    // If this is a type parameter, display its
-                    // position.
-                    //
-                    if (tParam.IsGenericParameter)
+                    foreach (var item2 in item.PropertyType.GetProperties())
                     {
-                        Console.WriteLine("\t\t{0}\t(unassigned - parameter position {1})",
-                            tParam,
-                            tParam.GenericParameterPosition);
-                    }
-                    else
-                    {
-                        Console.WriteLine("\t\t{0}", tParam);
-                    }
+                        OpcoesBase opc = (OpcoesBase)item2.GetCustomAttribute(typeof(OpcoesBase));
+                        if (opc != null && opc.Obrigatorio &&
+                            props.FirstOrDefault(p => p.Contains(item2.Name)) == null &&
+                            item2.Name != "Id")
+                            props.Add(item2.Name + " - " + item.Name);
+                    }                        
                 }
-            }
+                else
+                {
+                    OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
+                    if (opc != null && opc.Obrigatorio &&
+                       props.FirstOrDefault(p => p.Contains(item.Name)) == null &&
+                       item.Name != "Id")
+                       props.Add(item.Name + " - " + t.Name);
+                    }
 
-
+            // Lista de obrigatorio
+            foreach(var item in props)
+            Console.WriteLine(item);
 
 
             Console.WriteLine("ok");
             Console.Read();
+        }
+
+        
+
+        public static void CadastrarMovimentacaoEntradaDizimo()
+        {
+            Dizimo dizimo = new Dizimo
+            {
+                Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy")),
+                DataRecebimento = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy")),
+                Pago = true,
+                Valor = 25.35m                
+            };
+
+            dizimo.salvar();
         }
 
         #region People

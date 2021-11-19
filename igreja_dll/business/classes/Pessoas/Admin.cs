@@ -9,6 +9,16 @@ namespace business.classes.Pessoas
     [Table("Admin")]
     public class Admin : PessoaDado
     {
+
+        public Admin() : base()
+        {
+
+        }
+
+        public Admin(bool v) : base(v)
+        {
+        }
+
         public string Password { get; set; }
     }
 }

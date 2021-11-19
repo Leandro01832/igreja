@@ -2,18 +2,12 @@
 using business.classes.PessoasLgpd;
 using database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class FrmMudancaEstado : FormPadrao
+    public partial class FrmMudancaEstado : WFCrud
     {
         public FrmMudancaEstado()
         {
@@ -22,7 +16,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         public FrmMudancaEstado(modelocrud modelo)
         {
-            Modelo = modelo;
+            ModeloVelho = modelo;
             AlterarPTodoDado = new CheckBox();
             AlterarPTodoDado.Width = 500;
             AlterarPTodoDado.Text = "Alterar para modelo com todos os dados";
@@ -36,8 +30,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         }
 
         private CheckBox AlterarPTodoDado;
-        public modelocrud Modelo { get; }
-        public modelocrud ModeloNovo { get; set; }
 
         private void FrmMudancaEstado_Load(object sender, EventArgs e)
         {
@@ -80,46 +72,46 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             {
                 if (ModeloNovo is Crianca || ModeloNovo is CriancaLgpd)
                 {
-                    CadastroCrianca frm = new CadastroCrianca(Modelo, ModeloNovo);
+                    CadastroCrianca frm = new CadastroCrianca();
                     frm.MdiParent = this.MdiParent;
                     frm.Show();
                 }
                 if (ModeloNovo is Visitante || ModeloNovo is VisitanteLgpd)
                 {
-                    CadastroVisitante frm = new CadastroVisitante(Modelo, ModeloNovo);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    Frm = new CadastroVisitante();
+                    Frm.MdiParent = this.MdiParent;
+                    Frm.Show();
                 }
                 if (ModeloNovo is Membro_Aclamacao || ModeloNovo is Membro_AclamacaoLgpd)
                 {
-                    CadastroMembroAclamacao frm = new CadastroMembroAclamacao(Modelo, ModeloNovo);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    Frm = new CadastroMembroAclamacao();
+                    Frm.MdiParent = this.MdiParent;
+                    Frm.Show();
                 }
                 if (ModeloNovo is Membro_Batismo || ModeloNovo is Membro_BatismoLgpd)
                 {
-                    CadastroMembroBatismo frm = new CadastroMembroBatismo(Modelo, ModeloNovo);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    Frm = new CadastroMembroBatismo();
+                    Frm.MdiParent = this.MdiParent;
+                    Frm.Show();
                 }
                 if (ModeloNovo is Membro_Reconciliacao || ModeloNovo is Membro_ReconciliacaoLgpd)
                 {
-                    CadastroMembroReconciliacao frm = new CadastroMembroReconciliacao(Modelo, ModeloNovo);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    Frm = new CadastroMembroReconciliacao();
+                    Frm.MdiParent = this.MdiParent;
+                    Frm.Show();
                 }
                 if (ModeloNovo is Membro_Transferencia || ModeloNovo is Membro_TransferenciaLgpd)
                 {
-                    CadastroMembroTransferencia frm = new CadastroMembroTransferencia(Modelo, ModeloNovo);
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    Frm = new CadastroMembroTransferencia();
+                    Frm.MdiParent = this.MdiParent;
+                    Frm.Show();
                 } 
             }
             else
             {
-                DadoPessoal frm = new DadoPessoal(false, false, false, Modelo, ModeloNovo);
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                Frm = new DadoPessoal();
+                Frm.MdiParent = this.MdiParent;
+                Frm.Show();
             }
         }
     }

@@ -1,21 +1,16 @@
-﻿using business.classes.Abstrato;
-using business.classes.Intermediario;
+﻿using business.classes.Intermediario;
 using database;
-using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace business.classes
 {
     public class Reuniao : modelocrud
     {
         #region Properties
-        private DateTime data_reuniao;
+        private DateTime data_reuniao = new DateTime(0001, 01, 01);
         [OpcoesBase(Obrigatorio =true)]
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -31,43 +26,32 @@ namespace business.classes
             set { data_reuniao = value; }
         }
 
-        private TimeSpan? horario_inicio;
+        private TimeSpan horario_inicio = new TimeSpan(0, 0, 0);
         [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Horário de início")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
-        public TimeSpan? Horario_inicio
+        public TimeSpan Horario_inicio
         {
             get
             {
-                if (horario_inicio.Value.Hours == 0 &&
-                    horario_inicio.Value.Minutes == 0 && horario_inicio.Value.Seconds == 0)
+                if (horario_inicio.Hours == 0 &&
+                    horario_inicio.Minutes == 0 && horario_inicio.Seconds == 0)
                     throw new Exception("Horario_inicio");
                 return horario_inicio;
             }
             set { horario_inicio = value; }
         }
 
-        private TimeSpan? horario_fim;
-        [OpcoesBase(Obrigatorio = true)]
+        private TimeSpan? horario_fim = new TimeSpan(0, 0, 0);
         [Display(Name = "Horário de termino")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
-        public TimeSpan? Horario_fim
-        {
-            get
-            {
-                if (horario_fim.Value.Hours == 0 &&
-                    horario_fim.Value.Minutes == 0 && horario_fim.Value.Seconds == 0)
-                    throw new Exception("Horario_fim");
-                return horario_fim;
-            }
-            set { horario_fim = value; }
-        }
+        public TimeSpan? Horario_fim { get; set; }
 
-        private string local_reuniao;
+        private string local_reuniao = "local";
         [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Local da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -79,7 +63,12 @@ namespace business.classes
                     throw new Exception("Local_reuniao");
                 return local_reuniao;
             }
-            set { local_reuniao = value; }
+            set
+            {
+                local_reuniao = value;
+                if (string.IsNullOrWhiteSpace(local_reuniao))
+                    throw new Exception("Local_reuniao");
+            }
         }
 
         [JsonIgnore]
@@ -89,39 +78,13 @@ namespace business.classes
         
         #endregion        
 
+        public Reuniao(bool v) : base(v){ }
         public Reuniao() : base(){ }
 
         public override string ToString()
         {
             return this.Id.ToString() + " - Data da reunião: " + this.Data_reuniao.ToString();
         }
-
-        public static int TotalRegistro()
-        {
-            var _TotalRegistros = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (BDcomum.podeAbrir)
-            {
-                try
-                {
-                    var stringConexao = "";
-                    if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                    else stringConexao = BDcomum.conecta2;
-                    using (con = new SqlConnection(stringConexao))
-                    {
-                        cmd = new SqlCommand("SELECT COUNT(*) FROM Reuniao", con);
-                        con.Open();
-                        _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
-                        con.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    BDcomum.podeAbrir = false;
-                }
-            }
-            return _TotalRegistros;
-        }
+        
     }
 }
