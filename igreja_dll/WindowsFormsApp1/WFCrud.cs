@@ -17,11 +17,11 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public partial class WFCrud : Form
+    public partial class WFCrud : Form, IFormCrud
     {
+        public CrudForm crudForm;
 
         private Label infoForm;
-        private WFCrud frm = null;
 
         // botões para crud
         private Button proximo;
@@ -83,8 +83,7 @@ namespace WindowsFormsApp1
         public Button DadoReuniao { get => dadoReuniao; set => dadoReuniao = value; }
         public Button DadoReuniaoPessoas { get => dadoReuniaoPessoas; set => dadoReuniaoPessoas = value; }
         public Label InfoForm { get => infoForm; set => infoForm = value; }
-        public WFCrud Frm { get => frm; set => frm = value; }
-
+        
         private bool condicaoDeletar;
         private bool condicaoAtualizar;
         private bool condicaoDetalhes;
@@ -92,7 +91,8 @@ namespace WindowsFormsApp1
 
         public WFCrud()
         {
-
+            crudForm = new CrudForm();
+            crudForm.Mdi = this;
             this.FormClosing += WFCrud_FormClosing;
 
             InfoForm = new Label();
@@ -295,7 +295,7 @@ namespace WindowsFormsApp1
 
         private void DadoReuniaoPessoas_Click(object sender, EventArgs e)
         {
-            Frm = new PessoasReuniao();
+            crudForm.Form = new PessoasReuniao();
             LoadForm();
         }
 
@@ -329,75 +329,83 @@ namespace WindowsFormsApp1
 
         private void DadoCelula_Click(object sender, EventArgs e)
         {
-            Frm = new DadoCelula();
+            crudForm.Form = new DadoCelula();
             LoadForm();
         }
 
         private void DadoEnderecoCelula_Click(object sender, EventArgs e)
         {
-            Frm = new FrmEnderecoCelula();
+            crudForm.Form = new FrmEnderecoCelula();
             LoadForm();
         }
 
         private void DadoCelulaMinisterio_Click(object sender, EventArgs e)
         {
-            Frm = new MinisteriosCelula();
+            crudForm.Form = new MinisteriosCelula();
             LoadForm();
         }
 
         private void DadoCelulaPessoas_Click(object sender, EventArgs e)
         {
-            Frm = new MinisteriosCelula();
+            crudForm.Form = new MinisteriosCelula();
             LoadForm();
         }
 
         private void DadoMinisterio_Click(object sender, EventArgs e)
         {
-            Frm = new DadoMinisterio();
+            crudForm.Form = new DadoMinisterio();
             LoadForm();
         }
 
         private void DadoMinisterioPessoas_Click(object sender, EventArgs e)
         {
-            Frm = new PessoasCelulasMinisterio();
+            crudForm.Form = new PessoasCelulasMinisterio();
             LoadForm();
         }
 
         private void DadoMinistro_Click(object sender, EventArgs e)
         {
-            Frm = new DadoMinisterio();
+            crudForm.Form = new DadoMinisterio();
             LoadForm();
         }
 
         private void DadoMinisterioPessoas_Click1(object sender, EventArgs e)
         {
-            Frm = new ReunioesMinisteriosPessoa();
+            crudForm.Form = new ReunioesMinisteriosPessoa();
             LoadForm();
         }
 
         private void DadoContato_Click(object sender, EventArgs e)
         {
-            Frm = new Contato();
+            crudForm.Form = new Contato();
             LoadForm();
         }
 
         private void DadoEnderecoPessoa_Click(object sender, EventArgs e)
         {
-            Frm = new FrmEndereco();
+            crudForm.Form = new FrmEndereco();
             LoadForm();
         }
 
         private void DadoPessoal_Click(object sender, EventArgs e)
         {
             if (modelo is PessoaDado)
-                Frm = new DadoPessoal();
+                crudForm.Form = new DadoPessoal();
             if (modelo is PessoaLgpd)
-                Frm = new DadoPessoalLgpd();
+                crudForm.Form = new DadoPessoalLgpd();
             LoadForm();
         }
 
         public void LoadCrudForm()
         {
+            FormPadrao.LoadForm(this);
+
+            if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes && modelo.anular)
+            {
+                modelocrud.anularDados(modelo);
+                modelo.anular = false;
+            }
+
             if (CondicaoAtualizar || CondicaoDeletar || CondicaoDetalhes)
             {
                 InfoForm.Visible = true;
@@ -526,13 +534,7 @@ namespace WindowsFormsApp1
 
         private void LoadForm()
         {
-            
-            Frm.modelo = modelo;
-            Frm.CondicaoDetalhes = CondicaoDetalhes;
-            Frm.CondicaoDeletar = CondicaoDeletar;
-            Frm.CondicaoAtualizar = CondicaoAtualizar;
-            Frm.MdiParent = this.MdiParent;
-            Frm.Show();
+            LoadFormCrud( modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar, this);
         }
 
         private async void FinalizarCadastro_Click(object sender, EventArgs e)
@@ -570,7 +572,13 @@ namespace WindowsFormsApp1
                     item.CelulaId = modelo.Id;
                     item.salvar();
                 }
-                
+
+                foreach (var item in p.Pessoas)
+                {
+                    item.celula_ = modelo.Id;
+                    item.alterar(item.Id);
+                }
+
             }
 
             if (modelo is Ministerio)
@@ -645,6 +653,16 @@ namespace WindowsFormsApp1
             MessageBox.Show("Cadastro realiado com sucesso.");
             this.Close();
 
+        }
+
+        public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
+        {
+            crudForm.LoadFormCrud( modelo, detalhes, deletar, atualizar, this);
+        }
+
+        public void Clicar()
+        {
+            crudForm.Clicar();
         }
     }
 }

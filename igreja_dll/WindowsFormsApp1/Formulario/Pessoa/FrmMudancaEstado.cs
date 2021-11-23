@@ -78,40 +78,40 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 }
                 if (ModeloNovo is Visitante || ModeloNovo is VisitanteLgpd)
                 {
-                    Frm = new CadastroVisitante();
-                    Frm.MdiParent = this.MdiParent;
-                    Frm.Show();
+                    crudForm.Form = new CadastroVisitante();
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Aclamacao || ModeloNovo is Membro_AclamacaoLgpd)
                 {
-                    Frm = new CadastroMembroAclamacao();
-                    Frm.MdiParent = this.MdiParent;
-                    Frm.Show();
+                    crudForm.Form = new CadastroMembroAclamacao();
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Batismo || ModeloNovo is Membro_BatismoLgpd)
                 {
-                    Frm = new CadastroMembroBatismo();
-                    Frm.MdiParent = this.MdiParent;
-                    Frm.Show();
+                    crudForm.Form = new CadastroMembroBatismo();
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Reconciliacao || ModeloNovo is Membro_ReconciliacaoLgpd)
                 {
-                    Frm = new CadastroMembroReconciliacao();
-                    Frm.MdiParent = this.MdiParent;
-                    Frm.Show();
+                    crudForm.Form = new CadastroMembroReconciliacao();
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Transferencia || ModeloNovo is Membro_TransferenciaLgpd)
                 {
-                    Frm = new CadastroMembroTransferencia();
-                    Frm.MdiParent = this.MdiParent;
-                    Frm.Show();
+                    crudForm.Form = new CadastroMembroTransferencia();
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 } 
             }
             else
             {
-                Frm = new DadoPessoal();
-                Frm.MdiParent = this.MdiParent;
-                Frm.Show();
+                crudForm.Form = new DadoPessoal();
+                crudForm.Form.MdiParent = this.MdiParent;
+                crudForm.Form.Show();
             }
         }
     }

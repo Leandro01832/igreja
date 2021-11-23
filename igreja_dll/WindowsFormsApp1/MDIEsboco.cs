@@ -11,14 +11,16 @@ using WindowsFormsApp1.Formulario.FormularioFonte;
 
 namespace WFEsboco
 {
-    public partial class MDIEsboco : Form
+    public partial class MDIEsboco : Form, IFormCrud
     {
         private int childFormNumber = 0;
 
-        WFCrud frm = null;
+        private CrudForm crudForm;
 
         public MDIEsboco()
         {
+            crudForm = new CrudForm();
+            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -109,19 +111,13 @@ namespace WFEsboco
 
         private void mensagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm = new FrmCadastrarMensagem();
-            LoadFormCreate(new Mensagem(true));
+            crudForm.Form = new FrmCadastrarMensagem();
+            LoadFormCreate(new Mensagem());
         }
 
         private void LoadFormCreate(modelocrud model)
         {
-            frm.modelo = model;
-            frm.CondicaoAtualizar = false;
-            frm.CondicaoDeletar = false;
-            frm.CondicaoDetalhes = false;
-            frm.MdiParent = this;
-            frm.Text = "Janela " + childFormNumber++;
-            frm.Show();
+            LoadFormCrud(model, false, false, false, this);
         }
 
         private void LoadFormList(Type tipo)
@@ -151,16 +147,14 @@ namespace WFEsboco
 
         private void versiculoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmVersiculo frm = new FrmVersiculo();
-            frm.MdiParent = this;
-            frm.Text = "Janela " + childFormNumber++;
-            frm.Show();
+            crudForm.Form = new FrmVersiculo();
+            LoadFormCreate(new Versiculo());
         }
 
         private void versiculoToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            frm = new FrmDadoFonte();
-            LoadFormCreate(new Versiculo(true));
+            crudForm.Form = new FrmDadoFonte();
+            LoadFormCreate(new Versiculo());
         }
 
         private void versiculoToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -176,14 +170,14 @@ namespace WFEsboco
 
         private void canalDeTvToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmDadoFonte frm = new FrmDadoFonte();
-            LoadFormCreate(new CanalTv(true));
+            crudForm.Form = new FrmDadoFonte();
+            LoadFormCreate(new CanalTv());
         }
 
         private void livroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDadoFonte frm = new FrmDadoFonte();
-            LoadFormCreate(new Livro(true));
+            crudForm.Form = new FrmDadoFonte();
+            LoadFormCreate(new Livro());
         }
 
         private void livroToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -194,6 +188,16 @@ namespace WFEsboco
         private void MDIEsboco_Load(object sender, EventArgs e)
         {
             FormPadrao.LoadForm(this);
+        }
+
+        public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
+        {
+            crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
+        }
+
+        public void Clicar()
+        {
+            crudForm.Clicar();
         }
     }
 }

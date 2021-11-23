@@ -137,3 +137,22 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.xml
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\business.dll.config
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\business.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\business.pdb
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\EntityFramework.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\MySql.Data.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\EntityFramework.xml
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.xml
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csprojAssemblyReference.cache
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.Migrations.Inicio.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.Migrations.MudancaMinisterio.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csproj.GenerateResource.cache
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csproj.CoreCompileInputs.cache
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.pdb

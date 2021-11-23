@@ -25,17 +25,7 @@ namespace database
             this.T = GetType();
             property = new PropertiesCrud(this);
         }
-        public modelocrud(bool anular)
-        {
-            this.bd = new BDcomum();
-            Erro_Conexao = false;
-            QuantErro = 0;
-            this.T = GetType();
-            property = new PropertiesCrud(this);
-            if (anular)
-                anularDados(this);
-        }
-
+        
         public static Type ReturnBase(Type type)
         {
             while (type.BaseType != typeof(modelocrud))
@@ -44,7 +34,7 @@ namespace database
             return type;
         }
 
-        public void anularDados(modelocrud modelocrud)
+        public static void anularDados(modelocrud modelocrud)
         {
             var props = modelocrud.GetType().GetProperties();
             foreach (var item in props)
@@ -56,10 +46,23 @@ namespace database
                     item.SetValue(modelocrud, 0);
                 else if (item.PropertyType == typeof(TimeSpan))
                     item.SetValue(modelocrud, new TimeSpan(0, 0, 0));
-                else
+                else if(!item.PropertyType.IsSubclassOf(typeof(modelocrud)))
                     try { item.SetValue(modelocrud, null); }
                     catch { }
+                else if(item.PropertyType.IsSubclassOf(typeof(modelocrud)) && !item.PropertyType.IsAbstract)
 
+                    foreach (var item2 in item.PropertyType.GetProperties())
+                        if (item2.PropertyType == typeof(DateTime))
+                            item2.SetValue(item.GetValue(modelocrud, null), new DateTime(0001, 01, 01));
+                        else if (item2.PropertyType == typeof(int) ||
+                        item2.PropertyType == typeof(double) ||
+                        item2.PropertyType == typeof(decimal))
+                            item2.SetValue(item.GetValue(modelocrud, null), 0);
+                        else if (item2.PropertyType == typeof(TimeSpan))
+                            item2.SetValue(item.GetValue(modelocrud, null), new TimeSpan(0, 0, 0));
+                        else if (!item2.PropertyType.IsSubclassOf(typeof(modelocrud)))
+                            try { item2.SetValue(item.GetValue(modelocrud, null), null); }
+                            catch { }
         }
 
         static Calculo calculo = new Calculo();
@@ -89,6 +92,7 @@ namespace database
         public string Select_padrao;
         public static bool ativar;
         public static Pessoa pessoa;
+        public bool anular = true;
 
         public string exibirMensagemErro(Exception ex, int condicao)
         {
@@ -139,10 +143,17 @@ namespace database
             return name;
         }
 
-        public static List<Type> listTypes(Type tipo)
+        public static List<Type> listTypesSon(Type tipo)
         {
             var listaTypes = tipo.Assembly.GetTypes()
             .Where(type => !type.IsAbstract && type.IsSubclassOf(tipo)).ToList();
+
+            return listaTypes;
+        }
+        public static List<Type> listTypesAll(Type tipo)
+        {
+            var listaTypes = tipo.Assembly.GetTypes()
+            .Where(type =>  type.IsSubclassOf(tipo) || type == tipo).ToList();
 
             return listaTypes;
         }
@@ -229,7 +240,7 @@ namespace database
             {
                 string comando = "";
                 while (T != typeof(modelocrud))
-                    comando += DeleteProperty(T);
+                    comando += DeleteProperty(T) + " ";
                 Delete_padrao = comando;
                 bd.Excluir(this);
                 return Delete_padrao;
@@ -267,7 +278,6 @@ namespace database
 
             if (conexao != null)
             {
-
                 try
                 {
                     SqlCommand comando = new SqlCommand(Select_padrao, conexao);
@@ -365,7 +375,7 @@ namespace database
 
         public static int TotalRegistro(Type tipo)
         {
-            var types = listTypes(typeof(modelocrud));
+            var types = listTypesSon(typeof(modelocrud));
 
             var _TotalRegistros = 0;
             SqlConnection conexao = null;
@@ -380,7 +390,7 @@ namespace database
             {
                 if (tipo.IsAbstract)
                 {
-                    var t = listTypes(tipo);
+                    var t = listTypesSon(tipo);
                     foreach(var item in t)
                     _TotalRegistros = buscarCount( _TotalRegistros, conexao, cmd, item);
 

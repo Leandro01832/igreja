@@ -24,9 +24,5 @@ namespace business.classes.Pessoas
         }
 
         public Membro_Reconciliacao() : base(){ }
-
-        public Membro_Reconciliacao(bool v) : base(v)
-        {
-        }
     }
 }

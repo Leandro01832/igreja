@@ -8,8 +8,5 @@ namespace business.classes.PessoasLgpd
     {
         public Membro_BatismoLgpd() : base(){}
 
-        public Membro_BatismoLgpd(bool v) : base(v)
-        {
-        }
     }
 }

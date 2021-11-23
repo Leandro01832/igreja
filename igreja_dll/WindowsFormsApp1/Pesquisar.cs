@@ -67,8 +67,8 @@ namespace WindowsFormsApp1
 
                 if(Modelo != null)
                 {
-                var lista = modelocrud.listTypes(typeof(WFCrud));
-                var listaTypes = modelocrud.listTypes(typeof(modelocrud));
+                var lista = modelocrud.listTypesSon(typeof(WFCrud));
+                var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
 
                 if (Modelo.GetType().BaseType == typeof(modelocrud))
                     foreach (var item in listaTypes)

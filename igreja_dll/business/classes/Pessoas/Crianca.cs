@@ -40,8 +40,5 @@ namespace business.classes.Pessoas
 
         public Crianca() : base(){ }
 
-        public Crianca(bool v) : base(v)
-        {
-        }
     }
 }

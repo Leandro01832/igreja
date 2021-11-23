@@ -20,6 +20,5 @@ namespace business.classes
         
 
         public Telefone() : base(){}
-        public Telefone(bool v) : base(v){}
     }
 }

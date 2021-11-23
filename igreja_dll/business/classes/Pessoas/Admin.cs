@@ -15,10 +15,6 @@ namespace business.classes.Pessoas
 
         }
 
-        public Admin(bool v) : base(v)
-        {
-        }
-
         public string Password { get; set; }
     }
 }

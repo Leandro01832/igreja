@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\leand\\Documents\\Visual Studio 2017\\C#\\Igreja\\Igreja\\igreja_dll\\Aplicativ" +
-        "oXamarin\\AplicativoXamarin\\Views\\LogoutMeetingView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\Aplicati" +
+        "voXamarin\\Views\\LogoutMeetingView.xaml")]
     public partial class LogoutMeetingView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

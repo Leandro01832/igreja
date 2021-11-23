@@ -27,7 +27,6 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
 
         private void FrmAtendente_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
             var Atendente = (Atendente)modelo;
             lstPermissoes.DataSource = modelocrud.Modelos.OfType<Permissao>().ToList();
             lstPermissoes.SetSelected(0, false);
@@ -47,7 +46,6 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
                 Atendente.Permissao = new List<PermissaoPessoa>();
 
             condicao = true;
-            LoadCrudForm();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)

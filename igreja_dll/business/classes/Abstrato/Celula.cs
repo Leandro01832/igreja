@@ -138,22 +138,9 @@ namespace business.classes.Abstrato
 
         }
 
-        public Celula(bool v) : base(v)
-        {
-            if (!EntityCrud)
-            {
-                this.Maximo_pessoa = 50;
-                EnderecoCelula = new EnderecoCelula();
-                Ministerios = new List<MinisterioCelula>();
-                Pessoas = new List<Pessoa>();
-            }
-
-        }
-
-
         public async static void recuperarTodasCelulas()
         {
-            List<Type> list = listTypes(typeof(Celula));
+            List<Type> list = listTypesSon(typeof(Celula));
             foreach (var item in list)
             {
                 var modelo = (modelocrud)Activator.CreateInstance(item);

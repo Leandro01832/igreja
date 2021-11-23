@@ -13,8 +13,6 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmMensagem_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
             
                 var m = (Mensagem)modelo;
             try { txt_tipo.Text = m.Tipo; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }

@@ -14,10 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void DadoPessoal_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Daddos pessoais.";
-
-
 
             var p = (PessoaDado)modelo;
             try { text_nome.Text = p.NomePessoa; }
@@ -63,12 +60,26 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Rg = text_rg.Text;
+                try
+                {
+                    p.Rg = text_rg.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Rg = text_rg.Text;
+                try
+                {
+                    p.Rg = text_rg.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
 
         }
@@ -78,12 +89,26 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Cpf = text_cpf.Text;
+                try
+                {
+                    p.Cpf = text_cpf.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Cpf = text_cpf.Text;
+                try
+                {
+                    p.Cpf = text_cpf.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
 
         }
@@ -93,12 +118,26 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Estado_civil = listestado_civil.Text;
+                try
+                {
+                    p.Estado_civil = listestado_civil.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Estado_civil = listestado_civil.Text;
+                try
+                {
+                    p.Estado_civil = listestado_civil.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
 
         }
@@ -108,12 +147,26 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Status = listBox_status.Text;
+                try
+                {
+                    p.Status = listBox_status.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Status = listBox_status.Text;
+                try
+                {
+                    p.Status = listBox_status.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
 
         }
@@ -128,12 +181,26 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Email = textemail.Text;
+                try
+                {
+                    p.Email = textemail.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Email = textemail.Text;
+                try
+                {
+                    p.Email = textemail.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                }
             }
 
         }
@@ -179,9 +246,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     p.Data_nascimento = Convert.ToDateTime(mask_data_nascimento.Text.ToString());
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
                 }
             }
 
@@ -192,9 +258,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     p.Data_nascimento = Convert.ToDateTime(mask_data_nascimento.Text.ToString());
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
                 }
             }
         }

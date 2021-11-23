@@ -14,10 +14,6 @@ namespace business.classes.financeiro
         {
             Data = DateTime.Now;
         }
-        public Movimentacao(bool v) : base(v)
-        {
-            Data = DateTime.Now;
-        }
 
         private decimal valor;
 
@@ -37,7 +33,7 @@ namespace business.classes.financeiro
 
         public async static void recuperarTodos()
         {
-            List<Type> list = listTypes(typeof(Movimentacao));
+            List<Type> list = listTypesSon(typeof(Movimentacao));
             foreach (var item in list)
             {
                 var modelo = (modelocrud)Activator.CreateInstance(item);

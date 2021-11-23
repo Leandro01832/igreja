@@ -13,9 +13,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         
         private void Contato_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Contatos.";
-
             
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
              try{   mask_tel1.Text = p.Telefone.Fone;      } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}

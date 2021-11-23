@@ -6,6 +6,5 @@ namespace business.classes.financeiro
     public class Bazar : MovimentacaoEntrada
     {
         public Bazar() : base(){ }
-        public Bazar(bool v) : base(v){ }
     }
 }

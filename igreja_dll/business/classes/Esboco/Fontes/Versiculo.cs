@@ -10,10 +10,6 @@ namespace business.classes.Fontes
     [Table("Versiculo")]
     public class Versiculo : Fonte
     {
-        public Versiculo(bool v) : base(v)
-        {
-
-        }
         public Versiculo() : base()
         {
 

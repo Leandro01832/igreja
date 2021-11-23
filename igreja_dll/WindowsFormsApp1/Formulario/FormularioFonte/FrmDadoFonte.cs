@@ -16,8 +16,6 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmDadoFonte_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
             lstBoxMensagem.DataSource = modelocrud.Modelos.OfType<Mensagem>()
                 .OrderBy(m => m.Id).ToList();
 

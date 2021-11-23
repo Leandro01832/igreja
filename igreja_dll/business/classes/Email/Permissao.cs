@@ -10,14 +10,6 @@ namespace business
         {
 
         }
-        public Permissao(bool v) :base(v)
-        {
-            if (!EntityCrud)
-            {
-                Categoria = new Categoria();
-                PermissaoPessoa = new List<PermissaoPessoa>();
-            }
-        }
 
         private string nome;
         public string Nome

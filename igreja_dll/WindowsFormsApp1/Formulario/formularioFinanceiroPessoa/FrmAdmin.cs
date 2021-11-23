@@ -16,8 +16,6 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 
         private void FrmCadastrarAdmin_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
 
             Admin c = (Admin)modelo;
             try { maskedWhatsapp.Text = c.Telefone.Whatsapp; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }

@@ -8,11 +8,8 @@ namespace business.classes.Esboco.Fontes
     {
         public string NomeLivro { get; set; }
         public string NomeAutor { get; set; }
-
-        public Livro(bool v) : base(v)
-        {
-
-        }public Livro() : base()
+        
+        public Livro() : base()
         {
 
         }

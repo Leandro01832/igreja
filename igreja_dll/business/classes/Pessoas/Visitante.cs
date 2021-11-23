@@ -38,9 +38,6 @@ namespace business.classes.Pessoas
             set { condicao_religiosa = value; }
         }
 
-        public Visitante() : base() { }
-
-        public Visitante(bool v) : base(v){  }
-
+        public Visitante() : base() { }        
     }
 }

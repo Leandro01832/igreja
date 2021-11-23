@@ -55,8 +55,5 @@ namespace business.classes.Pessoas
 
         public Membro_Transferencia() : base(){ }
 
-        public Membro_Transferencia(bool v) : base(v)
-        {
-        }
     }
 }

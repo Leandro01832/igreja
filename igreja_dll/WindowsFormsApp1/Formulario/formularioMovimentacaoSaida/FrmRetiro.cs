@@ -14,7 +14,6 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
 
         private void FrmCadastrarRetiro_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             var form = "Retiro";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

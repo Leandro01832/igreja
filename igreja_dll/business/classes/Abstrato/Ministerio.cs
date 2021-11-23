@@ -114,21 +114,10 @@ namespace business.classes.Abstrato
                 Celulas = new List<MinisterioCelula>();
             }
         }
-        public Ministerio(bool v) : base(v)
-        {
-            
-            if (!EntityCrud)
-            {
-                this.Maximo_pessoa = 50;
-                mudanca = new MudancaEstado();
-                Pessoas = new List<PessoaMinisterio>();
-                Celulas = new List<MinisterioCelula>();
-            }
-        }     
 
         public async static void recuperarTodosMinisterios()
         {
-            List<Type> list = listTypes(typeof(Ministerio));
+            List<Type> list = listTypesSon(typeof(Ministerio));
             foreach(var item in list)
             {
                 var modelo = (modelocrud) Activator.CreateInstance(item);

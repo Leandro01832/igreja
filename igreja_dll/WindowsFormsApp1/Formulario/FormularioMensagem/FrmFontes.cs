@@ -13,8 +13,6 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmFontes_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
             var m = (Mensagem)modelo;
             lbl_fontes.Text = "As fontes da mensagem: ";
 

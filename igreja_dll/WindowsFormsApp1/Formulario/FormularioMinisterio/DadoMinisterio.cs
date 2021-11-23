@@ -17,7 +17,6 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void DadoMinisterio_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
 
             this.Text = " - Dados de Ministério";
 

@@ -7,12 +7,7 @@ namespace business.classes.Ministerio
     {
         [Display(Name = "Máximo de celulas para supervisionar")]
         public int Maximo_celula { get; set; }
-
-        public Supervisor_Ministerio_Treinamento(bool v) : base(v)
-        {
-            this.Maximo_celula = 5;
-        }
-
+        
         public Supervisor_Ministerio_Treinamento() : base()
         {
             this.Maximo_celula = 5;

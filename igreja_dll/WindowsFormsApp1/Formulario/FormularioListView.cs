@@ -13,12 +13,12 @@ using WindowsFormsApp1.Formulario.Pessoas;
 
 namespace WindowsFormsApp1.Formulario
 {
-    public partial class FormularioListView : Form
+    public partial class FormularioListView : Form, IFormCrud
     {
         public FormularioListView() { }
         bool atualizar = true;
 
-        WFCrud result = null;
+        CrudForm crudForm;
         private List<modelocrud> list;
 
         private Button Mudanca { get; }
@@ -31,6 +31,7 @@ namespace WindowsFormsApp1.Formulario
 
         public FormularioListView(Type tipo)
         {
+            crudForm = new CrudForm();
             this.Tipo = tipo;
 
             ListView = new ListBox();
@@ -119,9 +120,9 @@ namespace WindowsFormsApp1.Formulario
             {
                 try
                 {
-                    result = new FrmMudancaEstado((modelocrud)ListView.SelectedItem);
-                    result.MdiParent = this.MdiParent;
-                    result.Show();
+                    crudForm.Form = new FrmMudancaEstado((modelocrud)ListView.SelectedItem);
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 }
                 catch { }
             }
@@ -130,9 +131,9 @@ namespace WindowsFormsApp1.Formulario
             {
                 try
                 {
-                    result = new FrmMudancaEstadoMinisterio((modelocrud)ListView.SelectedItem);
-                    result.MdiParent = this.MdiParent;
-                    result.Show();
+                    crudForm.Form = new FrmMudancaEstadoMinisterio((modelocrud)ListView.SelectedItem);
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.Show();
                 }
                 catch { }
             }
@@ -194,39 +195,17 @@ namespace WindowsFormsApp1.Formulario
 
         private void AbrirFrmCrud(bool detalhes, bool atualizar, bool deletar)
         {
-            try
-            {
-                var lista = modelocrud.listTypes(typeof(WFCrud));
-                var listaTypes = modelocrud.listTypes(typeof(modelocrud));
-
-                Type BaseModel = modelocrud.ReturnBase(ListView.SelectedItem.GetType());
-
-                foreach (var item in listaTypes)
-                {
-                    foreach (var item2 in lista)
-                        if ("Frm" + BaseModel.Name == item2.Name)
-                        {
-                            result = (WFCrud)Activator.CreateInstance(item2);
-                            break;
-                        }
-                        else if ("Frm" + ListView.SelectedItem.GetType().Name == item2.Name)
-                        {
-                            result = (WFCrud)Activator.CreateInstance(item2);
-                            break;
-                        }
-                    if (result != null) break;
-                }
-
-
-                result.modelo = (modelocrud)ListView.SelectedItem;
-                result.CondicaoDetalhes = detalhes;
-                result.CondicaoDeletar = deletar;
-                result.CondicaoAtualizar = atualizar;
-                result.MdiParent = this.MdiParent;
-                result.Show();
-            }
-            catch { }
+            LoadFormCrud((modelocrud)ListView.SelectedItem, detalhes, deletar, atualizar, this);
         }
-        
+
+        public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
+        {
+            crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, Atual);
+        }
+
+        public void Clicar()
+        {
+            crudForm.Clicar();
+        }
     }
 }

@@ -7,10 +7,7 @@ namespace business.classes.financeiro
     [Table("MovimentacaoEntrada")]
     public abstract class MovimentacaoEntrada : Movimentacao
     {
-        public MovimentacaoEntrada(bool v) : base(v)
-        {
-
-        }public MovimentacaoEntrada() : base()
+        public MovimentacaoEntrada() : base()
         {
 
         }

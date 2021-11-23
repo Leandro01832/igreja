@@ -21,8 +21,6 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmCadastrarVersiculo_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
             buscarVersiculosBiblia();
             
                 var v = (business.classes.Fontes.Versiculo)modelo;

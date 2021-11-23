@@ -584,3 +584,5 @@ C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\Aplicati
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\AplicativoXamarin.Android.dll
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\AplicativoXamarin.Android.pdb
 C:\Users\leand\Documents\Visual Studio 2017\C#\Igreja\Igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\AplicativoXamarin.Android.nuget.stamp
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\AplicativoXamarin\AplicativoXamarin.Android\obj\Debug\90\AplicativoXamarin.Android.nuget.stamp

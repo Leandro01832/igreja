@@ -15,11 +15,7 @@ namespace business.classes.Esboco.Fontes
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         public TimeSpan? Horario { get; set; }
-
-        public CanalTv(bool v) : base(v)
-        {
-
-        }
+        
         public CanalTv() : base()
         {
 

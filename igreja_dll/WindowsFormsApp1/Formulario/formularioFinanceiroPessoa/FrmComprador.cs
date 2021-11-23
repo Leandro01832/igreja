@@ -24,9 +24,6 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 
         private void FrmCadastrarComprador_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
-
             Comprador c = (Comprador)modelo;
             try { maskedWhatsapp.Text = c.Telefone.Whatsapp; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             try { maskedTelefone.Text = c.Telefone.Fone; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }

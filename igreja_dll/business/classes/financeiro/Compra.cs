@@ -6,7 +6,6 @@ namespace business.classes.financeiro
     public class Compra : MovimentacaoSaida
     {
         public Compra() : base(){ }
-        public Compra(bool v) : base(v){ }
 
         public string NomeProduto { get; set; }
     }

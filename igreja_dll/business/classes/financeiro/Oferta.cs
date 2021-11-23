@@ -15,9 +15,5 @@ namespace business.classes.financeiro
             this.Pessoa_ = null;
         }
 
-        public Oferta(bool v) : base(v)
-        {
-            this.Pessoa_ = null;
-        }
     }
 }

@@ -47,11 +47,6 @@ namespace business.classes.PessoasLgpd
             }
         }
 
-
         public VisitanteLgpd() : base(){ }
-
-        public VisitanteLgpd(bool v) : base(v)
-        {
-        }
     }
 }

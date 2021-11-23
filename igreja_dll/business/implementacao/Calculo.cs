@@ -17,7 +17,7 @@ namespace business.implementacao
 
                 var modelos = 0;
 
-                var lista = modelocrud.listTypes(typeof(modelocrud));
+                var lista = modelocrud.listTypesSon(typeof(modelocrud));
 
                 foreach(var item in lista)
                     modelos += modelocrud.Modelos.Where(m => m.GetType() == item).ToList().Count;

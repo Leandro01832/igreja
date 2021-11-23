@@ -16,7 +16,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
         
         private void CadastroVisitante_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Cadastro de visitante.";
 
             if (modelo is Visitante)

@@ -23,9 +23,6 @@ namespace business.classes.PessoasLgpd
         }
 
         public Membro_AclamacaoLgpd() : base(){ }
-
-        public Membro_AclamacaoLgpd(bool v)
-        {
-        }
+        
     }
 }

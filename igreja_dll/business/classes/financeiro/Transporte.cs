@@ -6,7 +6,6 @@ namespace business.classes.financeiro
     public class Transporte : MovimentacaoSaida
     {
         public Transporte() : base() { }
-        public Transporte(bool v) : base(v) { }
 
         public bool Gasolina { get; set; }
         public bool Alcool { get; set; }

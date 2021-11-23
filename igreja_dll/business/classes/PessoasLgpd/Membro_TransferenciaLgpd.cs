@@ -68,9 +68,5 @@ namespace business.classes.PessoasLgpd
         }
 
         public Membro_TransferenciaLgpd() : base(){ }
-
-        public Membro_TransferenciaLgpd(bool v) : base(v)
-        {
-        }
     }
 }

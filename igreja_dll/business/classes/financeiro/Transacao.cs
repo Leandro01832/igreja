@@ -10,9 +10,7 @@ namespace business.classes.financeiro
 {
     [Table("Transacao")]
     public class Transacao : MovimentacaoSaida
-    {
-
-        public Transacao(bool v) : base(v) { }
+    {        
         public Transacao() : base() { }
     }
 }

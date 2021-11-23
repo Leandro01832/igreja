@@ -21,8 +21,6 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmFinalizarCadastroFonte_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
         }
     }
 }

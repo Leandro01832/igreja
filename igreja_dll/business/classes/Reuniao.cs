@@ -77,8 +77,7 @@ namespace business.classes
         public static int UltimoRegistro;
         
         #endregion        
-
-        public Reuniao(bool v) : base(v){ }
+        
         public Reuniao() : base(){ }
 
         public override string ToString()

@@ -24,7 +24,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void CadastroCrianca_Load_1(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Cadastro de Criança.";
             
                 if(modelo is Crianca)

@@ -165,6 +165,5 @@ namespace business.classes
         }
 
         public Endereco() : base(){ }
-        public Endereco(bool v) : base(v){ }
     }
 }

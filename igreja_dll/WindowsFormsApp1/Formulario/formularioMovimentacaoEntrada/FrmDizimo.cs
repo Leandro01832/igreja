@@ -16,7 +16,6 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
 
         private void FrmCadastrarDizimo_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             var form = "Dízimo";
             if (CondicaoAtualizar) this.Text = "Atualizar registro - " + form;
             if (CondicaoDeletar) this.Text = "Deletar registro - " + form;

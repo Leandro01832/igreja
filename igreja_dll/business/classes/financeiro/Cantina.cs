@@ -11,7 +11,6 @@ namespace business.classes.financeiro
     [Table("Cantina")]
     public class Cantina : MovimentacaoEntrada
     {
-        public Cantina(bool v) : base(v) { }
         public Cantina() : base() { }
     }
 }

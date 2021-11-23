@@ -13,10 +13,7 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         }
 
         private void FrmCadastrarLivro_Load(object sender, EventArgs e)
-        {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
-            
+        {            
                 var fonte = (Livro)modelo;
               try{  txt_autor.Text = fonte.NomeAutor; } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
             try { txt_livro.Text = fonte.NomeLivro; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); } 

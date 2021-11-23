@@ -11,11 +11,14 @@ using WindowsFormsApp1.Formulario.FormularioEmail;
 
 namespace DesktopEmail.Formulario
 {
-    public partial class MDIEmail : Form
+    public partial class MDIEmail : Form, IFormCrud
     {
+        private CrudForm crudForm;
 
         public MDIEmail()
         {
+            crudForm = new CrudForm();
+            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -113,13 +116,8 @@ namespace DesktopEmail.Formulario
 
         private void cadastrarCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPermissao form = new FrmPermissao();
-            form.CondicaoAtualizar = false;
-            form.CondicaoDeletar = false;
-            form.CondicaoDetalhes = false;
-            form.modelo = new Permissao(true);
-            form.MdiParent = this;
-            form.Show();
+            crudForm.Form = new FrmPermissao();
+            LoadFormCrud(new Permissao(), false, false, false, this);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -144,6 +142,16 @@ namespace DesktopEmail.Formulario
         {
             ImprimirRelatorio imprimir = new ImprimirRelatorio(modelocrud.Modelos);
             imprimir.imprimir(typeof(Permissao));
+        }
+
+        public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
+        {
+            crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
+        }
+
+        public void Clicar()
+        {
+            crudForm.Clicar();
         }
     }
 }

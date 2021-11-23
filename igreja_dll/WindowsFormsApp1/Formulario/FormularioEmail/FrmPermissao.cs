@@ -61,8 +61,6 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail
 
         private void FrmPermissao_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this, "", "Categoria -");
-            LoadCrudForm();
             var Permissao = (Permissao)modelo;
             if (Permissao.Id != 0)
             {

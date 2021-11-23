@@ -20,8 +20,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void DadoPessoalLgpd_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-
             var pessoa = (PessoaLgpd)modelo;
             try { txt_email.Text = pessoa.Email; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
 

@@ -16,6 +16,5 @@ namespace business.classes.financeiro
             this.Pessoa_ = null;
         }
 
-        public Dizimo(bool v) : base(v) { this.Pessoa_ = null; }
     }
 }

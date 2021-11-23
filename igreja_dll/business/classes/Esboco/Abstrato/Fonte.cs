@@ -13,10 +13,6 @@ namespace business.classes.Esboco.Abstrato
         {
 
         }
-        public Fonte(bool v) : base(v)
-        {
-
-        }        
         
         public int MensagemId { get; set; }
         [ForeignKey("MensagemId")]
@@ -24,7 +20,7 @@ namespace business.classes.Esboco.Abstrato
 
         public static void recuperarTodasFontes()
         {
-            List<Type> lista = listTypes(typeof(Fonte));
+            List<Type> lista = listTypesSon(typeof(Fonte));
             foreach(var item in lista)
             {
                 var model = (modelocrud) Activator.CreateInstance(item);

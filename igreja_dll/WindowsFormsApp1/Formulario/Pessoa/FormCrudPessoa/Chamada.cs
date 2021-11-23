@@ -11,7 +11,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void Chamada_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
         }
     }
 }

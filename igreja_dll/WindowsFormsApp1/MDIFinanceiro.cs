@@ -12,16 +12,18 @@ using WindowsFormsApp1.Formulario;
 
 namespace WindowsFormsApp1
 {
-    public partial class MDIFinanceiro : Form
+    public partial class MDIFinanceiro : Form, IFormCrud
     {
         private int childFormNumber = 0;
 
-        ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
+        ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);        
 
-        WFCrud form = null;
+        private CrudForm crudForm;
 
         public MDIFinanceiro()
         {
+            crudForm = new CrudForm();
+            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -112,83 +114,81 @@ namespace WindowsFormsApp1
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            form = new FrmAdmin();
-            LoadFormCreate(new Admin(true));
+            crudForm.Form = new FrmAdmin();
+            LoadFormCreate(new Admin());
         }
 
         private void compradorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            form = new FrmComprador();
-            LoadFormCreate(new Comprador(true));
+            crudForm.Form = new FrmComprador();
+            LoadFormCreate(new Comprador());
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            form = new FrmDizimo();
-            LoadFormCreate(new Dizimo(true));
+            crudForm.Form = new FrmDizimo();
+            LoadFormCreate(new Dizimo());
         }
 
         private void LoadFormCreate(modelocrud model)
         {
-            form.modelo = model;
-            form.MdiParent = this;
-            form.Show();
+            LoadFormCrud( model, false, false, false, this);
         }
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            form = new FrmCantina();
-            LoadFormCreate(new Cantina(true));
+            crudForm.Form = new FrmCantina();
+            LoadFormCreate(new Cantina());
         }
 
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            form = new FrmOferta();
-            LoadFormCreate(new Oferta(true));
+            crudForm.Form = new FrmOferta();
+            LoadFormCreate(new Oferta());
         }
 
         private void bazarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            form = new FrmBazar();
-            LoadFormCreate(new Bazar(true));
+            crudForm.Form = new FrmBazar();
+            LoadFormCreate(new Bazar());
         }
 
         private void lavaRapidoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            form = new FrmLava_Rapido();
-            LoadFormCreate(new Lava_Rapido(true));
+            crudForm.Form = new FrmLava_Rapido();
+            LoadFormCreate(new Lava_Rapido());
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
-            form = new FrmCompra();
-            LoadFormCreate(new Compra(true));
+            crudForm.Form = new FrmCompra();
+            LoadFormCreate(new Compra());
 
         }
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
-            form = new FrmTransporte();
-            LoadFormCreate(new Transporte(true));
+            crudForm.Form = new FrmTransporte();
+            LoadFormCreate(new Transporte());
 
         }
 
         private void toolStripMenuItem13_Click(object sender, EventArgs e)
         {
-            form = new FrmTransacao();
-            LoadFormCreate(new Transacao(true));
+            crudForm.Form = new FrmTransacao();
+            LoadFormCreate(new Transacao());
         }
 
         private void toolStripMenuItem14_Click(object sender, EventArgs e)
         {
-            form = new FrmRetiro();
-            LoadFormCreate(new Retiro(true));
+            crudForm.Form = new FrmRetiro();
+            LoadFormCreate(new Retiro());
         }
 
         private void toolStripMenuItem15_Click(object sender, EventArgs e)
         {
-            form = new FrmAluguel();
-            LoadFormCreate(new Aluguel(true));
+            crudForm.Form = new FrmAluguel();
+            LoadFormCreate(new Aluguel());
         }
 
         private void fileMenu_Click(object sender, EventArgs e)
@@ -527,6 +527,16 @@ namespace WindowsFormsApp1
             FrmGraficoCaixa form = new FrmGraficoCaixa();
             form.MdiParent = this;
             form.Show();
+        }
+
+        public void LoadFormCrud( modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
+        {
+            crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
+        }
+
+        public void Clicar()
+        {
+            crudForm.Clicar();
         }
     }
 }

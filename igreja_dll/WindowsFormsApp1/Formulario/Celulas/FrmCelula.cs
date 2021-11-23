@@ -20,8 +20,6 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void FinalizarCadastro_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-            FormPadrao.LoadForm(this);
             if (CondicaoDeletar)
             this.Text += " - Deletar celula.";
 

@@ -17,12 +17,15 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public partial class MDI : Form
+    public partial class MDI : Form, IFormCrud
     {
         private int childFormNumber = 1;
+        private CrudForm crudForm;
 
         public MDI()
         {
+            crudForm = new CrudForm();
+            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -117,510 +120,113 @@ namespace WindowsFormsApp1
             else MessageBox.Show("Aguarde o processamento");
         }
 
-        private void mininstérioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Lider_Celula));
-        }
-
-        private void ministérioDeLiderançaEmTreinamentoDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Lider_Celula_Treinamento));
-        }
-
-        private void ministérioDeLiderançaDeMinistérioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Lider_Ministerio));
-        }
-
-        private void ministerioDeLiderancaDeMinistérioEmTreianmentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Lider_Ministerio_Treinamento));
-        }
-
-        private void ministérioDeSupervisionamentoDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Supervisor_Celula));
-        }
-
-        private void ministérioDeSupervisionamentoDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Supervisor_Celula_Treinamento));
-        }
-
-        private void ministérioDeSupervisionamentoDeMinistérioDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Supervisor_Ministerio));
-        }
-
-        private void ministérioDeSupervisionamentoDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListMinisterio(typeof(Supervisor_Ministerio_Treinamento));
-        }
-
-        private void ceulaParaAdolescenteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListCelula(typeof(Celula_Adolescente));
-        }
-
-        private void celulaParaAdultoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListCelula(typeof(Celula_Adulto));
-        }
-
-        private void ceulaParaJovemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListCelula(typeof(Celula_Jovem));
-        }
-
-        private void celulaParaCasadoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListCelula(typeof(Celula_Casado));
-        }
-
-        private void celulaParaAdultosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoCelula();
-            LoadFormCreate(new Celula_Adulto(true));
-        }
-
-        private void liderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Celula(true));
-        }
-
-        private void lIiderEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Celula_Treinamento(true));
-        }
-
-        private void liderToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Ministerio(true));
-        }
-
-        private void liderDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Lider_Ministerio_Treinamento(true));
-        }
-
-        private void supervisorDeCelulaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Celula(true));
-        }
-
-        private void supervisorDeCelulaEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Celula_Treinamento(true));
-        }
-
-        private void supervisorDeMinistérioEmTreianmentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Ministerio(true));
-        }
-
-        private void supervisorDeMinistérioEmTreinamentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoMinisterio();
-            LoadFormCreate(new Supervisor_Ministerio_Treinamento(true));
-        }
-
-        private void celulaParaCriançasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoCelula();
-            LoadFormCreate(new Celula_Crianca(true));
-        }
-
-        private void celulaParaAdolescentesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoCelula();
-            LoadFormCreate(new Celula_Adolescente(true));
-        }
-
-        private void celulaParaJovensToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoCelula();
-            LoadFormCreate(new Celula_Jovem(true));
-        }
-
-        private void celulaParaCasadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoCelula();
-            LoadFormCreate(new Celula_Casado(true));
-        }
-
         private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e){ }        
-
-        private void pessoaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Pessoa)); 
-        }
-
-        private void celulaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Celula)); 
-        }
-
-        private void celulaParaAdolescentesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Celula_Adolescente)); 
-        }
-
-        private void celulaParaAdultosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Celula_Adulto)); 
-        }
-
-        private void celulaParaJovensToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Celula_Jovem)); 
-        }
-
-        private void celulaParaCriançasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Celula_Crianca)); 
-        }
-
-        private void celulaParaCasadosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Celula_Casado)); 
-        }
-
-        private void ministérioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Ministerio)); 
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Lider_Celula)); 
-        }
-
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Lider_Celula_Treinamento)); 
-        }
-
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Lider_Ministerio)); 
-        }
-
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Lider_Ministerio_Treinamento)); 
-        }
-
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Supervisor_Celula)); 
-        }
-
-        private void toolStripMenuItem7_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Supervisor_Celula_Treinamento)); 
-        }
-
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Supervisor_Ministerio)); 
-        }
-
-        private void toolStripMenuItem9_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Supervisor_Ministerio_Treinamento)); 
-        }
-
-        private  void reuniãoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-                ListReuniao frm = new ListReuniao();
-                frm.MdiParent = this;
-                frm.Text = "Janela " + childFormNumber++;
-                frm.Show(); 
-        }
-
-        private void reuniãoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm = new DadoReuniao();
-            LoadFormCreate(new Reuniao(true));
-        }
-
-        private void mudançaDeEstadoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ListaMudancaEstado frm = new ListaMudancaEstado();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void mudançaDeEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {            
-                ir.imprimir(typeof(MudancaEstado)); 
-        }
-
-        private void reuniãoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-                ir.imprimir(typeof(Reuniao));
-        }
-        
-        private void toolStripMenuItem40_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Ministerio));
-        }
-
-        private void toolStripMenuItem41_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Lider_Celula));
-        }
-
-        private void toolStripMenuItem42_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Lider_Celula_Treinamento));
-        }
-
-        private void toolStripMenuItem43_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Lider_Ministerio));
-        }
-
-        private void toolStripMenuItem44_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Lider_Ministerio_Treinamento));
-        }
-
-        private void toolStripMenuItem45_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Supervisor_Celula));
-        }
-
-        private void toolStripMenuItem46_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Supervisor_Celula_Treinamento));
-        }
-
-        private void toolStripMenuItem47_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Supervisor_Ministerio));
-        }
-
-        private void toolStripMenuItem48_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Supervisor_Ministerio_Treinamento));
-        }
-
-        private void toolStripMenuItem49_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Reuniao));
-        }
-
-        private void toolStripMenuItem50_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Celula));
-        }
-
-        private void toolStripMenuItem51_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Celula_Adolescente));
-        }
-
-        private void toolStripMenuItem52_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Celula_Adulto));
-        }
-
-        private void toolStripMenuItem53_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Celula_Jovem));
-        }
-
-        private void toolStripMenuItem54_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Celula_Casado));
-        }
-
-        private void toolStripMenuItem55_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Celula_Crianca));
-        }
-
-        private void toolStripMenuItem56_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Pessoa));
-        }
-
-        private void toolStripMenuItem57_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(PessoaLgpd));
-        }
-
-        private void toolStripMenuItem65_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(PessoaDado));
-        }
-
-        private void toolStripMenuItem58_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(VisitanteLgpd));
-        }
-
-        private void toolStripMenuItem59_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(MembroLgpd));
-        }
-
-        private void toolStripMenuItem64_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(CriancaLgpd));
-        }
-
-        private void toolStripMenuItem60_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_AclamacaoLgpd));
-        }
-
-        private void toolStripMenuItem61_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_BatismoLgpd));
-        }
-
-        private void toolStripMenuItem62_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_ReconciliacaoLgpd));
-        }
-
-        private void toolStripMenuItem63_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_TransferenciaLgpd));
-        }
-
-        private void pessoaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(PessoaDado));
-        }
-
-        private void toolStripMenuItem66_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Visitante));
-        }
-
-        private void toolStripMenuItem72_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Crianca));
-        }
-
-        private void toolStripMenuItem67_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro));
-        }
-
-        private void toolStripMenuItem68_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_Aclamacao));
-        }
-
-        private void toolStripMenuItem69_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_Batismo));
-        }
-
-        private void toolStripMenuItem70_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_Reconciliacao));
-        }
-
-        private void toolStripMenuItem71_Click(object sender, EventArgs e)
-        {
-            OpenQuery(typeof(Membro_Transferencia));
-        }
-
-        private void toolStripMenuItem10_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(PessoaLgpd));
-        }
-
-        private void pessoasToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Pessoa));
-        }
-
-        private void toolStripMenuItem11_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(VisitanteLgpd));
-        }
-
-        private void celulaParaCriançaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Celula_Crianca));
-        }
-
-        private void toolStripMenuItem12_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(MembroLgpd));
-        }
-
-        private void toolStripMenuItem17_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(CriancaLgpd));
-        }
-
-        private void toolStripMenuItem13_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro_AclamacaoLgpd));
-        }
-
-        private void toolStripMenuItem14_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro_BatismoLgpd));
-        }
-
-        private void toolStripMenuItem15_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro_ReconciliacaoLgpd));
-        }
-
-        private void toolStripMenuItem16_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro_TransferenciaLgpd));
-        }
-
-        private void visitanteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Visitante));
-        }
-
-        private void membroToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro));
-        }
-
-        private void criançaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Crianca));
-        }
-
-        private void membroPorAclamaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro_Aclamacao));
-        }
-
-        private void membroPorBatismoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenListPessoa(typeof(Membro_Batismo));
-        }
-
-        private void membroPorReconciliaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-           OpenListPessoa(typeof(Membro_Reconciliacao));
+        public void Lider_CelulaListar_Click(object sender, EventArgs e)                         { Clicar(this); }
+        public void Lider_Celula_TreinamentoListar_Click(object sender, EventArgs e)             { Clicar(this); }
+        public void Lider_MinisterioListar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void Lider_Ministerio_TreinamentoListar_Click(object sender, EventArgs e)         { Clicar(this); }
+        public void Supervisor_CelulaListar_Click(object sender, EventArgs e)                    { Clicar(this); }
+        public void Supervisor_Celula_TreinamentoListar_Click(object sender, EventArgs e)        { Clicar(this); }
+        public void Supervisor_MinisterioListar_Click(object sender, EventArgs e)                { Clicar(this); }
+        public void Supervisor_Ministerio_TreinamentoListar_Click(object sender, EventArgs e)    { Clicar(this); }
+        public void Celula_AdolescenteListar_Click(object sender, EventArgs e)                   { Clicar(this); }
+        public void Celula_AdultoListar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void Celula_JovemListar_Click(object sender, EventArgs e)                         { Clicar(this); }
+        public void Celula_CasadoListar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void Celula_AdultoCadastrar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void Lider_CelulaCadastrar_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void Lider_Celula_TreinamentoCadastrar_Click(object sender, EventArgs e)          { Clicar(this); }
+        public void Lider_MinisterioCadastrar_Click(object sender, EventArgs e)                  { Clicar(this); }
+        public void Lider_Ministerio_TreinamentoCadastrar_Click(object sender, EventArgs e)      { Clicar(this); }
+        public void Supervisor_CelulaCadastrar_Click(object sender, EventArgs e)                 { Clicar(this); }
+        public void Supervisor_Celula_TreinamentoCadastrar_Click(object sender, EventArgs e)     { Clicar(this); }
+        public void Supervisor_MinisterioCadastrar_Click(object sender, EventArgs e)             { Clicar(this); }
+        public void Supervisor_Ministerio_TreinamentoCadastrar_Click(object sender, EventArgs e) { Clicar(this); }
+        public void Celula_CriancaCadastrar_Click(object sender, EventArgs e)                    { Clicar(this); }
+        public void Celula_AdolescenteCadastrar_Click(object sender, EventArgs e)                { Clicar(this); }
+        public void Celula_JovemCadastrar_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void Celula_CasadoCadastrar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void PessoaImprimir_Click(object sender, EventArgs e)                             { Clicar(this); }
+        public void CelulaImprimir_Click(object sender, EventArgs e)                             { Clicar(this); }
+        public void Celula_AdolescenteImprimir_Click(object sender, EventArgs e)                 { Clicar(this); }
+        public void Celula_AdultoImprimir_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void Celula_JovemImprimir_Click(object sender, EventArgs e)                       { Clicar(this); }
+        public void Celula_CriancaImprimir_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void Celula_CasadoImprimir_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void MinisterioImprimir_Click(object sender, EventArgs e)                         { Clicar(this); }
+        public void Lider_CelulaImprimir_Click(object sender, EventArgs e)                       { Clicar(this); }
+        public void Lider_Celula_TreinamentoImprimir_Click(object sender, EventArgs e)           { Clicar(this); }
+        public void Lider_MinisterioImprimir_Click(object sender, EventArgs e)                   { Clicar(this); }
+        public void Lider_Ministerio_TreinamentoImprimir_Click(object sender, EventArgs e)       { Clicar(this); }
+        public void Supervisor_CelulaImprimir_Click(object sender, EventArgs e)                  { Clicar(this); }
+        public void Supervisor_Celula_TreinamentoImprimir_Click(object sender, EventArgs e)      { Clicar(this); }
+        public void Supervisor_MinisterioImprimir_Click(object sender, EventArgs e)              { Clicar(this); }
+        public void Supervisor_Ministerio_TreinamentoImprimir_Click(object sender, EventArgs e)  { Clicar(this); }
+        public void ReuniaoListar_Click(object sender, EventArgs e)                              { Clicar(this); }
+        public void ReuniaoCadastrar_Click(object sender, EventArgs e)                           { Clicar(this); }
+        public void MudancaEstadoListar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void MudancaEstadoImprimir_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void ReuniaoImprimir_Click(object sender, EventArgs e)                            { Clicar(this); }
+        public void MinisterioPesquisar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void Lider_CelulaPesquisar_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void Lider_Celula_TreinamentoPesquisar_Click(object sender, EventArgs e)          { Clicar(this); }
+        public void Lider_MinisterioPesquisar_Click(object sender, EventArgs e)                  { Clicar(this); }
+        public void Lider_Ministerio_TreianamentoPesquisar_Click(object sender, EventArgs e)     { Clicar(this); }
+        public void Supervisor_CelulaPesquisar_Click(object sender, EventArgs e)                 { Clicar(this); }
+        public void Supervisor_Celula_TreinamentoPesquisar_Click(object sender, EventArgs e)     { Clicar(this); }
+        public void Supervisor_MinisterioPesquisar_Click(object sender, EventArgs e)             { Clicar(this); }
+        public void Supervisor_Ministerio_TreinamentoPesquisar_Click(object sender, EventArgs e) { Clicar(this); }
+        public void ReuniaoPesquisar_Click(object sender, EventArgs e)                           { Clicar(this); }
+        public void CelulaPesquisar_Click(object sender, EventArgs e)                            { Clicar(this); }
+        public void Celula_AdolescentePesquisar_Click(object sender, EventArgs e)                { Clicar(this); }
+        public void Celula_AdultoPesquisar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void Celula_JovemPesquisar_Click(object sender, EventArgs e)                      { Clicar(this); }
+        public void Celula_CasadoPesquisar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void Celula_CriancaPesquisar_Click(object sender, EventArgs e)                    { Clicar(this); }
+        public void PessoaPesquisar_Click(object sender, EventArgs e)                            { Clicar(this); }
+        public void PessoaLgpdPesquisar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void PessoaDadoPesquisar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void VisitanteLgpdPesquisar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void MenbroLgpdPesquisar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void CriancaLgpdPesquisar_Click(object sender, EventArgs e)                       { Clicar(this); }
+        public void Membro_AclamacaoLgpdPesquisar_Click(object sender, EventArgs e)              { Clicar(this); }
+        public void Membro_BatismoLgpdPesquisar_Click(object sender, EventArgs e)                { Clicar(this); }
+        public void Membro_ReconciliacaoLgpdPesquisar_Click(object sender, EventArgs e)          { Clicar(this); }
+        public void Membro_TransferenciaLgpdPesquisar_Click(object sender, EventArgs e)          { Clicar(this); }
+        public void PessoaDadoListar_Click(object sender, EventArgs e)                           { Clicar(this); }
+        public void VisitantePesquisar_Click(object sender, EventArgs e)                         { Clicar(this); }
+        public void CriancaPesquisar_Click(object sender, EventArgs e)                           { Clicar(this); }
+        public void MembroPesquisar_Click(object sender, EventArgs e)                            { Clicar(this); }
+        public void Membro_AclamacaoPesquisar_Click(object sender, EventArgs e)                  { Clicar(this); }
+        public void Membro_BatismoPesquisar_Click(object sender, EventArgs e)                    { Clicar(this); }
+        public void Membro_ReconciliacaoPesquisar_Click(object sender, EventArgs e)              { Clicar(this); }
+        public void Membro_TransferenciaPesquisar_Click(object sender, EventArgs e)              { Clicar(this); }
+        public void PessoaLgpdListar_Click(object sender, EventArgs e)                           { Clicar(this); }
+        public void PessoaListar_Click(object sender, EventArgs e)                               { Clicar(this); }
+        public void VisitanteLgpdListar_Click(object sender, EventArgs e)                        { Clicar(this); }
+        public void Celula_CriancaListar_Click(object sender, EventArgs e)                       { Clicar(this); }
+        public void MembroLgpdListar_Click(object sender, EventArgs e)                           { Clicar(this); }
+        public void CriancaLgpdListar_Click(object sender, EventArgs e)                          { Clicar(this); }
+        public void Membro_AclamacaoLgpdListar_Click(object sender, EventArgs e)                 { Clicar(this); }
+        public void Membro_BatismoLgpdListar_Click(object sender, EventArgs e)                   { Clicar(this); }
+        public void Membro_ReconciliacaoLgpdListar_Click(object sender, EventArgs e)             { Clicar(this); }
+        public void Membro_TransferenciaLgpdListar_Click(object sender, EventArgs e)             { Clicar(this); }
+        public void VisitanteListar_Click(object sender, EventArgs e)                            { Clicar(this); }
+        public void MembroListar_Click(object sender, EventArgs e)                               { Clicar(this); }
+        public void CriancaListar_Click(object sender, EventArgs e)                              { Clicar(this); }
+        public void Membro_AclamacaoListar_Click(object sender, EventArgs e)                     { Clicar(this); }
+        public void Membro_BatismoListar_Click(object sender, EventArgs e)                       { Clicar(this); }
+        public void Membro_ReconciliacaoListar_Click(object sender, EventArgs e)                 { Clicar(this); }
+        public void Membro_TransferenciaListar_Click(object sender, EventArgs e)                 { Clicar(this); }
+
+        public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
+        {
+            crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, Atual);
         }
 
-        private void membroPorTransferênciaToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void Clicar(Form form)
         {
-            OpenListPessoa(typeof(Membro_Transferencia));
+            crudForm.Clicar(form);
         }
     }
 }

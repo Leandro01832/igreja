@@ -13,8 +13,6 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void Reuniao_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-
             var reuniao = (business.classes.Reuniao)modelo;
             try { txt_local_reuniao.Text = reuniao.Local_reuniao; }
             catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }

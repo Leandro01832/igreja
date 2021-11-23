@@ -20,7 +20,6 @@ namespace WindowsFormsApp1.Formulario.Reuniao
 
         private void PessoasReuniao_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             var p = (business.classes.Reuniao)modelo;
 
 

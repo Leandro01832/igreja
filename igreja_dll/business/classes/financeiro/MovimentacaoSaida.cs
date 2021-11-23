@@ -8,9 +8,6 @@ namespace business.classes.financeiro
         public MovimentacaoSaida() : base()
         {
 
-        }public MovimentacaoSaida(bool v) : base(v)
-        {
-
         }
     }
 }

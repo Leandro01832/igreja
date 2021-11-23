@@ -2854,11 +2854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leand\\Documents\\Visual Studio 2017\\C#\\Igreja\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.Android\\AplicativoXamarin.Android.csproj",
+      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.Android\\AplicativoXamarin.Android.csproj",
       "projectName": "AplicativoXamarin.Android",
-      "projectPath": "C:\\Users\\leand\\Documents\\Visual Studio 2017\\C#\\Igreja\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.Android\\AplicativoXamarin.Android.csproj",
+      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.Android\\AplicativoXamarin.Android.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leand\\Documents\\Visual Studio 2017\\C#\\Igreja\\Igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.Android\\obj\\",
+      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

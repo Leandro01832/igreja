@@ -7,7 +7,6 @@ namespace business.Classe.financeiro
     [Table("Comprador")]
     public class Comprador : PessoaDado
     {
-        public Comprador(bool v) : base(v) { }
         public Comprador() : base() { }
     }
 }

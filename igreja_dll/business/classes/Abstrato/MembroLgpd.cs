@@ -18,8 +18,5 @@ namespace business.classes.Abstrato
 
         public MembroLgpd() : base(){ }
 
-        protected MembroLgpd(bool v) : base(v)
-        {
-        }
     }
 }

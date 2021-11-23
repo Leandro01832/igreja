@@ -57,7 +57,9 @@ namespace WindowsFormsApp1.Formulario.Celulas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                var msg = modelo.exibirMensagemErro(ex, 2);
+                if (msg != "")
+                    MessageBox.Show(msg);
             }
 
             condicao = true;

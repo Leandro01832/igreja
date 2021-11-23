@@ -23,8 +23,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void ReunioesMinisteriosPessoa_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-
             this.Proximo.Location = new Point(900, 150);
             this.Atualizar.Location = new Point(900, 250);
             this.Deletar.Location = new Point(900, 350);
@@ -56,7 +54,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                var msg = modelo.exibirMensagemErro(ex, 2);
+                if(msg != "")
+                MessageBox.Show(msg);
             }
 
             try
@@ -69,7 +69,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                var msg = modelo.exibirMensagemErro(ex, 2);
+                if (msg != "")
+                    MessageBox.Show(msg);
             }
 
 

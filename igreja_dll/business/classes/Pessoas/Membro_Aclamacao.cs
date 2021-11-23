@@ -28,9 +28,6 @@ namespace business.classes.Pessoas
         }
 
         public Membro_Aclamacao() : base() { }
-
-        public Membro_Aclamacao(bool v): base(v)
-        {
-        }
+        
     }
 }

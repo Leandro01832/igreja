@@ -17,7 +17,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void CadastroMembroReconciliacao_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Cadastro de membro por reconciliação.";
 
             if (modelo is Membro_Reconciliacao)

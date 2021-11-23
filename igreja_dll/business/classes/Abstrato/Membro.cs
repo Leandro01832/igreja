@@ -21,9 +21,6 @@ namespace business.classes.Abstrato
         {
             Desligamento = false;
         }
-
-        protected Membro(bool v) : base(v)
-        {
-        }
+        
     }
 }

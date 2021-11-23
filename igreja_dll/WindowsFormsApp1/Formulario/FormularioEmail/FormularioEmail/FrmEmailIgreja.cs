@@ -21,8 +21,6 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
 
         private void FrmEmailAdvocacia_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
-            LoadCrudForm();
         }
     }
 }

@@ -18,7 +18,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                
         private void CadastroMembroAclamacao_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Cadastro de membro por aclamação.";
             this.Size = new Size(new Point(850, 750));
 

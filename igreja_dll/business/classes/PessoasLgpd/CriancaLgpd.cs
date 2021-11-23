@@ -49,9 +49,5 @@ namespace business.classes.PessoasLgpd
 
 
         public CriancaLgpd() : base() { }
-
-        public CriancaLgpd(bool v) : base(v)
-        {
-        }
     }
 }

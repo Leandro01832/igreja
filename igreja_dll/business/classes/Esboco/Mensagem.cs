@@ -8,7 +8,6 @@ namespace business.classes.Esboco
     [Table("Mensagem")]
     public class Mensagem : modelocrud
     {
-        public Mensagem(bool v) : base(v) {  }
         public Mensagem() : base() {  }
 
         public List<Fonte> Fontes { get; set; }

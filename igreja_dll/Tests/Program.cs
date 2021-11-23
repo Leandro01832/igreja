@@ -212,35 +212,44 @@ namespace Tests
             //      foreach(var item in strings)
             //          Console.WriteLine(item);
 
-            List<string> props = new List<string>();
+            //List<string> props = new List<string>();
 
-            var types = modelocrud.listTypes(typeof(modelocrud));
+            //var types = modelocrud.listTypes(typeof(modelocrud));
 
-            foreach (var t in types)
-                foreach(var item in t.GetProperties())
-                if (item.PropertyType.IsSubclassOf(typeof(modelocrud)))
-                {
-                    foreach (var item2 in item.PropertyType.GetProperties())
-                    {
-                        OpcoesBase opc = (OpcoesBase)item2.GetCustomAttribute(typeof(OpcoesBase));
-                        if (opc != null && opc.Obrigatorio &&
-                            props.FirstOrDefault(p => p.Contains(item2.Name)) == null &&
-                            item2.Name != "Id")
-                            props.Add(item2.Name + " - " + item.Name);
-                    }                        
-                }
-                else
-                {
-                    OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
-                    if (opc != null && opc.Obrigatorio &&
-                       props.FirstOrDefault(p => p.Contains(item.Name)) == null &&
-                       item.Name != "Id")
-                       props.Add(item.Name + " - " + t.Name);
-                    }
+            //foreach (var t in types)
+            //    foreach(var item in t.GetProperties())
+            //    if (item.PropertyType.IsSubclassOf(typeof(modelocrud)))
+            //    {
+            //        foreach (var item2 in item.PropertyType.GetProperties())
+            //        {
+            //            OpcoesBase opc = (OpcoesBase)item2.GetCustomAttribute(typeof(OpcoesBase));
+            //            if (opc != null && opc.Obrigatorio &&
+            //                props.FirstOrDefault(p => p.Contains(item2.Name)) == null &&
+            //                item2.Name != "Id")
+            //                props.Add(item2.Name + " - " + item.Name);
+            //        }                        
+            //    }
+            //    else
+            //    {
+            //        OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
+            //        if (opc != null && opc.Obrigatorio &&
+            //           props.FirstOrDefault(p => p.Contains(item.Name)) == null &&
+            //           item.Name != "Id")
+            //           props.Add(item.Name + " - " + t.Name);
+            //        }
 
-            // Lista de obrigatorio
-            foreach(var item in props)
-            Console.WriteLine(item);
+            //// Lista de obrigatorio
+            //foreach(var item in props)
+            //Console.WriteLine(item);
+
+            //var pessoa = new Visitante();
+            //pessoa.Id = 1;
+            //pessoa.Select_padrao = "select * from Visitante where Id = 1";
+            //pessoa.Delete_padrao = "delete from Visitante where Id = 1";
+            //var p = pessoa.recuperar(1);
+            //pessoa.Id = 0;
+            //pessoa.celula_ = 3;
+            //pessoa.salvar();
 
 
             Console.WriteLine("ok");
@@ -1471,5 +1480,33 @@ namespace Tests
             }
         }
         #endregion
+    }
+
+    public class Cliente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public Cliente(int id, string nome)
+        {
+            this.Id = id;
+            this.Nome = nome;
+        }
+        public Cliente()
+        {
+            this.Id = -1;
+            this.Nome = string.Empty;
+        }
+        public void ImprimeID()
+        {
+            Console.WriteLine($"ID = {this.Id}");
+        }
+        public void ImprimeNome()
+        {
+            Console.WriteLine($"Nome = {this.Nome}");
+        }
+        public string GetNomeCompleto(string Nome, string Sobrenome)
+        {
+            return Nome + " " + Sobrenome;
+        }
     }
 }

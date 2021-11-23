@@ -15,18 +15,7 @@ namespace business.classes.Pessoas
             if (!EntityCrud)
             {
                 Endereco = new Endereco();
-                anularDados(Endereco);
                 Telefone = new Telefone();
-                anularDados(Telefone);
-            }
-            
-        }
-        public PessoaDado(bool v) : base(v)
-        {
-            if (!EntityCrud)
-            {
-                Endereco = new Endereco(true);
-                Telefone = new Telefone(true);
             }
             
         }
@@ -89,9 +78,9 @@ namespace business.classes.Pessoas
             }
             set
             {
+                cpf = value;
                 if (string.IsNullOrWhiteSpace(cpf))
                     throw new Exception("Cpf");
-                cpf = value;
             }
         }
 

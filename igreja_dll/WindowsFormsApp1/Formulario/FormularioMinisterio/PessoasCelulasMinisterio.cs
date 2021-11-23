@@ -23,8 +23,6 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void PessoasCelulasMinisterio_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
-
             this.Text = " - Celulas e pessoas do ministério.";
 
             this.Proximo.Location = new Point(600, 150);
@@ -48,7 +46,9 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                var msg = modelo.exibirMensagemErro(ex, 2);
+                if (msg != "")
+                    MessageBox.Show(msg);
             }
 
             try
@@ -61,7 +61,9 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                var msg = modelo.exibirMensagemErro(ex, 2);
+                if (msg != "")
+                    MessageBox.Show(msg);
             }
 
             condicao = true;

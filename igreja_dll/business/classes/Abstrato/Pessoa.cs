@@ -29,17 +29,6 @@ namespace business.classes.Abstrato
             }
 
         }
-        public Pessoa(bool v) : base(v)
-        {
-            if (!EntityCrud)
-            {
-                MudancaEstado = new MudancaEstado();
-                Chamada = new Chamada();
-                Ministerios = new List<PessoaMinisterio>();
-                Reuniao = new List<ReuniaoPessoa>();
-            }
-
-        }
 
         #region Properties
         public HttpPostedFileBase FiguraFile;     
@@ -105,7 +94,7 @@ namespace business.classes.Abstrato
 
         public async static void recuperarTodos()
         {
-            List<Type> list = listTypes(typeof(Pessoa));
+            List<Type> list = listTypesSon(typeof(Pessoa));
             foreach(var item in list)
             {
                 var modelo = (modelocrud) Activator.CreateInstance(item);

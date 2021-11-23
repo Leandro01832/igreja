@@ -158,7 +158,7 @@ namespace WindowsFormsApp1
             {
                 for (var i = Pessoa.UltimoRegistro; i <= UltimoRegistroPessoa; i++)
                 {
-                    var Lista = modelocrud.listTypes(typeof(modelocrud));
+                    var Lista = modelocrud.listTypesSon(typeof(modelocrud));
                     foreach(var item in Lista)
                     {
                         var model = (modelocrud) Activator.CreateInstance(item);

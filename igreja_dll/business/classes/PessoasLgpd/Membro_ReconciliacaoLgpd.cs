@@ -25,8 +25,5 @@ namespace business.classes.PessoasLgpd
 
         public Membro_ReconciliacaoLgpd() : base(){}
 
-        public Membro_ReconciliacaoLgpd(bool v) : base(v)
-        {
-        }
     }
 }

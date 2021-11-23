@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                 frm.Text = "Barra de processamento - Processando dados";
                 frm.Show();
 
-                var listaTypes = modelocrud.listTypes(typeof(modelocrud));
+                var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
                 foreach(var item in listaTypes.Where(e => e.BaseType == typeof(modelocrud)))
                 {
                     var modelo = (modelocrud) Activator.CreateInstance(item);
@@ -204,7 +204,7 @@ namespace WindowsFormsApp1
                 if (modelocrud.Modelos.OfType<Pessoa>().ToList().FirstOrDefault(i => i.Id == v1) == null)
                 {
                     Pessoa m = null;
-                    var listaTypes = modelocrud.listTypes(typeof(Pessoa));
+                    var listaTypes = modelocrud.listTypesSon(typeof(Pessoa));
                     foreach (var i in listaTypes)
                     {
                         m = (Pessoa)Activator.CreateInstance(i);
@@ -225,7 +225,7 @@ namespace WindowsFormsApp1
                 if (modelocrud.Modelos.OfType<Celula>().ToList().FirstOrDefault(i => i.Id == v1) == null)
                 {
                     Celula m = null;
-                    var listaTypes = modelocrud.listTypes(typeof(Celula));
+                    var listaTypes = modelocrud.listTypesSon(typeof(Celula));
                     foreach (var i in listaTypes)
                     {
                         m = (Celula)Activator.CreateInstance(i);
@@ -245,7 +245,7 @@ namespace WindowsFormsApp1
                 if (modelocrud.Modelos.OfType<Ministerio>().ToList().FirstOrDefault(i => i.Id == v1) == null)
                 {
                     Ministerio m = null;
-                    var listaTypes = modelocrud.listTypes(typeof(Ministerio));
+                    var listaTypes = modelocrud.listTypesSon(typeof(Ministerio));
                     foreach (var i in listaTypes)
                     {
                         m = (Ministerio)Activator.CreateInstance(i);
@@ -320,7 +320,7 @@ namespace WindowsFormsApp1
 
         private static modelocrud retornaModelo(Type tipo)
         {
-            var listaTypes = modelocrud.listTypes(typeof(modelocrud));
+            var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
             foreach (var i in listaTypes)
                 if (tipo == i)
                     return (modelocrud)Activator.CreateInstance(i);
@@ -330,7 +330,7 @@ namespace WindowsFormsApp1
 
         private static List<modelocrud> RetornaModelos(modelocrud modelo)
         {
-            var listaTypes = modelocrud.listTypes(typeof(modelocrud));
+            var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
             foreach (var i in listaTypes)
                 if (modelo.GetType() == i) return modelocrud.Modelos.Where(m => m.GetType() == i).ToList(); 
 

@@ -14,9 +14,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         private void Endereco_Load(object sender, EventArgs e)
         {
-            LoadCrudForm();
             this.Text = "Endereço da pessoa.";
-
 
             var p = (business.classes.Pessoas.PessoaDado)modelo;
             try { textpais.Text = p.Endereco.Pais; }

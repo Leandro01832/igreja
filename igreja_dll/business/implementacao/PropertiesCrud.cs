@@ -221,7 +221,7 @@ namespace business.implementacao
                     pr.DeclaringType && pr.Name == "Id").ToList().Count != 0)
                     .ToList().Count != 0)
                     {
-                        VerficaPropertyClassSetProperties(Model.GetType());
+                        VerficaPropertyClassSetProperties(Model.GetType(), Model.Id);
                     }
 
                     for (int j = 0; j < 5; j++)
@@ -385,8 +385,11 @@ namespace business.implementacao
                 foreach (var property in propertiesDeclaring)
                 {
                     if (property.PropertyType.Name != "List`1")
+                    {
                         properties = property.Name + "=";
                     values += properties + VerificaUpdateProperties(property, Model);
+
+                    }
                 }
 
                 values = values.Remove(values.Length - 2, 2);
@@ -434,7 +437,7 @@ namespace business.implementacao
             try
             {
                 string delete = "";
-                delete += Model.Delete_padrao.Replace(GetType().Name, tipo.Name);
+                delete += Model.Delete_padrao.Replace(Model.GetType().Name, tipo.Name);
                 Model.T = tipo.BaseType;
 
                 if (tipo == Model.GetType())
@@ -472,7 +475,7 @@ namespace business.implementacao
             catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
         }
 
-        private void VerficaPropertyClassSetProperties(Type tipo)
+        private void VerficaPropertyClassSetProperties(Type tipo, int id)
         {
             try
             {
@@ -482,7 +485,7 @@ namespace business.implementacao
                 {
                     object objeto = Activator.CreateInstance(item.PropertyType);
                     modelocrud modelo = (modelocrud)objeto;
-                    modelo.Id = Model.Id;
+                    modelo.Id = id;
                     if (modelo.GetType().GetProperties()
                     .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
                     {
@@ -805,7 +808,7 @@ namespace business.implementacao
 
         private modelocrud buscarConcreto(Type itemType, int num)
         {
-            var listaTypes = modelocrud.listTypes(itemType);
+            var listaTypes = modelocrud.listTypesSon(itemType);
             foreach (var item in listaTypes)
             {
                 var model = (modelocrud)Activator.CreateInstance(item);
@@ -827,6 +830,7 @@ namespace business.implementacao
                 modelocrud mod = null;
                 if (itemType.IsAbstract)
                 mod = buscarConcreto(itemType, num);
+                else
                 mod = (modelocrud)Activator.CreateInstance(itemType);
                 mod.Id = num;
                 mod.Select_padrao = $"select * from {mod.GetType().Name} as C where C.Id='{mod.Id}'";
