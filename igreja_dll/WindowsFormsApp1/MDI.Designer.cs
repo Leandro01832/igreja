@@ -262,7 +262,7 @@
             this.ministerioToolStripMenuItem1.Name = "ministerioToolStripMenuItem1";
             this.ministerioToolStripMenuItem1.Size = new System.Drawing.Size(262, 32);
             this.ministerioToolStripMenuItem1.Text = "Ministério";
-            this.ministerioToolStripMenuItem1.Click += new System.EventHandler(this.ministerioToolStripMenuItem1_Click);
+            this.ministerioToolStripMenuItem1.Click += new System.EventHandler(this.MinisterioListar_Click);
             // 
             // mininstérioToolStripMenuItem
             // 
@@ -338,7 +338,7 @@
             this.celulaToolStripMenuItem1.Name = "celulaToolStripMenuItem1";
             this.celulaToolStripMenuItem1.Size = new System.Drawing.Size(262, 32);
             this.celulaToolStripMenuItem1.Text = "Celula";
-            this.celulaToolStripMenuItem1.Click += new System.EventHandler(this.celulaToolStripMenuItem1_Click);
+            this.celulaToolStripMenuItem1.Click += new System.EventHandler(this.CelulaListar_Click);
             // 
             // ceulaParaAdolescenteToolStripMenuItem
             // 
@@ -971,7 +971,6 @@
             this.toolStripMenuItem57.Name = "toolStripMenuItem57";
             this.toolStripMenuItem57.Size = new System.Drawing.Size(209, 32);
             this.toolStripMenuItem57.Text = "Pessoa Lgpd";
-            this.toolStripMenuItem57.Click += new System.EventHandler(this.toolStripMenuItem57_Click);
             // 
             // toolStripMenuItem58
             // 

@@ -152,7 +152,7 @@
             this.mensagemToolStripMenuItem1.Name = "mensagemToolStripMenuItem1";
             this.mensagemToolStripMenuItem1.Size = new System.Drawing.Size(186, 32);
             this.mensagemToolStripMenuItem1.Text = "Mensagem";
-            this.mensagemToolStripMenuItem1.Click += new System.EventHandler(this.mensagemToolStripMenuItem1_Click);
+            this.mensagemToolStripMenuItem1.Click += new System.EventHandler(this.MensagemListar_Click);
             // 
             // fonteToolStripMenuItem1
             // 
@@ -163,28 +163,28 @@
             this.fonteToolStripMenuItem1.Name = "fonteToolStripMenuItem1";
             this.fonteToolStripMenuItem1.Size = new System.Drawing.Size(186, 32);
             this.fonteToolStripMenuItem1.Text = "Fonte";
-            this.fonteToolStripMenuItem1.Click += new System.EventHandler(this.fonteToolStripMenuItem1_Click);
+            this.fonteToolStripMenuItem1.Click += new System.EventHandler(this.FonteListar_Click);
             // 
             // versiculoToolStripMenuItem1
             // 
             this.versiculoToolStripMenuItem1.Name = "versiculoToolStripMenuItem1";
             this.versiculoToolStripMenuItem1.Size = new System.Drawing.Size(187, 32);
             this.versiculoToolStripMenuItem1.Text = "Versiculo";
-            this.versiculoToolStripMenuItem1.Click += new System.EventHandler(this.versiculoToolStripMenuItem1_Click_1);
+            this.versiculoToolStripMenuItem1.Click += new System.EventHandler(this.VersiculoListar_Click);
             // 
             // canalDeTvToolStripMenuItem
             // 
             this.canalDeTvToolStripMenuItem.Name = "canalDeTvToolStripMenuItem";
             this.canalDeTvToolStripMenuItem.Size = new System.Drawing.Size(187, 32);
             this.canalDeTvToolStripMenuItem.Text = "Canal de tv";
-            this.canalDeTvToolStripMenuItem.Click += new System.EventHandler(this.canalDeTvToolStripMenuItem_Click);
+            this.canalDeTvToolStripMenuItem.Click += new System.EventHandler(this.CanalTvListar_Click);
             // 
             // livroToolStripMenuItem1
             // 
             this.livroToolStripMenuItem1.Name = "livroToolStripMenuItem1";
             this.livroToolStripMenuItem1.Size = new System.Drawing.Size(187, 32);
             this.livroToolStripMenuItem1.Text = "Livro";
-            this.livroToolStripMenuItem1.Click += new System.EventHandler(this.livroToolStripMenuItem1_Click);
+            this.livroToolStripMenuItem1.Click += new System.EventHandler(this.LivroListar_Click);
             // 
             // toolStripSeparator3
             // 
@@ -206,7 +206,7 @@
             // mensagemToolStripMenuItem
             // 
             this.mensagemToolStripMenuItem.Name = "mensagemToolStripMenuItem";
-            this.mensagemToolStripMenuItem.Size = new System.Drawing.Size(186, 32);
+            this.mensagemToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
             this.mensagemToolStripMenuItem.Text = "Mensagem";
             this.mensagemToolStripMenuItem.Click += new System.EventHandler(this.mensagemToolStripMenuItem_Click);
             // 
@@ -217,30 +217,30 @@
             this.canalDeTvToolStripMenuItem1,
             this.livroToolStripMenuItem});
             this.fonteToolStripMenuItem.Name = "fonteToolStripMenuItem";
-            this.fonteToolStripMenuItem.Size = new System.Drawing.Size(186, 32);
+            this.fonteToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
             this.fonteToolStripMenuItem.Text = "Fonte";
             this.fonteToolStripMenuItem.Click += new System.EventHandler(this.fonteToolStripMenuItem_Click);
             // 
             // versiculoToolStripMenuItem
             // 
             this.versiculoToolStripMenuItem.Name = "versiculoToolStripMenuItem";
-            this.versiculoToolStripMenuItem.Size = new System.Drawing.Size(187, 32);
+            this.versiculoToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
             this.versiculoToolStripMenuItem.Text = "Versiculo";
-            this.versiculoToolStripMenuItem.Click += new System.EventHandler(this.versiculoToolStripMenuItem_Click_1);
+            this.versiculoToolStripMenuItem.Click += new System.EventHandler(this.VersiculoCadastrar_Click);
             // 
             // canalDeTvToolStripMenuItem1
             // 
             this.canalDeTvToolStripMenuItem1.Name = "canalDeTvToolStripMenuItem1";
-            this.canalDeTvToolStripMenuItem1.Size = new System.Drawing.Size(187, 32);
+            this.canalDeTvToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
             this.canalDeTvToolStripMenuItem1.Text = "Canal de tv";
-            this.canalDeTvToolStripMenuItem1.Click += new System.EventHandler(this.canalDeTvToolStripMenuItem1_Click);
+            this.canalDeTvToolStripMenuItem1.Click += new System.EventHandler(this.CanalTvCadastrar_Click);
             // 
             // livroToolStripMenuItem
             // 
             this.livroToolStripMenuItem.Name = "livroToolStripMenuItem";
-            this.livroToolStripMenuItem.Size = new System.Drawing.Size(187, 32);
+            this.livroToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
             this.livroToolStripMenuItem.Text = "Livro";
-            this.livroToolStripMenuItem.Click += new System.EventHandler(this.livroToolStripMenuItem_Click);
+            this.livroToolStripMenuItem.Click += new System.EventHandler(this.LivroCadstrar_Click);
             // 
             // toolStripSeparator4
             // 

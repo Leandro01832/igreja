@@ -6,8 +6,8 @@ using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioFonte;
@@ -46,60 +46,50 @@ namespace WindowsFormsApp1
             if (modelo is Membro_Transferencia || modelo is Membro_TransferenciaLgpd)
                 crudForm.Form = new CadastroMembroTransferencia();
 
-                LoadForm();
+            LoadForm();
         }
 
         private void Atualizar_Click(object sender, EventArgs e)
         {
-            List<modelocrud> remover = new List<modelocrud>();
-
-            if (modelo is Celula)
-            {
-                var p = (Celula)modelo;
-                foreach (var item in p.Ministerios)
-                {
-                    item.CelulaId = modelo.Id;
-                    item.salvar();
-                }
-
-            }
-
-            if (modelo is Ministerio)
-            {
-                var p = (Ministerio)modelo;
-                foreach (var item in p.Pessoas)
-                {
-                    item.MinisterioId = modelo.Id;
-                    item.salvar();
-                }
-
-                foreach (var item in p.Celulas)
-                {
-                    item.MinisterioId = modelo.Id;
-                    item.salvar();
-                }
-            }
-
-            if (modelo is Pessoa)
-            {
-                var p = (Pessoa)modelo;
-                foreach (var item in p.Ministerios)
-                    item.alterar(item.Id);
-
-                foreach (var item in p.Reuniao)
-                    item.alterar(item.Id);
-
-            }
-
-            if (modelo is Reuniao)
-            {
-                var p = (Reuniao)modelo;
-                foreach (var item in p.Pessoas)
-                    item.alterar(item.Id);
-            }
-
             try
             {
+                if (modelo is Celula)
+                {
+                    var p = (Celula)modelo;
+                    PropertyInfo ministerios = p.GetType().GetProperty("Ministerios");
+                    PropertyInfo pessoas = p.GetType().GetProperty("Pessoas");
+                    ministerios.SetValue(p, p.Ministerios);
+                    pessoas.SetValue(p, p.Pessoas);
+
+                }
+
+                if (modelo is Ministerio)
+                {
+                    var p = (Ministerio)modelo;
+                    PropertyInfo pessoas = p.GetType().GetProperty("Pessoas");
+                    PropertyInfo celulas = p.GetType().GetProperty("Celulas");
+                    pessoas.SetValue(p, p.Pessoas);
+                    celulas.SetValue(p, p.Celulas);
+
+                }
+
+                if (modelo is Pessoa)
+                {
+                    var p = (Pessoa)modelo;
+                    PropertyInfo pessoa = p.GetType().GetProperty("Ministerios");
+                    PropertyInfo reuniao = p.GetType().GetProperty("Reuniao");
+                    pessoa.SetValue(p, p.Ministerios);
+                    reuniao.SetValue(p, p.Reuniao);
+                }
+
+                if (modelo is Reuniao)
+                {
+                    var p = (Reuniao)modelo;
+                    PropertyInfo pessoas = p.GetType().GetProperty("Pessoas");
+                    pessoas.SetValue(p, p.Pessoas);
+                }
+
+
                 modelo.alterar(modelo.Id);
             }
             catch (Exception ex)
@@ -108,7 +98,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-
             MessageBox.Show("Informação atualizada com sucesso.");
         }
 
@@ -116,7 +105,7 @@ namespace WindowsFormsApp1
         {
             var id = modelo.Id;
 
-           var model = (modelocrud) Activator.CreateInstance(modelo.GetType());
+            var model = (modelocrud)Activator.CreateInstance(modelo.GetType());
 
             if (!model.recuperar(id))
             {
@@ -165,13 +154,13 @@ namespace WindowsFormsApp1
 
                 if (this is ReunioesMinisteriosPessoa)
                 {
-                  //  object objNovo = null;
-                  //  object obj = null;
-                  //
-                  //  if (ModeloNovo != null)
-                  //      objNovo = Activator.CreateInstance(ModeloNovo.GetType());
-                  //  if (modelo != null)
-                  //      obj = Activator.CreateInstance(modelo.GetType());
+                    //  object objNovo = null;
+                    //  object obj = null;
+                    //
+                    //  if (ModeloNovo != null)
+                    //      objNovo = Activator.CreateInstance(ModeloNovo.GetType());
+                    //  if (modelo != null)
+                    //      obj = Activator.CreateInstance(modelo.GetType());
 
                     if (ModeloNovo is Crianca || modelo is Crianca)
                         crudForm.Form = new CadastroCrianca();

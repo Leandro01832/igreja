@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -41,6 +42,8 @@ namespace WindowsFormsApp1
 
         private void FormPadrao_Load(object sender, EventArgs e)
         {
+            
+
             this.Icon = new Icon($@"{path}\favicon.ico");
             notifyIcon1.Icon = new Icon($@"{path}\favicon.ico");
             timer = new Timer();

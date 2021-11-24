@@ -112,84 +112,46 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmAdmin();
-            LoadFormCreate(new Admin());
-        }
+        public void    AdminCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "AdminCadastrar_Click"); }
 
-        private void compradorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmComprador();
-            LoadFormCreate(new Comprador());
-        }
+        public void    CompradorCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "CompradorCadastrar_Click"); }
 
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmDizimo();
-            LoadFormCreate(new Dizimo());
-        }
+        public void    DizimoCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "DizimoCadastrar_Click"); }
 
         private void LoadFormCreate(modelocrud model)
         {
             LoadFormCrud( model, false, false, false, this);
         }
 
-        private void toolStripMenuItem9_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmCantina();
-            LoadFormCreate(new Cantina());
-        }
+        public void    CantinaCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "CantinaCadastrar_Click"); }
 
-        private void toolStripMenuItem10_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmOferta();
-            LoadFormCreate(new Oferta());
-        }
+        public void    OfertaCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "OfertaCadastrar_Click"); }
 
-        private void bazarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmBazar();
-            LoadFormCreate(new Bazar());
-        }
+        public void    BazarCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "BazarCadastrar_Click"); }
 
-        private void lavaRapidoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmLava_Rapido();
-            LoadFormCreate(new Lava_Rapido());
-        }
+        public void    Lava_RapidoCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "Lava_RapidoCadastrar_Click"); }
 
-        private void toolStripMenuItem11_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmCompra();
-            LoadFormCreate(new Compra());
+        public void    CompraCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "CompraCadastrar_Click"); }
 
-        }
+        public void    TransporteCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "TransporteCadastrar_Click"); }
 
-        private void toolStripMenuItem12_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmTransporte();
-            LoadFormCreate(new Transporte());
+        public void    TransacaoCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "TransacaoCadastrar_Click"); }
 
-        }
+        public void    RetiroCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "RetiroCadastrar_Click"); }
 
-        private void toolStripMenuItem13_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmTransacao();
-            LoadFormCreate(new Transacao());
-        }
-
-        private void toolStripMenuItem14_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmRetiro();
-            LoadFormCreate(new Retiro());
-        }
-
-        private void toolStripMenuItem15_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmAluguel();
-            LoadFormCreate(new Aluguel());
-        }
+        public void AluguelCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "AluguelCadastrar_Click"); }
 
         private void fileMenu_Click(object sender, EventArgs e)
         {
@@ -206,310 +168,149 @@ namespace WindowsFormsApp1
             FormPadrao.LoadForm(this);
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Pessoa));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    PessoaListar_Click(object sender, EventArgs e)
+        { Clicar(this, "PessoaListar_Click"); }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Admin));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    AdminListar_Click(object sender, EventArgs e)
+        { Clicar(this, "AdminListar_Click"); }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Comprador));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    CompradorListar_Click(object sender, EventArgs e)
+        { Clicar(this, "CompradorListar_Click"); }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Movimentacao));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    MovimentacaoListar_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoListar_Click"); }
 
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(MovimentacaoEntrada));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    MovimentacaoEntradaListar_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoEntradaListar_Click"); }
 
-        private void toolStripMenuItem7_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(MovimentacaoSaida));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    MovimentacaoSaidaListar_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoSaidaListar_Click"); }
 
-        private void compraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Compra));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    CompraListar_Click(object sender, EventArgs e)
+        { Clicar(this, "CompraListar_Click"); }
 
-        private void transporteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Transporte));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    TransporteListar_Click(object sender, EventArgs e)
+        { Clicar(this, "TransporteListar_Click"); }
 
-        private void transaçãoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Transacao));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    TransacaoListar_Click(object sender, EventArgs e)
+        { Clicar(this, "TransacaoListar_Click"); }
 
-        private void retiroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Retiro));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    RetiroListar_Click(object sender, EventArgs e)
+        { Clicar(this, "RetiroListar_Click"); }
 
-        private void aluguelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Aluguel));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    AluguelListar_Click(object sender, EventArgs e)
+        { Clicar(this, "AluguelListar_Click"); }
 
-        private void dizimoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Dizimo));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    DizimoListar_Click(object sender, EventArgs e)
+        { Clicar(this, "DizimoListar_Click"); }
 
-        private void cantinaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Cantina));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    CantinaListar_Click(object sender, EventArgs e)
+        { Clicar(this, "CantinaListar_Click"); }
 
-        private void ofertaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Oferta));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    OfertaListar_Click(object sender, EventArgs e)
+        { Clicar(this, "OfertaListar_Click"); }
 
-        private void bazarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Bazar));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    BazarListar_Click(object sender, EventArgs e)
+        { Clicar(this, "BazarListar_Click"); }
 
-        private void lavaRapidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioListView lista = new FormularioListView(typeof(Lava_Rapido));
-            lista.MdiParent = this;
-            lista.Show();
-        }
+        public void    Lava_RapidoListar_Click(object sender, EventArgs e)
+        { Clicar(this, "Lava_RapidoListar_Click"); }
 
-        private void toolStripMenuItem16_Click(object sender, EventArgs e)
-        {
-            
-            ir.imprimir(typeof(Pessoa));
-        }
+        public void    PessoaImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "PessoaImprimir_Click"); }
 
-        private void toolStripMenuItem17_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Admin));
-        }
+        public void    AdminImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "AdminImprimir_Click"); }
 
-        private void toolStripMenuItem18_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Comprador));
-        }
+        public void    CompradorImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "CompradorImprimir_Click"); }
 
-        private void toolStripMenuItem19_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Movimentacao));
-        }
+        public void    MovimentacaoImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoImprimir_Click"); }
 
-        private void toolStripMenuItem20_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(MovimentacaoEntrada));
-        }
+        public void    MovimentacaoEntradaImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoEntradaImprimir_Click"); }
 
-        private void toolStripMenuItem26_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(MovimentacaoSaida));
-        }
+        public void    MovimentacaoSaidaImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoSaidaImprimir_Click"); }
 
-        private void toolStripMenuItem21_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Dizimo));
-        }
+        public void    DizimoImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "DizimoImprimir_Click"); }
 
-        private void toolStripMenuItem22_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Cantina));
-        }
+        public void    CantinaImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "CantinaImprimir_Click"); }
 
-        private void toolStripMenuItem23_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Oferta));
-        }
+        public void    OfertaImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "OfertaImprimir_Click"); }
 
-        private void toolStripMenuItem24_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Bazar));
-        }
+        public void    BazarImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "BazarImprimir_Click"); }
 
-        private void toolStripMenuItem25_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Lava_Rapido));
-        }
+        public void    Lava_RapidoImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "Lava_RapidoImprimir_Click"); }
 
-        private void toolStripMenuItem27_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Compra));
-        }
+        public void    CompraImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "CompraImprimir_Click"); }
 
-        private void toolStripMenuItem28_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Transporte));
-        }
+        public void    TransporteImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "TransporteImprimir_Click"); }
 
-        private void toolStripMenuItem29_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Transacao));
-        }
+        public void    TransacaoImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "TransacaoImprimir_Click"); }
 
-        private void toolStripMenuItem30_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Retiro));
-        }
+        public void    RetiroImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "RetiroImprimir_Click"); }
 
-        private void toolStripMenuItem31_Click(object sender, EventArgs e)
-        {
-            ir.imprimir(typeof(Aluguel));
-        }
+        public void    AluguelImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "AluguelImprimir_Click"); }
 
-        private void toolStripMenuItem32_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Pessoa));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    PessoaPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "PessoaPesquisar_Click"); }
 
-        private void toolStripMenuItem33_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Admin));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    AdminPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "AdminPesquisar_Click"); }
 
-        private void toolStripMenuItem34_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Comprador));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    CompradorPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "CompradorPesquisar_Click"); }
 
-        private void toolStripMenuItem36_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(MovimentacaoEntrada));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    MovimentacaoEntradaPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoEntradaPesquisar_Click"); }
 
-        private void toolStripMenuItem42_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(MovimentacaoSaida));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    MovimentacaoSaidaPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoSaidaPesquisar_Click"); }
 
-        private void toolStripMenuItem35_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Movimentacao));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    MovimentacaoPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "MovimentacaoPesquisar_Click"); }
 
-        private void toolStripMenuItem37_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Dizimo));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    DizimoPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "DizimoPesquisar_Click"); }
 
-        private void toolStripMenuItem38_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Cantina));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    CantinaPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "CantinaPesquisar_Click"); }
 
-        private void toolStripMenuItem39_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Oferta));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    OfertaPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "OfertaPesquisar_Click"); }
 
-        private void toolStripMenuItem40_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Bazar));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    BazarPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "BazarPesquisar_Click"); }
 
-        private void toolStripMenuItem41_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Lava_Rapido));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    Lava_RapidoPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "Lava_RapidoPesquisar_Click"); }
 
-        private void toolStripMenuItem43_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Compra));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    CompraPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "CompraPesquisar_Click"); }
 
-        private void toolStripMenuItem44_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Transporte));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    TransportePesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "TransportePesquisar_Click"); }
 
-        private void toolStripMenuItem45_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Transacao));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    TransacaoPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "TransacaoPesquisar_Click"); }
 
-        private void toolStripMenuItem46_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Retiro));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    RetiroPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "RetiroPesquisar_Click"); }
 
-        private void toolStripMenuItem47_Click(object sender, EventArgs e)
-        {
-            Pesquisar form = new Pesquisar(typeof(Aluguel));
-            form.MdiParent = this;
-            form.Show();
-        }
+        public void    AluguelPesquisar_Click(object sender, EventArgs e)
+        { Clicar(this, "AluguelPesquisar_Click"); }
 
         private void graficosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -534,9 +335,9 @@ namespace WindowsFormsApp1
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
         }
 
-        public void Clicar()
+        public void Clicar(Form form, string function)
         {
-            crudForm.Clicar();
+            crudForm.Clicar(form, function);
         }
     }
 }

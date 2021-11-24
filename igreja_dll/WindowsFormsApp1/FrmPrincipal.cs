@@ -8,6 +8,7 @@ using System;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WFEsboco;
@@ -174,6 +175,27 @@ namespace WindowsFormsApp1
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+
+            Form form = new MDI();
+            Type tipo = form.GetType();            
+            ExecutarFuncoes(sender, e, form, tipo);
+            form = new MDIAdmin();
+            tipo = form.GetType();
+            ExecutarFuncoes(sender, e, form, tipo);
+            form = new MDIEsboco();
+            tipo = form.GetType();
+            ExecutarFuncoes(sender, e, form, tipo);
+            form = new MDIFinanceiro();
+            tipo = form.GetType();
+            ExecutarFuncoes(sender, e, form, tipo);
+            form = new MDIEmail();
+            tipo = form.GetType();
+            ExecutarFuncoes(sender, e, form, tipo);
+
+            MessageBox.Show("Quantidade de funções no sistema: " + CrudForm.quantidade);
+            CrudForm.quantidade = 0;
+            CrudForm.contagem = false;
+
             FormPadrao.UltimoRegistro();
             FormPadrao.LoadForm(this);
 
@@ -184,9 +206,37 @@ namespace WindowsFormsApp1
             try { Ministerio.UltimoRegistro = bd.GetUltimoRegistroMinisterio(); }
             catch { Ministerio.UltimoRegistro = 0; }
             try { Celula.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
-            catch { Celula.UltimoRegistro = 0; }           
+            catch { Celula.UltimoRegistro = 0; }
 
 
+        }
+
+        private static void ExecutarFuncoes(object sender, EventArgs e, Form form, Type tipo)
+        {
+            var lista = modelocrud.listTypesAll(typeof(modelocrud));
+
+            var methods = tipo.GetMethods().Where(m => m.ReturnType == typeof(void)).ToList();
+            foreach (MethodInfo method in methods)
+                foreach (var item in lista)
+                    if (method.Name == item.Name + "Imprimir" + "_Click")
+                        tipo.InvokeMember(method.Name,
+                            BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance,
+                            null, form, new object[] { sender, e });
+                    else
+                if (method.Name == item.Name + "Cadastrar" + "_Click")
+                        tipo.InvokeMember(method.Name,
+                            BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance,
+                            null, form, new object[] { sender, e });
+                    else
+                if (method.Name == item.Name + "Pesquisar" + "_Click")
+                        tipo.InvokeMember(method.Name,
+                            BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance,
+                            null, form, new object[] { sender, e });
+                    else
+                if (method.Name == item.Name + "Listar" + "_Click")
+                        tipo.InvokeMember(method.Name,
+                            BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance,
+                            null, form, new object[] { sender, e });
         }
 
         private void Principal_Tick(object sender, EventArgs e)

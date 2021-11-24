@@ -58,6 +58,10 @@
       <Project>{695abc28-63ef-4c54-ac28-a27ca2496482}</Project>
       <Name>business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsApp1\WindowsFormsApp1.csproj">
+      <Project>{8756B28C-F968-42CA-AF18-485E32A78881}</Project>
+      <Name>WindowsFormsApp1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

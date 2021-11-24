@@ -133,57 +133,34 @@ namespace WFEsboco
             
         }
 
-        
 
-        private void mensagemToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            LoadFormList(typeof(Mensagem));
-        }
 
-        private void fonteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            LoadFormList(typeof(Fonte));
-        }
+        private void    MensagemListar_Click(object sender, EventArgs e)
+        { Clicar(this, "MensagemListar_Click"); }
 
-        private void versiculoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmVersiculo();
-            LoadFormCreate(new Versiculo());
-        }
+        private void    FonteListar_Click(object sender, EventArgs e)
+        { Clicar(this, "FonteListar_Click"); }
 
-        private void versiculoToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmDadoFonte();
-            LoadFormCreate(new Versiculo());
-        }
+        private void    VersiculoCadastrar_Click2(object sender, EventArgs e)
+        { Clicar(this, "VersiculoCadastrar_Click2"); }
 
-        private void versiculoToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            LoadFormList(typeof(Versiculo));
+        private void    VersiculoCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "VersiculoCadastrar_Click"); }
 
-        }
+        private void    VersiculoListar_Click(object sender, EventArgs e)
+        { Clicar(this, "VersiculoListar_Click"); }
 
-        private void canalDeTvToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadFormList(typeof(CanalTv));
-        }
+        private void    CanalTvListar_Click(object sender, EventArgs e)
+        { Clicar(this, "CanalTvListar_Click"); }
 
-        private void canalDeTvToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmDadoFonte();
-            LoadFormCreate(new CanalTv());
-        }
+        private void    CanalTvCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "CanalTvCadastrar_Click"); }
 
-        private void livroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmDadoFonte();
-            LoadFormCreate(new Livro());
-        }
+        private void    LivroCadstrar_Click(object sender, EventArgs e)
+        { Clicar(this, "LivroCadstrar_Click"); }
 
-        private void livroToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            LoadFormList(typeof(Livro));
-        }
+        private void    LivroListar_Click(object sender, EventArgs e)
+        { Clicar(this, "LivroListar_Click"); }
 
         private void MDIEsboco_Load(object sender, EventArgs e)
         {
@@ -195,9 +172,9 @@ namespace WFEsboco
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
         }
 
-        public void Clicar()
+        public void Clicar(Form form, string function)
         {
-            crudForm.Clicar();
+            crudForm.Clicar(form, function);
         }
     }
 }

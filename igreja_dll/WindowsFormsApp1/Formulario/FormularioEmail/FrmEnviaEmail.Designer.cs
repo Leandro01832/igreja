@@ -1,4 +1,4 @@
-﻿namespace DesktopEmail.Formulario
+﻿namespace WindowsFormsApp1
 {
     partial class FrmEnviaEmail
     {

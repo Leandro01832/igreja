@@ -10,7 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApp1;
 
-namespace DesktopEmail.Formulario
+namespace WindowsFormsApp1
 {
     public partial class FrmEnviaEmail : Form
     {

@@ -569,10 +569,8 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail.FrmEmailIgreja.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail.FrmEmailPessoa.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail.FrmAtendente.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\DesktopEmail.Formulario.FrmEnviaEmail.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FrmOpenEmail.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FrmPermissao.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\DesktopEmail.Formulario.MDIEmail.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDIAdmin.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.formulario.formularioFinanceiroPessoa.FrmAdmin.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.formulario.formularioFinanceiroPessoa.FrmComprador.resources
@@ -638,3 +636,5 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDIEmail.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmEnviaEmail.resources

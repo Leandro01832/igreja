@@ -64,3 +64,9 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\obj\Debug\Tests.csp
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\obj\Debug\Tests.exe
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\obj\Debug\Tests.pdb
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\bin\Debug\bin\Debug\Database.mdf
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\bin\Debug\bin\Debug\Database_log.ldf
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\bin\Debug\WindowsFormsApp1.exe
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\bin\Debug\itextsharp.dll
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\Tests\bin\Debug\WindowsFormsApp1.exe.config

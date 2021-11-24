@@ -1,4 +1,4 @@
-﻿namespace DesktopEmail.Formulario
+﻿namespace WindowsFormsApp1
 {
     partial class MDIEmail
     {
@@ -133,7 +133,7 @@
             this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.toolStripMenuItem1.Size = new System.Drawing.Size(355, 32);
             this.toolStripMenuItem1.Text = "&Abrir Categorias";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.PermissaoListar_Click);
             // 
             // openToolStripMenuItem
             // 
@@ -154,7 +154,7 @@
             this.cadastrarCategoriaToolStripMenuItem.Name = "cadastrarCategoriaToolStripMenuItem";
             this.cadastrarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(355, 32);
             this.cadastrarCategoriaToolStripMenuItem.Text = "Cadastrar categoria";
-            this.cadastrarCategoriaToolStripMenuItem.Click += new System.EventHandler(this.cadastrarCategoriaToolStripMenuItem_Click);
+            this.cadastrarCategoriaToolStripMenuItem.Click += new System.EventHandler(this.PermissaoCadastrar_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -178,7 +178,7 @@
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.printToolStripMenuItem.Size = new System.Drawing.Size(355, 32);
             this.printToolStripMenuItem.Text = "Relatório E-mail";
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.EmailImprimir_Click);
             // 
             // toolStripSeparator5
             // 
@@ -440,7 +440,7 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(355, 32);
             this.toolStripMenuItem2.Text = "Relatório Categoria";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.PermissaoImprimir_Click);
             // 
             // MDIEmail
             // 

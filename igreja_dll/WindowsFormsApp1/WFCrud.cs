@@ -297,31 +297,7 @@ namespace WindowsFormsApp1
         {
             crudForm.Form = new PessoasReuniao();
             LoadForm();
-        }
-
-        //public WFCrud(modelocrud modelo, modelocrud modeloNovo)
-        //{
-        //    this.ModeloVelho = modelo;
-        //    this.ModeloNovo = modeloNovo;
-        //}
-
-        //public WFCrud(bool deletar, bool atualizar, bool detalhes,
-        //modelocrud modelo, modelocrud modeloNovo)
-        //{
-        //    this.ModeloVelho = modelo;
-        //    this.ModeloNovo = modeloNovo;
-        //    condicaoDeletar = deletar;
-        //    condicaoAtualizar = atualizar;
-        //    condicaoDetalhes = detalhes;
-
-        //    Proximo = new Button();
-        //    Proximo.Click += Proximo_Click;
-        //    Proximo.Text = "Proximo";
-        //    Proximo.Location = new Point(650, 150);
-        //    Proximo.Size = new Size(100, 50);
-
-        //    this.Controls.Add(Proximo);
-        //}
+        }       
 
         private void WFCrud_Load(object sender, EventArgs e)
         {
@@ -660,9 +636,9 @@ namespace WindowsFormsApp1
             crudForm.LoadFormCrud( modelo, detalhes, deletar, atualizar, this);
         }
 
-        public void Clicar()
+        public void Clicar(Form form, string function)
         {
-            crudForm.Clicar();
+            crudForm.Clicar(form, function);
         }
     }
 }

@@ -1,15 +1,13 @@
-﻿using business;
-using business.classes.Pessoas;
+﻿using business.classes.Pessoas;
 using database;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1;
-using WindowsFormsApp1.Formulario;
 using WindowsFormsApp1.Formulario.FormularioEmail;
 
-namespace DesktopEmail.Formulario
+namespace WindowsFormsApp1
 {
     public partial class MDIEmail : Form, IFormCrud
     {
@@ -114,44 +112,30 @@ namespace DesktopEmail.Formulario
             form.Show();
         }
 
-        private void cadastrarCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new FrmPermissao();
-            LoadFormCrud(new Permissao(), false, false, false, this);
-        }
+        private void    PermissaoCadastrar_Click(object sender, EventArgs e)
+        { Clicar(this, "PermissaoCadastrar_Click"); }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FormularioListView form = new FormularioListView(typeof(Permissao));
-            form.MdiParent = this;
-            form.Show();
-        }
+        private void    PermissaoListar_Click(object sender, EventArgs e)
+        { Clicar(this, "PermissaoListar_Click"); }
 
         private void MDIEmail_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
         }
 
-        private  void printToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio imprimir = new ImprimirRelatorio(modelocrud.Modelos);
-            imprimir.imprimir(typeof(Email));
-        }
+        private  void   EmailImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "EmailImprimir_Click"); }
 
-        private  void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ImprimirRelatorio imprimir = new ImprimirRelatorio(modelocrud.Modelos);
-            imprimir.imprimir(typeof(Permissao));
-        }
+        private  void   PermissaoImprimir_Click(object sender, EventArgs e)
+        { Clicar(this, "PermissaoListar_Click"); }
 
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
         {
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
         }
 
-        public void Clicar()
+        public void Clicar(Form form, string function)
         {
-            crudForm.Clicar();
+            crudForm.Clicar(form, function);
         }
     }
 }

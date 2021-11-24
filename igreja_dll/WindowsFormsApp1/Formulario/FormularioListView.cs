@@ -203,9 +203,9 @@ namespace WindowsFormsApp1.Formulario
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, Atual);
         }
 
-        public void Clicar()
+        public void Clicar(Form form, string function)
         {
-            crudForm.Clicar();
+            crudForm.Clicar(form, function);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace WindowsFormsApp1
     public interface IFormCrud
     {
         void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual);
-        void Clicar(Form form);
+        void Clicar(Form form, string function);
     }
 }
