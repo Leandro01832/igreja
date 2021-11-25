@@ -8,7 +8,7 @@ namespace business.classes.PessoasLgpd
     [Table("Membro_ReconciliacaoLgpd")]
     public class Membro_ReconciliacaoLgpd : MembroLgpd
     {
-        private int data_reconciliacao = 0;
+        private int data_reconciliacao = 10;
         [Display(Name = "Ano da reconciliação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [OpcoesBase(Obrigatorio =true)]

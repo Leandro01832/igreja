@@ -21,7 +21,7 @@ namespace business.classes.Pessoas
         }
 
         #region Properties
-        private DateTime data_nascimento = new DateTime(0001, 01, 01);
+        private DateTime data_nascimento = new DateTime(2001, 01, 01);
         [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -71,7 +71,7 @@ namespace business.classes.Pessoas
                     throw new Exception("Cpf");
                 if(cpf.Length != 11)
                 {
-                    this.ErroCadastro = "Esta campo precisa ter 11 caracteres.";
+                    this.ErroCadastro = "Este campo precisa ter 11 caracteres.";
                     throw new Exception("Cpf");
                 }
                 return cpf;

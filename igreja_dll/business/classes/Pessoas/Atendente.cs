@@ -13,11 +13,7 @@ namespace business.classes.Pessoas
         public Atendente() : base()
         {
 
-        }
-
-        public Atendente(bool v) : base()
-        {
-        }
+        }       
 
         public virtual List<EmailPessoa> EmailPessoa { get; set; }
         public virtual List<PermissaoPessoa> Permissao { get; set; }

@@ -309,9 +309,11 @@ namespace business.implementacao
 
                 foreach (var property in propertiesDeclaring)
                 {
-                    if (property.PropertyType.Name != "List`1")
+                    if (property.PropertyType.Name != "List`1" && !property.PropertyType.IsSubclassOf(typeof(modelocrud)))
+                    {
                         properties += property.Name + ", ";
                     values = VerificaProperties(values, property, modelocrud.classe, Model);
+                    }
                 }
 
                 if (values != "")
@@ -384,7 +386,7 @@ namespace business.implementacao
 
                 foreach (var property in propertiesDeclaring)
                 {
-                    if (property.PropertyType.Name != "List`1")
+                    if (property.PropertyType.Name != "List`1" && !property.PropertyType.IsSubclassOf(typeof(modelocrud)))
                     {
                         properties = property.Name + "=";
                     values += properties + VerificaUpdateProperties(property, Model);
@@ -524,25 +526,28 @@ namespace business.implementacao
                     string properties = "";
                     string values = "";
                     object objeto = property.GetValue(Model, null);
-                    modelocrud model = (modelocrud)objeto;
-                    model.Select_padrao = "Teste123";
-                    model.Update_padrao = "Teste123";
-                    model.Delete_padrao = "Teste123";
-                    model.Insert_padrao = "Teste123";
-                    foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
+                    if (objeto != null)
                     {
-                        properties += item.Name + ", ";
-                        values = VerificaProperties(values, item, modelocrud.classe, property.GetValue(Model));
-                    }
-                    properties = properties.Replace(", Insert_padrao, Update_padrao, Delete_padrao, Select_padrao", "");
-                    values = values.Replace(", 'Teste123'", "");
-                    if (values != "")
-                    {
+                        modelocrud model = (modelocrud)objeto;
+                        model.Select_padrao = "Teste123";
+                        model.Update_padrao = "Teste123";
+                        model.Delete_padrao = "Teste123";
+                        model.Insert_padrao = "Teste123";
+                        foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
+                        {
+                            properties += item.Name + ", ";
+                            values = VerificaProperties(values, item, modelocrud.classe, property.GetValue(Model));
+                        }
+                        properties = properties.Replace(", Insert_padrao, Update_padrao, Delete_padrao, Select_padrao", "");
+                        values = values.Replace(", 'Teste123'", "");
                         if (values != "")
-                            values = values.Remove(values.Length - 2, 2);
-                        if (properties != "")
-                            properties = properties.Remove(properties.Length - 2, 2);
-                        Model.Insert_padrao += $"insert into {property.PropertyType.Name} ( {properties} ) values ( {values} ) ";
+                        {
+                            if (values != "")
+                                values = values.Remove(values.Length - 2, 2);
+                            if (properties != "")
+                                properties = properties.Remove(properties.Length - 2, 2);
+                            Model.Insert_padrao += $"insert into {property.PropertyType.Name} ( {properties} ) values ( {values} ) ";
+                        } 
                     }
                 }
             }

@@ -117,7 +117,7 @@ namespace WindowsFormsApp1
             form.CondicaoAtualizar = false;
             form.CondicaoDeletar = false;
             form.CondicaoDetalhes = false;
-            form.modelo = new Atendente(true);
+            form.modelo = new Atendente();
             form.MdiParent = this;
             form.Show();
         }

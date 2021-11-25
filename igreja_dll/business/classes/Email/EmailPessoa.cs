@@ -1,9 +1,11 @@
 ﻿using business.classes.Pessoas;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 
 namespace business
 {
+    [Table("EmailPessoa")]
     public class EmailPessoa : Email
     {
         private static int UltimoRegistro;

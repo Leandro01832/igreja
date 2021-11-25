@@ -12,8 +12,6 @@ using database.banco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using WindowsFormsApp1;
 
 namespace Tests
 {
@@ -27,230 +25,69 @@ namespace Tests
         static int loop = 40;
         
         static void Main(string[] args)
-        {
-            arr[0] = "Paulo"; arr[10] = "Sandra"; arr[20] = "Sebastião"; arr[30] = "Thais"; arr[40] = "Adriana";
-            arr[1] = "Jorge"; arr[11] = "Jaco"; arr[21] = "Lucas"; arr[31] = "Pamela"; arr[41] = "Adriano";
-            arr[2] = "Maria"; arr[12] = "Rubens"; arr[22] = "Alice"; arr[32] = "Nayara"; arr[42] = "Alex";
-            arr[3] = "Pedro"; arr[13] = "Marta"; arr[23] = "Aline"; arr[33] = "Oliver"; arr[43] = "Fred";
-            arr[4] = "Sandro"; arr[14] = "Madalena"; arr[24] = "Zezé"; arr[34] = "Hugo"; arr[44] = "Tiago";
-            arr[5] = "Gustavo"; arr[15] = "Judas"; arr[25] = "Romulo"; arr[35] = "Icaro"; arr[45] = "Neymar";
-            arr[6] = "Henrique"; arr[16] = "Amanda"; arr[26] = "Geraldo"; arr[36] = "Bruno"; arr[46] = "Mariano";
-            arr[7] = "Isaque"; arr[17] = "Erik"; arr[27] = "Denis"; arr[37] = "Vinicius"; arr[47] = "Fabricio";
-            arr[8] = "Salomão"; arr[18] = "Leonardo"; arr[28] = "Gisele"; arr[38] = "Ramon"; arr[48] = "Felipe";
-            arr[9] = "Camila"; arr[19] = "Simone"; arr[29] = "Bianca"; arr[39] = "Charles"; arr[49] = "Carlos";
+        {    
+
+            var types = modelocrud.listTypesSon(typeof(modelocrud));
+            int num = 0;
+
+          // Type teste = typeof(EmailPessoa);
+          // var model = (modelocrud)Activator.CreateInstance(teste);
+          //
+          // try
+          // {
+          //     model.salvar();
+          // }
+          // catch (Exception ex)
+          //   {
+          //       Console.WriteLine(ex.Message);
+          //       Console.WriteLine(model.GetType().Name + " - " + model.exibirMensagemErro(ex, 2));
+          //   }
 
 
-            arr2[0] = "Silva Mendes";
-            arr2[1] = "Oliveira Prado";
-            arr2[2] = "Bitencourt Silva";
-            arr2[3] = "Chavier dos Santos";
-            arr2[4] = "Gomes Pereira";
-            arr2[5] = "Vasconcelos";
-            arr2[6] = "Magalhães";
-            arr2[7] = "Santos";
-            arr2[8] = "Menezes";
-            arr2[9] = "Reimon";
 
-            // decimal valor;
-            // if (decimal.TryParse("123.45", out valor)) Console.WriteLine(valor);
-            // if (decimal.TryParse("123,45", NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, new CultureInfo("pt-BR"), out valor))
 
-            // Console.WriteLine(valor);
+            foreach (var item in types)
+            {
+                num++;
+                var modelo = (modelocrud) Activator.CreateInstance(item);
+                try
+                {
+                    if(modelo is Pessoa)
+                    {
+                        var p = (Pessoa)modelo;
+                        p.Codigo = num;
+                        p.Email = num + "@gmail.com";
+                    }
+                    if (modelo is PessoaDado)
+                    {
+                        var p = (PessoaDado)modelo;
+                        p.Cpf = "000000000" + num;
+                    }
+                    if (modelo is Ministerio)
+                    {
+                        var p = (Ministerio)modelo;
+                        p.CodigoMinisterio = num;
+                    }
 
-            // double preco = 56.2;
-            // Console.WriteLine( preco.ToString("C"));
+                    if(modelo.GetType().GetProperties().Where(pr => pr.ReflectedType ==
+                    pr.DeclaringType && pr.Name == "Id").ToList().Count != 0)
+                        continue;
 
-            // CadastrarMovimentacaoEntradaDizimo();
-            //CadastrarMembroReconciliacaoDadoTest();
-            //CadastrarMembroTransferenciaDadoTest();
-            //CadastrarMembroBatismoDadoTest();
-            //CadastrarMembroAclamacaoDadoTest();
-            //CadastrarCriancaDadoTest();
-            //CadastrarVisitanteDadoTest();
+                    if (modelo.GetType().BaseType == typeof(modelocrud) &&
+                        modelo.GetType().GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList().Count == 4 &&
+                        modelo.GetType().GetProperties().Where(e => e.ReflectedType == e.DeclaringType &&
+                        e.PropertyType == typeof(int)).ToList().Count == 2)
+                        continue;
 
-            //CadastrarMembroReconciliacaoLgpdTest();
-            //CadastrarMembroTransferenciaLgpdTest();
-            //CadastrarMembroBatismoLgpdTest();
-            //CadastrarMembroAclamacaoLgpdTest();
-            //CadastrarCriancaLgpdTest();
-            //CadastrarVisitanteLgpdTest();
-
-            //CadastrarLiderCelula();
-            //CadastrarLiderCelulaTreinamento();
-            //CadastrarLiderMinisterio();
-            //CadastrarLiderMinisterioTreinamento();
-            //CadastrarSupervisorCelula();
-            //CadastrarSupervisorCelulaTreinamento();
-            //CadastrarSupervisorMinisterio();
-            //CadastrarSupervisorMinisterioTreinamento();
-
-            //CadastrarCelulaAdolescente();
-            //CadastrarCelulaCasados();
-            //CadastrarCelulaJovem();
-            //CadastrarCelulaCrianca();
-            //CadastrarCelulaAdulto();
-
-            //CadastrarReunioes();
-            //CadastrarPessoasEmMinisterios();
-            //CadastrarPessoasEmReunioes();
-            //CadastrarMinisteriosEmCelulas();
-
-            //Visitante pes = new Visitante();
-
-            //    pes.Codigo = bd.GetUltimoRegistroPessoa() + 1;
-            //    pes.celula_ = null;
-            //    pes.Chamada = new Chamada();
-            //    pes.Chamada. Data_inicio = DateTime.Now;
-            //    pes.Chamada.Numero_chamada = 0;
-            //    pes.Img = "";
-            //    pes.Historicos = new List<Historico>();
-            //    pes.Ministerios = new List<PessoaMinisterio>();
-            //    pes.NomePessoa = arr[10] + " " + arr2[9];
-            //    pes.Condicao_religiosa = " - ";
-            //    pes.Cpf = "123";
-            //    pes.Data_nascimento = DateTime.Now.AddYears(-20);
-            //    pes.Data_visita = DateTime.Now;
-            //    pes.Email = arr2[5].Replace(" ", "") + "08270839639" + "@gmail.com";
-            //    pes.Endereco = new Endereco();
-            //    pes.Endereco.Bairro = "Vila";
-            //    pes.Endereco.Cep = 36774016;
-            //    pes.Endereco.Cidade = "Cataguases";
-            //    pes.Endereco.Complemento = "residencia";
-            //    pes.Endereco.Estado = "MG";
-            //    pes.Endereco.Numero_casa = 117;
-            //    pes.Endereco.Pais = "Brasil";
-            //    pes.Endereco.Rua = "Jose";
-            //    pes.Estado_civil = "solteiro";
-            //    pes.Falta = 0;
-            //    pes.Falescimento = false;
-            //    pes.Sexo_feminino = false;
-            //    pes.Sexo_masculino = true;
-            //    pes.Reuniao = new List<ReuniaoPessoa>();
-            //    pes.Rg = "MG-" + "08270839639";
-            //    pes.Status = "moro longe";
-            //    pes.Telefone = new Telefone();
-            //    pes.Telefone.Celular = "(11)23412-8912";
-            //    pes.Telefone.Fone = "(21)29412-1917";
-            //    pes.Telefone.Whatsapp = "(31)34985-6734";
-
-            //   var model = new Dizimo();
-            //   model.Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
-            //   model.Valor = 130.12;
-            //   model.Pago = false;
-            //   model.DataRecebimento = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
-            //              
-            //   //Act - metodo sob teste
-            //   try { model.salvar(); }
-            //      catch (Exception ex)
-            //      {
-            //          
-            //              MessageBox.Show(ex.Message);
-            //          
-            //          return;
-            //      }
-
-            //  var cel = new Celula_Adolescente();
-            //  cel.Dia_semana = "Segunda";
-            //  cel.Horario = new TimeSpan(randNum.Next(0, 23), randNum.Next(0, 59), 0);
-            //  cel.Maximo_pessoa = randNum.Next(0, 50);
-            //  cel.Ministerios = new List<MinisterioCelula>();
-            //  cel.Nome = arr[randNum.Next(0, 49)];
-            //  cel.Pessoas = new List<Pessoa>();
-            //      cel.EnderecoCelula = new EnderecoCelula
-            //      {
-            //          Bairro = "Vila",
-            //          Cep = 36774016,
-            //          Cidade = "Cataguases",
-            //          Complemento = "residencia",
-            //          Estado = "MG",
-            //          Numero_casa = 117,
-            //          Pais = "Brasil",
-            //          Rua = "Jose"
-            //      };
-            //
-            //  try
-            //  {
-            //      cel.salvar();
-            //  }
-            //  catch (Exception ex)
-            //  {
-            //      MessageBox.Show(cel.exibirMensagemErro(ex, 2));
-            //  }
-
-            // string teste = "    a    ";
-            //
-            // if(string.IsNullOrWhiteSpace(teste))
-            //     Console.WriteLine("tem somente espaço");
-
-            //List<PropertyInfo> listaprop = new List<PropertyInfo>();
-            //List<PropertyInfo> lista2 = new List<PropertyInfo>();
-            //string valores = " ";
-
-            //var listaTypes = typeof(modelocrud).Assembly.GetTypes()
-            //    .Where(type => type.IsSubclassOf(typeof(modelocrud)))
-            //    .Select(type => type).ToList();
-
-            //foreach (var item in listaTypes)
-            //    listaprop.AddRange(item.GetProperties().Where(p => p.PropertyType.Name == "List`1").ToList());
-
-            //foreach (var proper in listaprop)
-            //{
-            //    if (!valores.Contains(" " + proper.PropertyType.GetGenericArguments()[0].Name + ","))
-            //    {
-            //        lista2.Add(proper);
-            //        valores += proper.PropertyType.GetGenericArguments()[0].Name + ", ";
-            //    }
-            //}
-
-            //      List<string> strings = new List<string>();
-            //
-            //    var lista =  modelocrud.listTypes(typeof(modelocrud));
-            //      foreach (var t in lista)
-            //          foreach (var pr in t.GetProperties())
-            //              if (!strings.Contains(pr.Name))
-            //                  strings.Add(pr.Name);
-            //
-            //      foreach(var item in strings)
-            //          Console.WriteLine(item);
-
-            //List<string> props = new List<string>();
-
-            //var types = modelocrud.listTypes(typeof(modelocrud));
-
-            //foreach (var t in types)
-            //    foreach(var item in t.GetProperties())
-            //    if (item.PropertyType.IsSubclassOf(typeof(modelocrud)))
-            //    {
-            //        foreach (var item2 in item.PropertyType.GetProperties())
-            //        {
-            //            OpcoesBase opc = (OpcoesBase)item2.GetCustomAttribute(typeof(OpcoesBase));
-            //            if (opc != null && opc.Obrigatorio &&
-            //                props.FirstOrDefault(p => p.Contains(item2.Name)) == null &&
-            //                item2.Name != "Id")
-            //                props.Add(item2.Name + " - " + item.Name);
-            //        }                        
-            //    }
-            //    else
-            //    {
-            //        OpcoesBase opc = (OpcoesBase)item.GetCustomAttribute(typeof(OpcoesBase));
-            //        if (opc != null && opc.Obrigatorio &&
-            //           props.FirstOrDefault(p => p.Contains(item.Name)) == null &&
-            //           item.Name != "Id")
-            //           props.Add(item.Name + " - " + t.Name);
-            //        }
-
-            //// Lista de obrigatorio
-            //foreach(var item in props)
-            //Console.WriteLine(item);
-
-            //var pessoa = new Visitante();
-            //pessoa.Id = 1;
-            //pessoa.Select_padrao = "select * from Visitante where Id = 1";
-            //pessoa.Delete_padrao = "delete from Visitante where Id = 1";
-            //var p = pessoa.recuperar(1);
-            //pessoa.Id = 0;
-            //pessoa.celula_ = 3;
-            //pessoa.salvar();
+                    modelo.salvar();
+                    Console.WriteLine("dados salvos com sucesso. " + num);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(modelo.GetType().Name + " - " + ex.Message);
+                    Console.WriteLine(modelo.GetType().Name + " - " + modelo.exibirMensagemErro(ex, 2));
+                }
+            }
 
 
             Console.WriteLine("ok");

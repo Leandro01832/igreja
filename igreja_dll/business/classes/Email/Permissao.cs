@@ -11,15 +11,21 @@ namespace business
 
         }
 
-        private string nome;
+        private string nome = "nome";
         public string Nome
         {
             get
             {
-                if (string.IsNullOrEmpty(nome)) throw new Exception("Nome é um campo obrigatório");
+                if (string.IsNullOrEmpty(nome))
+                throw new Exception("Nome é um campo obrigatório");
                 return nome;
             }
-            set { nome = value; }
+            set
+            {
+                nome = value;
+                if (string.IsNullOrEmpty(nome))
+                    throw new Exception("Nome é um campo obrigatório");
+            }
         }
         public virtual List<PermissaoPessoa> PermissaoPessoa { get; set; }
 

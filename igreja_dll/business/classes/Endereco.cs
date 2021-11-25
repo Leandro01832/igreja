@@ -110,7 +110,7 @@ namespace business.classes
             }
         }
 
-        private int numero_casa = 0;
+        private int numero_casa = 10;
         [Display(Name = "Numero da casa")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [OpcoesBase(Obrigatorio =true)]
@@ -128,7 +128,7 @@ namespace business.classes
             }
         }
 
-        private long cep = 0;
+        private long cep = 10;
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [OpcoesBase(Obrigatorio =true)]
         public long Cep

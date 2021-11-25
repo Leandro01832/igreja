@@ -10,7 +10,7 @@ namespace business.classes
     public class Reuniao : modelocrud
     {
         #region Properties
-        private DateTime data_reuniao = new DateTime(0001, 01, 01);
+        private DateTime data_reuniao = new DateTime(2001, 01, 01);
         [OpcoesBase(Obrigatorio =true)]
         [Display(Name = "Data da reunião")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -26,7 +26,7 @@ namespace business.classes
             set { data_reuniao = value; }
         }
 
-        private TimeSpan horario_inicio = new TimeSpan(0, 0, 0);
+        private TimeSpan horario_inicio = new TimeSpan(10, 10, 10);
         [OpcoesBase(Obrigatorio = true)]
         [Display(Name = "Horário de início")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
@@ -44,12 +44,22 @@ namespace business.classes
             set { horario_inicio = value; }
         }
 
-        private TimeSpan? horario_fim = new TimeSpan(0, 0, 0);
+        private TimeSpan horario_fim = new TimeSpan(10, 10, 10);
         [Display(Name = "Horário de termino")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
-        public TimeSpan? Horario_fim { get; set; }
+        public TimeSpan Horario_fim
+        {
+            get
+            {
+                if (horario_fim.Hours == 0 &&
+                    horario_fim.Minutes == 0 && horario_fim.Seconds == 0)
+                    throw new Exception("Horario_fim");
+                return horario_fim;
+            }
+            set { horario_fim = value; }
+        }
 
         private string local_reuniao = "local";
         [OpcoesBase(Obrigatorio = true)]

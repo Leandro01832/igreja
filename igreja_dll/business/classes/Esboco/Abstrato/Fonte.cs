@@ -13,8 +13,19 @@ namespace business.classes.Esboco.Abstrato
         {
 
         }
-        
-        public int MensagemId { get; set; }
+
+        private int mensagemId = 0; 
+        [OpcoesBase(ChaveEstrangeira = true, Obrigatorio =true)]
+        public int MensagemId
+        {
+            get
+            {
+                if (mensagemId == 0)
+                    throw new Exception("MensagemId");
+                return mensagemId;
+            }
+            set { mensagemId = value; }
+        }
         [ForeignKey("MensagemId")]
         public virtual Mensagem Mensagem { get; set; }        
 

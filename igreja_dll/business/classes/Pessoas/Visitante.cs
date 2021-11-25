@@ -7,7 +7,7 @@ namespace business.classes.Pessoas
     [Table("Visitante")]
     public class Visitante : PessoaDado
     {
-        private DateTime data_visita = new DateTime(0001, 01, 01);
+        private DateTime data_visita = new DateTime(2001, 01, 01);
         [Display(Name = "Data da visita")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

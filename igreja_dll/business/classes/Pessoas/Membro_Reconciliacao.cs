@@ -8,7 +8,7 @@ namespace business.classes.Pessoas
     [Table("Membro_Reconciliacao")]
     public class Membro_Reconciliacao : Membro
     {
-        private int data_reconciacao = 0;
+        private int data_reconciacao = 10;
         [Display(Name = "Ano da reconciliação")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         [OpcoesBase(Obrigatorio =true)]

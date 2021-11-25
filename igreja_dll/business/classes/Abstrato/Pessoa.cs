@@ -81,6 +81,8 @@ namespace business.classes.Abstrato
 
         [JsonIgnore]
         public virtual List<ReuniaoPessoa> Reuniao { get; set; }
+        [JsonIgnore]
+        public virtual List<EmailIgreja> EmailIgreja { get; set; }
         
         [Display(Name = "Foto do perfil")]
         public string Img { get; set; }
