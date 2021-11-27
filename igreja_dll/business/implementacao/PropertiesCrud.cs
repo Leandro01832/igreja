@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace business.implementacao
 {
-    public class PropertiesCrud   : IPropertiesCrud 
+    public class PropertiesCrud : IPropertiesCrud
     {
-        public modelocrud Model { get; }        
+        public modelocrud Model { get; }
 
         public static bool executando = false;
 
@@ -158,8 +158,8 @@ namespace business.implementacao
                             {
                                 executando = true;
                                 Type itemType = property.PropertyType.GetGenericArguments()[0];
-                                    var lista =  Activator.CreateInstance(property.PropertyType);
-                                
+                                var lista = Activator.CreateInstance(property.PropertyType);
+
                                 bool condicao = false;
                                 for (var i = 0; i < itemType.Name.Length; i++)
                                     if (i > 0 && char.IsUpper(itemType.Name[i]) && itemType.BaseType == typeof(modelocrud) &&
@@ -312,7 +312,7 @@ namespace business.implementacao
                     if (property.PropertyType.Name != "List`1" && !property.PropertyType.IsSubclassOf(typeof(modelocrud)))
                     {
                         properties += property.Name + ", ";
-                    values = VerificaProperties(values, property, modelocrud.classe, Model);
+                        values = VerificaProperties(values, property, modelocrud.classe, Model);
                     }
                 }
 
@@ -361,49 +361,37 @@ namespace business.implementacao
         {
             try
             {
-                Type ClassBase = Model.GetType();
+                Type ClassBase = modelocrud.ReturnBase(Model.GetType());
                 string update = "";
                 string properties = "";
                 string values = "";
-                while (ClassBase != typeof(modelocrud))
-                {
-                    if (ClassBase.BaseType == typeof(modelocrud))
-                    {
-                        if (Model.T == Model.GetType())
-                            Model.T = ClassBase;
-                        break;
-                    }
-                    else
-                        ClassBase = ClassBase.BaseType;
-                }
-
-                if (tipo == null)
-                    Model.T = Model.GetType();
 
                 var propertiesDeclaring = Model.T.GetProperties().Where(e => e.ReflectedType == e.DeclaringType
                 && !e.PropertyType.IsAbstract && e.PropertyType.BaseType != typeof(modelocrud)).ToList();
-
 
                 foreach (var property in propertiesDeclaring)
                 {
                     if (property.PropertyType.Name != "List`1" && !property.PropertyType.IsSubclassOf(typeof(modelocrud)))
                     {
                         properties = property.Name + "=";
-                    values += properties + VerificaUpdateProperties(property, Model);
+                        values += properties + VerificaUpdateProperties(property, Model, Model.Id);
 
                     }
                 }
 
-                values = values.Remove(values.Length - 2, 2);
-                properties = properties.Remove(properties.Length - 2, 2);
+                if (propertiesDeclaring.Count > 0)
+                    values = values.Remove(values.Length - 2, 2);
+                if (propertiesDeclaring.Count > 0)
+                    properties = properties.Remove(properties.Length - 2, 2);
 
                 if (Model.T != typeof(modelocrud) && propertiesDeclaring.Count > 0)
                 {
                     update = $" update {Model.T.Name} set {values} " + $" where Id='{Model.Id}' ";
-                    Model.Update_padrao += update;
+                    Model.Update_padrao = update + Model.Update_padrao;
                 }
+                Model.T = Model.T.BaseType;
 
-                if (tipo == null)
+                if (tipo == ClassBase)
                 {
                     if (Model.GetType().GetProperties().Where(p => !p.PropertyType.IsAbstract &&
                        p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
@@ -413,23 +401,6 @@ namespace business.implementacao
                     }
                 }
 
-                if (tipo != null)
-                    while (tipo != typeof(modelocrud))
-                    {
-                        if (tipo.BaseType == Model.T)
-                            break;
-                        else
-                            tipo = tipo.BaseType;
-                    }
-
-                Model.T = Model.GetType();
-                while (Model.T != typeof(modelocrud))
-                {
-                    if (Model.T == tipo)
-                        break;
-                    else
-                        Model.T = Model.T.BaseType;
-                }
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
@@ -483,7 +454,9 @@ namespace business.implementacao
             {
                 foreach (var item in tipo.GetProperties().Where(p => !p.PropertyType.IsAbstract &&
                          p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
-                          && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList())
+                          && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass &&
+                          p.GetType().GetProperties()
+                    .Where(pr => p.ReflectedType == pr.DeclaringType && pr.Name == "Id").ToList().Count == 1).ToList())
                 {
                     object objeto = Activator.CreateInstance(item.PropertyType);
                     modelocrud modelo = (modelocrud)objeto;
@@ -547,7 +520,7 @@ namespace business.implementacao
                             if (properties != "")
                                 properties = properties.Remove(properties.Length - 2, 2);
                             Model.Insert_padrao += $"insert into {property.PropertyType.Name} ( {properties} ) values ( {values} ) ";
-                        } 
+                        }
                     }
                 }
             }
@@ -568,28 +541,33 @@ namespace business.implementacao
                 {
                     object objeto = property.GetValue(Model, null);
                     modelocrud model = (modelocrud)objeto;
-                    model.Select_padrao = "";
-                    model.Update_padrao = "";
-                    model.Delete_padrao = "";
-                    model.Insert_padrao = "";
-                    string update = "";
-                    string properties = "";
-                    string values = "";
-
-                    foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
+                    if (model != null)
                     {
-                        properties = item.Name + "=";
-                        values += properties + VerificaUpdateProperties(item, objeto);
+                        model.Id = id;
+                        model.Select_padrao = "";
+                        model.Update_padrao = "";
+                        model.Delete_padrao = "";
+                        model.Insert_padrao = "";
+                        string update = "";
+                        string properties = "";
+                        string values = "";
+
+                        foreach (var item in property.PropertyType.GetProperties().Where(p => !p.PropertyType.IsAbstract))
+                        {
+                            properties = item.Name + "=";
+                            values += properties + VerificaUpdateProperties(item, model, id);
+                        }
+
+
+                        if (propertiesDeclaring.Count > 0)
+                        {
+                            values = values.Remove(values.Length - 2, 2);
+                            properties = properties.Remove(properties.Length - 2, 2);
+                            update = $" update {property.PropertyType.Name} set {values} " + $" where Id='{id}' ";
+                            Model.Update_padrao += update.Replace(", Insert_padrao='', Update_padrao='', Delete_padrao='', Select_padrao=''", "");
+                        }
                     }
 
-                    values = values.Remove(values.Length - 2, 2);
-                    properties = properties.Remove(properties.Length - 2, 2);
-
-                    if (Model.T != typeof(modelocrud) && propertiesDeclaring.Count > 0)
-                    {
-                        update = $" update {property.PropertyType.Name} set {values} " + $" where Id='{id}' ";
-                        Model.Update_padrao += update.Replace(", Insert_padrao='', Update_padrao='', Delete_padrao='', Select_padrao=''", "");
-                    }
                 }
             }
             catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
@@ -619,9 +597,9 @@ namespace business.implementacao
                     decimal? prop = null;
                     if (property.GetValue(objeto, null) != null)
                     {
-                        prop = (decimal) property.GetValue(objeto, null);
-                        p = (decimal) prop;
-                    }                   
+                        prop = (decimal)property.GetValue(objeto, null);
+                        p = (decimal)prop;
+                    }
                     if (prop != null)
                         values += "" + p.ToString("N", CultureInfo.CreateSpecificCulture("en-US")) + ", ";
                     else
@@ -704,11 +682,14 @@ namespace business.implementacao
             catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
         }
 
-        private string VerificaUpdateProperties(PropertyInfo property, object objeto)
+        private string VerificaUpdateProperties(PropertyInfo property, object objeto, int id)
         {
             try
             {
                 string values = "";
+                if (property.Name == "Id")
+                    values = "" + id.ToString() + ", ";                
+                else
                 if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
                 {
                     double? prop = null;
@@ -834,18 +815,18 @@ namespace business.implementacao
                 var num = int.Parse(Convert.ToString(dr2["Id"]));
                 modelocrud mod = null;
                 if (itemType.IsAbstract)
-                mod = buscarConcreto(itemType, num);
+                    mod = buscarConcreto(itemType, num);
                 else
-                mod = (modelocrud)Activator.CreateInstance(itemType);
+                    mod = (modelocrud)Activator.CreateInstance(itemType);
                 mod.Id = num;
                 mod.Select_padrao = $"select * from {mod.GetType().Name} as C where C.Id='{mod.Id}'";
                 mod.Delete_padrao = $" delete from {mod.GetType().Name} where Id='{mod.Id}' ";
                 if (mod.recuperar(mod.Id))
                     collection.Add(mod);
             }
-            
+
         }
 
-        
+
     }
 }

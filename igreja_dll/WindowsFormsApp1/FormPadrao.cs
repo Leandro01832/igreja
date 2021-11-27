@@ -148,7 +148,7 @@ namespace WindowsFormsApp1
                     form.StartPosition = FormStartPosition.CenterScreen;
                     form.Text = "Barra de processamento - Ministerios";
                     form.Show();
-                    await Task.Run(() => recuperarRegistrosMinisterio(bd.GetUltimoRegistroMinisterio()));
+                    await Task.Run(() => recuperarRegistrosMinisterio(modelocrud.GetUltimoRegistro(typeof(Ministerio))));
 
                     if (!form.IsDisposed)
                         form.Dispose();
@@ -168,7 +168,7 @@ namespace WindowsFormsApp1
                     form.StartPosition = FormStartPosition.CenterScreen;
                     form.Text = "Barra de processamento - Celulas";
                     form.Show();
-                    await Task.Run(() => recuperarRegistrosCelula(bd.GetUltimoRegistroCelula()));
+                    await Task.Run(() => recuperarRegistrosCelula(modelocrud.GetUltimoRegistro(typeof(Celula))));
 
                     if (!form.IsDisposed)
                         form.Dispose();
@@ -188,7 +188,7 @@ namespace WindowsFormsApp1
                     form.StartPosition = FormStartPosition.CenterScreen;
                     form.Text = "Barra de processamento - Pessoas";
                     form.Show();
-                    await Task.Run(() => recuperarRegistrosPessoa(bd.GetUltimoRegistroPessoa()));
+                    await Task.Run(() => recuperarRegistrosPessoa(modelocrud.GetUltimoRegistro(typeof(Pessoa))));
 
                     if (!form.IsDisposed)
                         form.Dispose();

@@ -1,14 +1,6 @@
-﻿using business.Classe.financeiro;
-using business.classes.Abstrato;
-using business.classes.financeiro;
-using business.classes.Pessoas;
-using database;
+﻿using database;
 using System;
 using System.Windows.Forms;
-using WindowsFormsApp1.formulario.formularioFinanceiroPessoa;
-using WindowsFormsApp1.formulario.formularioMovimentacaoEntrada;
-using WindowsFormsApp1.formulario.formularioMovimentacaoSaida;
-using WindowsFormsApp1.Formulario;
 
 namespace WindowsFormsApp1
 {

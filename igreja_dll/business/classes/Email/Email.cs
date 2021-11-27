@@ -1,13 +1,11 @@
 ﻿using database;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Text;
 
 namespace business
 {
-   public abstract class Email : modelocrud
+    public abstract class Email : modelocrud
     {
         public int? CategoriaId { get; set; }
         public virtual Categoria Categoria { get; set; }

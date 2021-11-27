@@ -34,6 +34,32 @@ namespace database
             return type;
         }
 
+        public static int GetUltimoRegistro(Type BaseModel)
+        {
+            var Id = 0;
+            SqlConnection conn = new SqlConnection(BDcomum.conecta1);
+            SqlCommand cmd;
+            if (BDcomum.podeAbrir)
+            {
+                try
+                {
+                    cmd = new SqlCommand($"SELECT TOP(1) Id FROM {BaseModel.Name} order by Id desc", conn);
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr.Read();
+                    Id = int.Parse(dr["Id"].ToString());
+                    dr.Close();
+                    conn.Dispose();
+
+                }
+                catch (Exception ex)
+                {
+                    BDcomum.podeAbrir = false;
+                }
+            }
+            return Id;
+        }
+
         public static void anularDados(modelocrud modelocrud)
         {
             var props = modelocrud.GetType().GetProperties();
@@ -225,9 +251,9 @@ namespace database
             if (!EntityCrud)
             {
                 while (T != typeof(modelocrud))
-                    UpdateProperty(T);
-                UpdateProperty(null);
+                UpdateProperty(T);
                 bd.Editar(this);
+                T = this.GetType();
                 return Update_padrao;
             }
             else

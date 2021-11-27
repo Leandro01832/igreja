@@ -520,14 +520,14 @@ namespace WindowsFormsApp1
             if(modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
-                var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
+                var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
                 p.Codigo = ultimoRegistro + 1;
             }
 
             if (modelo is Ministerio)
             {
                 var p = (Ministerio)modelo;
-                var ultimoRegistro = new BDcomum().GetUltimoRegistroMinisterio();
+                var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio));
                 p.CodigoMinisterio = ultimoRegistro + 1;
             }
 

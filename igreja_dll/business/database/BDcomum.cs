@@ -1,6 +1,4 @@
-﻿using business.classes;
-using business.classes.Abstrato;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -102,128 +100,12 @@ namespace database.banco
         public void SalvarModelo(modelocrud modelo)
         {
             ExecutarComandoSqlServer(modelo.Insert_padrao);
-
-            if (modelo is Pessoa)
-                modelo.Id = GetUltimoRegistroPessoa();
-            else
-            if (modelo is Celula)
-                modelo.Id = GetUltimoRegistroCelula();
-            else
-            if (modelo is Ministerio)
-                modelo.Id = GetUltimoRegistroMinisterio();
-            else
-            if (modelo is Reuniao)
-                modelo.Id = GetUltimoRegistroReuniao();
+            Type model = modelocrud.ReturnBase(modelo.GetType());
+            int num = modelocrud.GetUltimoRegistro(model);
+            modelo.Id = num;
         }
 
-        public int GetUltimoRegistroPessoa()
-        {
-            var Id = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (podeAbrir)
-            {
-                try
-                {
-                    con = obterconexao();
-
-                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Pessoa order by Id desc", con);
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["Id"].ToString());
-                    dr.Close();
-                    fecharconexao(con);
-
-                }
-                catch (Exception)
-                {
-                    podeAbrir = false;
-                } 
-            }
-            return Id;
-        }
-
-        public int GetUltimoRegistroCelula()
-        {
-            var Id = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (podeAbrir)
-            {
-                try
-                {
-                    con = obterconexao();
-
-                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Celula order by Id desc", con);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["Id"].ToString());
-                    dr.Close();
-                    fecharconexao(con);
-
-                }
-                catch (Exception)
-                {
-                    podeAbrir = false;
-                } 
-            }
-            return Id;
-        }
-
-        public int GetUltimoRegistroMinisterio()
-        {
-            var Id = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (podeAbrir)
-            {
-                try
-                {
-                    con = obterconexao();
-
-                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Ministerio order by Id desc", con);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["Id"].ToString());
-                    dr.Close();
-                    fecharconexao(con);
-
-                }
-                catch (Exception)
-                {
-                    podeAbrir = false;
-                } 
-            }
-            return Id;
-        }
-
-        public int GetUltimoRegistroReuniao()
-        {
-            var Id = 0;
-            SqlConnection con;
-            SqlCommand cmd;
-            if (podeAbrir)
-            {
-                try
-                {
-                    con = obterconexao();
-
-                    cmd = new SqlCommand("SELECT TOP(1) Id FROM Reuniao order by Id desc", con);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["Id"].ToString());
-                    dr.Close();
-                    fecharconexao(con);
-
-                }
-                catch (Exception)
-                {
-                    podeAbrir = false;
-                } 
-            }
-            return Id;
-        }
+        
 
         public void Editar(modelocrud modelo)
         {

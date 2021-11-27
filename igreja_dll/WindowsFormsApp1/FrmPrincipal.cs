@@ -75,7 +75,7 @@ namespace WindowsFormsApp1
 
         private void verificaRegistros()
         {
-            var UltimoRegistroCelula = bd.GetUltimoRegistroCelula();
+            var UltimoRegistroCelula = modelocrud.GetUltimoRegistro(typeof(Celula));
             if (UltimoRegistroCelula > Celula.UltimoRegistro)
             {
                 for (var i = Celula.UltimoRegistro; i <= UltimoRegistroCelula; i++)
@@ -97,10 +97,10 @@ namespace WindowsFormsApp1
                         notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel5.Id, ToolTipIcon.Info);
                 }
 
-                Celula.UltimoRegistro = bd.GetUltimoRegistroCelula();
+                Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula));
             }
 
-            var UltimoRegistroReuniao = bd.GetUltimoRegistroReuniao();
+            var UltimoRegistroReuniao = modelocrud.GetUltimoRegistro(typeof(Reuniao));
             if (UltimoRegistroReuniao > Reuniao.UltimoRegistro)
             {
                 for (var i = Reuniao.UltimoRegistro; i <= UltimoRegistroReuniao; i++)
@@ -109,10 +109,10 @@ namespace WindowsFormsApp1
                     if (reu.recuperar(i))
                         notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.Id, ToolTipIcon.Info);
                 }
-                Reuniao.UltimoRegistro = bd.GetUltimoRegistroReuniao();
+                Reuniao.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Reuniao));
             }
 
-            var UltimoRegistroMinsterio = bd.GetUltimoRegistroMinisterio();
+            var UltimoRegistroMinsterio = modelocrud.GetUltimoRegistro(typeof(Ministerio));
             if (UltimoRegistroMinsterio > Ministerio.UltimoRegistro)
             {
                 for (var i = Ministerio.UltimoRegistro; i <= UltimoRegistroMinsterio; i++)
@@ -151,10 +151,10 @@ namespace WindowsFormsApp1
 
                 }
 
-                Ministerio.UltimoRegistro = bd.GetUltimoRegistroMinisterio();
+                Ministerio.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio));
             }
 
-            var UltimoRegistroPessoa = bd.GetUltimoRegistroPessoa();
+            var UltimoRegistroPessoa = modelocrud.GetUltimoRegistro(typeof(Pessoa));
             if (UltimoRegistroPessoa > Pessoa.UltimoRegistro)
             {
                 for (var i = Pessoa.UltimoRegistro; i <= UltimoRegistroPessoa; i++)
@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                Pessoa.UltimoRegistro = bd.GetUltimoRegistroPessoa();
+                Pessoa.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
             }
         }
 
@@ -199,13 +199,13 @@ namespace WindowsFormsApp1
             FormPadrao.UltimoRegistro();
             FormPadrao.LoadForm(this);
 
-            try { Pessoa.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
+            try { Pessoa.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa)); }
             catch { Pessoa.UltimoRegistro = 0; }
-            try { Reuniao.UltimoRegistro = bd.GetUltimoRegistroReuniao(); }
+            try { Reuniao.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Reuniao)); }
             catch { Reuniao.UltimoRegistro = 0; }
-            try { Ministerio.UltimoRegistro = bd.GetUltimoRegistroMinisterio(); }
+            try { Ministerio.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio)); }
             catch { Ministerio.UltimoRegistro = 0; }
-            try { Celula.UltimoRegistro = bd.GetUltimoRegistroCelula(); }
+            try { Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula)); }
             catch { Celula.UltimoRegistro = 0; }
 
 

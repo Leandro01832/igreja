@@ -181,7 +181,7 @@ namespace Site.Controllers
                 {
                     p.Email = model.Email;
                     p.NomePessoa = " - ";
-                    p.Codigo = new BDcomum().GetUltimoRegistroPessoa() + 1;
+                    p.Codigo = modelocrud.GetUltimoRegistro(typeof(Pessoa)) + 1;
                     p.salvar();
                 }
                 catch { return View(model); }

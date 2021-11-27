@@ -15,6 +15,8 @@ using Site.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using database.banco;
+using business.classes.Abstrato;
+using database;
 
 namespace Site.Controllers.Api
 {
@@ -104,7 +106,7 @@ namespace Site.Controllers.Api
             }
 
             
-            var ultimoRegistro = new BDcomum().GetUltimoRegistroPessoa();
+            var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
             var Cod = ultimoRegistro + 1;
 
             var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(banco));
