@@ -150,8 +150,6 @@ namespace business.implementacao
                         }
                         Model.dr.Close();
 
-
-
                         foreach (var property in propertiesDeclaring)
                         {
                             if (property.PropertyType.Name == "List`1" && !executando)

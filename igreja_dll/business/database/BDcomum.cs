@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
@@ -10,10 +12,10 @@ namespace database.banco
     public class BDcomum
     {
         static string path = Directory.GetCurrentDirectory();
-      //  public static string conecta1 = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
+        //  public static string conecta1 = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
         public static string conecta1 = $@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static string conecta2 = $@"Data Source=database-igreja.mssql.somee.com;packet size=4096;user id=lls01833_SQLLogin_1;pwd=tsobwjtsix;data source=database-igreja.mssql.somee.com;persist security info=False;initial catalog=database-igreja";
-        
+
         public static bool podeAbrir = true;
         public static bool BancoEnbarcado = true;
 
@@ -61,8 +63,8 @@ namespace database.banco
                         conn = null;
                         podeAbrir = false;
                     }
-                    
-                }                
+
+                }
             }
             else
             {
@@ -90,22 +92,17 @@ namespace database.banco
 
         public void fecharconexao(SqlConnection conexao)
         {
-            if (conexao != null) 
-            if (conexao.State == ConnectionState.Open)
-            {
-                conexao.Dispose();
-            }
+            if (conexao != null)
+                if (conexao.State == ConnectionState.Open)
+                {
+                    conexao.Dispose();
+                }
         }
 
         public void SalvarModelo(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Insert_padrao);
-            Type model = modelocrud.ReturnBase(modelo.GetType());
-            int num = modelocrud.GetUltimoRegistro(model);
-            modelo.Id = num;
+            ExecutarComandoSqlServer(modelo.Insert_padrao);                       
         }
-
-        
 
         public void Editar(modelocrud modelo)
         {

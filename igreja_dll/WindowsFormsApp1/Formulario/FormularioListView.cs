@@ -154,7 +154,7 @@ namespace WindowsFormsApp1.Formulario
             AbrirFrmCrud(false, false, true);
         }
 
-        private async void FormularioListView_Load(object sender, EventArgs e)
+        private void FormularioListView_Load(object sender, EventArgs e)
         {
             this.Size = new Size(900, 350);
             ListView.Dock = DockStyle.Left;
@@ -177,11 +177,11 @@ namespace WindowsFormsApp1.Formulario
             || m.GetType().IsSubclassOf(Tipo)).OrderBy(m => m.Id).ToList();
 
 
-            if (modelocrud.Modelos.Where(m => m.GetType() == Tipo || m.GetType().IsSubclassOf(Tipo)).ToList().Count == 0)
-            {
-                var lista = await FormPadrao.AtualizarComProgressBar(Tipo);
-                ListView.DataSource = lista.OrderBy(m => m.Id).ToList();
-            }
+          //  if (modelocrud.Modelos.Where(m => m.GetType() == Tipo || m.GetType().IsSubclassOf(Tipo)).ToList().Count == 0)
+          //  {
+          //      var lista = await FormPadrao.AtualizarComProgressBar(Tipo);
+          //      ListView.DataSource = lista.OrderBy(m => m.Id).ToList();
+          //  }
 
             atualizar = true;
             botaoAtualizarLista.Enabled = atualizar;

@@ -136,17 +136,7 @@ namespace business.classes.Abstrato
                 Pessoas = new List<Pessoa>();
             }
 
-        }
-
-        public async static void recuperarTodasCelulas()
-        {
-            List<Type> list = listTypesSon(typeof(Celula));
-            foreach (var item in list)
-            {
-                var modelo = (modelocrud)Activator.CreateInstance(item);
-                await Task.Run(() => modelo.recuperar());
-            }
-        }
+        }        
         
         public override string ToString()
         {

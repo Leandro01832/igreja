@@ -1,8 +1,6 @@
 ﻿using database;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Threading.Tasks;
 
 namespace business.classes.Esboco.Abstrato
 {
@@ -26,19 +24,9 @@ namespace business.classes.Esboco.Abstrato
             }
             set { mensagemId = value; }
         }
-        [ForeignKey("MensagemId")]
-        public virtual Mensagem Mensagem { get; set; }        
 
-        public static void recuperarTodasFontes()
-        {
-            List<Type> lista = listTypesSon(typeof(Fonte));
-            foreach(var item in lista)
-            {
-                var model = (modelocrud) Activator.CreateInstance(item);
-                Task.Run(() => model.recuperar());
-            }
-            
-        }      
+        [ForeignKey("MensagemId")]
+        public virtual Mensagem Mensagem { get; set; }    
 
         public override string ToString()
         {

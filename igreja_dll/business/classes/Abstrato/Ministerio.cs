@@ -114,16 +114,7 @@ namespace business.classes.Abstrato
                 Celulas = new List<MinisterioCelula>();
             }
         }
-
-        public async static void recuperarTodosMinisterios()
-        {
-            List<Type> list = listTypesSon(typeof(Ministerio));
-            foreach(var item in list)
-            {
-                var modelo = (modelocrud) Activator.CreateInstance(item);
-                await Task.Run(() => modelo.recuperar());
-            }            
-        }
+        
         
         public override string ToString()
         {

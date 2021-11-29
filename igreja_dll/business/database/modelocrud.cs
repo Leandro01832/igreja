@@ -4,6 +4,7 @@ using business.contrato;
 using business.implementacao;
 using database.banco;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -25,7 +26,7 @@ namespace database
             this.T = GetType();
             property = new PropertiesCrud(this);
         }
-        
+
         public static Type ReturnBase(Type type)
         {
             while (type.BaseType != typeof(modelocrud))
@@ -72,10 +73,10 @@ namespace database
                     item.SetValue(modelocrud, 0);
                 else if (item.PropertyType == typeof(TimeSpan))
                     item.SetValue(modelocrud, new TimeSpan(0, 0, 0));
-                else if(!item.PropertyType.IsSubclassOf(typeof(modelocrud)))
+                else if (!item.PropertyType.IsSubclassOf(typeof(modelocrud)))
                     try { item.SetValue(modelocrud, null); }
                     catch { }
-                else if(item.PropertyType.IsSubclassOf(typeof(modelocrud)) && !item.PropertyType.IsAbstract)
+                else if (item.PropertyType.IsSubclassOf(typeof(modelocrud)) && !item.PropertyType.IsAbstract)
 
                     foreach (var item2 in item.PropertyType.GetProperties())
                         if (item2.PropertyType == typeof(DateTime))
@@ -165,7 +166,7 @@ namespace database
                 if (i > 0 && name.Any(c1 => char.IsUpper(name[i])) &&
                 name.Any(c2 => char.IsLower(name[i - 1])))
                     name = name.Replace(name[i - 1].ToString(), name[i - 1] + " ");
-            
+
             return name;
         }
 
@@ -179,7 +180,7 @@ namespace database
         public static List<Type> listTypesAll(Type tipo)
         {
             var listaTypes = tipo.Assembly.GetTypes()
-            .Where(type =>  type.IsSubclassOf(tipo) || type == tipo).ToList();
+            .Where(type => type.IsSubclassOf(tipo) || type == tipo).ToList();
 
             return listaTypes;
         }
@@ -217,6 +218,19 @@ namespace database
         }
 
         #region MethodsCrud
+
+        private void setar(object i2)
+        {
+            var model = (modelocrud)i2;
+            if (model.GetType().BaseType == typeof(modelocrud) &&
+            model.GetType().GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList().Count == 4 &&
+            model.GetType().GetProperties().Where(e => e.ReflectedType == e.DeclaringType &&
+            e.PropertyType == typeof(int)).ToList().Count == 2)
+                model.salvar();
+            else
+                model.alterar(model.Id);
+        }
+
         public string salvar()
         {
             if (!EntityCrud)
@@ -235,6 +249,35 @@ namespace database
                         GetProperty(T);
                     GetProperty(null);
                     bd.SalvarModelo(this);
+                    Type model = ReturnBase(GetType());
+                    int num = GetUltimoRegistro(model);
+                    Id = num;
+
+                    // save list
+
+                    var props = GetType().GetProperties().Where(p => p.PropertyType.Name == "List`1").ToList();
+
+                    foreach (var i in props)
+                    {
+                        var list = i.GetValue(this);
+                        if (list != null)
+                        {
+                            IList collection = (IList)i.GetValue(this);
+                            foreach (var i2 in collection)
+                                foreach (var pro in i2.GetType().GetProperties())
+                                    if (pro.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && pro.PropertyType == typeof(int) ||
+                                    pro.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && pro.PropertyType == typeof(int?))
+                                    {
+                                        pro.SetValue(i2, Id);
+                                        setar(i2);
+                                        break;
+                                    }
+                        }
+                    }
+
+                    Select_padrao = $"select * from {GetType().Name} as C where C.Id='{Id}'";
+                    Delete_padrao = $" delete from {GetType().Name} where Id='{Id}' ";
+
                     return Insert_padrao;
                 }
                 catch (Exception ex)
@@ -251,9 +294,78 @@ namespace database
             if (!EntityCrud)
             {
                 while (T != typeof(modelocrud))
-                UpdateProperty(T);
+                    UpdateProperty(T);
                 bd.Editar(this);
-                T = this.GetType();
+                T = GetType();
+
+                // save list
+
+                var props = GetType().GetProperties().Where(p => p.PropertyType.Name == "List`1").ToList();
+                foreach (var item in props)
+                {
+                    var listAtual = (IList)item.GetValue(this);
+                    if (listAtual != null && listAtual.Count > 0 && recuperar(id))
+                    {
+                        var propBanco = GetType().GetProperty(item.Name);
+                        var listaBanco = (IList)propBanco.GetValue(this);
+                        if (listAtual[0].GetType().BaseType == typeof(modelocrud) &&
+                        listAtual[0].GetType().GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList().Count == 4 &&
+                        listAtual[0].GetType().GetProperties().Where(e => e.ReflectedType == e.DeclaringType &&
+                        e.PropertyType == typeof(int)).ToList().Count == 2)
+                        {
+                            foreach (var itemlista in listaBanco)
+                            {
+                                var m = (modelocrud)itemlista;
+                                m.excluir(m.Id);
+                            }
+
+                            foreach (var itemlista in listAtual)
+                            {
+                                var m = (modelocrud)itemlista;
+
+                                var ps = itemlista.GetType().GetProperties();
+                                foreach (var itemprop in ps)
+                                if (itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?) ||
+                                   itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int))
+                                {
+                                    itemprop.SetValue(m, Id);
+                                    m.Id = 0;
+                                    m.salvar();
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            foreach (var itemlista in listaBanco)
+                            {
+                                var ps = itemlista.GetType().GetProperties();
+                                foreach(var itemprop in ps)                                
+                                if(itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?))
+                                    {
+                                        var model = (modelocrud)itemlista;
+                                        itemprop.SetValue(model, null);
+                                        model.alterar(model.Id);
+                                    }
+                            }
+
+                            foreach (var itemlista in listAtual)
+                            {
+                                var ps = itemlista.GetType().GetProperties();
+                                foreach (var itemprop in ps)
+                                    if (itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?) ||
+                                       itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int))
+                                    {
+                                        var model = (modelocrud)itemlista;
+                                        itemprop.SetValue(model, Id);
+                                        model.alterar(model.Id);
+                                    }
+                            }
+                        }
+
+                    }
+                }
+
                 return Update_padrao;
             }
             else
@@ -410,25 +522,25 @@ namespace database
             if (tipo == null)
                 foreach (var item in types)
                     if (BDcomum.podeAbrir)
-                        _TotalRegistros += buscarCount( _TotalRegistros,  conexao,   cmd, item);
+                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item);
 
             if (tipo != null)
             {
                 if (tipo.IsAbstract)
                 {
                     var t = listTypesSon(tipo);
-                    foreach(var item in t)
-                    _TotalRegistros = buscarCount( _TotalRegistros, conexao, cmd, item);
+                    foreach (var item in t)
+                        _TotalRegistros = buscarCount(_TotalRegistros, conexao, cmd, item);
 
                 }
                 else
                     _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, tipo);
             }
-                    
+
             return _TotalRegistros;
         }
 
-        private static int buscarCount( int _TotalRegistros,  SqlConnection con,  SqlCommand cmd, Type item)
+        private static int buscarCount(int _TotalRegistros, SqlConnection con, SqlCommand cmd, Type item)
         {
             try
             {

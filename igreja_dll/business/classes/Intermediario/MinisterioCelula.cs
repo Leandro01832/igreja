@@ -1,9 +1,6 @@
 ﻿using database;
-using database.banco;
 using Newtonsoft.Json;
-using System;
 using System.Data.Entity.ModelConfiguration;
-using System.Data.SqlClient;
 
 namespace business.classes.Intermediario
 {
@@ -37,12 +34,12 @@ namespace business.classes.Intermediario
             HasRequired(c => c.Celula)
                 .WithMany(c => c.Ministerios)
                 .HasForeignKey(c => c.CelulaId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             HasRequired(c => c.Ministerio)
                 .WithMany(c => c.Celulas)
                 .HasForeignKey(c => c.MinisterioId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
         }
     }
 }

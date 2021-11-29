@@ -5,6 +5,7 @@ using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
+using System.Collections;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -538,68 +539,7 @@ namespace WindowsFormsApp1
                 FinalizaCadastro.Enabled = true;
                 return;
             }
-            modelocrud.Modelos.Add(modelo);
-
-            if (modelo is Celula)
-            {
-                var p = (Celula)modelo;
-                foreach (var item in p.Ministerios)
-                {
-                    item.CelulaId = modelo.Id;
-                    item.salvar();
-                }
-
-                foreach (var item in p.Pessoas)
-                {
-                    item.celula_ = modelo.Id;
-                    item.alterar(item.Id);
-                }
-
-            }
-
-            if (modelo is Ministerio)
-            {
-                var p = (Ministerio)modelo;
-                foreach (var item in p.Pessoas)
-                {
-                    item.MinisterioId = modelo.Id;
-                    item.salvar();
-                }
-
-                foreach (var item in p.Celulas)
-                {
-                    item.MinisterioId = modelo.Id;
-                    item.salvar();
-                }
-            }
-
-            if (modelo is Pessoa)
-            {
-                var p = (Pessoa)modelo;
-                foreach (var item in p.Ministerios)
-                {
-                    item.PessoaId = modelo.Id;
-                    item.salvar();
-                }
-
-                foreach (var item in p.Reuniao)
-                {
-                    item.PessoaId = modelo.Id;
-                    item.salvar();
-                }
-
-                
-            }
-
-            if (modelo is Reuniao)
-            {
-                var p = (Reuniao)modelo;
-                foreach (var item in p.Pessoas)
-                {
-                    item.ReuniaoId = modelo.Id;
-                    item.salvar();
-                }
-            }
+            modelocrud.Modelos.Add(modelo);   
 
             if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
             {
@@ -628,7 +568,6 @@ namespace WindowsFormsApp1
 
             MessageBox.Show("Cadastro realiado com sucesso.");
             this.Close();
-
         }
 
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)

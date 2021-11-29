@@ -53,43 +53,6 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (modelo is Celula)
-                {
-                    var p = (Celula)modelo;
-                    PropertyInfo ministerios = p.GetType().GetProperty("Ministerios");
-                    PropertyInfo pessoas = p.GetType().GetProperty("Pessoas");
-                    ministerios.SetValue(p, p.Ministerios);
-                    pessoas.SetValue(p, p.Pessoas);
-
-                }
-
-                if (modelo is Ministerio)
-                {
-                    var p = (Ministerio)modelo;
-                    PropertyInfo pessoas = p.GetType().GetProperty("Pessoas");
-                    PropertyInfo celulas = p.GetType().GetProperty("Celulas");
-                    pessoas.SetValue(p, p.Pessoas);
-                    celulas.SetValue(p, p.Celulas);
-
-                }
-
-                if (modelo is Pessoa)
-                {
-                    var p = (Pessoa)modelo;
-                    PropertyInfo pessoa = p.GetType().GetProperty("Ministerios");
-                    PropertyInfo reuniao = p.GetType().GetProperty("Reuniao");
-                    pessoa.SetValue(p, p.Ministerios);
-                    reuniao.SetValue(p, p.Reuniao);
-                }
-
-                if (modelo is Reuniao)
-                {
-                    var p = (Reuniao)modelo;
-                    PropertyInfo pessoas = p.GetType().GetProperty("Pessoas");
-                    pessoas.SetValue(p, p.Pessoas);
-                }
-
-
                 modelo.alterar(modelo.Id);
             }
             catch (Exception ex)

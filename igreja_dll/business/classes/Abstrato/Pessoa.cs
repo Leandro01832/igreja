@@ -92,17 +92,7 @@ namespace business.classes.Abstrato
 
         [JsonIgnore]
         private MudancaEstado MudancaEstado;
-        #endregion
-
-        public async static void recuperarTodos()
-        {
-            List<Type> list = listTypesSon(typeof(Pessoa));
-            foreach(var item in list)
-            {
-                var modelo = (modelocrud) Activator.CreateInstance(item);
-                await Task.Run(() => modelo.recuperar());
-            }
-        }
+        #endregion        
 
         public void MudarEstado(int id, modelocrud m)
         {

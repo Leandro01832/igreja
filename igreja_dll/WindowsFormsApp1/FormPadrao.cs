@@ -1,7 +1,5 @@
 ﻿using business;
 using business.classes.Abstrato;
-using business.classes.Esboco.Abstrato;
-using business.classes.financeiro;
 using database;
 using database.banco;
 using System;
@@ -11,7 +9,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,8 +39,6 @@ namespace WindowsFormsApp1
 
         private void FormPadrao_Load(object sender, EventArgs e)
         {
-            
-
             this.Icon = new Icon($@"{path}\favicon.ico");
             notifyIcon1.Icon = new Icon($@"{path}\favicon.ico");
             timer = new Timer();
@@ -77,19 +72,7 @@ namespace WindowsFormsApp1
                     var modelo = (modelocrud) Activator.CreateInstance(item);
                     await Task.Run(() => modelo.recuperar());
                 }
-
-                await Task.Run(() => Celula.recuperarTodasCelulas());
-
-                 await Task.Run(() => Ministerio.recuperarTodosMinisterios());                
-
-                 await Task.Run(() => Pessoa.recuperarTodos());                
-
-                 await Task.Run(() => Movimentacao.recuperarTodos());
-
-                 await Task.Run(() => Fonte.recuperarTodasFontes());
-
-                var models = modelocrud.Modelos;
-
+                               
                 await Task.Run(() =>
                 {
                     while (int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99)

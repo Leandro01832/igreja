@@ -30,17 +30,7 @@ namespace business.classes.financeiro
         public DateTime Data { get; set; }
 
         public bool Pago { get; set; }
-
-        public async static void recuperarTodos()
-        {
-            List<Type> list = listTypesSon(typeof(Movimentacao));
-            foreach (var item in list)
-            {
-                var modelo = (modelocrud)Activator.CreateInstance(item);
-                await Task.Run(() => modelo.recuperar());
-            }
-        }
-
+        
         public override string ToString()
         {
             return "Identificação: " + this.Id.ToString() + " - " + this.Data.ToString("dd/MM/yyyy");
