@@ -638,3 +638,4 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDIEmail.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmEnviaEmail.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmFiltro.resources

@@ -144,7 +144,7 @@
     <Compile Include="database\dadosmysql.cs" />
     <Compile Include="database\IgrejaDB.cs" />
     <Compile Include="database\modelocrud.cs" />
-    <Compile Include="implementacao\Pesquisar.cs" />
+    <Compile Include="implementacao\Query.cs" />
     <Compile Include="implementacao\PropertiesCrud.cs" />
     <Compile Include="implementacao\Table.cs" />
     <Compile Include="Migrations\202108030159089_Inicio.cs" />

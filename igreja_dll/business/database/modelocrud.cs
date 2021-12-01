@@ -94,7 +94,7 @@ namespace database
 
         static Calculo calculo = new Calculo();
         PropertiesCrud property;
-        static Pesquisar pesquisar = new Pesquisar();
+        static Query pesquisar = new Query();
         static Entity entity = new Entity();
         public BDcomum bd;
         public SqlDataReader dr;
@@ -340,8 +340,8 @@ namespace database
                             foreach (var itemlista in listaBanco)
                             {
                                 var ps = itemlista.GetType().GetProperties();
-                                foreach(var itemprop in ps)                                
-                                if(itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?))
+                                foreach (var itemprop in ps)
+                                    if (itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?))
                                     {
                                         var model = (modelocrud)itemlista;
                                         itemprop.SetValue(model, null);
@@ -353,8 +353,7 @@ namespace database
                             {
                                 var ps = itemlista.GetType().GetProperties();
                                 foreach (var itemprop in ps)
-                                    if (itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?) ||
-                                       itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int))
+                                    if (itemprop.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) && itemprop.PropertyType == typeof(int?))
                                     {
                                         var model = (modelocrud)itemlista;
                                         itemprop.SetValue(model, Id);

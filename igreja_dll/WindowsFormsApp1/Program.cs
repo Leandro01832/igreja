@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -17,7 +16,8 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(MDISingleton.InstanciaMDI());
+          //  Application.Run(MDISingleton.InstanciaMDI());
+            Application.Run(new Pesquisar(typeof(Membro_Transferencia)));
         }
     }
 }
