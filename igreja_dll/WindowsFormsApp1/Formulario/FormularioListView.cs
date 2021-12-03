@@ -16,7 +16,6 @@ namespace WindowsFormsApp1.Formulario
     public partial class FormularioListView : Form, IFormCrud
     {
         public FormularioListView() { }
-        bool atualizar = true;
 
         CrudForm crudForm;
         private List<modelocrud> list;
@@ -40,6 +39,9 @@ namespace WindowsFormsApp1.Formulario
             ListView.Size = new Size(600, 300);
             ListView.Location = new Point(50, 50);
             ListView.Font = new Font("Arial", 15);
+            ListView.SelectedValueChanged += ListView_SelectedValueChanged;
+
+            
 
             Mudanca = new Button();
             Mudanca.Location = new Point(570, 40);
@@ -77,12 +79,6 @@ namespace WindowsFormsApp1.Formulario
             botaoAtualizarLista.Click += BotaoAtualizarLista_Click;
             botaoAtualizarLista.Dock = DockStyle.Right;
 
-            botaoAtualizarLista.Enabled = atualizar;
-            botaoDetalhes.Enabled = atualizar;
-            botaoAtualizar.Enabled = atualizar;
-            botaoDeletar.Enabled = atualizar;
-            Mudanca.Enabled = atualizar;
-
             Controls.Add(ListView);
             Controls.Add(botaoDetalhes);
             Controls.Add(botaoAtualizar);
@@ -91,6 +87,11 @@ namespace WindowsFormsApp1.Formulario
             Controls.Add(botaoAtualizarLista);
             this.ListView = ListView;
             InitializeComponent();
+        }
+
+        private void ListView_SelectedValueChanged(object sender, EventArgs e)
+        {
+            atualizarStatusBotao();
         }
 
         public FormularioListView(List<modelocrud> list)
@@ -110,7 +111,7 @@ namespace WindowsFormsApp1.Formulario
             if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0 && Tipo.IsAbstract)
                 ListView.DataSource = modelocrud.Modelos.OfType<Ministerio>().ToList();
 
-            if (!Tipo.IsAbstract && atualizar)
+            if (!Tipo.IsAbstract && ListView.SelectedIndex >= 0)
                 ListView.DataSource = await FormPadrao.AtualizarComModelo(Tipo);
         }
 
@@ -141,17 +142,17 @@ namespace WindowsFormsApp1.Formulario
 
         private void BotaoDetalhes_Click(object sender, EventArgs e)
         {
-            AbrirFrmCrud(true, false, false);
+            LoadFormCrud((modelocrud)ListView.SelectedItem, true, false, false, this);
         }
 
         private void botaoAtualizar_Click(object sender, EventArgs e)
         {
-            AbrirFrmCrud(false, true, false);
+            LoadFormCrud((modelocrud)ListView.SelectedItem, false, true, false, this);
         }
 
         private void botaoExcluir_Click(object sender, EventArgs e)
         {
-            AbrirFrmCrud(false, false, true);
+            LoadFormCrud((modelocrud)ListView.SelectedItem, false, false, true, this);
         }
 
         private void FormularioListView_Load(object sender, EventArgs e)
@@ -166,36 +167,26 @@ namespace WindowsFormsApp1.Formulario
             }
 
 
-            atualizar = false;
-            botaoAtualizarLista.Enabled = atualizar;
-            botaoDetalhes.Enabled = atualizar;
-            botaoAtualizar.Enabled = atualizar;
-            botaoDeletar.Enabled = atualizar;
-            Mudanca.Enabled = atualizar;
+            if (FormPadrao.executar)
+                ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo
+                || m.GetType().IsSubclassOf(Tipo)).OrderBy(m => m.Id).ToList();
+            else
+                MessageBox.Show("Aguarde o processamento!!!");
 
-            ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo
-            || m.GetType().IsSubclassOf(Tipo)).OrderBy(m => m.Id).ToList();
+            if (ListView.Items.Count > 0)
+                ListView.SetSelected(0, false);
 
-
-          //  if (modelocrud.Modelos.Where(m => m.GetType() == Tipo || m.GetType().IsSubclassOf(Tipo)).ToList().Count == 0)
-          //  {
-          //      var lista = await FormPadrao.AtualizarComProgressBar(Tipo);
-          //      ListView.DataSource = lista.OrderBy(m => m.Id).ToList();
-          //  }
-
-            atualizar = true;
-            botaoAtualizarLista.Enabled = atualizar;
-            botaoDetalhes.Enabled = atualizar;
-            botaoAtualizar.Enabled = atualizar;
-            botaoDeletar.Enabled = atualizar;
-            Mudanca.Enabled = atualizar;
+            atualizarStatusBotao();
 
         }
 
-
-        private void AbrirFrmCrud(bool detalhes, bool atualizar, bool deletar)
+        private void atualizarStatusBotao()
         {
-            LoadFormCrud((modelocrud)ListView.SelectedItem, detalhes, deletar, atualizar, this);
+            botaoAtualizarLista.Enabled = ListView.SelectedIndex >= 0;
+            botaoDetalhes.Enabled = ListView.SelectedIndex >= 0;
+            botaoAtualizar.Enabled = ListView.SelectedIndex >= 0;
+            botaoDeletar.Enabled = ListView.SelectedIndex >= 0;
+            Mudanca.Enabled = ListView.SelectedIndex >= 0;
         }
 
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)

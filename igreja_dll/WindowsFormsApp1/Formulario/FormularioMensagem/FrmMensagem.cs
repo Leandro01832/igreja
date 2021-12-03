@@ -1,4 +1,6 @@
-﻿using System;
+﻿using business.classes.Esboco;
+using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.FormularioFonte
 {
@@ -9,8 +11,18 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
             InitializeComponent();
         }
 
-        private void FrmFinalizarCadastroMensagem_Load(object sender, EventArgs e)
+        private void FrmMensagem_Load(object sender, EventArgs e)
         {
+            
+                var m = (Mensagem)modelo;
+            try { txt_tipo.Text = m.Tipo; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            
+        }
+
+        private void txt_tipo_TextChanged(object sender, EventArgs e)
+        {
+            var m = (Mensagem)modelo;
+            m.Tipo = txt_tipo.Text;
         }
     }
 }

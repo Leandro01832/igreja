@@ -39,17 +39,16 @@
             // dgdados
             // 
             this.dgdados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgdados.Location = new System.Drawing.Point(55, 12);
+            this.dgdados.Location = new System.Drawing.Point(12, 12);
             this.dgdados.Name = "dgdados";
             this.dgdados.RowTemplate.Height = 24;
-            this.dgdados.Size = new System.Drawing.Size(1240, 786);
+            this.dgdados.Size = new System.Drawing.Size(1467, 786);
             this.dgdados.TabIndex = 6;
-            this.dgdados.SelectionChanged += new System.EventHandler(this.dgdados_SelectionChanged);
             // 
             // btn_pesquisar
             // 
             this.btn_pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pesquisar.Location = new System.Drawing.Point(1613, 415);
+            this.btn_pesquisar.Location = new System.Drawing.Point(1603, 495);
             this.btn_pesquisar.Name = "btn_pesquisar";
             this.btn_pesquisar.Size = new System.Drawing.Size(163, 60);
             this.btn_pesquisar.TabIndex = 8;
@@ -60,7 +59,7 @@
             // btn_todos
             // 
             this.btn_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_todos.Location = new System.Drawing.Point(1328, 415);
+            this.btn_todos.Location = new System.Drawing.Point(1521, 408);
             this.btn_todos.Name = "btn_todos";
             this.btn_todos.Size = new System.Drawing.Size(245, 60);
             this.btn_todos.TabIndex = 21;
@@ -71,9 +70,9 @@
             // btnFiltro
             // 
             this.btnFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltro.Location = new System.Drawing.Point(1328, 319);
+            this.btnFiltro.Location = new System.Drawing.Point(1521, 324);
             this.btnFiltro.Name = "btnFiltro";
-            this.btnFiltro.Size = new System.Drawing.Size(245, 73);
+            this.btnFiltro.Size = new System.Drawing.Size(245, 60);
             this.btnFiltro.TabIndex = 290;
             this.btnFiltro.Text = "Aplicar filtro";
             this.btnFiltro.UseVisualStyleBackColor = true;
@@ -83,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1817, 819);
+            this.ClientSize = new System.Drawing.Size(1777, 819);
             this.Controls.Add(this.btnFiltro);
             this.Controls.Add(this.btn_todos);
             this.Controls.Add(this.btn_pesquisar);

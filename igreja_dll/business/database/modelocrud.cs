@@ -27,12 +27,94 @@ namespace database
             property = new PropertiesCrud(this);
         }
 
+        [OpcoesBase(ChavePrimaria = true, Obrigatorio = true)]
+        [Key]
+        public int Id { get; set; }
+        public static List<modelocrud> Modelos = new List<modelocrud>();
+
+        static Calculo calculo = new Calculo();
+        PropertiesCrud property;
+        static Query pesquisar = new Query();
+        static Entity entity = new Entity();
+        public BDcomum bd;
+        public SqlDataReader dr;
+        public SqlConnection conexao;
+        public modelocrud ModelEntity;
+        public Type T;
+        public string ErroCadastro = "";
+        public static string classe = "";
+
+        public static bool Erro_Conexao;
+        public static string textoPorcentagem = "0%";
+        public static int QuantErro;
+        public static bool EntityCrud = false;
+        public string Insert_padrao;
+        public string Update_padrao;
+        public string Delete_padrao;
+        public string Select_padrao;
+        public static bool ativar;
+        public static Pessoa pessoa;
+        public bool anular = true;
+
         public static Type ReturnBase(Type type)
         {
             while (type.BaseType != typeof(modelocrud))
                 type = type.BaseType;
 
             return type;
+        }
+
+        public static int TotalRegistro(Type tipo)
+        {
+            var types = listTypesSon(typeof(modelocrud));
+            var lista = types.Where(e => e.GetProperties()
+                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 0).ToList();
+
+            var _TotalRegistros = 0;
+            SqlConnection conexao = null;
+            SqlCommand cmd = null;
+
+            if (tipo == null)
+                foreach (var item in lista)
+                    if (BDcomum.podeAbrir)
+                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item);
+
+            if (tipo != null)
+            {
+                if (tipo.IsAbstract)
+                {
+                    var t = listTypesSon(tipo);
+                    foreach (var item in t)
+                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item);
+
+                }
+                else
+                    _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, tipo);
+            }
+
+            return _TotalRegistros;
+        }
+
+        private static int buscarCount(int _TotalRegistros, SqlConnection con, SqlCommand cmd, Type item)
+        {
+            try
+            {
+                var stringConexao = "";
+                if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
+                else stringConexao = BDcomum.conecta2;
+                using (con = new SqlConnection(stringConexao))
+                {
+                    cmd = new SqlCommand($"SELECT COUNT(*) FROM {item.Name}", con);
+                    con.Open();
+                    _TotalRegistros = int.Parse(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+            }
+            catch (Exception)
+            {
+                BDcomum.podeAbrir = false;
+            }
+            return _TotalRegistros;
         }
 
         public static int GetUltimoRegistro(Type BaseModel)
@@ -92,35 +174,6 @@ namespace database
                             catch { }
         }
 
-        static Calculo calculo = new Calculo();
-        PropertiesCrud property;
-        static Query pesquisar = new Query();
-        static Entity entity = new Entity();
-        public BDcomum bd;
-        public SqlDataReader dr;
-        public SqlConnection conexao;
-        public modelocrud ModelEntity;
-        public Type T;
-        public string ErroCadastro = "";
-        public static string classe = "";
-
-        public static List<modelocrud> Modelos = new List<modelocrud>();
-
-        [OpcoesBase(ChavePrimaria = true, Obrigatorio = true)]
-        [Key]
-        public int Id { get; set; }
-        public static bool Erro_Conexao;
-        public static string textoPorcentagem = "0%";
-        public static int QuantErro;
-        public static bool EntityCrud = false;
-        public string Insert_padrao;
-        public string Update_padrao;
-        public string Delete_padrao;
-        public string Select_padrao;
-        public static bool ativar;
-        public static Pessoa pessoa;
-        public bool anular = true;
-
         public string exibirMensagemErro(Exception ex, int condicao)
         {
             string mensagem = "";
@@ -177,12 +230,28 @@ namespace database
 
             return listaTypes;
         }
+
         public static List<Type> listTypesAll(Type tipo)
         {
             var listaTypes = tipo.Assembly.GetTypes()
             .Where(type => type.IsSubclassOf(tipo) || type == tipo).ToList();
 
             return listaTypes;
+        }
+
+        public static modelocrud buscarConcreto(Type itemType, int num)
+        {
+            var listaTypes = modelocrud.listTypesSon(itemType);
+            foreach (var item in listaTypes)
+            {
+                var model = (modelocrud)Activator.CreateInstance(item);
+                model.Id = num;
+                model.Select_padrao = $"select * from {item.Name} as C where C.Id='{model.Id}'";
+                model.Delete_padrao = $" delete from {item.Name} where Id='{model.Id}' ";
+                if (model.recuperar(num))
+                    return model;
+            }
+            return null;
         }
 
         public void TratarExcessao(Exception ex)
@@ -434,8 +503,8 @@ namespace database
                         mod.Id = num;
                         mod.Select_padrao = $"select * from {GetType().Name} as C where C.Id='{mod.Id}'";
                         mod.Delete_padrao = $" delete from {GetType().Name} where Id='{mod.Id}' ";
-                        if (mod.recuperar(mod.Id))
-                            Modelos.Add(mod);
+                        if(mod.recuperar(mod.Id))
+                        Modelos.Add(mod);
                     }
                     dr.Close();
 
@@ -510,56 +579,7 @@ namespace database
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
-        public static int TotalRegistro(Type tipo)
-        {
-            var types = listTypesSon(typeof(modelocrud));
-
-            var _TotalRegistros = 0;
-            SqlConnection conexao = null;
-            SqlCommand cmd = null;
-
-            if (tipo == null)
-                foreach (var item in types)
-                    if (BDcomum.podeAbrir)
-                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item);
-
-            if (tipo != null)
-            {
-                if (tipo.IsAbstract)
-                {
-                    var t = listTypesSon(tipo);
-                    foreach (var item in t)
-                        _TotalRegistros = buscarCount(_TotalRegistros, conexao, cmd, item);
-
-                }
-                else
-                    _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, tipo);
-            }
-
-            return _TotalRegistros;
-        }
-
-        private static int buscarCount(int _TotalRegistros, SqlConnection con, SqlCommand cmd, Type item)
-        {
-            try
-            {
-                var stringConexao = "";
-                if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                else stringConexao = BDcomum.conecta2;
-                using (con = new SqlConnection(stringConexao))
-                {
-                    cmd = new SqlCommand($"SELECT COUNT(*) FROM {item.Name}", con);
-                    con.Open();
-                    _TotalRegistros += int.Parse(cmd.ExecuteScalar().ToString());
-                    con.Close();
-                }
-            }
-            catch (Exception)
-            {
-                BDcomum.podeAbrir = false;
-            }
-            return _TotalRegistros;
-        }
+        
 
         private void UpdateProperty(Type tipo)
         {
@@ -568,39 +588,24 @@ namespace database
         #endregion        
 
         #region MethodsQuery
-        public List<modelocrud> PesquisarPorData(List<modelocrud> modelos, DateTime comecar, DateTime terminar, string campo)
+        public List<modelocrud> PesquisarPorData(List<modelocrud> modelos, DateTime comecar, DateTime terminar, string campo, Type tipo)
         {
-            return pesquisar.PesquisarPorData(modelos, comecar, terminar, campo);
+            return pesquisar.PesquisarPorData(modelos, comecar, terminar, campo, tipo);
         }
 
-        public List<modelocrud> PesquisarPorData(List<modelocrud> modelos, DateTime apenasUmDia, string campo)
+        public List<modelocrud> PesquisarPorNumero(List<modelocrud> modelos, int comecar, int terminar, string campo, Type tipo)
         {
-            return pesquisar.PesquisarPorData(modelos, apenasUmDia, campo);
+            return pesquisar.PesquisarPorNumero(modelos, comecar, terminar, campo, tipo);
         }
 
-        public List<modelocrud> PesquisarPorNumero(List<modelocrud> modelos, int comecar, int terminar, string campo)
+        public List<modelocrud> PesquisarPorTexto(List<modelocrud> modelos, string texto, string campo, Type tipo)
         {
-            return pesquisar.PesquisarPorNumero(modelos, comecar, terminar, campo);
+            return pesquisar.PesquisarPorTexto(modelos, texto, campo, tipo);
         }
 
-        public List<modelocrud> PesquisarPorNumero(List<modelocrud> modelos, int apenasUmNumero, string campo)
+        public List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos, TimeSpan comecar, TimeSpan terminar, string campo, Type tipo)
         {
-            return pesquisar.PesquisarPorNumero(modelos, apenasUmNumero, campo);
-        }
-
-        public List<modelocrud> PesquisarPorTexto(List<modelocrud> modelos, string texto, string campo)
-        {
-            return pesquisar.PesquisarPorTexto(modelos, texto, campo);
-        }
-
-        public List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos, TimeSpan comecar, TimeSpan terminar, string campo)
-        {
-            return pesquisar.PesquisarPorHorario(modelos, comecar, terminar, campo);
-        }
-
-        public List<modelocrud> PesquisarPorHorario(List<modelocrud> modelos, TimeSpan apenasUmHorario, string campo)
-        {
-            return pesquisar.PesquisarPorHorario(modelos, apenasUmHorario, campo);
+            return pesquisar.PesquisarPorHorario(modelos, comecar, terminar, campo, tipo);
         }
         #endregion
 

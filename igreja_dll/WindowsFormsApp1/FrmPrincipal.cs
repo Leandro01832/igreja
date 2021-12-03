@@ -5,8 +5,6 @@ using business.classes.Ministerio;
 using database;
 using database.banco;
 using System;
-using System.Configuration;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -239,8 +237,10 @@ namespace WindowsFormsApp1
                             null, form, new object[] { sender, e });
         }
 
-        private void Principal_Tick(object sender, EventArgs e)
+        private async void Principal_Tick(object sender, EventArgs e)
         {
+            await Task.Run(() => modelocrud.calcularPorcentagem());
+
             var date2 = DateTime.Now.AddMilliseconds(Principal.Interval);
             lbl_horario.Text = date2.ToString("HH:mm:ss");
 

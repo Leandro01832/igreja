@@ -47,17 +47,26 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        Form frm = null;
                         var modelo = (modelocrud)Activator.CreateInstance(item);
-                        if (modelo is Celula) frm = new DadoCelula();
-                        if (modelo is Ministerio) frm = new DadoMinisterio();
-                        if (modelo is Reuniao) frm = new DadoReuniao();
-                        if (modelo is PessoaDado) frm = new DadoPessoal();
-                        if (modelo is PessoaLgpd) frm = new DadoPessoalLgpd();
-                        if (modelo is Fonte) frm = new FrmDadoFonte();
-                        if (modelo is Mensagem) frm = new FrmCadastrarMensagem();
+                        if (modelo is Celula) Form = new DadoCelula();              else
+                        if (modelo is Ministerio) Form = new DadoMinisterio();      else
+                        if (modelo is Reuniao) Form = new DadoReuniao();            else
+                        if (modelo is PessoaDado) Form = new DadoPessoal();         else
+                        if (modelo is PessoaLgpd) Form = new DadoPessoalLgpd();     else
+                        if (modelo is Fonte) Form = new FrmDadoFonte();             else
+                        if(item.BaseType == typeof(modelocrud))
+                        {
+                            var list = modelocrud.listTypesSon(typeof(WFCrud));
 
-                        LoadFormCrud(modelo, false, false, false, frm);
+                            foreach (var it in list)
+                                if("Frm" + item.Name == it.Name)
+                                {
+                                    Form = (WFCrud)Activator.CreateInstance(it);
+                                    break;
+                                }
+                        }
+
+                        LoadFormCrud(modelo, false, false, false, Form);
                         break;
                     }
                 }
@@ -70,7 +79,7 @@ namespace WindowsFormsApp1
                         query.MdiParent = form;
                         query.Text = "Pesquisar " + item.Name;
                         query.Show();
-                        break; 
+                        break;
                     }
                 }
                 else if (item.Name + "Listar" + "_Click" == function)
@@ -82,26 +91,23 @@ namespace WindowsFormsApp1
                         frm.MdiParent = form;
                         frm.Text = "Listar " + item.Name;
                         frm.Show();
-                        break; 
+                        break;
                     }
                 }
                 else
+                    if (function.Contains("Cadastrar") && item != typeof(modelocrud) ||
+                        function.Contains("Imprimir") && item != typeof(modelocrud) ||
+                        function.Contains("Listar") && item != typeof(modelocrud) ||
+                        function.Contains("Pesquisar") && item != typeof(modelocrud))
                 {
-                    if (item.Name + "Cadastrar" + "_Click" == function ||
-                        item.Name + "Imprimir" + "_Click" == function ||
-                        item.Name + "Listar" + "_Click" == function ||
-                        item.Name + "Pesquisar" + "_Click" == function)
+                    if (!contagem && 1 == 2)
                     {
                         quantidade++;
-                        if (!contagem)
-                        {
-                            MessageBox.Show($"Não foi executado a {item.Name + "_Click"}!!!");
-                            break;
-                        }
-
+                        MessageBox.Show($"Não foi executado a {function}!!!");
+                        break;
                     }
-                }
 
+                }
         }
 
 
@@ -110,9 +116,9 @@ namespace WindowsFormsApp1
             if (!detalhes && !deletar && !atualizar && Atual.IsMdiContainer)
                 Form.MdiParent = Atual;
             else
-                Form.MdiParent = Atual.MdiParent;
-
-            if (detalhes || deletar || atualizar)
+            if (detalhes && Form == null ||
+                deletar && Form == null ||
+                atualizar && Form == null)
             {
                 try
                 {
@@ -134,11 +140,20 @@ namespace WindowsFormsApp1
                                 Form = (WFCrud)Activator.CreateInstance(item2);
                                 break;
                             }
-                        if (Form != null) break;
+                        if (Form != null)
+                        {
+                            Form.MdiParent = Atual.MdiParent;
+                            break;
+                        }
                     }
 
                 }
-                catch { }
+                catch { MessageBox.Show("Erro ao abrir form crud!!!"); }
+
+            }
+            else
+            {
+                Form.MdiParent = Atual.MdiParent;
             }
 
             Form.modelo = modelo;

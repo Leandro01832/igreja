@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
 
         private void Proximo_Click(object sender, EventArgs e)
         {
-            if (this is FrmCadastrarMensagem)
+            if (this is FrmMensagem)
                 crudForm.Form = new FrmMensagem();
 
             if (this is FrmDadoFonte)

@@ -290,7 +290,7 @@ namespace WindowsFormsApp1
 
         private void DadoReuniao_Click(object sender, EventArgs e)
         {
-            DadoReuniao frm = new DadoReuniao();
+            crudForm.Form = new DadoReuniao();
             LoadForm();
         }
 

@@ -1,5 +1,6 @@
 ﻿using business.classes.Abstrato;
 using business.classes.Celulas;
+using business.classes.financeiro;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
@@ -17,9 +18,34 @@ namespace Tests
         static string[] arr2 = new string[10];
         static Random randNum = new Random();
         private static BDcomum bd = new BDcomum();
+        private static int loop = 10;
 
         static void Main(string[] args)
         {
+            arr[0] = "Paulo"; arr[10] = "Sandra"; arr[20] = "Sebastião"; arr[30] = "Thais"; arr[40] = "Adriana";
+            arr[1] = "Jorge"; arr[11] = "Jaco"; arr[21] = "Lucas"; arr[31] = "Pamela"; arr[41] = "Adriano";
+            arr[2] = "Maria"; arr[12] = "Rubens"; arr[22] = "Alice"; arr[32] = "Nayara"; arr[42] = "Alex";
+            arr[3] = "Pedro"; arr[13] = "Marta"; arr[23] = "Aline"; arr[33] = "Oliver"; arr[43] = "Fred";
+            arr[4] = "Sandro"; arr[14] = "Madalena"; arr[24] = "Zezé"; arr[34] = "Hugo"; arr[44] = "Tiago";
+            arr[5] = "Gustavo"; arr[15] = "Judas"; arr[25] = "Romulo"; arr[35] = "Icaro"; arr[45] = "Neymar";
+            arr[6] = "Henrique"; arr[16] = "Amanda"; arr[26] = "Geraldo"; arr[36] = "Bruno"; arr[46] = "Mariano";
+            arr[7] = "Isaque"; arr[17] = "Erik"; arr[27] = "Denis"; arr[37] = "Vinicius"; arr[47] = "Fabricio";
+            arr[8] = "Salomão"; arr[18] = "Leonardo"; arr[28] = "Gisele"; arr[38] = "Ramon"; arr[48] = "Felipe";
+            arr[9] = "Camila"; arr[19] = "Simone"; arr[29] = "Bianca"; arr[39] = "Charles"; arr[49] = "Carlos";
+
+
+            arr2[0] = "Silva Mendes";
+            arr2[1] = "Oliveira Prado";
+            arr2[2] = "Bitencourt Silva";
+            arr2[3] = "Chavier dos Santos";
+            arr2[4] = "Gomes Pereira";
+            arr2[5] = "Vasconcelos";
+            arr2[6] = "Magalhães";
+            arr2[7] = "Santos";
+            arr2[8] = "Menezes";
+            arr2[9] = "Reimon";
+
+
             BDcomum.podeAbrir = true;
             var types = modelocrud.listTypesSon(typeof(modelocrud));
             List<modelocrud> lista = new List<modelocrud>();
@@ -100,8 +126,9 @@ namespace Tests
             lista.Add(pessoa2);
             lista.Add(pessoa3);
             lista.Add(celula1);
-
-
+                
+            for(var i = 0; i < loop; i++)
+            {
                foreach (var item in types)
                {
                    num++;
@@ -113,28 +140,60 @@ namespace Tests
                            var p = (Pessoa)modelo;
                            p.Codigo = num;
                            p.Email = num + "@gmail.com";
-                       }
+                           p.NomePessoa = arr[randNum.Next(0, 49)] + " " + arr[randNum.Next(0, 9)];
+                        }
                        if (modelo is PessoaDado)
                        {
                            var p = (PessoaDado)modelo;
-                           p.Cpf = "000000000" + num;
-                       }
+                            p.Data_nascimento = new DateTime(randNum.Next(1900, 2020), randNum.Next(1, 12), randNum.Next(1, 28));
+                            p.Estado_civil = arr[randNum.Next(0, 49)];
+                            p.Falescimento = randNum.Next(0, 10) > randNum.Next(0, 10);
+                            p.Falta = randNum.Next(0, 100);
+                            p.Sexo_feminino = randNum.Next(0, 10) > randNum.Next(0, 10);
+                            p.Sexo_masculino = !p.Sexo_feminino;
+                            p.Status = arr[randNum.Next(0, 49)];                            
+                            if (num.ToString().Length == 1)
+                                p.Cpf = "0000000000" + num;
+                            if (num.ToString().Length == 2)
+                                p.Cpf = "000000000" + num;
+                            if (num.ToString().Length == 3)
+                                p.Cpf = "00000000" + num;
+                            if (num.ToString().Length == 4)
+                                p.Cpf = "0000000" + num;
+                            if (num.ToString().Length == 5)
+                                p.Cpf = "000000" + num;
+                            p.Rg = p.Cpf;
+                        }
                        if (modelo is Ministerio)
                        {
                            var p = (Ministerio)modelo;
                            p.CodigoMinisterio = num;
-                       }
+                            p.Nome = arr[randNum.Next(0, 49)];
+                        }
 
                     if (modelo is Celula)
                     {
                         var p = (Celula)modelo;
-                        var prop = modelo.GetType().GetProperty("Ministerios");
+                            p.Nome = arr[randNum.Next(0, 49)];
+                            p.Dia_semana = arr[randNum.Next(0, 49)];
+                            p.Horario = new TimeSpan(randNum.Next(1, 12), randNum.Next(1, 12), randNum.Next(1, 12));
+                            p.Maximo_pessoa = randNum.Next(0, 49);                            
+                            var prop = modelo.GetType().GetProperty("Ministerios");
                         prop.SetValue(modelo, new List<MinisterioCelula>
                         {
                             new MinisterioCelula { Ministerio = ministerio1, MinisterioId = ministerio1.Id },
                             new MinisterioCelula { Ministerio = ministerio2, MinisterioId = ministerio2.Id }
                         });
                     }
+
+                    if(modelo is Movimentacao)
+                        {
+                            var p = (Movimentacao)modelo;
+                            p.Valor = randNum.Next(10, 1000);
+                            p.Data = new DateTime(randNum.Next(2021, 2025), randNum.Next(1, 12), randNum.Next(1, 28));
+                            p.Pago = randNum.Next(1, 10) > randNum.Next(1, 10);
+                            
+                        }
 
                     if (modelo.GetType().GetProperties().Where(pro => pro.ReflectedType ==
                        pro.DeclaringType && pro.Name == "Id").ToList().Count != 0)
@@ -161,55 +220,58 @@ namespace Tests
                 Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
                 Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
                 Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+
+            }
+
                 
-                foreach (var item in lista)
-               {
-                   try
-                   {
-                       if (item.Id != 0)
-                       {
-                           item.Select_padrao = $"select * from {item.GetType().Name} as C where C.Id='{item.Id}'";
-                           item.Delete_padrao = $" delete from {item.GetType().Name} where Id='{item.Id}' ";
-                           item.alterar(item.Id);
-                       }
-                       Console.WriteLine("Dados alterados com sucesso.");
-                   }
-                   catch (Exception ex)
-                   {
-                       Console.WriteLine(item.GetType().Name + " - " + ex.Message);
-                       Console.WriteLine(item.GetType().Name + " - " + item.exibirMensagemErro(ex, 2));
-                   }
-               }
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-            
-                foreach (var item in lista)
-                {
-                    try
-                    {
-                        if (item.Id != 0)
-                        {
-                            item.Select_padrao = $"select * from {item.GetType().Name} as C where C.Id='{item.Id}'";
-                            item.Delete_padrao = $" delete from {item.GetType().Name} where Id='{item.Id}' ";
-                            item.excluir(item.Id);
-                            Console.WriteLine("Dados apagados com sucesso.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(item.GetType().Name + " - " + ex.Message);
-                        Console.WriteLine(item.GetType().Name + " - " + item.exibirMensagemErro(ex, 2));
-                    }
-                }
-            
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
-                Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          //      foreach (var item in lista)
+          //     {
+          //         try
+          //         {
+          //             if (item.Id != 0)
+          //             {
+          //                 item.Select_padrao = $"select * from {item.GetType().Name} as C where C.Id='{item.Id}'";
+          //                 item.Delete_padrao = $" delete from {item.GetType().Name} where Id='{item.Id}' ";
+          //                 item.alterar(item.Id);
+          //             }
+          //             Console.WriteLine("Dados alterados com sucesso.");
+          //         }
+          //         catch (Exception ex)
+          //         {
+          //             Console.WriteLine(item.GetType().Name + " - " + ex.Message);
+          //             Console.WriteLine(item.GetType().Name + " - " + item.exibirMensagemErro(ex, 2));
+          //         }
+          //     }
+          ////      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          ////      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          ////      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          ////      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          ////      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          ////  
+          ////      foreach (var item in lista)
+          //      {
+          //          try
+          //          {
+          //              if (item.Id != 0)
+          //              {
+          //                  item.Select_padrao = $"select * from {item.GetType().Name} as C where C.Id='{item.Id}'";
+          //                  item.Delete_padrao = $" delete from {item.GetType().Name} where Id='{item.Id}' ";
+          //                  item.excluir(item.Id);
+          //                  Console.WriteLine("Dados apagados com sucesso.");
+          //              }
+          //          }
+          //          catch (Exception ex)
+          //          {
+          //              Console.WriteLine(item.GetType().Name + " - " + ex.Message);
+          //              Console.WriteLine(item.GetType().Name + " - " + item.exibirMensagemErro(ex, 2));
+          //          }
+          //      }
+          //  
+          //      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          //      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          //      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          //      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
+          //      Console.WriteLine("--------------------------loop realizado com sucesso!!!------------------------------");
             Console.WriteLine("ok");
             Console.Read();
         }

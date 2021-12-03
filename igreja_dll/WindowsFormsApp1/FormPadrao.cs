@@ -67,7 +67,9 @@ namespace WindowsFormsApp1
                 frm.Show();
 
                 var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
-                foreach(var item in listaTypes.Where(e => e.BaseType == typeof(modelocrud)))
+                var lista = listaTypes.Where(e => e.GetProperties()
+                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 0).ToList();
+                foreach (var item in lista)
                 {
                     var modelo = (modelocrud) Activator.CreateInstance(item);
                     await Task.Run(() => modelo.recuperar());
@@ -85,7 +87,8 @@ namespace WindowsFormsApp1
                 if (!frm.IsDisposed)
                     frm.Dispose();
 
-                executar = true; podeVerificar = true;
+                executar = true;
+                podeVerificar = true;
             }
                         
             var appSettings = ConfigurationManager.AppSettings;

@@ -233,12 +233,6 @@
     <Compile Include="Formulario\FormularioListView.Designer.cs">
       <DependentUpon>FormularioListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\FormularioMensagem\FrmCadastrarMensagem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormularioMensagem\FrmCadastrarMensagem.Designer.cs">
-      <DependentUpon>FrmCadastrarMensagem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formulario\FormularioMensagem\FrmMensagem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -613,9 +607,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioListView.resx">
       <DependentUpon>FormularioListView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMensagem\FrmCadastrarMensagem.resx">
-      <DependentUpon>FrmCadastrarMensagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMensagem\FrmMensagem.resx">
       <DependentUpon>FrmMensagem.cs</DependentUpon>

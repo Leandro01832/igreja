@@ -2,6 +2,7 @@
 using business.classes.Abstrato;
 using business.classes.Intermediario;
 using database;
+using System;
 using System.Linq;
 
 namespace business.implementacao
@@ -15,17 +16,12 @@ namespace business.implementacao
 
                 var totalRegistros = modelocrud.TotalRegistro(null);
 
-                var modelos = 0;
-
-                var lista = modelocrud.listTypesSon(typeof(modelocrud));
-
-                foreach(var item in lista)
-                    modelos += modelocrud.Modelos.Where(m => m.GetType() == item).ToList().Count;
+                var modelos = modelocrud.Modelos.Count;
 
                 var porcentagem = (int)((100 * modelos) / totalRegistros);
                 modelocrud.textoPorcentagem = porcentagem.ToString() + "%";
             }
-            catch { }
+            catch (Exception ex) { var message = ex.Message; }
         }
     }
 }

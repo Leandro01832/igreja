@@ -789,21 +789,7 @@ namespace business.implementacao
             }
             catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
         }
-
-        private modelocrud buscarConcreto(Type itemType, int num)
-        {
-            var listaTypes = modelocrud.listTypesSon(itemType);
-            foreach (var item in listaTypes)
-            {
-                var model = (modelocrud)Activator.CreateInstance(item);
-                model.Id = num;
-                model.Select_padrao = $"select * from {item.Name} as C where C.Id='{model.Id}'";
-                model.Delete_padrao = $" delete from {item.Name} where Id='{model.Id}' ";
-                if (model.recuperar(num))
-                    return model;
-            }
-            return null;
-        }
+        
 
         private void buscarLista(object list, Type itemType, SqlDataReader dr2)
         {
@@ -813,7 +799,7 @@ namespace business.implementacao
                 var num = int.Parse(Convert.ToString(dr2["Id"]));
                 modelocrud mod = null;
                 if (itemType.IsAbstract)
-                    mod = buscarConcreto(itemType, num);
+                    mod = modelocrud.buscarConcreto(itemType, num);
                 else
                     mod = (modelocrud)Activator.CreateInstance(itemType);
                 mod.Id = num;

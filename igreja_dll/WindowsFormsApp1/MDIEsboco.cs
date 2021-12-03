@@ -111,7 +111,7 @@ namespace WFEsboco
 
         private void mensagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            crudForm.Form = new FrmCadastrarMensagem();
+            crudForm.Form = new FrmMensagem();
             LoadFormCreate(new Mensagem());
         }
 

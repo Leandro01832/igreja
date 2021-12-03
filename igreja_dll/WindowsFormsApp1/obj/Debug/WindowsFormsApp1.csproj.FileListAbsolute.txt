@@ -580,7 +580,6 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmDadoFonte.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmFonte.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioListView.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmCadastrarMensagem.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmMensagem.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmFontes.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.DadoMinisterio.resources
