@@ -8,9 +8,9 @@ using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Reuniao
 {
-    public partial class PessoasReuniao : WFCrud
+    public partial class FrmPessoas : WFCrud
     {
-        public PessoasReuniao() : base()
+        public FrmPessoas() : base()
         {
             InitializeComponent();
         }

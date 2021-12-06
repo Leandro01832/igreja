@@ -2,13 +2,11 @@
 using business.contrato;
 using business.implementacao;
 using database;
-using database.banco;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +22,7 @@ namespace business.classes.Abstrato
             {
                 MudancaEstado = new MudancaEstado();
                 Chamada = new Chamada();
-                Ministerios = new List<PessoaMinisterio>();
+                Ministerio = new List<PessoaMinisterio>();
                 Reuniao = new List<ReuniaoPessoa>();
             }
 
@@ -34,7 +32,7 @@ namespace business.classes.Abstrato
         public HttpPostedFileBase FiguraFile;     
 
         [Display(Name ="Nome completo")]
-        public string NomePessoa { get; set; }
+        public string Nome { get; set; }
         
         [OpcoesBase(ChavePrimaria =false, Index =true, Obrigatorio =true)]
         [Index("CODIGO", 2, IsUnique = true)]
@@ -74,13 +72,18 @@ namespace business.classes.Abstrato
         public virtual Celula Celula { get; set; }
         [JsonIgnore]
         public virtual Chamada Chamada { get; set; }
+
+        
         [JsonIgnore]
-        public virtual List<PessoaMinisterio> Ministerios { get; set; }
+        public virtual List<PessoaMinisterio> Ministerio { get; set; }
+
+        
         [JsonIgnore]
         public virtual List<Historico> Historicos { get; set; }
-
+        
         [JsonIgnore]
         public virtual List<ReuniaoPessoa> Reuniao { get; set; }
+        
         [JsonIgnore]
         public virtual List<EmailIgreja> EmailIgreja { get; set; }
         
@@ -113,9 +116,6 @@ namespace business.classes.Abstrato
             }
 
             return true;
-        }
-
-
-                
+        }                
     }
 }

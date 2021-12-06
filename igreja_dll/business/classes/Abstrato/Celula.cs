@@ -71,6 +71,7 @@ namespace business.classes.Abstrato
             set { horario = value; }
         }
 
+        
         [JsonIgnore]
         public virtual List<Pessoa> Pessoas { get; set; }
 
@@ -82,6 +83,8 @@ namespace business.classes.Abstrato
             new MinisterioCelula{ Ministerio = new Lider_Celula() },
             new MinisterioCelula{ Ministerio = new Lider_Celula_Treinamento() }
         };
+
+        
         [JsonIgnore]
         public virtual List<MinisterioCelula> Ministerios
         {

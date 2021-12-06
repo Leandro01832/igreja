@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    public partial class Foto : WFCrud
+    public partial class FrmImg : WFCrud
     {
-        public Foto()
+        public FrmImg()
         {
             InitializeComponent();
         }

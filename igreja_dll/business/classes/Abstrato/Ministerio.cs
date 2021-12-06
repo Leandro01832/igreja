@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Threading.Tasks;
 namespace business.classes.Abstrato
 {
     [Table("Ministerio")]
@@ -57,8 +56,9 @@ namespace business.classes.Abstrato
         }
 
         private List<PessoaMinisterio> pessoas;
+        
         [JsonIgnore]
-        public virtual List<PessoaMinisterio> Pessoas
+        public virtual List<PessoaMinisterio> Pessoa
         {
             get
             {
@@ -80,6 +80,7 @@ namespace business.classes.Abstrato
         }
 
         public int? Ministro_ { get; set; }
+        
         [JsonIgnore]
         public virtual List<MinisterioCelula> Celulas { get; set; }
 
@@ -110,11 +111,10 @@ namespace business.classes.Abstrato
             {
                 this.Maximo_pessoa = 50;
                 mudanca = new MudancaEstado();
-                Pessoas = new List<PessoaMinisterio>();
+                Pessoa = new List<PessoaMinisterio>();
                 Celulas = new List<MinisterioCelula>();
             }
-        }
-        
+        }        
         
         public override string ToString()
         {

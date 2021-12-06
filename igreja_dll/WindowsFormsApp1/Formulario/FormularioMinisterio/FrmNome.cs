@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
-    public partial class DadoMinisterio : WFCrud
+    public partial class FrmNome : WFCrud
     {
-        public DadoMinisterio() : base()
+        public FrmNome() : base()
         {
             InitializeComponent();
         }

@@ -99,5 +99,20 @@ namespace business.implementacao
 
             return q;
         }
+
+        public List<modelocrud> PesquisarPorCondicao(List<modelocrud> modelos, bool condicao, string campo, Type tipo)
+        {
+            List<modelocrud> q = null;
+            PropertyInfo info = tipo.GetProperty(campo);
+
+            if (modelos.Where(m => m.GetType() == tipo && condicao ||
+            m.GetType().IsSubclassOf(tipo)).ToList().Count > 0 && condicao)
+                q = modelos.Where(i => info.GetValue(i) != null &&
+               Convert.ToBoolean(info.GetValue(i)) == condicao && i.GetType() == tipo ||
+                info.GetValue(i) != null && Convert.ToBoolean(info.GetValue(i)) == condicao &&
+                i.GetType().IsSubclassOf(tipo)).Cast<modelocrud>().ToList();
+
+            return q;
+        }
     }
 }

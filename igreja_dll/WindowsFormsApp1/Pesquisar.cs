@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
         public Pesquisar(Type tipo)
         {
             InitializeComponent();
-            crudForm = new CrudForm();
+            crudForm = new MdiForm();
 
             this.tipo = tipo;
             pesquisar = new Query();
@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             foreach (var item in props)
                 dgdados.Columns.Add(item.Name, modelocrud.formatarTexto(item.Name));
         }
-        CrudForm crudForm;
+        MdiForm crudForm;
         List<PropertyInfo> props;
 
         Type tipo { get; }
@@ -42,10 +42,7 @@ namespace WindowsFormsApp1
 
         private void Pesquisar_Load(object sender, EventArgs e)
         {
-            if (FormPadrao.executar)
-                Resultado = modelocrud.Modelos.Where(m => m.GetType() == tipo || m.GetType().IsSubclassOf(tipo)).ToList();
-            else
-                MessageBox.Show("Aguarde o processamento!!!");
+            Resultado = modelocrud.Modelos.Where(m => m.GetType() == tipo || m.GetType().IsSubclassOf(tipo)).ToList();            
             dgdados.Font = new Font("Arial", 18);
             
             preencherRow(Resultado);
@@ -71,6 +68,7 @@ namespace WindowsFormsApp1
             modelocrud modelo = null;
             int value = 0;
             DataGridViewRow row = dgdados.CurrentRow;
+
             var cel = row.Cells["Id"];
             value = int.Parse(cel.FormattedValue.ToString());
             modelo = modelocrud.Modelos.First(m => m.GetType() == tipo && m.Id == value ||
@@ -95,8 +93,9 @@ namespace WindowsFormsApp1
             var query2 = FrmFiltro.TextBoxData;
             var query3 = FrmFiltro.TextBoxHora;
             var query4 = FrmFiltro.TextBoxNumero;            
+            var query5 = FrmFiltro.CheckBoxCondicao;            
 
-            if (query1 != null && FormPadrao.executar)
+            if (query1 != null)
             {
                 if (query1.Where(q => !string.IsNullOrWhiteSpace(q.Text)).ToList().Count > 0)
                     foreach (var item in query1)
@@ -104,7 +103,7 @@ namespace WindowsFormsApp1
                             Resultado = PesquisarPorTexto(Resultado, item.Text, item.Name, tipo);
 
                 if (query4.Where(q => !string.IsNullOrWhiteSpace(q.Text)).ToList().Count > 0)
-                    foreach (var item in query1)
+                    foreach (var item in query4)
                         if (!string.IsNullOrWhiteSpace(item.Text))
                         {
                             TextBox text = query4.First(q => q.Name == item.Name);
@@ -114,7 +113,7 @@ namespace WindowsFormsApp1
 
                 if (query2.Where(q => Convert.ToDateTime(q.Text).ToString("dd/MM/yyyy") !=
                     new DateTime(0001, 01, 01).ToString("dd/MM/yyyy")).ToList().Count > 0)
-                    foreach (var item in query1)
+                    foreach (var item in query2)
                         if (Convert.ToDateTime(item.Text).ToString("dd/MM/yyyy") !=
                             new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
                         {
@@ -126,7 +125,7 @@ namespace WindowsFormsApp1
                         }
 
                 if (query3.Where(q => TimeSpan.Parse(q.Text) != new TimeSpan(0, 0, 0)).ToList().Count > 0)
-                    foreach (var item in query1)
+                    foreach (var item in query3)
                         if (TimeSpan.Parse(item.Text) != new TimeSpan(0, 0, 0))
                         {
                             MaskedTextBox text = query2.First(q => q.Name == item.Name);
@@ -135,6 +134,11 @@ namespace WindowsFormsApp1
                             Resultado = PesquisarPorHorario(Resultado, TimeSpan.Parse(text.Text),
                                 TimeSpan.Parse(text2.Text), text.Name, tipo);
                         }
+
+                if (query5.Where(q => q.Checked).ToList().Count > 0)
+                    foreach (var item in query5)
+                        if (item.Checked)
+                        Resultado = PesquisarPorCondicao(Resultado, item.Checked, item.Name, tipo);                        
 
                 ModificaDataGridView(Resultado);
                 verifica();
@@ -157,6 +161,7 @@ namespace WindowsFormsApp1
             var query2 = FrmFiltro.TextBoxData;
             var query3 = FrmFiltro.TextBoxHora;
             var query4 = FrmFiltro.TextBoxNumero;
+            var query5 = FrmFiltro.CheckBoxCondicao;
 
             if (query1 != null)
                 foreach (var item in query1)
@@ -174,6 +179,9 @@ namespace WindowsFormsApp1
                 foreach (var item in query4)
                     item.Text = "";
 
+            if (query5 != null)
+                foreach (var item in query5)
+                    item.Checked = false;
         }
 
         private void btnFiltro_Click(object sender, EventArgs e)
@@ -210,9 +218,15 @@ namespace WindowsFormsApp1
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, Atual);
         }
 
-        public void Clicar(Form form, string function)
+        public void Clicar(Form form, string function, modelocrud Modelo = null,
+            bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
-            crudForm.Clicar(form, function);
+            crudForm.Clicar(form, function, Modelo, detalhes, deletar, atualizar);
+        }
+
+        public List<modelocrud> PesquisarPorCondicao(List<modelocrud> modelos, bool condicao, string campo, Type tipo)
+        {
+            return pesquisar.PesquisarPorCondicao(modelos, condicao, campo, tipo);
         }
     }
 }

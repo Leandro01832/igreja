@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
             try { maskedWhatsapp.Text = c.Telefone.Whatsapp; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             try { maskedTelefone.Text = c.Telefone.Fone; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             try { txtEmail.Text = c.Email; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try { txtNome.Text = c.NomePessoa; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtNome.Text = c.Nome; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
 
         }
 
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             Comprador c = (Comprador)modelo;
-            c.NomePessoa = txtNome.Text;
+            c.Nome = txtNome.Text;
         }
     }
 }

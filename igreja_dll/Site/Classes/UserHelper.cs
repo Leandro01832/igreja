@@ -119,8 +119,8 @@ namespace Ecommerce.Classes
 
                 var random = new Random();
                 var newPassword = string.Format("{0}{1}{2:04}*",
-                    user.NomePessoa.Trim().ToUpper().Substring(0, 1),
-                    user.NomePessoa.Trim().ToLower(),
+                    user.Nome.Trim().ToUpper().Substring(0, 1),
+                    user.Nome.Trim().ToLower(),
                     random.Next(10000));
 
                 userManager.RemovePassword(userASP.Id);

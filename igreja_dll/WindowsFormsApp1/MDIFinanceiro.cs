@@ -8,13 +8,13 @@ namespace WindowsFormsApp1
     {
         private int childFormNumber = 0;
 
-        ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
+        ImprimirRelatorio ir = new ImprimirRelatorio();
 
-        private CrudForm crudForm;
+        private MdiForm crudForm;
 
         public MDIFinanceiro()
         {
-            crudForm = new CrudForm();
+            crudForm = new MdiForm();
             crudForm.Mdi = this;
             InitializeComponent();
         }
@@ -327,9 +327,10 @@ namespace WindowsFormsApp1
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
         }
 
-        public void Clicar(Form form, string function)
+        public void Clicar(Form form, string function, modelocrud Modelo = null,
+            bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
-            crudForm.Clicar(form, function);
+            crudForm.Clicar(form, function, Modelo, detalhes, deletar, atualizar);
         }
     }
 }

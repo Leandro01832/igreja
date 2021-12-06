@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    partial class DadoPessoal
+    partial class FrmCpf
     {
         /// <summary>
         /// Required designer variable.

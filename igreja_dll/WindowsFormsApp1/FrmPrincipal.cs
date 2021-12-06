@@ -1,7 +1,5 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Celulas;
-using business.classes.Ministerio;
 using database;
 using database.banco;
 using System;
@@ -21,7 +19,7 @@ namespace WindowsFormsApp1
             date = DateTime.Now;
         }
 
-        BDcomum bd = new BDcomum();        
+        BDcomum bd = new BDcomum();
 
         #region IdentityRegistryNews
         bool notifica;
@@ -66,7 +64,7 @@ namespace WindowsFormsApp1
         {
             notifica = false;
 
-            await Task.Run(() => verificaRegistros());            
+            await Task.Run(() => verificaRegistros());
 
             notifica = true;
         }
@@ -78,21 +76,9 @@ namespace WindowsFormsApp1
             {
                 for (var i = Celula.UltimoRegistro; i <= UltimoRegistroCelula; i++)
                 {
-                    var cel = new Celula_Adolescente();
-                    if (cel.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel.Id, ToolTipIcon.Info);
-                    var cel2 = new Celula_Adolescente();
-                    if (cel2.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel2.Id, ToolTipIcon.Info);
-                    var cel3 = new Celula_Adolescente();
-                    if (cel3.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel3.Id, ToolTipIcon.Info);
-                    var cel4 = new Celula_Adolescente();
-                    if (cel4.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel4.Id, ToolTipIcon.Info);
-                    var cel5 = new Celula_Adolescente();
-                    if (cel5.recuperar(i))
-                        notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + cel5.Id, ToolTipIcon.Info);
+                    modelocrud model = modelocrud.buscarConcreto(typeof(Celula), i);
+                    if (model.recuperar(i))
+                    notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + model.Id, ToolTipIcon.Info);
                 }
 
                 Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula));
@@ -105,7 +91,7 @@ namespace WindowsFormsApp1
                 {
                     var reu = new Reuniao();
                     if (reu.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.Id, ToolTipIcon.Info);
+                    notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.Id, ToolTipIcon.Info);
                 }
                 Reuniao.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Reuniao));
             }
@@ -113,39 +99,13 @@ namespace WindowsFormsApp1
             var UltimoRegistroMinsterio = modelocrud.GetUltimoRegistro(typeof(Ministerio));
             if (UltimoRegistroMinsterio > Ministerio.UltimoRegistro)
             {
+
                 for (var i = Ministerio.UltimoRegistro; i <= UltimoRegistroMinsterio; i++)
                 {
-                    var minis = new Lider_Celula();
-                    if (minis.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis.Id, ToolTipIcon.Info);
+                    modelocrud model = modelocrud.buscarConcreto(typeof(Celula), i);
 
-                    var minis2 = new Lider_Celula_Treinamento();
-                    if (minis2.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis2.Id, ToolTipIcon.Info);
-
-                    var minis3 = new Lider_Ministerio();
-                    if (minis3.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis3.Id, ToolTipIcon.Info);
-
-                    var minis4 = new Lider_Ministerio_Treinamento();
-                    if (minis4.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis4.Id, ToolTipIcon.Info);
-
-                    var minis5 = new Supervisor_Celula();
-                    if (minis5.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis5.Id, ToolTipIcon.Info);
-
-                    var minis6 = new Supervisor_Celula_Treinamento();
-                    if (minis6.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis6.Id, ToolTipIcon.Info);
-
-                    var minis7 = new Supervisor_Ministerio();
-                    if (minis7.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis7.Id, ToolTipIcon.Info);
-
-                    var minis8 = new Supervisor_Ministerio_Treinamento();
-                    if (minis8.recuperar(i))
-                        notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + minis8.Id, ToolTipIcon.Info);
+                    if (model.recuperar(i))
+                    notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + model.Id, ToolTipIcon.Info);
 
                 }
 
@@ -157,14 +117,11 @@ namespace WindowsFormsApp1
             {
                 for (var i = Pessoa.UltimoRegistro; i <= UltimoRegistroPessoa; i++)
                 {
-                    var Lista = modelocrud.listTypesSon(typeof(modelocrud));
-                    foreach(var item in Lista)
-                    {
-                        var model = (modelocrud) Activator.CreateInstance(item);
-                        if (model.recuperar(i))
-                            notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + model.Id,
-                                ToolTipIcon.Info);
-                    }
+
+                    modelocrud model = modelocrud.buscarConcreto(typeof(Celula), i);
+                    if (model != null && model.recuperar(i))
+                    notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + model.Id, ToolTipIcon.Info);
+
                 }
 
                 Pessoa.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
@@ -175,7 +132,7 @@ namespace WindowsFormsApp1
         {
 
             Form form = new MDI();
-            Type tipo = form.GetType();            
+            Type tipo = form.GetType();
             ExecutarFuncoes(sender, e, form, tipo);
             form = new MDIAdmin();
             tipo = form.GetType();
@@ -190,9 +147,9 @@ namespace WindowsFormsApp1
             tipo = form.GetType();
             ExecutarFuncoes(sender, e, form, tipo);
 
-            MessageBox.Show("Quantidade de funções no sistema: " + CrudForm.quantidade);
-            CrudForm.quantidade = 0;
-            CrudForm.contagem = false;
+            MessageBox.Show("Quantidade de funções no sistema: " + MdiForm.quantidade);
+            MdiForm.quantidade = 0;
+            MdiForm.contagem = false;
 
             FormPadrao.UltimoRegistro();
             FormPadrao.LoadForm(this);

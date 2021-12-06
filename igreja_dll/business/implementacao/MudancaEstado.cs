@@ -18,13 +18,13 @@ namespace business.implementacao
     {
         public string velhoEstado { get; set; }
         public string novoEstado { get; set; }
-        public DateTime DataMudanca { get; set; }
+        public DateTime Data { get; set; }
         public int Codigo { get; set; }
         
 
         public MudancaEstado() : base()
         {
-            this.DataMudanca = DateTime.Now;
+            this.Data = DateTime.Now;
         }
         
 
@@ -65,7 +65,7 @@ namespace business.implementacao
 
                 var model = Modelos.First(i => i.Id == p.Id);
                 var valor = (Pessoa)model;
-                p.Ministerios = valor.Ministerios;
+                p.Ministerio = valor.Ministerio;
                 p.Reuniao = valor.Reuniao;
 
                 if (m is PessoaDado)
@@ -91,10 +91,10 @@ namespace business.implementacao
                             Historicos = pd.Historicos,
                             Img = pd.Img,
                             Falescimento = pd.Falescimento,
-                            NomePessoa = pd.NomePessoa,
+                            Nome = pd.Nome,
                             Reuniao = pd.Reuniao,
                             Rg = pd.Rg,
-                            Ministerios = pd.Ministerios,
+                            Ministerio = pd.Ministerio,
                             Sexo_feminino = pd.Sexo_feminino,
                             Sexo_masculino = pd.Sexo_masculino,
                             Telefone = pd.Telefone,
@@ -124,10 +124,10 @@ namespace business.implementacao
                             Historicos = pd.Historicos,
                             Img = pd.Img,
                             Falescimento = pd.Falescimento,
-                            NomePessoa = pd.NomePessoa,
+                            Nome = pd.Nome,
                             Reuniao = pd.Reuniao,
                             Rg = pd.Rg,
-                            Ministerios = pd.Ministerios,
+                            Ministerio = pd.Ministerio,
                             Sexo_feminino = pd.Sexo_feminino,
                             Sexo_masculino = pd.Sexo_masculino,
                             Telefone = pd.Telefone,
@@ -158,10 +158,10 @@ namespace business.implementacao
                             Historicos = pd.Historicos,
                             Img = pd.Img,
                             Falescimento = pd.Falescimento,
-                            NomePessoa = pd.NomePessoa,
+                            Nome = pd.Nome,
                             Reuniao = pd.Reuniao,
                             Rg = pd.Rg,
-                            Ministerios = pd.Ministerios,
+                            Ministerio = pd.Ministerio,
                             Sexo_feminino = pd.Sexo_feminino,
                             Sexo_masculino = pd.Sexo_masculino,
                             Telefone = pd.Telefone,
@@ -194,10 +194,10 @@ namespace business.implementacao
                             Historicos = pd.Historicos,
                             Img = pd.Img,
                             Falescimento = pd.Falescimento,
-                            NomePessoa = pd.NomePessoa,
+                            Nome = pd.Nome,
                             Reuniao = pd.Reuniao,
                             Rg = pd.Rg,
-                            Ministerios = pd.Ministerios,
+                            Ministerio = pd.Ministerio,
                             Sexo_feminino = pd.Sexo_feminino,
                             Sexo_masculino = pd.Sexo_masculino,
                             Telefone = pd.Telefone,
@@ -226,10 +226,10 @@ namespace business.implementacao
                             Historicos = pd.Historicos,
                             Img = pd.Img,
                             Falescimento = pd.Falescimento,
-                            NomePessoa = pd.NomePessoa,
+                            Nome = pd.Nome,
                             Reuniao = pd.Reuniao,
                             Rg = pd.Rg,
-                            Ministerios = pd.Ministerios,
+                            Ministerio = pd.Ministerio,
                             Sexo_feminino = pd.Sexo_feminino,
                             Sexo_masculino = pd.Sexo_masculino,
                             Telefone = pd.Telefone,
@@ -258,10 +258,10 @@ namespace business.implementacao
                             Historicos = pd.Historicos,
                             Img = pd.Img,
                             Falescimento = pd.Falescimento,
-                            NomePessoa = pd.NomePessoa,
+                            Nome = pd.Nome,
                             Reuniao = pd.Reuniao,
                             Rg = pd.Rg,
-                            Ministerios = pd.Ministerios,
+                            Ministerio = pd.Ministerio,
                             Sexo_feminino = pd.Sexo_feminino,
                             Sexo_masculino = pd.Sexo_masculino,
                             Telefone = pd.Telefone,
@@ -291,7 +291,7 @@ namespace business.implementacao
                             Historicos = p.Historicos,
                             Img = p.Img,
                             Reuniao = p.Reuniao,
-                            Ministerios = p.Ministerios,
+                            Ministerio = p.Ministerio,
                             Codigo = p.Codigo
                         };
                         membro.salvar();
@@ -313,7 +313,7 @@ namespace business.implementacao
                             Historicos = p.Historicos,
                             Img = p.Img,
                             Reuniao = p.Reuniao,
-                            Ministerios = p.Ministerios,
+                            Ministerio = p.Ministerio,
                             Codigo = p.Codigo
                         };
                         membro.salvar();
@@ -336,7 +336,7 @@ namespace business.implementacao
                             Historicos = p.Historicos,
                             Img = p.Img,
                             Reuniao = p.Reuniao,
-                            Ministerios = p.Ministerios,
+                            Ministerio = p.Ministerio,
                             Codigo = p.Codigo
                         };
                         membro.salvar();
@@ -361,7 +361,7 @@ namespace business.implementacao
                             Historicos = p.Historicos,
                             Img = p.Img,
                             Reuniao = p.Reuniao,
-                            Ministerios = p.Ministerios,
+                            Ministerio = p.Ministerio,
                             Codigo = p.Codigo
                         };
                         membro.salvar();
@@ -382,7 +382,7 @@ namespace business.implementacao
                             Historicos = p.Historicos,
                             Img = p.Img,
                             Reuniao = p.Reuniao,
-                            Ministerios = p.Ministerios,
+                            Ministerio = p.Ministerio,
                             Codigo = p.Codigo
                         };
                         c.salvar();
@@ -403,7 +403,7 @@ namespace business.implementacao
                             Historicos = p.Historicos,
                             Img = p.Img,
                             Reuniao = p.Reuniao,
-                            Ministerios = p.Ministerios,
+                            Ministerio = p.Ministerio,
                             Codigo = p.Codigo
                         };
                         v.salvar();
@@ -414,7 +414,7 @@ namespace business.implementacao
                 {
                     novoEstado = m.GetType().Name,
                     velhoEstado = estado,
-                    DataMudanca = DateTime.Now,
+                    Data = DateTime.Now,
                     Codigo = p.Codigo
                 }.salvar();
             }
@@ -445,14 +445,14 @@ namespace business.implementacao
                 var model = Modelos.First(i => i.Id == p.Id);
                 var valor = (Ministerio)model;
                 p.Celulas = valor.Celulas;
-                p.Pessoas = valor.Pessoas;  
+                p.Pessoa = valor.Pessoa;  
                 
                 if(m is Lider_Celula)
                 {
                     var modelo = (Lider_Celula)m;
                     Lider_Celula minis = new Lider_Celula
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -468,7 +468,7 @@ namespace business.implementacao
                     var modelo = (Lider_Celula_Treinamento)m;
                     Lider_Celula_Treinamento minis = new Lider_Celula_Treinamento
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -484,7 +484,7 @@ namespace business.implementacao
                     var modelo = (Lider_Ministerio)m;
                     Lider_Ministerio minis = new Lider_Ministerio
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -500,7 +500,7 @@ namespace business.implementacao
                     var modelo = (Lider_Ministerio_Treinamento)m;
                     Lider_Ministerio_Treinamento minis = new Lider_Ministerio_Treinamento
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -516,7 +516,7 @@ namespace business.implementacao
                     var modelo = (Supervisor_Celula)m;
                     Supervisor_Celula minis = new Supervisor_Celula
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -533,7 +533,7 @@ namespace business.implementacao
                     var modelo = (Supervisor_Celula_Treinamento)m;
                     Supervisor_Celula_Treinamento minis = new Supervisor_Celula_Treinamento
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -550,7 +550,7 @@ namespace business.implementacao
                     var modelo = (Supervisor_Ministerio)m;
                     Supervisor_Ministerio minis = new Supervisor_Ministerio
                     {
-                        Pessoas = p.Pessoas,
+                        Pessoa = p.Pessoa,
                         Celulas = p.Celulas,
                         CodigoMinisterio = modelo.CodigoMinisterio,
                         Ministro_ = modelo.Ministro_,
@@ -566,7 +566,7 @@ namespace business.implementacao
                 {
                     novoEstado = m.GetType().Name,
                     velhoEstado = estado,
-                    DataMudanca = DateTime.Now,
+                    Data = DateTime.Now,
                     Codigo = p.CodigoMinisterio
                 }.salvar();
             }

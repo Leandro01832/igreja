@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Reuniao
 {
-    partial class PessoasReuniao
+    partial class FrmPessoas
     {
         /// <summary>
         /// Required designer variable.

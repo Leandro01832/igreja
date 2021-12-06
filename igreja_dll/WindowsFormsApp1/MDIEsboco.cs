@@ -1,7 +1,4 @@
 ﻿using business.classes.Esboco;
-using business.classes.Esboco.Abstrato;
-using business.classes.Esboco.Fontes;
-using business.classes.Fontes;
 using database;
 using System;
 using System.Windows.Forms;
@@ -15,11 +12,11 @@ namespace WFEsboco
     {
         private int childFormNumber = 0;
 
-        private CrudForm crudForm;
+        private MdiForm crudForm;
 
         public MDIEsboco()
         {
-            crudForm = new CrudForm();
+            crudForm = new MdiForm();
             crudForm.Mdi = this;
             InitializeComponent();
         }
@@ -172,9 +169,10 @@ namespace WFEsboco
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, this);
         }
 
-        public void Clicar(Form form, string function)
+        public void Clicar(Form form, string function, modelocrud Modelo = null,
+            bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
-            crudForm.Clicar(form, function);
+            crudForm.Clicar(form, function, Modelo, detalhes, deletar, atualizar);
         }
     }
 }

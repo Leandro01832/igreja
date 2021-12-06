@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Celulas
 {
-    partial class DadoCelula
+    partial class FrmDia_semana
     {
         /// <summary>
         /// Required designer variable.

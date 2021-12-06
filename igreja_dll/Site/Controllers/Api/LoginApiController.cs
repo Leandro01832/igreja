@@ -59,7 +59,7 @@ namespace Site.Controllers.Api
 
             var usuario = await db.pessoas.Where(c => c.Email == email).FirstOrDefaultAsync();
             var user = await db.pessoas
-            .Include(p => p.Ministerios)
+            .Include(p => p.Ministerio)
             .Include(p => p.Celula)
             .Include(p => p.Chamada)
             .Include(p => p.Historicos)
@@ -84,8 +84,8 @@ namespace Site.Controllers.Api
                 Email = user.Email,
                 Falta = user.Falta,
                 Id = user.Id,
-                Ministerios = user.Ministerios,
-                Nome = user.NomePessoa,
+                Ministerios = user.Ministerio,
+                Nome = user.Nome,
                 Img = user.Img
             };
 
@@ -151,7 +151,7 @@ namespace Site.Controllers.Api
                 try
                 {
                     p.Email = email;
-                    p.NomePessoa = " - ";
+                    p.Nome = " - ";
                    // p.salvar();
                 }
                 catch { return this.BadRequest("Usuario não cadastrado!!!"); }

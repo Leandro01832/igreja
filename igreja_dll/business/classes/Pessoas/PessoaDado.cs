@@ -141,7 +141,7 @@ namespace business.classes.Pessoas
 
         public override string ToString()
         {
-            return this.Codigo + " - " + this.NomePessoa;
+            return this.Codigo + " - " + this.Nome;
         }
     }
 }

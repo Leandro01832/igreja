@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    partial class Foto
+    partial class FrmImg
     {
         /// <summary>
         /// Required designer variable.

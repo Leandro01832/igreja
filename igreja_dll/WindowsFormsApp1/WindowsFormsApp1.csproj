@@ -76,7 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrudForm.cs" />
+    <Compile Include="MdiForm.cs" />
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,11 +100,11 @@
     <Compile Include="FormProgressBar2.Designer.cs">
       <DependentUpon>FormProgressBar2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celulas\MinisteriosCelula.cs">
+    <Compile Include="Formulario\Celulas\FrmMinisterios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celulas\MinisteriosCelula.Designer.cs">
-      <DependentUpon>MinisteriosCelula.cs</DependentUpon>
+    <Compile Include="Formulario\Celulas\FrmMinisterios.Designer.cs">
+      <DependentUpon>FrmMinisterios.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Celulas\ListCelula.cs">
       <SubType>Form</SubType>
@@ -112,11 +112,11 @@
     <Compile Include="Formulario\Celulas\ListCelula.Designer.cs">
       <DependentUpon>ListCelula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Celulas\DadoCelula.cs">
+    <Compile Include="Formulario\Celulas\FrmDia_semana.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Celulas\DadoCelula.Designer.cs">
-      <DependentUpon>DadoCelula.cs</DependentUpon>
+    <Compile Include="Formulario\Celulas\FrmDia_semana.Designer.cs">
+      <DependentUpon>FrmDia_semana.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Celulas\FrmEnderecoCelula.cs">
       <SubType>Form</SubType>
@@ -245,11 +245,11 @@
     <Compile Include="Formulario\FormularioMensagem\FrmFontes.Designer.cs">
       <DependentUpon>FrmFontes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\DadoMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\FrmNome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\DadoMinisterio.Designer.cs">
-      <DependentUpon>DadoMinisterio.cs</DependentUpon>
+    <Compile Include="Formulario\FormularioMinisterio\FrmNome.Designer.cs">
+      <DependentUpon>FrmNome.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\FormularioMinisterio\FrmMinisterio.cs">
       <SubType>Form</SubType>
@@ -269,11 +269,11 @@
     <Compile Include="Formulario\FormularioMinisterio\FrmMudancaEstadoMinisterio.Designer.cs">
       <DependentUpon>FrmMudancaEstadoMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.cs">
+    <Compile Include="Formulario\FormularioMinisterio\FrmPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.Designer.cs">
-      <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
+    <Compile Include="Formulario\FormularioMinisterio\FrmPessoa.Designer.cs">
+      <DependentUpon>FrmPessoa.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\formularioMovimentacaoSaida\FrmAluguel.cs">
       <SubType>Form</SubType>
@@ -383,11 +383,11 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\Chamada.Designer.cs">
       <DependentUpon>Chamada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Contato.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmTelefone.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Contato.Designer.cs">
-      <DependentUpon>Contato.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmTelefone.Designer.cs">
+      <DependentUpon>FrmTelefone.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.cs">
       <SubType>Form</SubType>
@@ -395,23 +395,23 @@
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.Designer.cs">
       <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Foto.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmImg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Foto.Designer.cs">
-      <DependentUpon>Foto.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmImg.Designer.cs">
+      <DependentUpon>FrmImg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.Designer.cs">
-      <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmMinisterio.Designer.cs">
+      <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.cs">
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmCpf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.Designer.cs">
-      <DependentUpon>DadoPessoal.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmCpf.Designer.cs">
+      <DependentUpon>FrmCpf.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.cs">
       <SubType>Form</SubType>
@@ -461,11 +461,11 @@
     <Compile Include="Formulario\Reuniao\ListReuniao.Designer.cs">
       <DependentUpon>ListReuniao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Reuniao\PessoasReuniao.cs">
+    <Compile Include="Formulario\Reuniao\FrmPessoas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Reuniao\PessoasReuniao.Designer.cs">
-      <DependentUpon>PessoasReuniao.cs</DependentUpon>
+    <Compile Include="Formulario\Reuniao\FrmPessoas.Designer.cs">
+      <DependentUpon>FrmPessoas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAutenticacao.cs">
       <SubType>Form</SubType>
@@ -548,14 +548,14 @@
     <EmbeddedResource Include="Formulario\Celulas\ListCelula.resx">
       <DependentUpon>ListCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celulas\DadoCelula.resx">
-      <DependentUpon>DadoCelula.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Celulas\FrmDia_semana.resx">
+      <DependentUpon>FrmDia_semana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Celulas\FrmCelula.resx">
       <DependentUpon>FrmCelula.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Celulas\MinisteriosCelula.resx">
-      <DependentUpon>MinisteriosCelula.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Celulas\FrmMinisterios.resx">
+      <DependentUpon>FrmMinisterios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioEmail\FormularioEmail\FrmEmailIgreja.resx">
       <DependentUpon>FrmEmailIgreja.cs</DependentUpon>
@@ -614,8 +614,8 @@
     <EmbeddedResource Include="Formulario\FormularioMensagem\FrmFontes.resx">
       <DependentUpon>FrmFontes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\DadoMinisterio.resx">
-      <DependentUpon>DadoMinisterio.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmNome.resx">
+      <DependentUpon>FrmNome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmMinisterio.resx">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
@@ -626,8 +626,8 @@
     <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmMudancaEstadoMinisterio.resx">
       <DependentUpon>FrmMudancaEstadoMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormularioMinisterio\PessoasCelulasMinisterio.resx">
-      <DependentUpon>PessoasCelulasMinisterio.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\FormularioMinisterio\FrmPessoa.resx">
+      <DependentUpon>FrmPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\formularioMovimentacaoSaida\FrmAluguel.resx">
       <DependentUpon>FrmAluguel.cs</DependentUpon>
@@ -683,20 +683,20 @@
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Chamada.resx">
       <DependentUpon>Chamada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Contato.resx">
-      <DependentUpon>Contato.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmTelefone.resx">
+      <DependentUpon>FrmTelefone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.resx">
       <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Foto.resx">
-      <DependentUpon>Foto.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmImg.resx">
+      <DependentUpon>FrmImg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\ReunioesMinisteriosPessoa.resx">
-      <DependentUpon>ReunioesMinisteriosPessoa.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmMinisterio.resx">
+      <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoal.resx">
-      <DependentUpon>DadoPessoal.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmCpf.resx">
+      <DependentUpon>FrmCpf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.resx">
       <DependentUpon>FrmEndereco.cs</DependentUpon>
@@ -722,8 +722,8 @@
     <EmbeddedResource Include="Formulario\Reuniao\ListReuniao.resx">
       <DependentUpon>ListReuniao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Reuniao\PessoasReuniao.resx">
-      <DependentUpon>PessoasReuniao.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Reuniao\FrmPessoas.resx">
+      <DependentUpon>FrmPessoas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAutenticacao.resx">
       <DependentUpon>FrmAutenticacao.cs</DependentUpon>

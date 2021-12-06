@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 {
-    partial class PessoasCelulasMinisterio
+    partial class FrmPessoa
     {
         /// <summary>
         /// Required designer variable.

@@ -20,11 +20,11 @@ namespace WindowsFormsApp1
     public partial class MDI : Form, IFormCrud
     {
         private int childFormNumber = 1;
-        private CrudForm crudForm;
+        private MdiForm crudForm;
 
         public MDI()
         {
-            crudForm = new CrudForm();
+            crudForm = new MdiForm();
             crudForm.Mdi = this;
             InitializeComponent();
         }
@@ -367,9 +367,10 @@ namespace WindowsFormsApp1
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, Atual);
         }
 
-        public void Clicar(Form form, string function)
+        public void Clicar(Form form, string function, modelocrud Modelo = null,
+            bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
-            crudForm.Clicar(form, function);
+            crudForm.Clicar(form, function, Modelo, detalhes, deletar, atualizar);
         }
     }
 }

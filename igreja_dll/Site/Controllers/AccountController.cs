@@ -180,7 +180,7 @@ namespace Site.Controllers
                 try
                 {
                     p.Email = model.Email;
-                    p.NomePessoa = " - ";
+                    p.Nome = " - ";
                     p.Codigo = modelocrud.GetUltimoRegistro(typeof(Pessoa)) + 1;
                     p.salvar();
                 }

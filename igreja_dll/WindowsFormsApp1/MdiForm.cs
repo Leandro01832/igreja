@@ -1,6 +1,5 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Esboco;
 using business.classes.Esboco.Abstrato;
 using business.classes.Pessoas;
 using database;
@@ -16,16 +15,17 @@ using WindowsFormsApp1.Formulario.Reuniao;
 
 namespace WindowsFormsApp1
 {
-    public class CrudForm : IFormCrud
+    public class MdiForm : IFormCrud
     {
         public WFCrud Form { get; set; }
         public Form Mdi { get; set; }
         public static int quantidade = 0;
         public static bool contagem = true;
 
-        ImprimirRelatorio ir = new ImprimirRelatorio(modelocrud.Modelos);
+        ImprimirRelatorio ir = new ImprimirRelatorio();
 
-        public void Clicar(Form form, string function)
+        public void Clicar(Form form, string function, modelocrud Modelo = null,
+            bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
             Type T = Mdi.GetType();
             var lista = modelocrud.listTypesAll(typeof(modelocrud));
@@ -37,8 +37,14 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        ir.imprimir(item);
-                        MessageBox.Show(function + " foi executada!!!");
+                        if (FormPadrao.executar)
+                        {
+                            ir.imprimir(item);
+                            MessageBox.Show(function + " foi executada!!!");
+                        }
+                        else                        
+                            MessageBox.Show("aguarde o processamento!!!");
+                        
                         break;
                     }
                 }
@@ -48,25 +54,31 @@ namespace WindowsFormsApp1
                     if (!contagem)
                     {
                         var modelo = (modelocrud)Activator.CreateInstance(item);
-                        if (modelo is Celula) Form = new DadoCelula();              else
-                        if (modelo is Ministerio) Form = new DadoMinisterio();      else
-                        if (modelo is Reuniao) Form = new DadoReuniao();            else
-                        if (modelo is PessoaDado) Form = new DadoPessoal();         else
-                        if (modelo is PessoaLgpd) Form = new DadoPessoalLgpd();     else
-                        if (modelo is Fonte) Form = new FrmDadoFonte();             else
-                        if(item.BaseType == typeof(modelocrud))
+                        if (modelo is Celula) Form = new FrmDia_semana();
+                        else
+                        if (modelo is Ministerio) Form = new FrmNome();
+                        else
+                        if (modelo is Reuniao) Form = new DadoReuniao();
+                        else
+                        if (modelo is PessoaDado) Form = new FrmCpf();
+                        else
+                        if (modelo is PessoaLgpd) Form = new DadoPessoalLgpd();
+                        else
+                        if (modelo is Fonte) Form = new FrmDadoFonte();
+                        else
+                        if (item.BaseType == typeof(modelocrud))
                         {
                             var list = modelocrud.listTypesSon(typeof(WFCrud));
 
                             foreach (var it in list)
-                                if("Frm" + item.Name == it.Name)
+                                if ("Frm" + item.Name == it.Name)
                                 {
                                     Form = (WFCrud)Activator.CreateInstance(it);
                                     break;
                                 }
                         }
 
-                        LoadFormCrud(modelo, false, false, false, Form);
+                        LoadFormCrud(modelo, detalhes, deletar, atualizar, Form);
                         break;
                     }
                 }
@@ -75,11 +87,16 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        Pesquisar query = new Pesquisar(item);
-                        query.MdiParent = form;
-                        query.Text = "Pesquisar " + item.Name;
-                        query.Show();
-                        break;
+                        if (FormPadrao.executar)
+                        {
+                            Pesquisar query = new Pesquisar(item);
+                            query.MdiParent = form;
+                            query.Text = "Pesquisar " + item.Name;
+                            query.Show();
+                        }
+                        else                        
+                            MessageBox.Show("aguarde o processamento!!!");                        
+                            break;
                     }
                 }
                 else if (item.Name + "Listar" + "_Click" == function)
@@ -87,17 +104,44 @@ namespace WindowsFormsApp1
                     quantidade += 4;
                     if (!contagem)
                     {
-                        FormularioListView frm = new FormularioListView(item);
-                        frm.MdiParent = form;
-                        frm.Text = "Listar " + item.Name;
-                        frm.Show();
+                        if (FormPadrao.executar)
+                        {
+                            FormularioListView frm = new FormularioListView(item);
+                            frm.MdiParent = form;
+                            frm.Text = "Listar " + item.Name;
+                            frm.Show();
+                        }
+                        else                        
+                            MessageBox.Show("aguarde o processamento!!!");
+                        
                         break;
+                    }
+                }
+                else if (function.Contains("Selecionar"))
+                {
+                    if (!contagem)
+                    {
+                        Type BaseModel = modelocrud.ReturnBase(item);
+                        var props = item.GetProperties();
+                        bool teste = false;
+                        foreach (var item2 in props)
+                            if (BaseModel.Name + "Frm" + item2.Name + "Selecionar" + "_Click" == function)
+                            {
+                                teste = true;
+                                var obj = Activator.CreateInstance(null, "Frm" + item2.Name);
+                                Form = (WFCrud)obj.Unwrap();
+                                LoadFormCrud(Modelo, detalhes, deletar, atualizar, Form);
+                                break;
+                            }
+
+                        if (teste) break;
                     }
                 }
                 else
                     if (function.Contains("Cadastrar") && item != typeof(modelocrud) ||
                         function.Contains("Imprimir") && item != typeof(modelocrud) ||
                         function.Contains("Listar") && item != typeof(modelocrud) ||
+                        function.Contains("Selecionar") && item != typeof(modelocrud) ||
                         function.Contains("Pesquisar") && item != typeof(modelocrud))
                 {
                     if (!contagem && 1 == 2)
@@ -113,6 +157,8 @@ namespace WindowsFormsApp1
 
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
         {
+
+
             if (!detalhes && !deletar && !atualizar && Atual.IsMdiContainer)
                 Form.MdiParent = Atual;
             else
@@ -124,7 +170,6 @@ namespace WindowsFormsApp1
                 {
                     var lista = modelocrud.listTypesSon(typeof(WFCrud));
                     var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
-
                     Type BaseModel = modelocrud.ReturnBase(modelo.GetType());
 
                     foreach (var item in listaTypes)

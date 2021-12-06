@@ -117,7 +117,7 @@ namespace database
             return _TotalRegistros;
         }
 
-        public static int GetUltimoRegistro(Type BaseModel)
+        public static int GetUltimoRegistro(Type tipo)
         {
             var Id = 0;
             SqlConnection conn = new SqlConnection(BDcomum.conecta1);
@@ -126,6 +126,7 @@ namespace database
             {
                 try
                 {
+                    Type BaseModel = ReturnBase(tipo);
                     cmd = new SqlCommand($"SELECT TOP(1) Id FROM {BaseModel.Name} order by Id desc", conn);
                     conn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -607,6 +608,11 @@ namespace database
         {
             return pesquisar.PesquisarPorHorario(modelos, comecar, terminar, campo, tipo);
         }
+
+        public List<modelocrud> PesquisarPorCondicao(List<modelocrud> modelos, bool condicao, string campo, Type tipo)
+        {
+            return pesquisar.PesquisarPorCondicao(modelos, condicao, campo, tipo);
+        }
         #endregion
 
         #region MethodPorcentagem          
@@ -614,8 +620,6 @@ namespace database
         {
             calculo.CalcularPorcentagem();
         }
-
-
         #endregion
     }
 }

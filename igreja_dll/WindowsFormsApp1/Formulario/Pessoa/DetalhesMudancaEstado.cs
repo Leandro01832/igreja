@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if(modelo != null)
             {
                 var mudanca = (MudancaEstado)modelo;
-                lbl_data_mudanca.Text += mudanca.DataMudanca.ToString();
+                lbl_data_mudanca.Text += mudanca.Data.ToString();
                 lbl_modelo_antigo.Text += mudanca.velhoEstado.ToString();
                 lbl_modelo_novo.Text += mudanca.novoEstado.ToString();
                 lbl_id_pessoa.Text += mudanca.Codigo.ToString();

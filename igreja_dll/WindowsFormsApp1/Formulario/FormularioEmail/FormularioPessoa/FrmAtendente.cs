@@ -34,7 +34,7 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
             if (Atendente.Id != 0)
             {
                 txtEmail.Text = Atendente.Email;
-                txtNome.Text = Atendente.NomePessoa;
+                txtNome.Text = Atendente.Nome;
                 txtSenha.Text = Atendente.password;
                 foreach (var item in Atendente.Permissao)
                 {
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             var Atendente = (Atendente)modelo;
-            Atendente.NomePessoa = txtNome.Text;
+            Atendente.Nome = txtNome.Text;
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)

@@ -21,7 +21,7 @@ namespace Site.Controllers.Api
         [EnableQuery]
         public IQueryable<PessoaApi> Getpessoas()
         {
-            var pessoas = db.pessoas.Include(p => p.Ministerios)
+            var pessoas = db.pessoas.Include(p => p.Ministerio)
                 .Include(p => p.Reuniao)
                 .Include(p => p.Celula)
                 .Include(p => p.Historicos);
@@ -38,8 +38,8 @@ namespace Site.Controllers.Api
                     Email = item.Email,
                     Falta = item.Falta,
                     Historico = item.Historicos,
-                    Ministerios = item.Ministerios,
-                    Nome = item.NomePessoa,
+                    Ministerios = item.Ministerio,
+                    Nome = item.Nome,
                     Reuniao = item.Reuniao
                 };
                 lista.Add(modelo);

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Celulas
 {
-    public partial class DadoCelula : WFCrud
+    public partial class FrmDia_semana : WFCrud
     {
-        public DadoCelula() : base()
+        public FrmDia_semana() : base()
         {
             InitializeComponent();
         }

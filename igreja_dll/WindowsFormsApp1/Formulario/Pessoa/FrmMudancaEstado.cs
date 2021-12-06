@@ -109,7 +109,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             }
             else
             {
-                crudForm.Form = new DadoPessoal();
+                crudForm.Form = new FrmCpf();
                 crudForm.Form.MdiParent = this.MdiParent;
                 crudForm.Form.Show();
             }

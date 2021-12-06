@@ -156,13 +156,13 @@ namespace WindowsFormsApp1
 
         private  void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio imprimir = new ImprimirRelatorio(modelocrud.Modelos);
+            ImprimirRelatorio imprimir = new ImprimirRelatorio();
             imprimir.imprimir(typeof(Admin));
         }
 
         private  void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorio imprimir = new ImprimirRelatorio(modelocrud.Modelos);
+            ImprimirRelatorio imprimir = new ImprimirRelatorio();
             imprimir.imprimir(typeof(Atendente));
         }
         

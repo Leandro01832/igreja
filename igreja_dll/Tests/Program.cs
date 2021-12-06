@@ -67,24 +67,24 @@ namespace Tests
             pessoa1.Codigo = 3;
             PessoaDado pessoadado1 = (PessoaDado)pessoa1;
             pessoadado1.Cpf = "00000000001";
-            pessoa1.Ministerios = new List<PessoaMinisterio>();
-            pessoa1.Ministerios.Add(new PessoaMinisterio { Ministerio = ministerio1, MinisterioId = ministerio1.Id });
+            pessoa1.Ministerio = new List<PessoaMinisterio>();
+            pessoa1.Ministerio.Add(new PessoaMinisterio { Ministerio = ministerio1, MinisterioId = ministerio1.Id });
             pessoa1.salvar();
             Pessoa pessoa2 = new Crianca();
             pessoa2.Email = "pessoa2";
             pessoa2.Codigo = 4;
             PessoaDado pessoadado2 = (PessoaDado)pessoa2;
             pessoadado2.Cpf = "00000000002";
-            pessoa2.Ministerios = new List<PessoaMinisterio>();
-            pessoa2.Ministerios.Add(new PessoaMinisterio { Ministerio = ministerio1, MinisterioId = ministerio1.Id });
+            pessoa2.Ministerio = new List<PessoaMinisterio>();
+            pessoa2.Ministerio.Add(new PessoaMinisterio { Ministerio = ministerio1, MinisterioId = ministerio1.Id });
             pessoa2.salvar();
             Pessoa pessoa3 = new Crianca();
             pessoa3.Email = "pessoa3";
             pessoa3.Codigo = 5;
             PessoaDado pessoadado3 = (PessoaDado)pessoa3;
             pessoadado3.Cpf = "00000000003";
-            pessoa3.Ministerios = new List<PessoaMinisterio>();
-            pessoa3.Ministerios.Add(new PessoaMinisterio { Ministerio = ministerio1, MinisterioId = ministerio1.Id });
+            pessoa3.Ministerio = new List<PessoaMinisterio>();
+            pessoa3.Ministerio.Add(new PessoaMinisterio { Ministerio = ministerio1, MinisterioId = ministerio1.Id });
             pessoa3.salvar();
             Celula celula1 = new Celula_Adulto();
             celula1.Ministerios = new List<MinisterioCelula>();
@@ -140,7 +140,7 @@ namespace Tests
                            var p = (Pessoa)modelo;
                            p.Codigo = num;
                            p.Email = num + "@gmail.com";
-                           p.NomePessoa = arr[randNum.Next(0, 49)] + " " + arr[randNum.Next(0, 9)];
+                           p.Nome = arr[randNum.Next(0, 49)] + " " + arr[randNum.Next(0, 9)];
                         }
                        if (modelo is PessoaDado)
                        {

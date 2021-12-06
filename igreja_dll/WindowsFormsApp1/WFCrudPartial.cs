@@ -1,13 +1,10 @@
-﻿using business.classes;
-using business.classes.Abstrato;
-using business.classes.Esboco.Fontes;
+﻿using business.classes.Esboco.Fontes;
 using business.classes.Fontes;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioFonte;
@@ -20,11 +17,7 @@ namespace WindowsFormsApp1
 {
     public partial class WFCrud
     {
-        private void DadoFoto_Click(object sender, EventArgs e)
-        {
-            crudForm.Form = new Foto();
-            LoadForm();
-        }
+        
 
         private void DadoClasse_Click(object sender, EventArgs e)
         {
@@ -103,19 +96,19 @@ namespace WindowsFormsApp1
 
             if (modelo is PessoaDado || ModeloNovo is PessoaDado)
             {
-                if (this is DadoPessoal)
+                if (this is FrmCpf)
                     crudForm.Form = new FrmEndereco();
 
                 if (this is FrmEndereco)
-                    crudForm.Form = new Contato();
+                    crudForm.Form = new FrmTelefone();
 
-                if (this is Contato)
-                    crudForm.Form = new Foto();
+                if (this is FrmTelefone)
+                    crudForm.Form = new FrmImg();
 
-                if (this is Foto)
-                    crudForm.Form = new ReunioesMinisteriosPessoa();
+                if (this is FrmImg)
+                    crudForm.Form = new Formulario.Pessoas.FormCrudPessoas.FrmMinisterio();
 
-                if (this is ReunioesMinisteriosPessoa)
+                if (this is Formulario.Pessoas.FormCrudPessoas.FrmMinisterio)
                 {
                     //  object objNovo = null;
                     //  object obj = null;
@@ -147,19 +140,19 @@ namespace WindowsFormsApp1
                 if (this is CadastroCrianca || this is CadastroVisitante ||
                     this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                     this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
-                    crudForm.Form = new FrmPessoa();
+                    crudForm.Form = new Formulario.Pessoas.FrmPessoa();
 
             }
 
             if (modelo is PessoaLgpd || ModeloNovo is PessoaLgpd)
             {
                 if (this is DadoPessoalLgpd)
-                    crudForm.Form = new Foto();
+                    crudForm.Form = new FrmImg();
 
-                if (this is Foto)
-                    crudForm.Form = new ReunioesMinisteriosPessoa();
+                if (this is FrmImg)
+                    crudForm.Form = new Formulario.Pessoas.FormCrudPessoas.FrmMinisterio();
 
-                if (this is ReunioesMinisteriosPessoa)
+                if (this is Formulario.Pessoas.FormCrudPessoas.FrmMinisterio)
                 {
                     if (modelo is CriancaLgpd)
                         crudForm.Form = new CadastroCrianca();
@@ -183,28 +176,28 @@ namespace WindowsFormsApp1
                 if (this is CadastroCrianca || this is CadastroVisitante ||
                     this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                     this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
-                    crudForm.Form = new FrmPessoa();
+                    crudForm.Form = new Formulario.Pessoas.FrmPessoa();
             }
 
-            if (this is DadoCelula)
+            if (this is FrmDia_semana)
                 crudForm.Form = new FrmEnderecoCelula();
 
             if (this is FrmEnderecoCelula)
-                crudForm.Form = new MinisteriosCelula();
+                crudForm.Form = new FrmMinisterios();
 
-            if (this is MinisteriosCelula)
+            if (this is FrmMinisterios)
                 crudForm.Form = new FrmCelula();
 
-            if (this is DadoMinisterio)
-                crudForm.Form = new PessoasCelulasMinisterio();
+            if (this is FrmNome)
+                crudForm.Form = new Formulario.FormularioMinisterio.FrmPessoa();
 
-            if (this is PessoasCelulasMinisterio)
-                crudForm.Form = new FrmMinisterio();
+            if (this is Formulario.FormularioMinisterio.FrmPessoa)
+                crudForm.Form = new Formulario.FormularioMinisterio.FrmMinisterio();
 
             if (this is DadoReuniao)
-                crudForm.Form = new PessoasReuniao();
+                crudForm.Form = new FrmPessoas();
 
-            if (this is PessoasReuniao)
+            if (this is FrmPessoas)
                 crudForm.Form = new FrmReuniao();
 
             LoadForm();

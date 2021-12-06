@@ -12,9 +12,9 @@ using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Celulas
 {
-    public partial class MinisteriosCelula : WFCrud
+    public partial class FrmMinisterios : WFCrud
     {
-        public MinisteriosCelula() : base()
+        public FrmMinisterios() : base()
         {
             InitializeComponent();
         }

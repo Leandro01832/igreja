@@ -25,7 +25,7 @@ namespace Site.Controllers.Api
         public IQueryable<MinisterioApi> Getministerio()
         {
             var ministerios = db.ministerio
-                .Include(m => m.Pessoas)
+                .Include(m => m.Pessoa)
                 .Include(m => m.Celulas);
 
             List<MinisterioApi> lista = new List<MinisterioApi>();
@@ -35,7 +35,7 @@ namespace Site.Controllers.Api
                 MinisterioApi modelo = new MinisterioApi
                 {
                     Celulas = item.Celulas,
-                    Pessoas = item.Pessoas,
+                    Pessoas = item.Pessoa,
                     Id = item.Id,
                     Maximo_pessoa = item.Maximo_pessoa,
                     Ministro_ = item.Ministro_,

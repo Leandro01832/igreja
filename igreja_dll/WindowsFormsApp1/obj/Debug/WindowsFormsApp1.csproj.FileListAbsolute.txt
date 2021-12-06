@@ -563,9 +563,7 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProgressBar.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProgressBar2.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.ListCelula.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.DadoCelula.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.FrmCelula.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.MinisteriosCelula.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail.FrmEmailIgreja.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail.FrmEmailPessoa.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail.FrmAtendente.resources
@@ -582,11 +580,9 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioListView.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmMensagem.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioFonte.FrmFontes.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.DadoMinisterio.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.FrmMinisterio.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.ListMinisterio.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.FrmMudancaEstadoMinisterio.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.PessoasCelulasMinisterio.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.formulario.formularioMovimentacaoSaida.FrmAluguel.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.formulario.formularioMovimentacaoSaida.FrmCompra.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.formulario.formularioMovimentacaoSaida.FrmRetiro.resources
@@ -605,11 +601,7 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.CadastroMembroTransferencia.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.CadastroVisitante.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.Chamada.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.Contato.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.DadoPessoalLgpd.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.Foto.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.ReunioesMinisteriosPessoa.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.DadoPessoal.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmEndereco.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmPessoa.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.ListPessoa.resources
@@ -618,7 +610,6 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.DadoReuniao.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.FrmReuniao.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.ListReuniao.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.PessoasReuniao.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmAutenticacao.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmDescrimina.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmGrafico.resources
@@ -638,3 +629,12 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debu
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MDIEmail.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmEnviaEmail.resources
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmFiltro.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.FrmDia_semana.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.FrmMinisterios.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.FrmNome.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.FormularioMinisterio.FrmPessoa.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmTelefone.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.FrmImg.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas.FrmMinisterio.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Pessoas.FrmCpf.resources
+C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Reuniao.FrmPessoas.resources

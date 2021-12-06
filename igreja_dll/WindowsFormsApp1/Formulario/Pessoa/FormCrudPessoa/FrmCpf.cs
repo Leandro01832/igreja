@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {
-    public partial class DadoPessoal : WFCrud
+    public partial class FrmCpf : WFCrud
     {
-        public DadoPessoal() : base()
+        public FrmCpf() : base()
         {
             InitializeComponent();
         }
@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             this.Text = "Daddos pessoais.";
 
             var p = (PessoaDado)modelo;
-            try { text_nome.Text = p.NomePessoa; }
+            try { text_nome.Text = p.Nome; }
             catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             try { text_rg.Text = p.Rg; }
             catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
@@ -45,12 +45,12 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.NomePessoa = text_nome.Text;
+                p.Nome = text_nome.Text;
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.NomePessoa = text_nome.Text;
+                p.Nome = text_nome.Text;
             }
 
         }

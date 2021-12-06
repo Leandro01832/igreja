@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Formulario
     {
         public FormularioListView() { }
 
-        CrudForm crudForm;
+        MdiForm crudForm;
         private List<modelocrud> list;
 
         private Button Mudanca { get; }
@@ -30,7 +30,7 @@ namespace WindowsFormsApp1.Formulario
 
         public FormularioListView(Type tipo)
         {
-            crudForm = new CrudForm();
+            crudForm = new MdiForm();
             this.Tipo = tipo;
 
             ListView = new ListBox();
@@ -165,19 +165,13 @@ namespace WindowsFormsApp1.Formulario
                 botaoAtualizar.Visible = false;
                 botaoDeletar.Visible = false;
             }
-
-
-            if (FormPadrao.executar)
+            
                 ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo
-                || m.GetType().IsSubclassOf(Tipo)).OrderBy(m => m.Id).ToList();
-            else
-                MessageBox.Show("Aguarde o processamento!!!");
+                || m.GetType().IsSubclassOf(Tipo)).OrderBy(m => m.Id).ToList();            
 
             if (ListView.Items.Count > 0)
                 ListView.SetSelected(0, false);
-
             atualizarStatusBotao();
-
         }
 
         private void atualizarStatusBotao()
@@ -194,9 +188,10 @@ namespace WindowsFormsApp1.Formulario
             crudForm.LoadFormCrud(modelo, detalhes, deletar, atualizar, Atual);
         }
 
-        public void Clicar(Form form, string function)
+        public void Clicar(Form form, string function, modelocrud Modelo = null,
+            bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
-            crudForm.Clicar(form, function);
+            crudForm.Clicar(form, function, Modelo, detalhes, deletar, atualizar);
         }
     }
 }

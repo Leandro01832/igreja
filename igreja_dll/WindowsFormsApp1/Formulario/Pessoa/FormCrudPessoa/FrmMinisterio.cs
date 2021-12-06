@@ -10,10 +10,10 @@ using static System.Windows.Forms.ListBox;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 {
-    public partial class ReunioesMinisteriosPessoa : WFCrud
+    public partial class FrmMinisterio : WFCrud
     {
         
-        public ReunioesMinisteriosPessoa() : base()
+        public FrmMinisterio() : base()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
             try
             {
-                foreach (var item in pessoa.Ministerios)
+                foreach (var item in pessoa.Ministerio)
                 {
                     var indice = lstBoxMinisterio.Items.IndexOf(item);
                     lstBoxMinisterio.SetSelected(indice, true);
@@ -88,9 +88,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                 {
                     SelectedObjectCollection valor = lstBoxMinisterio.SelectedItems;
                     var objetos = valor.Cast<Ministerio>().ToList();
-                    pessoa.Ministerios = new List<PessoaMinisterio>();
+                    pessoa.Ministerio = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                    pessoa.Ministerios.Add(new PessoaMinisterio { MinisterioId = item.Id });
+                    pessoa.Ministerio.Add(new PessoaMinisterio { MinisterioId = item.Id });
                 }
 
             }
