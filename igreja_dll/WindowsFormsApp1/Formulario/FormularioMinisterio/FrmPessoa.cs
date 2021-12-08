@@ -80,7 +80,8 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     var objetos = valor.Cast<Pessoa>().ToList();
                     ministerio.Pessoa = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                        ministerio.Pessoa.Add(new PessoaMinisterio { PessoaId = item.Id, Pessoa = item });
+                        ministerio.Pessoa.Add(new PessoaMinisterio { PessoaId = item.Id, Pessoa = item,
+                            MinisterioId = ministerio.Id, Ministerio = ministerio });
                 }
 
             }
@@ -101,7 +102,8 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                     var objetos = valor.Cast<Celula>().ToList();
                     ministerio.Celulas = new List<MinisterioCelula>();
                     foreach (var item in objetos)
-                        ministerio.Celulas.Add(new MinisterioCelula { CelulaId = item.Id, Celula = item });
+                        ministerio.Celulas.Add(new MinisterioCelula { CelulaId = item.Id, Celula = item,
+                            MinisterioId = ministerio.Id, Ministerio = ministerio });
                 }
 
             }

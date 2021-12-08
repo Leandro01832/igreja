@@ -80,9 +80,7 @@ namespace WindowsFormsApp1
                     while (int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99)
                     { executar = false; podeVerificar = false; }
                 });
-
-               // await Task.Run(() => modelocrud.buscarListas());
-
+                
 
                 if (!frm.IsDisposed)
                     frm.Dispose();

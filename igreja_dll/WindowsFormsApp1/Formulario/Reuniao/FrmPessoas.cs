@@ -53,7 +53,8 @@ namespace WindowsFormsApp1.Formulario.Reuniao
                     var objetos = valor.Cast<Pessoa>().ToList();
                     reuniao.Pessoas = new List<ReuniaoPessoa>();
                     foreach (var item in objetos)
-                        reuniao.Pessoas.Add(new ReuniaoPessoa { PessoaId = item.Id });
+                        reuniao.Pessoas.Add(new ReuniaoPessoa { PessoaId = item.Id, Pessoa = item, ReuniaoId = reuniao.Id,
+                            Reuniao = reuniao });
                 }
 
             }

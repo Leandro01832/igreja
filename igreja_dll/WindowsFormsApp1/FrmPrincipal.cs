@@ -1,5 +1,8 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
+using business.classes.Celulas;
+using business.classes.Ministerio;
+using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
@@ -102,7 +105,7 @@ namespace WindowsFormsApp1
 
                 for (var i = Ministerio.UltimoRegistro; i <= UltimoRegistroMinsterio; i++)
                 {
-                    modelocrud model = modelocrud.buscarConcreto(typeof(Celula), i);
+                    modelocrud model = modelocrud.buscarConcreto(typeof(Ministerio), i);
 
                     if (model.recuperar(i))
                     notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + model.Id, ToolTipIcon.Info);
@@ -118,7 +121,7 @@ namespace WindowsFormsApp1
                 for (var i = Pessoa.UltimoRegistro; i <= UltimoRegistroPessoa; i++)
                 {
 
-                    modelocrud model = modelocrud.buscarConcreto(typeof(Celula), i);
+                    modelocrud model = modelocrud.buscarConcreto(typeof(Pessoa), i);
                     if (model != null && model.recuperar(i))
                     notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + model.Id, ToolTipIcon.Info);
 
@@ -198,16 +201,8 @@ namespace WindowsFormsApp1
         {
             await Task.Run(() => modelocrud.calcularPorcentagem());
 
-            var date2 = DateTime.Now.AddMilliseconds(Principal.Interval);
-            lbl_horario.Text = date2.ToString("HH:mm:ss");
-
-            var timer = new TimeSpan(date.Hour, date.Minute + 1, date.Second);
-
-            if (date2.Minute > timer.Minutes && notifica)
-            {
-                timer = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute + 1, DateTime.Now.Second);
                 Notificar();
-            }
+            
         }
 
         private void sistemaFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)

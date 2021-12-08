@@ -90,7 +90,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                     var objetos = valor.Cast<Ministerio>().ToList();
                     pessoa.Ministerio = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                    pessoa.Ministerio.Add(new PessoaMinisterio { MinisterioId = item.Id });
+                    pessoa.Ministerio.Add(new PessoaMinisterio { MinisterioId = item.Id, Ministerio = item,
+                        PessoaId = pessoa.Id, Pessoa = pessoa });
                 }
 
             }
@@ -124,7 +125,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
                     var objetos = valor.Cast<business.classes.Reuniao>().ToList();
                     pessoa.Reuniao = new List<ReuniaoPessoa>();
                     foreach (var item in objetos)
-                        pessoa.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item.Id });
+                    pessoa.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item.Id, Reuniao = item,
+                        PessoaId = pessoa.Id, Pessoa = pessoa });
                 }
 
             }

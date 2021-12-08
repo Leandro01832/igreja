@@ -149,9 +149,6 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\Entity
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\bin\Debug\Newtonsoft.Json.xml
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csprojAssemblyReference.cache
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.Migrations.Inicio.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.Migrations.MudancaMinisterio.resources
-C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csproj.GenerateResource.cache
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csproj.CoreCompileInputs.cache
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.csproj.CopyComplete
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\business\obj\Debug\business.dll

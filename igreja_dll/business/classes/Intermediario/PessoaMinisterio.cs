@@ -41,12 +41,12 @@ namespace business.classes.Intermediario
             HasRequired(c => c.Pessoa)
                 .WithMany(c => c.Ministerio)
                 .HasForeignKey(c => c.PessoaId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             HasRequired(c => c.Ministerio)
                 .WithMany(c => c.Pessoa)
                 .HasForeignKey(c => c.MinisterioId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -71,82 +71,7 @@ namespace business.implementacao
                         Model.dr.Read();
                         foreach (var property in propertiesDeclaring)
                         {
-                            if (property.PropertyType.Name == "List`1")
-                            {
-                                Type itemType = property.PropertyType.GetGenericArguments()[0];
-                            }
-                            else
-                            if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, long.Parse(Convert.ToString(Model.dr[property.Name])));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(double) || property.PropertyType == typeof(double?))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, double.Parse(Convert.ToString(Model.dr[property.Name])));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, decimal.Parse(Convert.ToString(Model.dr[property.Name])));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, DateTime.Parse(Convert.ToString(Model.dr[property.Name])));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, int.Parse(Convert.ToString(Model.dr[property.Name])));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(string))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, Convert.ToString(Model.dr[property.Name]));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(bool))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, Convert.ToBoolean(Model.dr[property.Name]));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
-                            else
-                            if (property.PropertyType == typeof(TimeSpan) || property.PropertyType == typeof(TimeSpan?))
-                            {
-                                try
-                                {
-                                    property.SetValue(Model, TimeSpan.Parse(Convert.ToString(Model.dr[property.Name])));
-                                }
-                                catch { property.SetValue(Model, null); }
-                            }
+                            Setar(property);
                         }
                         Model.dr.Close();
 
@@ -255,7 +180,6 @@ namespace business.implementacao
                                     object objeto = Activator.CreateInstance(item);
                                     model = (modelocrud)objeto;
                                     model.Id = (int)valor;
-                                    model.Select_padrao = $" Select * from {model.GetType().Name} where Id={(int)valor} ";
                                     condicao = model.recuperar((int)valor);
                                     if (condicao)
                                         break;
@@ -265,7 +189,6 @@ namespace business.implementacao
                                     object objeto = Activator.CreateInstance(prop.PropertyType);
                                     model = (modelocrud)objeto;
                                     model.Id = (int)valor;
-                                    model.Select_padrao = $" Select * from {model.GetType().Name} where Id={(int)valor} ";
                                     model.recuperar((int)valor);
                                 }
                             }
@@ -280,7 +203,7 @@ namespace business.implementacao
                 return false;
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
-        }
+        }        
 
         public void GetProperties(Type tipo)
         {
@@ -416,12 +339,14 @@ namespace business.implementacao
                         p.PropertyType != typeof(string) && p.PropertyType != typeof(DateTime)
                         && p.PropertyType.Name != "List`1" && p.PropertyType.IsClass).ToList().Count != 0)
                     {
-                        delete += VerficaPropertyClassDeleteProperties(Model.GetType());
+                        delete += VerficaPropertyClassDeleteProperties(Model.GetType());                        
                     }
                 return delete;
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
+
+        
 
         private string VerficaPropertyClassDeleteProperties(Type type)
         {
@@ -462,7 +387,6 @@ namespace business.implementacao
                     if (modelo.GetType().GetProperties()
                     .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
                     {
-                        modelo.Select_padrao = $"select * from {modelo.GetType().Name} as C where C.Id='{Model.Id}'";
                         modelo.recuperar(Model.Id);
                     }
 
@@ -686,7 +610,7 @@ namespace business.implementacao
             {
                 string values = "";
                 if (property.Name == "Id")
-                    values = "" + id.ToString() + ", ";                
+                    values = "" + id.ToString() + ", ";
                 else
                 if (property.PropertyType == typeof(double?) || property.PropertyType == typeof(double))
                 {
@@ -789,7 +713,7 @@ namespace business.implementacao
             }
             catch (Exception ex) { throw new Exception(ex.InnerException.Message); }
         }
-        
+
 
         private void buscarLista(object list, Type itemType, SqlDataReader dr2)
         {
@@ -803,12 +727,90 @@ namespace business.implementacao
                 else
                     mod = (modelocrud)Activator.CreateInstance(itemType);
                 mod.Id = num;
-                mod.Select_padrao = $"select * from {mod.GetType().Name} as C where C.Id='{mod.Id}'";
-                mod.Delete_padrao = $" delete from {mod.GetType().Name} where Id='{mod.Id}' ";
                 if (mod.recuperar(mod.Id))
                     collection.Add(mod);
             }
 
+        }
+
+        private void Setar(PropertyInfo property)
+        {
+            if (property.PropertyType.Name == "List`1")
+            {
+                Type itemType = property.PropertyType.GetGenericArguments()[0];
+            }
+            else
+              if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
+            {
+                try
+                {
+                    property.SetValue(Model, long.Parse(Convert.ToString(Model.dr[property.Name])));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+              if (property.PropertyType == typeof(double) || property.PropertyType == typeof(double?))
+            {
+                try
+                {
+                    property.SetValue(Model, double.Parse(Convert.ToString(Model.dr[property.Name])));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+               if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
+            {
+                try
+                {
+                    property.SetValue(Model, decimal.Parse(Convert.ToString(Model.dr[property.Name])));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+              if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
+            {
+                try
+                {
+                    property.SetValue(Model, DateTime.Parse(Convert.ToString(Model.dr[property.Name])));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+              if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
+            {
+                try
+                {
+                    property.SetValue(Model, int.Parse(Convert.ToString(Model.dr[property.Name])));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+              if (property.PropertyType == typeof(string))
+            {
+                try
+                {
+                    property.SetValue(Model, Convert.ToString(Model.dr[property.Name]));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+              if (property.PropertyType == typeof(bool))
+            {
+                try
+                {
+                    property.SetValue(Model, Convert.ToBoolean(Model.dr[property.Name]));
+                }
+                catch { property.SetValue(Model, null); }
+            }
+            else
+             if (property.PropertyType == typeof(TimeSpan) || property.PropertyType == typeof(TimeSpan?))
+            {
+                try
+                {
+                    property.SetValue(Model, TimeSpan.Parse(Convert.ToString(Model.dr[property.Name])));
+                }
+                catch { property.SetValue(Model, null); }
+            }
         }
 
 

@@ -153,8 +153,7 @@ namespace WindowsFormsApp1
 
                 }
         }
-
-
+        
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
         {
 
@@ -208,8 +207,6 @@ namespace WindowsFormsApp1
             Form.LoadCrudForm();
             Form.Show();
         }
-
-
-
+               
     }
 }

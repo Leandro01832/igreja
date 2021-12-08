@@ -69,7 +69,15 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            model.excluir(id);
+            try
+            {
+                model.excluir(id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             modelocrud.Modelos.Remove(modelocrud.Modelos.First(i => i.Id == id));
             MessageBox.Show("Informação removida do banco de dados com sucesso.");
         }

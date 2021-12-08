@@ -80,7 +80,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
                     var objetos = valor.Cast<Ministerio>().ToList();
                     celula.Ministerios = new List<MinisterioCelula>();
                     foreach (var item in objetos)
-                    lista.Add(new MinisterioCelula { MinisterioId = item.Id, Ministerio = item });
+                    lista.Add(new MinisterioCelula { MinisterioId = item.Id, Ministerio = item, CelulaId = celula.Id, Celula = celula });
                     
                     PropertyInfo prop = modelo.GetType().GetProperty("Ministerios");
                     prop.SetValue(modelo, lista);
