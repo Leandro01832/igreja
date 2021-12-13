@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         {
             if(FormPadrao.PrimeiroAdminEmail == txtEmail.Text && FormPadrao.PrimeiroAdminSenha == txtSenha.Text)
             {
-                modelocrud.ativar = true;
+                modelocrud.ativarAutenticacao = true;
                 this.Dispose();
             }
             else

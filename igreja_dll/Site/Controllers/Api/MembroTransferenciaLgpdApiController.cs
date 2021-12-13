@@ -106,7 +106,7 @@ namespace Site.Controllers.Api
             }
 
             
-            var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
+            var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa), BDcomum.conecta2);
             var Cod = ultimoRegistro + 1;
 
             var usermaneger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(banco));

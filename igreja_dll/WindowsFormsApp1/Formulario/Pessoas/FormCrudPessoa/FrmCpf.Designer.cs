@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.Formulario.Pessoas
+﻿namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
 {
     partial class FrmCpf
     {

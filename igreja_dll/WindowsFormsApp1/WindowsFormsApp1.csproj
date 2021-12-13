@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmConfiguracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfiguracao.Designer.cs">
+      <DependentUpon>FrmConfiguracao.cs</DependentUpon>
+    </Compile>
     <Compile Include="MdiForm.cs" />
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -335,112 +341,112 @@
     <Compile Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.Designer.cs">
       <DependentUpon>FrmOferta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\DetalhesMudancaEstado.cs">
+    <Compile Include="Formulario\Pessoas\DetalhesMudancaEstado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\DetalhesMudancaEstado.Designer.cs">
+    <Compile Include="Formulario\Pessoas\DetalhesMudancaEstado.Designer.cs">
       <DependentUpon>DetalhesMudancaEstado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroCrianca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroCrianca.Designer.cs">
       <DependentUpon>CadastroCrianca.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroAclamacao.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroAclamacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroAclamacao.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroAclamacao.Designer.cs">
       <DependentUpon>CadastroMembroAclamacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroBatismo.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroBatismo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroBatismo.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroBatismo.Designer.cs">
       <DependentUpon>CadastroMembroBatismo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroReconciliacao.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroReconciliacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroReconciliacao.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroReconciliacao.Designer.cs">
       <DependentUpon>CadastroMembroReconciliacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroTransferencia.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroTransferencia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroTransferencia.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroTransferencia.Designer.cs">
       <DependentUpon>CadastroMembroTransferencia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroVisitante.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroVisitante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\CadastroVisitante.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\CadastroVisitante.Designer.cs">
       <DependentUpon>CadastroVisitante.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Chamada.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\Chamada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\Chamada.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\Chamada.Designer.cs">
       <DependentUpon>Chamada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmTelefone.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmTelefone.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmTelefone.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmTelefone.Designer.cs">
       <DependentUpon>FrmTelefone.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\DadoPessoalLgpd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\DadoPessoalLgpd.Designer.cs">
       <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmImg.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmImg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmImg.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmImg.Designer.cs">
       <DependentUpon>FrmImg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmMinisterio.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmMinisterio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmMinisterio.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmMinisterio.Designer.cs">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmCpf.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmCpf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmCpf.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmCpf.Designer.cs">
       <DependentUpon>FrmCpf.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmEndereco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmEndereco.Designer.cs">
       <DependentUpon>FrmEndereco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmPessoa.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormCrudPessoa\FrmPessoa.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmPessoa.Designer.cs">
       <DependentUpon>FrmPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\ListPessoa.cs">
+    <Compile Include="Formulario\Pessoas\FormListView\ListPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FormListView\ListPessoa.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FormListView\ListPessoa.Designer.cs">
       <DependentUpon>ListPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FrmMudancaEstado.cs">
+    <Compile Include="Formulario\Pessoas\FrmMudancaEstado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\FrmMudancaEstado.Designer.cs">
+    <Compile Include="Formulario\Pessoas\FrmMudancaEstado.Designer.cs">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoa\ListaMudancaEstado.cs">
+    <Compile Include="Formulario\Pessoas\ListaMudancaEstado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoa\ListaMudancaEstado.Designer.cs">
+    <Compile Include="Formulario\Pessoas\ListaMudancaEstado.Designer.cs">
       <DependentUpon>ListaMudancaEstado.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Reuniao\DadoReuniao.cs">
@@ -517,6 +523,7 @@
       <DependentUpon>MDIFinanceiro.cs</DependentUpon>
     </Compile>
     <Compile Include="MDISingleton.cs" />
+    <Compile Include="MyUserSettings.cs" />
     <Compile Include="Pesquisar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -574,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\FormularioEmail\FrmPermissao.resx">
       <DependentUpon>FrmPermissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfiguracao.resx">
+      <DependentUpon>FrmConfiguracao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFiltro.resx">
       <DependentUpon>FrmFiltro.cs</DependentUpon>
@@ -659,58 +669,58 @@
     <EmbeddedResource Include="Formulario\formularioMovimentacaoEntrada\FrmOferta.resx">
       <DependentUpon>FrmOferta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\DetalhesMudancaEstado.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\DetalhesMudancaEstado.resx">
       <DependentUpon>DetalhesMudancaEstado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroCrianca.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\CadastroCrianca.resx">
       <DependentUpon>CadastroCrianca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroAclamacao.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroAclamacao.resx">
       <DependentUpon>CadastroMembroAclamacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroBatismo.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroBatismo.resx">
       <DependentUpon>CadastroMembroBatismo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroReconciliacao.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroReconciliacao.resx">
       <DependentUpon>CadastroMembroReconciliacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroMembroTransferencia.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\CadastroMembroTransferencia.resx">
       <DependentUpon>CadastroMembroTransferencia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\CadastroVisitante.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\CadastroVisitante.resx">
       <DependentUpon>CadastroVisitante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\Chamada.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\Chamada.resx">
       <DependentUpon>Chamada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmTelefone.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmTelefone.resx">
       <DependentUpon>FrmTelefone.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\DadoPessoalLgpd.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\DadoPessoalLgpd.resx">
       <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmImg.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmImg.resx">
       <DependentUpon>FrmImg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmMinisterio.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmMinisterio.resx">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmCpf.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmCpf.resx">
       <DependentUpon>FrmCpf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmEndereco.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmEndereco.resx">
       <DependentUpon>FrmEndereco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormCrudPessoa\FrmPessoa.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmPessoa.resx">
       <DependentUpon>FrmPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FormListView\ListPessoa.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FormListView\ListPessoa.resx">
       <DependentUpon>ListPessoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\FrmMudancaEstado.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\FrmMudancaEstado.resx">
       <DependentUpon>FrmMudancaEstado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoa\ListaMudancaEstado.resx">
+    <EmbeddedResource Include="Formulario\Pessoas\ListaMudancaEstado.resx">
       <DependentUpon>ListaMudancaEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Reuniao\DadoReuniao.resx">

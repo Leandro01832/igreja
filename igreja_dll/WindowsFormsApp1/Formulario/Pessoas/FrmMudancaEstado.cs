@@ -4,6 +4,7 @@ using database;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa;
 
 namespace WindowsFormsApp1.Formulario.Pessoas
 {

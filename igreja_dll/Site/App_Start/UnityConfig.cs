@@ -2,6 +2,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Site.Controllers;
 using Site.Models;
+using Site.Models.Interface;
 using Site.Models.Repository;
 using System;
 using System.Web.Mvc;
@@ -58,6 +59,7 @@ namespace Site
             container.RegisterType<ICelulaRepository, CelulaRepository>();
             container.RegisterType<IMinisterioRepository, MinisterioRepository>();
             container.RegisterType<IReuniaoRepository, ReuniaoRepository>();
+            container.RegisterType<IEmailSender, EmailSender>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

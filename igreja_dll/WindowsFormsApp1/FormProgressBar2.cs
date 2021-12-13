@@ -19,7 +19,6 @@ namespace WindowsFormsApp1
 
         private void FormProgressBar2_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
             progressBar1.Style = ProgressBarStyle.Marquee;
         }
     }

@@ -1,8 +1,5 @@
 ﻿using business.classes;
 using business.classes.Abstrato;
-using business.classes.Celulas;
-using business.classes.Ministerio;
-using business.classes.Pessoas;
 using database;
 using database.banco;
 using System;
@@ -23,6 +20,7 @@ namespace WindowsFormsApp1
         }
 
         BDcomum bd = new BDcomum();
+        public static MyUserSettings mus;
 
         #region IdentityRegistryNews
         bool notifica;
@@ -66,73 +64,15 @@ namespace WindowsFormsApp1
         private async void Notificar()
         {
             notifica = false;
-
-            await Task.Run(() => verificaRegistros());
-
+            await Task.Run(() => verificarListagem());
             notifica = true;
         }
+        
 
-        private void verificaRegistros()
+        private async void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            var UltimoRegistroCelula = modelocrud.GetUltimoRegistro(typeof(Celula));
-            if (UltimoRegistroCelula > Celula.UltimoRegistro)
-            {
-                for (var i = Celula.UltimoRegistro; i <= UltimoRegistroCelula; i++)
-                {
-                    modelocrud model = modelocrud.buscarConcreto(typeof(Celula), i);
-                    if (model.recuperar(i))
-                    notifyIcon.ShowBalloonTip(5000, "Info", "Novo registro de uma celula. ID: " + model.Id, ToolTipIcon.Info);
-                }
-
-                Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula));
-            }
-
-            var UltimoRegistroReuniao = modelocrud.GetUltimoRegistro(typeof(Reuniao));
-            if (UltimoRegistroReuniao > Reuniao.UltimoRegistro)
-            {
-                for (var i = Reuniao.UltimoRegistro; i <= UltimoRegistroReuniao; i++)
-                {
-                    var reu = new Reuniao();
-                    if (reu.recuperar(i))
-                    notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma reunião. ID: " + reu.Id, ToolTipIcon.Info);
-                }
-                Reuniao.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Reuniao));
-            }
-
-            var UltimoRegistroMinsterio = modelocrud.GetUltimoRegistro(typeof(Ministerio));
-            if (UltimoRegistroMinsterio > Ministerio.UltimoRegistro)
-            {
-
-                for (var i = Ministerio.UltimoRegistro; i <= UltimoRegistroMinsterio; i++)
-                {
-                    modelocrud model = modelocrud.buscarConcreto(typeof(Ministerio), i);
-
-                    if (model.recuperar(i))
-                    notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de um ministério. ID: " + model.Id, ToolTipIcon.Info);
-
-                }
-
-                Ministerio.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio));
-            }
-
-            var UltimoRegistroPessoa = modelocrud.GetUltimoRegistro(typeof(Pessoa));
-            if (UltimoRegistroPessoa > Pessoa.UltimoRegistro)
-            {
-                for (var i = Pessoa.UltimoRegistro; i <= UltimoRegistroPessoa; i++)
-                {
-
-                    modelocrud model = modelocrud.buscarConcreto(typeof(Pessoa), i);
-                    if (model != null && model.recuperar(i))
-                    notifyIcon.ShowBalloonTip(2000, "Info", "Novo registro de uma pessoa. ID: " + model.Id, ToolTipIcon.Info);
-
-                }
-
-                Pessoa.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
-            }
-        }
-
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
+            mus = new MyUserSettings(this);
+            this.DataBindings.Add(new Binding("BackColor", mus, "BackgroundColorPrincipal"));
 
             Form form = new MDI();
             Type tipo = form.GetType();
@@ -150,29 +90,50 @@ namespace WindowsFormsApp1
             tipo = form.GetType();
             ExecutarFuncoes(sender, e, form, tipo);
 
-            MessageBox.Show("Quantidade de funções no sistema: " + MdiForm.quantidade);
+            MessageBox.Show("Seja bem vindo ao sistema para igreja." +
+            " Neste sistema você poderá fazer gerenciamento de pessoas," + 
+            " gerenciamento financeiro, gerenciamento de e-mails e gerenciamento de esboço." + 
+            " Quantidade de funções no sistema: " + MdiForm.quantidade);
             MdiForm.quantidade = 0;
             MdiForm.contagem = false;
 
-            FormPadrao.UltimoRegistro();
             FormPadrao.LoadForm(this);
+            FormPadrao.UltimoRegistro();
 
-            try { Pessoa.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa)); }
+            try { Pessoa.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa), BDcomum.conecta1); }
             catch { Pessoa.UltimoRegistro = 0; }
-            try { Reuniao.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Reuniao)); }
+            try { Reuniao.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Reuniao), BDcomum.conecta1); }
             catch { Reuniao.UltimoRegistro = 0; }
-            try { Ministerio.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio)); }
+            try { Ministerio.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio), BDcomum.conecta1); }
             catch { Ministerio.UltimoRegistro = 0; }
-            try { Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula)); }
+            try { Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula), BDcomum.conecta1); }
             catch { Celula.UltimoRegistro = 0; }
 
+            var types = modelocrud.listTypesSon(typeof(modelocrud));
+            var lista = types.Where(el => el.GetProperties()
+            .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 0).ToList();
+            foreach (var item in lista)
+                if (modelocrud.TotalRegistro(modelocrud.ReturnBase(item), BDcomum.conecta2) >
+                modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
+                    await Task.Run(() => recuperarSalvarRegistros(modelocrud.GetUltimoRegistro(item, BDcomum.conecta1), item));
+            else
+                if (modelocrud.TotalRegistro(modelocrud.ReturnBase(item), BDcomum.conecta2) <
+                modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
+                    await Task.Run(() => recuperarSalvarRegistrosRemoto());
+            else
+                if (modelocrud.TotalRegistro(modelocrud.ReturnBase(item), BDcomum.conecta2) !=
+                modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
+                    await Task.Run(() => excluiRegistrosRemotos());
 
+           FormPadrao.executar = true;
+
+            notifyIcon.ShowBalloonTip(5000, "Info", "Dados processados com sucesso!!! Você já pode abrir as listas. ",
+            ToolTipIcon.Info);
         }
 
         private static void ExecutarFuncoes(object sender, EventArgs e, Form form, Type tipo)
         {
             var lista = modelocrud.listTypesAll(typeof(modelocrud));
-
             var methods = tipo.GetMethods().Where(m => m.ReturnType == typeof(void)).ToList();
             foreach (MethodInfo method in methods)
                 foreach (var item in lista)
@@ -214,6 +175,139 @@ namespace WindowsFormsApp1
         private void esboçoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MDIEsboco form = new MDIEsboco();
+            form.Show();
+        }
+
+
+        private async Task verificarListagem()
+        {
+            try
+            {
+                FormProgressBar2 form = null;
+                var types = modelocrud.listTypesSon(typeof(modelocrud));
+                var lista = types.Where(e => e.GetProperties()
+                .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 0).ToList();
+                foreach (var item in lista)
+                    if (modelocrud.TotalRegistro(modelocrud.ReturnBase(item), BDcomum.conecta2) >
+                    modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
+                    await Task.Run(() => recuperarSalvarRegistros(modelocrud.GetUltimoRegistro(item, BDcomum.conecta1), item));                    
+                else
+                    if (modelocrud.TotalRegistro(modelocrud.ReturnBase(item), BDcomum.conecta2) <
+                    modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
+                    await Task.Run(() => recuperarSalvarRegistrosRemoto());    
+                else
+                    if (modelocrud.TotalRegistro(modelocrud.ReturnBase(item), BDcomum.conecta2) !=
+                    modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
+                    await Task.Run(() => excluiRegistrosRemotos());   
+                
+                    await Task.Run(() => alteraRegistrosRemotos());                    
+
+                if (!form.IsDisposed)
+                    form.Dispose();
+            }
+            catch { }
+        }
+
+        private void alteraRegistrosRemotos()
+        {
+            bool teste = false;
+            foreach (var item in modelocrud.ModelosAlterados)
+            {
+                var modelo = item;
+                var modelo2 = item;
+                modelo.stringConexao = BDcomum.conecta1;
+                modelo2.stringConexao = BDcomum.conecta2;
+
+                if (modelo.recuperar(modelo.Id) && modelo2.recuperar(modelo2.Id))
+                {
+                    modelo2.alterar(modelo2.Id);
+                    notifyIcon.ShowBalloonTip(5000, "Info",
+                    "Uma informação no banco de dados remoto foi alterada. ", ToolTipIcon.Info);
+                }
+                if (item == modelocrud.ModelosAlterados.Last())
+                    teste = true;
+            }
+            if(teste)
+            modelocrud.ModelosAlterados.Clear();
+        }
+
+        private void excluiRegistrosRemotos()
+        {
+            bool teste = false;
+            foreach (var item in modelocrud.ModelosExcluidos)
+            {
+                var modelo = item;
+                var modelo2 = item;
+                modelo.stringConexao = BDcomum.conecta1;
+                modelo2.stringConexao = BDcomum.conecta2;
+
+                if (!modelo.recuperar(modelo.Id) && modelo2.recuperar(modelo2.Id))
+                {
+                    modelo2.excluir(modelo2.Id);
+                    notifyIcon.ShowBalloonTip(5000, "Info",
+                    "Uma informação no banco de dados remoto foi excluida. ", ToolTipIcon.Info);
+                }
+
+                if (item == modelocrud.ModelosExcluidos.Last())
+                    teste = true;
+            }  
+            if(teste)
+                modelocrud.ModelosExcluidos.Clear();
+        }
+
+        private void recuperarSalvarRegistros(int v1, Type item)
+        {
+            var v2 = v1 + 10;
+            while (v1 <= v2)
+            {
+                if (modelocrud.Modelos.Where(m => m.GetType() == item).ToList().FirstOrDefault(i => i.Id == v1) == null)
+                {
+                    modelocrud m = null;
+                    modelocrud m2 = null;
+                    var listaTypes = modelocrud.listTypesSon(modelocrud.ReturnBase(item));
+                    foreach (var i in listaTypes)
+                    {
+                        m = (modelocrud)Activator.CreateInstance(i);
+                        m2 = (modelocrud)Activator.CreateInstance(i);
+                        m.stringConexao = BDcomum.conecta2;
+                        m2.stringConexao = BDcomum.conecta1;
+                        if (m.recuperar(v1) && !m2.recuperar(v1))
+                        {
+                            m.Id = 0;
+                            m.stringConexao = BDcomum.conecta1;
+                            m.salvar();
+                            modelocrud.Modelos.Add(m);
+                            notifyIcon.ShowBalloonTip(5000, "Info",
+                            $"Uma informação do banco de dados remoto foi inserida neste programa. - {m.GetType().Name} - {m.Id}",
+                            ToolTipIcon.Info);
+                        }
+                    }
+                }
+                v1++;
+            }
+        }
+
+        private void recuperarSalvarRegistrosRemoto()
+        {
+            bool teste = false;
+            foreach (var item in modelocrud.ModelosInseridos)
+            {
+                item.stringConexao = BDcomum.conecta2;
+                    item.salvar();
+                    notifyIcon.ShowBalloonTip(5000, "Info",
+                    "Uma informação no banco de dados remoto foi excluida. ", ToolTipIcon.Info);
+
+                if (item == modelocrud.ModelosInseridos.Last())
+                    teste = true;            
+            }
+            if (teste)
+                modelocrud.ModelosInseridos.Clear();
+        }
+
+        private void configuraçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConfiguracao form = new FrmConfiguracao();
+            form.Text = "Configuração";
             form.Show();
         }
     }

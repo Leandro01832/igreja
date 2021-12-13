@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         public MDIEmail()
         {
             crudForm = new MdiForm();
-            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -27,7 +26,7 @@ namespace WindowsFormsApp1
             if (modelocrud.pessoa is Atendente)
                 atendente = (Atendente)modelocrud.pessoa;
 
-            if(modelocrud.pessoa is Admin || modelocrud.ativar || atendente != null &&
+            if(modelocrud.pessoa is Admin || modelocrud.ativarAutenticacao || atendente != null &&
                 atendente.Permissao.FirstOrDefault(p => p.Permissao.Nome == "CadastrarAtualizarBody") != null)
             {
                 Process.Start("https://www.advocacia.somee.com/Home/Email");
@@ -120,6 +119,14 @@ namespace WindowsFormsApp1
 
         private void MDIEmail_Load(object sender, EventArgs e)
         {
+            foreach (Control control in this.Controls)
+            {
+                if (control is MdiClient)
+                {
+                    control.BackColor = FrmPrincipal.mus.BackgroundColorEmail;
+                    break;
+                }
+            }
         }
 
         private  void   EmailImprimir_Click(object sender, EventArgs e)

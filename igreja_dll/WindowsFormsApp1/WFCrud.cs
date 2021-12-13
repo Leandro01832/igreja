@@ -91,7 +91,6 @@ namespace WindowsFormsApp1
         public WFCrud()
         {
             crudForm = new MdiForm();
-            crudForm.Mdi = this;
             this.FormClosing += WFCrud_FormClosing;
 
             InfoForm = new Label();
@@ -288,7 +287,11 @@ namespace WindowsFormsApp1
                 model.Id = modelo.Id;
                 model.Select_padrao = $"select * from {model.GetType().Name} as C where C.Id='{modelo.Id}'";
                 model.Delete_padrao = $" delete from {model.GetType().Name} where Id='{modelo.Id}' ";
-                if (model.recuperar(modelo.Id)) pes = model;
+                if (model.recuperar(modelo.Id))
+                {
+                    pes = model;
+                    pes.stringConexao = BDcomum.conecta1;
+                }
                 modelocrud.Modelos.Remove(modelocrud.Modelos.Where(m => m.GetType() == modelo.GetType())
                 .ToList().First(i => i.Id == modelo.Id));
                 modelocrud.Modelos.Add(pes);
@@ -297,35 +300,35 @@ namespace WindowsFormsApp1
             this.Dispose();
         }
 
-        private void    ReuniaoFrmLocal_reuniaoSelecionar_Click(object sender, EventArgs e)
+        public void    ReuniaoFrmLocal_reuniaoSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "ReuniaoFrmLocal_reuniaoSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    ReuniaoFrmPessoasSelecionar_Click(object sender, EventArgs e)
+        public void    ReuniaoFrmPessoasSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "ReuniaoFrmPessoasSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    DadoCelula_Click(object sender, EventArgs e)
+        public void    DadoCelula_Click(object sender, EventArgs e)
         { Clicar(this, "CelulaFrmDia_semanaSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    CelulaFrmEnderecoCelulaSelecionar_Click(object sender, EventArgs e)
+        public void    CelulaFrmEnderecoCelulaSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "CelulaFrmEnderecoCelulaSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void     CelulaFrmDia_semanaSelecionar_Click(object sender, EventArgs e)
+        public void     CelulaFrmDia_semanaSelecionar_Click(object sender, EventArgs e)
         { Clicar(this,  "CelulaFrmDia_semanaSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    CelulaFrmMinisteriosSelecionar_Click(object sender, EventArgs e)
+        public void    CelulaFrmMinisteriosSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "CelulaFrmMinisteriosSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    DadoMinisterio_Click(object sender, EventArgs e)
+        public void    DadoMinisterio_Click(object sender, EventArgs e)
         { Clicar(this, "MinisterioFrmNomeSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    MinisterioFrmPessoaSelecionar_Click(object sender, EventArgs e)
+        public void    MinisterioFrmPessoaSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "MinisterioFrmPessoaSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    MinisterioFrmNomeSelecionar_Click(object sender, EventArgs e)
+        public void    MinisterioFrmNomeSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "MinisterioFrmNomeSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    PessoaFrmMinisterioSelecionar_Click(object sender, EventArgs e)
+        public void    PessoaFrmMinisterioSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "PessoaFrmMinisterioSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    PessoaFrmTelefoneSelecionar_Click(object sender, EventArgs e)
+        public void    PessoaFrmTelefoneSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "PessoaFrmTelefoneSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    PessoaFrmEnderecoSelecionar_Click(object sender, EventArgs e)
+        public void    PessoaFrmEnderecoSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "PessoaFrmEnderecoSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    PessoaFrmCpfSelecionar_Click(object sender, EventArgs e)
+        public void    PessoaFrmCpfSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "PessoaFrmCpfSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    PessoaFrmEmailSelecionar_Click(object sender, EventArgs e)
+        public void    PessoaFrmEmailSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "PessoaFrmEmailSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
-        private void    PessoaFrmImgSelecionar_Click(object sender, EventArgs e)
+        public void    PessoaFrmImgSelecionar_Click(object sender, EventArgs e)
         { Clicar(this, "PessoaFrmImgSelecionar_Click", modelo, CondicaoDetalhes, CondicaoDeletar, CondicaoAtualizar); }
 
         public void LoadCrudForm()
@@ -336,6 +339,19 @@ namespace WindowsFormsApp1
             {
                 modelocrud.anularDados(modelo);
                 modelo.anular = false;
+                modelo.stringConexao = BDcomum.conecta1;
+            }
+
+            if(modelo is PessoaDado)
+            {
+                DadoPessoal.Visible = true;
+                DadoPessoalLgpd.Visible = false;
+            }
+            else
+            if (modelo is PessoaLgpd)
+            {
+                DadoPessoal.Visible = false;
+                DadoPessoalLgpd.Visible = true;
             }
 
             if (CondicaoAtualizar || CondicaoDeletar || CondicaoDetalhes)
@@ -344,46 +360,27 @@ namespace WindowsFormsApp1
                 Proximo.Visible = false;
                 FinalizaCadastro.Visible = false;
 
-                if (modelo is PessoaDado)
-                {
-                    var pessoa = (PessoaDado)modelo;
-                    DadoPessoal.Visible = true;
-                    DadoPessoalLgpd.Visible = false;
-                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
-                    " - " + pessoa.Nome;
-                }
-                else
-                if (modelo is PessoaLgpd)
-                {
-                    var pessoa = (PessoaLgpd)modelo;
-                    DadoPessoal.Visible = false;
-                    DadoPessoalLgpd.Visible = true;
-                    InfoForm.Text = "Identificação: " + pessoa.Codigo.ToString() +
-                        " - " + pessoa.Email;
-                }
-                else
-                if (modelo is Celula)
-                {
-                    var celula = (Celula)modelo;
-                    
-                    InfoForm.Text = "Identificação: " + celula.Id.ToString() +
-                    " - " + celula.Nome;
-                }
-                else if (modelo is Ministerio)
-                {
-                    var m = (Ministerio)modelo;
-                    InfoForm.Text = "Identificação: " + m.Id.ToString() +
-                    " - " + m.Nome;
-                }
-                else if (modelo is Reuniao)
-                {
-                    var p = (Reuniao)modelo;
-                    InfoForm.Text = "Identificação: " + p.Id.ToString() + " - ";
-                }
+                var propNome = modelo.GetType().GetProperty("Nome");
+                var propEmail = modelo.GetType().GetProperty("Email");
+                var propCodigo = modelo.GetType().GetProperty("Codigo");
+                var propId = modelo.GetType().GetProperty("Id");
 
+                if (propNome != null && propCodigo != null)
+                    InfoForm.Text = "Identificação: " + propCodigo.GetValue(modelo).ToString() +
+                    " - " + propNome.GetValue(modelo).ToString();
+                else
+                if (propCodigo != null && propEmail != null)
+                    InfoForm.Text = "Identificação: " + propCodigo.GetValue(modelo).ToString() +
+                            " - " + propEmail.GetValue(modelo).ToString();
+                else
+                if (propNome != null)
+                    InfoForm.Text = "Identificação: " + propId.GetValue(modelo).ToString() +
+                    " - " + propNome.GetValue(modelo).ToString();
+                else
+                    InfoForm.Text = "Identificação: " + propId.GetValue(modelo).ToString();
             }
 
-            if (modelo is Pessoa && this is Formulario.Pessoas.FrmPessoa)
+            if (modelo is Pessoa && this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa)
             {
                 DadoPessoal.Visible = true;
                 DadoClasse.Visible = true;
@@ -425,7 +422,7 @@ namespace WindowsFormsApp1
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is Formulario.FormularioMinisterio.FrmMinisterio ||
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
-                this is Formulario.Pessoas.FrmPessoa ||
+                this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa ||
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is FrmReuniao || modelo.GetType().IsSubclassOf(typeof(Movimentacao)) &&
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes ||
@@ -459,7 +456,7 @@ namespace WindowsFormsApp1
                     }
 
                     if (item is Button && !(this is Formulario.FormularioMinisterio.FrmMinisterio) &&
-                        !(this is Formulario.Pessoas.FrmPessoa) && !(this is FrmCelula) &&
+                        !(this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa) && !(this is FrmCelula) &&
                         !(this is FrmReuniao))
                     {
                         var t = (Button)item;
@@ -481,25 +478,29 @@ namespace WindowsFormsApp1
             if(modelo is Pessoa)
             {
                 var p = (Pessoa)modelo;
-                var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa));
+                var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Pessoa), BDcomum.conecta1);
                 p.Codigo = ultimoRegistro + 1;
             }
 
             if (modelo is Ministerio)
             {
                 var p = (Ministerio)modelo;
-                var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio));
-                p.CodigoMinisterio = ultimoRegistro + 1;
+                var ultimoRegistro = modelocrud.GetUltimoRegistro(typeof(Ministerio), BDcomum.conecta1);
+                p.Codigo = ultimoRegistro + 1;
             }
 
-            try { modelo.salvar(); }
+            try
+            {
+                modelo.salvar();
+                modelocrud.Modelos.Add(modelo);   
+                modelocrud.ModelosInseridos.Add(modelo);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(modelo.exibirMensagemErro(ex, 1));
                 FinalizaCadastro.Enabled = true;
                 return;
             }
-            modelocrud.Modelos.Add(modelo);   
 
             if (modelo is Pessoa && !BDcomum.BancoEnbarcado)
             {

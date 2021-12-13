@@ -152,6 +152,15 @@ namespace WindowsFormsApp1
         private void MDIFormulario_Load(object sender, EventArgs e)
         {
             FormPadrao.LoadForm(this, "- Funcionários e Clientes");
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is MdiClient)
+                {
+                    control.BackColor = FrmPrincipal.mus.BackgroundColorFinanceiro;
+                    break;
+                }
+            }
         }
 
         private  void toolStripMenuItem6_Click(object sender, EventArgs e)

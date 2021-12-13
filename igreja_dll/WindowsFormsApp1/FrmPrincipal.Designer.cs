@@ -41,6 +41,7 @@
             this.lbl_horario = new System.Windows.Forms.Label();
             this.Principal = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,8 @@
             this.fileMenu,
             this.sistemaFinanceiroToolStripMenuItem,
             this.esboçoToolStripMenuItem,
-            this.sistemaDeEmailToolStripMenuItem});
+            this.sistemaDeEmailToolStripMenuItem,
+            this.configuraçãoToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -149,6 +151,13 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             // 
+            // configuraçãoToolStripMenuItem
+            // 
+            this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
+            this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(141, 32);
+            this.configuraçãoToolStripMenuItem.Text = "Configuração";
+            this.configuraçãoToolStripMenuItem.Click += new System.EventHandler(this.configuraçãoToolStripMenuItem_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -186,5 +195,6 @@
         private System.Windows.Forms.ToolStripMenuItem sistemaFinanceiroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem esboçoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sistemaDeEmailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuraçãoToolStripMenuItem;
     }
 }

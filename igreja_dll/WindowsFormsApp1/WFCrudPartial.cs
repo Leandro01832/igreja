@@ -10,6 +10,7 @@ using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioFonte;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
 using WindowsFormsApp1.Formulario.Pessoas;
+using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
 
@@ -47,6 +48,7 @@ namespace WindowsFormsApp1
             try
             {
                 modelo.alterar(modelo.Id);
+                modelocrud.ModelosAlterados.Add(modelo);
             }
             catch (Exception ex)
             {
@@ -72,6 +74,7 @@ namespace WindowsFormsApp1
             try
             {
                 model.excluir(id);
+                modelocrud.ModelosExcluidos.Add(model);
             }
             catch (Exception ex)
             {
@@ -148,7 +151,7 @@ namespace WindowsFormsApp1
                 if (this is CadastroCrianca || this is CadastroVisitante ||
                     this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                     this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
-                    crudForm.Form = new Formulario.Pessoas.FrmPessoa();
+                    crudForm.Form = new Formulario.Pessoas.FormCrudPessoa.FrmPessoa();
 
             }
 
@@ -184,7 +187,7 @@ namespace WindowsFormsApp1
                 if (this is CadastroCrianca || this is CadastroVisitante ||
                     this is CadastroMembroAclamacao || this is CadastroMembroReconciliacao ||
                     this is CadastroMembroBatismo || this is CadastroMembroTransferencia)
-                    crudForm.Form = new Formulario.Pessoas.FrmPessoa();
+                    crudForm.Form = new Formulario.Pessoas.FormCrudPessoa.FrmPessoa();
             }
 
             if (this is FrmDia_semana)

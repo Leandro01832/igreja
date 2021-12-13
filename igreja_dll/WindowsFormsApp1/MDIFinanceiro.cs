@@ -15,7 +15,6 @@ namespace WindowsFormsApp1
         public MDIFinanceiro()
         {
             crudForm = new MdiForm();
-            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -116,6 +115,15 @@ namespace WindowsFormsApp1
         private void MDI_Load(object sender, EventArgs e)
         {
             FormPadrao.LoadForm(this);
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is MdiClient)
+                {
+                    control.BackColor = FrmPrincipal.mus.BackgroundColorFinanceiro;
+                    break;
+                }
+            }
         }
 
         public void AdminCadastrar_Click(object sender, EventArgs e)

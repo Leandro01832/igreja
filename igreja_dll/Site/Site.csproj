@@ -253,6 +253,9 @@
     <Compile Include="Models\Api\PhotoRequest.cs" />
     <Compile Include="Models\Api\ReuniaoApi.cs" />
     <Compile Include="Models\Api\ReuniaoPessoaApi.cs" />
+    <Compile Include="Models\Interface\EmailSender.cs" />
+    <Compile Include="Models\Interface\EmailSettings.cs" />
+    <Compile Include="Models\Interface\IEmailSender.cs" />
     <Compile Include="Models\Roteamento.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

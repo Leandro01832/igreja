@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WindowsFormsApp1.Formulario.Pessoas
+namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
 {
     public partial class Chamada : WFCrud
     {

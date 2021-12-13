@@ -34,7 +34,12 @@ namespace business.classes.Pessoas
                 throw new Exception("Data_nascimento");
                 return data_nascimento;
             }
-            set {data_nascimento = value; }
+            set
+            {
+                data_nascimento = value;
+                if (data_nascimento.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
+                    throw new Exception("Data_nascimento");
+            }
         }
 
         private string rg = "rg";

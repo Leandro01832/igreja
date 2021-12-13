@@ -15,6 +15,7 @@ namespace database.banco
         //  public static string conecta1 = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={path}\Database.mdf;Integrated Security=True";
         public static string conecta1 = $@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Igreja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static string conecta2 = $@"Data Source=database-igreja.mssql.somee.com;packet size=4096;user id=lls01833_SQLLogin_1;pwd=tsobwjtsix;data source=database-igreja.mssql.somee.com;persist security info=False;initial catalog=database-igreja";
+        
 
         public static bool podeAbrir = true;
         public static bool BancoEnbarcado = true;
@@ -39,7 +40,7 @@ namespace database.banco
             }
         }
 
-        public SqlConnection obterconexao()
+        public SqlConnection obterconexao(string stringConexao)
         {
             conecta1 = conecta1.Replace("Tests", "WindowsFormsApp1");
 
@@ -48,13 +49,9 @@ namespace database.banco
             {
                 try
                 {
-                    var stringConexao = "";
-                    if (BancoEnbarcado) stringConexao = conecta1;
-                    else stringConexao = conecta2;
                     conn = new SqlConnection(stringConexao);
                     conn.Open();
                     modelocrud.Erro_Conexao = false;
-                    modelocrud.QuantErro = 0;
                 }
                 catch (Exception ex)
                 {
@@ -71,9 +68,6 @@ namespace database.banco
                 if (TestarConexao())
                 {
                     podeAbrir = true;
-                    var stringConexao = "";
-                    if (BancoEnbarcado) stringConexao = conecta1;
-                    else stringConexao = conecta2;
                     conn = new SqlConnection(stringConexao);
                     try { conn.Open(); }
                     catch (Exception ex)
@@ -101,22 +95,22 @@ namespace database.banco
 
         public void SalvarModelo(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Insert_padrao);                       
+            ExecutarComandoSqlServer(modelo.Insert_padrao, modelo.stringConexao);                       
         }
 
         public void Editar(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Update_padrao);
+            ExecutarComandoSqlServer(modelo.Update_padrao, modelo.stringConexao);
         }
 
         public void Excluir(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Delete_padrao);
+            ExecutarComandoSqlServer(modelo.Delete_padrao, modelo.stringConexao);
         }
 
-        private void ExecutarComandoSqlServer(string sql)
+        private void ExecutarComandoSqlServer(string sql, string stringConexao)
         {
-            var conecta = obterconexao();
+            var conecta = obterconexao(stringConexao);
             SqlCommand comando = new SqlCommand(sql, conecta);
 
             try

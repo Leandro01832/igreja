@@ -17,7 +17,6 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
             Application.Run(MDISingleton.InstanciaMDI());
-          //  Application.Run(new Pesquisar(typeof(Membro_Transferencia)));
         }
     }
 }

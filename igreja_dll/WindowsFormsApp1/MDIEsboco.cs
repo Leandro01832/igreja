@@ -17,7 +17,6 @@ namespace WFEsboco
         public MDIEsboco()
         {
             crudForm = new MdiForm();
-            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -162,6 +161,15 @@ namespace WFEsboco
         private void MDIEsboco_Load(object sender, EventArgs e)
         {
             FormPadrao.LoadForm(this);
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is MdiClient)
+                {
+                    control.BackColor = FrmPrincipal.mus.BackgroundColorEsboco;
+                    break;
+                }
+            }
         }
 
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)

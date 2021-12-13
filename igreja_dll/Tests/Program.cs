@@ -54,11 +54,11 @@ namespace Tests
             // try save with list
 
             Ministerio ministerio1 = new Lider_Celula();
-            ministerio1.CodigoMinisterio = 1;
+            ministerio1.Codigo = 1;
             Ministerio ministerio2 = new Lider_Celula_Treinamento();
-            ministerio2.CodigoMinisterio = 2;
+            ministerio2.Codigo = 2;
             Ministerio ministerio3 = new Lider_Celula_Treinamento();
-            ministerio3.CodigoMinisterio = 6;
+            ministerio3.Codigo = 6;
             ministerio1.salvar();
             ministerio2.salvar();
             ministerio3.salvar();
@@ -177,7 +177,7 @@ namespace Tests
                         if (modelo is Ministerio)
                         {
                             var p = (Ministerio)modelo;
-                            p.CodigoMinisterio = num;
+                            p.Codigo = num;
                             p.Nome = arr[randNum.Next(0, 49)];
                         }
 

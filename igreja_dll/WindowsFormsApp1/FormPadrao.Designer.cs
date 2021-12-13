@@ -37,7 +37,6 @@
             // 
             this.timerPadrao.Enabled = true;
             this.timerPadrao.Interval = 30000;
-            this.timerPadrao.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // notifyIcon1
             // 

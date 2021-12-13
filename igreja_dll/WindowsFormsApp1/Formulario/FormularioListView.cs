@@ -99,7 +99,7 @@ namespace WindowsFormsApp1.Formulario
             this.list = list;
         }
 
-        private async void BotaoAtualizarLista_Click(object sender, EventArgs e)
+        private void BotaoAtualizarLista_Click(object sender, EventArgs e)
         {
 
             ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo || m.GetType().IsSubclassOf(Tipo)).ToList();
@@ -110,9 +110,7 @@ namespace WindowsFormsApp1.Formulario
 
             if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0 && Tipo.IsAbstract)
                 ListView.DataSource = modelocrud.Modelos.OfType<Ministerio>().ToList();
-
-            if (!Tipo.IsAbstract && ListView.SelectedIndex >= 0)
-                ListView.DataSource = await FormPadrao.AtualizarComModelo(Tipo);
+            
         }
 
         private void MudancaEstado_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model business.EmailPessoa
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -29,3 +30,98 @@
 
     </div>
 </div>
+
+<hr /><hr />
+
+<script type="text/javascript">
+
+    var Editar = function () {
+        tinymce.init({
+            selector: "#Body",
+            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help'],
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | '
+                + 'bullist numlist outdent indent | link image | print preview media fullpage | '
+                + 'forecolor backcolor emoticons | help',
+            menu: { favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons' } },
+            menubar: 'favs file edit view insert format tools table help', content_css: '/css/site.css',
+            setup: function (editor) { editor.on('change', function () { editor.save(); }); }
+        });
+    };
+</script>
+
+<h4>Envie seu e-mail e tire suas dúvidas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="PessoaEmail">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="AtendenteId" type="hidden" />
+            <input asp-for="Data" type="hidden" />
+            <input asp-for="ConteudoTexto" type="hidden" />
+            <input asp-for="MensagemId" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="Assunto" class="control-label"></label>
+                <input asp-for="Assunto" class="form-control" />
+                <span asp-validation-for="Assunto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Body" class="control-label"></label>
+                <script type="text/javascript">Editar();</script>
+                <textarea asp-for="Body" class="form-control">@Model.Body</textarea>
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+
+            @{
+                if (User.Identity.Name == null)
+                {
+                    <div class="form-group">
+                        <h3>Faça autenticação para enviar o e-mail</h3>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                }
+            }
+
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        var Editar = function () {
+            tinymce.init({
+                selector: "#Body",
+                plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                    'table emoticons template paste help'],
+                toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | '
+                    + 'bullist numlist outdent indent | link image | print preview media fullpage | '
+                    + 'forecolor backcolor emoticons | help',
+                menu: { favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons' } },
+                menubar: 'favs file edit view insert format tools table help', content_css: '/css/site.css',
+                setup: function (editor) { editor.on('change', function () { editor.save(); }); }
+            });
+        };
+
+
+
+        function GetContent() {
+            return tinyMCE.get('Html').GetContent();
+        }
+
+        function SetContent(htmlContent) {
+            tinyMCE.get('Html').SetContent(htmlContent);
+        }
+    </script>
+}

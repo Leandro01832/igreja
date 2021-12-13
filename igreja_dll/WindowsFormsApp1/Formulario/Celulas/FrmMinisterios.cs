@@ -25,8 +25,8 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
             lstBoxMinisterio.DataSource = modelocrud.Modelos.OfType<Ministerio>().OrderBy(m => m.Id).ToList();
             if (modelocrud.Modelos.OfType<Ministerio>().ToList().Count > 0) lstBoxMinisterio.SetSelected(0, false);
-            lstBoxPessoa.DataSource = modelocrud.Modelos.OfType<Pessoa>().OrderBy(m => m.Id).ToList();
-            if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0) lstBoxPessoa.SetSelected(0, false);
+            lstBoxPessoa.DataSource = modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().OrderBy(m => m.Id).ToList();
+            if (modelocrud.Modelos.OfType<business.classes.Abstrato.Pessoa>().ToList().Count > 0) lstBoxPessoa.SetSelected(0, false);
 
             this.Proximo.Location = new Point(600, 150);
             this.Atualizar.Location = new Point(600, 250);
@@ -103,8 +103,8 @@ namespace WindowsFormsApp1.Formulario.Celulas
                 if (condicao)
                 {
                     SelectedObjectCollection valor = lstBoxPessoa.SelectedItems;
-                    var objetos = valor.Cast<Pessoa>().ToList();
-                    celula.Pessoas = new List<Pessoa>();
+                    var objetos = valor.Cast<business.classes.Abstrato.Pessoa>().ToList();
+                    celula.Pessoas = new List<business.classes.Abstrato.Pessoa>();
                     foreach (var item in objetos)
                         celula.Pessoas.Add(item);
                 }

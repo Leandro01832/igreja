@@ -21,11 +21,11 @@ namespace WindowsFormsApp1
     {
         private int childFormNumber = 1;
         private MdiForm crudForm;
+        
 
         public MDI()
         {
             crudForm = new MdiForm();
-            crudForm.Mdi = this;
             InitializeComponent();
         }
 
@@ -92,6 +92,16 @@ namespace WindowsFormsApp1
 
         private void MDI_Load(object sender, EventArgs e)
         {
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is MdiClient)
+                {
+                    control.BackColor = FrmPrincipal.mus.BackgroundColorGereciamentoPessoa;
+                    break;
+                }
+            }
+            
             FormPadrao.LoadForm(this, "Gerenciamento de pessoas");
             toolStrip.Visible = false;
             visitanteToolStripMenuItem1.BackColor = Color.Aqua;

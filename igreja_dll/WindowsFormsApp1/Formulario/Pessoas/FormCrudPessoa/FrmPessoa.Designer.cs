@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Formulario.Pessoas
+﻿namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
 {
-    partial class Chamada
+    partial class FrmPessoa
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Chamada
+            // FinalizarCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Chamada";
-            this.Text = "Chamada";
-            this.Load += new System.EventHandler(this.Chamada_Load);
+            this.ClientSize = new System.Drawing.Size(904, 450);
+            this.Name = "FinalizarCadastro";
+            this.Text = "FinalizarCadastro";
+            this.Load += new System.EventHandler(this.FinalizarCadastro_Load);
             this.ResumeLayout(false);
 
         }

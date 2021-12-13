@@ -22,7 +22,6 @@ namespace database
         {
             this.bd = new BDcomum();
             Erro_Conexao = false;
-            QuantErro = 0;
             this.T = GetType();
             property = new PropertiesCrud(this);
         }
@@ -31,6 +30,9 @@ namespace database
         [Key]
         public int Id { get; set; }
         public static List<modelocrud> Modelos = new List<modelocrud>();
+        public static List<modelocrud> ModelosExcluidos = new List<modelocrud>();
+        public static List<modelocrud> ModelosAlterados = new List<modelocrud>();
+        public static List<modelocrud> ModelosInseridos = new List<modelocrud>();
 
         static Calculo calculo = new Calculo();
         PropertiesCrud property;
@@ -42,18 +44,18 @@ namespace database
         public modelocrud ModelEntity;
         public Type T;
         public string ErroCadastro = "";
+        public string stringConexao = "";
         public static string classe = "";
-
+        public bool executando = false;
         public static bool Erro_Conexao;
         public static string textoPorcentagem = "0%";
-        public static int QuantErro;
         public static bool EntityCrud = false;
         public string Insert_padrao;
         public string Update_padrao;
         public string Delete_padrao;
         public string Select_padrao;
-        public static bool ativar;
         public static Pessoa pessoa;
+        public static bool ativarAutenticacao;
         public bool anular = true;
 
         public static Type ReturnBase(Type type)
@@ -64,7 +66,7 @@ namespace database
             return type;
         }
 
-        public static int TotalRegistro(Type tipo)
+        public static int TotalRegistro(Type tipo, string stringConexao)
         {
             var types = listTypesSon(typeof(modelocrud));
             var lista = types.Where(e => e.GetProperties()
@@ -77,7 +79,7 @@ namespace database
             if (tipo == null)
                 foreach (var item in lista)
                     if (BDcomum.podeAbrir)
-                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item);
+                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item, stringConexao);
 
             if (tipo != null)
             {
@@ -85,24 +87,21 @@ namespace database
                 {
                     var t = listTypesSon(tipo);
                     foreach (var item in t)
-                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item);
+                        _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, item, stringConexao);
 
                 }
                 else
-                    _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, tipo);
+                    _TotalRegistros += buscarCount(_TotalRegistros, conexao, cmd, tipo, stringConexao);
             }
 
             return _TotalRegistros;
         }
 
-        private static int buscarCount(int _TotalRegistros, SqlConnection con, SqlCommand cmd, Type item)
+        private static int buscarCount(int _TotalRegistros, SqlConnection con, SqlCommand cmd, Type item, string conexao)
         {
             try
             {
-                var stringConexao = "";
-                if (BDcomum.BancoEnbarcado) stringConexao = BDcomum.conecta1;
-                else stringConexao = BDcomum.conecta2;
-                using (con = new SqlConnection(stringConexao))
+                using (con = new SqlConnection(conexao))
                 {
                     cmd = new SqlCommand($"SELECT COUNT(*) FROM {item.Name}", con);
                     con.Open();
@@ -117,10 +116,10 @@ namespace database
             return _TotalRegistros;
         }
 
-        public static int GetUltimoRegistro(Type tipo)
+        public static int GetUltimoRegistro(Type tipo, string conexao)
         {
             var Id = 0;
-            SqlConnection conn = new SqlConnection(BDcomum.conecta1);
+            SqlConnection conn = new SqlConnection(conexao);
             SqlCommand cmd;
             if (BDcomum.podeAbrir)
             {
@@ -130,13 +129,16 @@ namespace database
                     cmd = new SqlCommand($"SELECT TOP(1) Id FROM {BaseModel.Name} order by Id desc", conn);
                     conn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-                    Id = int.Parse(dr["Id"].ToString());
-                    dr.Close();
+                    if (dr.HasRows)
+                    {
+                        dr.Read();
+                        Id = int.Parse(dr["Id"].ToString());
+                        dr.Close();
+                    }
                     conn.Dispose();
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     BDcomum.podeAbrir = false;
                 }
@@ -149,7 +151,7 @@ namespace database
             var props = modelocrud.GetType().GetProperties();
             foreach (var item in props)
                 if (item.PropertyType == typeof(DateTime))
-                    item.SetValue(modelocrud, new DateTime(0001, 01, 01));
+                    try { item.SetValue(modelocrud, DateTime.Now); } catch { }
                 else if (item.PropertyType == typeof(int) ||
                 item.PropertyType == typeof(double) ||
                 item.PropertyType == typeof(decimal))
@@ -157,13 +159,13 @@ namespace database
                 else if (item.PropertyType == typeof(TimeSpan))
                     item.SetValue(modelocrud, new TimeSpan(0, 0, 0));
                 else if (!item.PropertyType.IsSubclassOf(typeof(modelocrud)))
-                    try { item.SetValue(modelocrud, null); }
-                    catch { }
+                    try { item.SetValue(modelocrud, null); } catch { }
                 else if (item.PropertyType.IsSubclassOf(typeof(modelocrud)) && !item.PropertyType.IsAbstract)
 
                     foreach (var item2 in item.PropertyType.GetProperties())
                         if (item2.PropertyType == typeof(DateTime))
-                            item2.SetValue(item.GetValue(modelocrud, null), new DateTime(0001, 01, 01));
+                            try { item2.SetValue(item.GetValue(modelocrud, null), DateTime.Now); }
+                            catch { }
                         else if (item2.PropertyType == typeof(int) ||
                         item2.PropertyType == typeof(double) ||
                         item2.PropertyType == typeof(decimal))
@@ -276,12 +278,8 @@ namespace database
                 || ex.Message.Contains("não foi inicializada")
                 || ex.Message.Contains("conexão é fechada"))
             {
-
                 Erro_Conexao = true;
-                QuantErro++;
-
-                if (QuantErro == 1)
-                    MessageBox.Show("Verifique sua conexão" + this.GetType().Name);
+                MessageBox.Show("Verifique sua conexão" + this.GetType().Name);
             }
         }
 
@@ -324,7 +322,7 @@ namespace database
                     GetProperty(null);
                     bd.SalvarModelo(this);
                     Type model = ReturnBase(GetType());
-                    int num = GetUltimoRegistro(model);
+                    int num = GetUltimoRegistro(model, BDcomum.conecta1);
                     Id = num;
 
                     // save list
@@ -485,8 +483,8 @@ namespace database
                                 var list = tipo.GetProperties().Where(p =>
                                 p.Name.ToLower().Contains(ReturnBase(GetType()).Name.ToLower()) &&
                                 p.PropertyType == typeof(int?)).ToList();
-                                if(list.Count == 0)
-                                condicao = true;
+                                if (list.Count == 0)
+                                    condicao = true;
                                 else
                                 {
                                     foreach (var item2 in listaBanco)
@@ -500,7 +498,7 @@ namespace database
                             }
                     }
 
-                    if (condicao)                    
+                    if (condicao)
                         throw new Exception($"Remova todos os itens da lista primeiro.");
                 }
 
@@ -539,7 +537,7 @@ namespace database
 
                             if (prop.Count > 0)
                             {
-                                var conectar = bd.obterconexao();
+                                var conectar = bd.obterconexao(stringConexao);
                                 SqlCommand comando2 = new SqlCommand($"select Id from {item.Name} where {prop[0].Name}={Id}"
                                                 , conectar);
                                 SqlDataReader dr2 = comando2.ExecuteReader();
@@ -586,10 +584,14 @@ namespace database
             }
         }
 
-        public bool recuperar()
+        public bool recuperar(bool remoto)
         {
+            if (remoto)
+                stringConexao = BDcomum.conecta2;
+            else stringConexao = BDcomum.conecta1;
+
             Select_padrao = $"select M.Id from {this.GetType().Name} as M ";
-            var conexao = bd.obterconexao();
+            var conexao = bd.obterconexao(stringConexao);
 
             if (conexao != null)
             {
@@ -610,8 +612,14 @@ namespace database
                         modelocrud mod = null;
                         mod = (modelocrud)Activator.CreateInstance(GetType());
                         mod.Id = num;
+                        if (remoto)
+                            mod.stringConexao = BDcomum.conecta2;
+                        else mod.stringConexao = BDcomum.conecta1;
                         if (mod.recuperar(mod.Id))
-                            Modelos.Add(mod);
+                        {
+                            if (!remoto)
+                                Modelos.Add(mod);
+                        }
                     }
                     dr.Close();
 
@@ -666,7 +674,7 @@ namespace database
         #endregion
 
         #region MethodsProperties
-        //
+
         private bool SetProperty(Type tipo)
         {
             return property.SetProperties(tipo);

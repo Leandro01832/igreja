@@ -9,7 +9,7 @@ using WindowsFormsApp1.Formulario;
 using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioFonte;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Pessoas;
+using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
 
@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
     public class MdiForm : IFormCrud
     {
         public WFCrud Form { get; set; }
-        public Form Mdi { get; set; }
+        private WFCrud formCadastro;
         public static int quantidade = 0;
         public static bool contagem = true;
 
@@ -27,7 +27,6 @@ namespace WindowsFormsApp1
         public void Clicar(Form form, string function, modelocrud Modelo = null,
             bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
-            Type T = Mdi.GetType();
             var lista = modelocrud.listTypesAll(typeof(modelocrud));
 
 
@@ -42,9 +41,9 @@ namespace WindowsFormsApp1
                             ir.imprimir(item);
                             MessageBox.Show(function + " foi executada!!!");
                         }
-                        else                        
+                        else
                             MessageBox.Show("aguarde o processamento!!!");
-                        
+
                         break;
                     }
                 }
@@ -53,33 +52,41 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        var modelo = (modelocrud)Activator.CreateInstance(item);
-                        if (modelo is Celula) Form = new FrmDia_semana();
-                        else
-                        if (modelo is Ministerio) Form = new FrmNome();
-                        else
-                        if (modelo is Reuniao) Form = new DadoReuniao();
-                        else
-                        if (modelo is PessoaDado) Form = new FrmCpf();
-                        else
-                        if (modelo is PessoaLgpd) Form = new DadoPessoalLgpd();
-                        else
-                        if (modelo is Fonte) Form = new FrmDadoFonte();
-                        else
-                        if (item.BaseType == typeof(modelocrud))
+                        if (FormPadrao.executar)
                         {
-                            var list = modelocrud.listTypesSon(typeof(WFCrud));
+                            var modelo = (modelocrud)Activator.CreateInstance(item);
+                            if (modelo is Celula) formCadastro = new FrmDia_semana();
+                            else
+                            if (modelo is Ministerio) formCadastro = new FrmNome();
+                            else
+                            if (modelo is Reuniao) formCadastro = new DadoReuniao();
+                            else
+                            if (modelo is PessoaDado) formCadastro = new FrmCpf();
+                            else
+                            if (modelo is PessoaLgpd) formCadastro = new DadoPessoalLgpd();
+                            else
+                            if (modelo is Fonte) formCadastro = new FrmDadoFonte();
+                            else
+                            if (item.BaseType == typeof(modelocrud))
+                            {
+                                var list = modelocrud.listTypesSon(typeof(WFCrud));
 
-                            foreach (var it in list)
-                                if ("Frm" + item.Name == it.Name)
-                                {
-                                    Form = (WFCrud)Activator.CreateInstance(it);
-                                    break;
-                                }
+                                foreach (var it in list)
+                                    if ("Frm" + item.Name == it.Name)
+                                    {
+                                        formCadastro = (WFCrud)Activator.CreateInstance(it);
+                                        break;
+                                    }
+                            }
+
+                            LoadFormCrud(modelo, detalhes, deletar, atualizar, form);
+                            break;
                         }
-
-                        LoadFormCrud(modelo, detalhes, deletar, atualizar, Form);
-                        break;
+                        else
+                        {
+                            MessageBox.Show("Aguarde o processamento");
+                            break;
+                        }
                     }
                 }
                 else if (item.Name + "Pesquisar" + "_Click" == function)
@@ -94,9 +101,9 @@ namespace WindowsFormsApp1
                             query.Text = "Pesquisar " + item.Name;
                             query.Show();
                         }
-                        else                        
-                            MessageBox.Show("aguarde o processamento!!!");                        
-                            break;
+                        else
+                            MessageBox.Show("aguarde o processamento!!!");
+                        break;
                     }
                 }
                 else if (item.Name + "Listar" + "_Click" == function)
@@ -111,9 +118,9 @@ namespace WindowsFormsApp1
                             frm.Text = "Listar " + item.Name;
                             frm.Show();
                         }
-                        else                        
+                        else
                             MessageBox.Show("aguarde o processamento!!!");
-                        
+
                         break;
                     }
                 }
@@ -121,16 +128,23 @@ namespace WindowsFormsApp1
                 {
                     if (!contagem)
                     {
-                        Type BaseModel = modelocrud.ReturnBase(item);
-                        var props = item.GetProperties();
+                        Type BaseModel = modelocrud.ReturnBase(Modelo.GetType());
+                        var props = Modelo.GetType().GetProperties();
+                        var listaForm = modelocrud.listTypesAll(typeof(WFCrud));
                         bool teste = false;
                         foreach (var item2 in props)
                             if (BaseModel.Name + "Frm" + item2.Name + "Selecionar" + "_Click" == function)
                             {
                                 teste = true;
-                                var obj = Activator.CreateInstance(null, "Frm" + item2.Name);
-                                Form = (WFCrud)obj.Unwrap();
-                                LoadFormCrud(Modelo, detalhes, deletar, atualizar, Form);
+                                foreach (var item3 in listaForm)
+                                {
+                                    if ("Frm" + item2.Name == item3.Name)
+                                    {
+                                        Form = (WFCrud)Activator.CreateInstance(item3);
+                                        LoadFormCrud(Modelo, detalhes, deletar, atualizar, Form);
+                                        break;
+                                    }
+                                }
                                 break;
                             }
 
@@ -153,13 +167,15 @@ namespace WindowsFormsApp1
 
                 }
         }
-        
+
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)
         {
 
-
             if (!detalhes && !deletar && !atualizar && Atual.IsMdiContainer)
+            {
+                Form = formCadastro;
                 Form.MdiParent = Atual;
+            }
             else
             if (detalhes && Form == null ||
                 deletar && Form == null ||
@@ -207,6 +223,6 @@ namespace WindowsFormsApp1
             Form.LoadCrudForm();
             Form.Show();
         }
-               
+
     }
 }

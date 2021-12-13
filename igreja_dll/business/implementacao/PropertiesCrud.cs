@@ -15,7 +15,7 @@ namespace business.implementacao
     {
         public modelocrud Model { get; }
 
-        public static bool executando = false;
+        
 
         public PropertiesCrud(modelocrud model)
         {
@@ -42,10 +42,10 @@ namespace business.implementacao
                 var propertiesDeclaring = tipo.GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList();
 
                 if (Model.conexao == null)
-                    Model.conexao = Model.bd.obterconexao();
+                    Model.conexao = Model.bd.obterconexao(Model.stringConexao);
 
                 if (Model.conexao.State == ConnectionState.Closed)
-                    Model.conexao = Model.bd.obterconexao();
+                    Model.conexao = Model.bd.obterconexao(Model.stringConexao);
 
                 SqlCommand comando = new SqlCommand(Model.Select_padrao, Model.conexao);
                 try
@@ -77,9 +77,9 @@ namespace business.implementacao
 
                         foreach (var property in propertiesDeclaring)
                         {
-                            if (property.PropertyType.Name == "List`1" && !executando)
+                            if (property.PropertyType.Name == "List`1" && !Model.executando)
                             {
-                                executando = true;
+                                Model.executando = true;
                                 Type itemType = property.PropertyType.GetGenericArguments()[0];
                                 var lista = Activator.CreateInstance(property.PropertyType);
 
@@ -124,7 +124,7 @@ namespace business.implementacao
                                     property.SetValue(Model, lista);
                                 }
 
-                                executando = false;
+                                Model.executando = false;
                             }
                         }
                     }

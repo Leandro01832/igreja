@@ -14,6 +14,11 @@ using System.Threading.Tasks;
 using Ecommerce.Classes;
 using business.classes.Pessoas;
 using database;
+using business;
+using System;
+using System.Net.Mail;
+using System.Configuration;
+using Site.Models.Interface;
 
 namespace Site.Controllers
 {
@@ -25,19 +30,60 @@ namespace Site.Controllers
 
         public IMinisterioRepository MinisterioRepository { get; }
         public IReuniaoRepository ReuniaoRepository { get; }
+        public IEmailSender EmailSender { get; }
 
         public HomeController(ICelulaRepository celulaRepository, IMinisterioRepository ministerioRepository,
-            IReuniaoRepository reuniaoRepository)
+            IReuniaoRepository reuniaoRepository, IEmailSender emailSender)
         {
             modelocrud.EntityCrud = true;
             CelulaRepository = celulaRepository;
             MinisterioRepository = ministerioRepository;
             ReuniaoRepository = reuniaoRepository;
+            EmailSender = emailSender;
         }
         
         public ActionResult Index()
         {
-            return View();
+            var email = new EmailPessoa();
+            email.MensagemId = "";
+            email.Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
+            email.ConteudoTexto = "";
+
+
+            return View(email);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<ActionResult> PessoaEmail(EmailPessoa email)
+        {
+            var EmailTo = User.Identity.GetUserName();
+
+            var appSettings = ConfigurationManager.AppSettings;
+           var EmailFrom = appSettings["Email"];
+
+            MailMessage mail = new MailMessage(EmailFrom, EmailTo);
+
+            mail.Subject = email.Assunto;
+            mail.Body = email.Body + " - " + EmailTo;
+
+            try
+            {
+                await EmailSender.SendEmailAsync(
+                            null,
+                            mail.Subject,
+                            mail.Body);
+
+            }
+            catch (Exception)
+            {
+                return View("NaoEnviado");
+            }
+
+            ViewBag.message = "Seu email foi enviado com sucesso!!! Obrigado.";
+            var e_mail = new EmailPessoa();
+            return View("Index", e_mail);
         }
 
         public ActionResult Celulas()
