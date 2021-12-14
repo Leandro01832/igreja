@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if(FormPadrao.PrimeiroAdminEmail == txtEmail.Text && FormPadrao.PrimeiroAdminSenha == txtSenha.Text)
+            if(FrmPrincipal.PrimeiroAdminEmail == txtEmail.Text && FrmPrincipal.PrimeiroAdminSenha == txtSenha.Text)
             {
                 modelocrud.ativarAutenticacao = true;
                 this.Dispose();
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
 
         private void FrmAutenticacao_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
+            FrmPrincipal.LoadForm(this);
         }
     }
 }

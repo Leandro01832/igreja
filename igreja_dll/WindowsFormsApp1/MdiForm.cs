@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        if (FormPadrao.executar)
+                        if (FrmPrincipal.executar)
                         {
                             ir.imprimir(item);
                             MessageBox.Show(function + " foi executada!!!");
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        if (FormPadrao.executar)
+                        if (FrmPrincipal.executar)
                         {
                             var modelo = (modelocrud)Activator.CreateInstance(item);
                             if (modelo is Celula) formCadastro = new FrmDia_semana();
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
                     quantidade++;
                     if (!contagem)
                     {
-                        if (FormPadrao.executar)
+                        if (FrmPrincipal.executar)
                         {
                             Pesquisar query = new Pesquisar(item);
                             query.MdiParent = form;
@@ -111,7 +111,7 @@ namespace WindowsFormsApp1
                     quantidade += 4;
                     if (!contagem)
                     {
-                        if (FormPadrao.executar)
+                        if (FrmPrincipal.executar)
                         {
                             FormularioListView frm = new FormularioListView(item);
                             frm.MdiParent = form;

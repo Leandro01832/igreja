@@ -101,8 +101,8 @@ namespace WindowsFormsApp1
                     break;
                 }
             }
-            
-            FormPadrao.LoadForm(this, "Gerenciamento de pessoas");
+
+            FrmPrincipal.LoadForm(this, "Gerenciamento de pessoas");
             toolStrip.Visible = false;
             visitanteToolStripMenuItem1.BackColor = Color.Aqua;
             criançaToolStripMenuItem1.BackColor = Color.Bisque;

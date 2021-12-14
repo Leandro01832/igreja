@@ -584,14 +584,10 @@ namespace database
             }
         }
 
-        public bool recuperar(bool remoto)
-        {
-            if (remoto)
-                stringConexao = BDcomum.conecta2;
-            else stringConexao = BDcomum.conecta1;
-
+        public bool recuperar()
+        {            
             Select_padrao = $"select M.Id from {this.GetType().Name} as M ";
-            var conexao = bd.obterconexao(stringConexao);
+            var conexao = bd.obterconexao(BDcomum.conecta1);
 
             if (conexao != null)
             {
@@ -612,14 +608,10 @@ namespace database
                         modelocrud mod = null;
                         mod = (modelocrud)Activator.CreateInstance(GetType());
                         mod.Id = num;
-                        if (remoto)
-                            mod.stringConexao = BDcomum.conecta2;
-                        else mod.stringConexao = BDcomum.conecta1;
+                        mod.stringConexao = BDcomum.conecta1;
                         if (mod.recuperar(mod.Id))
-                        {
-                            if (!remoto)
-                                Modelos.Add(mod);
-                        }
+                        Modelos.Add(mod);
+                        
                     }
                     dr.Close();
 

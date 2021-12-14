@@ -333,7 +333,7 @@ namespace WindowsFormsApp1
 
         public void LoadCrudForm()
         {
-            FormPadrao.LoadForm(this);
+            FrmPrincipal.LoadForm(this);
 
             if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes && modelo.anular)
             {

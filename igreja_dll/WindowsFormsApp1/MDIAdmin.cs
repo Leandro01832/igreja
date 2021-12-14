@@ -151,7 +151,7 @@ namespace WindowsFormsApp1
                 
         private void MDIFormulario_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this, "- Funcionários e Clientes");
+            FrmPrincipal.LoadForm(this, "- Funcionários e Clientes");
 
             foreach (Control control in this.Controls)
             {

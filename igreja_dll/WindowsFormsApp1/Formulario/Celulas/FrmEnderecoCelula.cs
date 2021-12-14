@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
 
         private void EnderecoCelula_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
+            FrmPrincipal.LoadForm(this);
 
             var p = (Celula)modelo;
             try { textpais.Text = p.EnderecoCelula.Pais; }

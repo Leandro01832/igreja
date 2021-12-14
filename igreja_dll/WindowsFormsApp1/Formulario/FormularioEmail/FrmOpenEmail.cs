@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail
 
         private void FrmOpenEmail_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
+            FrmPrincipal.LoadForm(this);
 
             lstBoxEmail.DataSource = modelocrud.Modelos.OfType<EmailPessoa>().OrderByDescending(em => em.Data).ToList();
 

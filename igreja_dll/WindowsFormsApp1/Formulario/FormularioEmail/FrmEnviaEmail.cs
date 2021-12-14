@@ -23,9 +23,9 @@ namespace WindowsFormsApp1
 
         private  void FrmEnviaEmail_Load(object sender, EventArgs e)
         {
-          //  await modelocrud.Recuperar();
+            //  await modelocrud.Recuperar();
 
-            FormPadrao.LoadForm(this);
+            FrmPrincipal.LoadForm(this);
             lstEmail.DataSource = modelocrud.Modelos
             .OfType<EmailIgreja>().Where(em => !em.Enviado).ToList();
              email = (EmailIgreja) lstEmail.SelectedItem;
@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
                 email.alterar(email.Id);
                 var valor = email.Body.Html;
 
-                MailMessage mail = new MailMessage(FormPadrao.Email, txtEmail.Text);
+                MailMessage mail = new MailMessage(FrmPrincipal.Email, txtEmail.Text);
 
                 mail.Subject = txtAssunto.Text;
                 mail.Body = valor;
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
 
                 SmtpClient cliente = new SmtpClient("smtp.gmail.com", 587);
                 cliente.UseDefaultCredentials = false;
-                cliente.Credentials = new NetworkCredential(FormPadrao.Email, FormPadrao.SenhaEmail);
+                cliente.Credentials = new NetworkCredential(FrmPrincipal.Email, FrmPrincipal.SenhaEmail);
                 cliente.EnableSsl = true;
 
                 await cliente.SendMailAsync(mail);

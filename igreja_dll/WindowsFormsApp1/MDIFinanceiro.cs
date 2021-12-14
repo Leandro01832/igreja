@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
 
         private void MDI_Load(object sender, EventArgs e)
         {
-            FormPadrao.LoadForm(this);
+            FrmPrincipal.LoadForm(this);
 
             foreach (Control control in this.Controls)
             {
