@@ -300,7 +300,7 @@ namespace database
             }
         }
 
-        public string salvar()
+        public string salvar(string stringConexao = "")
         {
             if (!EntityCrud)
             {
@@ -317,7 +317,7 @@ namespace database
                     while (T != GetType())
                         GetProperty(T);
                     GetProperty(null);
-                    bd.SalvarModelo(this);
+                    bd.SalvarModelo(this, stringConexao);
                     Type model = ReturnBase(GetType());
                     int num = GetUltimoRegistro(model, BDcomum.conecta1);
                     Id = num;

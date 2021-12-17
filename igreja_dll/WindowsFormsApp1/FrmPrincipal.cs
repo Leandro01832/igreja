@@ -258,7 +258,7 @@ namespace WindowsFormsApp1
                             {
                                 m.Id = 0;
                                 m.stringConexao = BDcomum.conecta1;
-                                m.salvar();
+                                m.salvar(BDcomum.conecta1);
                                 modelocrud.Modelos.Add(m);
                                 notifyIcon.ShowBalloonTip(5000, "Info",
                                 $"Uma informação do banco de dados remoto foi inserida neste programa. - {m.GetType().Name} - {m.Id}",
