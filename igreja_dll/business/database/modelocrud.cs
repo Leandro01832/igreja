@@ -30,9 +30,6 @@ namespace database
         [Key]
         public int Id { get; set; }
         public static List<modelocrud> Modelos = new List<modelocrud>();
-        public static List<modelocrud> ModelosExcluidos = new List<modelocrud>();
-        public static List<modelocrud> ModelosAlterados = new List<modelocrud>();
-        public static List<modelocrud> ModelosInseridos = new List<modelocrud>();
 
         static Calculo calculo = new Calculo();
         PropertiesCrud property;
@@ -537,7 +534,7 @@ namespace database
 
                             if (prop.Count > 0)
                             {
-                                var conectar = bd.obterconexao(stringConexao);
+                                var conectar = bd.obterconexao(BDcomum.conecta1);
                                 SqlCommand comando2 = new SqlCommand($"select Id from {item.Name} where {prop[0].Name}={Id}"
                                                 , conectar);
                                 SqlDataReader dr2 = comando2.ExecuteReader();
@@ -607,8 +604,8 @@ namespace database
                         var num = int.Parse(Convert.ToString(dr["Id"]));
                         modelocrud mod = null;
                         mod = (modelocrud)Activator.CreateInstance(GetType());
-                        mod.Id = num;
                         mod.stringConexao = BDcomum.conecta1;
+                        mod.Id = num;
                         if (mod.recuperar(mod.Id))
                         Modelos.Add(mod);
                         

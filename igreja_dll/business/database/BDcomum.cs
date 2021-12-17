@@ -20,7 +20,7 @@ namespace database.banco
         public static bool podeAbrir = true;
         public static bool BancoEnbarcado = true;
 
-        public bool TestarConexao()
+        public static bool TestarConexao()
         {
             try
             {
@@ -95,17 +95,20 @@ namespace database.banco
 
         public void SalvarModelo(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Insert_padrao, modelo.stringConexao);                       
+            ExecutarComandoSqlServer(modelo.Insert_padrao, conecta1);                       
+            ExecutarComandoSqlServer(modelo.Insert_padrao, conecta2);                       
         }
 
         public void Editar(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Update_padrao, modelo.stringConexao);
+            ExecutarComandoSqlServer(modelo.Update_padrao, conecta1);
+            ExecutarComandoSqlServer(modelo.Update_padrao, conecta2);
         }
 
         public void Excluir(modelocrud modelo)
         {
-            ExecutarComandoSqlServer(modelo.Delete_padrao, modelo.stringConexao);
+            ExecutarComandoSqlServer(modelo.Delete_padrao, conecta1);
+            ExecutarComandoSqlServer(modelo.Delete_padrao, conecta2);
         }
 
         private void ExecutarComandoSqlServer(string sql, string stringConexao)

@@ -31,7 +31,8 @@ namespace WindowsFormsApp1
         public static string PrimeiroAdminEmail = "leandro123";
         public static string PrimeiroAdminSenha = "sistema123";
         public static string path = Directory.GetCurrentDirectory();
-        public static bool executar = true;
+        public static bool executar = false;
+        public static bool Processando = false;
 
         #region IdentityRegistryNews
 
@@ -72,6 +73,9 @@ namespace WindowsFormsApp1
 
         private async void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            Processando = true;
+            executarProcessamentoToolStripMenuItem.Enabled = false;
+            
             mus = new MyUserSettings(this);
             this.DataBindings.Add(new Binding("BackColor", mus, "BackgroundColorPrincipal"));
             this.Icon = new Icon($@"{path}\favicon.ico");
@@ -100,11 +104,12 @@ namespace WindowsFormsApp1
             MdiForm.quantidade = 0;
             MdiForm.contagem = false;
 
-            LoadForm(this);
+            LoadForm(this);            
 
             FrmAutenticacao formAutenticacao = new FrmAutenticacao();
             formAutenticacao.Show();
 
+            MessageBox.Show("O processamento será executado.");
             FormProgressBar frm = new FormProgressBar();
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Text = "Barra de processamento - Processando dados";
@@ -143,10 +148,8 @@ namespace WindowsFormsApp1
                 foreach (var item in arr)
                 {
                     var permissao = new Permissao { Nome = item };
-                    permissao.stringConexao = BDcomum.conecta1;
                     permissao.salvar();
                     modelocrud.Modelos.Add(permissao);
-                    modelocrud.ModelosInseridos.Add(permissao);
                 }
             }
 
@@ -159,16 +162,12 @@ namespace WindowsFormsApp1
             try { Celula.UltimoRegistro = modelocrud.GetUltimoRegistro(typeof(Celula), BDcomum.conecta1); }
             catch { Celula.UltimoRegistro = 0; }
 
-            await BuscarDadosRemotos();
-
-            executar = true;
-
-            notifyIcon.ShowBalloonTip(5000, "Info", "Dados processados com sucesso!!! Você já pode abrir as listas. ",
-            ToolTipIcon.Info);
+            await iniciarPrograma();
         }
 
         private async Task BuscarDadosRemotos()
         {
+            
             var types = modelocrud.listTypesSon(typeof(modelocrud));
             var lista = types.Where(el => el.GetProperties()
             .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 0).ToList();
@@ -176,9 +175,8 @@ namespace WindowsFormsApp1
             {
                 await Task.Run(() => recuperarSalvarRegistros(modelocrud.GetUltimoRegistro(item, BDcomum.conecta1),
                 modelocrud.GetUltimoRegistro(item, BDcomum.conecta2), item));
-                await Task.Run(() => recuperarSalvarRegistrosRemoto(item));
-                await Task.Run(() => excluiRegistrosRemotos(item));
             }
+            
         }
 
         private static void ExecutarFuncoes(object sender, EventArgs e, Form form, Type tipo)
@@ -212,7 +210,6 @@ namespace WindowsFormsApp1
         {
             await Task.Run(() => modelocrud.calcularPorcentagem());
             await Task.Run(() => verificarListagem());
-
         }
 
         private void sistemaFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,57 +227,14 @@ namespace WindowsFormsApp1
 
         private async Task verificarListagem()
         {
-            await BuscarDadosRemotos();
-            await Task.Run(() => alteraRegistrosRemotos());
-        }
-
-        private void alteraRegistrosRemotos()
-        {
-            bool teste = false;
-            foreach (var item in modelocrud.ModelosAlterados)
-            {
-                var modelo = item;
-                var modelo2 = item;
-                modelo.stringConexao = BDcomum.conecta1;
-                modelo2.stringConexao = BDcomum.conecta2;
-
-                if (modelo.recuperar(modelo.Id) && modelo2.recuperar(modelo2.Id))
-                {
-                    modelo2.alterar(modelo2.Id);
-                    notifyIcon.ShowBalloonTip(5000, "Info",
-                    "Uma informação no banco de dados remoto foi alterada. ", ToolTipIcon.Info);
-                }
-                if (item == modelocrud.ModelosAlterados.Last())
-                    teste = true;
+            try
+            {                
+                await BuscarDadosRemotos();
             }
-            if (teste)
-                modelocrud.ModelosAlterados.Clear();
-        }
-
-        private void excluiRegistrosRemotos(Type item)
-        {
-            bool teste = false;
-            if (modelocrud.TotalRegistro(item, BDcomum.conecta2) !=
-                modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
-                foreach (var item2 in modelocrud.ModelosExcluidos)
-                {
-                    var modelo = item2;
-                    var modelo2 = item2;
-                    modelo.stringConexao = BDcomum.conecta1;
-                    modelo2.stringConexao = BDcomum.conecta2;
-
-                    if (!modelo.recuperar(modelo.Id) && modelo2.recuperar(modelo2.Id))
-                    {
-                        modelo2.excluir(modelo2.Id);
-                        notifyIcon.ShowBalloonTip(5000, "Info",
-                        "Uma informação no banco de dados remoto foi excluida. ", ToolTipIcon.Info);
-                    }
-
-                    if (item2 == modelocrud.ModelosExcluidos.Last())
-                        teste = true;
-                }
-            if (teste)
-                modelocrud.ModelosExcluidos.Clear();
+            catch (Exception)
+            {                
+                MessageBox.Show("conecte-se a internet.");
+            }
         }
 
         private void recuperarSalvarRegistros(int v1, int v2, Type item)
@@ -314,27 +268,7 @@ namespace WindowsFormsApp1
                     }
                     v1++;
                 }
-        }
-
-        private void recuperarSalvarRegistrosRemoto(Type item)
-        {
-            bool teste = false;
-            if (modelocrud.TotalRegistro(item, BDcomum.conecta2) <
-                modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
-                foreach (var item2 in modelocrud.ModelosInseridos)
-                {
-                    item2.Id = 0;
-                    item2.stringConexao = BDcomum.conecta2;
-                    item2.salvar();
-                    notifyIcon.ShowBalloonTip(5000, "Info",
-                    "A informação cadastrada no programa foi inserida no banco de dados remoto. ", ToolTipIcon.Info);
-
-                    if (item2 == modelocrud.ModelosInseridos.Last())
-                        teste = true;
-                }
-            if (teste)
-                modelocrud.ModelosInseridos.Clear();
-        }
+        }        
 
         private void configuraçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -353,6 +287,40 @@ namespace WindowsFormsApp1
             if (textoSufixo != "") textoFormulario = textoFormulario + " " + textoSufixo;
 
             form.Text = textoFormulario;
+        }
+
+        private async void executarProcessamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await iniciarPrograma();
+        }
+
+        private async Task iniciarPrograma()
+        {
+            try
+            {
+                if (!BDcomum.TestarConexao())
+                {
+                    MessageBox.Show("Conecte-se a internet.");
+                    executarProcessamentoToolStripMenuItem.Enabled = true;
+                    Processando = false;
+                    executar = false;
+                    return;
+                }
+                Processando = true;
+                MessageBox.Show("O processamento será executado.");
+                await BuscarDadosRemotos();
+                executar = true;
+                executarProcessamentoToolStripMenuItem.Enabled = false;
+                notifyIcon.ShowBalloonTip(5000, "Info", "Dados processados com sucesso!!! Você já pode abrir as listas. ",
+                ToolTipIcon.Info);
+            }
+            catch (Exception)
+            {
+                Processando = false;
+                executar = false;
+                executarProcessamentoToolStripMenuItem.Enabled = true;
+                MessageBox.Show("conecte-se a internet.");
+            }
         }
     }
 }

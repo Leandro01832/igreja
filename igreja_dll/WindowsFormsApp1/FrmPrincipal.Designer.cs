@@ -36,12 +36,13 @@
             this.sistemaFinanceiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.esboçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaDeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lbl_horario = new System.Windows.Forms.Label();
             this.Principal = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executarProcessamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +68,8 @@
             this.sistemaFinanceiroToolStripMenuItem,
             this.esboçoToolStripMenuItem,
             this.sistemaDeEmailToolStripMenuItem,
-            this.configuraçãoToolStripMenuItem});
+            this.configuraçãoToolStripMenuItem,
+            this.executarProcessamentoToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -103,6 +105,13 @@
             this.sistemaDeEmailToolStripMenuItem.Name = "sistemaDeEmailToolStripMenuItem";
             this.sistemaDeEmailToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
             this.sistemaDeEmailToolStripMenuItem.Text = "Sistema de e-mail";
+            // 
+            // configuraçãoToolStripMenuItem
+            // 
+            this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
+            this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(141, 32);
+            this.configuraçãoToolStripMenuItem.Text = "Configuração";
+            this.configuraçãoToolStripMenuItem.Click += new System.EventHandler(this.configuraçãoToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -151,12 +160,12 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             // 
-            // configuraçãoToolStripMenuItem
+            // executarProcessamentoToolStripMenuItem
             // 
-            this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
-            this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(141, 32);
-            this.configuraçãoToolStripMenuItem.Text = "Configuração";
-            this.configuraçãoToolStripMenuItem.Click += new System.EventHandler(this.configuraçãoToolStripMenuItem_Click);
+            this.executarProcessamentoToolStripMenuItem.Name = "executarProcessamentoToolStripMenuItem";
+            this.executarProcessamentoToolStripMenuItem.Size = new System.Drawing.Size(234, 32);
+            this.executarProcessamentoToolStripMenuItem.Text = "Executar Processamento";
+            this.executarProcessamentoToolStripMenuItem.Click += new System.EventHandler(this.executarProcessamentoToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -196,5 +205,6 @@
         private System.Windows.Forms.ToolStripMenuItem esboçoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sistemaDeEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem executarProcessamentoToolStripMenuItem;
     }
 }

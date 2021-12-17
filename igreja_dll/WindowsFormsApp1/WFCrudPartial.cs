@@ -3,6 +3,7 @@ using business.classes.Fontes;
 using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
+using database.banco;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -47,8 +48,15 @@ namespace WindowsFormsApp1
         {
             try
             {
-                modelo.alterar(modelo.Id);
-                modelocrud.ModelosAlterados.Add(modelo);
+                if (BDcomum.TestarConexao())
+                {
+                    modelo.alterar(modelo.Id); 
+                }
+                else
+                {
+                    MessageBox.Show("conecte-se a internet");
+                    return;
+                }
             }
             catch (Exception ex)
             {
@@ -73,8 +81,15 @@ namespace WindowsFormsApp1
 
             try
             {
-                model.excluir(id);
-                modelocrud.ModelosExcluidos.Add(model);
+                if (BDcomum.TestarConexao())
+                {
+                    model.excluir(id); 
+                }
+                else
+                {
+                    MessageBox.Show("Conecte-se a internet.");
+                    return;
+                }
             }
             catch (Exception ex)
             {

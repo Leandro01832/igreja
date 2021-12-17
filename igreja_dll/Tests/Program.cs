@@ -55,20 +55,16 @@ namespace Tests
 
             Ministerio ministerio1 = new Lider_Celula();
             ministerio1.Codigo = 1;
-            ministerio1.stringConexao = BDcomum.conecta1;
             Ministerio ministerio2 = new Lider_Celula_Treinamento();
             ministerio2.Codigo = 2;
-            ministerio2.stringConexao = BDcomum.conecta1;
             Ministerio ministerio3 = new Lider_Celula_Treinamento();
             ministerio3.Codigo = 6;
-            ministerio3.stringConexao = BDcomum.conecta1;
             ministerio1.salvar();
             ministerio2.salvar();
             ministerio3.salvar();
             Pessoa pessoa1 = new Visitante();
             pessoa1.Email = "pessoa1";
             pessoa1.Codigo = 3;
-            pessoa1.stringConexao = BDcomum.conecta1;
             PessoaDado pessoadado1 = (PessoaDado)pessoa1;
             pessoadado1.Cpf = "00000000001";
             pessoa1.Ministerio = new List<PessoaMinisterio>();
@@ -93,7 +89,6 @@ namespace Tests
                 PessoaId = pessoa2.Id,
                 Pessoa = pessoa2
             });
-            pessoa2.stringConexao = BDcomum.conecta1;
             pessoa2.salvar();
             Pessoa pessoa3 = new Crianca();
             pessoa3.Email = "pessoa3";
@@ -108,7 +103,6 @@ namespace Tests
                 PessoaId = pessoa3.Id,
                 Pessoa = pessoa3
             });
-            pessoa3.stringConexao = BDcomum.conecta1;
             pessoa3.salvar();
             Celula celula1 = new Celula_Adulto();
             celula1.Ministerios = new List<MinisterioCelula>();
@@ -123,7 +117,6 @@ namespace Tests
             celula1.Pessoas = new List<Pessoa>();
             celula1.Pessoas.Add(pessoa2);
             celula1.Pessoas.Add(pessoa3);
-            celula1.stringConexao = BDcomum.conecta1;
             celula1.salvar();
 
             // try update with list
@@ -150,7 +143,6 @@ namespace Tests
                 {
                     num++;
                     var modelo = (modelocrud)Activator.CreateInstance(item);
-                    modelo.stringConexao = BDcomum.conecta1;
                     try
                     {
                         if (modelo is Pessoa)
