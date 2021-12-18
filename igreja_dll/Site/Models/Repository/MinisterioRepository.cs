@@ -4,6 +4,7 @@ using System.Data.Entity;
 using business.classes.Abstrato;
 using System.Linq;
 using RepositorioEF;
+using business.classes;
 
 namespace Site.Models.Repository
 {
@@ -27,7 +28,10 @@ namespace Site.Models.Repository
             var condicao = contexto.ministerio.FirstOrDefault(m => m.Id == id);
             if (condicao != null)
             {
-                contexto.ministerio.Remove(contexto.ministerio.First(m => m.Id == id));
+                var model = contexto.ministerio.First(m => m.Id == id);
+                contexto.ministerio.Remove(model);
+                contexto.DadoExcluido.Add(new DadoExcluido { Entidade = model.GetType().Name, IdDado = id });
+                contexto.SaveChanges();
                 return true;
             }
             else return false;
@@ -46,6 +50,7 @@ namespace Site.Models.Repository
         public void Update(Ministerio item)
         {
             contexto.Entry(item).State = EntityState.Modified;
+            contexto.DadoAlterado.Add(new DadoAlterado { Entidade = item.GetType().Name, IdDado = item.Id });
             contexto.SaveChanges();
         }
 

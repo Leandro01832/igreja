@@ -490,6 +490,7 @@ namespace WindowsFormsApp1
             {
                 if (BDcomum.TestarConexao())
                 {
+                    await new FrmPrincipal().AtualizarDadosRemotos();
                     modelo.salvar();
                     modelocrud.Modelos.Add(modelo);
                 }

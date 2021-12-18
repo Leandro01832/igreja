@@ -17,6 +17,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using database.banco;
 using business.classes.Abstrato;
 using database;
+using business.classes;
 
 namespace Site.Controllers.Api
 {
@@ -59,7 +60,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(criancaLgpd).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = criancaLgpd.GetType().Name, IdDado = criancaLgpd.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -90,7 +91,8 @@ namespace Site.Controllers.Api
 
             try
             {
-                crianca.salvar();
+                db.pessoas.Add(crianca);
+                db.SaveChanges();
             }
             catch { return this.BadRequest("Usuario não cadastrado!!!"); }
             return CreatedAtRoute("DefaultApi", new { id = crianca.Id }, crianca);
@@ -116,7 +118,8 @@ namespace Site.Controllers.Api
                 return this.BadRequest("Usuario não cadastrado!!!");
             }
             crianca.Codigo = Cod;
-            crianca.salvar();
+            db.pessoas.Add(crianca);
+            db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = crianca.Id }, crianca);
         }
 
@@ -131,6 +134,8 @@ namespace Site.Controllers.Api
             }
 
             db.pessoas.Remove(criancaLgpd);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = criancaLgpd.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(criancaLgpd);

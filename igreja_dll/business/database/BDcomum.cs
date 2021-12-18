@@ -110,10 +110,16 @@ namespace database.banco
             ExecutarComandoSqlServer(modelo.Update_padrao, conecta2);
         }
 
-        public void Excluir(modelocrud modelo)
+        public void Excluir(modelocrud modelo, string stringConexao = "")
         {
-            ExecutarComandoSqlServer(modelo.Delete_padrao, conecta1);
-            ExecutarComandoSqlServer(modelo.Delete_padrao, conecta2);
+            if(stringConexao == "")
+            {
+                ExecutarComandoSqlServer(modelo.Delete_padrao, conecta1);
+                ExecutarComandoSqlServer(modelo.Delete_padrao, conecta2);
+            }
+            else
+                ExecutarComandoSqlServer(modelo.Delete_padrao, stringConexao);
+            
         }
 
         private void ExecutarComandoSqlServer(string sql, string stringConexao)

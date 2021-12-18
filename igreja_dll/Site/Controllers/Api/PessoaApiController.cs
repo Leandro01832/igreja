@@ -1,4 +1,5 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
 using business.classes.Pessoas;
 using RepositorioEF;
 using Site.Models.Api;
@@ -78,7 +79,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(pessoa).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = pessoa.GetType().Name, IdDado = pessoa.Id });
             try
             {
                 db.SaveChanges();

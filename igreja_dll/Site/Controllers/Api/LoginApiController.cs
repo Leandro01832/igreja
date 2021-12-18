@@ -152,7 +152,6 @@ namespace Site.Controllers.Api
                 {
                     p.Email = email;
                     p.Nome = " - ";
-                   // p.salvar();
                 }
                 catch { return this.BadRequest("Usuario não cadastrado!!!"); }
 

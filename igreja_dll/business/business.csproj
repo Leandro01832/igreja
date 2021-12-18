@@ -73,6 +73,8 @@
     <Compile Include="classes\Celulas\Celula_Jovem.cs" />
     <Compile Include="classes\Chamada.cs" />
     <Compile Include="classes\ConfiguraRota.cs" />
+    <Compile Include="classes\DadoAlterado.cs" />
+    <Compile Include="classes\DadoExcluido.cs" />
     <Compile Include="classes\Pessoas\Admin.cs" />
     <Compile Include="classes\Pessoas\Atendente.cs" />
     <Compile Include="classes\Email\Body.cs" />

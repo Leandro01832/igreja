@@ -37,12 +37,10 @@
             this.esboçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaDeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.executarProcessamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.lbl_horario = new System.Windows.Forms.Label();
             this.Principal = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.executarProcessamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -113,18 +111,12 @@
             this.configuraçãoToolStripMenuItem.Text = "Configuração";
             this.configuraçãoToolStripMenuItem.Click += new System.EventHandler(this.configuraçãoToolStripMenuItem_Click);
             // 
-            // label1
+            // executarProcessamentoToolStripMenuItem
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(908, 613);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 29);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Horario: ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.executarProcessamentoToolStripMenuItem.Name = "executarProcessamentoToolStripMenuItem";
+            this.executarProcessamentoToolStripMenuItem.Size = new System.Drawing.Size(234, 32);
+            this.executarProcessamentoToolStripMenuItem.Text = "Executar Processamento";
+            this.executarProcessamentoToolStripMenuItem.Click += new System.EventHandler(this.executarProcessamentoToolStripMenuItem_Click);
             // 
             // dateTimePicker1
             // 
@@ -135,17 +127,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(444, 30);
             this.dateTimePicker1.TabIndex = 6;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // lbl_horario
-            // 
-            this.lbl_horario.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_horario.AutoSize = true;
-            this.lbl_horario.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.lbl_horario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_horario.Location = new System.Drawing.Point(1033, 613);
-            this.lbl_horario.Name = "lbl_horario";
-            this.lbl_horario.Size = new System.Drawing.Size(0, 29);
-            this.lbl_horario.TabIndex = 8;
             // 
             // Principal
             // 
@@ -160,21 +141,12 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             // 
-            // executarProcessamentoToolStripMenuItem
-            // 
-            this.executarProcessamentoToolStripMenuItem.Name = "executarProcessamentoToolStripMenuItem";
-            this.executarProcessamentoToolStripMenuItem.Size = new System.Drawing.Size(234, 32);
-            this.executarProcessamentoToolStripMenuItem.Text = "Executar Processamento";
-            this.executarProcessamentoToolStripMenuItem.Click += new System.EventHandler(this.executarProcessamentoToolStripMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1518, 690);
-            this.Controls.Add(this.lbl_horario);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.pictureBox1);
@@ -196,9 +168,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label lbl_horario;
         private System.Windows.Forms.Timer Principal;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ToolStripMenuItem sistemaFinanceiroToolStripMenuItem;

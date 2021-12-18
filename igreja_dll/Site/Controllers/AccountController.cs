@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -13,6 +14,7 @@ using database.banco;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using RepositorioEF;
 using Site.Models;
 
 namespace Site.Controllers
@@ -22,6 +24,7 @@ namespace Site.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private DB db = new DB();
 
         public AccountController()
         {
@@ -175,22 +178,23 @@ namespace Site.Controllers
                     m = new Membro_ReconciliacaoLgpd();
                 if (model.MembroTransferencia)
                     m = new Membro_TransferenciaLgpd();
-                
-                var p = (Pessoa)m;
-                try
-                {
-                    p.Email = model.Email;
-                    p.Nome = " - ";
-                    p.Codigo = modelocrud.GetUltimoRegistro(typeof(Pessoa), BDcomum.conecta2) + 1;
-                    p.salvar();
-                }
-                catch { return View(model); }
 
+                var p = (Pessoa)m;
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Codigo = p.Codigo };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    try
+                    {
+                        p.Email = model.Email;
+                        p.Nome = " - ";
+                        p.Codigo = modelocrud.GetUltimoRegistro(typeof(Pessoa), BDcomum.conecta2) + 1;
+                        db.pessoas.Add(p);
+                        await db.SaveChangesAsync();
+                    }
+                    catch { return View(model); }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Para obter mais informações sobre como habilitar a confirmação da conta e redefinição de senha, visite https://go.microsoft.com/fwlink/?LinkID=320771

@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using RepositorioEF;
 using business.classes.Pessoas;
 using System.Web.Http.OData;
+using business.classes;
 
 namespace Site.Controllers.Api
 {
@@ -54,7 +55,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(membro_Aclamacao).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = membro_Aclamacao.GetType().Name, IdDado = membro_Aclamacao.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -85,7 +86,8 @@ namespace Site.Controllers.Api
 
             try
             {
-                membro_Aclamacao.salvar();
+                db.pessoas.Add(membro_Aclamacao);
+                db.SaveChanges();
             }
             catch { return BadRequest("Cadastro não realizado"); }
             return CreatedAtRoute("DefaultApi", new { id = membro_Aclamacao.Id }, membro_Aclamacao);
@@ -102,6 +104,8 @@ namespace Site.Controllers.Api
             }
 
             db.pessoas.Remove(membro_Aclamacao);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = membro_Aclamacao.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(membro_Aclamacao);

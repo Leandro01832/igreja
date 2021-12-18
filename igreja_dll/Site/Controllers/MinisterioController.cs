@@ -6,6 +6,7 @@ using RepositorioEF;
 using business.classes.Abstrato;
 using business.classes.Ministerio;
 using database;
+using business.classes;
 
 namespace Site.Controllers
 {
@@ -109,6 +110,7 @@ namespace Site.Controllers
         {
             modelocrud.EntityCrud = true;
             db.Entry(ministerio).State = EntityState.Modified;
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = ministerio.GetType().Name, IdDado = ministerio.Id });
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -162,6 +164,8 @@ namespace Site.Controllers
             modelocrud.EntityCrud = true;
             Ministerio ministerio = await db.ministerio.FindAsync(id);
             db.ministerio.Remove(ministerio);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = ministerio.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

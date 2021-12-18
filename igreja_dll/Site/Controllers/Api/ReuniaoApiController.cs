@@ -75,7 +75,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(reuniao).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = reuniao.GetType().Name, IdDado = reuniao.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -121,6 +121,8 @@ namespace Site.Controllers.Api
             }
 
             db.reuniao.Remove(reuniao);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = reuniao.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(reuniao);

@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Formulario.Celulas;
 using WindowsFormsApp1.Formulario.FormularioFonte;
 using WindowsFormsApp1.Formulario.FormularioMinisterio;
-using WindowsFormsApp1.Formulario.Pessoas;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa;
 using WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas;
 using WindowsFormsApp1.Formulario.Reuniao;
@@ -19,8 +18,6 @@ namespace WindowsFormsApp1
 {
     public partial class WFCrud
     {
-        
-
         private void DadoClasse_Click(object sender, EventArgs e)
         {
             if (modelo is Crianca || modelo is CriancaLgpd)
@@ -67,7 +64,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("Informação atualizada com sucesso.");
         }
 
-        private void Deletar_Click(object sender, EventArgs e)
+        private async void Deletar_Click(object sender, EventArgs e)
         {
             var id = modelo.Id;
 
@@ -83,6 +80,7 @@ namespace WindowsFormsApp1
             {
                 if (BDcomum.TestarConexao())
                 {
+                   await new FrmPrincipal().AtualizarDadosRemotos();
                     model.excluir(id); 
                 }
                 else

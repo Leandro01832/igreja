@@ -52,7 +52,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(endereco).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = endereco.GetType().Name, IdDado = endereco.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -113,6 +113,8 @@ namespace Site.Controllers.Api
             }
 
             db.endereco.Remove(endereco);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = endereco.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(endereco);

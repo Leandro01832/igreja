@@ -13,6 +13,7 @@ using RepositorioEF;
 using business.classes.Intermediario;
 using System.Web.Http.OData;
 using Site.Models.Api;
+using business.classes;
 
 namespace Site.Controllers.Api
 {
@@ -71,7 +72,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(ministerioCelula).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = ministerioCelula.GetType().Name, IdDado = ministerioCelula.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -117,6 +118,8 @@ namespace Site.Controllers.Api
             }
 
             db.MinisterioCelula.Remove(ministerioCelula);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = ministerioCelula.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(ministerioCelula);

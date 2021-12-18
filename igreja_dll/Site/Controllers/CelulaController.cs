@@ -1,11 +1,11 @@
-﻿using System;
-using System.Data.Entity;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web.Mvc;
-using RepositorioEF;
+﻿using business.classes;
 using business.classes.Abstrato;
 using business.classes.Celulas;
+using RepositorioEF;
+using System.Data.Entity;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Site.Controllers
 {
@@ -100,6 +100,7 @@ namespace Site.Controllers
         {
             db.Entry(celula).State = EntityState.Modified;
             db.Entry(celula.EnderecoCelula).State = EntityState.Modified;
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = celula.GetType().Name, IdDado = celula.Id });
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -152,6 +153,8 @@ namespace Site.Controllers
         {
             Celula celula = await db.celula.FindAsync(id);
             db.celula.Remove(celula);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = celula.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

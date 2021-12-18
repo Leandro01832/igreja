@@ -55,7 +55,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(mudancaEstado).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = mudancaEstado.GetType().Name, IdDado = mudancaEstado.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -101,6 +101,8 @@ namespace Site.Controllers.Api
             }
 
             db.MudancaEstado.Remove(mudancaEstado);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = mudancaEstado.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(mudancaEstado);

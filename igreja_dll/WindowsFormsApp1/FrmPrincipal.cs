@@ -4,6 +4,7 @@ using business.classes.Abstrato;
 using database;
 using database.banco;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
@@ -75,7 +76,7 @@ namespace WindowsFormsApp1
         {
             Processando = true;
             executarProcessamentoToolStripMenuItem.Enabled = false;
-            
+
             mus = new MyUserSettings(this);
             this.DataBindings.Add(new Binding("BackColor", mus, "BackgroundColorPrincipal"));
             this.Icon = new Icon($@"{path}\favicon.ico");
@@ -104,7 +105,7 @@ namespace WindowsFormsApp1
             MdiForm.quantidade = 0;
             MdiForm.contagem = false;
 
-            LoadForm(this);            
+            LoadForm(this);
 
             FrmAutenticacao formAutenticacao = new FrmAutenticacao();
             formAutenticacao.Show();
@@ -163,11 +164,37 @@ namespace WindowsFormsApp1
             catch { Celula.UltimoRegistro = 0; }
 
             await iniciarPrograma();
+            await Task.Run(() => alterarDadosRemotos(lista));
         }
 
-        private async Task BuscarDadosRemotos()
+        private  void alterarDadosRemotos(List<Type> lista)
         {
-            
+            var models = modelocrud.Modelos.OfType<DadoAlterado>().ToList();
+            foreach (var item in models)
+            {
+                foreach (var item2 in lista)
+                {
+                    if (item2.Name == item.Entidade)
+                    {
+                        var model = (modelocrud)Activator.CreateInstance(item2);
+                        var model2 = (modelocrud)Activator.CreateInstance(item2);
+                        model.stringConexao = BDcomum.conecta1;
+                        model2.stringConexao = BDcomum.conecta2;
+                        if (model2.recuperar(item.IdDado))
+                        {
+                            model = model2;
+                            model.alterar(item.IdDado);
+                            break;
+                        }
+                    }
+                }
+            }
+            notifyIcon.ShowBalloonTip(5000, "Info", "Os dados estão de acordo com banco de dados remoto!!!",
+                ToolTipIcon.Info);
+        }
+
+        public async Task AtualizarDadosRemotos()
+        {            
             var types = modelocrud.listTypesSon(typeof(modelocrud));
             var lista = types.Where(el => el.GetProperties()
             .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 0).ToList();
@@ -176,7 +203,24 @@ namespace WindowsFormsApp1
                 await Task.Run(() => recuperarSalvarRegistros(modelocrud.GetUltimoRegistro(item, BDcomum.conecta1),
                 modelocrud.GetUltimoRegistro(item, BDcomum.conecta2), item));
             }
-            
+
+            var models = modelocrud.Modelos.OfType<DadoExcluido>().ToList();
+            foreach (var item in models)
+            {
+                foreach (var item2 in lista)
+                {
+                    if(item2.Name == item.Entidade)
+                    {
+                        var model = (modelocrud) Activator.CreateInstance(item2);
+                        model.stringConexao = BDcomum.conecta1;
+                        if (model.recuperar(item.IdDado))
+                        {
+                            model.excluir(item.IdDado, BDcomum.conecta1);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private static void ExecutarFuncoes(object sender, EventArgs e, Form form, Type tipo)
@@ -229,7 +273,7 @@ namespace WindowsFormsApp1
         {
             try
             {                
-                await BuscarDadosRemotos();
+                await AtualizarDadosRemotos();
             }
             catch (Exception)
             {                
@@ -237,7 +281,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void recuperarSalvarRegistros(int v1, int v2, Type item)
+        private  void recuperarSalvarRegistros(int v1, int v2, Type item)
         {
             if (modelocrud.TotalRegistro(item, BDcomum.conecta2) >
                 modelocrud.Modelos.Where(m => m.GetType() == item || m.GetType().IsSubclassOf(item)).ToList().Count)
@@ -308,7 +352,7 @@ namespace WindowsFormsApp1
                 }
                 Processando = true;
                 MessageBox.Show("O processamento será executado.");
-                await BuscarDadosRemotos();
+                await AtualizarDadosRemotos();
                 executar = true;
                 executarProcessamentoToolStripMenuItem.Enabled = false;
                 notifyIcon.ShowBalloonTip(5000, "Info", "Dados processados com sucesso!!! Você já pode abrir as listas. ",

@@ -52,7 +52,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(telefone).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = telefone.GetType().Name, IdDado = telefone.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -113,6 +113,8 @@ namespace Site.Controllers.Api
             }
 
             db.telefone.Remove(telefone);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = telefone.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(telefone);

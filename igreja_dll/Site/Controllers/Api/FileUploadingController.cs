@@ -1,16 +1,8 @@
-﻿using business.classes.Abstrato;
-using Ecommerce.Classes;
+﻿using Ecommerce.Classes;
 using RepositorioEF;
 using Site.Models.Api;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 
 namespace Site.Controllers.Api

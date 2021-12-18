@@ -7,6 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using business.classes;
 using business.classes.Abstrato;
 using database;
 using Microsoft.AspNet.Identity;
@@ -94,7 +95,9 @@ namespace Site.Controllers
             modelocrud.EntityCrud = true;
             db.Entry(pessoa).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = pessoa.GetType().Name, IdDado = pessoa.Id });
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Pessoa/Delete/5
@@ -120,6 +123,8 @@ namespace Site.Controllers
             modelocrud.EntityCrud = true;
             Pessoa pessoa = db.pessoas.Find(id);
             db.pessoas.Remove(pessoa);
+            db.SaveChanges();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = pessoa.GetType().Name, IdDado = id });
             db.SaveChanges();
             return RedirectToAction("Index");
         }

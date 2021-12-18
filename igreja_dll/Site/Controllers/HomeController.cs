@@ -137,7 +137,9 @@ namespace Site.Controllers
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Ministerio ministerio = banco.ministerio.Find(Id);
                 PessoaMinisterio pm = new PessoaMinisterio { PessoaId = pessoa.Id, MinisterioId = ministerio.Id };
-                pm.salvar();
+                
+                banco.PessoaMinisterio.Add(pm);
+                banco.SaveChanges();
             }
 
             ViewBag.mensagem = "Parabêns você esta participando do ministério!!!";
@@ -159,7 +161,9 @@ namespace Site.Controllers
                 Pessoa pessoa = banco.pessoas.First(m => m.Codigo == user.Codigo);
                 Reuniao reuniao = banco.reuniao.Find(Id);
                 ReuniaoPessoa rp = new ReuniaoPessoa { PessoaId = pessoa.Id, ReuniaoId = reuniao.Id };
-                rp.salvar();
+               
+                banco.ReuniaoPessoa.Add(rp);
+                banco.SaveChanges();
             }
 
             ViewBag.mensagem = "Parabêns você esta participando da reunião!!!";
@@ -214,6 +218,7 @@ namespace Site.Controllers
 
                 banco.Entry(pessoa).State = EntityState.Modified;
                 banco.Entry(pessoa.Chamada).State = EntityState.Modified;
+                banco.DadoAlterado.Add(new DadoAlterado { Entidade = pessoa.GetType().Name, IdDado = pessoa.Id });
                 banco.SaveChanges();
             }
 

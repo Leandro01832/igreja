@@ -19,6 +19,8 @@ namespace business.database
              Database.SetInitializer<IgrejaDB>(null);
         }
 
+        public DbSet<DadoAlterado> DadoAlterado { get; set; }
+        public DbSet<DadoExcluido> DadoExcluido { get; set; }
         public DbSet<Mensagem> Mensagem { get; set; }
         public DbSet<Email> Email { get; set; }
         public DbSet<Body> Body { get; set; }

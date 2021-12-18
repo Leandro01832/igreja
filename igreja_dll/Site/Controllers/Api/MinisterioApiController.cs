@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
+using business.classes;
 using business.classes.Abstrato;
 using RepositorioEF;
 using Site.Models.Api;
@@ -77,7 +78,7 @@ namespace Site.Controllers.Api
             }
 
             db.Entry(ministerio).State = EntityState.Modified;
-
+            db.DadoAlterado.Add(new DadoAlterado { Entidade = ministerio.GetType().Name, IdDado = ministerio.Id });
             try
             {
                 await db.SaveChangesAsync();
@@ -123,6 +124,8 @@ namespace Site.Controllers.Api
             }
 
             db.ministerio.Remove(ministerio);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = ministerio.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
 
             return Ok(ministerio);

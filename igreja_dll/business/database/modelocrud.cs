@@ -456,7 +456,7 @@ namespace database
                 alterarEntity(this); return "";
         }
 
-        public string excluir(int id)
+        public string excluir(int id, string stringConexao = "")
         {
             if (!EntityCrud)
             {
@@ -507,7 +507,7 @@ namespace database
                 if (Delete_padrao != "")
                 {
                     deleteIntermediario();
-                    bd.Excluir(this);
+                    bd.Excluir(this, stringConexao);
                 }
                 return Delete_padrao;
 

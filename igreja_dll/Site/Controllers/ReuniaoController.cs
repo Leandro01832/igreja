@@ -87,6 +87,7 @@ namespace Site.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(reuniao).State = EntityState.Modified;
+                db.DadoAlterado.Add(new DadoAlterado { Entidade = reuniao.GetType().Name, IdDado = reuniao.Id });
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -115,6 +116,8 @@ namespace Site.Controllers
         {
             Reuniao reuniao = await db.reuniao.FindAsync(id);
             db.reuniao.Remove(reuniao);
+            await db.SaveChangesAsync();
+            db.DadoExcluido.Add(new DadoExcluido { Entidade = reuniao.GetType().Name, IdDado = id });
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
