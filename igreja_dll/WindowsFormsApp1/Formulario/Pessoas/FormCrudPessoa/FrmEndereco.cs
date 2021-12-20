@@ -41,12 +41,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.Endereco.Pais = textpais.Text;
+                try { p.Endereco.Pais = textpais.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Endereco.Pais = textpais.Text;
+                try { p.Endereco.Pais = textpais.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
 
         }
@@ -58,7 +60,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 try
                 {
                     var p = (business.classes.Pessoas.PessoaDado)modelo;
-                    p.Endereco.Cep = long.Parse(text_cep.Text);
+                    try { p.Endereco.Cep = long.Parse(text_cep.Text); }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 catch (Exception)
                 {
@@ -71,7 +74,8 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 try
                 {
                     var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                    p.Endereco.Cep = long.Parse(text_cep.Text);
+                    try { p.Endereco.Cep = long.Parse(text_cep.Text); }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 catch (Exception)
                 {
@@ -86,12 +90,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.Endereco.Estado = text_estado.Text;
+                try { p.Endereco.Estado = text_estado.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Endereco.Estado = text_estado.Text;
+                try { p.Endereco.Estado = text_estado.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -100,12 +106,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.Endereco.Cidade = text_cidade.Text;
+                try { p.Endereco.Cidade = text_cidade.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Endereco.Cidade = text_cidade.Text;
+                try { p.Endereco.Cidade = text_cidade.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -114,12 +122,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.Endereco.Bairro = text_bairro.Text;
+                try { p.Endereco.Bairro = text_bairro.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Endereco.Bairro = text_bairro.Text;
+                try { p.Endereco.Bairro = text_bairro.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -128,12 +138,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.Endereco.Rua = text_rua.Text;
+                try { p.Endereco.Rua = text_rua.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Endereco.Rua = text_rua.Text;
+                try { p.Endereco.Rua = text_rua.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -142,12 +154,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)modelo;
-                p.Endereco.Complemento = text_complemento.Text;
+                try { p.Endereco.Complemento = text_complemento.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
-                p.Endereco.Complemento = text_complemento.Text;
+                try { p.Endereco.Complemento = text_complemento.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
         }
 

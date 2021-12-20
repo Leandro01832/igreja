@@ -88,7 +88,7 @@ namespace business.classes.Abstrato
         public virtual List<EmailIgreja> EmailIgreja { get; set; }
         
         [Display(Name = "Foto do perfil")]
-        public string Img { get; set; }
+        public string Imagem { get; set; }
 
         [NotMapped]
         public byte[] ImgArrayBytes;

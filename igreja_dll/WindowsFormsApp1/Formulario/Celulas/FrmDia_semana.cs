@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.Formulario.Celulas
         {
             this.Text = " - Dados de celula.";
 
-
             var p = (Celula)modelo;
             try { txt_nome_celula.Text = p.Nome; }
             catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
@@ -23,20 +22,20 @@ namespace WindowsFormsApp1.Formulario.Celulas
             catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             try { mask_horario.Text = p.Horario.ToString(); }
             catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-
-
         }
 
         private void txt_nome_celula_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.Nome = txt_nome_celula.Text;
+            try { c.Nome = txt_nome_celula.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txt_dia_semana_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.Dia_semana = txt_dia_semana.Text;
+            try { c.Dia_semana = txt_dia_semana.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void mask_horario_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -51,8 +50,9 @@ namespace WindowsFormsApp1.Formulario.Celulas
             {
                 c.Horario = TimeSpan.Parse(mask_horario.Text);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
             }
         }
     }

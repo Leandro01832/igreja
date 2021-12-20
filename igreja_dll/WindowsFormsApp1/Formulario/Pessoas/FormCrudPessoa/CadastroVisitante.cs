@@ -1,6 +1,5 @@
 ﻿using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
-using database;
 using System;
 using System.Windows.Forms;
 
@@ -50,12 +49,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (modelo is Visitante)
                 {
                     var p = (Visitante)modelo;
-                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                    try { p.Condicao_religiosa = txt_condicao_religiosa.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is VisitanteLgpd)
                 {
                     var p = (VisitanteLgpd)modelo;
-                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                    try { p.Condicao_religiosa = txt_condicao_religiosa.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
 
             }
@@ -64,12 +65,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (ModeloNovo is Visitante)
                 {
                     var p = (Visitante)ModeloNovo;
-                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                    try { p.Condicao_religiosa = txt_condicao_religiosa.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (ModeloNovo is VisitanteLgpd)
                 {
                     var p = (VisitanteLgpd)ModeloNovo;
-                    p.Condicao_religiosa = txt_condicao_religiosa.Text;
+                    try { p.Condicao_religiosa = txt_condicao_religiosa.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
             }
         }
@@ -85,8 +88,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                     {
                         p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
                     }
                 }
 
@@ -97,8 +101,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                     {
                         p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
                     }
                 }
 
@@ -113,8 +118,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                     {
                         p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
                     }
                 }
 
@@ -125,8 +131,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                     {
                         p.Data_visita = Convert.ToDateTime(mask_data_visita.Text);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
                     }
                 }
             }

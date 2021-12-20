@@ -53,7 +53,7 @@ namespace Site
                     Data_inicio = DateTime.Now,
                     Numero_chamada = 0
                 },
-                Img = "",
+                Imagem = "",
                 Historicos = new List<business.classes.Historico>(),
                 Ministerio = new List<business.classes.Intermediario.PessoaMinisterio>(),
                 Nome = "",

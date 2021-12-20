@@ -22,20 +22,24 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         private void FrmCadastrarVersiculo_Load(object sender, EventArgs e)
         {
             buscarVersiculosBiblia();
-            
-                var v = (business.classes.Fontes.Versiculo)modelo;
-            try { txt_texto.Text = v.Texto;                    } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try {  combo_livro.Text = v.Livro;                 } catch(Exception ex) {MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try { combo_capitulo.Text = v.Capitulo.ToString(); } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }              
-            
+
+            var v = (business.classes.Fontes.Versiculo)modelo;
+            try { txt_texto.Text = v.Texto; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { combo_livro.Text = v.Livro; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { combo_capitulo.Text = v.Capitulo.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
         }
 
         private void txt_texto_TextChanged(object sender, EventArgs e)
         {
             var v = (business.classes.Fontes.Versiculo)modelo;
-            v.Texto = txt_texto.Text;
+            try { v.Texto = txt_texto.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
-                
+
 
         private async void buscarVersiculosBiblia()
         {
@@ -64,7 +68,7 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
                     });
                 }
 
-                foreach(var item in listaLivro)
+                foreach (var item in listaLivro)
                 {
                     combo_livro.Items.Add(item);
                 }
@@ -72,14 +76,15 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
             catch (Exception ex)
             {
                 MessageBox.Show("Erro na leitura dos dados: " + ex.Message);
-                
+
             }
         }
 
         private void combo_livro_SelectedIndexChanged(object sender, EventArgs e)
         {
             var v = (business.classes.Fontes.Versiculo)modelo;
-            v.Livro = combo_livro.Text;
+            try { v.Livro = combo_livro.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
 
             combo_capitulo.Items.Clear();
             livro = listaLivro.First(i => i.name == combo_livro.Text);
@@ -97,7 +102,8 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         private async void combo_capitulo_SelectedIndexChanged(object sender, EventArgs e)
         {
             var v = (business.classes.Fontes.Versiculo)modelo;
-            v.Capitulo = int.Parse(combo_capitulo.Text);
+            try { v.Capitulo = int.Parse(combo_capitulo.Text); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
 
             combo_versiculo.Items.Clear();
             HttpClient cliente = new HttpClient();
@@ -109,10 +115,10 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
             {
                 var resultado =
                 await cliente
-                .GetStringAsync("https://www.abibliadigital.com.br/api/verses/nvi/" 
+                .GetStringAsync("https://www.abibliadigital.com.br/api/verses/nvi/"
                     + l + "/" + cap);
 
-                 obj = JsonConvert.DeserializeObject<Objeto>(resultado);
+                obj = JsonConvert.DeserializeObject<Objeto>(resultado);
 
 
                 for (int i = 1; i < obj.chapter.verses; i++)
@@ -120,7 +126,7 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
                     combo_versiculo.Items.Add(i);
                 }
 
-                foreach(var item in obj.verses)
+                foreach (var item in obj.verses)
                 {
                     txt_texto.Text += item.number.ToString() + " - " + item.text + "\r\n";
                 }

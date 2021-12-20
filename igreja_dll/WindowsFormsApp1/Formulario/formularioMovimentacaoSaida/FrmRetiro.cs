@@ -21,9 +21,12 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
             if (!CondicaoDeletar && !CondicaoAtualizar && !CondicaoDetalhes) this.Text = "Cadastro - " + form;
 
             Retiro a = (Retiro)modelo;
-           try{ txtValor.Text = a.Valor.ToString(); } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
-           try{ checkBoxPagou.Checked = a.Pago;     } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
-            try { txtLocal.Text = a.Local; }          catch(Exception ex){ MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtValor.Text = a.Valor.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { checkBoxPagou.Checked = a.Pago; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtLocal.Text = a.Local; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void checkBoxPagou_CheckedChanged(object sender, EventArgs e)
@@ -50,7 +53,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
         private void txtLocal_TextChanged(object sender, EventArgs e)
         {
             Retiro a = (Retiro)modelo;
-            a.Local = txtLocal.Text;
+            try { a.Local = txtLocal.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
     }
 }

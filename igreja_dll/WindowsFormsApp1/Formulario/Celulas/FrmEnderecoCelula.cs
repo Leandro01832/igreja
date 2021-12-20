@@ -38,7 +38,8 @@ namespace WindowsFormsApp1.Formulario.Celulas
         private void textpais_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Pais = textpais.Text;
+            try { c.EnderecoCelula.Pais = textpais.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void text_cep_TextChanged(object sender, EventArgs e)
@@ -58,31 +59,36 @@ namespace WindowsFormsApp1.Formulario.Celulas
         private void text_estado_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Estado = text_estado.Text;
+            try { c.EnderecoCelula.Estado = text_estado.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void text_cidade_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Cidade = text_cidade.Text;
+            try { c.EnderecoCelula.Cidade = text_cidade.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void text_bairro_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Bairro = text_bairro.Text;
+            try { c.EnderecoCelula.Bairro = text_bairro.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void text_rua_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Rua = text_rua.Text;
+            try { c.EnderecoCelula.Rua = text_rua.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void text_complemento_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            c.EnderecoCelula.Complemento = text_complemento.Text;
+            try { c.EnderecoCelula.Complemento = text_complemento.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void text_numero_TextChanged(object sender, EventArgs e)

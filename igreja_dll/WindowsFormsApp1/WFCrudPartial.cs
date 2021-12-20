@@ -76,21 +76,30 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            FormProgressBar frm = new FormProgressBar();
             try
             {
                 if (BDcomum.TestarConexao())
                 {
-                   await new FrmPrincipal().AtualizarDadosRemotos();
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.Text = "Aguarde o processamento ...";
+                    frm.Show();
+                    await new FrmPrincipal().AtualizarDadosRemotos();
+                    frm.Dispose();
                     model.excluir(id); 
                 }
                 else
                 {
+                    if (!frm.IsDisposed)
+                        frm.Dispose();
                     MessageBox.Show("Conecte-se a internet.");
                     return;
                 }
             }
             catch (Exception ex)
             {
+                if (!frm.IsDisposed)
+                    frm.Dispose();
                 MessageBox.Show(ex.Message);
                 return;
             }
@@ -127,9 +136,9 @@ namespace WindowsFormsApp1
                     crudForm.Form = new FrmTelefone();
 
                 if (this is FrmTelefone)
-                    crudForm.Form = new FrmImg();
+                    crudForm.Form = new FrmImagem();
 
-                if (this is FrmImg)
+                if (this is FrmImagem)
                     crudForm.Form = new Formulario.Pessoas.FormCrudPessoas.FrmMinisterio();
 
                 if (this is Formulario.Pessoas.FormCrudPessoas.FrmMinisterio)
@@ -170,10 +179,10 @@ namespace WindowsFormsApp1
 
             if (modelo is PessoaLgpd || ModeloNovo is PessoaLgpd)
             {
-                if (this is DadoPessoalLgpd)
-                    crudForm.Form = new FrmImg();
+                if (this is FrmEmail)
+                    crudForm.Form = new FrmImagem();
 
-                if (this is FrmImg)
+                if (this is FrmImagem)
                     crudForm.Form = new Formulario.Pessoas.FormCrudPessoas.FrmMinisterio();
 
                 if (this is Formulario.Pessoas.FormCrudPessoas.FrmMinisterio)

@@ -1,9 +1,6 @@
-﻿
-using business.classes.Pessoas;
-using database;
+﻿using business.classes.Pessoas;
 using System;
 using System.Windows.Forms;
-using WindowsFormsApp1;
 
 namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
 {
@@ -18,44 +15,54 @@ namespace WindowsFormsApp1.formulario.formularioFinanceiroPessoa
         {
 
             Admin c = (Admin)modelo;
-            try { maskedWhatsapp.Text = c.Telefone.Whatsapp; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try { maskedTelefone.Text = c.Telefone.Fone; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try { txtUsuario.Text = c.Email; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try { txtNome.Text = c.Nome; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            try { txtSenha.Text = c.Password; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { maskedWhatsapp.Text = c.Telefone.Whatsapp; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { maskedTelefone.Text = c.Telefone.Fone; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtUsuario.Text = c.Email; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtNome.Text = c.Nome; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txtSenha.Text = c.Password; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void maskedWhatsapp_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             Admin c = (Admin)modelo;
-            c.Telefone.Whatsapp = maskedWhatsapp.Text;
+            try { c.Telefone.Whatsapp = maskedWhatsapp.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
 
         }
 
         private void maskedTelefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             Admin c = (Admin)modelo;
-            c.Telefone.Fone = maskedTelefone.Text;
+            try { c.Telefone.Fone = maskedTelefone.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
-        
+
 
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             Admin c = (Admin)modelo;
-            c.Nome = txtNome.Text;
+            try { c.Nome = txtNome.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtSenha_TextChanged(object sender, EventArgs e)
         {
             Admin c = (Admin)modelo;
-            c.Password = txtSenha.Text;
+            try { c.Password = txtSenha.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
             Admin c = (Admin)modelo;
-            c.Email = txtUsuario.Text;
+            try { c.Email = txtUsuario.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
-        
+
     }
 }

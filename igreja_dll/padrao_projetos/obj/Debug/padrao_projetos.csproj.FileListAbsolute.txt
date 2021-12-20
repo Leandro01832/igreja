@@ -50,3 +50,9 @@ C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\padrao_projetos\obj\Debug
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csproj.CoreCompileInputs.cache
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
 C:\Users\leand\Documents\copiaIgreja\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb
+C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.dll
+C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.pdb
+C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojAssemblyReference.cache
+C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csproj.CoreCompileInputs.cache
+C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
+C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb

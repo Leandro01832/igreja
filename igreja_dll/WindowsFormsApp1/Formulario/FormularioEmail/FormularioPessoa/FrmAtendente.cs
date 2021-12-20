@@ -3,12 +3,7 @@ using business.classes.Pessoas;
 using database;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.ListBox;
 
@@ -51,19 +46,22 @@ namespace WindowsFormsApp1.Formulario.FormularioEmail.FormularioEmail
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             var Atendente = (Atendente)modelo;
-            Atendente.Nome = txtNome.Text;
+            try { Atendente.Nome = txtNome.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
             var Atendente = (Atendente)modelo;
-            Atendente.Email = txtEmail.Text;
+            try { Atendente.Email = txtEmail.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txtSenha_TextChanged(object sender, EventArgs e)
         {
             var Atendente = (Atendente)modelo;
-            Atendente.Senha = txtSenha.Text;
+            try { Atendente.Senha = txtSenha.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void lstPermissoes_SelectedValueChanged(object sender, EventArgs e)

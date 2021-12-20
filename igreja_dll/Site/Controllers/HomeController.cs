@@ -213,7 +213,7 @@ namespace Site.Controllers
                     if (response)
                     {
                         pic = string.Format("{0}/{1}", folder, file);
-                        pessoa.Img = pic;
+                        pessoa.Imagem = pic;
                     }
 
                 banco.Entry(pessoa).State = EntityState.Modified;

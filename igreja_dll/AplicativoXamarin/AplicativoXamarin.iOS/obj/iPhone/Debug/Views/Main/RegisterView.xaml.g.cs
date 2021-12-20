@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views.Main {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\Aplicati" +
-        "voXamarin\\Views\\Main\\RegisterView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\Aplicat" +
+        "ivoXamarin\\Views\\Main\\RegisterView.xaml")]
     public partial class RegisterView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

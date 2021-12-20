@@ -86,7 +86,7 @@ namespace Site.Controllers.Api
                 Id = user.Id,
                 Ministerios = user.Ministerio,
                 Nome = user.Nome,
-                Img = user.Img
+                Img = user.Imagem
             };
 
             return this.Ok(PessoaApi);

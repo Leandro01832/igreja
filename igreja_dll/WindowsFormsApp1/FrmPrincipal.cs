@@ -111,10 +111,6 @@ namespace WindowsFormsApp1
             formAutenticacao.Show();
 
             MessageBox.Show("O processamento será executado.");
-            FormProgressBar frm = new FormProgressBar();
-            frm.StartPosition = FormStartPosition.CenterScreen;
-            frm.Text = "Barra de processamento - Processando dados";
-            frm.Show();
 
             var listaTypes = modelocrud.listTypesSon(typeof(modelocrud));
             var lista = listaTypes.Where(el => el.GetProperties()
@@ -130,10 +126,6 @@ namespace WindowsFormsApp1
                 while (int.Parse(modelocrud.textoPorcentagem.Replace("%", "")) < 99)
                 { }
             });
-
-            if (!frm.IsDisposed)
-                frm.Dispose();
-
 
             var appSettings = ConfigurationManager.AppSettings;
             Email = appSettings["Email"];
@@ -351,7 +343,7 @@ namespace WindowsFormsApp1
                     return;
                 }
                 Processando = true;
-                MessageBox.Show("O processamento será executado.");
+                
                 await AtualizarDadosRemotos();
                 executar = true;
                 executarProcessamentoToolStripMenuItem.Enabled = false;

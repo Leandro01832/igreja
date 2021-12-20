@@ -13,8 +13,8 @@
 namespace AplicativoXamarin.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\Aplicati" +
-        "voXamarin\\Views\\View1.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\Aplicat" +
+        "ivoXamarin\\Views\\View1.xaml")]
     public partial class View1 : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

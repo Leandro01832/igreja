@@ -14,25 +14,30 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
 
         private void FrmCadastrarCanalTv_Load(object sender, EventArgs e)
         {
-            
-                var fonte = (CanalTv)modelo;
 
-             try { txt_nome_canal.Text = fonte.NomeCanal;         } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
-              try{  txt_nome_programa.Text = fonte.NomePrograma;  } catch(Exception ex){MessageBox.Show(modelo.exibirMensagemErro(ex, 2));}
-             try { mask_horario.Text = fonte.Horario.ToString();  } catch(Exception ex){ MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-            
+            var fonte = (CanalTv)modelo;
+
+            try { txt_nome_canal.Text = fonte.NomeCanal; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txt_nome_programa.Text = fonte.NomePrograma; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { mask_horario.Text = fonte.Horario.ToString(); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+
         }
 
         private void txt_nome_canal_TextChanged(object sender, EventArgs e)
         {
             var fonte = (CanalTv)modelo;
-            fonte.NomeCanal = txt_nome_canal.Text;
+            try { fonte.NomeCanal = txt_nome_canal.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void txt_nome_programa_TextChanged(object sender, EventArgs e)
         {
             var fonte = (CanalTv)modelo;
-            fonte.NomePrograma = txt_nome_programa.Text;
+            try { fonte.NomePrograma = txt_nome_programa.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void mask_horario_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -47,8 +52,9 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
             {
                 fonte.Horario = TimeSpan.Parse(mask_horario.Text);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
             }
         }
     }

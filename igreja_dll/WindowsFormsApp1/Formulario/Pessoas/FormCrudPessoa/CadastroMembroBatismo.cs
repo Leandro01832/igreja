@@ -13,8 +13,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         public CadastroMembroBatismo()  : base()
         {
             InitializeComponent();
-        }
-        
+        }        
 
         private void CadastroMembroBatismo_Load(object sender, EventArgs e)
         {
@@ -23,12 +22,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (modelo is Membro_Batismo)
                 {
                     var p = (Membro_Batismo)modelo;
-                try { txt_ano.Text = p.Data_batismo.ToString(); } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_ano.Text = p.Data_batismo.ToString(); }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is Membro_BatismoLgpd)
                 {
                     var p = (Membro_BatismoLgpd)modelo;
-                try { txt_ano.Text = p.Data_batismo.ToString(); } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_ano.Text = p.Data_batismo.ToString(); }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
 
             

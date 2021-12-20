@@ -389,17 +389,17 @@
     <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmTelefone.Designer.cs">
       <DependentUpon>FrmTelefone.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoas\FormCrudPessoa\DadoPessoalLgpd.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmEmail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoas\FormCrudPessoa\DadoPessoalLgpd.Designer.cs">
-      <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmEmail.Designer.cs">
+      <DependentUpon>FrmEmail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmImg.cs">
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmImagem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmImg.Designer.cs">
-      <DependentUpon>FrmImg.cs</DependentUpon>
+    <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmImagem.Designer.cs">
+      <DependentUpon>FrmImagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Formulario\Pessoas\FormCrudPessoa\FrmMinisterio.cs">
       <SubType>Form</SubType>
@@ -518,6 +518,7 @@
     </Compile>
     <Compile Include="MDISingleton.cs" />
     <Compile Include="MyUserSettings.cs" />
+    <Compile Include="OpcoesButtonBaseAttribute.cs" />
     <Compile Include="Pesquisar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -686,11 +687,11 @@
     <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmTelefone.resx">
       <DependentUpon>FrmTelefone.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\DadoPessoalLgpd.resx">
-      <DependentUpon>DadoPessoalLgpd.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmEmail.resx">
+      <DependentUpon>FrmEmail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmImg.resx">
-      <DependentUpon>FrmImg.cs</DependentUpon>
+    <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmImagem.resx">
+      <DependentUpon>FrmImagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulario\Pessoas\FormCrudPessoa\FrmMinisterio.resx">
       <DependentUpon>FrmMinisterio.cs</DependentUpon>

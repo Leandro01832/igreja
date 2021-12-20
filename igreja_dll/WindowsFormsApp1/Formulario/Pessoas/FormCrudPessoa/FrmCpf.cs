@@ -1,5 +1,4 @@
 ﻿using business.classes.Pessoas;
-using database;
 using System;
 using System.Windows.Forms;
 
@@ -45,12 +44,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                p.Nome = text_nome.Text;
+                try { p.Nome = text_nome.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                p.Nome = text_nome.Text;
+                try { p.Nome = text_nome.Text; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
 
         }
@@ -246,8 +247,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 {
                     p.Data_nascimento = Convert.ToDateTime(mask_data_nascimento.Text.ToString());
                 }
-                catch (Exception )
+                catch (Exception ex)
                 {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
                 }
             }
 
@@ -258,8 +260,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 {
                     p.Data_nascimento = Convert.ToDateTime(mask_data_nascimento.Text.ToString());
                 }
-                catch (Exception )
+                catch (Exception ex)
                 {
+                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
                 }
             }
         }

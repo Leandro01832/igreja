@@ -1,6 +1,5 @@
 ﻿using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
-using database;
 using System;
 using System.Windows.Forms;
 
@@ -31,9 +30,6 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 try { txt_reconciliacao.Text = p.Data_reconciliacao.ToString(); }
                 catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
-
-
-
 
         }
 

@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         ImprimirRelatorio ir = new ImprimirRelatorio();
 
-        public void Clicar(Form form, string function, modelocrud Modelo = null,
+        public void Clicar(Form formularioAtual, string function, modelocrud Modelo = null,
             bool detalhes = false, bool deletar = false, bool atualizar = false)
         {
             var lista = modelocrud.listTypesAll(typeof(modelocrud));
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
                             else
                             if (modelo is PessoaDado) formCadastro = new FrmCpf();
                             else
-                            if (modelo is PessoaLgpd) formCadastro = new DadoPessoalLgpd();
+                            if (modelo is PessoaLgpd) formCadastro = new FrmEmail();
                             else
                             if (modelo is Fonte) formCadastro = new FrmDadoFonte();
                             else
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
                                     }
                             }
 
-                            LoadFormCrud(modelo, detalhes, deletar, atualizar, form);
+                            LoadFormCrud(modelo, detalhes, deletar, atualizar, formularioAtual);
                             break;
                         }
                         else
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
                         if (FrmPrincipal.executar)
                         {
                             Pesquisar query = new Pesquisar(item);
-                            query.MdiParent = form;
+                            query.MdiParent = formularioAtual;
                             query.Text = "Pesquisar " + item.Name;
                             query.Show();
                         }
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
                         if (FrmPrincipal.executar)
                         {
                             FormularioListView frm = new FormularioListView(item);
-                            frm.MdiParent = form;
+                            frm.MdiParent = formularioAtual;
                             frm.Text = "Listar " + item.Name;
                             frm.Show();
                         }
@@ -141,7 +141,7 @@ namespace WindowsFormsApp1
                                     if ("Frm" + item2.Name == item3.Name)
                                     {
                                         Form = (WFCrud)Activator.CreateInstance(item3);
-                                        LoadFormCrud(Modelo, detalhes, deletar, atualizar, Form);
+                                        LoadFormCrud(Modelo, detalhes, deletar, atualizar, formularioAtual);
                                         break;
                                     }
                                 }

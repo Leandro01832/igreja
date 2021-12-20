@@ -59,7 +59,7 @@ namespace Igreja.Test
                         Numero_chamada = 0
                     },
                   //  Codigo = Pessoa.recuperarTodos().OfType<Pessoa>().OrderBy(p => p.Id).Last().Id + 1,
-                    Img = "",
+                    Imagem = "",
                     Historicos = new List<business.classes.Historico>(),
                     Ministerio = new List<business.classes.Intermediario.PessoaMinisterio>(),
                     Nome = arr[v1] + " " + arr2[v2],

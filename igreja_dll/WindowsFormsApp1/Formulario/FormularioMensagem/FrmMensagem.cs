@@ -15,14 +15,16 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         {
             
                 var m = (Mensagem)modelo;
-            try { txt_tipo.Text = m.Tipo; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            try { txt_tipo.Text = m.Tipo; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             
         }
 
         private void txt_tipo_TextChanged(object sender, EventArgs e)
         {
             var m = (Mensagem)modelo;
-            m.Tipo = txt_tipo.Text;
+            try { m.Tipo = txt_tipo.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
     }
 }

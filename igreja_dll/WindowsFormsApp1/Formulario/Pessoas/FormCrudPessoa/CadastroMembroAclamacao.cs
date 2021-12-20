@@ -24,12 +24,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo is Membro_Aclamacao)
             {
                 var p = (Membro_Aclamacao)modelo;
-                try { txt_denominacao.Text = p.Denominacao; } catch(Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_denominacao.Text = p.Denominacao; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
             if (modelo is Membro_AclamacaoLgpd)
             {
                 var p = (Membro_AclamacaoLgpd)modelo;
-                try { txt_denominacao.Text = p.Denominacao; } catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                try { txt_denominacao.Text = p.Denominacao; }
+                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
             }
 
 
@@ -42,12 +44,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (modelo is Membro_Aclamacao)
                 {
                     var p = (Membro_Aclamacao)modelo;
-                    p.Denominacao = txt_denominacao.Text;
+                    try { p.Denominacao = txt_denominacao.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is Membro_AclamacaoLgpd)
                 {
                     var p = (Membro_AclamacaoLgpd)modelo;
-                    p.Denominacao = txt_denominacao.Text;
+                    try { p.Denominacao = txt_denominacao.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
 
             }
@@ -57,12 +61,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (ModeloNovo is Membro_Aclamacao)
                 {
                     var p = (Membro_Aclamacao)ModeloNovo;
-                    p.Denominacao = txt_denominacao.Text;
+                    try { p.Denominacao = txt_denominacao.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (ModeloNovo is Membro_AclamacaoLgpd)
                 {
                     var p = (Membro_AclamacaoLgpd)ModeloNovo;
-                    p.Denominacao = txt_denominacao.Text;
+                    try { p.Denominacao = txt_denominacao.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
             }
 

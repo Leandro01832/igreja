@@ -52,7 +52,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
         private void txtNomeProduto_TextChanged(object sender, EventArgs e)
         {
             Compra a = (Compra)modelo;
-            a.NomeProduto = txtNomeProduto.Text;
+            try { a.NomeProduto = txtNomeProduto.Text; }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
     }
 }

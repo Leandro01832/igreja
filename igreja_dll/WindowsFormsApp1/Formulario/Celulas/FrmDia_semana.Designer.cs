@@ -34,7 +34,6 @@
             this.txt_nome_celula = new System.Windows.Forms.TextBox();
             this.txt_dia_semana = new System.Windows.Forms.TextBox();
             this.mask_horario = new System.Windows.Forms.MaskedTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -97,29 +96,18 @@
             this.mask_horario.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mask_horario_MaskInputRejected);
             this.mask_horario.TextChanged += new System.EventHandler(this.mask_horario_TextChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(334, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(187, 29);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Dados de celula";
-            // 
-            // DadoCelula
+            // FrmDia_semana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(804, 450);
             this.Controls.Add(this.mask_horario);
             this.Controls.Add(this.txt_dia_semana);
             this.Controls.Add(this.txt_nome_celula);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "DadoCelula";
+            this.Name = "FrmDia_semana";
             this.Load += new System.EventHandler(this.DadoCelula_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -127,7 +115,6 @@
             this.Controls.SetChildIndex(this.txt_nome_celula, 0);
             this.Controls.SetChildIndex(this.txt_dia_semana, 0);
             this.Controls.SetChildIndex(this.mask_horario, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +128,5 @@
         private System.Windows.Forms.TextBox txt_nome_celula;
         private System.Windows.Forms.TextBox txt_dia_semana;
         private System.Windows.Forms.MaskedTextBox mask_horario;
-        private System.Windows.Forms.Label label4;
     }
 }

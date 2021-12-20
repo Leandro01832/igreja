@@ -2335,11 +2335,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.iOS\\AplicativoXamarin.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.iOS\\AplicativoXamarin.iOS.csproj",
       "projectName": "AplicativoXamarin.iOS",
-      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.iOS\\AplicativoXamarin.iOS.csproj",
+      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.iOS\\AplicativoXamarin.iOS.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.iOS\\obj\\",
+      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

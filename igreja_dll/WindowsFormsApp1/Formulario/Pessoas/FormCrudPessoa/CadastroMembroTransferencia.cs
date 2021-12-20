@@ -48,12 +48,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (modelo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)modelo;
-                    p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+                    try { p.Nome_igreja_transferencia = txt_nome_igreja.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is Membro_TransferenciaLgpd)
                 {
                     var p = (Membro_TransferenciaLgpd)modelo;
-                    p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+                    try { p.Nome_igreja_transferencia = txt_nome_igreja.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
 
             }
@@ -62,12 +64,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (ModeloNovo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)ModeloNovo;
-                    p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+                    try { p.Nome_igreja_transferencia = txt_nome_igreja.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (ModeloNovo is Membro_TransferenciaLgpd)
                 {
                     var p = (Membro_TransferenciaLgpd)ModeloNovo;
-                    p.Nome_igreja_transferencia = txt_nome_igreja.Text;
+                    try { p.Nome_igreja_transferencia = txt_nome_igreja.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
             }
 
@@ -80,12 +84,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (modelo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)modelo;
-                    p.Estado_transferencia = txt_nome_estado.Text;
+                    try { p.Estado_transferencia = txt_nome_estado.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is Membro_TransferenciaLgpd)
                 {
                     var p = (Membro_TransferenciaLgpd)modelo;
-                    p.Estado_transferencia = txt_nome_estado.Text;
+                    try { p.Estado_transferencia = txt_nome_estado.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
 
             }
@@ -94,12 +100,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (ModeloNovo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)ModeloNovo;
-                    p.Estado_transferencia = txt_nome_estado.Text;
+                    try { p.Estado_transferencia = txt_nome_estado.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (ModeloNovo is Membro_TransferenciaLgpd)
                 {
                     var p = (Membro_TransferenciaLgpd)ModeloNovo;
-                    p.Estado_transferencia = txt_nome_estado.Text;
+                    try { p.Estado_transferencia = txt_nome_estado.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
             }
         }
@@ -111,12 +119,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (modelo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)modelo;
-                    p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+                    try { p.Nome_cidade_transferencia = txt_nome_cidade.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is Membro_TransferenciaLgpd)
                 {
                     var p = (Membro_TransferenciaLgpd)modelo;
-                    p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+                    try { p.Nome_cidade_transferencia = txt_nome_cidade.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
 
             }
@@ -125,12 +135,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 if (ModeloNovo is Membro_Transferencia)
                 {
                     var p = (Membro_Transferencia)ModeloNovo;
-                    p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+                    try { p.Nome_cidade_transferencia = txt_nome_cidade.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
                 if (ModeloNovo is Membro_TransferenciaLgpd)
                 {
                     var p = (Membro_TransferenciaLgpd)ModeloNovo;
-                    p.Nome_cidade_transferencia = txt_nome_cidade.Text;
+                    try { p.Nome_cidade_transferencia = txt_nome_cidade.Text; }
+                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
                 }
             }
 

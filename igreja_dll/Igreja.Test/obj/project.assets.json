@@ -4812,11 +4812,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
+      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
       "projectName": "Igreja.Test",
-      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
+      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\Igreja.Test\\Igreja.Test.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\Igreja.Test\\obj\\",
+      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\Igreja.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4835,8 +4835,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\business\\business.csproj": {
-              "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\business\\business.csproj"
+            "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\business\\business.csproj": {
+              "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\business\\business.csproj"
             }
           }
         }

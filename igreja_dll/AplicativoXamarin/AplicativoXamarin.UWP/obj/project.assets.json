@@ -21793,11 +21793,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.UWP\\AplicativoXamarin.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.UWP\\AplicativoXamarin.UWP.csproj",
       "projectName": "AplicativoXamarin.UWP",
-      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.UWP\\AplicativoXamarin.UWP.csproj",
+      "projectPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.UWP\\AplicativoXamarin.UWP.csproj",
       "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.UWP\\obj\\",
+      "outputPath": "C:\\Users\\leand\\Documents\\copiaIgreja2\\igreja\\igreja_dll\\AplicativoXamarin\\AplicativoXamarin.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
