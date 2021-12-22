@@ -1,4 +1,4 @@
-﻿using database;
+﻿using business.classes.Pessoas;
 using System;
 using System.Windows.Forms;
 
@@ -15,13 +15,17 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             this.Text = "Contatos.";
 
-            var p = (business.classes.Pessoas.PessoaDado)modelo;
+            PessoaDado p = null;
+            if (modelo != null)
+                p = (PessoaDado)modelo;
+            else
+                p = (PessoaDado)ModeloNovo;
             try { mask_tel1.Text = p.Telefone.Fone; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { mask_tel2.Text = p.Telefone.Celular; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { mask_tel3.Text = p.Telefone.Whatsapp; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
 
 
         }
@@ -30,15 +34,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Telefone.Fone = mask_tel1.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Telefone.Fone = mask_tel1.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
         }
@@ -47,15 +51,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Telefone.Celular = mask_tel2.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Telefone.Celular = mask_tel2.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -63,15 +67,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Telefone.Whatsapp = mask_tel3.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Telefone.Whatsapp = mask_tel3.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
     }

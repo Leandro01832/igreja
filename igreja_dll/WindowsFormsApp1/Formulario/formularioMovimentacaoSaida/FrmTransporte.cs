@@ -44,12 +44,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoSaida
         private void txtValor_TextChanged(object sender, EventArgs e)
         {
             Transporte a = (Transporte)modelo;
-            try
-            {
-                a.Valor = decimal.Parse(txtValor.Text);
-                a.Valor = decimal.Parse(a.Valor.ToString("F2"));
-            }
-            catch { MessageBox.Show("digite numeros"); txtValor.Text = ""; }
+            try { a.Validar(txtValor.Text, "Valor"); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void radioDiesel_CheckedChanged(object sender, EventArgs e)

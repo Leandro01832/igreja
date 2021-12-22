@@ -653,7 +653,6 @@ C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\bin\Deb
 C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\bin\Debug\EntityFramework.xml
 C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
-C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProgressBar.resources
 C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormProgressBar2.resources
 C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.ListCelula.resources
 C:\Users\leand\Documents\copiaIgreja2\igreja\igreja_dll\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Formulario.Celulas.FrmDia_semana.resources

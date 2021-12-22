@@ -23,14 +23,16 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             lstBoxPessoa.DataSource = modelocrud.Modelos.OfType<Pessoa>().OrderBy(m => m.Id).ToList();
             if(modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0)            
                 lstBoxPessoa.SetSelected(0, false);
-            
 
-            var p = (Ministerio)modelo;
-            
+            Ministerio p = null;
+            if (modelo != null)
+                p = (Ministerio)modelo;
+            else
+                p = (Ministerio)ModeloNovo;            
             try { txt_nome_ministerio.Text = p.Nome; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { txt_proposito.Text = p.Proposito; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try
             {
                 if (p.Ministro_ != null)
@@ -41,7 +43,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 else
                     ckBoxNulo.Checked = true;
             }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
 
             condicao = true;
         }
@@ -55,7 +57,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
             }
 
         }
@@ -69,7 +71,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
             }
         }
 

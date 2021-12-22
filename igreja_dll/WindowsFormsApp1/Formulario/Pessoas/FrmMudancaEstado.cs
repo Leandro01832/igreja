@@ -73,45 +73,80 @@ namespace WindowsFormsApp1.Formulario.Pessoas
             {
                 if (ModeloNovo is Crianca || ModeloNovo is CriancaLgpd)
                 {
-                    CadastroCrianca frm = new CadastroCrianca();
-                    frm.MdiParent = this.MdiParent;
-                    frm.Show();
+                    crudForm.Form = new CadastroCrianca();
+                    crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.LoadCrudForm();
+                    crudForm.Form.CondicaoAtualizar = false;
+                    crudForm.Form.CondicaoDeletar = false;
+                    crudForm.Form.CondicaoDetalhes = false;
+                    crudForm.Form.Show();
                 }
                 if (ModeloNovo is Visitante || ModeloNovo is VisitanteLgpd)
                 {
                     crudForm.Form = new CadastroVisitante();
+                    crudForm.Form.ModeloNovo = ModeloNovo;
                     crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.LoadCrudForm();
+                    crudForm.Form.CondicaoAtualizar = false;
+                    crudForm.Form.CondicaoDeletar = false;
+                    crudForm.Form.CondicaoDetalhes = false;
                     crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Aclamacao || ModeloNovo is Membro_AclamacaoLgpd)
                 {
                     crudForm.Form = new CadastroMembroAclamacao();
+                    crudForm.Form.ModeloNovo = ModeloNovo;
                     crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.LoadCrudForm();
+                    crudForm.Form.CondicaoAtualizar = false;
+                    crudForm.Form.CondicaoDeletar = false;
+                    crudForm.Form.CondicaoDetalhes = false;
                     crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Batismo || ModeloNovo is Membro_BatismoLgpd)
                 {
                     crudForm.Form = new CadastroMembroBatismo();
+                    crudForm.Form.ModeloNovo = ModeloNovo;
                     crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.LoadCrudForm();
+                    crudForm.Form.CondicaoAtualizar = false;
+                    crudForm.Form.CondicaoDeletar = false;
+                    crudForm.Form.CondicaoDetalhes = false;
                     crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Reconciliacao || ModeloNovo is Membro_ReconciliacaoLgpd)
                 {
                     crudForm.Form = new CadastroMembroReconciliacao();
+                    crudForm.Form.ModeloNovo = ModeloNovo;
                     crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.LoadCrudForm();
+                    crudForm.Form.CondicaoAtualizar = false;
+                    crudForm.Form.CondicaoDeletar = false;
+                    crudForm.Form.CondicaoDetalhes = false;
                     crudForm.Form.Show();
                 }
                 if (ModeloNovo is Membro_Transferencia || ModeloNovo is Membro_TransferenciaLgpd)
                 {
                     crudForm.Form = new CadastroMembroTransferencia();
+                    crudForm.Form.ModeloNovo = ModeloNovo;
                     crudForm.Form.MdiParent = this.MdiParent;
+                    crudForm.Form.LoadCrudForm();
+                    crudForm.Form.CondicaoAtualizar = false;
+                    crudForm.Form.CondicaoDeletar = false;
+                    crudForm.Form.CondicaoDetalhes = false;
                     crudForm.Form.Show();
                 } 
             }
             else
             {
                 crudForm.Form = new FrmCpf();
+                crudForm.Form.ModeloNovo = ModeloNovo;
                 crudForm.Form.MdiParent = this.MdiParent;
+                crudForm.Form.LoadCrudForm();
+                crudForm.Form.CondicaoAtualizar = false;
+                crudForm.Form.CondicaoDeletar = false;
+                crudForm.Form.CondicaoDetalhes = false;
                 crudForm.Form.Show();
             }
         }

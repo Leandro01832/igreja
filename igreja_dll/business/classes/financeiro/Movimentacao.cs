@@ -1,9 +1,7 @@
 ﻿using database;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
-using System.Threading.Tasks;
 
 namespace business.classes.financeiro
 {
@@ -19,13 +17,23 @@ namespace business.classes.financeiro
 
         public static int UltimoRegistro;
 
+        [OpcoesBase(Obrigatorio =true)]
         public decimal Valor
         {            
             get {
+
+                if (valor == 0)
+                    throw new Exception("Valor");
+
                 string texto = valor.ToString("N", CultureInfo.CreateSpecificCulture("en-US"));
                 return decimal.Parse(texto, CultureInfo.CreateSpecificCulture("en-US"));
             }
-            set { valor = value; }
+            set
+            {
+                valor = value;
+                if (valor == 0)
+                    throw new Exception("Valor");
+            }
         }
         public DateTime Data { get; set; }
 

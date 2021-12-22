@@ -1,16 +1,8 @@
 ﻿using business.classes.Abstrato;
-using business.classes.Pessoas;
-using database;
 using database.banco;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
@@ -26,8 +18,12 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
         {
             this.Text = "Foto da pessoa";
             this.Proximo.Location = new Point(900, 150);
-            var p = (Pessoa)modelo;
 
+            Pessoa p = null;
+            if (modelo != null)
+                p = (Pessoa)modelo;
+            else
+                p = (Pessoa)ModeloNovo;
             this.Atualizar.Location = new Point(900, 250);
             this.Deletar.Location = new Point(900, 350);
 

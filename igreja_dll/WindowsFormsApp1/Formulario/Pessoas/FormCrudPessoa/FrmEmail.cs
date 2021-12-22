@@ -13,9 +13,13 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void DadoPessoalLgpd_Load(object sender, EventArgs e)
         {
-            var pessoa = (PessoaLgpd)modelo;
-            try { txt_email.Text = pessoa.Email; } catch (Exception ex)
-            { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            PessoaLgpd p = null;
+            if (modelo != null)
+                p = (PessoaLgpd)modelo;
+            else
+                p = (PessoaLgpd)ModeloNovo;
+            try { txt_email.Text = p.Email; } catch (Exception ex)
+            { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
 
 
         }
@@ -24,7 +28,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
         {
             var pessoa = (PessoaLgpd)modelo;
             try { pessoa.Email = txt_email.Text; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
         }
     }
 }

@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            FormProgressBar frm = new FormProgressBar();
+            FormProgressBar2 frm = new FormProgressBar2();
             try
             {
                 if (BDcomum.TestarConexao())
@@ -232,6 +232,8 @@ namespace WindowsFormsApp1
 
             if (this is FrmPessoas)
                 crudForm.Form = new FrmReuniao();
+
+            if (ModeloNovo != null) crudForm.Form.ModeloNovo = ModeloNovo;
 
             LoadForm();
 

@@ -1,4 +1,5 @@
-﻿@model business.EmailPessoa
+﻿@using Microsoft.AspNet.Identity
+@model business.EmailPessoa
 @{
     ViewBag.Title = "Home Page";
 }
@@ -12,6 +13,10 @@
         </p>
         <div style="margin:auto;">
             <img src="http://www.clickfamilia.org.br/oikos2015/wp-content/uploads/2019/07/what-is-family-ministry-lead-300x225.jpg" />
+            <p>
+                Até os jovens se cansam e ficam exaustos, e os moços tropeçam e caem; mas aqueles que esperam no Senhor renovam as suas forças.
+                Voam alto como águias; correm e não ficam exaustos, andam e não se cansam. Isaías 40: 30-31.
+            </p>
         </div>
 
         <div class="jumbotron text-center">
@@ -64,19 +69,20 @@
             <input asp-for="MensagemId" type="hidden" />
 
             <div class="form-group">
-                <label asp-for="Assunto" class="control-label"></label>
-                <input asp-for="Assunto" class="form-control" />
+                <label id="AssuntoLabel" name="AssuntoLabel" class="control-label">Assunto:</label>
+                <input id="Assunto" name="Assunto" class="form-control" />
                 <span asp-validation-for="Assunto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
+                <label id="BodyLabel" name="BodyLabel" class="control-label">Texto:</label>
                 <script type="text/javascript">Editar();</script>
-                <textarea asp-for="Body" class="form-control">@Model.Body</textarea>
+                <textarea id="Body" name="Body" class="form-control">@Model.Body</textarea>
                 <span asp-validation-for="Body" class="text-danger"></span>
             </div>
 
             @{
-                if (User.Identity.Name == null)
+
+                if (!Request.IsAuthenticated)
                 {
                     <div class="form-group">
                         <h3>Faça autenticação para enviar o e-mail</h3>
@@ -85,7 +91,7 @@
                 else
                 {
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Enviar" class="btn btn-primary" />
                     </div>
                 }
             }

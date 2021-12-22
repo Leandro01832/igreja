@@ -41,12 +41,12 @@ namespace business.implementacao
                 }
 
                 var propertiesDeclaring = tipo.GetProperties().Where(e => e.ReflectedType == e.DeclaringType).ToList();
-
+                
                 if (Model.conexao == null)
                     Model.conexao = Model.bd.obterconexao(Model.stringConexao);
 
                 if (Model.conexao.State == ConnectionState.Closed)
-                    Model.conexao = Model.bd.obterconexao(Model.stringConexao);
+                    Model.conexao = Model.bd.obterconexao(Model.stringConexao);               
 
                 SqlCommand comando = new SqlCommand(Model.Select_padrao, Model.conexao);
                 try
@@ -80,7 +80,6 @@ namespace business.implementacao
                         {
                             if (property.PropertyType.Name == "List`1" && !Model.executando)
                             {
-                                Model.executando = true;
                                 Type itemType = property.PropertyType.GetGenericArguments()[0];
                                 var lista = Activator.CreateInstance(property.PropertyType);
 
@@ -123,9 +122,7 @@ namespace business.implementacao
                                         buscarLista(lista, itemType, dr2);
                                     dr2.Close();
                                     property.SetValue(Model, lista);
-                                }
-
-                                Model.executando = false;
+                                }                                
                             }
                         }
                     }
@@ -181,6 +178,8 @@ namespace business.implementacao
                                     object objeto = Activator.CreateInstance(item);
                                     model = (modelocrud)objeto;
                                     model.Id = (int)valor;
+                                    model.stringConexao = BDcomum.conecta1;
+                                    model.executando = true;
                                     condicao = model.recuperar((int)valor);
                                     if (condicao)
                                         break;
@@ -190,6 +189,8 @@ namespace business.implementacao
                                     object objeto = Activator.CreateInstance(prop.PropertyType);
                                     model = (modelocrud)objeto;
                                     model.Id = (int)valor;
+                                    model.stringConexao = BDcomum.conecta1;
+                                    model.executando = true;
                                     model.recuperar((int)valor);
                                 }
                             }
@@ -385,6 +386,8 @@ namespace business.implementacao
                     object objeto = Activator.CreateInstance(item.PropertyType);
                     modelocrud modelo = (modelocrud)objeto;
                     modelo.Id = id;
+                    modelo.stringConexao = BDcomum.conecta1;
+                    modelo.executando = true;
                     if (modelo.GetType().GetProperties()
                     .Where(p => p.ReflectedType == p.DeclaringType && p.Name == "Id").ToList().Count == 1)
                     {
@@ -728,6 +731,8 @@ namespace business.implementacao
                 else
                     mod = (modelocrud)Activator.CreateInstance(itemType);
                 mod.Id = num;
+                mod.executando = true;
+                mod.stringConexao = BDcomum.conecta1;
                 if (mod.recuperar(mod.Id))
                     collection.Add(mod);
             }

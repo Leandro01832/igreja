@@ -1,4 +1,5 @@
-﻿using business.classes.Abstrato;
+﻿using business.classes;
+using business.classes.Abstrato;
 using business.classes.Celulas;
 using business.classes.financeiro;
 using business.classes.Intermediario;
@@ -21,6 +22,83 @@ namespace Tests
         private static int loop = 2;
 
         static void Main(string[] args)
+        {
+             //     TestarCrud();
+            //     ExibirDados();
+           // TestarValidacoes();
+
+            Console.WriteLine("ok");
+            Console.Read();
+        }
+
+        private static void TestarValidacoes()
+        {
+            Visitante visitante = new Visitante();
+            visitante.Validar("13/12/1991", "Data_nascimento");
+            Console.WriteLine(visitante.Data_nascimento.ToString());
+
+            Reuniao reuniao = new Reuniao();
+            reuniao.Validar("10:30", "Horario_inicio");
+            Console.WriteLine(reuniao.Horario_inicio.ToString());
+
+            Oferta oferta = new Oferta();
+            oferta.Validar("1.350,00", "Valor");
+            Console.WriteLine(oferta.Valor.ToString());
+
+            Oferta oferta2 = new Oferta();
+            oferta.Validar("100,50", "Valor");
+            Console.WriteLine(oferta2.Valor.ToString());
+
+            Oferta oferta3 = new Oferta();
+            oferta.Validar("11350,00", "Valor");
+            Console.WriteLine(oferta3.Valor.ToString());
+
+            Oferta oferta4 = new Oferta();
+            try
+            {
+                oferta4.Validar("leo", "Valor");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(oferta4.exibirMensagemErro(ex, 2));
+            }
+            try
+            {
+                Console.WriteLine(oferta4.Valor.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(oferta4.exibirMensagemErro(ex, 2));
+            }
+        }
+        private static void ExibirDados()
+        {
+            var lista = modelocrud.listTypesSon(typeof(modelocrud));
+
+            foreach (var item in lista)
+                foreach (var item2 in item.GetProperties())
+                    if (item2.PropertyType == typeof(DateTime) || item2.PropertyType == typeof(DateTime?))
+                    {
+                        Console.WriteLine("------------------------ || Dados de data || -------------------------------");
+                        Console.WriteLine(item2.Name);
+                        Console.WriteLine(item2.ReflectedType.Name);
+                    }
+                    else
+                    if (item2.PropertyType == typeof(TimeSpan) || item2.PropertyType == typeof(TimeSpan?))
+                    {
+                        Console.WriteLine("------------------------ || Dados de hora || -------------------------------");
+                        Console.WriteLine(item2.Name);
+                        Console.WriteLine(item2.ReflectedType.Name);
+                    }
+                    else
+                    if (item2.PropertyType == typeof(decimal) || item2.PropertyType == typeof(decimal?))
+                    {
+                        Console.WriteLine("------------------------ || Dados monetários || -------------------------------");
+                        Console.WriteLine(item2.Name);
+                        Console.WriteLine(item2.ReflectedType.Name);
+                    }
+        }
+        private static void TestarCrud()
         {
             arr[0] = "Paulo"; arr[10] = "Sandra"; arr[20] = "Sebastião"; arr[30] = "Thais"; arr[40] = "Adriana";
             arr[1] = "Jorge"; arr[11] = "Jaco"; arr[21] = "Lucas"; arr[31] = "Pamela"; arr[41] = "Adriano";
@@ -337,14 +415,7 @@ namespace Tests
                 Console.WriteLine("Dados apagados com sucesso");
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
-
-
-            Console.WriteLine("ok");
-
-            Console.Read();
         }
-
-
     }
 
 }

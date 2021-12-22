@@ -46,14 +46,7 @@ namespace WindowsFormsApp1.Formulario.Celulas
         private void mask_horario_TextChanged(object sender, EventArgs e)
         {
             var c = (Celula)modelo;
-            try
-            {
-                c.Horario = TimeSpan.Parse(mask_horario.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
-            }
+            c.Validar(mask_horario.Text, "Horario");
         }
     }
 }

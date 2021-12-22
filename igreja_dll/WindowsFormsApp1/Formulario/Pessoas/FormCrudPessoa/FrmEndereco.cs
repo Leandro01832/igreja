@@ -1,4 +1,5 @@
-﻿using database;
+﻿using business.classes.Pessoas;
+using database;
 using System;
 using System.Windows.Forms;
 
@@ -15,24 +16,27 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         private void Endereco_Load(object sender, EventArgs e)
         {
             this.Text = "Endereço da pessoa.";
-
-            var p = (business.classes.Pessoas.PessoaDado)modelo;
+            PessoaDado p = null;
+            if (modelo != null)
+                p = (PessoaDado)modelo;
+            else
+                p = (PessoaDado)ModeloNovo;
             try { textpais.Text = p.Endereco.Pais; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_cep.Text = p.Endereco.Cep.ToString(); }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_estado.Text = p.Endereco.Estado; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_cidade.Text = p.Endereco.Cidade; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_bairro.Text = p.Endereco.Bairro; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_rua.Text = p.Endereco.Rua; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_complemento.Text = p.Endereco.Complemento; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_numero.Text = p.Endereco.Numero_casa.ToString(); }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
 
         }
 
@@ -40,15 +44,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Endereco.Pais = textpais.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Endereco.Pais = textpais.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
         }
@@ -59,9 +63,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             {
                 try
                 {
-                    var p = (business.classes.Pessoas.PessoaDado)modelo;
+                    var p = (PessoaDado)modelo;
                     try { p.Endereco.Cep = long.Parse(text_cep.Text); }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
                 catch (Exception)
                 {
@@ -73,9 +77,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             {
                 try
                 {
-                    var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                    var p = (PessoaDado)ModeloNovo;
                     try { p.Endereco.Cep = long.Parse(text_cep.Text); }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
                 catch (Exception)
                 {
@@ -89,15 +93,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Endereco.Estado = text_estado.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Endereco.Estado = text_estado.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -105,15 +109,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Endereco.Cidade = text_cidade.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Endereco.Cidade = text_cidade.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -121,15 +125,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Endereco.Bairro = text_bairro.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Endereco.Bairro = text_bairro.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -137,15 +141,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Endereco.Rua = text_rua.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Endereco.Rua = text_rua.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -153,15 +157,15 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try { p.Endereco.Complemento = text_complemento.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try { p.Endereco.Complemento = text_complemento.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
         }
 
@@ -169,7 +173,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         {
             if (modelo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)modelo;
+                var p = (PessoaDado)modelo;
                 try
                 {
                     p.Endereco.Numero_casa = int.Parse(text_numero.Text);
@@ -181,7 +185,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             }
             if (ModeloNovo != null)
             {
-                var p = (business.classes.Pessoas.PessoaDado)ModeloNovo;
+                var p = (PessoaDado)ModeloNovo;
                 try
                 {
                     p.Endereco.Numero_casa = int.Parse(text_numero.Text);

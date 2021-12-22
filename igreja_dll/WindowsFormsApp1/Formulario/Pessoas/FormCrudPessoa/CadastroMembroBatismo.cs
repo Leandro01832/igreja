@@ -6,33 +6,41 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
 {
-    public partial class CadastroMembroBatismo :  WFCrud
+    public partial class CadastroMembroBatismo : WFCrud
     {
 
 
-        public CadastroMembroBatismo()  : base()
+        public CadastroMembroBatismo() : base()
         {
             InitializeComponent();
-        }        
+        }
 
         private void CadastroMembroBatismo_Load(object sender, EventArgs e)
         {
             this.Text = "Cadastro de membro por batismo.";
-            
-                if (modelo is Membro_Batismo)
-                {
-                    var p = (Membro_Batismo)modelo;
+
+            if (modelo is Membro_Batismo)
+            {
+                Membro_Batismo p = null;
+                if (modelo != null)
+                    p = (Membro_Batismo)modelo;
+                else
+                    p = (Membro_Batismo)ModeloNovo;
                 try { txt_ano.Text = p.Data_batismo.ToString(); }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
-                }
-                if (modelo is Membro_BatismoLgpd)
-                {
-                    var p = (Membro_BatismoLgpd)modelo;
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
+            }
+            if (modelo is Membro_BatismoLgpd)
+            {
+                Membro_BatismoLgpd p = null;
+                if (modelo != null)
+                    p = (Membro_BatismoLgpd)modelo;
+                else
+                    p = (Membro_BatismoLgpd)ModeloNovo;
                 try { txt_ano.Text = p.Data_batismo.ToString(); }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
-            
+
         }
 
         private void txt_ano_TextChanged(object sender, EventArgs e)

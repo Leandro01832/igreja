@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace database
 {
-    public abstract class modelocrud : IPesquisar, IEntity<modelocrud>
+    public abstract class modelocrud : IPesquisar, IEntity<modelocrud> , IValidate
     {
         public modelocrud()
         {
@@ -24,6 +24,7 @@ namespace database
             Erro_Conexao = false;
             this.T = GetType();
             property = new PropertiesCrud(this);
+            Validate = new Validate(this);
         }
 
         [OpcoesBase(ChavePrimaria = true, Obrigatorio = true)]
@@ -33,6 +34,7 @@ namespace database
 
         static Calculo calculo = new Calculo();
         PropertiesCrud property;
+        Validate Validate;
         static Query pesquisar = new Query();
         static Entity entity = new Entity();
         public BDcomum bd;
@@ -54,6 +56,18 @@ namespace database
         public static Pessoa pessoa;
         public static bool ativarAutenticacao;
         public bool anular = true;
+
+        public void Validar(string valor, string name)
+        {
+            try
+            {
+                Validate.Validar(valor, name);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public static Type ReturnBase(Type type)
         {
@@ -246,6 +260,8 @@ namespace database
             {
                 var model = (modelocrud)Activator.CreateInstance(item);
                 model.Id = num;
+                model.executando = true;
+                model.stringConexao = BDcomum.conecta1;
                 if (model.recuperar(num))
                     return model;
             }
@@ -722,7 +738,7 @@ namespace database
         public static void calcularPorcentagem()
         {
             calculo.CalcularPorcentagem();
-        }
+        }        
         #endregion
     }
 }

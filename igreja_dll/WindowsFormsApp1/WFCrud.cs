@@ -19,99 +19,62 @@ namespace WindowsFormsApp1
     public partial class WFCrud : Form, IFormCrud
     {
         public MdiForm crudForm;
-
-        private Label infoForm;
-
-        // botões para crud
-        private Button proximo;
-        private Button deletar;
-        private Button atualizar;
-        private Button finalizarCadastro;
-
-
-        // botões para select: PESSOA
-        private Button dadoPessoal;
-        private Button dadoPessoalLgpd;
-        private Button dadoFoto;
-        private Button dadoEnderecoPessoa;
-        private Button dadoContato;
-        private Button dadoClasse;
-        private Button dadoMinisteriosPessoa;
-
-        //botões para select: CELULA
-        private Button dadoCelula;
-        private Button dadoEnderecoCelula;
-        private Button dadoCelulaMinisterio;
-        private Button dadoCelulaPessoas;
-
-        //botões para select: MINISTERIO
-        private Button dadoMinisterio;
-        private Button dadoMinisterioPessoas;
-        private Button dadoMinistro;
-
-        //botoes para select: Reuniao
-        private Button dadoReuniao;
-        private Button dadoReuniaoPessoas;
-
         public modelocrud modelo { get; set; }
-        private modelocrud modeloVelho;
-        private modelocrud modeloNovo;
-        public bool CondicaoDeletar { get => condicaoDeletar; set => condicaoDeletar = value; }
-        public bool CondicaoAtualizar { get => condicaoAtualizar; set => condicaoAtualizar = value; }
-        public bool CondicaoDetalhes { get => condicaoDetalhes; set => condicaoDetalhes = value; }
+        public modelocrud modeloErro { get; set; }
+        public modelocrud ModeloNovo { get; set; }
+        public modelocrud ModeloVelho { get; set; }
+        public bool CondicaoDeletar { get; set; }
+        public bool CondicaoAtualizar { get; set; }
+        public bool CondicaoDetalhes { get; set; }
 
         List<Button> botaoSelecionarPessoa = new List<Button>();
         List<Button> botaoSelecionarCelula = new List<Button>();
         List<Button> botaoSelecionarReuniao = new List<Button>();
         List<Button> botaoSelecionarMinisterio = new List<Button>();
 
-        public modelocrud ModeloNovo { get => modeloNovo; set => modeloNovo = value; }
-        public modelocrud ModeloVelho { get => modeloVelho; set => modeloVelho = value; }
         [OpcoesButtonBase(Tipo = "*", Formatar = true)]
-        public Button Proximo { get => proximo; set => proximo = value; }
+        public Button FazerMudanca { get; set; }
         [OpcoesButtonBase(Tipo = "*", Formatar = true)]
-        public Button Atualizar { get => atualizar; set => atualizar = value; }
+        public Button Proximo { get; set; }
         [OpcoesButtonBase(Tipo = "*", Formatar = true)]
-        public Button FinalizarCadastro { get => finalizarCadastro; set => finalizarCadastro = value; }
+        public Button Atualizar { get; set; }
         [OpcoesButtonBase(Tipo = "*", Formatar = true)]
-        public Button Deletar { get => deletar; set => deletar = value; }
+        public Button FinalizarCadastro { get; set; }
+        [OpcoesButtonBase(Tipo = "*", Formatar = true)]
+        public Button Deletar { get; set; }
         [OpcoesButtonBase(Tipo = "Pessoa", Dados = true)]
-        public Button PessoaFrmCpfSelecionar { get => dadoPessoal; set => dadoPessoal = value; }
+        public Button PessoaFrmCpfSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Pessoa", Dados = true)]
-        public Button PessoaFrmEmailSelecionar { get => dadoPessoalLgpd; set => dadoPessoalLgpd = value; }
+        public Button PessoaFrmEmailSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Pessoa", Formatar = true)]
-        public Button PessoaFrmImagemSelecionar { get => dadoFoto; set => dadoFoto = value; }
+        public Button PessoaFrmImagemSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Pessoa", Formatar = true)]
-        public Button PessoaFrmEnderecoSelecionar { get => dadoEnderecoPessoa; set => dadoEnderecoPessoa = value; }
+        public Button PessoaFrmEnderecoSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Pessoa", Formatar = true)]
-        public Button PessoaFrmTelefoneSelecionar { get => dadoContato; set => dadoContato = value; }
+        public Button PessoaFrmTelefoneSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Pessoa", Formatar = true)]
-        public Button PessoaFrmMinisterioSelecionar { get => dadoMinisteriosPessoa; set => dadoMinisteriosPessoa = value; }
+        public Button PessoaFrmMinisterioSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Celula", Formatar = true)]
-        public Button CelulaFrmEnderecoCelulaSelecionar { get => dadoEnderecoCelula; set => dadoEnderecoCelula = value; }
+        public Button CelulaFrmEnderecoCelulaSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Celula")]
-        public Button CelulaFrmDia_semanaSelecionar { get => dadoCelulaMinisterio; set => dadoCelulaMinisterio = value; }
+        public Button CelulaFrmDia_semanaSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Celula", Formatar = true)]
-        public Button CelulaFrmMinisteriosSelecionar { get => dadoCelulaPessoas; set => dadoCelulaPessoas = value; }
+        public Button CelulaFrmMinisteriosSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Celula", Dados = true)]
-        public Button DadoCelulaSelecionar { get => dadoCelula; set => dadoCelula = value; }
+        public Button DadoCelulaSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Ministerio", Formatar = true)]
-        public Button MinisterioFrmPessoaSelecionar { get => dadoMinisterioPessoas; set => dadoMinisterioPessoas = value; }
+        public Button MinisterioFrmPessoaSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Ministerio")]
-        public Button MinisterioFrmNomeSelecionar { get => dadoMinistro; set => dadoMinistro = value; }
+        public Button MinisterioFrmNomeSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Ministerio", Dados = true)]
-        public Button DadoMinisterioSelecionar { get => dadoMinisterio; set => dadoMinisterio = value; }
+        public Button DadoMinisterioSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Reuniao", Dados = true)]
-        public Button ReuniaoFrmLocal_reuniaoSelecionar { get => dadoReuniao; set => dadoReuniao = value; }
+        public Button ReuniaoFrmLocal_reuniaoSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Reuniao", Formatar = true)]
-        public Button ReuniaoFrmPessoasSelecionar { get => dadoReuniaoPessoas; set => dadoReuniaoPessoas = value; }
+        public Button ReuniaoFrmPessoasSelecionar { get; set; }
         [OpcoesButtonBase(Tipo = "Classe", Dados = true)]
-        public Button DadoClasse { get => dadoClasse; set => dadoClasse = value; }
-        public Label InfoForm { get => infoForm; set => infoForm = value; }
-
-        private bool condicaoDeletar;
-        private bool condicaoAtualizar;
-        private bool condicaoDetalhes;
+        public Button DadoClasse { get; set; }
+        public Label InfoForm { get; set; }        
 
         Point ultimoBotaoRenderizado;
         int indice = 0;
@@ -199,18 +162,35 @@ namespace WindowsFormsApp1
             Deletar.Click += Deletar_Click;
             Atualizar.Click += Atualizar_Click;
             FinalizarCadastro.Click += FinalizarCadastro_Click;
+            FazerMudanca.Click += FazerMudanca_Click;
 
             CelulaFrmDia_semanaSelecionar.Text = "Ministérios da celula";
             MinisterioFrmNomeSelecionar.Text = "Ministro do ministério";
 
             DadoClasse.Location = new Point(350, 270);
             Proximo.Location = new Point(650, 150);
+            FazerMudanca.Location = new Point(650, 150);
             Deletar.Location = new Point(650, 250);
             Atualizar.Location = new Point(650, 350);
             FinalizarCadastro.Location = new Point(650, 250);
 
             InfoForm.Visible = false;
             this.Controls.Add(InfoForm);
+        }
+
+        private void FazerMudanca_Click(object sender, EventArgs e)
+        {
+            if(ModeloNovo is Pessoa)
+            {
+                Pessoa p = (Pessoa)ModeloNovo;
+                p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+            }
+
+            if (ModeloNovo is Ministerio)
+            {
+                Ministerio p = (Ministerio)ModeloNovo;
+                p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+            }
         }
 
         private void SetarLocation(Button select)
@@ -247,6 +227,7 @@ namespace WindowsFormsApp1
                 model.Id = modelo.Id;
                 model.Select_padrao = $"select * from {model.GetType().Name} as C where C.Id='{modelo.Id}'";
                 model.Delete_padrao = $" delete from {model.GetType().Name} where Id='{modelo.Id}' ";
+                model.stringConexao = BDcomum.conecta1;
                 if (model.recuperar(modelo.Id)) pes = model;
 
                 modelocrud.Modelos.Remove(modelocrud.Modelos.Where(m => m.GetType() == modelo.GetType())
@@ -292,14 +273,22 @@ namespace WindowsFormsApp1
         {
             FrmPrincipal.LoadForm(this);
 
-            if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes && modelo.anular)
+            if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes && modelo != null && modelo.anular)
             {
                 modelocrud.anularDados(modelo);
                 modelo.anular = false;
                 modelo.stringConexao = BDcomum.conecta1;
             }
 
+            if (!CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes && ModeloNovo != null && ModeloNovo.anular)
+            {
+                modelocrud.anularDados(ModeloNovo);
+                ModeloNovo.anular = false;
+                ModeloNovo.stringConexao = BDcomum.conecta1;
+            }
 
+            if (modelo == null) modeloErro = ModeloNovo;
+            else modeloErro = modelo;
 
             if (CondicaoAtualizar || CondicaoDeletar || CondicaoDetalhes)
             {
@@ -328,12 +317,13 @@ namespace WindowsFormsApp1
                     " - " + modelo.GetType().Name;
             }
 
-            if (modelo is Pessoa && this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa)
+            if (modelo is Pessoa && this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa ||
+                ModeloNovo is Pessoa && this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa)
             {
                 DadoClasse.Visible = true;
                 PessoaFrmMinisterioSelecionar.Visible = true;
                 PessoaFrmImagemSelecionar.Visible = true;
-                if (modelo is PessoaDado)
+                if ( modelo is PessoaDado || ModeloNovo is PessoaDado)
                 {
                     PessoaFrmEnderecoSelecionar.Visible = true;
                     PessoaFrmTelefoneSelecionar.Visible = true;
@@ -341,14 +331,15 @@ namespace WindowsFormsApp1
                     PessoaFrmEmailSelecionar.Visible = false;
                 }
                 else
-                if (modelo is PessoaLgpd)
+                if ( modelo is PessoaLgpd || ModeloNovo is PessoaLgpd)
                 {
                     PessoaFrmCpfSelecionar.Visible = false;
                     PessoaFrmEmailSelecionar.Visible = true;
                 }
             }
 
-            if (modelo is Ministerio && this is Formulario.FormularioMinisterio.FrmMinisterio)
+            if ( modelo is Ministerio && this is Formulario.FormularioMinisterio.FrmMinisterio ||
+                ModeloNovo is Ministerio && this is Formulario.FormularioMinisterio.FrmMinisterio)
             {
                 DadoMinisterioSelecionar.Visible = true;
                 MinisterioFrmPessoaSelecionar.Visible = true;
@@ -379,20 +370,23 @@ namespace WindowsFormsApp1
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
                 this is Formulario.Pessoas.FormCrudPessoa.FrmPessoa ||
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes &&
-                this is FrmReuniao || modelo.GetType().IsSubclassOf(typeof(Movimentacao)) &&
+                this is FrmReuniao || modelo != null &&  modelo.GetType().IsSubclassOf(typeof(Movimentacao)) &&
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes ||
                 this is FrmFonte &&
                 !CondicaoAtualizar && !CondicaoDeletar && !CondicaoDetalhes)
             {
                 Proximo.Visible = false;
-                FinalizarCadastro.Visible = true;
+                if (modelo != null)
+                    FinalizarCadastro.Visible = true;
+                else if (ModeloNovo != null)
+                    FazerMudanca.Visible = true;
             }
 
             if (CondicaoAtualizar)
                 Atualizar.Visible = true;
 
 
-            if (condicaoDeletar)
+            if (CondicaoDeletar)
                 Deletar.Visible = true;
 
             if (CondicaoDetalhes)
@@ -445,7 +439,7 @@ namespace WindowsFormsApp1
                 p.Maximo_pessoa = 50;
             }
 
-            FormProgressBar frm = new FormProgressBar();
+            FormProgressBar2 frm = new FormProgressBar2();
             try
             {
                 if (BDcomum.TestarConexao())

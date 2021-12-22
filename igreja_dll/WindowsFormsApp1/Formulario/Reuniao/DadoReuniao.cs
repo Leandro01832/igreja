@@ -49,31 +49,19 @@ namespace WindowsFormsApp1.Formulario.Reuniao
         private void mask_data_reuniao_TextChanged(object sender, EventArgs e)
         {
             var reuniao = (business.classes.Reuniao)modelo;
-            try
-            {
-                reuniao.Data_reuniao = Convert.ToDateTime(mask_data_reuniao.Text);
-            }
-            catch { }
+            reuniao.Validar(mask_data_reuniao.Text, "Data_reuniao");
         }
 
         private void mask_horario_inicio_TextChanged(object sender, EventArgs e)
         {
             var reuniao = (business.classes.Reuniao)modelo;
-            try
-            {
-                reuniao.Horario_inicio = TimeSpan.Parse(mask_horario_inicio.Text);
-            }
-            catch { }
+            reuniao.Validar(mask_horario_inicio.Text, "Horario_inicio");
         }
 
         private void mask_horario_final_TextChanged(object sender, EventArgs e)
         {
             var reuniao = (business.classes.Reuniao)modelo;
-            try
-            {
-                reuniao.Horario_fim = TimeSpan.Parse(mask_horario_final.Text);
-            }
-            catch { }
+            reuniao.Validar(mask_horario_final.Text, "Horario_fim");
         }
     }
 }

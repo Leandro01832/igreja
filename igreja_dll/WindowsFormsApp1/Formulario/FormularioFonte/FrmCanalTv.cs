@@ -48,14 +48,7 @@ namespace WindowsFormsApp1.Formulario.FormularioFonte
         private void mask_horario_TextChanged(object sender, EventArgs e)
         {
             var fonte = (CanalTv)modelo;
-            try
-            {
-                fonte.Horario = TimeSpan.Parse(mask_horario.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
-            }
+            fonte.Validar(mask_horario.Text, "Horario");
         }
     }
 }

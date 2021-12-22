@@ -34,11 +34,15 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             lstBoxPessoa.DataSource = modelocrud.Modelos.OfType<Pessoa>().OrderBy(m => m.Id).ToList();
             if (modelocrud.Modelos.OfType<Pessoa>().ToList().Count > 0) lstBoxPessoa.SetSelected(0, false);
 
-            var ministerio = (Ministerio)modelo;
+            Ministerio p = null;
+            if (modelo != null)
+                p = (Ministerio)modelo;
+            else
+                p = (Ministerio)ModeloNovo;
 
             try
             {
-                foreach (var item in ministerio.Pessoa)
+                foreach (var item in p.Pessoa)
                 {
                     var indice = lstBoxPessoa.Items.IndexOf(item.Pessoa);
                     lstBoxPessoa.SetSelected(indice, true);
@@ -46,14 +50,14 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             }
             catch (Exception ex)
             {
-                var msg = modelo.exibirMensagemErro(ex, 2);
+                var msg = modeloErro.exibirMensagemErro(ex, 2);
                 if (msg != "")
                     MessageBox.Show(msg);
             }
 
             try
             {
-                foreach (var item in ministerio.Celulas)
+                foreach (var item in p.Celulas)
                 {
                     var indice = lstBoxCelula.Items.IndexOf(item.Celula);
                     lstBoxCelula.SetSelected(indice, true);
@@ -61,7 +65,7 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
             }
             catch (Exception ex)
             {
-                var msg = modelo.exibirMensagemErro(ex, 2);
+                var msg = modeloErro.exibirMensagemErro(ex, 2);
                 if (msg != "")
                     MessageBox.Show(msg);
             }
@@ -71,17 +75,21 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
                 
         private void lstBoxPessoa_SelectedValueChanged(object sender, EventArgs e)
         {
-            var ministerio = (Ministerio)modelo;
+            Ministerio p = null;
+            if (modelo != null)
+                p = (Ministerio)modelo;
+            else
+                p = (Ministerio)ModeloNovo;
             try
             {
                 if (condicao)
                 {
                     SelectedObjectCollection valor = lstBoxPessoa.SelectedItems;
                     var objetos = valor.Cast<Pessoa>().ToList();
-                    ministerio.Pessoa = new List<PessoaMinisterio>();
+                    p.Pessoa = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                        ministerio.Pessoa.Add(new PessoaMinisterio { PessoaId = item.Id, Pessoa = item,
-                            MinisterioId = ministerio.Id, Ministerio = ministerio });
+                        p.Pessoa.Add(new PessoaMinisterio { PessoaId = item.Id, Pessoa = item,
+                            MinisterioId = p.Id, Ministerio = p });
                 }
 
             }
@@ -93,17 +101,21 @@ namespace WindowsFormsApp1.Formulario.FormularioMinisterio
 
         private void lstBoxCelula_SelectedValueChanged(object sender, EventArgs e)
         {
-            var ministerio = (Ministerio)modelo;
+            Ministerio p = null;
+            if (modelo != null)
+                p = (Ministerio)modelo;
+            else
+                p = (Ministerio)ModeloNovo;
             try
             {
                 if (condicao)
                 {
                     SelectedObjectCollection valor = lstBoxPessoa.SelectedItems;
                     var objetos = valor.Cast<Celula>().ToList();
-                    ministerio.Celulas = new List<MinisterioCelula>();
+                    p.Celulas = new List<MinisterioCelula>();
                     foreach (var item in objetos)
-                        ministerio.Celulas.Add(new MinisterioCelula { CelulaId = item.Id, Celula = item,
-                            MinisterioId = ministerio.Id, Ministerio = ministerio });
+                        p.Celulas.Add(new MinisterioCelula { CelulaId = item.Id, Celula = item,
+                            MinisterioId = p.Id, Ministerio = p });
                 }
 
             }

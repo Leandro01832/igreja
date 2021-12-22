@@ -35,18 +35,22 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             if (modelocrud.Modelos.OfType<business.classes.Reuniao>().ToList().Count > 0) lstBoxReuniao.SetSelected(0, false);
 
             this.Text = "Reuniões, celula e ministérios da pessoa.";
-            var pessoa = (Pessoa)modelo;
+            Pessoa p = null;
+            if (modelo != null)
+                p = (Pessoa)modelo;
+            else
+                p = (Pessoa)ModeloNovo;
 
-            if (pessoa.celula_ != null)
+            if (p.celula_ != null)
             {
-                var indice = lstBoxCelula.Items.IndexOf(pessoa.Celula);
+                var indice = lstBoxCelula.Items.IndexOf(p.Celula);
                 lstBoxCelula.SetSelected(indice, true);
             }
             else ckBoxNulo.Checked = true;
 
             try
             {
-                foreach (var item in pessoa.Ministerio)
+                foreach (var item in p.Ministerio)
                 {
                     var indice = lstBoxMinisterio.Items.IndexOf(item);
                     lstBoxMinisterio.SetSelected(indice, true);
@@ -54,14 +58,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             }
             catch (Exception ex)
             {
-                var msg = modelo.exibirMensagemErro(ex, 2);
+                var msg = modeloErro.exibirMensagemErro(ex, 2);
                 if(msg != "")
                 MessageBox.Show(msg);
             }
 
             try
             {
-                foreach (var item in pessoa.Reuniao)
+                foreach (var item in p.Reuniao)
                 {
                     var indice = lstBoxReuniao.Items.IndexOf(item);
                     lstBoxReuniao.SetSelected(indice, true);
@@ -69,7 +73,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
             }
             catch (Exception ex)
             {
-                var msg = modelo.exibirMensagemErro(ex, 2);
+                var msg = modeloErro.exibirMensagemErro(ex, 2);
                 if (msg != "")
                     MessageBox.Show(msg);
             }
@@ -81,17 +85,21 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void lstBoxMinisterio_SelectedValueChanged(object sender, EventArgs e)
         {
-            var pessoa = (Pessoa)modelo;
+            Pessoa p = null;
+            if (modelo != null)
+                p = (Pessoa)modelo;
+            else
+                p = (Pessoa)ModeloNovo;
             try
             {
                 if (condicao)
                 {
                     SelectedObjectCollection valor = lstBoxMinisterio.SelectedItems;
                     var objetos = valor.Cast<Ministerio>().ToList();
-                    pessoa.Ministerio = new List<PessoaMinisterio>();
+                    p.Ministerio = new List<PessoaMinisterio>();
                     foreach (var item in objetos)
-                    pessoa.Ministerio.Add(new PessoaMinisterio { MinisterioId = item.Id, Ministerio = item,
-                        PessoaId = pessoa.Id, Pessoa = pessoa });
+                    p.Ministerio.Add(new PessoaMinisterio { MinisterioId = item.Id, Ministerio = item,
+                        PessoaId = p.Id, Pessoa = p });
                 }
 
             }
@@ -103,12 +111,16 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void lstBoxCelula_SelectedValueChanged(object sender, EventArgs e)
         {
-            var pessoa = (Pessoa)modelo;
+            Pessoa p = null;
+            if (modelo != null)
+                p = (Pessoa)modelo;
+            else
+                p = (Pessoa)ModeloNovo;
             Celula cel = (Celula)lstBoxCelula.SelectedItem;
             if(cel != null)
             {
-                pessoa.celula_ = cel.Id;
-                pessoa.Celula = cel;
+                p.celula_ = cel.Id;
+                p.Celula = cel;
                 if (ckBoxNulo.Checked)
                     ckBoxNulo.Checked = false;
             }
@@ -116,17 +128,21 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void lstBoxReuniao_SelectedValueChanged(object sender, EventArgs e)
         {
-            var pessoa = (Pessoa)modelo;
+            Pessoa p = null;
+            if (modelo != null)
+                p = (Pessoa)modelo;
+            else
+                p = (Pessoa)ModeloNovo;
             try
             {
                 if (condicao)
                 {
                     SelectedObjectCollection valor = lstBoxReuniao.SelectedItems;
                     var objetos = valor.Cast<business.classes.Reuniao>().ToList();
-                    pessoa.Reuniao = new List<ReuniaoPessoa>();
+                    p.Reuniao = new List<ReuniaoPessoa>();
                     foreach (var item in objetos)
-                    pessoa.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item.Id, Reuniao = item,
-                        PessoaId = pessoa.Id, Pessoa = pessoa });
+                    p.Reuniao.Add(new ReuniaoPessoa { ReuniaoId = item.Id, Reuniao = item,
+                        PessoaId = p.Id, Pessoa = p });
                 }
 
             }
@@ -138,13 +154,17 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoas
 
         private void ckBoxNulo_CheckedChanged(object sender, EventArgs e)
         {
-            var pessoa = (Pessoa)modelo;
+            Pessoa p = null;
+            if (modelo != null)
+                p = (Pessoa)modelo;
+            else
+                p = (Pessoa)ModeloNovo;
             if (ckBoxNulo.Checked)
             {
                 var indice = lstBoxCelula.SelectedIndex;
                 if (indice >= 0)
                 lstBoxCelula.SetSelected(indice, false);
-                pessoa.celula_ = null;
+                p.celula_ = null;
             }
         }
     }

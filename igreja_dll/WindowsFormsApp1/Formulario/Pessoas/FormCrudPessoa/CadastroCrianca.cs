@@ -1,4 +1,5 @@
-﻿using business.classes.Pessoas;
+﻿using business.classes.Abstrato;
+using business.classes.Pessoas;
 using business.classes.PessoasLgpd;
 using database;
 using System;
@@ -12,10 +13,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         public CadastroCrianca() : base()
         {
             InitializeComponent();
-        }
-
-
-        public PessoaDado P { get; }
+        }        
 
         private void Proximo_Click(object sender, EventArgs e)
         {
@@ -28,22 +26,30 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
 
             if (modelo is Crianca)
             {
-                var p = (Crianca)modelo;
+                Crianca p = null;
+                if(modelo != null)
+                p = (Crianca)modelo;
+                else
+                    p = (Crianca)ModeloNovo;
                 try { textBox1.Text = p.Nome_pai; }
                 catch (Exception ex)
-                { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 try { textBox2.Text = p.Nome_mae; }
                 catch (Exception ex)
-                { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
             if (modelo is CriancaLgpd)
             {
-                var p = (CriancaLgpd)modelo;
+                CriancaLgpd p = null;
+                if (modelo != null)
+                    p = (CriancaLgpd)modelo;
+                else
+                    p = (CriancaLgpd)ModeloNovo;
                 try { textBox1.Text = p.Nome_pai; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 try { textBox2.Text = p.Nome_mae; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
 
@@ -57,13 +63,13 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 {
                     var p = (Crianca)modelo;
                     try { p.Nome_mae = textBox2.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
                 if (modelo is CriancaLgpd)
                 {
                     var p = (CriancaLgpd)modelo;
                     try { p.Nome_mae = textBox2.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
             }
 
@@ -73,13 +79,13 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 {
                     var p = (Crianca)ModeloNovo;
                     try { p.Nome_mae = textBox2.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
                 if (ModeloNovo is CriancaLgpd)
                 {
                     var p = (CriancaLgpd)ModeloNovo;
                     try { p.Nome_mae = textBox2.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
             }
         }
@@ -92,14 +98,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 {
                     var p = (Crianca)modelo;
                     try { p.Nome_pai = textBox1.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
 
                 if (modelo is CriancaLgpd)
                 {
                     var p = (CriancaLgpd)modelo;
                     try { p.Nome_pai = textBox1.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
             }
 
@@ -109,14 +115,14 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 {
                     var p = (Crianca)ModeloNovo;
                     try { p.Nome_pai = textBox1.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
 
                 if (ModeloNovo is CriancaLgpd)
                 {
                     var p = (CriancaLgpd)ModeloNovo;
                     try { p.Nome_pai = textBox1.Text; }
-                    catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                    catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
                 }
             }
         }

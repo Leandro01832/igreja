@@ -122,6 +122,7 @@
     <Compile Include="classes\Ministerio\Supervisor_Ministerio_Treinamento.cs" />
     <Compile Include="contrato\IPropertiesCrud.cs" />
     <Compile Include="contrato\ITable.cs" />
+    <Compile Include="contrato\IValidate.cs" />
     <Compile Include="implementacao\Calculo.cs" />
     <Compile Include="implementacao\Entity.cs" />
     <Compile Include="implementacao\MudancaEstado.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="implementacao\Query.cs" />
     <Compile Include="implementacao\PropertiesCrud.cs" />
     <Compile Include="implementacao\Table.cs" />
+    <Compile Include="implementacao\Validate.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OpcoesBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

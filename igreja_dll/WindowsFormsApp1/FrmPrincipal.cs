@@ -157,6 +157,8 @@ namespace WindowsFormsApp1
 
             await iniciarPrograma();
             await Task.Run(() => alterarDadosRemotos(lista));
+
+            var models = modelocrud.Modelos;
         }
 
         private  void alterarDadosRemotos(List<Type> lista)

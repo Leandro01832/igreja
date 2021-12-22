@@ -29,12 +29,8 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
         private void txtValor_TextChanged(object sender, EventArgs e)
         {
             Bazar a = (Bazar)modelo;
-            try
-            {
-                a.Valor = decimal.Parse(txtValor.Text);
-                a.Valor = decimal.Parse(a.Valor.ToString("F2"));
-            }
-            catch { MessageBox.Show("digite numeros"); txtValor.Text = ""; }
+            try { a.Validar(txtValor.Text, "Valor"); }
+            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
         }
 
         private void checkBoxPagou_CheckedChanged(object sender, EventArgs e)
@@ -50,11 +46,7 @@ namespace WindowsFormsApp1.formulario.formularioMovimentacaoEntrada
         private void mask_data_recebimento_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             Bazar a = (Bazar)modelo;
-            try
-            {
-                a.DataRecebimento = Convert.ToDateTime(mask_data_recebimento.Text);
-            }
-            catch { }
+            a.Validar(mask_data_recebimento.Text, "DataRecebimento");
         }
 
         private void txt_numero_id_TextChanged(object sender, EventArgs e)

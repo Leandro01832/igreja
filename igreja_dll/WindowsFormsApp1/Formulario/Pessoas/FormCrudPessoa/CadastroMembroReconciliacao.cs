@@ -20,15 +20,23 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
 
             if (modelo is Membro_Reconciliacao)
             {
-                var p = (Membro_Reconciliacao)modelo;
+                Membro_Reconciliacao p = null;
+                if (modelo != null)
+                    p = (Membro_Reconciliacao)modelo;
+                else
+                    p = (Membro_Reconciliacao)ModeloNovo;
                 try { txt_reconciliacao.Text = p.Data_reconciliacao.ToString(); }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (modelo is Membro_ReconciliacaoLgpd)
             {
-                var p = (Membro_ReconciliacaoLgpd)modelo;
+                Membro_ReconciliacaoLgpd p = null;
+                if (modelo != null)
+                    p = (Membro_ReconciliacaoLgpd)modelo;
+                else
+                    p = (Membro_ReconciliacaoLgpd)ModeloNovo;
                 try { txt_reconciliacao.Text = p.Data_reconciliacao.ToString(); }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
         }

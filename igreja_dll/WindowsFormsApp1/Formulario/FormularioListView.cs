@@ -174,6 +174,10 @@ namespace WindowsFormsApp1.Formulario
 
         private void atualizarStatusBotao()
         {
+            if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)) ||
+                Tipo == typeof(Ministerio) || Tipo.IsSubclassOf(typeof(Ministerio)))
+                Mudanca.Visible = true;
+
             botaoAtualizarLista.Enabled = ListView.SelectedIndex >= 0;
             botaoDetalhes.Enabled = ListView.SelectedIndex >= 0;
             botaoAtualizar.Enabled = ListView.SelectedIndex >= 0;

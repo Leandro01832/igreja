@@ -108,6 +108,10 @@ namespace WindowsFormsApp1
                 }
                 else if (item.Name + "Listar" + "_Click" == function)
                 {
+                    if(item == typeof(Pessoa) || item.IsSubclassOf(typeof(Pessoa)) ||
+                        item == typeof(Ministerio) || item.IsSubclassOf(typeof(Ministerio)))
+                    quantidade += 5;
+                    else
                     quantidade += 4;
                     if (!contagem)
                     {
@@ -215,6 +219,7 @@ namespace WindowsFormsApp1
             {
                 Form.MdiParent = Atual.MdiParent;
             }
+
 
             Form.modelo = modelo;
             Form.CondicaoDetalhes = detalhes;

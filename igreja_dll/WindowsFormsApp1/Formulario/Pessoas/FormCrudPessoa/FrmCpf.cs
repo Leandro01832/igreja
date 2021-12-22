@@ -14,26 +14,29 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
         private void DadoPessoal_Load(object sender, EventArgs e)
         {
             this.Text = "Daddos pessoais.";
-
-            var p = (PessoaDado)modelo;
+            PessoaDado p = null;
+            if (modelo != null)
+                p = (PessoaDado)modelo;
+            else
+                p = (PessoaDado)ModeloNovo;
             try { text_nome.Text = p.Nome; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_rg.Text = p.Rg; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { text_cpf.Text = p.Cpf; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { listestado_civil.Text = p.Estado_civil; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { listBox_status.Text = p.Status; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { mask_data_nascimento.Text = p.Data_nascimento.ToString("dd/MM/yyyy"); }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { textemail.Text = p.Email; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { radioButton_masculino.Checked = p.Sexo_masculino; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             try { radioButton_feminino.Checked = p.Sexo_feminino; }
-            catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+            catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
 
 
 
@@ -45,13 +48,13 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             {
                 var p = (PessoaDado)modelo;
                 try { p.Nome = text_nome.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
                 try { p.Nome = text_nome.Text; }
-                catch (Exception ex) { MessageBox.Show(modelo.exibirMensagemErro(ex, 2)); }
+                catch (Exception ex) { MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2)); }
             }
 
         }
@@ -67,7 +70,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
             if (ModeloNovo != null)
@@ -79,7 +82,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
 
@@ -96,7 +99,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
             if (ModeloNovo != null)
@@ -108,7 +111,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
 
@@ -125,7 +128,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
             if (ModeloNovo != null)
@@ -137,7 +140,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
 
@@ -154,7 +157,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
             if (ModeloNovo != null)
@@ -166,7 +169,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
 
@@ -188,7 +191,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
             if (ModeloNovo != null)
@@ -200,7 +203,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
+                    MessageBox.Show(modeloErro.exibirMensagemErro(ex, 2));
                 }
             }
 
@@ -243,27 +246,13 @@ namespace WindowsFormsApp1.Formulario.Pessoas.FormCrudPessoa
             if (modelo != null)
             {
                 var p = (PessoaDado)modelo;
-                try
-                {
-                    p.Data_nascimento = Convert.ToDateTime(mask_data_nascimento.Text.ToString());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
-                }
+                p.Validar(mask_data_nascimento.Text, "Data_nascimento");
             }
 
             if (ModeloNovo != null)
             {
                 var p = (PessoaDado)ModeloNovo;
-                try
-                {
-                    p.Data_nascimento = Convert.ToDateTime(mask_data_nascimento.Text.ToString());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(modelo.exibirMensagemErro(ex, 2));
-                }
+                p.Validar(mask_data_nascimento.Text, "Data_nascimento");
             }
         }
     }

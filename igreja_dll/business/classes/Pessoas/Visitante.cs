@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace business.classes.Pessoas
 {
@@ -20,7 +21,14 @@ namespace business.classes.Pessoas
                     throw new Exception("Data_visita");
                 return data_visita;
             }
-            set { data_visita = value; }
+            set
+            {
+                if ( data_visita.Year <= DateTime.Now.Year &&  data_visita.Month <= DateTime.Now.Month &&
+                     data_visita.Day <= DateTime.Now.Day || data_visita < DateTime.Now)
+                    data_visita = value;
+                else
+                    data_visita = new DateTime(0001, 01, 01);
+            }
         }
 
         private string condicao_religiosa = "condicao";
@@ -35,7 +43,12 @@ namespace business.classes.Pessoas
                     throw new Exception("Condicao_religiosa");
                 return condicao_religiosa;
             }
-            set { condicao_religiosa = value; }
+            set
+            {
+                condicao_religiosa = value;
+                if (string.IsNullOrWhiteSpace(condicao_religiosa))
+                    throw new Exception("Condicao_religiosa");
+            }
         }
 
         public Visitante() : base() { }        
