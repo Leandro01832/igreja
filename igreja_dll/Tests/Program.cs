@@ -5,6 +5,7 @@ using business.classes.financeiro;
 using business.classes.Intermediario;
 using business.classes.Ministerio;
 using business.classes.Pessoas;
+using business.classes.PessoasLgpd;
 using database;
 using database.banco;
 using System;
@@ -23,12 +24,34 @@ namespace Tests
 
         static void Main(string[] args)
         {
-             //     TestarCrud();
+            //     TestarCrud();
             //     ExibirDados();
-           // TestarValidacoes();
+            // TestarValidacoes();
+            //  TestarTransaction();
 
             Console.WriteLine("ok");
             Console.Read();
+        }
+
+        private static void TestarTransaction()
+        {
+            var visitanteLgpd = new VisitanteLgpd();
+            visitanteLgpd.stringConexao = BDcomum.conecta2;
+            if (visitanteLgpd.recuperar(1))
+            {
+                visitanteLgpd.Id = 0;
+                visitanteLgpd.salvar(BDcomum.conecta1);
+
+                var visitante = new Visitante { Nome = "Jose", Cpf = "123" };
+                try
+                {
+                    visitante.MudarEstado(1, visitante);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(visitante.exibirMensagemErro(ex, 2));
+                }
+            }
         }
 
         private static void TestarValidacoes()
@@ -71,6 +94,7 @@ namespace Tests
                 Console.WriteLine(oferta4.exibirMensagemErro(ex, 2));
             }
         }
+
         private static void ExibirDados()
         {
             var lista = modelocrud.listTypesSon(typeof(modelocrud));
@@ -98,6 +122,7 @@ namespace Tests
                         Console.WriteLine(item2.ReflectedType.Name);
                     }
         }
+
         private static void TestarCrud()
         {
             arr[0] = "Paulo"; arr[10] = "Sandra"; arr[20] = "Sebastião"; arr[30] = "Thais"; arr[40] = "Adriana";

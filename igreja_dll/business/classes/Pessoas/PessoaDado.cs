@@ -30,15 +30,23 @@ namespace business.classes.Pessoas
         {
             get
             {
+                if (data_nascimento > DateTime.Now)
+                {
+                    ErroCadastro = "A data de nascimento deve ser menor que a data atual.";
+                    throw new Exception("Data_nascimento");
+                }
+
                 if (data_nascimento.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
                 throw new Exception("Data_nascimento");
                 return data_nascimento;
             }
             set
             {
-                data_nascimento = value;
-                if (data_nascimento.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
-                    throw new Exception("Data_nascimento");
+                if (data_nascimento.Year <= DateTime.Now.Year && data_nascimento.Month <= DateTime.Now.Month &&
+                     data_nascimento.Day <= DateTime.Now.Day || data_nascimento < DateTime.Now)
+                    data_nascimento = value;
+                else
+                    data_nascimento = new DateTime(0001, 01, 01);
             }
         }
 

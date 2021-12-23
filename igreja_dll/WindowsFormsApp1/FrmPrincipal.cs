@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("Seja bem vindo ao sistema para igreja." +
             " Neste sistema você poderá fazer gerenciamento de pessoas," +
             " gerenciamento financeiro, gerenciamento de e-mails e gerenciamento de esboço." +
-            " Quantidade de funções no sistema: " + MdiForm.quantidade);
+            " Quantidade de funções no sistema: " + MdiForm.quantidade + ". Vamos começar o passeio virtual?");
             MdiForm.quantidade = 0;
             MdiForm.contagem = false;
 

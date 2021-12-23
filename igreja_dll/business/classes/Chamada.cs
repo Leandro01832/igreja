@@ -25,12 +25,7 @@ namespace business.classes
                     throw new Exception("Data_inicio");
                 return data_inicio;
             }
-            set
-            {
-                data_inicio = value;
-                if (data_inicio.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
-                    throw new Exception("Data_inicio");
-            }
+            set { data_inicio = value; }
         }
 
         [Display(Name = "Numero da chamada")]

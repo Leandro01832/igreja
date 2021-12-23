@@ -20,11 +20,11 @@ namespace WindowsFormsApp1.Formulario
         MdiForm crudForm;
         private List<modelocrud> list;
 
-        private Button Mudanca { get; }
-        private Button botaoDetalhes { get; }
-        private Button botaoAtualizar { get; }
-        private Button botaoDeletar { get; }
-        private Button botaoAtualizarLista { get; }
+        public Button MudancaEstado { get; set; }
+        public Button Detalhes { get; set; }
+        public Button Atualizar { get; set; }
+        public Button Deletar { get; set; }
+        public Button AtualizarLista { get; set; }
         private Type Tipo { get; }
         public ListBox ListView { get; set; }
 
@@ -34,57 +34,34 @@ namespace WindowsFormsApp1.Formulario
             this.Tipo = tipo;
 
             ListView = new ListBox();
-
-            // this.View = View.Tile;
+            
             ListView.Size = new Size(600, 300);
             ListView.Location = new Point(50, 50);
-            ListView.Font = new Font("Arial", 15);
+            ListView.Font = new Font("Arial", 14);
             ListView.SelectedValueChanged += ListView_SelectedValueChanged;
 
+            var props = this.GetType().GetProperties().Where(p => p.PropertyType == typeof(Button)).ToList();
+            var posicaoY = 40;
+            foreach (var item in props)
+            {
+                item.SetValue(this, new Button());
+                var botao = (Button)item.GetValue(this);
+                botao.Size = new Size(135, 50);
+                botao.Dock = DockStyle.Right;
+                botao.Text = modelocrud.formatarTexto(item.Name);
+                botao.Location = new Point(570, posicaoY);
+                botao.Font = new Font("Arial", 14);
+                Controls.Add(botao);
+                posicaoY += 80;
+            }
             
-
-            Mudanca = new Button();
-            Mudanca.Location = new Point(570, 40);
-            Mudanca.Size = new Size(100, 50);
-            Mudanca.Text = "Mudança de estado";
-            Mudanca.Click += MudancaEstado_Click;
-            Mudanca.Dock = DockStyle.Right;
-            Mudanca.Visible = false;
-
-            botaoDeletar = new Button();
-            botaoDeletar.Location = new Point(570, 120);
-            botaoDeletar.Size = new Size(100, 50);
-            botaoDeletar.Text = "Excluir";
-            botaoDeletar.Click += botaoExcluir_Click;
-            botaoDeletar.Dock = DockStyle.Right;
-
-            botaoAtualizar = new Button();
-            botaoAtualizar.Location = new Point(570, 200);
-            botaoAtualizar.Size = new Size(100, 50);
-            botaoAtualizar.Text = "Atualizar";
-            botaoAtualizar.Click += botaoAtualizar_Click;
-            botaoAtualizar.Dock = DockStyle.Right;
-
-            botaoDetalhes = new Button();
-            botaoDetalhes.Location = new Point(570, 280);
-            botaoDetalhes.Size = new Size(100, 50);
-            botaoDetalhes.Text = "Detalhes";
-            botaoDetalhes.Click += BotaoDetalhes_Click;
-            botaoDetalhes.Dock = DockStyle.Right;
-
-            botaoAtualizarLista = new Button();
-            botaoAtualizarLista.Location = new Point(570, 360);
-            botaoAtualizarLista.Size = new Size(100, 50);
-            botaoAtualizarLista.Text = "Atualizar lista";
-            botaoAtualizarLista.Click += BotaoAtualizarLista_Click;
-            botaoAtualizarLista.Dock = DockStyle.Right;
+            MudancaEstado.Click += MudancaEstado_Click;            
+            Deletar.Click += botaoExcluir_Click;            
+            Atualizar.Click += botaoAtualizar_Click;            
+            Detalhes.Click += BotaoDetalhes_Click;            
+            AtualizarLista.Click += BotaoAtualizarLista_Click;
 
             Controls.Add(ListView);
-            Controls.Add(botaoDetalhes);
-            Controls.Add(botaoAtualizar);
-            Controls.Add(botaoDeletar);
-            Controls.Add(Mudanca);
-            Controls.Add(botaoAtualizarLista);
             this.ListView = ListView;
             InitializeComponent();
         }
@@ -155,13 +132,13 @@ namespace WindowsFormsApp1.Formulario
 
         private void FormularioListView_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(900, 350);
+            this.Size = new Size(1100, 350);
             ListView.Dock = DockStyle.Left;
 
             if (Tipo == typeof(MudancaEstado))
             {
-                botaoAtualizar.Visible = false;
-                botaoDeletar.Visible = false;
+                Atualizar.Visible = false;
+                Deletar.Visible = false;
             }
             
                 ListView.DataSource = modelocrud.Modelos.Where(m => m.GetType() == Tipo
@@ -176,13 +153,13 @@ namespace WindowsFormsApp1.Formulario
         {
             if (Tipo == typeof(Pessoa) || Tipo.IsSubclassOf(typeof(Pessoa)) ||
                 Tipo == typeof(Ministerio) || Tipo.IsSubclassOf(typeof(Ministerio)))
-                Mudanca.Visible = true;
+                MudancaEstado.Visible = true;
 
-            botaoAtualizarLista.Enabled = ListView.SelectedIndex >= 0;
-            botaoDetalhes.Enabled = ListView.SelectedIndex >= 0;
-            botaoAtualizar.Enabled = ListView.SelectedIndex >= 0;
-            botaoDeletar.Enabled = ListView.SelectedIndex >= 0;
-            Mudanca.Enabled = ListView.SelectedIndex >= 0;
+            AtualizarLista.Enabled = ListView.SelectedIndex >= 0;
+            Detalhes.Enabled = ListView.SelectedIndex >= 0;
+            Atualizar.Enabled = ListView.SelectedIndex >= 0;
+            Deletar.Enabled = ListView.SelectedIndex >= 0;
+            MudancaEstado.Enabled = ListView.SelectedIndex >= 0;
         }
 
         public void LoadFormCrud(modelocrud modelo, bool detalhes, bool deletar, bool atualizar, Form Atual)

@@ -316,7 +316,8 @@ namespace database
             }
         }
 
-        public string salvar(string stringConexao = "")
+        public string salvar(string stringConexao = "",
+            bool executarAosPares = false, int quantidadeConexoes = 0)
         {
             if (!EntityCrud)
             {
@@ -333,7 +334,7 @@ namespace database
                     while (T != GetType())
                         GetProperty(T);
                     GetProperty(null);
-                    bd.SalvarModelo(this, stringConexao);
+                    bd.SalvarModelo(this, stringConexao, executarAosPares, quantidadeConexoes);
                     Type model = ReturnBase(GetType());
                     int num = GetUltimoRegistro(model, BDcomum.conecta1);
                     Id = num;
@@ -374,13 +375,14 @@ namespace database
                 salvarEntity(this); return "";
         }
 
-        public string alterar(int id)
+        public string alterar(int id, string stringConexao = "",
+            bool executarAosPares = false, int quantidadeConexoes = 0)
         {
             if (!EntityCrud)
             {
                 while (T != typeof(modelocrud))
                     UpdateProperty(T);
-                bd.Editar(this);
+                bd.Editar(this, stringConexao, executarAosPares, quantidadeConexoes);
                 T = GetType();
 
                 // save list
@@ -472,7 +474,8 @@ namespace database
                 alterarEntity(this); return "";
         }
 
-        public string excluir(int id, string stringConexao = "")
+        public string excluir(int id, string stringConexao = "",
+            bool executarAosPares = false, int quantidadeConexoes = 0)
         {
             if (!EntityCrud)
             {
@@ -523,7 +526,7 @@ namespace database
                 if (Delete_padrao != "")
                 {
                     deleteIntermediario();
-                    bd.Excluir(this, stringConexao);
+                    bd.Excluir(this, stringConexao, executarAosPares, quantidadeConexoes);
                 }
                 return Delete_padrao;
 

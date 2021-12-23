@@ -32,14 +32,23 @@ namespace business.implementacao
                 p = buscarConcreto(typeof(Ministerio), idVelhoEstado);
             estado = p.GetType().Name;
 
-            p.excluir(idVelhoEstado);
+            p.excluir(idVelhoEstado, "", true, 4);
 
             var propsList = m.GetType().GetProperties().Where(pro => pro.PropertyType.Name == "List`1").ToList();
 
             foreach (var item in propsList)
                 item.SetValue(m, item.GetValue(p));
             m.Id = 0;
-            m.salvar();
+            try
+            {
+                m.salvar("", true, 4);
+            }
+            catch (Exception ex)
+            {
+                p.Insert_padrao += "92sfgg  75293845";
+                p.salvar("", true, 4);
+                throw new Exception(ex.Message);
+            }
 
             new MudancaEstado
             {

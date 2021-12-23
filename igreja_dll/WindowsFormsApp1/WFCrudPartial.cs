@@ -234,6 +234,7 @@ namespace WindowsFormsApp1
                 crudForm.Form = new FrmReuniao();
 
             if (ModeloNovo != null) crudForm.Form.ModeloNovo = ModeloNovo;
+            if (ModeloVelho != null) crudForm.Form.ModeloVelho = ModeloVelho;
 
             LoadForm();
 

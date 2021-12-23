@@ -178,18 +178,62 @@ namespace WindowsFormsApp1
             this.Controls.Add(InfoForm);
         }
 
-        private void FazerMudanca_Click(object sender, EventArgs e)
+        private async void FazerMudanca_Click(object sender, EventArgs e)
         {
             if(ModeloNovo is Pessoa)
             {
                 Pessoa p = (Pessoa)ModeloNovo;
-                p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+                FormProgressBar2 frm = new FormProgressBar2();
+                try
+                {
+                    if (BDcomum.TestarConexao())
+                    {
+                        frm.StartPosition = FormStartPosition.CenterScreen;
+                        frm.Text = "Aguarde o processamento ...";
+                        frm.Show();
+                        await new FrmPrincipal().AtualizarDadosRemotos();
+                        p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+                        frm.Dispose(); 
+                    }
+                    else
+                    {
+                        if (!frm.IsDisposed)
+                            frm.Dispose();
+                        MessageBox.Show("Conecte-se a internet.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(p.exibirMensagemErro(ex, 2));
+                }
             }
 
             if (ModeloNovo is Ministerio)
             {
                 Ministerio p = (Ministerio)ModeloNovo;
-                p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+                FormProgressBar2 frm = new FormProgressBar2();
+                try
+                {
+                    if (BDcomum.TestarConexao())
+                    {
+                        frm.StartPosition = FormStartPosition.CenterScreen;
+                        frm.Text = "Aguarde o processamento ...";
+                        frm.Show();
+                        await new FrmPrincipal().AtualizarDadosRemotos();
+                        p.MudarEstado(ModeloVelho.Id, ModeloNovo);
+                        frm.Dispose();
+                    }
+                    else
+                    {
+                        if (!frm.IsDisposed)
+                            frm.Dispose();
+                        MessageBox.Show("Conecte-se a internet.");                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(p.exibirMensagemErro(ex, 2));
+                }
             }
         }
 

@@ -17,6 +17,12 @@ namespace business.classes.Pessoas
         {
             get
             {
+                if (data_visita > DateTime.Now)
+                {
+                    ErroCadastro = "A data da visita deve ser menor que a data atual.";
+                    throw new Exception("Data_visita");
+                }
+
                 if (data_visita.ToString("dd/MM/yyyy") == new DateTime(0001, 01, 01).ToString("dd/MM/yyyy"))
                     throw new Exception("Data_visita");
                 return data_visita;

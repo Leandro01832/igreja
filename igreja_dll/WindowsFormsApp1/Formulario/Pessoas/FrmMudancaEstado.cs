@@ -15,9 +15,9 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
         }
 
-        public FrmMudancaEstado(modelocrud modelo)
+        public FrmMudancaEstado(modelocrud modeloVelho)
         {
-            ModeloVelho = modelo;
+            ModeloVelho = modeloVelho;
             AlterarPTodoDado = new CheckBox();
             AlterarPTodoDado.Width = 500;
             AlterarPTodoDado.Text = "Alterar para modelo com todos os dados";
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
 
             Controls.Add(AlterarPTodoDado);
 
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private CheckBox AlterarPTodoDado;
@@ -75,6 +75,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     crudForm.Form = new CadastroCrianca();
                     crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.ModeloVelho = ModeloVelho;
                     crudForm.Form.MdiParent = this.MdiParent;
                     crudForm.Form.LoadCrudForm();
                     crudForm.Form.CondicaoAtualizar = false;
@@ -86,6 +87,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     crudForm.Form = new CadastroVisitante();
                     crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.ModeloVelho = ModeloVelho;
                     crudForm.Form.MdiParent = this.MdiParent;
                     crudForm.Form.LoadCrudForm();
                     crudForm.Form.CondicaoAtualizar = false;
@@ -97,6 +99,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     crudForm.Form = new CadastroMembroAclamacao();
                     crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.ModeloVelho = ModeloVelho;
                     crudForm.Form.MdiParent = this.MdiParent;
                     crudForm.Form.LoadCrudForm();
                     crudForm.Form.CondicaoAtualizar = false;
@@ -108,6 +111,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     crudForm.Form = new CadastroMembroBatismo();
                     crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.ModeloVelho = ModeloVelho;
                     crudForm.Form.MdiParent = this.MdiParent;
                     crudForm.Form.LoadCrudForm();
                     crudForm.Form.CondicaoAtualizar = false;
@@ -119,6 +123,7 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     crudForm.Form = new CadastroMembroReconciliacao();
                     crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.ModeloVelho = ModeloVelho;
                     crudForm.Form.MdiParent = this.MdiParent;
                     crudForm.Form.LoadCrudForm();
                     crudForm.Form.CondicaoAtualizar = false;
@@ -130,18 +135,20 @@ namespace WindowsFormsApp1.Formulario.Pessoas
                 {
                     crudForm.Form = new CadastroMembroTransferencia();
                     crudForm.Form.ModeloNovo = ModeloNovo;
+                    crudForm.Form.ModeloVelho = ModeloVelho;
                     crudForm.Form.MdiParent = this.MdiParent;
                     crudForm.Form.LoadCrudForm();
                     crudForm.Form.CondicaoAtualizar = false;
                     crudForm.Form.CondicaoDeletar = false;
                     crudForm.Form.CondicaoDetalhes = false;
                     crudForm.Form.Show();
-                } 
+                }
             }
             else
             {
                 crudForm.Form = new FrmCpf();
                 crudForm.Form.ModeloNovo = ModeloNovo;
+                crudForm.Form.ModeloVelho = ModeloVelho;
                 crudForm.Form.MdiParent = this.MdiParent;
                 crudForm.Form.LoadCrudForm();
                 crudForm.Form.CondicaoAtualizar = false;
